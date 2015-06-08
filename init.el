@@ -13,3 +13,8 @@
 ;; Default font face
 (set-face-attribute 'default t :font "Source Code Pro-14")
 (set-frame-font "Source Code Pro-14" nil t)
+
+;; Smooth scrolling
+(setq scroll-step           1
+      scroll-conservatively 200
+      auto-window-vscroll   nil)
