@@ -1,3 +1,15 @@
+;; mouse integration
+(require 'mouse)
+(xterm-mouse-mode t)
+(global-set-key [mouse-4] '(lambda ()
+			     (interactive)
+			     (scroll-down 1)))
+(global-set-key [mouse-5] '(lambda ()
+			     (interactive)
+			     (scroll-up 1)))
+(setq mouse-sel-mode t)
+(defun track-mouse (e))
+
 ;; Auto-save in subdirectory of emacs
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
@@ -15,9 +27,9 @@
 (set-frame-font "Source Code Pro-14" nil t)
 
 ;; Smooth scrolling
-(setq scroll-step           1
+(setq scroll-step 1
       scroll-conservatively 200
-      auto-window-vscroll   nil)
+      mouse-wheel-scroll-amount '(1 ((shift) . 5)))
 
 ;; Fringes
 (fringe-mode '(4 . 0))
