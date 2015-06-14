@@ -18,3 +18,6 @@
 (setq scroll-step           1
       scroll-conservatively 200
       auto-window-vscroll   nil)
+
+;; Fringes
+(fringe-mode '(4 . 0))
