@@ -8,6 +8,11 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
+;; vim emulation layer
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode t)
+
 ;; auto-save in subdirectory of emacs
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "auto-save/") t)))
