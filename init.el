@@ -17,8 +17,18 @@
 
 ;; .cache
 (defconst my-cache-directory
-          (expand-file-name (concat user-emacs-directory ".cache/"))
-          "Storage area for persistent files")
+  (expand-file-name (concat user-emacs-directory ".cache/"))
+  "Storage area for persistent files")
+
+(defconst my-auto-save-directory
+  (expand-file-name (concat my-cache-directory "auto-save/"))
+  "Auto-save directory")
+
+(unless (file-exists-p my-cache-directory)
+  (make-directory my-cache-directory))
+
+(unless (file-exists-p my-auto-save-directory)
+  (make-directory my-auto-save-directory))
 
 (setq auto-save-file-name-transforms
       `((".*" ,(concat my-cache-directory "auto-save/") t)))
