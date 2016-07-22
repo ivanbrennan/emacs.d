@@ -61,18 +61,14 @@
 (defun track-mouse (e))
 ;; the following scroll events are overridden
 ;; by mac-win.el in the emacs-mac-port distro
-(global-set-key [wheel-up] (lambda ()
-                             (interactive)
-                             (scroll-down 1)))
-(global-set-key [wheel-down] (lambda ()
-                               (interactive)
-                               (scroll-up 1)))
-(global-set-key [wheel-right] (lambda ()
-                                (interactive)
-                                (scroll-left 1)))
-(global-set-key [wheel-left] (lambda ()
-                               (interactive)
-                               (scroll-right 1)))
+(global-set-key [wheel-up]
+		(lambda () (interactive) (scroll-down 1)))
+(global-set-key [wheel-down]
+		(lambda () (interactive) (scroll-up 1)))
+(global-set-key [wheel-right]
+		(lambda () (interactive) (scroll-left 1)))
+(global-set-key [wheel-left]
+		(lambda () (interactive) (scroll-right 1)))
 
 (set-face-attribute 'default t :font "Source Code Pro-14")
 (set-frame-font "Source Code Pro-14" nil t)
