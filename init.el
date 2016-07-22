@@ -12,7 +12,7 @@
 (package-initialize)
 
 (require 'evil)
-(evil-mode t)
+;(evil-mode t)
 
 (defconst my-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
