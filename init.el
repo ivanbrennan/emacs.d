@@ -12,21 +12,23 @@
 (require 'evil)
 (evil-mode t)
 
-;; auto-save in subdirectory of emacs
-(setq auto-save-file-name-transforms
-      `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+(defconst my-cache-directory
+          (expand-file-name (concat user-emacs-directory ".cache/"))
+          "Storage area for persistent files")
 
-;; backups in subdirectory of emacs
+(setq auto-save-file-name-transforms
+      `((".*" ,(concat my-cache-directory "auto-save/") t)))
+
 (setq backup-directory-alist
-      `(("." . ,(expand-file-name
-                  (concat user-emacs-directory "backups")))))
+      `(("." . ,(expand-file-name (concat my-cache-directory "backups")))))
 (setq backup-by-copying t)
+
+(setq savehist-file
+      (concat my-cache-directory "savehist"))
+(savehist-mode 1)
 
 ;; scratch
 (setq initial-scratch-message "")
-
-;; savehist
-(savehist-mode 1)
 
 ;; hide the toolbar
 (tool-bar-mode -1)
