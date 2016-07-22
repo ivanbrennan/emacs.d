@@ -1,17 +1,21 @@
 ;; packages
 (require 'package)
+
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
 (setq package-enable-at-startup nil)
+
 (package-initialize)
 
-;; vim emulation layer
+;; vim
 (require 'evil)
 (evil-mode t)
 
+;; .cache
 (defconst my-cache-directory
           (expand-file-name (concat user-emacs-directory ".cache/"))
           "Storage area for persistent files")
@@ -59,17 +63,17 @@
 ;; the following scroll events are overridden
 ;; by mac-win.el in the emacs-mac-port distro
 (global-set-key [wheel-up] (lambda ()
-			     (interactive)
-			     (scroll-down 1)))
+                             (interactive)
+                             (scroll-down 1)))
 (global-set-key [wheel-down] (lambda ()
-			       (interactive)
-			       (scroll-up 1)))
+                               (interactive)
+                               (scroll-up 1)))
 (global-set-key [wheel-right] (lambda ()
-				(interactive)
-				(scroll-left 1)))
+                                (interactive)
+                                (scroll-left 1)))
 (global-set-key [wheel-left] (lambda ()
-			       (interactive)
-			       (scroll-right 1)))
+                               (interactive)
+                               (scroll-right 1)))
 
 ;; Default font face
 (set-face-attribute 'default t :font "Source Code Pro-14")
