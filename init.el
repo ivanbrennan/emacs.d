@@ -11,11 +11,9 @@
 
 (package-initialize)
 
-;; vim
 (require 'evil)
 (evil-mode t)
 
-;; .cache
 (defconst my-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
   "Storage area for persistent files")
@@ -41,29 +39,21 @@
       (concat my-cache-directory "savehist"))
 (savehist-mode 1)
 
-;; scratch
 (setq initial-scratch-message "")
 
-;; hide the toolbar
 (tool-bar-mode -1)
 
-;; minibuffer
 (setq minibuffer-eldef-shorten-default t)
 (minibuffer-electric-default-mode)
 
-;; no startup screen
 (setq inhibit-startup-screen t)
 
-;; cursor
 (set-cursor-color "#5b5b5b")
 
-;; whitespace
 (setq-default show-trailing-whitespace 1)
 
-;; logical lines
 (setq-default truncate-lines t)
 
-;; mouse
 (require 'mouse)
 (xterm-mouse-mode t)
 (setq mouse-sel-mode t)
@@ -84,16 +74,13 @@
                                (interactive)
                                (scroll-right 1)))
 
-;; Default font face
 (set-face-attribute 'default t :font "Source Code Pro-14")
 (set-frame-font "Source Code Pro-14" nil t)
 
-;; smooth scrolling
 (setq scroll-step 1
       scroll-conservatively 200
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
-;; fringes
 (fringe-mode '(4 . 1))
 
 (setq-default indicate-empty-lines t)
