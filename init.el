@@ -45,8 +45,7 @@
 (setq inhibit-startup-screen t)
 
 ;; cursor
-(setq-default cursor-type 'bar)
-(set-cursor-color "#f70000")
+(set-cursor-color "#5b5b5b")
 
 ;; whitespace
 (setq-default show-trailing-whitespace 1)
