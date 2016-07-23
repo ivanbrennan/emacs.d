@@ -14,29 +14,29 @@
 (require 'evil)
 ;(evil-mode t)
 
-(defconst my-cache-directory
+(defconst ivan-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
   "Storage area for persistent files")
 
-(defconst my-auto-save-directory
-  (expand-file-name (concat my-cache-directory "auto-save/"))
+(defconst ivan-auto-save-directory
+  (expand-file-name (concat ivan-cache-directory "auto-save/"))
   "Auto-save directory")
 
-(unless (file-exists-p my-cache-directory)
-  (make-directory my-cache-directory))
+(unless (file-exists-p ivan-cache-directory)
+  (make-directory ivan-cache-directory))
 
-(unless (file-exists-p my-auto-save-directory)
-  (make-directory my-auto-save-directory))
+(unless (file-exists-p ivan-auto-save-directory)
+  (make-directory ivan-auto-save-directory))
 
 (setq auto-save-file-name-transforms
-      `((".*" ,(concat my-cache-directory "auto-save/") t)))
+      `((".*" ,(concat ivan-cache-directory "auto-save/") t)))
 
 (setq backup-directory-alist
-      `(("." . ,(expand-file-name (concat my-cache-directory "backups")))))
+      `(("." . ,(expand-file-name (concat ivan-cache-directory "backups")))))
 (setq backup-by-copying t)
 
 (setq savehist-file
-      (concat my-cache-directory "savehist"))
+      (concat ivan-cache-directory "savehist"))
 (savehist-mode 1)
 
 
