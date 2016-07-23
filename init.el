@@ -45,8 +45,19 @@
 (setq inhibit-startup-screen t)
 (set-cursor-color "#5b5b5b")
 
-(setq-default show-trailing-whitespace 1)
+(setq whitespace-style
+      (quote (face
+	      empty
+	      trailing
+	      lines-tail
+	      indentation
+	      space-before-tab
+	      space-after-tab)))
+
+(global-whitespace-mode)
+
 (setq-default indicate-empty-lines t)
+
 (setq-default truncate-lines t)
 
 (setq minibuffer-eldef-shorten-default t)
