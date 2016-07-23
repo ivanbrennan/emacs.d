@@ -39,20 +39,18 @@
       (concat my-cache-directory "savehist"))
 (savehist-mode 1)
 
-(setq initial-scratch-message "")
 
 (tool-bar-mode -1)
-
-(setq minibuffer-eldef-shorten-default t)
-(minibuffer-electric-default-mode)
-
+(setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
-
 (set-cursor-color "#5b5b5b")
 
 (setq-default show-trailing-whitespace 1)
-
+(setq-default indicate-empty-lines t)
 (setq-default truncate-lines t)
+
+(setq minibuffer-eldef-shorten-default t)
+(minibuffer-electric-default-mode)
 
 (require 'mouse)
 (xterm-mouse-mode t)
@@ -78,5 +76,3 @@
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
 (fringe-mode '(4 . 1))
-
-(setq-default indicate-empty-lines t)
