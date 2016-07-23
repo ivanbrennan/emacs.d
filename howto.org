@@ -1,0 +1,16 @@
+** auto-indent as you type
+** backward-kill-word (C-w) in insert/minibuffer
+** case insensitive buffer-name completion
+** color past 90 chars
+** color past eof
+** color theme
+** completion (word/line/path)
+** ctags (etags?)
+** indent space vs tab
+** less info in Dired listings
+** line numbers toggle
+** partial line completion (cursor to end of line)
+** scroll offset to 1 line
+** set bash indentation to 2 spaces
+** smooth scrolling with external mouse wheel
+** whitespace faces
