@@ -52,6 +52,8 @@
 (setq minibuffer-eldef-shorten-default t)
 (minibuffer-electric-default-mode)
 
+(setq require-final-newline t)
+
 (require 'mouse)
 (xterm-mouse-mode t)
 (setq mouse-sel-mode t)
