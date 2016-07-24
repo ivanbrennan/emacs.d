@@ -1,23 +1,47 @@
+* How To (solved)
 ** middle/top/bottom of window
    * M-r
 ** minibuffer history matching preceding chars
    * C-r is a better solution** middle/top/bottom of window
-
-** minibuffer inc-search autoaccept
-** auto-indent as you type
-** backward-kill-word (C-w) in insert/minibuffer
+** rectangular select
+   * C-SPC C-x SPC
 ** case insensitive buffer-name completion
    * read-buffer-completion-ignore-case
+** kill this buffer
+   * C-x k
+
+* How To
+** open newline below, from mid-line
+** minibuffer inc-search autoaccept
+** minibuffer curly-brace completion hints (ido ?)
+** auto-indent as you type
+** backward-kill-word (C-w) in insert/minibuffer
 ** color past 90 chars
 ** color past eof
 ** color theme
 ** completion (word/line/path)
+   * find-file-at-point
 ** ctags (etags?)
 ** indent space vs tab
 ** less info in Dired listings
 ** line numbers toggle
 ** partial line completion (cursor to end of line)
 ** scroll offset to 1 line
+** switch other window to its previous buffer
+** go to beginning of search result rather than end
 ** set bash indentation to 2 spaces
 ** smooth scrolling with external mouse wheel
 ** whitespace faces
+** reorg windows (split vert vs horiz)
+** visit recent file
+** what does ido c-k do?
+** kill this/other window
+   * C-x 0
+** jump by block (like } in vim)
+** jump back (like C-o in vim)
+
+* Questions
+** What are the different load-paths for?
+  - /Users/ivan/.emacs.d/elpa/...
+  - /usr/local/share/emacs/site-lisp/...
+  - /usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.18/share/emacs/24.5/lisp/...
