@@ -39,6 +39,7 @@
       (concat ivan-cache-directory "savehist"))
 (savehist-mode 1)
 
+(setq bookmark-default-file (concat ivan-cache-directory "bookmarks"))
 
 (tool-bar-mode -1)
 (setq initial-scratch-message "")
