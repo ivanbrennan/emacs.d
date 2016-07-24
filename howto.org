@@ -10,8 +10,15 @@
 ** kill this buffer
    * C-x k
 
+** hide scrollbars
+   * scroll-bar-mode
+** indent line/region
+   * TAB :: line or region
+   * C-M-\ :: region
 * How To
+** resize windows
 ** open newline below, from mid-line
+** fringe color same as background
 ** minibuffer inc-search autoaccept
 ** minibuffer curly-brace completion hints (ido ?)
 ** auto-indent as you type
