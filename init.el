@@ -9,7 +9,9 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (setq package-enable-at-startup nil)
+
 (package-initialize)
+
 
 (defconst ivan-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
@@ -24,12 +26,12 @@
   (make-directory ivan-auto-save-directory))
 (setq auto-save-file-name-transforms `((".*" ,ivan-auto-save-directory t)))
 
+(setq savehist-file (concat ivan-cache-directory "savehist"))
+(savehist-mode 1)
+
 (setq backup-directory-alist
       `(("." . ,(expand-file-name (concat ivan-cache-directory "backups")))))
 (setq backup-by-copying t)
-
-(setq savehist-file (concat ivan-cache-directory "savehist"))
-(savehist-mode 1)
 
 (setq bookmark-default-file (concat ivan-cache-directory "bookmarks"))
 
