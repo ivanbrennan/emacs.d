@@ -84,6 +84,8 @@
       scroll-conservatively 200
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
+(scroll-bar-mode 0)
+
 (fringe-mode '(4 . 1))
 
 (require 'evil)
