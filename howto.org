@@ -1,3 +1,5 @@
+** middle/top/bottom of window
+   * M-r
 ** auto-indent as you type
 ** backward-kill-word (C-w) in insert/minibuffer
 ** case insensitive buffer-name completion
