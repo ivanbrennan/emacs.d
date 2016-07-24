@@ -1,49 +1,41 @@
 ;; packages
 (require 'package)
 
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+	     '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 (setq package-enable-at-startup nil)
-
 (package-initialize)
-
-(require 'evil)
-;(evil-mode t)
 
 (defconst ivan-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
   "Storage area for persistent files")
+(unless (file-exists-p ivan-cache-directory)
+  (make-directory ivan-cache-directory))
 
 (defconst ivan-auto-save-directory
   (expand-file-name (concat ivan-cache-directory "auto-save/"))
   "Auto-save directory")
-
-(unless (file-exists-p ivan-cache-directory)
-  (make-directory ivan-cache-directory))
-
 (unless (file-exists-p ivan-auto-save-directory)
   (make-directory ivan-auto-save-directory))
-
-(setq auto-save-file-name-transforms
-      `((".*" ,(concat ivan-cache-directory "auto-save/") t)))
+(setq auto-save-file-name-transforms `((".*" ,ivan-auto-save-directory t)))
 
 (setq backup-directory-alist
       `(("." . ,(expand-file-name (concat ivan-cache-directory "backups")))))
 (setq backup-by-copying t)
 
-(setq savehist-file
-      (concat ivan-cache-directory "savehist"))
+(setq savehist-file (concat ivan-cache-directory "savehist"))
 (savehist-mode 1)
 
 (setq bookmark-default-file (concat ivan-cache-directory "bookmarks"))
 
-(tool-bar-mode -1)
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
+(tool-bar-mode -1)
 (set-cursor-color "#5b5b5b")
 
 (setq whitespace-style
@@ -92,3 +84,6 @@
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
 (fringe-mode '(4 . 1))
+
+(require 'evil)
+;(evil-mode t)
