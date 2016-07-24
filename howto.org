@@ -3,6 +3,7 @@
 ** auto-indent as you type
 ** backward-kill-word (C-w) in insert/minibuffer
 ** case insensitive buffer-name completion
+   * read-buffer-completion-ignore-case
 ** color past 90 chars
 ** color past eof
 ** color theme
