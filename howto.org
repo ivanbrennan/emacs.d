@@ -1,5 +1,9 @@
 ** middle/top/bottom of window
    * M-r
+** minibuffer history matching preceding chars
+   * C-r is a better solution** middle/top/bottom of window
+
+** minibuffer inc-search autoaccept
 ** auto-indent as you type
 ** backward-kill-word (C-w) in insert/minibuffer
 ** case insensitive buffer-name completion
