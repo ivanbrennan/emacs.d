@@ -9,7 +9,6 @@
    * read-buffer-completion-ignore-case
 ** kill this buffer
    * C-x k
-
 ** hide scrollbars
    * scroll-bar-mode
 ** indent line/region
@@ -46,7 +45,7 @@
    * C-x 0
 ** jump by block (like } in vim)
 ** jump back (like C-o in vim)
-
+** magit
 * Questions
 ** What are the different load-paths for?
   - /Users/ivan/.emacs.d/elpa/...
