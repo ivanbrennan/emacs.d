@@ -83,6 +83,9 @@
 (global-set-key [wheel-left]
 		(lambda () (interactive) (scroll-right 1)))
 
+(setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'super)
+
 (set-face-attribute 'default t :font "Source Code Pro-14")
 (set-frame-font "Source Code Pro-14" nil t)
 
