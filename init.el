@@ -12,7 +12,6 @@
 
 (package-initialize)
 
-
 (defconst ivan-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
   "Storage area for persistent files")
@@ -34,6 +33,10 @@
 (setq backup-by-copying t)
 
 (setq bookmark-default-file (concat ivan-cache-directory "bookmarks"))
+
+(setq eshell-directory-name (concat ivan-cache-directory "eshell/"))
+
+(setq custom-theme-directory (concat user-emacs-directory "themes/"))
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
