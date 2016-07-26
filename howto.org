@@ -29,6 +29,7 @@
    * find-file-at-point
 ** ctags (etags?)
 ** indent space vs tab
+   * indent-tabs-mode
 ** less info in Dired listings
 ** line numbers toggle
 ** partial line completion (cursor to end of line)

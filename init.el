@@ -54,7 +54,9 @@
 	      space-after-tab)))
 
 (global-whitespace-mode)
-
+(setq-default indent-tabs-mode nil)
+(column-number-mode nil)
+(show-paren-mode 1)
 (setq-default indicate-empty-lines t)
 
 (setq-default truncate-lines t)
