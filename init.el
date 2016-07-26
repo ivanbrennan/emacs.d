@@ -37,7 +37,7 @@
 (setq eshell-directory-name (concat ivan-cache-directory "eshell/"))
 
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
-(load-theme 'paper t)
+(load-theme 'p2 t)
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
