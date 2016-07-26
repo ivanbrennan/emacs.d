@@ -86,6 +86,16 @@
 (setq mac-option-modifier 'meta)
 (setq mac-command-modifier 'super)
 
+(defun mac-hide-others ()
+  (interactive)
+  (do-applescript (concat "tell application \"System Events\" to "
+			  "set visible of every process whose visible is true "
+			  "and name is not \"Emacs\" "
+			  "and frontmost is false to "
+			  "false")))
+
+(global-set-key (kbd "M-s-h") 'mac-hide-others)
+
 (set-face-attribute 'default t :font "Source Code Pro-14")
 (set-frame-font "Source Code Pro-14" nil t)
 
