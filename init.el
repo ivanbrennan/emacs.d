@@ -82,9 +82,28 @@
 		(lambda () (interactive) (scroll-left 1)))
 (global-set-key [wheel-left]
 		(lambda () (interactive) (scroll-right 1)))
+;; OSX keys
+(when (and (eq system-type 'darwin) (display-graphic-p))
+       (setq mac-command-modifier 'super)
+       (setq mac-option-modifier 'meta)
 
-(setq mac-option-modifier 'meta)
-(setq mac-command-modifier 'super)
+       ;; Keybindings
+       (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
+       (global-set-key (kbd "s-v") 'yank)
+       (global-set-key (kbd "s-c") 'evil-yank)
+       (global-set-key (kbd "s-a") 'mark-whole-buffer)
+       (global-set-key (kbd "s-x") 'kill-region)
+       (global-set-key (kbd "s-w") 'delete-window)
+       (global-set-key (kbd "s-W") 'delete-frame)
+       (global-set-key (kbd "s-n") 'make-frame)
+       (global-set-key (kbd "s-z") 'undo-tree-undo)
+       (global-set-key (kbd "s-Z") 'undo-tree-redo)
+       (global-set-key (kbd "s-s")
+		       (lambda ()
+			 (interactive)
+			 (call-interactively (key-binding "\C-x\C-s"))))
+       (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+       (global-set-key (kbd "M-s-h") 'mac-hide-others))
 
 (defun mac-hide-others ()
   (interactive)
@@ -94,7 +113,6 @@
 			  "and frontmost is false to "
 			  "false")))
 
-(global-set-key (kbd "M-s-h") 'mac-hide-others)
 
 (set-face-attribute 'default t :font "Source Code Pro-14")
 (set-frame-font "Source Code Pro-14" nil t)
