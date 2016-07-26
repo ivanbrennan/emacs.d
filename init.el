@@ -32,8 +32,6 @@
       `(("." . ,(expand-file-name (concat ivan-cache-directory "backups")))))
 (setq backup-by-copying t)
 
-(setq bookmark-default-file (concat ivan-cache-directory "bookmarks"))
-
 (setq eshell-directory-name (concat ivan-cache-directory "eshell/"))
 
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
