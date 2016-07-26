@@ -92,6 +92,7 @@
        (global-set-key (kbd "s-v") 'yank)
        (global-set-key (kbd "s-c") 'evil-yank)
        (global-set-key (kbd "s-a") 'mark-whole-buffer)
+       (global-set-key (kbd "s-o") 'find-file)
        (global-set-key (kbd "s-x") 'kill-region)
        (global-set-key (kbd "s-w") 'delete-window)
        (global-set-key (kbd "s-W") 'delete-frame)
