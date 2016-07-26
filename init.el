@@ -43,6 +43,7 @@
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
+(tooltip-mode 0)
 (set-cursor-color "#5b5b5b")
 
 (setq whitespace-style
