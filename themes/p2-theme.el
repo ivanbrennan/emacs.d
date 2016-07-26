@@ -218,8 +218,7 @@ May be used to refresh after tweaking some variables."
                                           :background "#292B2E"
                                           :box (:line-width 1 :color "#5d4d7a"))))))
        (quote (mode-line-inactive ,p2-light-shadow-face))
-       (quote (mode-line-highlight ((t (:foreground ,(p2-colour 'text)
-                                                    :box nil)))))
+       (quote (mode-line-highlight ((t (:foreground "white" :box nil)))))
        (quote (fringe ,p2-normal-face))
        (quote (region ((t (:background "#B2D4FF")))))
 
