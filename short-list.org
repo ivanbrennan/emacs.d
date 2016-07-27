@@ -1,0 +1,8 @@
+C-x right :: next-buffer
+C-x left :: previous-buffer
+C-x k :: kill-this-buffer
+C-x 0 :: delete-window
+C-x C-w :: write-file
+C-up :: backward-paragraph
+C-down :: forward-paragraph
+C-h e :: view-echo-area-messages
