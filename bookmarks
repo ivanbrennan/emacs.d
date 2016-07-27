@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual"
- (front-context-string . "\n   The simplest")
- (rear-context-string . "ocumentation').\n")
- (position . 162479)
+ (front-context-string . "\n10.5 Help Mode ")
+ (rear-context-string . "opos,  Up: Help\n")
+ (position . 165038)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.18/share/info/emacs/emacs")
- (info-node . "Apropos")
+ (info-node . "Help Mode")
  (handler . Info-bookmark-jump))
 )
