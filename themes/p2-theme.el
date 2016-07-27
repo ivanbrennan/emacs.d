@@ -104,7 +104,7 @@
 
 (defvar p2-colours-alist
   '((text "#070A01")
-    (p2-grey "whitesmoke")
+    (p2-grey "#FAFAFA")
     (p2-old-dark "#F8ECC2")
     (p2-parchment "#F1F1D4")
     (p2-old-light "#F2EECB")
