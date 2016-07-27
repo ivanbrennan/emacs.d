@@ -1,0 +1,12 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("manual"
+ (front-context-string . "\n8.8 Yes or No P")
+ (rear-context-string . " Up: Minibuffer\n")
+ (position . 146737)
+ (filename . "/usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.18/share/info/emacs/emacs")
+ (info-node . "Yes or No Prompts")
+ (handler . Info-bookmark-jump))
+)
