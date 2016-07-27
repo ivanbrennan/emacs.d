@@ -91,7 +91,7 @@
                   (lambda ()
                     (interactive)
                     (call-interactively (key-binding "\C-x\C-s"))))
-  (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+  (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
   (global-set-key (kbd "M-s-h") 'mac-hide-others))
 
 (defun configure-terminal ()
