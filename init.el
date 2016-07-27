@@ -69,44 +69,53 @@
 
 (setq require-final-newline t)
 
-(require 'mouse)
-(xterm-mouse-mode t)
-(setq mouse-sel-mode t)
-;;(mac-mouse-wheel-mode 0)
-(defun track-mouse (e))
-;; the following scroll events are overridden
-;; by mac-win.el in the emacs-mac-port distro
-(global-set-key [wheel-up]
-		(lambda () (interactive) (scroll-down 1)))
-(global-set-key [wheel-down]
-		(lambda () (interactive) (scroll-up 1)))
-(global-set-key [wheel-right]
-		(lambda () (interactive) (scroll-left 1)))
-(global-set-key [wheel-left]
-		(lambda () (interactive) (scroll-right 1)))
-;; OSX keys
-(when (and (eq system-type 'darwin) (display-graphic-p))
-       (setq mac-command-modifier 'super)
-       (setq mac-option-modifier 'meta)
+(defun system-is-mac () (eq system-type 'darwin))
 
-       ;; Keybindings
-       (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
-       (global-set-key (kbd "s-v") 'yank)
-       (global-set-key (kbd "s-c") 'evil-yank)
-       (global-set-key (kbd "s-a") 'mark-whole-buffer)
-       (global-set-key (kbd "s-o") 'find-file)
-       (global-set-key (kbd "s-x") 'kill-region)
-       (global-set-key (kbd "s-w") 'delete-window)
-       (global-set-key (kbd "s-W") 'delete-frame)
-       (global-set-key (kbd "s-n") 'make-frame)
-       (global-set-key (kbd "s-z") 'undo-tree-undo)
-       (global-set-key (kbd "s-Z") 'undo-tree-redo)
-       (global-set-key (kbd "s-s")
-		       (lambda ()
-			 (interactive)
-			 (call-interactively (key-binding "\C-x\C-s"))))
-       (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
-       (global-set-key (kbd "M-s-h") 'mac-hide-others))
+(defun configure-mac-modifiers ()
+       (setq mac-command-modifier 'super)
+       (setq mac-option-modifier 'meta))
+
+(defun configure-gui ()
+  (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
+  (global-set-key (kbd "s-v") 'yank)
+  (global-set-key (kbd "s-c") 'evil-yank)
+  (global-set-key (kbd "s-a") 'mark-whole-buffer)
+  (global-set-key (kbd "s-o") 'find-file)
+  (global-set-key (kbd "s-x") 'kill-region)
+  (global-set-key (kbd "s-w") 'delete-window)
+  (global-set-key (kbd "s-W") 'delete-frame)
+  (global-set-key (kbd "s-n") 'make-frame)
+  (global-set-key (kbd "s-z") 'undo-tree-undo)
+  (global-set-key (kbd "s-Z") 'undo-tree-redo)
+  (global-set-key (kbd "s-s")
+                  (lambda ()
+                    (interactive)
+                    (call-interactively (key-binding "\C-x\C-s"))))
+  (global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+  (global-set-key (kbd "M-s-h") 'mac-hide-others))
+
+(defun configure-terminal ()
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t)
+  (setq mouse-wheel-follow-mouse 't)
+  (defvar alternating-scroll-down-next t)
+  (defvar alternating-scroll-up-next t)
+  (global-set-key (kbd "<mouse-4>") 'alternating-scroll-down-line)
+  (global-set-key (kbd "<mouse-5>") 'alternating-scroll-up-line)
+
+  (defun alternating-scroll-down-line ()
+    (interactive "@")
+    (when alternating-scroll-down-next
+      (scroll-down-line))
+    (setq alternating-scroll-down-next (not alternating-scroll-down-next)))
+
+  (defun alternating-scroll-up-line ()
+    (interactive "@")
+    (when alternating-scroll-up-next
+      (scroll-up-line))
+    (setq alternating-scroll-up-next (not alternating-scroll-up-next))))
 
 (defun mac-hide-others ()
   (interactive)
@@ -116,6 +125,12 @@
 			  "and frontmost is false to "
 			  "false")))
 
+(if (system-is-mac)
+    (configure-mac-modifiers))
+
+(if (display-graphic-p)
+    (configure-gui)
+  (configure-terminal))
 
 (set-face-attribute 'default t :font "Source Code Pro-14")
 (set-frame-font "Source Code Pro-14" nil t)
