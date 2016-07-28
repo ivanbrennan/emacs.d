@@ -6,3 +6,6 @@ C-x C-w :: write-file
 C-up :: backward-paragraph
 C-down :: forward-paragraph
 C-h e :: view-echo-area-messages
+M-g g :: goto-line
+M-g M-g :: goto-line
+M-s o :: occur
