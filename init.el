@@ -71,6 +71,9 @@
 
 (defun system-is-mac () (eq system-type 'darwin))
 
+;; go to System Preferences > Mission Control
+;; and uncheck "Displays have separate spaces"
+;; so fullscreen won't black out other monitors
 (defun configure-mac-modifiers ()
        (setq mac-command-modifier 'super)
        (setq mac-option-modifier 'meta))
