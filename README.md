@@ -21,13 +21,13 @@ reinstall:
 install:
 
     brew tap d12frosted/emacs-plus
-    brew install emacs-plus --with-cocoa --with-gnutls \
-      --with-librsvg --with-imagemagick --with-spacemacs-icon
+    brew install emacs-plus --with-cocoa --with-gnutls --with-librsvg \
+      --with-imagemagick --with-spacemacs-icon [--HEAD]
 
 reinstall:
 
     brew uninstall emacs-plus && brew install emacs-plus --with-cocoa \
-      --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon
+      --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon [--HEAD]
 ___
 ## Working full screen
 ### *To prevent toggle-frame-fullscreen from blacking out external displays:*
