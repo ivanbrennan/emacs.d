@@ -28,7 +28,7 @@ reinstall:
 
     brew uninstall emacs-plus && brew install emacs-plus --with-cocoa \
       --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon
-
+___
 ## Working full screen
 ### *To prevent toggle-frame-fullscreen from blacking out external displays:*
   - non-native (not available in Emacs Mac Port)
