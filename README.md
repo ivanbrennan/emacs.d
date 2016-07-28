@@ -5,9 +5,9 @@ Emacs Mac Port (forked from GNU source)
 
   install:
     `brew tap railwaycat/emacsmacport`
-    `brew install emacs-mac --with-spacemacs-icon`
+    `brew install emacs-mac --with-spacemacs-icon [--HEAD]`
   reinstall:
-    `brew uninstall emacs-mac && brew install emacs-mac --with-spacemacs-icon`
+    `brew uninstall emacs-mac && brew install emacs-mac --with-spacemacs-icon [--HEAD]`
 
 Emacs Plus (GNU source with compile options)
   ⨉ smooth-scrolling
