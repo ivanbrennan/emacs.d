@@ -1,4 +1,4 @@
-### Emacs Mac Port (forked from GNU source)
+### [Emacs Mac Port](https://github.com/railwaycat/homebrew-emacsmacport) (forked from GNU source)
 - ✓ smooth-scrolling
 - ⨉ best performance
 - ⨉ gui and tty can use same server
@@ -12,7 +12,7 @@ reinstall:
 
     brew uninstall emacs-mac && brew install emacs-mac --with-spacemacs-icon [--HEAD]
 
-### Emacs Plus (GNU source with compile options)
+### [Emacs Plus](https://github.com/d12frosted/homebrew-emacs-plus) (GNU source with compile options)
 - ⨉ smooth-scrolling
 - ✓ best performance
 - ✓ gui and tty can use same server
