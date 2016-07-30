@@ -220,7 +220,7 @@ May be used to refresh after tweaking some variables."
        (quote (mode-line-inactive ,p2-light-shadow-face))
        (quote (mode-line-highlight ((t (:foreground "white" :box nil)))))
        (quote (fringe ,p2-normal-face))
-       (quote (region ((t (:background "#B2D4FF")))))
+       (quote (region ((t (:background "lavender")))))
 
        ;; === Syntax ===
        (quote (font-lock-builtin-face        ,p2-normal-face))
