@@ -9,3 +9,6 @@ C-h e :: view-echo-area-messages
 M-g g :: goto-line
 M-g M-g :: goto-line
 M-s o :: occur
+C-x r w R :: window-configuration-to-register
+C-x r f R :: frameset-to-register
+C-x r j R :: jump-to-register
