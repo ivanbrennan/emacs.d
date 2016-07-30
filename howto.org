@@ -14,6 +14,8 @@
 ** indent line/region
    * TAB :: line or region
    * C-M-\ :: region
+** go to beginning of search result rather than end
+   * use M-b to exit the search
 * How To
 ** resize windows
 ** open newline below, from mid-line
@@ -35,7 +37,6 @@
 ** partial line completion (cursor to end of line)
 ** scroll offset to 1 line
 ** switch other window to its previous buffer
-** go to beginning of search result rather than end
 ** set bash indentation to 2 spaces
 ** smooth scrolling with external mouse wheel
 ** whitespace faces
