@@ -68,6 +68,7 @@
 (setq read-buffer-completion-ignore-case t)
 
 (setq require-final-newline t)
+(setq set-mark-command-repeat-pop t)
 
 (defun system-is-mac () (eq system-type 'darwin))
 
