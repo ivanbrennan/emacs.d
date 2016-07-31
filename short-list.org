@@ -13,3 +13,4 @@ C-x r w R :: window-configuration-to-register
 C-x r f R :: frameset-to-register
 C-x r j R :: jump-to-register
 C-M-l :: reposition-window
+C-x k :: kill-buffer
