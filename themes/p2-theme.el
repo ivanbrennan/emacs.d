@@ -232,6 +232,18 @@ May be used to refresh after tweaking some variables."
        (quote (font-lock-type-face           ,p2-magenta-on-paper-face))
        (quote (font-lock-constant-face       ,p2-magenta-on-paper-face))
 
+       ;; === Whitespace ===
+       (quote (whitespace-big-indent ((t (:background "gray93")))))
+       (quote (whitespace-empty ((t (:background "gray93")))))
+       (quote (whitespace-hspace ((t (:background "gray93")))))
+       (quote (whitespace-indentation ((t (:background "gray93")))))
+       (quote (whitespace-line ((t (:background "gray93")))))
+       (quote (whitespace-space ((t nil))))
+       (quote (whitespace-space-after-tab ((t (:background "gray93")))))
+       (quote (whitespace-space-before-tab ((t (:background "gray93")))))
+       (quote (whitespace-tab ((t (:background "gray93")))))
+       (quote (whitespace-trailing ((t (:background "gray93")))))
+
        ;; === Org titles ===
        ,(when p2-use-varying-heights-for-org-title-headlines
           (quote (quote (org-tag ((t (:height 90 :weight light)))))))
