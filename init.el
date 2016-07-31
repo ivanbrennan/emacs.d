@@ -145,6 +145,7 @@
 (blink-cursor-mode 0)
 
 (setq scroll-step 1
+      scroll-margin 1
       scroll-conservatively 200
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
