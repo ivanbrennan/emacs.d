@@ -7,7 +7,6 @@
              '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-
 (setq package-enable-at-startup nil)
 
 (package-initialize)
@@ -47,6 +46,8 @@
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (tooltip-mode 0)
+
+(setq whitespace-line-column 90)
 
 (setq whitespace-style
       (quote (face

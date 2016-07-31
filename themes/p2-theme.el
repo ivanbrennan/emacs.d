@@ -237,7 +237,10 @@ May be used to refresh after tweaking some variables."
        (quote (whitespace-empty ((t (:background "gray93")))))
        (quote (whitespace-hspace ((t (:background "gray93")))))
        (quote (whitespace-indentation ((t (:background "gray93")))))
-       (quote (whitespace-line ((t (:background "gray93")))))
+       (quote (whitespace-line ((t (:foreground
+                                    ,(p2-colour 'text)
+                                    :background "gray93"
+                                    :weight normal)))))
        (quote (whitespace-space ((t nil))))
        (quote (whitespace-space-after-tab ((t (:background "gray93")))))
        (quote (whitespace-space-before-tab ((t (:background "gray93")))))
