@@ -142,6 +142,7 @@
 
 (set-face-attribute 'default t :font "Source Code Pro-16")
 (set-frame-font "Source Code Pro-16" nil t)
+(blink-cursor-mode 0)
 
 (setq scroll-step 1
       scroll-conservatively 200
