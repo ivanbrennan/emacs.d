@@ -64,8 +64,8 @@
 (setq-default indicate-empty-lines t)
 
 (setq-default truncate-lines t)
-(defun ivan-truncate-lines-disable () (setq truncate-lines nil))
-(add-hook 'help-mode-hook #'ivan-truncate-lines-disable)
+(add-hook 'help-mode-hook #'visual-line-mode)
+(add-hook 'Info-mode-hook #'visual-line-mode)
 
 (setq minibuffer-eldef-shorten-default t)
 (minibuffer-electric-default-mode)
