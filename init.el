@@ -2,9 +2,9 @@
 (require 'package)
 
 (add-to-list 'package-archives
-	     '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
-	     '("marmalade" . "https://marmalade-repo.org/packages/") t)
+             '("marmalade" . "https://marmalade-repo.org/packages/") t)
 (when (< emacs-major-version 24)
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
@@ -50,12 +50,12 @@
 
 (setq whitespace-style
       (quote (face
-	      empty
-	      trailing
-	      lines-tail
-	      indentation
-	      space-before-tab
-	      space-after-tab)))
+              empty
+              trailing
+              lines-tail
+              indentation
+              space-before-tab
+              space-after-tab)))
 
 (global-whitespace-mode)
 (setq-default indent-tabs-mode nil)
@@ -129,10 +129,10 @@
 (defun mac-hide-others ()
   (interactive)
   (do-applescript (concat "tell application \"System Events\" to "
-			  "set visible of every process whose visible is true "
-			  "and name is not \"Emacs\" "
-			  "and frontmost is false to "
-			  "false")))
+                          "set visible of every process whose visible is true "
+                          "and name is not \"Emacs\" "
+                          "and frontmost is false to "
+                          "false")))
 
 (if (system-is-mac)
     (configure-mac-modifiers))
