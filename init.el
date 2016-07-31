@@ -36,13 +36,17 @@
 
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
 (add-to-list 'load-path custom-theme-directory)
-(load-theme 'p2 t)
+(load-theme 'sanityinc-tomorrow-night t)
+
+;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
+(set-frame-parameter (selected-frame) 'alpha '(98 . 88))
+(add-to-list 'default-frame-alist '(alpha . (98 . 88)))
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
 (tooltip-mode 0)
-(set-cursor-color "#5b5b5b")
+;(set-cursor-color "#5b5b5b")
 
 (setq whitespace-style
       (quote (face
