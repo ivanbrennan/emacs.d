@@ -44,7 +44,8 @@
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
-(tool-bar-mode -1)
+(menu-bar-mode 0)
+(tool-bar-mode 0)
 (tooltip-mode 0)
 
 (setq whitespace-style
@@ -142,6 +143,7 @@
 
 (set-face-attribute 'default t :font "Source Code Pro-16")
 (set-frame-font "Source Code Pro-16" nil t)
+(setq frame-title-format "emacs")
 (blink-cursor-mode 0)
 
 (setq scroll-step 1
