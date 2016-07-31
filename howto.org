@@ -48,6 +48,7 @@
 ** jump by block (like } in vim)
 ** jump back (like C-o in vim)
 ** magit
+** multi-cursor
 * Questions
 ** What are the different load-paths for?
   - /Users/ivan/.emacs.d/elpa/...
