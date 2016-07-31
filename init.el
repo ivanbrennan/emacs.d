@@ -46,7 +46,7 @@
 (setq inhibit-startup-screen t)
 (tool-bar-mode -1)
 (tooltip-mode 0)
-;(set-cursor-color "#5b5b5b")
+;(set-cursor-color "#eeeeee")
 
 (setq whitespace-style
       (quote (face
