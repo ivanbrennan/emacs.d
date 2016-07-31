@@ -36,7 +36,7 @@
 
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
 (add-to-list 'load-path custom-theme-directory)
-(load-theme 'slate t)
+(load-theme 'p2 t)
 
 ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
 (set-frame-parameter (selected-frame) 'alpha '(98 . 88))

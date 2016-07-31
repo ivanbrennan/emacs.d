@@ -103,7 +103,7 @@
   "An Emacs colour theme that resembles the look of p2.")
 
 (defvar p2-colours-alist
-  '((text "#454545")
+  '((text "#353535")
     (p2-grey "#FAFAFA")
     (p2-old-dark "#F8ECC2")
     (p2-parchment "#F1F1D4")
@@ -215,7 +215,7 @@ May be used to refresh after tweaking some variables."
        (quote (default ,p2-normal-face))
        (quote (cursor ,p2-inverse-face))
        (quote (mode-line ((t (:foreground "gainsboro"
-                                          :background "#414048"
+                                          :background "#303035"
                                           :box (:line-width 1 :color "#5d4d7a"))))))
        (quote (mode-line-inactive ,p2-light-shadow-face))
        (quote (mode-line-highlight ((t (:foreground "white" :box nil)))))
