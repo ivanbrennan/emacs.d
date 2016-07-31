@@ -49,6 +49,9 @@
 ** jump back (like C-o in vim)
 ** magit
 ** multi-cursor
+** prettier org mode
+   * org-bullets
+   * org-beautify-theme
 * Questions
 ** What are the different load-paths for?
   - /Users/ivan/.emacs.d/elpa/...
