@@ -103,7 +103,7 @@
   "An Emacs colour theme that resembles the look of p2.")
 
 (defvar p2-colours-alist
-  '((text "#070A01")
+  '((text "#454545")
     (p2-grey "#FAFAFA")
     (p2-old-dark "#F8ECC2")
     (p2-parchment "#F1F1D4")
