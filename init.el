@@ -145,6 +145,7 @@
 (set-frame-font "Source Code Pro-16" nil t)
 (setq frame-title-format "emacs")
 (blink-cursor-mode 0)
+(setq-default cursor-in-non-selected-windows nil)
 
 (setq scroll-step 1
       scroll-margin 1
