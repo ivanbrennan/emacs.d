@@ -11,27 +11,27 @@
 
 (package-initialize)
 
-(defconst ivan-cache-directory
+(defconst my-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
   "Storage area for persistent files")
-(unless (file-exists-p ivan-cache-directory)
-  (make-directory ivan-cache-directory))
+(unless (file-exists-p my-cache-directory)
+  (make-directory my-cache-directory))
 
-(defconst ivan-auto-save-directory
-  (expand-file-name (concat ivan-cache-directory "auto-save/"))
+(defconst my-auto-save-directory
+  (expand-file-name (concat my-cache-directory "auto-save/"))
   "Auto-save directory")
-(unless (file-exists-p ivan-auto-save-directory)
-  (make-directory ivan-auto-save-directory))
-(setq auto-save-file-name-transforms `((".*" ,ivan-auto-save-directory t)))
+(unless (file-exists-p my-auto-save-directory)
+  (make-directory my-auto-save-directory))
+(setq auto-save-file-name-transforms `((".*" ,my-auto-save-directory t)))
 
-(setq savehist-file (concat ivan-cache-directory "savehist"))
+(setq savehist-file (concat my-cache-directory "savehist"))
 (savehist-mode 1)
 
 (setq backup-directory-alist
-      `(("." . ,(expand-file-name (concat ivan-cache-directory "backups")))))
+      `(("." . ,(expand-file-name (concat my-cache-directory "backups")))))
 (setq backup-by-copying t)
 
-(setq eshell-directory-name (concat ivan-cache-directory "eshell/"))
+(setq eshell-directory-name (concat my-cache-directory "eshell/"))
 
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
 (add-to-list 'load-path custom-theme-directory)
