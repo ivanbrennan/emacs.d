@@ -14,3 +14,7 @@ C-x r f R :: frameset-to-register
 C-x r j R :: jump-to-register
 C-M-l :: reposition-window
 C-x k :: kill-buffer
+
+(I-search)
+M-e C-f :: enter next char from buffer to search string
+M-s C-e :: yank rest of line into search string
