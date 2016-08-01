@@ -71,7 +71,6 @@
 (setq minibuffer-eldef-shorten-default t)
 (minibuffer-electric-default-mode)
 (setq read-buffer-completion-ignore-case t)
-(setq uniquify-buffer-name-style 'post-forward)
 
 (setq require-final-newline t)
 (setq set-mark-command-repeat-pop t)
