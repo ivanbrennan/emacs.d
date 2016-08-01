@@ -37,9 +37,9 @@
 (add-to-list 'load-path custom-theme-directory)
 (load-theme 'p2 t)
 
-;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
-(set-frame-parameter (selected-frame) 'alpha '(98 . 88))
-(add-to-list 'default-frame-alist '(alpha . (98 . 88)))
+;; transparency :: active . inactive
+(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
+(add-to-list 'default-frame-alist '(alpha . (95 . 85)))
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)
