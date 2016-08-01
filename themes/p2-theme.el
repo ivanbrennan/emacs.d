@@ -214,6 +214,7 @@ May be used to refresh after tweaking some variables."
        ;; === Frame ===
        (quote (default ,p2-normal-face))
        (quote (cursor ,p2-inverse-face))
+       (quote (hl-line ((t (:background "gray95")))))
        (quote (mode-line ((t (:foreground "gainsboro"
                                           :background "#303035"
                                           :box (:line-width 1 :color "#5d4d7a"))))))

@@ -146,6 +146,7 @@
 (setq frame-title-format "emacs")
 (blink-cursor-mode 0)
 (setq-default cursor-in-non-selected-windows nil)
+(global-hl-line-mode)
 
 (setq scroll-step 1
       scroll-margin 1
