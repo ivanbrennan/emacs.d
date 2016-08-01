@@ -143,6 +143,16 @@
 
 (set-face-attribute 'default t :font "Source Code Pro-16")
 (set-frame-font "Source Code Pro-16" nil t)
+
+(defun my-buffer-face-mode-variable ()
+  "Set font to a variable width font in the current buffer"
+  (interactive)
+  (setq buffer-face-mode-face '(:family "Geneva" :height 180))
+  (buffer-face-mode))
+
+(add-hook 'help-mode-hook 'my-buffer-face-mode-variable)
+(add-hook 'Info-mode-hook 'my-buffer-face-mode-variable)
+
 (setq frame-title-format "emacs")
 (blink-cursor-mode 0)
 (setq-default cursor-in-non-selected-windows nil)
