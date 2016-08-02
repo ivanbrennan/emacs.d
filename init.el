@@ -169,3 +169,6 @@
 
 (require 'evil)
 ;(evil-mode t)
+
+;; let Magit handle Git
+(setq vc-handled-backends (delq 'Git vc-handled-backends))
