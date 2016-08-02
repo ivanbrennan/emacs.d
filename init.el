@@ -147,7 +147,7 @@
 (defun my-buffer-face-mode-variable ()
   "Set font to a variable width font in the current buffer"
   (interactive)
-  (setq buffer-face-mode-face '(:family "Geneva" :height 180))
+  (setq buffer-face-mode-face '(:family "Avenir Next" :height 180))
   (buffer-face-mode))
 
 (add-hook 'help-mode-hook 'my-buffer-face-mode-variable)
