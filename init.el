@@ -144,14 +144,14 @@
 (set-face-attribute 'default t :font "Source Code Pro-16")
 (set-frame-font "Source Code Pro-16" nil t)
 
-(defun my-buffer-face-mode-variable ()
+(defun my-buffer-face-mode-variable (height)
   "Set font to a variable width font in the current buffer"
   (interactive)
-  (setq buffer-face-mode-face '(:family "Avenir Next" :height 180))
+  (setq buffer-face-mode-face `(:family "Avenir Next" :height ,height))
   (buffer-face-mode))
 
-(add-hook 'help-mode-hook 'my-buffer-face-mode-variable)
-(add-hook 'Info-mode-hook 'my-buffer-face-mode-variable)
+(add-hook 'help-mode-hook (apply-partially #'my-buffer-face-mode-variable 180))
+(add-hook 'Info-mode-hook (apply-partially #'my-buffer-face-mode-variable 200))
 
 (setq frame-title-format "emacs")
 (blink-cursor-mode 0)
