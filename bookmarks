@@ -2,11 +2,18 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("manual"
- (front-context-string . "\n   To begin a f")
- (rear-context-string . "al word search.\n")
- (position . 342415)
+(("magit"
+ (front-context-string . "   Buffers can a")
+ (rear-context-string . "e\nundesirable.\n\n")
+ (position . 33959)
+ (filename . "/Users/ivan/.emacs.d/elpa/magit-2.7.0/magit")
+ (info-node . "Automatic Refreshing of Magit Buffers")
+ (handler . Info-bookmark-jump))
+("manual"
+ (front-context-string . "\n15.5 Regular Ex")
+ (rear-context-string . "ch,  Up: Search\n")
+ (position . 346137)
  (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
- (info-node . "Word Search")
+ (info-node . "Regexp Search")
  (handler . Info-bookmark-jump))
 )
