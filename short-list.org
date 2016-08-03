@@ -15,6 +15,7 @@ C-x r j R :: jump-to-register
 C-M-l :: reposition-window
 C-x k :: kill-buffer
 M-h :: mark-paragraph
+M-TAB :: pcomplete
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
