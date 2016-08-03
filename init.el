@@ -75,6 +75,8 @@
 (setq require-final-newline t)
 (setq set-mark-command-repeat-pop t)
 
+(setq ispell-program-name "aspell")
+
 (defun system-is-mac () (eq system-type 'darwin))
 
 ;; go to System Preferences > Mission Control
