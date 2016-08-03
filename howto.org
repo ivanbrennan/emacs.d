@@ -49,6 +49,7 @@
 ** jump back (like C-o in vim)
 ** magit
 ** multi-cursor
+** toggle hl-line off in buffer
 ** prettier org mode
    * org-bullets
    * org-beautify-theme
