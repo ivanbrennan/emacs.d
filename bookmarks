@@ -10,10 +10,10 @@
  (info-node . "Automatic Refreshing of Magit Buffers")
  (handler . Info-bookmark-jump))
 ("manual"
- (front-context-string . "\n17.3 The Keyboa")
+ (front-context-string . "\n17.4 Executing ")
  (rear-context-string . "Keyboard Macros\n")
- (position . 420369)
+ (position . 424961)
  (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
- (info-node . "Keyboard Macro Counter")
+ (info-node . "Keyboard Macro Query")
  (handler . Info-bookmark-jump))
 )
