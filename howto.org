@@ -49,11 +49,13 @@
 ** jump by block (like } in vim)
 ** jump back (like C-o in vim)
 ** magit
+** aggressive-indent-mode
 ** multi-cursor
 ** toggle hl-line off in buffer
 ** prettier org mode
    * org-bullets
    * org-beautify-theme
+** multiple cursors
 * Questions
 ** What are the different load-paths for?
   - /Users/ivan/.emacs.d/elpa/...
