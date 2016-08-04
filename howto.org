@@ -56,6 +56,7 @@
    * org-bullets
    * org-beautify-theme
 ** multiple cursors
+** semantic layer in spacemacs
 * Questions
 ** What are the different load-paths for?
   - /Users/ivan/.emacs.d/elpa/...
