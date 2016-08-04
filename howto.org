@@ -28,6 +28,7 @@
 ** color past eof
 ** color theme
 ** completion (word/line/path)
+   * TAB (or M-TAB if tab-always-indent is t)
    * find-file-at-point
 ** ctags (etags?)
 ** indent space vs tab
