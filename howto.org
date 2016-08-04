@@ -57,6 +57,7 @@
    * org-beautify-theme
 ** multiple cursors
 ** semantic layer in spacemacs
+** scroll inactive frame without changing state of status bars
 * Questions
 ** What are the different load-paths for?
   - /Users/ivan/.emacs.d/elpa/...
