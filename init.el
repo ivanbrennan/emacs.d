@@ -75,6 +75,7 @@
 (setq require-final-newline t)
 (setq set-mark-command-repeat-pop t)
 
+(setq tab-always-indent 'complete)
 (setq ispell-program-name "aspell")
 
 (defun system-is-mac () (eq system-type 'darwin))
