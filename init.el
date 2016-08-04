@@ -67,6 +67,7 @@
 (setq-default truncate-lines t)
 (add-hook 'help-mode-hook #'visual-line-mode)
 (add-hook 'Info-mode-hook #'visual-line-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 (setq minibuffer-eldef-shorten-default t)
 (minibuffer-electric-default-mode)
