@@ -215,8 +215,8 @@ May be used to refresh after tweaking some variables."
        (quote (default ,p2-normal-face))
        (quote (cursor ,p2-inverse-face))
        (quote (hl-line ((t (:background "#f3f3f6")))))
-       (quote (mode-line ((t (:foreground "gainsboro"
-                                          :background "#303035"
+       (quote (mode-line ((t (:foreground "lavender"
+                                          :background "grey25"
                                           :box (:line-width 1 :color "#5d4d7a"))))))
        (quote (mode-line-inactive ,p2-light-shadow-face))
        (quote (mode-line-highlight ((t (:foreground "white" :box nil)))))
