@@ -13,7 +13,7 @@
 
 (package-initialize)
 
-(defvar local-packages '(evil magit hexrgb))
+(defvar local-packages '(evil use-package projectile magit hexrgb))
 
 (defun uninstalled-packages (packages)
   (delq nil
