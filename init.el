@@ -180,13 +180,17 @@
 (global-hl-line-mode)
 
 (setq scroll-step 1
-      scroll-margin 1
+      scroll-margin 0
+      hscroll-step 1
+      hscroll-margin 2
       scroll-conservatively 200
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
 (scroll-bar-mode 0)
 
-(fringe-mode '(4 . 1))
+(fringe-mode '(8 . 1))
+(setq-default fringe-indicator-alist
+              (assq-delete-all 'truncation fringe-indicator-alist))
 
 ;(require 'evil)
 ;(evil-mode t)
