@@ -6,9 +6,27 @@
 (add-to-list 'package-archives
              '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
+(setq package-archive-priorities
+      '(("melpa-stable" . 20) ("marmalade" . 10)))
+
 (setq package-enable-at-startup nil)
 
 (package-initialize)
+
+(defvar local-packages '(evil magit hexrgb))
+
+(defun uninstalled-packages (packages)
+  (delq nil
+        (mapcar (lambda (p) (if (package-installed-p p nil) nil p))
+                packages)))
+
+(let ((need-to-install
+       (uninstalled-packages local-packages)))
+  (when need-to-install
+    (progn
+      (package-refresh-contents)
+      (dolist (p need-to-install)
+        (package-install p)))))
 
 (defconst my-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
@@ -170,7 +188,7 @@
 
 (fringe-mode '(4 . 1))
 
-(require 'evil)
+;(require 'evil)
 ;(evil-mode t)
 
 ;; let Magit handle Git
