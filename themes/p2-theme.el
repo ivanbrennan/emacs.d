@@ -216,7 +216,7 @@ May be used to refresh after tweaking some variables."
        (quote (cursor ,p2-inverse-face))
        (quote (hl-line ((t (:background "#f3f3f6")))))
        (quote (mode-line ((t (:foreground "lavender"
-                                          :background "grey25"
+                                          :background "#353535"
                                           :box (:line-width 1 :color "#5d4d7a"))))))
        (quote (mode-line-inactive ,p2-light-shadow-face))
        (quote (mode-line-highlight ((t (:foreground "white" :box nil)))))
