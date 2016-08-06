@@ -7,7 +7,7 @@
              '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
 (setq package-archive-priorities
-      '(("melpa-stable" . 20) ("marmalade" . 10)))
+      '(("melpa-stable" . 20) ("marmalade" . 5)))
 
 (setq package-enable-at-startup nil)
 
