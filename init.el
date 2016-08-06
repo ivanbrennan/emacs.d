@@ -5,8 +5,7 @@
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("marmalade" . "https://marmalade-repo.org/packages/") t)
-(when (< emacs-major-version 24)
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
 (setq package-enable-at-startup nil)
 
 (package-initialize)
