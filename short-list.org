@@ -18,6 +18,7 @@ M-h :: mark-paragraph
 M-TAB :: pcomplete
 C-x l :: count-lines-page
 M-s o :: occur
+C-M-l :: reposition-window
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
