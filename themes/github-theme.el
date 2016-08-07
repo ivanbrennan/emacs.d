@@ -77,6 +77,19 @@ Each element has the form (NAME . HEX).
 `+N' suffixes indicate a color is lighter.
 `-N' suffixes indicate a color is darker.")
 
+;; Colors I'm introducing
+;; bigblue  "#4078C0" (e.g. minibuffer-prompt foreground)
+;; aqua     "#C9E6F2" (e.g. mode-line outline)
+;; skyblue  "#E6F1F6" (e.g. mode-line background)
+;; paleblue "#F2F9FC" (nothing yet)
+;; limeclay "#F4F7DC" (e.g. lazy-highlight background)
+;; slate    "#68777D" (e.g. mode-line foreground)
+;; graphite "#D8D8D8" (e.g. mode-line-inactive outline)
+;; whisp1   "#EDEDED" (e.g. whitespace-tab background)
+;; whisp2   "#F5F5F5" (e.g. mode-line-inactive background)
+;; whisp3   "#F8F8F8" (e.g. hl-line background)
+
+
 (defvar github-override-colors-alist
   '()
   "Place to override default theme colors.
@@ -141,9 +154,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(grep-match-face ((t (:foreground ,github-orange :weight bold))))
    `(match ((t (:background ,github-bg-1 :foreground ,github-orange :weight bold))))
 ;;;;; isearch
-   `(isearch ((t (:foreground ,github-yellow-2 :weight bold :background ,"#F2F9FC"))))
+   `(isearch ((t (:foreground ,github-yellow-2 :weight bold :background ,"#E6F1F6"))))
    `(isearch-fail ((t (:foreground ,github-fg :background ,github-red-4))))
-   `(lazy-highlight ((t (:foreground ,github-yellow-2 :weight bold :background ,"#F8EEC7"))))
+   `(lazy-highlight ((t (:foreground ,github-yellow-2 :weight bold :background ,"#F4F7DC"))))
 
    `(menu ((t (:foreground ,github-fg :background ,github-bg))))
    `(minibuffer-prompt ((t (:foreground ,"#4078C0" :weight bold))))
@@ -161,7 +174,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(region ((,class (:background ,"#E8F1F6"))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,github-bg+2))))
-   `(trailing-whitespace ((t (:background ,"gray93"))))
+   `(trailing-whitespace ((t (:background ,"#EDEDED"))))
    `(vertical-border ((t (:foreground ,"#d0d0d0"))))
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,github-fg :weight normal))))  ;; weight bold (built-in keywords)
@@ -1014,8 +1027,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-heredoc     ((t (:foreground ,github-yellow :bold t))))
    `(sh-quoted-exec ((t (:foreground ,github-red))))
 ;;;;; show-paren
-   `(show-paren-mismatch ((t (:foreground ,github-fg-1 :background ,github-bg+3 :weight bold))))
-   `(show-paren-match ((t (:foreground ,github-bg :background ,"#4078C0" :weight bold))))
+   `(show-paren-mismatch ((t (:foreground ,github-fg-1 :background ,github-bg+3))))
+   `(show-paren-match ((t (:foreground ,github-bg :background ,"#4078C0"))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable GitHub for sml
    `(sml/global ((,class (:foreground ,github-fg :weight bold))))
@@ -1136,14 +1149,14 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; whitespace-mode
    `(whitespace-space ((t (:background ,github-bg+1 :foreground ,github-bg+1))))
    `(whitespace-hspace ((t (:background ,github-bg+1 :foreground ,github-bg+1))))
-   `(whitespace-tab ((t (:background ,"gray93"))))
+   `(whitespace-tab ((t (:background ,"#EDEDED"))))
    `(whitespace-newline ((t (:foreground ,github-bg+1))))
-   `(whitespace-trailing ((t (:background ,"gray93"))))
+   `(whitespace-trailing ((t (:background ,"#EDEDED"))))
    `(whitespace-line ((t (:background ,github-bg :foreground ,github-magenta))))
    `(whitespace-space-before-tab ((t (:background ,github-orange :foreground ,github-orange))))
    `(whitespace-indentation ((t (:background ,github-yellow :foreground ,github-red))))
-   `(whitespace-empty ((t (:background ,"gray93"))))
-   `(whitespace-space-after-tab ((t (:background ,"gray93" :foreground ,github-red))))
+   `(whitespace-empty ((t (:background ,"#EDEDED"))))
+   `(whitespace-space-after-tab ((t (:background ,"#EDEDED" :foreground ,github-red))))
 ;;;;; wanderlust
    `(wl-highlight-folder-few-face ((t (:foreground ,github-red-2))))
    `(wl-highlight-folder-many-face ((t (:foreground ,github-red-1))))
