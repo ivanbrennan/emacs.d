@@ -175,6 +175,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line-buffer-id ((t (:foreground ,"#000000" :weight bold)))) ;; todo: not happy with black here
    `(mode-line-inactive
      ((t (:foreground ,"#969896"
+                      :weight light
                       :background ,"#F5F5F5"
                       :box (:line-width 1 :color "#d8d8d8")))))
    `(region ((,class (:background ,"#E8F1F6"))
