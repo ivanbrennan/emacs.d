@@ -1,3 +1,4 @@
+
 * How To (solved)
 ** middle/top/bottom of window
    * M-r
@@ -68,3 +69,5 @@
   - /Users/ivan/.emacs.d/elpa/...
   - /usr/local/share/emacs/site-lisp/...
   - /usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.18/share/emacs/24.5/lisp/...
+** how should i confugure (use-package :config, add-hooks, etc.)
+   * ediff
