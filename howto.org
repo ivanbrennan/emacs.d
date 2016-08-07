@@ -58,6 +58,9 @@
 ** multiple cursors
 ** semantic layer in spacemacs
 ** scroll inactive frame without changing state of status bars
+** lazy load package.el
+   This? (use-package package :defer)
+** check if use-package is installed, and if not load package.el and install use-package
 * Questions
 ** What are the different load-paths for?
   - /Users/ivan/.emacs.d/elpa/...
