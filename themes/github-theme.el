@@ -173,7 +173,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line
      ((,class (:foreground ,"#666666"
                            :background ,"#E6F1F6" ;; homerow background
-                           :box (:line-width 1 :color ,"#C9E6F2")
+                           :box (:line-width -1 :color ,"#C9E6F2")
                            ))
       (t :inverse-video t)))
    `(mode-line-buffer-id ((t (:foreground ,"#000000" :weight bold)))) ;; todo: not happy with black here
@@ -181,7 +181,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((t (:foreground ,"#969896"
                       :weight light
                       :background ,"#F5F5F5"
-                      :box (:line-width 1 :color "#d8d8d8")))))
+                      :box (:line-width -1 :color "#d8d8d8")))))
    `(region ((,class (:background ,"#E8F1F6"))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,github-bg+2))))
