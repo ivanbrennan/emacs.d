@@ -80,8 +80,8 @@ Each element has the form (NAME . HEX).
 ;; Colors I'm introducing
 ;; navyblue "#12408F" (e.g. font-lock-string-face foreground)
 ;; bigblue  "#4078C0" (e.g. minibuffer-prompt foreground)
-;; aqua     "#C9E6F2" (e.g. mode-line outline)
-;; skyblue  "#E6F1F6" (e.g. mode-line background)
+;; aqua     "#C9E6F2" (e.g. show-paren-match background)
+;; skyblue  "#E6F1F6" (e.g. isearch background)
 ;; paleblue "#F2F9FC" (nothing yet)
 ;; marine   "#0086B0" (e.g. font-lock-type-face foreground)
 ;; greentea "#6CC644" (e.g. info-node background)
@@ -91,8 +91,8 @@ Each element has the form (NAME . HEX).
 ;; marooned "#983661" (e.g. font-lock-preprocessor-face foreground)
 ;; eraser   "#F8CBCB" (e.g. ediff-fine-diff-A)
 ;; palepink "#FFECEC" (e.g. ediff-current-diff-A)
-;; slate    "#68777D" (e.g. mode-line foreground)
 ;; ink      "#333333" (e.g. cursor background)
+;; slate    "#666666" (e.g. mode-line foreground)
 ;; pencil1  "#969896" (e.g. comments foreground)
 ;; pencil2  "#B3B3B3" (e.g. linum)
 ;; pencil3  "#D8D8D8" (e.g. mode-line-inactive outline)
@@ -171,7 +171,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(menu ((t (:foreground ,github-fg :background ,github-bg))))
    `(minibuffer-prompt ((t (:foreground ,"#333333" :weight bold))))
    `(mode-line
-     ((,class (:foreground ,"#68777D"
+     ((,class (:foreground ,"#666666"
                            :background ,"#E6F1F6" ;; homerow background
                            :box (:line-width 1 :color ,"#C9E6F2")
                            ))
