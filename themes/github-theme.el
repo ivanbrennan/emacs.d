@@ -165,7 +165,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lazy-highlight ((t (:foreground ,github-yellow-2 :weight bold :background ,"#F4F7DC"))))
 
    `(menu ((t (:foreground ,github-fg :background ,github-bg))))
-   `(minibuffer-prompt ((t (:foreground ,"#4078C0" :weight bold))))
+   `(minibuffer-prompt ((t (:foreground ,"#333333" :weight bold))))
    `(mode-line
      ((,class (:foreground ,"#68777D"
                            :background ,"#E6F1F6" ;; homerow background
