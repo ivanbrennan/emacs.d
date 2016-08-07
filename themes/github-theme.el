@@ -87,6 +87,7 @@ Each element has the form (NAME . HEX).
 ;; limeclay "#F4F7DC" (e.g. lazy-highlight background)
 ;; eraser   "#F8CBCB" (e.g. ediff-fine-diff-A)
 ;; palepink "#FFECEC" (e.g. ediff-current-diff-A)
+;; ink      "#333333" (e.g. cursor background)
 ;; slate    "#68777D" (e.g. mode-line foreground)
 ;; graphite "#D8D8D8" (e.g. mode-line-inactive outline)
 ;; whisp1   "#EDEDED" (e.g. whitespace-tab background)
@@ -121,10 +122,10 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;; Built-in
 ;;;;; basic coloring
    '(button ((t (:underline t))))
-   `(link ((t (:foreground ,github-yellow :underline t :weight bold))))
+   `(link ((t (:foreground ,"#4078C0" :underline t :weight bold))))
    `(link-visited ((t (:foreground ,github-yellow-2 :underline t :weight normal))))
    `(default ((t (:foreground ,github-fg+1 :background ,github-bg))))
-   `(cursor ((t (:foreground ,github-fg :background ,github-fg+1))))
+   `(cursor ((t (:foreground ,github-fg :background ,"#333333"))))
    `(escape-glyph ((t (:foreground ,github-yellow :bold t))))
    `(fringe ((t (:foreground ,"#D8D8D8" :background ,github-bg+1))))
    `(header-line ((t (:foreground ,github-yellow
@@ -1024,7 +1025,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec ((t (:foreground ,github-red))))
 ;;;;; show-paren
    `(show-paren-mismatch ((t (:foreground ,github-fg-1 :background ,github-bg+3))))
-   `(show-paren-match ((t (:foreground ,github-bg :background ,"#4078C0"))))
+   `(show-paren-match ((t (:foreground ,"#333333" :background ,"#C9E6F2"))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable GitHub for sml
    `(sml/global ((,class (:foreground ,github-fg :weight bold))))
