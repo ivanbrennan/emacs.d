@@ -129,9 +129,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(cursor ((t (:foreground ,github-fg :background ,"#333333"))))
    `(escape-glyph ((t (:foreground ,github-yellow :bold t))))
    `(fringe ((t (:foreground ,"#D8D8D8" :background ,github-bg+1))))
-   `(header-line ((t (:foreground ,github-yellow
-                                  :background ,github-bg-1
-                                  :box (:line-width -1 :style released-button)))))
+   `(header-line ((t (:foreground ,"#969896" :background ,"#F5F5F5"))))
    `(highlight ((t (:background ,github-bg-05))))
    `(success ((t (:foreground ,github-green :weight bold))))
    `(warning ((t (:foreground ,github-orange :weight bold))))
