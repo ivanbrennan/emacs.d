@@ -18,6 +18,7 @@
    * use M-b to exit the search
 * How To
 ** resize windows
+** swap window positions
 ** open newline below, from mid-line
 ** fringe color same as background
 ** minibuffer inc-search autoaccept
