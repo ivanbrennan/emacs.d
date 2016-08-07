@@ -27,6 +27,8 @@
 
 (require 'use-package)
 
+(use-package rainbow-mode :defer t :load-path "elpa/rainbow-mode-0.12")
+
 ;;(defvar local-packages
 ;;  '(evil
 ;;    auto-complete
