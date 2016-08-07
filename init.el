@@ -104,6 +104,7 @@
 
 (setq tab-always-indent 'complete)
 (setq ispell-program-name "aspell")
+(setq ediff-split-window-function 'split-window-horizontally)
 
 (defun system-is-mac () (eq system-type 'darwin))
 
