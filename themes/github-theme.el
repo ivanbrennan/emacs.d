@@ -363,12 +363,12 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; ediff
    `(ediff-current-diff-A ((t (:foreground ,github-fg :background ,"#FFECEC"))))
    `(ediff-current-diff-B ((t (:foreground ,github-fg :background ,"#EAFFEA"))))
-   `(ediff-even-diff-A ((t (:background ,"#D8D8D8"))))
-   `(ediff-even-diff-B ((t (:background ,"#EDEDED"))))
-   `(ediff-fine-diff-A ((t (:foreground ,github-fg :background ,"#F8CBCB" :weight bold))))
-   `(ediff-fine-diff-B ((t (:foreground ,github-fg :background ,"#A6F3A6" :weight bold))))
-   `(ediff-odd-diff-A ((t (:background ,"#EDEDED"))))
-   `(ediff-odd-diff-B ((t (:background ,"#D8D8D8"))))
+   `(ediff-even-diff-A ((t (:background ,"#F4F7FB"))))
+   `(ediff-even-diff-B ((t (:background ,"#F4F7FB"))))
+   `(ediff-fine-diff-A ((t (:foreground ,github-fg :background ,"#F8CBCB"))))
+   `(ediff-fine-diff-B ((t (:foreground ,github-fg :background ,"#A6F3A6"))))
+   `(ediff-odd-diff-A ((t (:background ,"#F4F7FB"))))
+   `(ediff-odd-diff-B ((t (:background ,"#F4F7FB"))))
 ;;;;; egg
    `(egg-text-base ((t (:foreground ,github-fg))))
    `(egg-help-header-1 ((t (:foreground ,github-yellow))))
