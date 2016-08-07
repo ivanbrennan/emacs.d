@@ -1015,7 +1015,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec ((t (:foreground ,github-red))))
 ;;;;; show-paren
    `(show-paren-mismatch ((t (:foreground ,github-fg-1 :background ,github-bg+3 :weight bold))))
-   `(show-paren-match ((t (:foreground ,github-bg :background ,"#44A340" :weight bold))))
+   `(show-paren-match ((t (:foreground ,github-bg :background ,"#4078C0" :weight bold))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable GitHub for sml
    `(sml/global ((,class (:foreground ,github-fg :weight bold))))
