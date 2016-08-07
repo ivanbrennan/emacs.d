@@ -8,29 +8,32 @@
 
 (setq package-archive-priorities '(("melpa-stable" . 20) ("marmalade" . 5)))
 
+(defun add-to-load-path (p)
+  (add-to-list 'load-path (expand-file-name p user-emacs-directory)))
 
-(package-initialize)
+(defun install-use-package ()
+  (package-initialize)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-(defvar local-packages
-  '(evil
-    auto-complete
-    use-package
-    projectile
-    magit
-    hexrgb))
+(defun package-dir (package)
+  (let ((wildcard (concat package "*/" package ".el")))
+    (car (last (file-expand-wildcards (concat user-emacs-directory "elpa/" wildcard))))))
 
-(defun uninstalled-packages (packages)
-  (delq nil
-        (mapcar (lambda (p) (if (package-installed-p p nil) nil p))
-                packages)))
+(let ((use-package-dir (package-dir "use-package"))
+      (bind-key-dir    (package-dir "bind-key")))
+  (add-to-load-path (file-name-directory use-package-dir))
+  (add-to-load-path (file-name-directory bind-key-dir)))
 
-(let ((need-to-install
-       (uninstalled-packages local-packages)))
-  (when need-to-install
-    (progn
-      (package-refresh-contents)
-      (dolist (p need-to-install)
-        (package-install p)))))
+(require 'use-package)
+
+;;(defvar local-packages
+;;  '(evil
+;;    auto-complete
+;;    use-package
+;;    projectile
+;;    magit
+;;    hexrgb))
 
 (defconst my-cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
