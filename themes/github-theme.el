@@ -87,9 +87,10 @@ Each element has the form (NAME . HEX).
 ;; limeclay "#F4F7DC" (e.g. lazy-highlight background)
 ;; eraser   "#F8CBCB" (e.g. ediff-fine-diff-A)
 ;; palepink "#FFECEC" (e.g. ediff-current-diff-A)
-;; ink      "#333333" (e.g. cursor background)
 ;; slate    "#68777D" (e.g. mode-line foreground)
-;; graphite "#D8D8D8" (e.g. mode-line-inactive outline)
+;; ink      "#333333" (e.g. cursor background)
+;; pencil1  "#969896" (e.g. comments foreground)
+;; pencil2  "#D8D8D8" (e.g. mode-line-inactive outline)
 ;; whisp1   "#EDEDED" (e.g. whitespace-tab background)
 ;; whisp2   "#F5F5F5" (e.g. mode-line-inactive background)
 ;; whisp3   "#F8F8F8" (e.g. hl-line background)
@@ -173,7 +174,7 @@ Also bind `class' to ((class color) (min-colors 89))."
       (t :inverse-video t)))
    `(mode-line-buffer-id ((t (:foreground ,"#000000" :weight bold)))) ;; todo: not happy with black here
    `(mode-line-inactive
-     ((t (:foreground ,github-green-1
+     ((t (:foreground ,"#969896"
                       :background ,"#F5F5F5"
                       :box (:line-width 1 :color "#d8d8d8")))))
    `(region ((,class (:background ,"#E8F1F6"))
