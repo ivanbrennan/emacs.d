@@ -109,7 +109,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(default ((t (:foreground ,github-fg+1 :background ,github-bg))))
    `(cursor ((t (:foreground ,github-fg :background ,github-fg+1))))
    `(escape-glyph ((t (:foreground ,github-yellow :bold t))))
-   `(fringe ((t (:foreground ,github-fg :background ,github-bg+1))))
+   `(fringe ((t (:foreground ,"#D8D8D8" :background ,github-bg+1))))
    `(header-line ((t (:foreground ,github-yellow
                                   :background ,github-bg-1
                                   :box (:line-width -1 :style released-button)))))
@@ -161,7 +161,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(region ((,class (:background ,"#E8F1F6"))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,github-bg+2))))
-   `(trailing-whitespace ((t (:background ,github-red))))
+   `(trailing-whitespace ((t (:background ,"gray93"))))
    `(vertical-border ((t (:foreground ,"#d0d0d0"))))
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,github-fg :weight normal))))  ;; weight bold (built-in keywords)
@@ -1136,14 +1136,14 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; whitespace-mode
    `(whitespace-space ((t (:background ,github-bg+1 :foreground ,github-bg+1))))
    `(whitespace-hspace ((t (:background ,github-bg+1 :foreground ,github-bg+1))))
-   `(whitespace-tab ((t (:background ,github-red-1))))
+   `(whitespace-tab ((t (:background ,"gray93"))))
    `(whitespace-newline ((t (:foreground ,github-bg+1))))
-   `(whitespace-trailing ((t (:background ,github-red))))
+   `(whitespace-trailing ((t (:background ,"gray93"))))
    `(whitespace-line ((t (:background ,github-bg :foreground ,github-magenta))))
    `(whitespace-space-before-tab ((t (:background ,github-orange :foreground ,github-orange))))
    `(whitespace-indentation ((t (:background ,github-yellow :foreground ,github-red))))
-   `(whitespace-empty ((t (:background ,github-yellow))))
-   `(whitespace-space-after-tab ((t (:background ,github-yellow :foreground ,github-red))))
+   `(whitespace-empty ((t (:background ,"gray93"))))
+   `(whitespace-space-after-tab ((t (:background ,"gray93" :foreground ,github-red))))
 ;;;;; wanderlust
    `(wl-highlight-folder-few-face ((t (:foreground ,github-red-2))))
    `(wl-highlight-folder-many-face ((t (:foreground ,github-red-1))))
