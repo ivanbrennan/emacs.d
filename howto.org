@@ -18,6 +18,7 @@
    * use M-b to exit the search
 * How To
 ** resize windows
+** mimic prev/next line chars (like C-e/C-y in vim)
 ** swap window positions
 ** open newline below, from mid-line
 ** fringe color same as background
