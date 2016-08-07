@@ -1,15 +1,13 @@
-;; packages
 (require 'package)
+(setq package-enable-at-startup nil)
 
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
-(setq package-archive-priorities
-      '(("melpa-stable" . 20) ("marmalade" . 5)))
+(setq package-archive-priorities '(("melpa-stable" . 20) ("marmalade" . 5)))
 
-(setq package-enable-at-startup nil)
 
 (package-initialize)
 
