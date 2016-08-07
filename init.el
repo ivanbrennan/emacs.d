@@ -58,11 +58,11 @@
 
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
 (add-to-list 'load-path custom-theme-directory)
-(load-theme 'p2 t)
+(load-theme 'github t)
 
 ;; transparency :: active . inactive
-(set-frame-parameter (selected-frame) 'alpha '(95 . 85))
-(add-to-list 'default-frame-alist '(alpha . (95 . 85)))
+(set-frame-parameter (selected-frame) 'alpha '(97 . 85))
+(add-to-list 'default-frame-alist '(alpha . (97 . 85)))
 
 (setq initial-scratch-message "")
 (setq inhibit-startup-screen t)

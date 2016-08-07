@@ -141,24 +141,24 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(grep-match-face ((t (:foreground ,github-orange :weight bold))))
    `(match ((t (:background ,github-bg-1 :foreground ,github-orange :weight bold))))
 ;;;;; isearch
-   `(isearch ((t (:foreground ,github-yellow-2 :weight bold :background ,github-bg+2))))
+   `(isearch ((t (:foreground ,github-yellow-2 :weight bold :background ,"#F2F9FC"))))
    `(isearch-fail ((t (:foreground ,github-fg :background ,github-red-4))))
-   `(lazy-highlight ((t (:foreground ,github-yellow-2 :weight bold :background ,github-bg-05))))
+   `(lazy-highlight ((t (:foreground ,github-yellow-2 :weight bold :background ,"#F8EEC7"))))
 
    `(menu ((t (:foreground ,github-fg :background ,github-bg))))
-   `(minibuffer-prompt ((t (:foreground ,github-yellow))))
+   `(minibuffer-prompt ((t (:foreground ,"#4078C0" :weight bold))))
    `(mode-line
-     ((,class (:foreground ,github-bg
-                           :background ,github-yellow ;; homerow background
-                           ;;:box (:line-width -1 :style released-button)))
+     ((,class (:foreground ,"#68777D"
+                           :background ,"#E6F1F6" ;; homerow background
+                           :box (:line-width 1 :color ,"#C9E6F2")
                            ))
       (t :inverse-video t)))
    `(mode-line-buffer-id ((t (:foreground ,"#000000" :weight bold)))) ;; todo: not happy with black here
    `(mode-line-inactive
      ((t (:foreground ,github-green-1
-                      :background ,github-bg
-                      :box (:line-width -1 :color "#d0d0d0")))))
-   `(region ((,class (:background ,github-bg-1))
+                      :background ,"#F5F5F5"
+                      :box (:line-width 1 :color "#d8d8d8")))))
+   `(region ((,class (:background ,"#E8F1F6"))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,github-bg+2))))
    `(trailing-whitespace ((t (:background ,github-red))))
@@ -609,9 +609,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,github-fg :background ,github-bg+1))))
    `(helm-swoop-target-word-face ((t (:foreground ,github-yellow :background ,github-bg+2 :weight bold))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,github-bg-05))
+   `(hl-line-face ((,class (:background ,"#F8F8F8"))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,github-bg-05)) ; old emacsen
+   `(hl-line ((,class (:background ,"#F8F8F8")) ; old emacsen
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,github-bg+1))
@@ -1015,7 +1015,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec ((t (:foreground ,github-red))))
 ;;;;; show-paren
    `(show-paren-mismatch ((t (:foreground ,github-fg-1 :background ,github-bg+3 :weight bold))))
-   `(show-paren-match ((t (:foreground ,github-bg :background ,github-yellow :weight bold))))
+   `(show-paren-match ((t (:foreground ,github-bg :background ,"#44A340" :weight bold))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable GitHub for sml
    `(sml/global ((,class (:foreground ,github-fg :weight bold))))
