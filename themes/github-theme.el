@@ -36,7 +36,7 @@
 
 (defvar github-default-colors-alist
   '(("github-fg+1"     . "#333333")
-    ("github-fg"       . "#a71d5d")
+    ("github-fg"       . "#983661")
     ("github-fg-1"     . "#333333")
     ("github-bg-2"     . "#ffffff") ;; homerow inactive bg
     ("github-bg-1"     . "#b0cde7") ;; selection
@@ -47,13 +47,13 @@
     ("github-bg+2"     . "#ffffff")
     ("github-bg+3"     . "#ffffff")
     ("github-red+1"    . "#333333")
-    ("github-red"      . "#183691") ;; strings
+    ("github-red"      . "#12408F") ;; strings
     ("github-red-1"    . "#333333")
     ("github-red-2"    . "#333333")
     ("github-red-3"    . "#333333")
     ("github-red-4"    . "#333333")
     ("github-orange"   . "#333333") ;; identifiers, html attributes
-    ("github-yellow"   . "#a71d5d") ;; keywords (homerow active bg)
+    ("github-yellow"   . "#983661") ;; keywords (homerow active bg)
     ("github-yellow-1" . "#333333")
     ("github-yellow-2" . "#333333")
     ("github-green-1"  . "#969896") ;; comments
@@ -61,11 +61,11 @@
     ("github-green+1"  . "#333333") ;; homerow
     ("github-green+2"  . "#969896") ;; line numbers
     ("github-green+3"  . "#63a35c") ;; html tags
-    ("github-green+4"  . "#0086b3") ;; constants
-    ("github-cyan"     . "#795da3") ;; function names, html attrs
-    ("github-blue+1"   . "#a71d5d") ;; preprocessor keywords
+    ("github-green+4"  . "#0086B0") ;; constants
+    ("github-cyan"     . "#7265A2") ;; function names, html attrs
+    ("github-blue+1"   . "#983661") ;; preprocessor keywords
     ("github-blue"     . "#333333")
-    ("github-blue-1"   . "#0086b3") ;; types
+    ("github-blue-1"   . "#0086b0") ;; types
     ("github-blue-2"   . "#333333")
     ("github-blue-3"   . "#333333")
     ("github-blue-4"   . "#333333")
@@ -78,20 +78,24 @@ Each element has the form (NAME . HEX).
 `-N' suffixes indicate a color is darker.")
 
 ;; Colors I'm introducing
+;; navyblue "#12408F" (e.g. font-lock-string-face foreground)
 ;; bigblue  "#4078C0" (e.g. minibuffer-prompt foreground)
 ;; aqua     "#C9E6F2" (e.g. mode-line outline)
 ;; skyblue  "#E6F1F6" (e.g. mode-line background)
 ;; paleblue "#F2F9FC" (nothing yet)
+;; marine   "#0086B0" (e.g. font-lock-type-face foreground)
 ;; greentea "#6CC644" (e.g. info-node background)
 ;; leaf     "#A6F3A6" (e.g. ediff-fine-diff-B)
 ;; melon    "#EAFFEA" (e.g. ediff-current-diff-B)
 ;; limeclay "#F4F7DC" (e.g. lazy-highlight background)
+;; marooned "#983661" (e.g. font-lock-preprocessor-face foreground)
 ;; eraser   "#F8CBCB" (e.g. ediff-fine-diff-A)
 ;; palepink "#FFECEC" (e.g. ediff-current-diff-A)
 ;; slate    "#68777D" (e.g. mode-line foreground)
 ;; ink      "#333333" (e.g. cursor background)
 ;; pencil1  "#969896" (e.g. comments foreground)
-;; pencil2  "#D8D8D8" (e.g. mode-line-inactive outline)
+;; pencil2  "#B3B3B3" (e.g. linum)
+;; pencil3  "#D8D8D8" (e.g. mode-line-inactive outline)
 ;; whisp1   "#EDEDED" (e.g. whitespace-tab background)
 ;; whisp2   "#F5F5F5" (e.g. mode-line-inactive background)
 ;; whisp3   "#F8F8F8" (e.g. hl-line background)
@@ -187,16 +191,16 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-builtin-face ((t (:foreground ,github-fg :weight normal))))  ;; weight bold (built-in keywords)
    `(font-lock-comment-face ((t (:foreground ,github-green))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,github-green-1))))
-   `(font-lock-constant-face ((t (:foreground ,github-green+4))))
+   `(font-lock-constant-face ((t (:foreground ,"#0086B0"))))
    `(font-lock-doc-face ((t (:foreground ,github-green+2))))
-   `(font-lock-function-name-face ((t (:foreground ,github-cyan))))
-   `(font-lock-keyword-face ((t (:foreground ,github-yellow :weight normal)))) ;; weight bold (keywords)
+   `(font-lock-function-name-face ((t (:foreground "#7265A2"))))
+   `(font-lock-keyword-face ((t (:foreground ,"#983661" :weight normal))))
    `(font-lock-negation-char-face ((t (:foreground ,github-yellow :weight bold))))
-   `(font-lock-preprocessor-face ((t (:foreground ,github-blue+1))))
+   `(font-lock-preprocessor-face ((t (:foreground "#983661"))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,github-yellow :weight bold))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,github-green :weight bold))))
-   `(font-lock-string-face ((t (:foreground ,github-red))))
-   `(font-lock-type-face ((t (:foreground ,github-blue-1))))
+   `(font-lock-string-face ((t (:foreground "#12408F"))))
+   `(font-lock-type-face ((t (:foreground "#0086b0"))))
    `(font-lock-variable-name-face ((t (:foreground ,github-orange))))
    `(font-lock-warning-face ((t (:foreground ,github-yellow-2 :weight bold))))
 
@@ -259,7 +263,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(agda2-highlight-typechecks-face ((t (:background ,github-red-4))))
 ;;;;; auto-complete
    `(ac-candidate-face ((t (:background ,"#ffffff" :foreground ,"#333333" :box (:line-width -1 :style released-button)))))
-   `(ac-selection-face ((t (:background ,"#a71d5d" :foreground ,"#ffffff" :box (:line-width -1 :style released-button)))))
+   `(ac-selection-face ((t (:background ,"#983661" :foreground ,"#ffffff" :box (:line-width -1 :style released-button)))))
    `(popup-tip-face ((t (:background ,"#ff0000" :foreground ,"#00ff00" ))))
    `(popup-scroll-bar-foreground-face ((t (:background ,"#333333"))))
    `(popup-scroll-bar-background-face ((t (:background ,"#ffffff"))))
@@ -703,7 +707,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,github-orange :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,github-orange :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground ,github-green+2 :background ,github-bg))))
+   `(linum ((t (:foreground ,"#B3B3B3" :background ,github-bg))))
 ;;;;; ruler-mode
    `(ruler-mode-column-number ((t (:inherit 'ruler-mode-default :foreground ,github-fg))))
    `(ruler-mode-fill-column ((t (:inherit 'ruler-mode-default :foreground ,github-yellow))))
