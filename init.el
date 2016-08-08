@@ -95,6 +95,11 @@
 (add-hook 'Info-mode-hook #'visual-line-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
+(defun my-goto-match-beginning ()
+  (when (and isearch-forward isearch-other-end (not isearch-mode-end-hook-quit))
+    (goto-char isearch-other-end)))
+(add-hook 'isearch-mode-end-hook 'my-goto-match-beginning)
+
 (setq minibuffer-eldef-shorten-default t)
 (minibuffer-electric-default-mode)
 (setq read-buffer-completion-ignore-case t)
