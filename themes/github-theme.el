@@ -98,7 +98,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,"#4078C0" :underline t :weight bold))))
    `(link-visited ((t (:foreground ,github-yellow-2 :underline t :weight normal))))
-   `(default ((t (:foreground ,github-fg+1 :background ,github-bg))))
+   `(default ((t (:foreground ,github-fg+1 :background ,"white"))))
    `(cursor ((t (:foreground ,github-fg :background ,"#333333"))))
    `(escape-glyph ((t (:foreground ,github-yellow :bold t))))
    `(fringe ((t (:foreground ,"#D8D8D8" :background ,github-bg+1))))
