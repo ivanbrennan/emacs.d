@@ -68,6 +68,7 @@
 ** lazy load package.el
 *** This? (use-package package :defer)
 ** check if use-package is installed, and if not load package.el and install use-package
+** mouse in terminal
 * Questions
 ** What are the different load-paths for?
 *** /Users/ivan/.emacs.d/elpa/...
