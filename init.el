@@ -37,27 +37,27 @@
 ;;    magit
 ;;    hexrgb))
 
-(defconst my-cache-directory
+(defconst ivan/cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
   "Storage area for persistent files")
-(unless (file-exists-p my-cache-directory)
-  (make-directory my-cache-directory))
+(unless (file-exists-p ivan/cache-directory)
+  (make-directory ivan/cache-directory))
 
-(defconst my-auto-save-directory
-  (expand-file-name (concat my-cache-directory "auto-save/"))
+(defconst ivan/auto-save-directory
+  (expand-file-name (concat ivan/cache-directory "auto-save/"))
   "Auto-save directory")
-(unless (file-exists-p my-auto-save-directory)
-  (make-directory my-auto-save-directory))
-(setq auto-save-file-name-transforms `((".*" ,my-auto-save-directory t)))
+(unless (file-exists-p ivan/auto-save-directory)
+  (make-directory ivan/auto-save-directory))
+(setq auto-save-file-name-transforms `((".*" ,ivan/auto-save-directory t)))
 
-(setq savehist-file (concat my-cache-directory "savehist"))
+(setq savehist-file (concat ivan/cache-directory "savehist"))
 (savehist-mode 1)
 
 (setq backup-directory-alist
-      `(("." . ,(expand-file-name (concat my-cache-directory "backups")))))
+      `(("." . ,(expand-file-name (concat ivan/cache-directory "backups")))))
 (setq backup-by-copying t)
 
-(setq eshell-directory-name (concat my-cache-directory "eshell/"))
+(setq eshell-directory-name (concat ivan/cache-directory "eshell/"))
 
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
 (add-to-list 'load-path custom-theme-directory)
@@ -95,10 +95,10 @@
 (add-hook 'Info-mode-hook #'visual-line-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-(defun my-goto-match-beginning ()
+(defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end (not isearch-mode-end-hook-quit))
     (goto-char isearch-other-end)))
-(add-hook 'isearch-mode-end-hook 'my-goto-match-beginning)
+(add-hook 'isearch-mode-end-hook 'ivan/goto-match-beginning)
 
 (setq minibuffer-eldef-shorten-default t)
 (minibuffer-electric-default-mode)
@@ -180,14 +180,14 @@
 (set-face-attribute 'default t :font "Source Code Pro-16")
 (set-frame-font "Source Code Pro-16" nil t)
 
-(defun my-buffer-face-mode-variable (height)
+(defun ivan/buffer-face-mode-variable (height)
   "Set font to a variable width font in the current buffer"
   (interactive)
   (setq buffer-face-mode-face `(:family "Avenir Next" :height ,height))
   (buffer-face-mode))
 
-(add-hook 'help-mode-hook (apply-partially #'my-buffer-face-mode-variable 180))
-(add-hook 'Info-mode-hook (apply-partially #'my-buffer-face-mode-variable 200))
+(add-hook 'help-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 180))
+(add-hook 'Info-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 200))
 
 (setq frame-title-format "emacs")
 (blink-cursor-mode 0)
