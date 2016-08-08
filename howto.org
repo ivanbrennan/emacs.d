@@ -43,6 +43,7 @@
 ** line numbers toggle
 ** partial line completion (cursor to end of line)
 ** scroll offset to 1 line
+** reformat text (like vim gq)
 ** switch other window to its previous buffer
 ** set bash indentation to 2 spaces
 ** smooth scrolling with external mouse wheel
