@@ -18,6 +18,7 @@
 *** add a function to isearch-mode-end-hook
 * How To
 ** resize windows
+** replace in region without activating region
 ** open a file/buffer in other window
 ** toggle between alt files (header/implementation/test/etc)
 ** mimic prev/next line chars (like C-e/C-y in vim)
