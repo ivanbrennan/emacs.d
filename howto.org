@@ -1,22 +1,21 @@
-
 * How To (solved)
 ** middle/top/bottom of window
-   * M-r
+*** M-r
 ** minibuffer history matching preceding chars
-   * C-r is a better solution** middle/top/bottom of window
+*** C-r is a better solution** middle/top/bottom of window
 ** rectangular select
-   * C-SPC C-x SPC
+*** C-SPC C-x SPC
 ** case insensitive buffer-name completion
-   * read-buffer-completion-ignore-case
+*** read-buffer-completion-ignore-case
 ** kill this buffer
-   * C-x k
+*** C-x k
 ** hide scrollbars
-   * scroll-bar-mode
+*** scroll-bar-mode
 ** indent line/region
-   * TAB :: line or region
-   * C-M-\ :: region
+*** TAB :: line or region
+*** C-M-\ :: region
 ** go to beginning of search result rather than end
-   * use M-b to exit the search
+*** use M-b to exit the search
 * How To
 ** resize windows
 ** mimic prev/next line chars (like C-e/C-y in vim)
@@ -31,11 +30,12 @@
 ** color past eof
 ** color theme
 ** completion (word/line/path)
-   * TAB (or M-TAB if tab-always-indent is t)
-   * find-file-at-point
+*** TAB (or M-TAB if tab-always-indent is t)
+*** find-file-at-point
+*** hippie-expand
 ** ctags (etags?)
 ** indent space vs tab
-   * indent-tabs-mode
+*** indent-tabs-mode
 ** less info in Dired listings
 ** line numbers toggle
 ** partial line completion (cursor to end of line)
@@ -48,7 +48,7 @@
 ** visit recent file
 ** what does ido c-k do?
 ** kill this/other window
-   * C-x 0
+*** C-x 0
 ** jump by block (like } in vim)
 ** jump back (like C-o in vim)
 ** magit
@@ -56,18 +56,18 @@
 ** multi-cursor
 ** toggle hl-line off in buffer
 ** prettier org mode
-   * org-bullets
-   * org-beautify-theme
+*** org-bullets
+*** org-beautify-theme
 ** multiple cursors
 ** semantic layer in spacemacs
 ** scroll inactive frame without changing state of status bars
 ** lazy load package.el
-   This? (use-package package :defer)
+*** This? (use-package package :defer)
 ** check if use-package is installed, and if not load package.el and install use-package
 * Questions
 ** What are the different load-paths for?
-  - /Users/ivan/.emacs.d/elpa/...
-  - /usr/local/share/emacs/site-lisp/...
-  - /usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.18/share/emacs/24.5/lisp/...
+*** /Users/ivan/.emacs.d/elpa/...
+*** /usr/local/share/emacs/site-lisp/...
+*** /usr/local/Cellar/emacs-mac/emacs-24.5-z-mac-5.18/share/emacs/24.5/lisp/...
 ** how should i confugure (use-package :config, add-hooks, etc.)
-   * ediff
+*** ediff
