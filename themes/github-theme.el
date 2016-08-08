@@ -1,36 +1,7 @@
-;;; github-theme.el --- A low contrast color theme for Emacs.
-
-;; Copyright (C) 2011-2016 Philip Arvidsson
-
-;; Author: Philip Arvidsson <contact@philiparvidsson.com>
-;; URL: https://github.com/philiparvidsson/emacs-github-theme
-;; Version: 2.3-cvs
-
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-;;; Commentary:
-
-;; I took the Zenburn theme and modified it. Creds to Bozhidar Batsov!
-
-;;; Credits:
-
-;; Bozhidar Batsov created the Zenburn theme file which I modified to create
-;; this theme.
-
+;;; github-theme.el
 ;;; Code:
 
-(deftheme github "The GitHub color theme")
+(deftheme github "GitHub color theme")
 
 ;;; Color Palette
 
@@ -38,68 +9,65 @@
   '(("github-fg+1"     . "#333333")
     ("github-fg"       . "#983661")
     ("github-fg-1"     . "#333333")
-    ("github-bg-2"     . "#ffffff") ;; homerow inactive bg
-    ("github-bg-1"     . "#b0cde7") ;; selection
-    ("github-bg-05"    . "#f8eec7") ;; line highlight
+    ("github-bg-2"     . "#ffffff")
+    ("github-bg-1"     . "#b0cde7")
+    ("github-bg-05"    . "#f8eec7")
     ("github-bg"       . "#ffffff")
     ("github-bg+05"    . "#ffffff")
     ("github-bg+1"     . "#ffffff")
     ("github-bg+2"     . "#ffffff")
     ("github-bg+3"     . "#ffffff")
     ("github-red+1"    . "#333333")
-    ("github-red"      . "#12408F") ;; strings
+    ("github-red"      . "#12408F")
     ("github-red-1"    . "#333333")
     ("github-red-2"    . "#333333")
     ("github-red-3"    . "#333333")
     ("github-red-4"    . "#333333")
-    ("github-orange"   . "#333333") ;; identifiers, html attributes
-    ("github-yellow"   . "#983661") ;; keywords (homerow active bg)
+    ("github-orange"   . "#333333")
+    ("github-yellow"   . "#983661")
     ("github-yellow-1" . "#333333")
     ("github-yellow-2" . "#333333")
-    ("github-green-1"  . "#969896") ;; comments
-    ("github-green"    . "#969896") ;; comments
-    ("github-green+1"  . "#333333") ;; homerow
-    ("github-green+2"  . "#969896") ;; line numbers
-    ("github-green+3"  . "#63a35c") ;; html tags
-    ("github-green+4"  . "#0086B0") ;; constants
-    ("github-cyan"     . "#7265A2") ;; function names, html attrs
-    ("github-blue+1"   . "#983661") ;; preprocessor keywords
+    ("github-green-1"  . "#969896")
+    ("github-green"    . "#969896")
+    ("github-green+1"  . "#333333")
+    ("github-green+2"  . "#969896")
+    ("github-green+3"  . "#63a35c")
+    ("github-green+4"  . "#0086B0")
+    ("github-cyan"     . "#7265A2")
+    ("github-blue+1"   . "#983661")
     ("github-blue"     . "#333333")
-    ("github-blue-1"   . "#0086b0") ;; types
+    ("github-blue-1"   . "#0086b0")
     ("github-blue-2"   . "#333333")
     ("github-blue-3"   . "#333333")
     ("github-blue-4"   . "#333333")
     ("github-blue-5"   . "#333333")
     ("github-magenta"  . "#333333"))
   "List of GitHub colors.
-Each element has the form (NAME . HEX).
+Each element has the form (NAME . HEX).")
 
-`+N' suffixes indicate a color is lighter.
-`-N' suffixes indicate a color is darker.")
+;;; Better Colors
 
-;; Colors I'm introducing
-;; navyblue "#12408F" (e.g. font-lock-string-face foreground)
-;; bigblue  "#4078C0" (e.g. minibuffer-prompt foreground)
-;; aqua     "#C9E6F2" (e.g. show-paren-match background)
-;; skyblue  "#E6F1F6" (e.g. isearch background)
-;; paleblue "#F2F9FC" (nothing yet)
-;; marine   "#0086B0" (e.g. font-lock-type-face foreground)
-;; greentea "#6CC644" (e.g. info-node background)
-;; leaf     "#A6F3A6" (e.g. ediff-fine-diff-B)
-;; melon    "#EAFFEA" (e.g. ediff-current-diff-B)
-;; limeclay "#F4F7DC" (e.g. lazy-highlight background)
-;; marooned "#983661" (e.g. font-lock-preprocessor-face foreground)
-;; eraser   "#F8CBCB" (e.g. ediff-fine-diff-A)
-;; palepink "#FFECEC" (e.g. ediff-current-diff-A)
-;; ink      "#333333" (e.g. cursor background)
-;; slate    "#666666" (e.g. mode-line foreground)
-;; pencil1  "#969896" (e.g. comments foreground)
-;; pencil2  "#B3B3B3" (e.g. linum)
-;; pencil3  "#D8D8D8" (e.g. mode-line-inactive outline)
-;; whisp1   "#EDEDED" (e.g. whitespace-tab background)
-;; whisp2   "#F5F5F5" (e.g. mode-line-inactive background)
-;; whisp3   "#F8F8F8" (e.g. hl-line background)
-
+;; navyblue "#12408F" (font-lock-string-face foreground)
+;; bigblue  "#4078C0" (minibuffer-prompt foreground)
+;; aqua     "#C9E6F2" (show-paren-match background)
+;; skyblue  "#E6F1F6" (isearch background)
+;; paleblue "#F2F9FC"
+;; marine   "#0086B0" (font-lock-type-face foreground)
+;; greentea "#6CC644" (info-node background)
+;; leaf     "#A6F3A6" (ediff-fine-diff-B)
+;; melon    "#EAFFEA" (ediff-current-diff-B)
+;; limeclay "#F4F7DC" (lazy-highlight background)
+;; marooned "#983661" (font-lock-preprocessor-face foreground)
+;; eraser   "#F8CBCB" (ediff-fine-diff-A)
+;; palepink "#FFECEC" (ediff-current-diff-A)
+;; ink      "#333333" (cursor background)
+;; slate    "#666666" (mode-line foreground)
+;; pencil1  "#969896" (comments foreground)
+;; pencil2  "#B3B3B3" (linum)
+;; pencil3  "#D8D8D8" (mode-line-inactive outline)
+;; whisp1   "#EDEDED" (whitespace-tab background)
+;; whisp2   "#F5F5F5" (mode-line-inactive background)
+;; whisp3   "#F8F8F8" (hl-line background)
 
 (defvar github-override-colors-alist
   '()
@@ -1252,22 +1220,6 @@ buffers this variable controls whether this should be done.
 This requires library `rainbow-mode'.")
 
 (defvar github-colors-font-lock-keywords nil)
-
-;; (defadvice rainbow-turn-on (after github activate)
-;;   "Maybe also add font-lock keywords for github colors."
-;;   (when (and (derived-mode-p 'emacs-lisp-mode)
-;;              (or github-add-font-lock-keywords
-;;                  (equal (file-name-nondirectory (buffer-file-name))
-;;                         "github-theme.el")))
-;;     (unless github-colors-font-lock-keywords
-;;       (setq github-colors-font-lock-keywords
-;;             `((,(regexp-opt (mapcar 'car github-colors-alist) 'words)
-;;                (0 (rainbow-colorize-by-assoc github-colors-alist))))))
-;;     (font-lock-add-keywords nil github-colors-font-lock-keywords)))
-
-;; (defadvice rainbow-turn-off (after github activate)
-;;   "Also remove font-lock keywords for github colors."
-;;   (font-lock-remove-keywords nil github-colors-font-lock-keywords))
 
 ;;; Footer
 
