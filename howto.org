@@ -15,9 +15,11 @@
 *** TAB :: line or region
 *** C-M-\ :: region
 ** go to beginning of search result rather than end
-*** use M-b to exit the search
+*** add a function to isearch-mode-end-hook
 * How To
 ** resize windows
+** open a file/buffer in other window
+** toggle between alt files (header/implementation/test/etc)
 ** mimic prev/next line chars (like C-e/C-y in vim)
 ** swap window positions
 ** open newline below, from mid-line
