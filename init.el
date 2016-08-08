@@ -22,8 +22,11 @@
 
 (let ((use-package-dir (package-dir "use-package"))
       (bind-key-dir    (package-dir "bind-key")))
-  (add-to-load-path (file-name-directory use-package-dir))
-  (add-to-load-path (file-name-directory bind-key-dir)))
+  (if use-package-dir
+      (progn
+	(add-to-load-path (file-name-directory use-package-dir))
+	(add-to-load-path (file-name-directory bind-key-dir)))
+    (install-use-package)))
 
 (require 'use-package)
 
