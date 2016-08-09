@@ -82,3 +82,4 @@
 *** ediff
 ** why are the rgb colors off from what they claim?
 ** why did I have to change from "#ffffff" to "white" to get terminal to show a white background?
+** why are comments and window separators invisible in terminal?
