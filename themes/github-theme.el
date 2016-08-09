@@ -57,6 +57,7 @@ Each element has the form (NAME . HEX).")
 ;; leaf     "#A6F3A6" (ediff-fine-diff-B)
 ;; melon    "#EAFFEA" (ediff-current-diff-B)
 ;; limeclay "#F4F7DC" (lazy-highlight background)
+;; bloodred "#FF5A3E" (flyspell-incorrect underline)
 ;; marooned "#983661" (font-lock-preprocessor-face foreground)
 ;; eraser   "#F8CBCB" (ediff-fine-diff-A)
 ;; palepink "#FFECEC" (ediff-current-diff-A)
@@ -451,7 +452,7 @@ Also bind `class' to ((class color) (min-colors 89))."
       (t (:foreground ,github-orange :weight bold :underline t))))
    `(flyspell-incorrect
      ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,github-red) :inherit unspecified))
+       (:underline (:style wave :color ,"#FF5A3E") :inherit unspecified))
       (t (:foreground ,github-red-1 :weight bold :underline t))))
 ;;;;; full-ack
    `(ack-separator ((t (:foreground ,github-fg))))
