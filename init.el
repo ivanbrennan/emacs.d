@@ -390,3 +390,10 @@ Repeated invocations toggle between the two most recently open buffers."
   "Edit the `user-init-file', in another window."
   (interactive)
   (find-file-other-window user-init-file))
+
+
+;; keybindings
+(global-set-key (kbd "C-<return>") 'crux-mini-smart-open-line)
+(global-set-key (kbd "S-<return>") 'crux-mini-smart-open-line-above)
+(global-set-key [remap move-beginning-of-line]
+                'crux-mini-move-beginning-of-line)
