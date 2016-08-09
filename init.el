@@ -1,45 +1,88 @@
-(require 'package)
-(setq package-enable-at-startup nil)
+;; blank slate
+(setq initial-scratch-message "")
+(setq inhibit-startup-screen t)
+(setq frame-title-format "emacs")
 
-(add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
-(setq package-archive-priorities '(("melpa-stable" . 20) ("marmalade" . 5)))
+;; clean screen
+(menu-bar-mode   0)
+(tool-bar-mode   0)
+(scroll-bar-mode 0)
+(tooltip-mode    0)
 
-(defun add-to-load-path (p)
-  (add-to-list 'load-path (expand-file-name p user-emacs-directory)))
 
-(defun install-use-package ()
-  (package-initialize)
-  (package-refresh-contents)
-  (package-install 'use-package))
+;; useful indicators
+(column-number-mode nil)
+(show-paren-mode    1)
 
-(defun package-dir (package)
-  (let ((wildcard (concat package "*/" package ".el")))
-    (car (last (file-expand-wildcards (concat user-emacs-directory "elpa/" wildcard))))))
 
-(let ((use-package-dir (package-dir "use-package"))
-      (bind-key-dir    (package-dir "bind-key")))
-  (if use-package-dir
-      (progn
-	(add-to-load-path (file-name-directory use-package-dir))
-	(add-to-load-path (file-name-directory bind-key-dir)))
-    (install-use-package)))
+;; cursor
+(blink-cursor-mode 0)
+(setq-default cursor-in-non-selected-windows nil)
+(global-hl-line-mode)
 
-(require 'use-package)
 
-(use-package rainbow-mode :commands rainbow-mode :load-path "elpa/rainbow-mode-0.12")
+;; fringe
+(fringe-mode '(8 . 1))
+(setq-default fringe-indicator-alist
+              (assq-delete-all 'truncation fringe-indicator-alist))
 
-;;(defvar local-packages
-;;  '(evil
-;;    auto-complete
-;;    use-package
-;;    projectile
-;;    magit
-;;    hexrgb))
 
+;; faces
+(setq custom-theme-directory (concat user-emacs-directory "themes/"))
+(add-to-list 'load-path custom-theme-directory)
+(load-theme 'github t)
+
+(set-face-attribute 'default t :font "Source Code Pro-16")
+(set-frame-font "Source Code Pro-16" nil t)
+
+(defun ivan/buffer-face-mode-variable (height)
+  "Set font to a variable width font in the current buffer"
+  (interactive)
+  (setq buffer-face-mode-face `(:family "Avenir Next" :height ,height))
+  (buffer-face-mode))
+
+(add-hook 'help-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 180))
+(add-hook 'Info-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 200))
+
+
+;; transparency
+(set-frame-parameter (selected-frame) 'alpha '(97 . 85))
+(add-to-list 'default-frame-alist   '(alpha . (97 . 85)))
+
+
+;; line-wrapping
+(setq-default truncate-lines t)
+(add-hook 'help-mode-hook #'visual-line-mode)
+(add-hook 'Info-mode-hook #'visual-line-mode)
+
+
+;; scroll
+(setq scroll-step 1
+      scroll-margin 0
+      hscroll-step 1
+      hscroll-margin 2
+      scroll-conservatively 200
+      mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
+
+
+;; whitespace
+(setq whitespace-style
+      (quote (face
+              empty
+              trailing
+              lines-tail
+              indentation
+              space-before-tab
+              space-after-tab)))
+
+(global-whitespace-mode)
+(setq whitespace-line-column 90)
+(setq-default indent-tabs-mode nil)
+(setq-default indicate-empty-lines t)
+
+
+;; persistence
 (defconst ivan/cache-directory
   (expand-file-name (concat user-emacs-directory ".cache/"))
   "Storage area for persistent files")
@@ -51,7 +94,8 @@
   "Auto-save directory")
 (unless (file-exists-p ivan/auto-save-directory)
   (make-directory ivan/auto-save-directory))
-(setq auto-save-file-name-transforms `((".*" ,ivan/auto-save-directory t)))
+(setq auto-save-file-name-transforms
+      `((".*" ,ivan/auto-save-directory t)))
 
 (setq savehist-file (concat ivan/cache-directory "savehist"))
 (savehist-mode 1)
@@ -62,67 +106,28 @@
 
 (setq eshell-directory-name (concat ivan/cache-directory "eshell/"))
 
-(setq custom-theme-directory (concat user-emacs-directory "themes/"))
-(add-to-list 'load-path custom-theme-directory)
-(load-theme 'github t)
 
-;; transparency :: active . inactive
-(set-frame-parameter (selected-frame) 'alpha '(97 . 85))
-(add-to-list 'default-frame-alist '(alpha . (97 . 85)))
-
-(setq initial-scratch-message "")
-(setq inhibit-startup-screen t)
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(tooltip-mode 0)
-
-(setq whitespace-line-column 90)
-
-(setq whitespace-style
-      (quote (face
-              empty
-              trailing
-              lines-tail
-              indentation
-              space-before-tab
-              space-after-tab)))
-
-(global-whitespace-mode)
-(setq-default indent-tabs-mode nil)
-(column-number-mode nil)
-(show-paren-mode 1)
-(setq-default indicate-empty-lines t)
-
-(setq-default truncate-lines t)
-(add-hook 'help-mode-hook #'visual-line-mode)
-(add-hook 'Info-mode-hook #'visual-line-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
-
-(defun ivan/goto-match-beginning ()
-  (when (and isearch-forward isearch-other-end (not isearch-mode-end-hook-quit))
-    (goto-char isearch-other-end)))
-(add-hook 'isearch-mode-end-hook 'ivan/goto-match-beginning)
-
+;; sensibility
 (setq minibuffer-eldef-shorten-default t)
 (minibuffer-electric-default-mode)
 (setq read-buffer-completion-ignore-case t)
-
 (setq require-final-newline t)
 (setq set-mark-command-repeat-pop t)
-
 (setq tab-always-indent 'complete)
 (setq ispell-program-name "aspell")
 (setq ediff-split-window-function 'split-window-horizontally)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
+
+;; gui & terminal
 (defun system-is-mac () (eq system-type 'darwin))
 
-;; go to System Preferences > Mission Control
-;; and uncheck "Displays have separate spaces"
-;; so fullscreen won't black out other monitors
 (defun configure-mac-modifiers ()
        (setq mac-command-modifier 'super)
        (setq mac-option-modifier 'meta))
 
+;; turn off "displays have separate spaces" in osx
+;; so fullscreen won't black out other monitors.
 (defun configure-gui ()
   (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
   (global-set-key (kbd "s-v") 'yank)
@@ -141,6 +146,15 @@
                     (call-interactively (key-binding "\C-x\C-s"))))
   (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
   (global-set-key (kbd "M-s-h") 'mac-hide-others))
+
+;; this is slow :P
+(defun mac-hide-others ()
+  (interactive)
+  (do-applescript (concat "tell application \"System Events\" to "
+                          "set visible of every process whose visible is true "
+                          "and name is not \"Emacs\" "
+                          "and frontmost is false to "
+                          "false")))
 
 (defun configure-terminal ()
   (require 'mouse)
@@ -165,14 +179,6 @@
       (scroll-up-line))
     (setq alternating-scroll-up-next (not alternating-scroll-up-next))))
 
-(defun mac-hide-others ()
-  (interactive)
-  (do-applescript (concat "tell application \"System Events\" to "
-                          "set visible of every process whose visible is true "
-                          "and name is not \"Emacs\" "
-                          "and frontmost is false to "
-                          "false")))
-
 (if (system-is-mac)
     (configure-mac-modifiers))
 
@@ -180,38 +186,68 @@
     (configure-gui)
   (configure-terminal))
 
-(set-face-attribute 'default t :font "Source Code Pro-16")
-(set-frame-font "Source Code Pro-16" nil t)
 
-(defun ivan/buffer-face-mode-variable (height)
-  "Set font to a variable width font in the current buffer"
-  (interactive)
-  (setq buffer-face-mode-face `(:family "Avenir Next" :height ,height))
-  (buffer-face-mode))
+;; packages
+(require 'package)
 
-(add-hook 'help-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 180))
-(add-hook 'Info-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 200))
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
-(setq frame-title-format "emacs")
-(blink-cursor-mode 0)
-(setq-default cursor-in-non-selected-windows nil)
-(global-hl-line-mode)
+(setq package-archive-priorities '(("melpa-stable" . 20) ("marmalade" . 5)))
+(setq package-enable-at-startup nil)
 
-(setq scroll-step 1
-      scroll-margin 0
-      hscroll-step 1
-      hscroll-margin 2
-      scroll-conservatively 200
-      mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
+(defun package-path (package)
+  "Return the path of the highest installed version of PACKAGE,
+or nil if no installed versions are found."
+  (let* ((name (symbol-name package))
+         (path (concat user-emacs-directory
+                       "elpa/"
+                       (concat name "*/" name ".el"))))
+         (car (last (file-expand-wildcards path)))))
 
-(scroll-bar-mode 0)
+(require 'cl)
+(defun missing-packages (package-list)
+  (remove-if #'package-path package-list))
 
-(fringe-mode '(8 . 1))
-(setq-default fringe-indicator-alist
-              (assq-delete-all 'truncation fringe-indicator-alist))
+(defun install-packages (packages)
+  (package-initialize)
+  (package-refresh-contents)
+  (mapc 'package-install packages))
 
-;(require 'evil)
-;(evil-mode t)
+(let* ((essentials '(use-package evil))
+       (missing-essentials (missing-packages essentials)))
+  (if missing-essentials (install-packages missing-essentials)))
+
+(defun add-package-to-load-path (p)
+  (let ((dir (file-name-directory (package-path p))))
+    (add-to-list 'load-path
+                 (expand-file-name dir user-emacs-directory))))
+
+(add-package-to-load-path 'use-package)
+(add-package-to-load-path 'bind-key)
+
+(require 'use-package)
+
+(use-package rainbow-mode
+  :load-path "elpa/rainbow-mode-0.12"
+  :commands rainbow-mode)
+
+(use-package evil
+  :load-path "elpa/evil-1.2.12"
+  :commands evil-mode)
+
+;;(use-package magit...
+;;(use-package auto-complete...
+;;(use-package projectile...
+
+
+;; etc.
+(defun ivan/goto-match-beginning ()
+  (when (and isearch-forward isearch-other-end (not isearch-mode-end-hook-quit))
+    (goto-char isearch-other-end)))
+(add-hook 'isearch-mode-end-hook 'ivan/goto-match-beginning)
 
 ;; let Magit handle Git
 (setq vc-handled-backends (delq 'Git vc-handled-backends))
