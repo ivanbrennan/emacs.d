@@ -126,8 +126,6 @@
        (setq mac-command-modifier 'super)
        (setq mac-option-modifier 'meta))
 
-;; turn off "displays have separate spaces" in osx
-;; so fullscreen won't black out other monitors.
 (defun configure-gui ()
   (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
   (global-set-key (kbd "s-v") 'yank)
@@ -144,6 +142,8 @@
                   (lambda ()
                     (interactive)
                     (call-interactively (key-binding "\C-x\C-s"))))
+  ;; turn off "displays have separate spaces" so
+  ;; fullscreen won't black out other monitors.
   (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
   (global-set-key (kbd "M-s-h") 'mac-hide-others))
 
