@@ -28,3 +28,6 @@ M-s C-e :: yank rest of line into search string
 
 (Replace regexp)
 \? in newstring :: query to edit each replacement
+
+* Unbelievable productivity boosters
+** C-r in the minibuffer
