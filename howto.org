@@ -20,6 +20,8 @@
 *** theme used defvar, which is resistant to re-evaluation; you'd have to restart emacs to get the variable changes to show up
 * How To
 ** resize windows
+** zoom windows
+** single space after sentence
 ** replace in region without activating region
 ** open a file/buffer in other window
 ** toggle between alt files (header/implementation/test/etc)
