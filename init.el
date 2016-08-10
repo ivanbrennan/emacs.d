@@ -3,59 +3,48 @@
 (setq inhibit-startup-screen t)
 (setq frame-title-format "emacs")
 
-
 ;; clean screen
 (menu-bar-mode   0)
 (tool-bar-mode   0)
 (scroll-bar-mode 0)
 (tooltip-mode    0)
 
-
 ;; useful indicators
 (column-number-mode nil)
 (show-paren-mode    1)
-
 
 ;; cursor
 (blink-cursor-mode 0)
 (setq-default cursor-in-non-selected-windows nil)
 (global-hl-line-mode)
 
-
 ;; fringe
 (fringe-mode '(8 . 1))
 (setq-default fringe-indicator-alist
               (assq-delete-all 'truncation fringe-indicator-alist))
 
-
 ;; faces
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
 (add-to-list 'load-path custom-theme-directory)
 (load-theme 'github t)
-
 (set-face-attribute 'default t :font "Source Code Pro-16")
 (set-frame-font "Source Code Pro-16" nil t)
-
 (defun ivan/buffer-face-mode-variable (height)
   "Set font to a variable width font in the current buffer"
   (interactive)
   (setq buffer-face-mode-face `(:family "Avenir Next" :height ,height))
   (buffer-face-mode))
-
 (add-hook 'help-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 180))
 (add-hook 'Info-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 200))
-
 
 ;; transparency
 (set-frame-parameter (selected-frame) 'alpha '(97 . 85))
 (add-to-list 'default-frame-alist   '(alpha . (97 . 85)))
 
-
 ;; line-wrapping
 (setq-default truncate-lines t)
 (add-hook 'help-mode-hook #'visual-line-mode)
 (add-hook 'Info-mode-hook #'visual-line-mode)
-
 
 ;; scroll
 (setq scroll-step 1
@@ -64,7 +53,6 @@
       hscroll-margin 2
       scroll-conservatively 200
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
-
 
 ;; whitespace
 (setq whitespace-style
@@ -75,12 +63,10 @@
               indentation
               space-before-tab
               space-after-tab)))
-
 (global-whitespace-mode)
 (setq whitespace-line-column 90)
 (setq-default indent-tabs-mode nil)
 (setq-default indicate-empty-lines t)
-
 
 ;; persistence
 (defconst ivan/cache-directory
@@ -88,7 +74,6 @@
   "Storage area for persistent files")
 (unless (file-exists-p ivan/cache-directory)
   (make-directory ivan/cache-directory))
-
 (defconst ivan/auto-save-directory
   (expand-file-name (concat ivan/cache-directory "auto-save/"))
   "Auto-save directory")
@@ -96,16 +81,12 @@
   (make-directory ivan/auto-save-directory))
 (setq auto-save-file-name-transforms
       `((".*" ,ivan/auto-save-directory t)))
-
 (setq savehist-file (concat ivan/cache-directory "savehist"))
 (savehist-mode 1)
-
 (setq backup-directory-alist
       `(("." . ,(expand-file-name (concat ivan/cache-directory "backups")))))
 (setq backup-by-copying t)
-
 (setq eshell-directory-name (concat ivan/cache-directory "eshell/"))
-
 
 ;; sensibility
 (setq minibuffer-eldef-shorten-default t)
@@ -118,14 +99,7 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-
 ;; gui & terminal
-(defun system-is-mac () (eq system-type 'darwin))
-
-(defun configure-mac-modifiers ()
-       (setq mac-command-modifier 'super)
-       (setq mac-option-modifier 'meta))
-
 (defun configure-gui ()
   (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
   (global-set-key (kbd "s-v") 'yank)
@@ -179,13 +153,18 @@
       (scroll-up-line))
     (setq alternating-scroll-up-next (not alternating-scroll-up-next))))
 
+(defun system-is-mac () (eq system-type 'darwin))
+
+(defun configure-mac-modifiers ()
+       (setq mac-command-modifier 'super)
+       (setq mac-option-modifier 'meta))
+
 (if (system-is-mac)
     (configure-mac-modifiers))
 
 (if (display-graphic-p)
     (configure-gui)
   (configure-terminal))
-
 
 ;; packages
 (require 'package)
