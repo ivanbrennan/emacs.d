@@ -2,7 +2,7 @@
 ** middle/top/bottom of window
 *** M-r
 ** minibuffer history matching preceding chars
-*** C-r is a better solution** middle/top/bottom of window
+*** C-r is a better solution
 ** rectangular select
 *** C-SPC C-x SPC
 ** case insensitive buffer-name completion
@@ -73,6 +73,9 @@
 *** This? (use-package package :defer)
 ** check if use-package is installed, and if not load package.el and install use-package
 ** mouse in terminal
+*** fixed?
+** accept and execute C-r result in minibuffer
+*** some custom C-<return> binding?
 * Questions
 ** What are the different load-paths for?
 *** /Users/ivan/.emacs.d/elpa/...
