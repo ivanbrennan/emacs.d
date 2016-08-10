@@ -32,6 +32,7 @@
 ** minibuffer inc-search autoaccept
 ** minibuffer curly-brace completion hints (ido ?)
 ** auto-indent as you type
+** add flyspell-prog-mode to prog-mode-hook
 ** backward-kill-word (C-w) in insert/minibuffer
 ** color past 90 chars
 ** color past eof
