@@ -31,3 +31,4 @@ M-s C-e :: yank rest of line into search string
 
 * Unbelievable productivity boosters
 ** C-r in the minibuffer
+** tab completion inside a word
