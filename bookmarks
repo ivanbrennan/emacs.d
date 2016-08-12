@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("magit"
+(("(cl) For Clauses"
+ (front-context-string . "`for VAR being t")
+ (rear-context-string . "ding %S\" c b))\n\n")
+ (position . 77480)
+ (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/cl")
+ (info-node . "For Clauses")
+ (handler . Info-bookmark-jump))
+("magit"
  (front-context-string . "   Buffers can a")
  (rear-context-string . "e\nundesirable.\n\n")
  (position . 33959)
