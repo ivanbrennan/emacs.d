@@ -392,3 +392,4 @@ Repeated invocations toggle between the two most recently open buffers."
 (global-set-key [remap move-beginning-of-line]
                 'crux-mini-move-beginning-of-line)
 (bind-key "s-u" 'ivan/toggle-transparency)
+(bind-key "M-s-;" 'global-hl-line-mode)
