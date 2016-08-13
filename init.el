@@ -46,6 +46,10 @@
 (add-hook 'help-mode-hook #'visual-line-mode)
 (add-hook 'Info-mode-hook #'visual-line-mode)
 
+;; page-breaks
+(add-hook 'help-mode-hook #'page-break-lines-mode)
+(add-hook 'Info-mode-hook #'page-break-lines-mode)
+
 ;; scroll
 (setq scroll-step 1
       scroll-margin 0
@@ -149,6 +153,10 @@ or nil if no installed versions are found."
 (use-package evil
   :load-path "elpa/evil-1.2.12"
   :commands evil-mode)
+
+(use-package page-break-lines
+  :load-path "elpa/page-break-lines-0.11"
+  :commands page-break-lines-mode)
 
 ;;(use-package magit...
 ;;(use-package auto-complete...
