@@ -99,73 +99,6 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
-;; gui & terminal
-(defun configure-gui ()
-  (global-set-key (kbd "s-q") 'save-buffers-kill-terminal)
-  (global-set-key (kbd "s-v") 'yank)
-  (global-set-key (kbd "s-c") 'evil-yank)
-  (global-set-key (kbd "s-a") 'mark-whole-buffer)
-  (global-set-key (kbd "s-o") 'find-file)
-  (global-set-key (kbd "s-x") 'kill-region)
-  (global-set-key (kbd "s-w") 'delete-window)
-  (global-set-key (kbd "s-W") 'delete-frame)
-  (global-set-key (kbd "s-n") 'make-frame)
-  (global-set-key (kbd "s-z") 'undo-tree-undo)
-  (global-set-key (kbd "s-Z") 'undo-tree-redo)
-  (global-set-key (kbd "s-s")
-                  (lambda ()
-                    (interactive)
-                    (call-interactively (key-binding "\C-x\C-s"))))
-  ;; turn off "displays have separate spaces" so
-  ;; fullscreen won't black out other monitors.
-  (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
-  (global-set-key (kbd "M-s-h") 'mac-hide-others))
-
-;; this is slow :P
-(defun mac-hide-others ()
-  (interactive)
-  (do-applescript (concat "tell application \"System Events\" to "
-                          "set visible of every process whose visible is true "
-                          "and name is not \"Emacs\" "
-                          "and frontmost is false to "
-                          "false")))
-
-(defun configure-terminal ()
-  (require 'mouse)
-  (xterm-mouse-mode t)
-  (defun track-mouse (e))
-  (setq mouse-sel-mode t)
-  (setq mouse-wheel-follow-mouse 't)
-  (defvar alternating-scroll-down-next t)
-  (defvar alternating-scroll-up-next t)
-  (global-set-key (kbd "<mouse-4>") 'alternating-scroll-down-line)
-  (global-set-key (kbd "<mouse-5>") 'alternating-scroll-up-line)
-
-  (defun alternating-scroll-down-line ()
-    (interactive "@")
-    (when alternating-scroll-down-next
-      (scroll-down-line))
-    (setq alternating-scroll-down-next (not alternating-scroll-down-next)))
-
-  (defun alternating-scroll-up-line ()
-    (interactive "@")
-    (when alternating-scroll-up-next
-      (scroll-up-line))
-    (setq alternating-scroll-up-next (not alternating-scroll-up-next))))
-
-(defun system-is-mac () (eq system-type 'darwin))
-
-(defun configure-mac-modifiers ()
-       (setq mac-command-modifier 'super)
-       (setq mac-option-modifier 'meta))
-
-(if (system-is-mac)
-    (configure-mac-modifiers))
-
-(if (display-graphic-p)
-    (configure-gui)
-  (configure-terminal))
-
 ;; packages
 (require 'package)
 
@@ -220,6 +153,70 @@ or nil if no installed versions are found."
 ;;(use-package magit...
 ;;(use-package auto-complete...
 ;;(use-package projectile...
+
+;; gui & terminal
+(defun configure-gui ()
+  (bind-key "s-q" 'save-buffers-kill-terminal)
+  (bind-key "s-v" 'yank)
+  (bind-key "s-c" 'evil-yank)
+  (bind-key "s-a" 'mark-whole-buffer)
+  (bind-key "s-o" 'find-file)
+  (bind-key "s-x" 'kill-region)
+  (bind-key "s-w" 'delete-window)
+  (bind-key "s-W" 'delete-frame)
+  (bind-key "s-n" 'make-frame)
+  (bind-key "s-z" 'undo-tree-undo)
+  (bind-key "s-Z" 'undo-tree-redo)
+  (bind-key "s-s" 'save-buffer)
+  ;; turn off "displays have separate spaces" so
+  ;; fullscreen won't black out other monitors.
+  (bind-key "s-<return>" 'toggle-frame-fullscreen)
+  (bind-key "M-s-h" 'mac-hide-others))
+
+;; this is slow :P
+(defun mac-hide-others ()
+  (interactive)
+  (do-applescript (concat "tell application \"System Events\" to "
+                          "set visible of every process whose visible is true "
+                          "and name is not \"Emacs\" "
+                          "and frontmost is false to "
+                          "false")))
+
+(defun configure-terminal ()
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t)
+  (setq mouse-wheel-follow-mouse 't)
+  (defvar alternating-scroll-down-next t)
+  (defvar alternating-scroll-up-next t)
+  (bind-key "<mouse-4>" 'alternating-scroll-down-line)
+  (bind-key "<mouse-5>" 'alternating-scroll-up-line)
+
+  (defun alternating-scroll-down-line ()
+    (interactive "@")
+    (when alternating-scroll-down-next
+      (scroll-down-line))
+    (setq alternating-scroll-down-next (not alternating-scroll-down-next)))
+
+  (defun alternating-scroll-up-line ()
+    (interactive "@")
+    (when alternating-scroll-up-next
+      (scroll-up-line))
+    (setq alternating-scroll-up-next (not alternating-scroll-up-next))))
+
+(defun system-is-mac () (eq system-type 'darwin))
+
+(defun configure-mac-modifiers ()
+       (setq mac-command-modifier 'super)
+       (setq mac-option-modifier 'meta))
+
+(if (system-is-mac)
+    (configure-mac-modifiers))
+
+(if (display-graphic-p)
+    (configure-gui)
+  (configure-terminal))
 
 
 ;; etc.
@@ -372,7 +369,7 @@ Repeated invocations toggle between the two most recently open buffers."
 
 
 ;; keybindings
-(global-set-key (kbd "C-<return>") 'crux-mini-smart-open-line)
-(global-set-key (kbd "S-<return>") 'crux-mini-smart-open-line-above)
+(bind-key "C-<return>" 'crux-mini-smart-open-line)
+(bind-key "S-<return>" 'crux-mini-smart-open-line-above)
 (global-set-key [remap move-beginning-of-line]
                 'crux-mini-move-beginning-of-line)
