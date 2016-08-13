@@ -10,13 +10,13 @@
 (tooltip-mode    0)
 
 ;; useful indicators
-(column-number-mode nil)
-(show-paren-mode    1)
+(column-number-mode)
+(show-paren-mode)
+(global-hl-line-mode)
 
 ;; cursor
-(blink-cursor-mode 0)
 (setq-default cursor-in-non-selected-windows nil)
-(global-hl-line-mode)
+(blink-cursor-mode 0)
 
 ;; fringe
 (fringe-mode '(8 . 1))
