@@ -54,6 +54,7 @@
 ** smooth scrolling with external mouse wheel
 ** whitespace faces
 ** reorg windows (split vert vs horiz)
+** sql beautify
 ** visit recent file
 ** what does ido c-k do?
 ** kill this/other window
