@@ -82,13 +82,6 @@
   "Storage area for persistent files")
 (unless (file-exists-p ivan/cache-directory)
   (make-directory ivan/cache-directory))
-(defconst ivan/auto-save-directory
-  (expand-file-name (concat ivan/cache-directory "auto-save/"))
-  "Auto-save directory")
-(unless (file-exists-p ivan/auto-save-directory)
-  (make-directory ivan/auto-save-directory))
-(setq auto-save-file-name-transforms
-      `((".*" ,ivan/auto-save-directory t)))
 (setq savehist-file (concat ivan/cache-directory "savehist"))
 (savehist-mode 1)
 (setq backup-directory-alist
