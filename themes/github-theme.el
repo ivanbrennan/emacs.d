@@ -128,11 +128,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; completions
    `(completions-annotations ((t (:foreground ,github-fg-1))))
 ;;;;; grep
-   `(grep-context-face ((t (:foreground ,github-fg))))
-   `(grep-error-face ((t (:foreground ,github-red-1 :weight bold :underline t))))
-   `(grep-hit-face ((t (:foreground ,github-blue))))
-   `(grep-match-face ((t (:foreground ,github-orange :weight bold))))
-   `(match ((t (:background ,github-bg-1 :foreground ,github-orange :weight bold))))
+   `(match ((t (:background ,"#F5F5F5" :weight bold))))
 ;;;;; isearch
    `(isearch ((t (:foreground ,github-yellow-2 :weight bold :background ,"#E4F1F7"))))
    `(isearch-fail ((t (:foreground ,github-fg :background ,github-red-4))))
