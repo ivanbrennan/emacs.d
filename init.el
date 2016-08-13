@@ -18,11 +18,6 @@
 (setq-default cursor-in-non-selected-windows nil)
 (blink-cursor-mode 0)
 
-;; fringe
-(fringe-mode '(8 . 1))
-(setq-default fringe-indicator-alist
-              (assq-delete-all 'truncation fringe-indicator-alist))
-
 ;; faces
 (setq custom-theme-directory (concat user-emacs-directory "themes/"))
 (add-to-list 'load-path custom-theme-directory)
