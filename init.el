@@ -1,5 +1,5 @@
 ;; blank slate
-(setq initial-scratch-message "")
+(setq initial-scratch-message nil)
 (setq inhibit-startup-screen t)
 (setq frame-title-format "emacs")
 
