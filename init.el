@@ -41,6 +41,12 @@
 (set-frame-parameter (selected-frame) 'alpha '(97 . 85))
 (add-to-list 'default-frame-alist   '(alpha . (97 . 85)))
 
+(defun ivan/toggle-transparency ()
+  (interactive)
+  (setq frame-alpha-lower-limit
+        (if (eql frame-alpha-lower-limit 100) 20 100))
+  (set-frame-parameter nil 'alpha (frame-parameter nil 'alpha)))
+
 ;; line-wrapping
 (setq-default truncate-lines t)
 (add-hook 'help-mode-hook #'visual-line-mode)
@@ -382,3 +388,4 @@ Repeated invocations toggle between the two most recently open buffers."
 (bind-key "S-<return>" 'crux-mini-smart-open-line-above)
 (global-set-key [remap move-beginning-of-line]
                 'crux-mini-move-beginning-of-line)
+(bind-key "s-u" 'ivan/toggle-transparency)
