@@ -71,41 +71,40 @@
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
 ;; whitespace
-(setq whitespace-style
-      (quote (face
-              empty
-              trailing
-              lines-tail
-              indentation
-              space-before-tab
-              space-after-tab)))
+(setq-default indent-tabs-mode nil
+              indicate-empty-lines t)
+
+(setq whitespace-line-column 90
+      whitespace-style '(face
+                         empty
+                         trailing
+                         lines-tail
+                         indentation
+                         space-before-tab
+                         space-after-tab))
+
 (global-whitespace-mode)
-(setq whitespace-line-column 90)
-(setq-default indent-tabs-mode nil)
-(setq-default indicate-empty-lines t)
 
 ;; persistence
 (make-directory (locate-user-emacs-file ".cache/") :mkdir_p)
 
-(setq backup-directory-alist
-      `(("." . ,(locate-user-emacs-file ".cache/backups/"))))
-(setq savehist-file
-      (locate-user-emacs-file ".cache/savehist"))
-(setq eshell-directory-name
-      (locate-user-emacs-file ".cache/eshell/"))
+(setq backup-directory-alist `(("." . ,(locate-user-emacs-file ".cache/backups/")))
+      savehist-file         (locate-user-emacs-file ".cache/savehist")
+      eshell-directory-name (locate-user-emacs-file ".cache/eshell/")
+      backup-by-copying t)
 
-(setq backup-by-copying t)
 (savehist-mode)
 
 ;; sensibility
-(setq minibuffer-eldef-shorten-default t)
+(setq read-buffer-completion-ignore-case t
+      require-final-newline              t
+      set-mark-command-repeat-pop        t
+      tab-always-indent                  'complete
+      ispell-program-name                "aspell"
+      ediff-split-window-function        #'split-window-horizontally
+      minibuffer-eldef-shorten-default   t)
+
 (minibuffer-electric-default-mode)
-(setq read-buffer-completion-ignore-case t)
-(setq require-final-newline t)
-(setq set-mark-command-repeat-pop t)
-(setq tab-always-indent 'complete)
-(setq ispell-program-name "aspell")
-(setq ediff-split-window-function #'split-window-horizontally)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
 ;; packages
@@ -118,8 +117,8 @@
              '("marmalade" . "https://marmalade-repo.org/packages/")
              :append)
 
-(setq package-archive-priorities '(("melpa-stable" . 2) ("marmalade" . 1)))
-(setq package-enable-at-startup nil)
+(setq package-archive-priorities '(("melpa-stable" . 2) ("marmalade" . 1))
+      package-enable-at-startup  nil)
 
 (defun package-path (pkg)
   "Return the path of the highest installed version of package PKG,
@@ -167,22 +166,22 @@ or nil if no installed versions are found."
 
 ;; gui & terminal
 (defun configure-gui ()
-  (bind-key "s-q" 'save-buffers-kill-terminal)
-  (bind-key "s-v" 'yank)
-  (bind-key "s-c" 'evil-yank)
-  (bind-key "s-a" 'mark-whole-buffer)
-  (bind-key "s-o" 'find-file)
-  (bind-key "s-x" 'kill-region)
-  (bind-key "s-w" 'delete-window)
-  (bind-key "s-W" 'delete-frame)
-  (bind-key "s-n" 'make-frame)
-  (bind-key "s-z" 'undo-tree-undo)
-  (bind-key "s-Z" 'undo-tree-redo)
-  (bind-key "s-s" 'save-buffer)
-  ;; turn off "displays have separate spaces" so
-  ;; fullscreen won't black out other monitors.
-  (bind-key "s-<return>" 'toggle-frame-fullscreen)
-  (bind-key "M-s-h" 'mac-hide-others))
+  (bind-keys ("s-q" . save-buffers-kill-terminal)
+             ("s-v" . yank)
+             ("s-c" . evil-yank)
+             ("s-a" . mark-whole-buffer)
+             ("s-o" . find-file)
+             ("s-x" . kill-region)
+             ("s-w" . delete-window)
+             ("s-W" . delete-frame)
+             ("s-n" . make-frame)
+             ("s-z" . undo-tree-undo)
+             ("s-Z" . undo-tree-redo)
+             ("s-s" . save-buffer)
+             ;; turn off "displays have separate spaces" so
+             ;; fullscreen won't black out other monitors.
+             ("s-<return>" . toggle-frame-fullscreen)
+             ("M-s-h" . mac-hide-others)))
 
 ;; this is slow :P
 (defun mac-hide-others ()
@@ -197,30 +196,32 @@ or nil if no installed versions are found."
   (require 'mouse)
   (xterm-mouse-mode t)
   (defun track-mouse (e))
-  (setq mouse-sel-mode t)
-  (setq mouse-wheel-follow-mouse 't)
+  (setq mouse-sel-mode t
+        mouse-wheel-follow-mouse 't)
   (defvar alternating-scroll-down-next t)
   (defvar alternating-scroll-up-next t)
-  (bind-key "<mouse-4>" 'alternating-scroll-down-line)
-  (bind-key "<mouse-5>" 'alternating-scroll-up-line)
+  (bind-keys ("<mouse-4>" . alternating-scroll-down-line)
+             ("<mouse-5>" . 'alternating-scroll-up-line))
 
   (defun alternating-scroll-down-line ()
     (interactive "@")
     (when alternating-scroll-down-next
       (scroll-down-line))
-    (setq alternating-scroll-down-next (not alternating-scroll-down-next)))
+    (setq alternating-scroll-down-next
+          (not alternating-scroll-down-next)))
 
   (defun alternating-scroll-up-line ()
     (interactive "@")
     (when alternating-scroll-up-next
       (scroll-up-line))
-    (setq alternating-scroll-up-next (not alternating-scroll-up-next))))
+    (setq alternating-scroll-up-next
+          (not alternating-scroll-up-next))))
 
 (defun system-is-mac () (eq system-type 'darwin))
 
 (defun configure-mac-modifiers ()
-       (setq mac-command-modifier 'super)
-       (setq mac-option-modifier 'meta))
+  (setq mac-command-modifier 'super
+        mac-option-modifier 'meta))
 
 (if (system-is-mac)
     (configure-mac-modifiers))
@@ -229,10 +230,10 @@ or nil if no installed versions are found."
     (configure-gui)
   (configure-terminal))
 
-
 ;; etc.
 (defun ivan/goto-match-beginning ()
-  (when (and isearch-forward isearch-other-end (not isearch-mode-end-hook-quit))
+  (when (and isearch-forward isearch-other-end
+             (not isearch-mode-end-hook-quit))
     (goto-char isearch-other-end)))
 (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
 
@@ -380,9 +381,9 @@ Repeated invocations toggle between the two most recently open buffers."
 
 
 ;; keybindings
-(bind-key "C-<return>" 'crux-mini-smart-open-line)
-(bind-key "S-<return>" 'crux-mini-smart-open-line-above)
+(bind-keys ("C-<return>" . crux-mini-smart-open-line)
+           ("S-<return>" . crux-mini-smart-open-line-above)
+           ("s-u"        . ivan/toggle-transparency)
+           ("M-s-;"      . global-hl-line-mode))
 (global-set-key [remap move-beginning-of-line]
                 'crux-mini-move-beginning-of-line)
-(bind-key "s-u" 'ivan/toggle-transparency)
-(bind-key "M-s-;" 'global-hl-line-mode)
