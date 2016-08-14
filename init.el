@@ -104,9 +104,11 @@
 (require 'package)
 
 (add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+             '("melpa-stable" . "http://stable.melpa.org/packages/")
+             :append)
 (add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/") t)
+             '("marmalade" . "https://marmalade-repo.org/packages/")
+             :append)
 
 (setq package-archive-priorities '(("melpa-stable" . 20) ("marmalade" . 5)))
 (setq package-enable-at-startup nil)
@@ -121,13 +123,13 @@ or nil if no installed versions are found."
             (concat "elpa/" name "*/" name ".el")))))))
 
 (require 'cl)
-(defun missing-packages (package-list)
-  (remove-if #'package-path package-list))
+(defun missing-packages (pkg-list)
+  (remove-if #'package-path pkg-list))
 
-(defun install-packages (packages)
+(defun install-packages (pkgs)
   (package-initialize)
   (package-refresh-contents)
-  (mapc 'package-install packages))
+  (mapc 'package-install pkgs))
 
 (let* ((essentials '(use-package evil))
        (missing-essentials (missing-packages essentials)))
