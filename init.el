@@ -71,8 +71,9 @@
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
 ;; whitespace
-(setq-default indent-tabs-mode nil
-              indicate-empty-lines t)
+(setq-default indent-tabs-mode         nil
+              show-trailing-whitespace t
+              indicate-empty-lines     t)
 
 (setq whitespace-line-column 90
       whitespace-style '(face
