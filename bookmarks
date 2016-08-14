@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("(cl) For Clauses"
+(("(elisp) Library Search"
+ (front-context-string . "\n15.3 Library Se")
+ (rear-context-string . "s,  Up: Loading\n")
+ (position . 739847)
+ (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/elisp")
+ (info-node . "Library Search")
+ (handler . Info-bookmark-jump))
+("(cl) For Clauses"
  (front-context-string . "`for VAR being t")
  (rear-context-string . "ding %S\" c b))\n\n")
  (position . 77480)
