@@ -28,13 +28,17 @@
 
 (set-face-attribute 'default t :font "Source Code Pro-16")
 (set-frame-font "Source Code Pro-16" nil t)
+
 (defun ivan/buffer-face-mode-variable (height)
   "Set font to a variable width font in the current buffer"
   (interactive)
   (setq buffer-face-mode-face `(:family "Avenir Next" :height ,height))
   (buffer-face-mode))
-(add-hook 'help-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 180))
-(add-hook 'Info-mode-hook (apply-partially #'ivan/buffer-face-mode-variable 200))
+
+(add-hook 'help-mode-hook
+          (apply-partially #'ivan/buffer-face-mode-variable 180))
+(add-hook 'Info-mode-hook
+          (apply-partially #'ivan/buffer-face-mode-variable 200))
 
 ;; transparency
 (set-frame-parameter (selected-frame) 'alpha '(97 . 85))
