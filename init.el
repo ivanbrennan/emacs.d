@@ -26,24 +26,27 @@
   (unless (ignore-errors (load-theme theme :no-confirm))
   (message "Unable to find theme file for ‘%s’" theme)))
 
-(let ((font "Source Code Pro-16"))
-  (set-face-attribute 'default t :font font)
-  (set-frame-font font nil t))
-
-(defun ivan/buffer-face-mode-variable (height)
+(defun ivan/buffer-face-mode-variable (var-font height)
   "Set font to a variable width font in the current buffer"
   (interactive)
-  (setq buffer-face-mode-face `(:family "Avenir Next" :height ,height))
+  (setq buffer-face-mode-face `(:family ,var-font :height ,height))
   (buffer-face-mode))
 
-(add-hook 'help-mode-hook
-          (apply-partially #'ivan/buffer-face-mode-variable 180))
-(add-hook 'Info-mode-hook
-          (apply-partially #'ivan/buffer-face-mode-variable 200))
+(let ((fix-font "Source Code Pro-16"))
+  (set-face-attribute 'default t :font fix-font)
+  (set-frame-font fix-font nil t))
+
+(let ((var-font "Avenir Next"))
+  (add-hook 'help-mode-hook
+            (apply-partially #'ivan/buffer-face-mode-variable var-font 180))
+  (add-hook 'Info-mode-hook
+            (apply-partially #'ivan/buffer-face-mode-variable var-font 200)))
 
 ;; transparency
-(set-frame-parameter (selected-frame) 'alpha '(97 . 85))
-(add-to-list 'default-frame-alist   '(alpha . (97 . 85)))
+(let ((active   97)
+      (inactive 85))
+  (set-frame-parameter (selected-frame) 'alpha `(,active . ,inactive))
+  (add-to-list 'default-frame-alist `(alpha . (,active . ,inactive))))
 
 (defun ivan/toggle-transparency ()
   (interactive)
