@@ -98,13 +98,13 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;; Built-in
 ;;;;; basic coloring
    '(button ((t (:underline t))))
-   `(link ((t (:foreground ,"#3873C3" :underline t :weight bold))))
+   `(link ((t (:foreground "#3873C3" :underline t :weight bold))))
    `(link-visited ((t (:foreground ,github-yellow-2 :underline t :weight normal))))
-   `(default ((t (:foreground ,github-fg+1 :background ,"white"))))
-   `(cursor ((t (:foreground ,"white" :background ,"#333333"))))
+   `(default ((t (:foreground ,github-fg+1 :background "white"))))
+   `(cursor ((t (:background "#333333"))))
    `(escape-glyph ((t (:foreground ,github-yellow :bold t))))
-   `(fringe ((t (:foreground ,"#D8D8D8" :background ,github-bg+1))))
-   `(header-line ((t (:foreground ,"#969896" :background ,"#F5F5F5"))))
+   `(fringe ((t (:foreground "#D8D8D8" :background ,github-bg+1))))
+   `(header-line ((t (:foreground "#969896" :background "#F5F5F5"))))
    `(info-node ((t (:foreground "#29D045" :slant italic :weight bold))))
    `(highlight ((t (:background ,github-bg-05))))
    `(success ((t (:foreground ,github-green :weight bold))))
@@ -128,39 +128,39 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; completions
    `(completions-annotations ((t (:foreground ,github-fg-1))))
 ;;;;; grep
-   `(match ((t (:background ,"#F5F5F5" :weight bold))))
+   `(match ((t (:background "#F5F5F5" :weight bold))))
 ;;;;; isearch
-   `(isearch ((t (:foreground ,github-yellow-2 :weight bold :background ,"#E4F1F7"))))
+   `(isearch ((t (:foreground ,github-yellow-2 :weight bold :background "#E4F1F7"))))
    `(isearch-fail ((t (:foreground ,github-fg :background ,github-red-4))))
-   `(lazy-highlight ((t (:foreground ,github-yellow-2 :weight bold :background ,"#F2F9DB"))))
+   `(lazy-highlight ((t (:foreground ,github-yellow-2 :weight bold :background "#F2F9DB"))))
 
    `(menu ((t (:foreground ,github-fg :background ,github-bg))))
-   `(minibuffer-prompt ((t (:foreground ,"#333333" :weight bold))))
+   `(minibuffer-prompt ((t (:foreground "#333333" :weight bold))))
    `(mode-line
-     ((,class (:foreground ,"#666666"
-                           :background ,"#E4F1F7" ;; homerow background
-                           :box (:line-width -1 :color ,"#C2E7F3")
+     ((,class (:foreground "#666666"
+                           :background "#E4F1F7" ;; homerow background
+                           :box (:line-width -1 :color "#C2E7F3")
                            ))
       (t :inverse-video t)))
-   `(mode-line-buffer-id ((t (:foreground ,"#000000" :weight bold)))) ;; todo: not happy with black here
+   `(mode-line-buffer-id ((t (:foreground "#000000" :weight bold)))) ;; todo: not happy with black here
    `(mode-line-inactive
-     ((t (:foreground ,"#969896"
+     ((t (:foreground "#969896"
                       :weight light
-                      :background ,"#F5F5F5"
+                      :background "#F5F5F5"
                       :box (:line-width -1 :color "#d8d8d8")))))
-   `(region ((,class (:background ,"#E8F1F6"))
+   `(region ((,class (:background "#E8F1F6"))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,github-bg+2))))
-   `(trailing-whitespace ((t (:background ,"#EDEDED"))))
-   `(vertical-border ((t (:foreground ,"#d0d0d0"))))
+   `(trailing-whitespace ((t (:background "#EDEDED"))))
+   `(vertical-border ((t (:foreground "#d0d0d0"))))
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,github-fg :weight normal))))  ;; weight bold (built-in keywords)
    `(font-lock-comment-face ((t (:foreground ,github-green))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,github-green-1))))
-   `(font-lock-constant-face ((t (:foreground ,"#0085B3"))))
+   `(font-lock-constant-face ((t (:foreground "#0085B3"))))
    `(font-lock-doc-face ((t (:foreground ,github-green+2))))
    `(font-lock-function-name-face ((t (:foreground "#7265A2"))))
-   `(font-lock-keyword-face ((t (:foreground ,"#A71D5D" :weight normal))))
+   `(font-lock-keyword-face ((t (:foreground "#A71D5D" :weight normal))))
    `(font-lock-negation-char-face ((t (:foreground ,github-yellow :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground "#A71D5D"))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,github-yellow :weight bold))))
@@ -228,12 +228,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(agda2-highlight-incomplete-pattern-face ((t (:foreground ,github-bg :background ,github-magenta))))
    `(agda2-highlight-typechecks-face ((t (:background ,github-red-4))))
 ;;;;; auto-complete
-   `(ac-candidate-face ((t (:background ,"#ffffff" :foreground ,"#333333" :box (:line-width -1 :style released-button)))))
-   `(ac-selection-face ((t (:background ,"#A71D5D" :foreground ,"#ffffff" :box (:line-width -1 :style released-button)))))
-   `(popup-tip-face ((t (:background ,"#ff0000" :foreground ,"#00ff00" ))))
-   `(popup-scroll-bar-foreground-face ((t (:background ,"#333333"))))
-   `(popup-scroll-bar-background-face ((t (:background ,"#ffffff"))))
-   `(popup-isearch-match ((t (:background ,"#ff00ff" :foreground ,"#00ffff"))))
+   `(ac-candidate-face ((t (:background "#ffffff" :foreground "#333333" :box (:line-width -1 :style released-button)))))
+   `(ac-selection-face ((t (:background "#A71D5D" :foreground "#ffffff" :box (:line-width -1 :style released-button)))))
+   `(popup-tip-face ((t (:background "#ff0000" :foreground "#00ff00" ))))
+   `(popup-scroll-bar-foreground-face ((t (:background "#333333"))))
+   `(popup-scroll-bar-background-face ((t (:background "#ffffff"))))
+   `(popup-isearch-match ((t (:background "#ff00ff" :foreground "#00ffff"))))
 ;;;;; avy
    `(avy-background-face
      ((t (:foreground ,github-fg-1 :background ,github-bg :inverse-video nil))))
@@ -291,14 +291,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ctbl:face-continue-bar ((t (:background ,github-bg-05 :foreground ,github-bg))))
    `(ctbl:face-row-select ((t (:background ,github-cyan :foreground ,github-bg))))
 ;;;;; diff
-   `(diff-added          ((t (:background ,"#E4FFEA"))))
-   `(diff-changed        ((t (:background ,"#E4F1F7"))))
-   `(diff-removed        ((t (:background ,"#FFEBEB"))))
-   `(diff-refine-added   ((t (:background ,"#83FCA7"))))
-   `(diff-refine-change  ((t (:background ,"#C2E7F3"))))
-   `(diff-refine-removed ((t (:background ,"#FFC8C9"))))
-   `(diff-header         ((t (:background ,"#F4F7FB" :foreground ,"#969896"))))
-   `(diff-file-header    ((t (:background ,"#F4F7FB" :foreground ,"#969896"))))
+   `(diff-added          ((t (:background "#E4FFEA"))))
+   `(diff-changed        ((t (:background "#E4F1F7"))))
+   `(diff-removed        ((t (:background "#FFEBEB"))))
+   `(diff-refine-added   ((t (:background "#83FCA7"))))
+   `(diff-refine-change  ((t (:background "#C2E7F3"))))
+   `(diff-refine-removed ((t (:background "#FFC8C9"))))
+   `(diff-header         ((t (:background "#F4F7FB" :foreground "#969896"))))
+   `(diff-file-header    ((t (:background "#F4F7FB" :foreground "#969896"))))
 ;;;;; diff-hl
    `(diff-hl-change ((,class (:foreground ,github-blue :background ,github-blue-2))))
    `(diff-hl-delete ((,class (:foreground ,github-red+1 :background ,github-red-1))))
@@ -331,14 +331,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(diredp-symlink ((t (:foreground ,github-yellow))))
    `(diredp-write-priv ((t (:foreground ,github-magenta))))
 ;;;;; ediff
-   `(ediff-current-diff-A ((t (:background ,"#FFEBEB"))))
-   `(ediff-current-diff-B ((t (:background ,"#E4FFEA"))))
-   `(ediff-even-diff-A ((t (:background ,"#F4F7FB"))))
-   `(ediff-even-diff-B ((t (:background ,"#F4F7FB"))))
-   `(ediff-fine-diff-A ((t (:background ,"#FFC8C9"))))
-   `(ediff-fine-diff-B ((t (:background ,"#83FCA7"))))
-   `(ediff-odd-diff-A ((t (:background ,"#F4F7FB"))))
-   `(ediff-odd-diff-B ((t (:background ,"#F4F7FB"))))
+   `(ediff-current-diff-A ((t (:background "#FFEBEB"))))
+   `(ediff-current-diff-B ((t (:background "#E4FFEA"))))
+   `(ediff-even-diff-A ((t (:background "#F4F7FB"))))
+   `(ediff-even-diff-B ((t (:background "#F4F7FB"))))
+   `(ediff-fine-diff-A ((t (:background "#FFC8C9"))))
+   `(ediff-fine-diff-B ((t (:background "#83FCA7"))))
+   `(ediff-odd-diff-A ((t (:background "#F4F7FB"))))
+   `(ediff-odd-diff-B ((t (:background "#F4F7FB"))))
 ;;;;; egg
    `(egg-text-base ((t (:foreground ,github-fg))))
    `(egg-help-header-1 ((t (:foreground ,github-yellow))))
@@ -446,7 +446,7 @@ Also bind `class' to ((class color) (min-colors 89))."
       (t (:foreground ,github-orange :weight bold :underline t))))
    `(flyspell-incorrect
      ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,"#FF4421") :inherit unspecified))
+       (:underline (:style wave :color "#FF4421") :inherit unspecified))
       (t (:foreground ,github-red-1 :weight bold :underline t))))
 ;;;;; full-ack
    `(ack-separator ((t (:foreground ,github-fg))))
@@ -588,9 +588,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,github-fg :background ,github-bg+1))))
    `(helm-swoop-target-word-face ((t (:foreground ,github-yellow :background ,github-bg+2 :weight bold))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,"#F8F8F8"))
+   `(hl-line-face ((,class (:background "#F8F8F8"))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,"#F8F8F8")) ; old emacsen
+   `(hl-line ((,class (:background "#F8F8F8")) ; old emacsen
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,github-bg+1))
@@ -670,7 +670,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,github-orange :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,github-orange :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground ,"#B3B3B3" :background ,github-bg))))
+   `(linum ((t (:foreground "#B3B3B3" :background ,github-bg))))
 ;;;;; ruler-mode
    `(ruler-mode-column-number ((t (:inherit 'ruler-mode-default :foreground ,github-fg))))
    `(ruler-mode-fill-column ((t (:inherit 'ruler-mode-default :foreground ,github-yellow))))
@@ -994,7 +994,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec ((t (:foreground ,github-red))))
 ;;;;; show-paren
    `(show-paren-mismatch ((t (:foreground ,github-fg-1 :background ,github-bg+3))))
-   `(show-paren-match ((t (:foreground ,"#333333" :background ,"#C2E7F3"))))
+   `(show-paren-match ((t (:foreground "#333333" :background "#C2E7F3"))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable GitHub for sml
    `(sml/global ((,class (:foreground ,github-fg :weight bold))))
@@ -1115,14 +1115,14 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; whitespace-mode
    `(whitespace-space ((t (:background ,github-bg+1 :foreground ,github-bg+1))))
    `(whitespace-hspace ((t (:background ,github-bg+1 :foreground ,github-bg+1))))
-   `(whitespace-tab ((t (:background ,"#EDEDED"))))
+   `(whitespace-tab ((t (:background "#EDEDED"))))
    `(whitespace-newline ((t (:foreground ,github-bg+1))))
-   `(whitespace-trailing ((t (:background ,"#EDEDED"))))
+   `(whitespace-trailing ((t (:background "#EDEDED"))))
    `(whitespace-line ((t (:background ,github-bg :foreground ,github-magenta))))
    `(whitespace-space-before-tab ((t (:background ,github-orange :foreground ,github-orange))))
    `(whitespace-indentation ((t (:background ,github-bg))))
-   `(whitespace-empty ((t (:background ,"#EDEDED"))))
-   `(whitespace-space-after-tab ((t (:background ,"#EDEDED" :foreground ,github-red))))
+   `(whitespace-empty ((t (:background "#EDEDED"))))
+   `(whitespace-space-after-tab ((t (:background "#EDEDED" :foreground ,github-red))))
 ;;;;; wanderlust
    `(wl-highlight-folder-few-face ((t (:foreground ,github-red-2))))
    `(wl-highlight-folder-many-face ((t (:foreground ,github-red-1))))
