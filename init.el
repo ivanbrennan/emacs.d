@@ -165,6 +165,12 @@ or nil if no installed versions are found."
 ;;(use-package ag...
 
 ;; gui & terminal
+(defun ivan/text-scale-reset ()
+  "Reset the height of the default face in the current buffer to its default value.
+Disables `text-scale-mode`."
+  (interactive)
+  (text-scale-set 0))
+
 (defun configure-gui ()
   (bind-keys ("s-q" . save-buffers-kill-terminal)
              ("s-v" . yank)
@@ -178,10 +184,15 @@ or nil if no installed versions are found."
              ("s-z" . undo-tree-undo)
              ("s-Z" . undo-tree-redo)
              ("s-s" . save-buffer)
+             ("s-u" . ivan/toggle-transparency)
+             ("s-=" . text-scale-increase)
+             ("s--" . ivan/text-scale-decrease)
+             ("s-0" . text-scale-reset)
+             ("M-s-;" . global-hl-line-mode)
+             ("M-s-h" . mac-hide-others)
              ;; turn off "displays have separate spaces" so
              ;; fullscreen won't black out other monitors.
-             ("s-<return>" . toggle-frame-fullscreen)
-             ("M-s-h" . mac-hide-others)))
+             ("s-<return>" . toggle-frame-fullscreen)))
 
 ;; this is slow :P
 (defun mac-hide-others ()
@@ -229,6 +240,12 @@ or nil if no installed versions are found."
 (if (display-graphic-p)
     (configure-gui)
   (configure-terminal))
+
+;; keybindings
+(bind-keys ("C-<return>" . crux-mini-smart-open-line)
+           ("S-<return>" . crux-mini-smart-open-line-above))
+(global-set-key [remap move-beginning-of-line]
+                'crux-mini-move-beginning-of-line)
 
 ;; etc.
 (defun ivan/goto-match-beginning ()
@@ -378,12 +395,3 @@ Repeated invocations toggle between the two most recently open buffers."
   "Edit the `user-init-file', in another window."
   (interactive)
   (find-file-other-window user-init-file))
-
-
-;; keybindings
-(bind-keys ("C-<return>" . crux-mini-smart-open-line)
-           ("S-<return>" . crux-mini-smart-open-line-above)
-           ("s-u"        . ivan/toggle-transparency)
-           ("M-s-;"      . global-hl-line-mode))
-(global-set-key [remap move-beginning-of-line]
-                'crux-mini-move-beginning-of-line)
