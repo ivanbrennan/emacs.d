@@ -114,11 +114,11 @@
 (defun package-path (package)
   "Return the path of the highest installed version of PACKAGE,
 or nil if no installed versions are found."
-  (let* ((name (symbol-name package))
-         (path (concat user-emacs-directory
-                       "elpa/"
-                       (concat name "*/" name ".el"))))
-         (car (last (file-expand-wildcards path)))))
+  (let ((name (symbol-name package)))
+    (car (last
+          (file-expand-wildcards
+           (locate-user-emacs-file
+            (concat "elpa/" name "*/" name ".el")))))))
 
 (require 'cl)
 (defun missing-packages (package-list)
@@ -133,10 +133,10 @@ or nil if no installed versions are found."
        (missing-essentials (missing-packages essentials)))
   (if missing-essentials (install-packages missing-essentials)))
 
-(defun add-package-to-load-path (p)
-  (let ((dir (file-name-directory (package-path p))))
-    (add-to-list 'load-path
-                 (expand-file-name dir user-emacs-directory))))
+(defun add-package-to-load-path (pkg)
+  (add-to-list 'load-path
+               (directory-file-name
+                (file-name-directory (package-path pkg)))))
 
 (add-package-to-load-path 'use-package)
 (add-package-to-load-path 'bind-key)
