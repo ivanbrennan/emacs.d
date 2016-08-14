@@ -25,6 +25,7 @@ M-Tab :: i-spell-complete-word
 C-h after a prefix key
 M-x customize-mode
 apropos-sort-by-scores
+C-x ESC ESC :: repeat-complex-command
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
