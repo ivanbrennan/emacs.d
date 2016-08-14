@@ -102,8 +102,8 @@
 (setq set-mark-command-repeat-pop t)
 (setq tab-always-indent 'complete)
 (setq ispell-program-name "aspell")
-(setq ediff-split-window-function 'split-window-horizontally)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(setq ediff-split-window-function #'split-window-horizontally)
+(add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
 ;; packages
 (require 'package)
@@ -154,8 +154,8 @@ or nil if no installed versions are found."
   :load-path "elpa/page-break-lines-0.11"
   :commands page-break-lines-mode
   :config
-  (add-hook 'help-mode-hook 'page-break-lines-mode)
-  (add-hook 'Info-mode-hook 'page-break-lines-mode))
+  (add-hook 'help-mode-hook #'page-break-lines-mode)
+  (add-hook 'Info-mode-hook #'page-break-lines-mode))
 
 ;;(use-package magit...
 ;;(use-package auto-complete...
@@ -231,7 +231,7 @@ or nil if no installed versions are found."
 (defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end (not isearch-mode-end-hook-quit))
     (goto-char isearch-other-end)))
-(add-hook 'isearch-mode-end-hook 'ivan/goto-match-beginning)
+(add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
 
 ;; let Magit handle Git
 (setq vc-handled-backends (delq 'Git vc-handled-backends))
