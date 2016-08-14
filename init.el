@@ -18,10 +18,14 @@
 (setq-default cursor-in-non-selected-windows nil)
 (blink-cursor-mode 0)
 
-;; faces
-(setq custom-theme-directory (concat user-emacs-directory "themes/"))
-(add-to-list 'load-path custom-theme-directory)
-(load-theme 'github t)
+;; theme
+(setq custom-theme-directory (locate-user-emacs-file "themes/"))
+(make-directory custom-theme-directory :mkdir_p)
+
+(let ((theme 'github))
+  (unless (ignore-errors (load-theme theme :no-confirm))
+  (message "Unable to find theme file for ‘%s’" theme)))
+
 (set-face-attribute 'default t :font "Source Code Pro-16")
 (set-frame-font "Source Code Pro-16" nil t)
 (defun ivan/buffer-face-mode-variable (height)
