@@ -77,17 +77,17 @@
 (setq-default indicate-empty-lines t)
 
 ;; persistence
-(defconst ivan/cache-directory
-  (expand-file-name (concat user-emacs-directory ".cache/"))
-  "Storage area for persistent files")
-(unless (file-exists-p ivan/cache-directory)
-  (make-directory ivan/cache-directory))
-(setq savehist-file (concat ivan/cache-directory "savehist"))
-(savehist-mode 1)
+(make-directory (locate-user-emacs-file ".cache/") :mkdir_p)
+
 (setq backup-directory-alist
-      `(("." . ,(expand-file-name (concat ivan/cache-directory "backups")))))
+      `(("." . ,(locate-user-emacs-file ".cache/backups/"))))
+(setq savehist-file
+      (locate-user-emacs-file ".cache/savehist"))
+(setq eshell-directory-name
+      (locate-user-emacs-file ".cache/eshell/"))
+
 (setq backup-by-copying t)
-(setq eshell-directory-name (concat ivan/cache-directory "eshell/"))
+(savehist-mode)
 
 ;; sensibility
 (setq minibuffer-eldef-shorten-default t)
