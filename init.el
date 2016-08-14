@@ -1,7 +1,7 @@
 ;; blank slate
-(setq initial-scratch-message nil)
-(setq inhibit-startup-screen t)
-(setq frame-title-format "emacs")
+(setq initial-scratch-message nil
+      inhibit-startup-screen t
+      frame-title-format "emacs")
 
 ;; clean screen
 (menu-bar-mode   0)
@@ -26,8 +26,9 @@
   (unless (ignore-errors (load-theme theme :no-confirm))
   (message "Unable to find theme file for ‘%s’" theme)))
 
-(set-face-attribute 'default t :font "Source Code Pro-16")
-(set-frame-font "Source Code Pro-16" nil t)
+(let ((font "Source Code Pro-16"))
+  (set-face-attribute 'default t :font font)
+  (set-frame-font font nil t))
 
 (defun ivan/buffer-face-mode-variable (height)
   "Set font to a variable width font in the current buffer"
