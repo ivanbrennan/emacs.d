@@ -1118,7 +1118,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(whitespace-tab ((t (:background "#EDEDED"))))
    `(whitespace-newline ((t (:foreground ,github-bg+1))))
    `(whitespace-trailing ((t (:background "#EDEDED"))))
-   `(whitespace-line ((t (:background ,github-bg :foreground ,github-magenta))))
+   `(whitespace-line ((t (:background "#EDEDED"))))
    `(whitespace-space-before-tab ((t (:background ,github-orange :foreground ,github-orange))))
    `(whitespace-indentation ((t (:background ,github-bg))))
    `(whitespace-empty ((t (:background "#EDEDED"))))
