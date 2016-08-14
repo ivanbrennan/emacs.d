@@ -143,6 +143,7 @@ Also bind `class' to ((class color) (min-colors 89))."
                            ))
       (t :inverse-video t)))
    `(mode-line-buffer-id ((t (:foreground "#000000" :weight bold)))) ;; todo: not happy with black here
+   `(mode-line-highlight ((t (:foreground "#3873C3"))))
    `(mode-line-inactive
      ((t (:foreground "#969896"
                       :weight light
