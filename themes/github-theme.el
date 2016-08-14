@@ -51,6 +51,7 @@ Each element has the form (NAME . HEX).")
 ;; bigblue  "#3873C3" (minibuffer-prompt foreground)
 ;; aqua     "#C2E7F3" (show-paren-match background)
 ;; skyblue  "#E4F1F7" (isearch background)
+;; bluegrey "#ECF3F7" (mode-line background)
 ;; paleblue "#F1F9FC"
 ;; fluff    "#F4F7FB" (diff-header background)
 ;; marine   "#0085B3" (font-lock-type-face foreground)
@@ -138,7 +139,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(minibuffer-prompt ((t (:foreground "#333333" :weight bold))))
    `(mode-line
      ((,class (:foreground "#666666"
-                           :background "#E4F1F7" ;; homerow background
+                           :background "#ECF3F7" ;; homerow background
                            :box (:line-width -1 :color "#C2E7F3")
                            ))
       (t :inverse-video t)))
