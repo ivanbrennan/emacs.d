@@ -200,7 +200,7 @@ or nil if no installed versions are found."
   (defvar alternating-scroll-down-next t)
   (defvar alternating-scroll-up-next t)
   (bind-keys ("<mouse-4>" . alternating-scroll-down-line)
-             ("<mouse-5>" . 'alternating-scroll-up-line))
+             ("<mouse-5>" . alternating-scroll-up-line))
 
   (defun alternating-scroll-down-line ()
     (interactive "@")
