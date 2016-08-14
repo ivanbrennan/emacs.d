@@ -186,8 +186,8 @@ Disables `text-scale-mode`."
              ("s-s" . save-buffer)
              ("s-u" . ivan/toggle-transparency)
              ("s-=" . text-scale-increase)
-             ("s--" . ivan/text-scale-decrease)
-             ("s-0" . text-scale-reset)
+             ("s--" . text-scale-decrease)
+             ("s-0" . ivan/text-scale-reset)
              ("M-s-;" . global-hl-line-mode)
              ("M-s-h" . mac-hide-others)
              ;; turn off "displays have separate spaces" so
