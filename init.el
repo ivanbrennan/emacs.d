@@ -26,21 +26,8 @@
   (unless (ignore-errors (load-theme theme :no-confirm))
   (message "Unable to find theme file for ‘%s’" theme)))
 
-(defun ivan/buffer-face-mode-variable (var-font height)
-  "Set font to a variable width font in the current buffer"
-  (interactive)
-  (setq buffer-face-mode-face `(:family ,var-font :height ,height))
-  (buffer-face-mode))
-
-(let ((fix-font "Source Code Pro-16"))
-  (set-face-attribute 'default t :font fix-font)
-  (set-frame-font fix-font nil t))
-
-(let ((var-font "Avenir Next"))
-  (add-hook 'help-mode-hook
-            (apply-partially #'ivan/buffer-face-mode-variable var-font 180))
-  (add-hook 'Info-mode-hook
-            (apply-partially #'ivan/buffer-face-mode-variable var-font 200)))
+(add-hook 'help-mode-hook #'variable-pitch-mode)
+(add-hook 'Info-mode-hook #'variable-pitch-mode)
 
 ;; transparency
 (let ((active   97)
