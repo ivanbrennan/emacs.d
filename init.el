@@ -48,7 +48,7 @@
 (add-hook 'Info-mode-hook #'visual-line-mode)
 
 ;; splits
-(setq split-width-threshold 120)
+(setq split-width-threshold 130)
 
 ;; page-breaks
 (add-hook 'help-mode-hook #'page-break-lines-mode)
