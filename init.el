@@ -126,8 +126,7 @@ or nil if no installed versions are found."
   (let ((name (symbol-name pkg)))
     (car (last
           (file-expand-wildcards
-           (locate-user-emacs-file
-            (concat "elpa/" name "*/" name ".el")))))))
+           (concat package-user-dir "/" name "*/" name ".el"))))))
 
 (defun add-package-to-load-path (pkg)
   (add-to-list 'load-path
