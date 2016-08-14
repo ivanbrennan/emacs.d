@@ -110,7 +110,7 @@
              '("marmalade" . "https://marmalade-repo.org/packages/")
              :append)
 
-(setq package-archive-priorities '(("melpa-stable" . 20) ("marmalade" . 5)))
+(setq package-archive-priorities '(("melpa-stable" . 2) ("marmalade" . 1)))
 (setq package-enable-at-startup nil)
 
 (defun package-path (package)
