@@ -50,10 +50,6 @@
 ;; splits
 (setq split-width-threshold 130)
 
-;; page-breaks
-(add-hook 'help-mode-hook #'page-break-lines-mode)
-(add-hook 'Info-mode-hook #'page-break-lines-mode)
-
 ;; scroll
 (setq scroll-step 1
       scroll-margin 0
@@ -122,23 +118,15 @@ or nil if no installed versions are found."
            (locate-user-emacs-file
             (concat "elpa/" name "*/" name ".el")))))))
 
-(require 'cl)
-(defun missing-packages (pkg-list)
-  (remove-if #'package-path pkg-list))
-
-(defun install-packages (pkgs)
-  (package-initialize)
-  (package-refresh-contents)
-  (mapc 'package-install pkgs))
-
-(let* ((essentials '(use-package evil))
-       (missing-essentials (missing-packages essentials)))
-  (if missing-essentials (install-packages missing-essentials)))
-
 (defun add-package-to-load-path (pkg)
   (add-to-list 'load-path
                (directory-file-name
                 (file-name-directory (package-path pkg)))))
+
+(unless (package-path 'use-package)
+  (package-initialize)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (add-package-to-load-path 'use-package)
 (add-package-to-load-path 'bind-key)
@@ -155,7 +143,10 @@ or nil if no installed versions are found."
 
 (use-package page-break-lines
   :load-path "elpa/page-break-lines-0.11"
-  :commands page-break-lines-mode)
+  :commands page-break-lines-mode
+  :config
+  (add-hook 'help-mode-hook 'page-break-lines-mode)
+  (add-hook 'Info-mode-hook 'page-break-lines-mode))
 
 ;;(use-package magit...
 ;;(use-package auto-complete...
