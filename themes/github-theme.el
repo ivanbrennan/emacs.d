@@ -131,7 +131,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(match ((t (:background "#F5F5F5" :weight bold))))
 ;;;;; isearch
    `(isearch ((t (:foreground ,github-yellow-2 :weight bold :background "#E4F1F7"))))
-   `(isearch-fail ((t (:foreground ,github-fg :background ,github-red-4))))
+   `(isearch-fail ((t (:background "#FFC8C9"))))
    `(lazy-highlight ((t (:foreground ,github-yellow-2 :weight bold :background "#F2F9DB"))))
 
    `(menu ((t (:foreground ,github-fg :background ,github-bg))))
