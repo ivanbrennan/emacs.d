@@ -113,10 +113,10 @@
 (setq package-archive-priorities '(("melpa-stable" . 2) ("marmalade" . 1)))
 (setq package-enable-at-startup nil)
 
-(defun package-path (package)
-  "Return the path of the highest installed version of PACKAGE,
+(defun package-path (pkg)
+  "Return the path of the highest installed version of package PKG,
 or nil if no installed versions are found."
-  (let ((name (symbol-name package)))
+  (let ((name (symbol-name pkg)))
     (car (last
           (file-expand-wildcards
            (locate-user-emacs-file
