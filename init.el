@@ -77,8 +77,9 @@
 (make-directory (locate-user-emacs-file ".cache/") :mkdir_p)
 
 (setq backup-directory-alist `(("." . ,(locate-user-emacs-file ".cache/backups/")))
-      savehist-file         (locate-user-emacs-file ".cache/savehist")
-      eshell-directory-name (locate-user-emacs-file ".cache/eshell/")
+      savehist-file                    (locate-user-emacs-file ".cache/savehist")
+      ido-save-directory-list-file     (locate-user-emacs-file ".cache/ido.last")
+      eshell-directory-name            (locate-user-emacs-file ".cache/eshell/")
       backup-by-copying t)
 
 (savehist-mode)
