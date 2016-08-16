@@ -171,6 +171,12 @@ Disables `text-scale-mode`."
   (interactive)
   (text-scale-set 0))
 
+(defun ivan/local-toggle-hl-line ()
+  "Toggle line highlighting in current buffer"
+  (interactive)
+  (setq-local global-hl-line-mode
+              (null global-hl-line-mode)))
+
 (defun configure-gui ()
   (bind-keys ("s-q" . save-buffers-kill-terminal)
              ("s-v" . yank)
@@ -188,7 +194,7 @@ Disables `text-scale-mode`."
              ("s-=" . text-scale-increase)
              ("s--" . text-scale-decrease)
              ("s-0" . ivan/text-scale-reset)
-             ("M-s-;" . global-hl-line-mode)
+             ("M-s-;" . ivan/local-toggle-hl-line)
              ("M-s-h" . mac-hide-others)
              ;; turn off "displays have separate spaces" so
              ;; fullscreen won't black out other monitors.
