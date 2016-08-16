@@ -243,7 +243,13 @@ Disables `text-scale-mode`."
 
 ;; keybindings
 (bind-keys ("C-<return>" . crux-mini-smart-open-line)
-           ("S-<return>" . crux-mini-smart-open-line-above))
+           ("S-<return>" . crux-mini-smart-open-line-above)
+           ("M-/"        . hippie-expand)
+           ("C-x C-b"    . ibuffer)
+           ("C-s"        . isearch-forward-regexp)
+           ("C-r"        . isearch-backward-regexp)
+           ("C-M-s"      . isearch-forward)
+           ("C-M-r"      . isearch-backward))
 (global-set-key [remap move-beginning-of-line]
                 'crux-mini-move-beginning-of-line)
 
