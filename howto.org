@@ -20,6 +20,7 @@
 *** theme used defvar, which is resistant to re-evaluation; you'd have to restart emacs to get the variable changes to show up
 * How To
 ** Helm
+** Paredit
 ** resize windows
 ** zoom windows
 ** single space after sentence
