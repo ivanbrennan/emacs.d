@@ -90,13 +90,17 @@
 (savehist-mode)
 
 ;; sensibility
-(setq read-buffer-completion-ignore-case t
-      require-final-newline              t
-      set-mark-command-repeat-pop        t
-      tab-always-indent                  'complete
-      ispell-program-name                "aspell"
-      ediff-split-window-function        #'split-window-horizontally
-      minibuffer-eldef-shorten-default   t)
+(setq read-buffer-completion-ignore-case  t
+      require-final-newline               t
+      set-mark-command-repeat-pop         t
+      tab-always-indent                   'complete
+      ispell-program-name                 "aspell"
+      ediff-split-window-function         #'split-window-horizontally
+      minibuffer-eldef-shorten-default    t
+      uniquify-buffer-name-style          'forward
+      save-interprogram-paste-before-kill t
+      apropos-do-all                      t
+      ediff-window-setup-function         'ediff-setup-windows-plain)
 
 (minibuffer-electric-default-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
