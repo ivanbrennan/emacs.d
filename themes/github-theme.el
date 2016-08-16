@@ -49,9 +49,10 @@ Each element has the form (NAME . HEX).")
 
 ;; navyblue "#183691" (font-lock-string-face foreground)
 ;; bigblue  "#3873C3" (minibuffer-prompt foreground)
-;; aqua     "#C2E7F3" (show-paren-match background)
+;; aquablue "#C2E7F3" (mode-line box outline)
 ;; skyblue  "#E4F1F7" (isearch background)
 ;; bluegrey "#ECF3F7" (mode-line background)
+;; aqua     "#DEFDFE" (show-paren-match background)
 ;; paleblue "#F1F9FC"
 ;; fluff    "#F4F7FB" (diff-header background)
 ;; marine   "#0085B3" (font-lock-type-face foreground)
@@ -998,7 +999,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec ((t (:foreground ,github-red))))
 ;;;;; show-paren
    `(show-paren-mismatch ((t (:foreground ,github-fg-1 :background ,github-bg+3))))
-   `(show-paren-match ((t (:foreground "#333333" :background "#C2E7F3"))))
+   `(show-paren-match ((t (:foreground "#333333" :background "#E4FFEA"))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable GitHub for sml
    `(sml/global ((,class (:foreground ,github-fg :weight bold))))
