@@ -18,9 +18,9 @@
 *** add a function to isearch-mode-end-hook
 ** why did i have to specify string literals to get the right colors, rather than changing the variables containing such strings?
 *** theme used defvar, which is resistant to re-evaluation; you'd have to restart emacs to get the variable changes to show up
+** toggle hl-line off in buffer
+*** M-s-; keybinding
 * How To
-** Helm
-** Paredit
 ** resize windows
 ** zoom windows
 ** single space after sentence
@@ -63,10 +63,8 @@
 *** C-x 0
 ** jump by block (like } in vim)
 ** jump back (like C-o in vim)
-** magit
 ** aggressive-indent-mode
 ** multi-cursor
-** toggle hl-line off in buffer
 ** prettier org mode
 *** org-bullets
 *** org-beautify-theme
@@ -80,6 +78,13 @@
 *** fixed?
 ** accept and execute C-r result in minibuffer
 *** some custom C-<return> binding?
+* Packages to try
+** Helm | ido-vertical-mode | Ivy-mode | Swiper | Counsel
+** idle-highlight-mode
+** find-file-in-project
+** reconcile C-<return> | S-<return> with Org-mode bindings
+** Paredit
+** magit
 * Questions
 ** What are the different load-paths for?
 *** /Users/ivan/.emacs.d/elpa/...
