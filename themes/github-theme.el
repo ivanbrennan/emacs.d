@@ -109,7 +109,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(fringe ((t (:foreground "#D8D8D8" :background ,github-bg+1))))
    `(header-line ((t (:foreground "#969896" :background "#F5F5F5"))))
    `(info-node ((t (:foreground "#29D045" :slant italic :weight bold))))
-   `(highlight ((t (:background ,github-bg-05))))
+   `(highlight ((t (:background "#F8F8F8"))))
    `(success ((t (:foreground ,github-green :weight bold))))
    `(warning ((t (:foreground ,github-orange :weight bold))))
    `(tooltip ((t (:foreground ,github-fg :background ,github-bg+1))))
