@@ -11,8 +11,13 @@
 
 ;; useful indicators
 (column-number-mode)
-(show-paren-mode)
 (global-hl-line-mode)
+
+;; parens
+(show-paren-mode)
+(electric-pair-mode)
+(setq blink-matching-paren 'jump
+      blink-matching-delay 0.25)
 
 ;; cursor
 (setq-default cursor-in-non-selected-windows nil)
