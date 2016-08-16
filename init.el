@@ -108,6 +108,10 @@
 ;; env
 (setenv "PAGER" "/usr/bin/env cat")
 
+;; documentation
+(eval-after-load 'info
+  '(push "/usr/local/share/info" Info-default-directory-list))
+
 ;; packages
 (require 'package)
 
