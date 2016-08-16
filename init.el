@@ -260,8 +260,6 @@ Disables `text-scale-mode`."
            ("C-r"        . isearch-backward-regexp)
            ("C-M-s"      . isearch-forward)
            ("C-M-r"      . isearch-backward))
-(global-set-key [remap move-beginning-of-line]
-                'crux-mini-move-beginning-of-line)
 
 ;; etc.
 (defun ivan/goto-match-beginning ()
