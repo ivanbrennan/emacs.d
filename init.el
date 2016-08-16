@@ -101,6 +101,9 @@
 (minibuffer-electric-default-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
+;; env
+(setenv "PAGER" "/usr/bin/env cat")
+
 ;; packages
 (require 'package)
 
