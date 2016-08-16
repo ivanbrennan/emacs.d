@@ -109,8 +109,8 @@
 (setenv "PAGER" "/usr/bin/env cat")
 
 ;; documentation
-(eval-after-load 'info
-  '(push "/usr/local/share/info" Info-default-directory-list))
+(eval-after-load 'info '(add-to-list 'Info-default-directory-list
+                                     (locate-user-emacs-file "info/")))
 
 ;; packages
 (require 'package)
