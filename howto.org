@@ -23,6 +23,8 @@
 * How To
 ** resize windows
 ** zoom windows
+** make switch-to-buffer select other frame if it's visible there
+*** ido-mode does this. how can I do it outside of ido-mode?
 ** single space after sentence
 ** replace in region without activating region
 ** open a file/buffer in other window
@@ -79,6 +81,9 @@
 ** accept and execute C-r result in minibuffer
 *** some custom C-<return> binding?
 * Packages to try
+** Evil
+** Undo-tree
+** Winner-mode
 ** Helm | ido-vertical-mode | Ivy-mode | Swiper | Counsel
 ** idle-highlight-mode
 ** find-file-in-project
