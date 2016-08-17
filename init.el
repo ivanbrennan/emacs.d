@@ -184,27 +184,27 @@ Disables `text-scale-mode`."
               (null global-hl-line-mode)))
 
 (defun configure-gui ()
-  (bind-keys ("s-q" . save-buffers-kill-terminal)
-             ("s-v" . yank)
-             ("s-c" . evil-yank)
-             ("s-a" . mark-whole-buffer)
-             ("s-o" . find-file)
-             ("s-x" . kill-region)
-             ("s-w" . delete-window)
-             ("s-W" . delete-frame)
-             ("s-n" . make-frame)
-             ("s-z" . undo-tree-undo)
-             ("s-Z" . undo-tree-redo)
-             ("s-s" . save-buffer)
-             ("s-u" . ivan/toggle-transparency)
-             ("s-=" . text-scale-increase)
-             ("s--" . text-scale-decrease)
-             ("s-0" . ivan/text-scale-reset)
+  (bind-keys ("s-q" . save-buffers-kill-terminal) ; bind M-s-q to fill-paragraph
+             ("s-v" . yank)                       ; bind M-s-v to scroll-down-command
+             ("s-c" . evil-yank)                  ; bind M-S-c to capitalize-word
+             ("s-a" . mark-whole-buffer)          ; bind M-s-a to backward-sentence
+             ("s-o" . find-file)                  ; sacrifice face-menu-key map
+             ("s-x" . kill-region)                ; use M-x for itself, use C-w for kill-region
+             ("s-w" . delete-window)              ; bind C-S-w to kill-ring-save
+             ("s-W" . delete-frame)               ; covered by above
+             ("s-n" . make-frame)                 ; unused
+             ("s-z" . undo-tree-undo)             ; bind C-/ to undo-tree-undo (and preserve default M-z)
+             ("s-Z" . undo-tree-redo)             ; bind C-? to undo-tree-redo (and preserve default M-z)
+             ("s-s" . save-buffer)                ; bind M-s... to M-s-s...
+             ("s-u" . ivan/toggle-transparency)   ; use M-s-u for this
+             ("s-=" . text-scale-increase)        ; use M-s-= for this
+             ("s--" . text-scale-decrease)        ; use M-s-- for this
+             ("s-0" . ivan/text-scale-reset)      ; use M-s-0 for this
              ("M-s-;" . ivan/local-toggle-hl-line)
              ("M-s-h" . mac-hide-others)
              ;; turn off "displays have separate spaces" so
              ;; fullscreen won't black out other monitors.
-             ("s-<return>" . toggle-frame-fullscreen)))
+             ("s-<return>" . toggle-frame-fullscreen))) ; unused
 
 ;; this is slow :P
 (defun mac-hide-others ()
