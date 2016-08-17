@@ -83,6 +83,9 @@
 *** some custom C-<return> binding?
 * Packages to try
 ** Evil
+*** evil-args
+*** evil-leader
+*** evil-... etc., etc., etc.
 ** Undo-tree
 ** Winner-mode
 ** Helm | ido-vertical-mode | Ivy-mode | Swiper | Counsel
