@@ -100,7 +100,8 @@
       uniquify-buffer-name-style          'forward
       save-interprogram-paste-before-kill t
       apropos-do-all                      t
-      ediff-window-setup-function         'ediff-setup-windows-plain)
+      ediff-window-setup-function         'ediff-setup-windows-plain
+      sentence-end-double-space           nil)
 
 (minibuffer-electric-default-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
