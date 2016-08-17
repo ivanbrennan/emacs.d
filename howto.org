@@ -22,6 +22,7 @@
 *** M-s-; keybinding
 * How To
 ** resize windows
+** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 ** zoom windows
 ** make switch-to-buffer select other frame if it's visible there
 *** ido-mode does this. how can I do it outside of ido-mode?

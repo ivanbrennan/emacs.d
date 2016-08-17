@@ -260,7 +260,8 @@ Disables `text-scale-mode`."
            ("C-s"        . isearch-forward-regexp)
            ("C-r"        . isearch-backward-regexp)
            ("C-M-s"      . isearch-forward)
-           ("C-M-r"      . isearch-backward))
+           ("C-M-r"      . isearch-backward)
+           ("C-w"        . ivan/kill-region-or-backward-kill-word))
 
 ;; etc.
 (defun ivan/goto-match-beginning ()
@@ -272,6 +273,15 @@ Disables `text-scale-mode`."
 ;; let Magit handle Git
 (setq vc-handled-backends (delq 'Git vc-handled-backends))
 
+;; more useful C-w (this should be adjusted to account for evil mode,
+;; in particular insert-state, once I start using evil).
+(defun ivan/kill-region-or-backward-kill-word (&optional arg region)
+  "`kill-region' if the region is active, otherwise `backward-kill-word'"
+  (interactive
+   (list (prefix-numeric-value current-prefix-arg) (use-region-p)))
+  (if region
+      (kill-region (region-beginning) (region-end))
+    (backward-kill-word arg)))
 
 ;;; crux-mini (lifted from crux)
 (defun crux-mini-smart-open-line-above ()
