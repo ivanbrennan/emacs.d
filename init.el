@@ -101,8 +101,7 @@
       save-interprogram-paste-before-kill t
       apropos-do-all                      t
       ediff-window-setup-function         'ediff-setup-windows-plain
-      sentence-end-double-space           nil
-      confirm-kill-emacs                  'y-or-n-p)
+      sentence-end-double-space           nil)
 
 (minibuffer-electric-default-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
@@ -184,27 +183,42 @@ Disables `text-scale-mode`."
               (null global-hl-line-mode)))
 
 (defun configure-gui ()
-  (bind-keys ("s-q" . save-buffers-kill-terminal) ; bind M-s-q to fill-paragraph
-             ("s-v" . yank)                       ; bind M-s-v to scroll-down-command
-             ("s-c" . evil-yank)                  ; bind M-S-c to capitalize-word
-             ("s-a" . mark-whole-buffer)          ; bind M-s-a to backward-sentence
-             ("s-o" . find-file)                  ; sacrifice face-menu-key map
-             ("s-x" . kill-region)                ; use M-x for itself, use C-w for kill-region
-             ("s-w" . delete-window)              ; bind C-S-w to kill-ring-save
-             ("s-W" . delete-frame)               ; covered by above
-             ("s-n" . make-frame)                 ; unused
-             ("s-z" . undo-tree-undo)             ; bind C-/ to undo-tree-undo (and preserve default M-z)
-             ("s-Z" . undo-tree-redo)             ; bind C-? to undo-tree-redo (and preserve default M-z)
-             ("s-s" . save-buffer)                ; bind M-s... to M-s-s...
-             ("s-u" . ivan/toggle-transparency)   ; use M-s-u for this
-             ("s-=" . text-scale-increase)        ; use M-s-= for this
-             ("s--" . text-scale-decrease)        ; use M-s-- for this
-             ("s-0" . ivan/text-scale-reset)      ; use M-s-0 for this
+  (bind-keys ("ESC M-q" . save-buffers-kill-terminal)
+             ("M-s-q" . save-buffers-kill-terminal)
+
+             ("ESC M-v" . yank)
+             ("M-s-v" . yank)
+
+             ("ESC M-c" . evil-yank)
+
+             ("ESC M-a" . mark-whole-buffer)
+             ("M-s-a" . mark-whole-buffer)
+
+             ("ESC M-o" . facemenu-keymap) ; ⤺ emacs
+             (    "M-o" . find-file)       ; ⤻ mac
+
+             ("ESC M-x" . kill-region)
+             ("M-s-x" . kill-region)
+
+             ("ESC M-w" . delete-window)
+             ("M-s-w" . delete-window)
+
+             ("ESC M-W" . delete-frame)
+
+             ("M-n" . make-frame)
+
+             ("ESC M-s" . save-buffer)
+             ("M-s-s" . save-buffer)
+
+             ("M-s-u" . ivan/toggle-transparency)
+             ("M-s-=" . text-scale-increase)
+             ("M-s--" . text-scale-decrease)
+             ("M-s-0" . ivan/text-scale-reset)
              ("M-s-;" . ivan/local-toggle-hl-line)
              ("M-s-h" . mac-hide-others)
              ;; turn off "displays have separate spaces" so
              ;; fullscreen won't black out other monitors.
-             ("s-<return>" . toggle-frame-fullscreen))) ; unused
+             ("M-<return>" . toggle-frame-fullscreen)))
 
 ;; this is slow :P
 (defun mac-hide-others ()
@@ -243,8 +257,8 @@ Disables `text-scale-mode`."
 (defun system-is-mac () (eq system-type 'darwin))
 
 (defun configure-mac-modifiers ()
-  (setq mac-command-modifier 'super
-        mac-option-modifier 'meta))
+  (setq mac-command-modifier 'meta
+        mac-option-modifier  'super))
 
 (if (system-is-mac)
     (configure-mac-modifiers))
@@ -257,6 +271,8 @@ Disables `text-scale-mode`."
 (bind-keys ("C-<return>" . crux-mini-smart-open-line)
            ("S-<return>" . crux-mini-smart-open-line-above)
            ("M-/"        . hippie-expand)
+           ("C-/"        . undo-tree-undo)
+           ("C-?"        . undo-tree-redo)
            ("C-x C-b"    . ibuffer)
            ("C-s"        . isearch-forward-regexp)
            ("C-r"        . isearch-backward-regexp)
