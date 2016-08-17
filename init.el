@@ -101,7 +101,8 @@
       save-interprogram-paste-before-kill t
       apropos-do-all                      t
       ediff-window-setup-function         'ediff-setup-windows-plain
-      sentence-end-double-space           nil)
+      sentence-end-double-space           nil
+      confirm-kill-emacs                  'y-or-n-p)
 
 (minibuffer-electric-default-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
