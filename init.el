@@ -156,6 +156,9 @@ or nil if no installed versions are found."
 (use-package evil
   :load-path "elpa/evil-1.2.12"
   :commands evil-mode)
+(use-package undo-tree
+  :load-path "elpa/undo-tree-0.6.5"
+  :commands (undo-tree-undo undo-tree-redo))
 
 (use-package page-break-lines
   :load-path "elpa/page-break-lines-0.11"
