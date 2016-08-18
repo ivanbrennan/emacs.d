@@ -168,6 +168,13 @@ or nil if no installed versions are found."
   :load-path "elpa/undo-tree-0.6.5"
   :commands (undo-tree-undo undo-tree-redo))
 
+(use-package org-bullets
+  :load-path "elpa/org-bullets-0.2.4"
+  :commands org-mode
+  :config
+  (org-bullets-mode 1)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
 (use-package page-break-lines
   :load-path "elpa/page-break-lines-0.11"
   :commands page-break-lines-mode
