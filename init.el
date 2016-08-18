@@ -273,7 +273,6 @@ Disables `text-scale-mode`."
 ;; keybindings
 (bind-keys ("C-<return>" . crux-mini-smart-open-line)
            ("S-<return>" . crux-mini-smart-open-line-above)
-           ("C-m"        . execute-extended-command)
            ("M-/"        . hippie-expand)
            ("C-/"        . undo-tree-undo)
            ("C-?"        . undo-tree-redo)
