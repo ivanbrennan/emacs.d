@@ -440,3 +440,4 @@ Repeated invocations toggle between the two most recently open buffers."
   "Edit the `user-init-file', in another window."
   (interactive)
   (find-file-other-window user-init-file))
+(put 'narrow-to-region 'disabled nil)
