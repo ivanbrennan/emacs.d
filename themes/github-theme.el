@@ -102,7 +102,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    '(button ((t (:underline t))))
    `(link ((t (:foreground "#3873C3" :underline t :weight bold))))
    `(link-visited ((t (:foreground ,github-yellow-2 :underline t :weight normal))))
-   `(default ((t (:family "Source Code Pro" :height 160 :foreground ,github-fg+1 :background "white"))))
+   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,github-fg+1 :background "white"))))
    `(fixed-pitch ((t (:family "Source Code Pro"))))
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
    `(cursor ((t (:background "#333333"))))
