@@ -27,6 +27,8 @@ M-x customize-mode
 apropos-sort-by-scores
 C-x ESC ESC :: repeat-complex-command
 C-h P :: describe-package
+C-x Backspace :: backward-kill-sentence
+M-x align-regex
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
