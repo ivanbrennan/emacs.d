@@ -34,6 +34,9 @@
 (add-hook 'help-mode-hook #'variable-pitch-mode)
 (add-hook 'Info-mode-hook #'variable-pitch-mode)
 
+;; org
+(setq org-hide-leading-stars t)
+
 ;; transparency
 (let ((active   97)
       (inactive 85))
