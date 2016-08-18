@@ -35,7 +35,12 @@
 (add-hook 'Info-mode-hook #'variable-pitch-mode)
 
 ;; org
-(setq org-hide-leading-stars t)
+(defun ivan/setup-org-mode ()
+  (setq org-hide-leading-stars t)
+  (variable-pitch-mode t)
+  (setq line-spacing 0.15))
+
+(add-hook 'org-mode-hook #'ivan/setup-org-mode)
 
 ;; transparency
 (let ((active   97)
