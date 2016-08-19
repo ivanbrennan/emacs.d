@@ -70,6 +70,24 @@
       scroll-conservatively 200
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
+(defun ivan/scroll-right ()
+  (interactive)
+  (scroll-right 2))
+(defun ivan/scroll-left ()
+  (interactive)
+  (scroll-left 2))
+
+(defvar ivan/hscroll-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map [S-wheel-right] #'ivan/scroll-left)
+    (define-key map [S-wheel-left] #'ivan/scroll-right)
+    map)
+  "ivan/hscroll-minor-mode keymap.")
+(define-minor-mode ivan/hscroll-minor-mode
+  "A minor mode so my horizontal scroll bindings take precedence."
+  :init-value t)
+(ivan/hscroll-minor-mode 1)
+
 ;; whitespace
 (setq-default indent-tabs-mode         nil
               show-trailing-whitespace t
@@ -455,4 +473,6 @@ Repeated invocations toggle between the two most recently open buffers."
   "Edit the `user-init-file', in another window."
   (interactive)
   (find-file-other-window user-init-file))
+
 (put 'narrow-to-region 'disabled nil)
+(put 'scroll-left 'disabled nil)
