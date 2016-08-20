@@ -190,6 +190,14 @@ or nil if no installed versions are found."
   :config
   (setq undo-tree-auto-save-history t
         undo-tree-history-directory-alist `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
+  (defun undo-tree-visualizer-update-linum (start end old-len)
+    (if (fboundp 'linum-update)
+        (linum-update undo-tree-visualizer-parent-buffer)))
+  (add-hook 'undo-tree-visualizer-mode-hook
+            (lambda () (add-hook 'after-change-functions
+                                 #'undo-tree-visualizer-update-linum
+                                 nil
+                                 :local)))
   (undo-tree-mode 1))
 
 (use-package org-bullets
