@@ -23,8 +23,21 @@
 (setq-default cursor-in-non-selected-windows nil)
 (blink-cursor-mode 0)
 
+;; persistence
+(make-directory (concat user-emacs-directory ".cache") :mkdir_p)
+
+(defun ivan/emacs-file (name) (concat user-emacs-directory name))
+
+(setq backup-directory-alist `(("." . ,(ivan/emacs-file ".cache/backups/")))
+      savehist-file                    (ivan/emacs-file ".cache/savehist")
+      ido-save-directory-list-file     (ivan/emacs-file ".cache/ido.last")
+      eshell-directory-name            (ivan/emacs-file ".cache/eshell/")
+      backup-by-copying t)
+
+(savehist-mode)
+
 ;; theme
-(setq custom-theme-directory (locate-user-emacs-file "themes/"))
+(setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory :mkdir_p)
 
 (let ((theme 'github))
@@ -104,17 +117,6 @@
 
 (global-whitespace-mode)
 
-;; persistence
-(make-directory (locate-user-emacs-file ".cache/") :mkdir_p)
-
-(setq backup-directory-alist `(("." . ,(locate-user-emacs-file ".cache/backups/")))
-      savehist-file                    (locate-user-emacs-file ".cache/savehist")
-      ido-save-directory-list-file     (locate-user-emacs-file ".cache/ido.last")
-      eshell-directory-name            (locate-user-emacs-file ".cache/eshell/")
-      backup-by-copying t)
-
-(savehist-mode)
-
 ;; sensibility
 (setq read-buffer-completion-ignore-case  t
       require-final-newline               t
@@ -136,8 +138,8 @@
 (setenv "PAGER" "/usr/bin/env cat")
 
 ;; documentation
-(eval-after-load 'info '(add-to-list 'Info-default-directory-list
-                                     (locate-user-emacs-file "info/")))
+(eval-after-load 'info
+  '(add-to-list 'Info-default-directory-list (ivan/emacs-file "info/")))
 
 ;; packages
 (require 'package)
