@@ -22,7 +22,6 @@ C-M-l :: reposition-window
 C-M-a :: beginning-of-defun
 C-h S :: info-lookup-symbol
 M-Tab :: i-spell-complete-word
-C-h after a prefix key
 M-x customize-mode
 apropos-sort-by-scores
 C-x ESC ESC :: repeat-complex-command
