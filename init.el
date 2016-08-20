@@ -25,13 +25,14 @@
 
 ;; persistence
 (make-directory (concat user-emacs-directory ".cache") :mkdir_p)
-
 (defun ivan/emacs-file (name) (concat user-emacs-directory name))
+(make-directory (ivan/emacs-file ".cache/auto-save") :mkdir_p)
 
-(setq backup-directory-alist `(("." . ,(ivan/emacs-file ".cache/backups/")))
-      savehist-file                    (ivan/emacs-file ".cache/savehist")
-      ido-save-directory-list-file     (ivan/emacs-file ".cache/ido.last")
-      eshell-directory-name            (ivan/emacs-file ".cache/eshell/")
+(setq backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
+      auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") t))
+      savehist-file                   (ivan/emacs-file ".cache/savehist")
+      ido-save-directory-list-file    (ivan/emacs-file ".cache/ido.last")
+      eshell-directory-name           (ivan/emacs-file ".cache/eshell/")
       backup-by-copying t)
 
 (savehist-mode)
