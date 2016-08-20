@@ -186,7 +186,11 @@ or nil if no installed versions are found."
   :commands evil-mode)
 (use-package undo-tree
   :load-path "elpa/undo-tree-0.6.5"
-  :commands (undo-tree-undo undo-tree-redo))
+  :commands (undo-tree-undo undo-tree-redo)
+  :config
+  (setq undo-tree-auto-save-history t
+        undo-tree-history-directory-alist `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
+  (undo-tree-mode 1))
 
 (use-package org-bullets
   :load-path "elpa/org-bullets-0.2.4"
