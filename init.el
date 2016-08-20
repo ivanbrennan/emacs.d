@@ -29,7 +29,7 @@
 (make-directory (ivan/emacs-file ".cache/auto-save") :mkdir_p)
 
 (setq backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
-      auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") t))
+      auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") :uniquify))
       savehist-file                   (ivan/emacs-file ".cache/savehist")
       ido-save-directory-list-file    (ivan/emacs-file ".cache/ido.last")
       eshell-directory-name           (ivan/emacs-file ".cache/eshell/")
@@ -282,7 +282,7 @@ Disables `text-scale-mode`."
 
 (defun configure-terminal ()
   (require 'mouse)
-  (xterm-mouse-mode t)
+  (xterm-mouse-mode)
   (defun track-mouse (e))
   (setq mouse-sel-mode t
         mouse-wheel-follow-mouse 't)
