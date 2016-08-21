@@ -20,7 +20,8 @@
       blink-matching-delay 0.25)
 
 ;; cursor
-(setq-default cursor-in-non-selected-windows nil)
+(setq-default cursor-type 'bar
+              cursor-in-non-selected-windows nil)
 (blink-cursor-mode 0)
 
 ;; persistence
