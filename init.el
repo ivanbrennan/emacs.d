@@ -322,8 +322,16 @@ Disables `text-scale-mode`."
   (setq mac-command-modifier 'meta
         mac-option-modifier  'super))
 
+(defun configure-mac-directory-program ()
+  (if (file-exists-p "/usr/local/bin/gls")
+      (setq insert-directory-program "/usr/local/bin/gls")
+    (require 'ls-lisp)
+    (setq ls-lisp-use-insert-directory-program nil)))
+
 (if (system-is-mac)
-    (configure-mac-modifiers))
+    (progn
+      (configure-mac-modifiers)
+      (configure-mac-directory-program)))
 
 (if (display-graphic-p)
     (configure-gui)
