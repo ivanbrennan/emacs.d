@@ -93,6 +93,9 @@
 ** find-file-in-project
 ** reconcile C-<return> | S-<return> with Org-mode bindings
 ** Paredit
+** Cedit
+** Evil Paredit
+** Paredit Everywhere
 ** magit
 * Questions
 ** What are the different load-paths for?
