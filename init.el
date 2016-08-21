@@ -202,6 +202,15 @@ or nil if no installed versions are found."
                                  :local)))
   (undo-tree-mode 1))
 
+(use-package windsize
+  :load-path "elpa/windsize-0.1"
+  :bind (("C-S-<left>"  . windsize-left)
+         ("C-S-<right>" . windsize-right)
+         ("C-S-<up>"    . windsize-up)
+         ("C-S-<down>"  . windsize-down))
+  :config
+  (setq windsize-rows 1 windsize-cols 2))
+
 (use-package org-bullets
   :load-path "elpa/org-bullets-0.2.4"
   :commands org-mode
