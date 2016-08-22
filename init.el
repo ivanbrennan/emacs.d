@@ -185,7 +185,23 @@ or nil if no installed versions are found."
 
 (use-package evil
   :load-path "elpa/evil-1.2.12"
-  :commands evil-mode)
+  :commands evil-mode
+  :init
+  (setq-default evil-shift-width 2)
+  (setq evil-move-cursor-back nil
+        evil-want-C-u-scroll t
+        evil-emacs-state-cursor 'bar)
+  (use-package goto-chg
+    :load-path "elpa/goto-chg-1.6"
+    :commands (goto-last-change goto-last-change-reverse))
+  :config
+  (defun ivan/move-key (keymap-from keymap-to key)
+    "Moves key binding from one keymap to another, deleting from the old location."
+    (define-key keymap-to key (lookup-key keymap-from key))
+    (define-key keymap-from key nil))
+  (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
+  (ivan/move-key evil-motion-state-map evil-normal-state-map " "))
+
 (use-package undo-tree
   :load-path "elpa/undo-tree-0.6.5"
   :commands (undo-tree-undo undo-tree-redo)
