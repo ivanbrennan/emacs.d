@@ -2,6 +2,7 @@
 (setq initial-scratch-message nil
       inhibit-startup-screen t
       frame-title-format "emacs")
+(setq inhibit-startup-echo-area-message "ivan")
 
 ;; clean screen
 (menu-bar-mode   0)
