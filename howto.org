@@ -89,6 +89,7 @@
 ** idle-highlight-mode
 ** find-file-in-project
 ** reconcile C-<return> | S-<return> with Org-mode bindings
+** smartparens
 ** Paredit
 ** Cedit
 ** Evil Paredit
