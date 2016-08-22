@@ -37,6 +37,7 @@
 ** minibuffer inc-search autoaccept
 ** minibuffer curly-brace completion hints (ido ?)
 ** auto-indent as you type
+** use framesets or winner-mode to replace vim-like tabs
 ** add flyspell-prog-mode to prog-mode-hook
 ** backward-kill-word (C-w) in insert/minibuffer
 ** color past 90 chars
@@ -93,6 +94,8 @@
 ** Evil Paredit
 ** Paredit Everywhere
 ** magit
+** ERC so I can get on IRC channel #evil-mode on irc.freenode.net
+** https://github.com/Dewdrops/powerline
 * Evil-mode
   * C-u in insert mode? (maybe C-x C-u from insert state)
 *** evil-want-C-u-scroll provides something similar outside of Insert state. maybe something like that
