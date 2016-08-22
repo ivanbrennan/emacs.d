@@ -212,10 +212,7 @@ or nil if no installed versions are found."
     (if (fboundp 'linum-update)
         (linum-update undo-tree-visualizer-parent-buffer)))
   (add-hook 'undo-tree-visualizer-mode-hook
-            (lambda () (add-hook 'after-change-functions
-                                 #'undo-tree-visualizer-update-linum
-                                 nil
-                                 :local)))
+            (lambda () (add-hook 'after-change-functions #'undo-tree-visualizer-update-linum nil :local)))
   (undo-tree-mode 1))
 
 (use-package windsize
