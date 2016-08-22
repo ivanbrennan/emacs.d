@@ -187,6 +187,7 @@ or nil if no installed versions are found."
   :load-path "elpa/evil-1.2.12"
   :commands evil-mode
   :init
+  (setq ad-redefinition-action 'accept) ; silence evil-mode redefinition warnings
   (setq-default evil-shift-width 2)
   (setq evil-move-cursor-back nil
         evil-want-C-u-scroll t
@@ -195,6 +196,7 @@ or nil if no installed versions are found."
     :load-path "elpa/goto-chg-1.6"
     :commands (goto-last-change goto-last-change-reverse))
   :config
+  (setq ad-redefinition-action 'warn) ; return to the default behavior
   (defun ivan/move-key (keymap-from keymap-to key)
     "Moves key binding from one keymap to another, deleting from the old location."
     (define-key keymap-to key (lookup-key keymap-from key))
