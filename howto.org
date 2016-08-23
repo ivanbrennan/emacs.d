@@ -102,6 +102,7 @@
 ** evil-args
 ** evil-leader
 ** keybindings
+*** (define-key evil-normal-state-map "\C-w\C-h" 'evil-window-left)
 *** use U for redo, C-r (in normal state) for isearch-backward-regexp
 * Questions
 ** What are the different load-paths for?
