@@ -22,6 +22,7 @@
 *** M-s-; keybinding
 * How To
 ** resize windows
+** use-package :ensure keyword
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 ** zoom windows
 ** make switch-to-buffer select other frame if it's visible there
@@ -90,10 +91,8 @@
 ** find-file-in-project
 ** reconcile C-<return> | S-<return> with Org-mode bindings
 ** smartparens
-** Paredit
+** Smartparens or Paredit
 ** Cedit
-** Evil Paredit
-** Paredit Everywhere
 ** magit
 ** ERC so I can get on IRC channel #evil-mode on irc.freenode.net
 ** https://github.com/Dewdrops/powerline
