@@ -187,6 +187,11 @@ or nil if no installed versions are found."
 (use-package evil
   :load-path "elpa/evil-1.2.12"
   :commands evil-mode
+  :bind (:map evil-normal-state-map
+         ("C-w C-h" . evil-window-left)
+         ("C-w C-j" . evil-window-down)
+         ("C-w C-k" . evil-window-up)
+         ("C-w C-l" . evil-window-right))
   :init
   (setq ad-redefinition-action 'accept) ; silence evil-mode redefinition warnings
   (setq-default evil-shift-width 2)
