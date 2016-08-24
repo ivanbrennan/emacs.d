@@ -191,6 +191,11 @@ or nil if no installed versions are found."
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
+         ("C-w C-l" . evil-window-right)
+         :map evil-motion-state-map
+         ("C-w C-h" . evil-window-left)
+         ("C-w C-j" . evil-window-down)
+         ("C-w C-k" . evil-window-up)
          ("C-w C-l" . evil-window-right))
   :init
   (setq ad-redefinition-action 'accept) ; silence evil-mode redefinition warnings
@@ -201,6 +206,8 @@ or nil if no installed versions are found."
   (use-package goto-chg
     :load-path "elpa/goto-chg-1.6"
     :commands (goto-last-change goto-last-change-reverse))
+  (use-package ffap
+    :commands ffap-other-window)
   :config
   (setq ad-redefinition-action 'warn) ; return to the default behavior
   (defun ivan/move-key (keymap-from keymap-to key)
