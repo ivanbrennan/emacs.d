@@ -217,6 +217,22 @@ or nil if no installed versions are found."
   (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
   (ivan/move-key evil-motion-state-map evil-normal-state-map " "))
 
+(use-package ag
+  :load-path "elpa/ag-0.47"
+  :commands (ag
+             ag-files
+             ag-regexp
+             ag-project
+             ag-project-files
+             ag-project-regexp
+             ag-dired
+             ag-dired-regexp
+             ag-project-dired
+             ag-project-dired-regexp)
+  :init
+  (use-package dash :load-path "elpa/dash-2.13.0")
+  (use-package s    :load-path "elpa/s-1.11.0"))
+
 (use-package undo-tree
   :load-path "elpa/undo-tree-0.6.5"
   :commands (undo-tree-undo undo-tree-redo)
