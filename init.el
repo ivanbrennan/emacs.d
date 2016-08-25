@@ -393,6 +393,8 @@ Disables `text-scale-mode`."
            ("C-?" . undo-tree-redo)
            ("C-w" . ivan/kill-region-or-backward-kill-word))
 
+(global-set-key [remap dabbrev-expand] 'hippie-expand)
+
 ;; etc.
 (defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end
