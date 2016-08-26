@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("(emacs) Xref"
+(("(emacs) Version Control"
+ (front-context-string . "\n28.1 Version Co")
+ (rear-context-string . "Up: Maintaining\n")
+ (position . 981240)
+ (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
+ (info-node . "Version Control")
+ (handler . Info-bookmark-jump))
+("(emacs) Xref"
  (front-context-string . "\n28.3 Find Ident")
  (rear-context-string . "Up: Maintaining\n")
  (position . 1064366)
