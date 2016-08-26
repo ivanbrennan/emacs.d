@@ -289,38 +289,28 @@ Disables `text-scale-mode`."
 
 (defun configure-gui ()
   (bind-keys ("ESC M-q" . save-buffers-kill-terminal)
-             ("M-s-q" . save-buffers-kill-terminal)
-
+             ("M-s-q"   . save-buffers-kill-terminal)
              ("ESC M-v" . yank)
-             ("M-s-v" . yank)
-
+             ("M-s-v"   . yank)
              ("ESC M-c" . evil-yank)
-
              ("ESC M-a" . mark-whole-buffer)
-             ("M-s-a" . mark-whole-buffer)
-
+             ("M-s-a"   . mark-whole-buffer)
              ("ESC M-o" . facemenu-keymap) ; ⤺ emacs
-             (    "M-o" . find-file)       ; ⤻ mac
-
+             ("M-o"     . find-file)       ; ⤻ mac
              ("ESC M-x" . kill-region)
-             ("M-s-x" . kill-region)
-
+             ("M-s-x"   . kill-region)
              ("ESC M-w" . delete-window)
-             ("M-s-w" . delete-window)
-
+             ("M-s-w"   . delete-window)
              ("ESC M-W" . delete-frame)
-
-             ("M-n" . make-frame)
-
+             ("M-n"     . make-frame)
              ("ESC M-s" . save-buffer)
-             ("M-s-s" . save-buffer)
-
-             ("M-s-u" . ivan/toggle-transparency)
-             ("M-s-=" . text-scale-increase)
-             ("M-s--" . text-scale-decrease)
-             ("M-s-0" . ivan/text-scale-reset)
-             ("M-s-;" . ivan/local-toggle-hl-line)
-             ("M-s-h" . mac-hide-others)
+             ("M-s-s"   . save-buffer)
+             ("M-s-u"   . ivan/toggle-transparency)
+             ("M-s-="   . text-scale-increase)
+             ("M-s--"   . text-scale-decrease)
+             ("M-s-0"   . ivan/text-scale-reset)
+             ("M-s-;"   . ivan/local-toggle-hl-line)
+             ("M-s-h"   . mac-hide-others)
              ;; turn off "displays have separate spaces" so
              ;; fullscreen won't black out other monitors.
              ("M-<return>" . toggle-frame-fullscreen)))
