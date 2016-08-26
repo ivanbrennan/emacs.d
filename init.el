@@ -271,7 +271,10 @@ or nil if no installed versions are found."
   (add-hook 'Info-mode-hook #'page-break-lines-mode))
 
 (use-package magit
-  :load-path "elpa/magit-2.8.0"
+  :load-path ("elpa/magit-2.8.0"
+              "elpa/with-editor-2.5.2"
+              "elpa/git-commit-2.8.0"
+              "elpa/magit-popup-2.8.0")
   :config
   (setq vc-handled-backends (delq 'Git vc-handled-backends)))
 
