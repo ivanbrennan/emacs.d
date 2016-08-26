@@ -270,7 +270,11 @@ or nil if no installed versions are found."
   (add-hook 'help-mode-hook #'page-break-lines-mode)
   (add-hook 'Info-mode-hook #'page-break-lines-mode))
 
-;;(use-package magit...
+(use-package magit
+  :load-path "elpa/magit-2.8.0"
+  :config
+  (setq vc-handled-backends (delq 'Git vc-handled-backends)))
+
 ;;(use-package auto-complete...
 ;;(use-package projectile...
 ;;(use-package ag...
@@ -392,9 +396,6 @@ Disables `text-scale-mode`."
              (not isearch-mode-end-hook-quit))
     (goto-char isearch-other-end)))
 (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
-
-;; let Magit handle Git
-(setq vc-handled-backends (delq 'Git vc-handled-backends))
 
 ;; more useful C-w (this should be adjusted to account for evil mode,
 ;; in particular insert-state, once I start using evil).
