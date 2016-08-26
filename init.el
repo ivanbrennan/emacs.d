@@ -136,6 +136,7 @@
 
 (minibuffer-electric-default-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
+(add-hook 'tex-mode-hook #'(lambda () (setq ispell-parser 'tex)))
 
 ;; env
 (setenv "PAGER" "/usr/bin/env cat")
