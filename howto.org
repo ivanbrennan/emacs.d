@@ -43,7 +43,9 @@
 ** backward-kill-word (C-w) in insert/minibuffer
 ** color past 90 chars
 ** color past eof
-** color theme
+** refresh color theme
+** colorize ansi sgr codes (e.g. when viewing log file)
+*** tty-format.el ?
 ** completion (word/line/path)
 *** TAB (or M-TAB if tab-always-indent is t)
 *** find-file-at-point
