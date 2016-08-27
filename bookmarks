@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("version control"
- (front-context-string . "file in the curr")
- (rear-context-string . "pares each work\n")
- (position . 1012574)
+ (front-context-string . "\n28.1.11 Version")
+ (rear-context-string . "Version Control\n")
+ (position . 1033214)
  (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
- (info-node . "Old Revisions")
+ (info-node . "Branches")
  (handler . Info-bookmark-jump))
 ("(emacs) Xref"
  (front-context-string . "\n28.3 Find Ident")
