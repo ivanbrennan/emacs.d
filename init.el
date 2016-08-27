@@ -141,7 +141,7 @@
 
 ;; documentation
 (eval-after-load 'info
-  '(add-to-list 'Info-default-directory-list (ivan/emacs-file "info/")))
+  '(add-to-list 'Info-additional-directory-list (ivan/emacs-file "info/")))
 
 ;; packages
 (require 'package)
@@ -274,7 +274,9 @@ or nil if no installed versions are found."
               "elpa/git-commit-2.8.0"
               "elpa/magit-popup-2.8.0")
   :config
-  (setq vc-handled-backends (delq 'Git vc-handled-backends)))
+  (setq vc-handled-backends (delq 'Git vc-handled-backends))
+  (eval-after-load 'info
+    '(add-to-list 'Info-additional-directory-list (ivan/emacs-file "elpa/magit-2.8.0/"))))
 
 ;;(use-package auto-complete...
 ;;(use-package projectile...
