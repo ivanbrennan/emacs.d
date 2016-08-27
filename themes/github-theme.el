@@ -1182,29 +1182,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; nrepl-client
    `(nrepl-message-colors
      '(,github-red ,github-orange ,github-yellow ,github-green ,github-green+4
-                    ,github-cyan ,github-blue+1 ,github-magenta))
-;;;;; vc-annotate
-   `(vc-annotate-color-map
-     '(( 20. . ,github-red-1)
-       ( 40. . ,github-red)
-       ( 60. . ,github-orange)
-       ( 80. . ,github-yellow-2)
-       (100. . ,github-yellow-1)
-       (120. . ,github-yellow)
-       (140. . ,github-green-1)
-       (160. . ,github-green)
-       (180. . ,github-green+1)
-       (200. . ,github-green+2)
-       (220. . ,github-green+3)
-       (240. . ,github-green+4)
-       (260. . ,github-cyan)
-       (280. . ,github-blue-2)
-       (300. . ,github-blue-1)
-       (320. . ,github-blue)
-       (340. . ,github-blue+1)
-       (360. . ,github-magenta)))
-   `(vc-annotate-very-old-color ,github-magenta)
-   `(vc-annotate-background ,github-bg-1)
+                   ,github-cyan ,github-blue+1 ,github-magenta))
    ))
 
 ;;; Rainbow Support
