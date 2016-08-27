@@ -59,16 +59,14 @@
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
 
 ;; transparency
-(let ((active   97)
-      (inactive 85))
-  (set-frame-parameter (selected-frame) 'alpha `(,active . ,inactive))
-  (add-to-list 'default-frame-alist `(alpha . (,active . ,inactive))))
+(let ((transparent '(97 . 85)))
+  (set-frame-parameter (selected-frame) 'alpha transparent)
+  (add-to-list 'default-frame-alist `(alpha . ,transparent)))
 
 (defun ivan/toggle-transparency ()
   (interactive)
-  (setq frame-alpha-lower-limit
-        (if (eql frame-alpha-lower-limit 100) 20 100))
-  (set-frame-parameter nil 'alpha (frame-parameter nil 'alpha)))
+  (let ((new-value (if (eql (frame-parameter nil 'alpha) 100) '(97 . 85) 100)))
+    (set-frame-parameter nil 'alpha new-value)))
 
 ;; line-wrapping
 (setq-default truncate-lines t)
