@@ -2,14 +2,7 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("version control"
- (front-context-string . "\n28.1.11 Version")
- (rear-context-string . "Version Control\n")
- (position . 1033214)
- (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
- (info-node . "Branches")
- (handler . Info-bookmark-jump))
-("(emacs) Xref"
+(("xref"
  (front-context-string . "\n28.3 Find Ident")
  (rear-context-string . "Up: Maintaining\n")
  (position . 1064366)
@@ -22,13 +15,6 @@
  (position . 739847)
  (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/elisp")
  (info-node . "Library Search")
- (handler . Info-bookmark-jump))
-("magit"
- (front-context-string . "   Buffers can a")
- (rear-context-string . "e\nundesirable.\n\n")
- (position . 33959)
- (filename . "/Users/ivan/.emacs.d/elpa/magit-2.7.0/magit")
- (info-node . "Automatic Refreshing of Magit Buffers")
  (handler . Info-bookmark-jump))
 ("manual"
  (front-context-string . "\n18.6 Auto-Savin")
