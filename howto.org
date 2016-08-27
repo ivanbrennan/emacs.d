@@ -1,6 +1,8 @@
 * How To (solved)
 ** middle/top/bottom of window
 *** M-r
+** resize windows
+*** windsize-up windsize-down
 ** minibuffer history matching preceding chars
 *** C-r is a better solution
 ** rectangular select
@@ -21,7 +23,6 @@
 ** toggle hl-line off in buffer
 *** M-s-; keybinding
 * How To
-** resize windows
 ** use-package :ensure keyword
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 ** zoom windows
