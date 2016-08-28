@@ -96,6 +96,7 @@
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 * Packages
 ** Undo-tree
+** auto-complete | company
 ** popup
 ** which-key
 ** multiple-cursors
@@ -105,7 +106,8 @@
 ** req-package
 ** rainbow-delimiters
 ** powerline (rewrite)
-** Helm | ido-vertical-mode | Ivy-mode | Swiper | Counsel
+** Ivy-mode | Swiper | Counsel
+** Helm | ido-vertical-mode
 ** idle-highlight-mode
 ** find-file-in-project
 ** reconcile C-<return> | S-<return> with Org-mode bindings
