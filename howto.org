@@ -91,6 +91,7 @@
 * Packages to try
 ** Undo-tree
 ** popup
+** which-key
 ** multiple-cursors
 ** Winner-mode
 ** projectile
