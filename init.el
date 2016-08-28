@@ -138,6 +138,7 @@
       ediff-window-setup-function         'ediff-setup-windows-plain
       sentence-end-double-space           nil)
 
+(defalias 'list-buffers 'ibuffer)
 (minibuffer-electric-default-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 (add-hook 'tex-mode-hook #'(lambda () (setq ispell-parser 'tex)))
@@ -385,7 +386,6 @@ Disables `text-scale-mode`."
 ;; keybindings
 (bind-keys ("C-<return>" . crux-mini-smart-open-line)
            ("S-<return>" . crux-mini-smart-open-line-above)
-           ("C-x C-b" . ibuffer)
            ("C-M-s" . isearch-forward)
            ("C-M-r" . isearch-backward)
            ("C-s" . isearch-forward-regexp)
