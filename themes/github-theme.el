@@ -107,7 +107,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
    `(cursor ((t (:background "#333333"))))
    `(escape-glyph ((t (:foreground ,github-yellow :bold t))))
-   `(fringe ((t (:foreground "#D8D8D8" :background ,github-bg+1))))
+   `(fringe ((t (:foreground "#B3B3B3" :background ,github-bg+1))))
    `(header-line ((t (:foreground "#969896" :background "#F5F5F5"))))
    `(info-node ((t (:foreground "#29D045" :slant italic :weight bold))))
    `(highlight ((t (:background "#F8F8F8"))))
