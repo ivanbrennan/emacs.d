@@ -282,10 +282,6 @@ or nil if no installed versions are found."
   (eval-after-load 'info
     '(add-to-list 'Info-additional-directory-list (ivan/emacs-file "elpa/magit-2.8.0/"))))
 
-;;(use-package auto-complete...
-;;(use-package projectile...
-;;(use-package ag...
-
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
   "Reset the height of the default face in the current buffer to its default value.
