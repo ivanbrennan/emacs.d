@@ -52,14 +52,6 @@
 (add-hook 'help-mode-hook #'variable-pitch-mode)
 (add-hook 'Info-mode-hook #'variable-pitch-mode)
 
-;; org
-(defun ivan/setup-org-mode ()
-  (setq org-hide-leading-stars t)
-  (variable-pitch-mode t)
-  (setq line-spacing 0.15))
-
-(add-hook 'org-mode-hook #'ivan/setup-org-mode)
-
 ;; transparency
 (let ((transparent '(97 . 85)))
   (set-frame-parameter (selected-frame) 'alpha transparent)
@@ -261,6 +253,11 @@ or nil if no installed versions are found."
   :config
   (setq windsize-rows 1 windsize-cols 2))
 
+(defun ivan/setup-org-mode ()
+  (setq org-hide-leading-stars t)
+  (variable-pitch-mode t)
+  (setq line-spacing 0.15))
+(add-hook 'org-mode-hook #'ivan/setup-org-mode)
 (use-package org-bullets
   :load-path "elpa/org-bullets-0.2.4"
   :config
