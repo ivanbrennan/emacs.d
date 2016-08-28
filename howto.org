@@ -96,6 +96,7 @@
 ** Winner-mode
 ** projectile
 ** f
+** req-package
 ** rainbow-delimiters
 ** powerline (rewrite)
 ** Helm | ido-vertical-mode | Ivy-mode | Swiper | Counsel
