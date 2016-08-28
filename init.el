@@ -12,7 +12,6 @@
 
 ;; useful indicators
 (column-number-mode)
-(global-hl-line-mode)
 
 ;; parens
 (show-paren-mode)
@@ -99,10 +98,6 @@
 (ivan/hscroll-minor-mode 1)
 
 ;; whitespace
-(setq-default indent-tabs-mode         nil
-              show-trailing-whitespace t
-              indicate-empty-lines     t)
-
 (setq whitespace-line-column 90
       whitespace-style '(face
                          empty
@@ -112,11 +107,12 @@
                          space-before-tab
                          space-after-tab))
 
-(global-whitespace-mode)
-(add-hook 'term-mode-hook
-          (lambda ()
-            (setq show-trailing-whitespace nil)
-            (setq-local global-hl-line-mode nil)))
+(defun ivan/code-whitespace ()
+  (hl-line-mode)
+  (setq indent-tabs-mode         nil
+        show-trailing-whitespace t
+        indicate-empty-lines     t))
+(add-hook 'prog-mode-hook #'ivan/code-whitespace)
 
 ;; sensibility
 (setq read-buffer-completion-ignore-case  t
