@@ -131,6 +131,8 @@
       ediff-window-setup-function         'ediff-setup-windows-plain
       sentence-end-double-space           nil)
 
+(fset 'yes-or-no-p 'y-or-n-p)
+
 (defalias 'list-buffers 'ibuffer)
 (minibuffer-electric-default-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
