@@ -118,6 +118,10 @@
                          space-after-tab))
 
 (global-whitespace-mode)
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq show-trailing-whitespace nil)
+            (setq-local global-hl-line-mode nil)))
 
 ;; sensibility
 (setq read-buffer-completion-ignore-case  t
