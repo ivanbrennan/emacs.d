@@ -36,6 +36,7 @@
       savehist-file                   (ivan/emacs-file ".cache/savehist")
       ido-save-directory-list-file    (ivan/emacs-file ".cache/ido.last")
       eshell-directory-name           (ivan/emacs-file ".cache/eshell/")
+      tramp-persistency-file-name     (ivan/emacs-file ".cache/tramp")
       backup-by-copying t)
 
 (savehist-mode)
