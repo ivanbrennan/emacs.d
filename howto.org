@@ -24,6 +24,8 @@
 *** M-s-; keybinding
 * How To
 ** use-package :ensure keyword
+** find sensible solutions for C-a, C-e, C-y, 0, $ in evil-mode
+*** evil-numbers suggests C-c + C-c -
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 ** zoom windows
 ** make switch-to-buffer select other frame if it's visible there
