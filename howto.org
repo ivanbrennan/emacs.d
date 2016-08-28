@@ -102,6 +102,7 @@
 * Packages
 ** Undo-tree
 ** company
+** ag
 ** which-key
 ** multiple-cursors
 ** flycheck
