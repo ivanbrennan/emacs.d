@@ -64,8 +64,9 @@
 
 ;; line-wrapping
 (setq-default truncate-lines t)
-(add-hook 'help-mode-hook #'visual-line-mode)
-(add-hook 'Info-mode-hook #'visual-line-mode)
+(add-hook 'help-mode-hook    #'visual-line-mode)
+(add-hook 'Info-mode-hook    #'visual-line-mode)
+(add-hook 'special-mode-hook #'visual-line-mode)
 
 ;; splits
 (setq split-width-threshold 130)
