@@ -32,6 +32,7 @@
 
 (setq backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
       auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") :uniquify))
+      auto-save-list-file-prefix      (ivan/emacs-file ".cache/auto-save-list/.saves-")
       savehist-file                   (ivan/emacs-file ".cache/savehist")
       ido-save-directory-list-file    (ivan/emacs-file ".cache/ido.last")
       eshell-directory-name           (ivan/emacs-file ".cache/eshell/")
