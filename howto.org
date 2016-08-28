@@ -96,8 +96,7 @@
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 * Packages
 ** Undo-tree
-** auto-complete | company
-** popup
+** company
 ** which-key
 ** multiple-cursors
 ** Winner-mode
