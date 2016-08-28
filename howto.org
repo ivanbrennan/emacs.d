@@ -34,6 +34,7 @@
 ** mimic prev/next line chars (like C-e/C-y in vim)
 ** swap window positions
 ** open newline below, from mid-line
+** folding
 ** fringe color same as background
 ** minibuffer inc-search autoaccept
 ** minibuffer curly-brace completion hints (ido ?)
@@ -99,6 +100,7 @@
 ** company
 ** which-key
 ** multiple-cursors
+** flycheck
 ** Winner-mode
 ** projectile
 ** f
