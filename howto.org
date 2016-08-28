@@ -90,7 +90,13 @@
 *** some custom C-<return> binding?
 * Packages to try
 ** Undo-tree
+** popup
+** multiple-cursors
 ** Winner-mode
+** projectile
+** f
+** rainbow-delimiters
+** powerline (rewrite)
 ** Helm | ido-vertical-mode | Ivy-mode | Swiper | Counsel
 ** idle-highlight-mode
 ** find-file-in-project
@@ -99,7 +105,6 @@
 ** Smartparens or Paredit
 ** Cedit
 ** magit
-** ERC so I can get on IRC channel #evil-mode on irc.freenode.net
 ** https://github.com/Dewdrops/powerline
 * Evil-mode
   * C-u in insert mode? (maybe C-x C-u from insert state)
