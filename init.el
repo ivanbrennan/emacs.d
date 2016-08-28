@@ -262,9 +262,7 @@ or nil if no installed versions are found."
 
 (use-package org-bullets
   :load-path "elpa/org-bullets-0.2.4"
-  :commands org-mode
   :config
-  (org-bullets-mode 1)
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package page-break-lines
