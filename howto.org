@@ -1,4 +1,4 @@
-* How To (solved)
+*  Solved
 ** middle/top/bottom of window
 *** M-r
 ** resize windows
@@ -22,16 +22,8 @@
 *** theme used defvar, which is resistant to re-evaluation; you'd have to restart emacs to get the variable changes to show up
 ** toggle hl-line off in buffer
 *** M-s-; keybinding
-* How To
+* Misc
 ** use-package :ensure keyword
-** find sensible solutions for C-a, C-e, C-y, 0, $ in evil-mode
-*** evil-numbers suggests C-c + C-c -
-** reconcile ⌘ key
-*** ⌘q :: shouldn't be too easy, so M-s-q is fine
-*** ⌘s :: i'll probably go with <Space>fs like spacemacs
-*** ⌘w :: bind to delete-window; i'll use evil-yank more than kill-ring-save
-*** ⌘o :: bind to find-file; face-menu isn't so useful
-** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 ** zoom windows
 ** make switch-to-buffer select other frame if it's visible there
 *** ido-mode does this. how can I do it outside of ido-mode?
@@ -93,7 +85,16 @@
 *** fixed?
 ** accept and execute C-r result in minibuffer
 *** some custom C-<return> binding?
-* Packages to try
+* Keybindings
+** find sensible solutions for C-a, C-e, C-y, 0, $ in evil-mode
+*** evil-numbers suggests C-c + C-c -
+** reconcile ⌘ key
+*** ⌘q :: shouldn't be too easy, so M-s-q is fine
+*** ⌘s :: i'll probably go with <Space>fs like spacemacs
+*** ⌘w :: bind to delete-window; i'll use evil-yank more than kill-ring-save
+*** ⌘o :: bind to find-file; face-menu isn't so useful
+** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
+* Packages
 ** Undo-tree
 ** popup
 ** which-key
