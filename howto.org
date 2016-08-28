@@ -23,6 +23,10 @@
 ** toggle hl-line off in buffer
 *** M-s-; keybinding
 * Misc
+** run tests asynchronously
+** org insert subheading below
+** org insert sibling above
+** page-break lines in C-h m
 ** use-package :ensure keyword
 ** zoom windows
 ** make switch-to-buffer select other frame if it's visible there
