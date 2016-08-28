@@ -129,7 +129,7 @@
       require-final-newline               t
       set-mark-command-repeat-pop         t
       tab-always-indent                   'complete
-      ispell-program-name                 "aspell"
+      ispell-program-name                 "/usr/local/bin/aspell"
       ediff-split-window-function         #'split-window-horizontally
       minibuffer-eldef-shorten-default    t
       uniquify-buffer-name-style          'forward
