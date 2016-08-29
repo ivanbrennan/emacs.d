@@ -359,8 +359,8 @@ Disables `text-scale-mode`."
 (defun system-is-mac () (eq system-type 'darwin))
 
 (defun configure-mac-modifiers ()
-  (setq mac-command-modifier 'meta
-        mac-option-modifier  'super))
+  (setq mac-command-modifier 'super
+        mac-option-modifier  'meta))
 
 (defun configure-mac-directory-program ()
   (if (file-exists-p "/usr/local/bin/gls")
