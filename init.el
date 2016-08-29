@@ -127,7 +127,8 @@
       save-interprogram-paste-before-kill t
       apropos-do-all                      t
       ediff-window-setup-function         'ediff-setup-windows-plain
-      sentence-end-double-space           nil)
+      sentence-end-double-space           nil
+      confirm-kill-emacs                  'y-or-n-p)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -207,14 +208,19 @@ or nil if no installed versions are found."
     :commands (goto-last-change goto-last-change-reverse))
   (use-package ffap
     :commands ffap-other-window)
+  (use-package evil-leader
+    :load-path "elpa/evil-leader-0.4.3"
+    :config
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key "x" 'execute-extended-command)
+    (global-evil-leader-mode))
   :config
   (setq ad-redefinition-action 'warn) ; return to the default behavior
   (defun ivan/move-key (keymap-from keymap-to key)
     "Moves key binding from one keymap to another, deleting from the old location."
     (define-key keymap-to key (lookup-key keymap-from key))
     (define-key keymap-from key nil))
-  (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
-  (ivan/move-key evil-motion-state-map evil-normal-state-map " "))
+  (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET")))
 
 (use-package ag
   :load-path "elpa/ag-0.47"
@@ -295,32 +301,28 @@ Disables `text-scale-mode`."
               (null global-hl-line-mode)))
 
 (defun configure-gui ()
-  (bind-keys ("ESC M-q" . save-buffers-kill-terminal)
-             ("M-s-q"   . save-buffers-kill-terminal)
-             ("ESC M-v" . yank)
-             ("M-s-v"   . yank)
-             ("ESC M-c" . evil-yank)
-             ("ESC M-a" . mark-whole-buffer)
-             ("M-s-a"   . mark-whole-buffer)
-             ("ESC M-o" . facemenu-keymap) ; ⤺ emacs
-             ("M-o"     . find-file)       ; ⤻ mac
-             ("ESC M-x" . kill-region)
-             ("M-s-x"   . kill-region)
-             ("ESC M-w" . delete-window)
-             ("M-s-w"   . delete-window)
-             ("ESC M-W" . delete-frame)
-             ("M-n"     . make-frame)
-             ("ESC M-s" . save-buffer)
-             ("M-s-s"   . save-buffer)
-             ("M-s-u"   . ivan/toggle-transparency)
-             ("M-s-="   . text-scale-increase)
-             ("M-s--"   . text-scale-decrease)
-             ("M-s-0"   . ivan/text-scale-reset)
-             ("M-s-;"   . ivan/local-toggle-hl-line)
-             ("M-s-h"   . mac-hide-others)
+  (bind-keys ("s-q" . save-buffers-kill-terminal)
+             ("s-v" . yank)
+             ("s-c" . evil-yank)
+             ("s-a" . mark-whole-buffer)
+             ("s-o" . find-file)
+             ("s-x" . kill-region)
+             ("s-w" . delete-window)
+             ("s-W" . delete-frame)
+             ("s-n" . make-frame)
+             ("s-s" . save-buffer)
+             ("s-u" . ivan/toggle-transparency)
+             ("s-=" . text-scale-increase)
+             ("s--" . text-scale-decrease)
+             ("s-0" . ivan/text-scale-reset)
+             ("M-s-;" . ivan/local-toggle-hl-line)
+             ("M-s-h" . mac-hide-others)
              ;; turn off "displays have separate spaces" so
              ;; fullscreen won't black out other monitors.
-             ("M-<return>" . toggle-frame-fullscreen)))
+             ("s-<return>" . toggle-frame-fullscreen))
+  (bind-keys :map minibuffer-local-map
+             ("s-p" . previous-history-element)
+             ("s-n" . next-history-element)))
 
 ;; this is slow :P
 (defun mac-hide-others ()
