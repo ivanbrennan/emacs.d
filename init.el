@@ -186,7 +186,7 @@ or nil if no installed versions are found."
 
 (use-package evil
   :load-path "elpa/evil-1.2.12"
-  :commands evil-mode
+  :demand
   :bind (:map evil-normal-state-map
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
@@ -220,7 +220,8 @@ or nil if no installed versions are found."
     "Moves key binding from one keymap to another, deleting from the old location."
     (define-key keymap-to key (lookup-key keymap-from key))
     (define-key keymap-from key nil))
-  (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET")))
+  (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
+  (evil-mode))
 
 (use-package ag
   :load-path "elpa/ag-0.47"
