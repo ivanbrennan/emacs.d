@@ -213,11 +213,16 @@ or nil if no installed versions are found."
          :map evil-visual-state-map
          ("<tab>"   . evil-indent))
   :init
-  (setq ad-redefinition-action 'accept) ; silence evil-mode redefinition warnings
+  (setq evil-want-C-u-scroll t)
+  :config
   (setq-default evil-shift-width 2)
   (setq evil-move-cursor-back nil
-        evil-want-C-u-scroll t
         evil-emacs-state-cursor 'bar)
+  (defun ivan/move-key (keymap-from keymap-to key)
+    "Moves key binding from one keymap to another, deleting from the old location."
+    (define-key keymap-to key (lookup-key keymap-from key))
+    (define-key keymap-from key nil))
+  (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
   (use-package goto-chg
     :load-path "elpa/goto-chg-1.6"
     :commands (goto-last-change goto-last-change-reverse))
@@ -229,13 +234,6 @@ or nil if no installed versions are found."
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key "x" 'execute-extended-command)
     (global-evil-leader-mode))
-  :config
-  (setq ad-redefinition-action 'warn) ; return to the default behavior
-  (defun ivan/move-key (keymap-from keymap-to key)
-    "Moves key binding from one keymap to another, deleting from the old location."
-    (define-key keymap-to key (lookup-key keymap-from key))
-    (define-key keymap-from key nil))
-  (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
   (evil-mode))
 
 (use-package ag
