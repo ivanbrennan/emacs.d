@@ -127,8 +127,7 @@
       save-interprogram-paste-before-kill t
       apropos-do-all                      t
       ediff-window-setup-function         'ediff-setup-windows-plain
-      sentence-end-double-space           nil
-      confirm-kill-emacs                  'y-or-n-p)
+      sentence-end-double-space           nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
