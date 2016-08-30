@@ -201,6 +201,7 @@ or nil if no installed versions are found."
   :demand
   :bind (:map evil-normal-state-map
          ("U"       . undo-tree-redo)
+         ("C-r"     . isearch-backward-regexp)
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
@@ -211,6 +212,7 @@ or nil if no installed versions are found."
          ("C-w C-k" . evil-window-up)
          ("C-w C-l" . evil-window-right)
          :map evil-visual-state-map
+         ("C-r"     . isearch-backward-regexp)
          ("<tab>"   . evil-indent))
   :init
   (setq evil-want-C-u-scroll t)
