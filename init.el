@@ -301,8 +301,7 @@ Disables `text-scale-mode`."
 (defun ivan/local-toggle-hl-line ()
   "Toggle line highlighting in current buffer"
   (interactive)
-  (setq-local global-hl-line-mode
-              (null global-hl-line-mode)))
+  (setq hl-line-mode (null hl-line-mode)))
 
 (defun configure-gui ()
   (bind-keys ("s-q" . save-buffers-kill-terminal)
