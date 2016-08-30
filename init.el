@@ -212,8 +212,6 @@ or nil if no installed versions are found."
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
          ("C-w C-l" . evil-window-right)
-         ("C-w O"   . delete-other-windows)
-         ("C-w o"   . zoom-window-zoom)
          ("C-w C-o" . zoom-window-zoom)
          ("C-w C-w" . zoom-window-zoom)
          :map evil-motion-state-map
@@ -221,8 +219,6 @@ or nil if no installed versions are found."
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
          ("C-w C-l" . evil-window-right)
-         ("C-w O"   . delete-other-windows)
-         ("C-w o"   . zoom-window-zoom)
          ("C-w C-o" . zoom-window-zoom)
          ("C-w C-w" . zoom-window-zoom)
          :map evil-visual-state-map
