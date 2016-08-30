@@ -249,7 +249,7 @@ or nil if no installed versions are found."
              ag-dired-regexp
              ag-project-dired
              ag-project-dired-regexp)
-  :init
+  :config
   (use-package dash :load-path "elpa/dash-2.13.0")
   (use-package s    :load-path "elpa/s-1.11.0"))
 
