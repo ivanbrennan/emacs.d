@@ -209,7 +209,9 @@ or nil if no installed versions are found."
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
-         ("C-w C-l" . evil-window-right))
+         ("C-w C-l" . evil-window-right)
+         :map evil-visual-state-map
+         ("<tab>"   . evil-indent))
   :init
   (setq ad-redefinition-action 'accept) ; silence evil-mode redefinition warnings
   (setq-default evil-shift-width 2)
