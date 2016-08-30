@@ -232,7 +232,8 @@ or nil if no installed versions are found."
     :load-path "elpa/evil-leader-0.4.3"
     :config
     (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key "x" 'execute-extended-command)
+    (evil-leader/set-key "x"  'execute-extended-command)
+    (evil-leader/set-key "fs" 'save-buffer)
     (global-evil-leader-mode))
   (evil-mode))
 
