@@ -196,6 +196,12 @@ or nil if no installed versions are found."
             (lambda () (add-hook 'after-change-functions #'undo-tree-visualizer-update-linum nil :local)))
   (undo-tree-mode 1))
 
+(use-package zoom-window
+  :load-path "elpa/zoom-window-0.4"
+  :commands zoom-window-zoom
+  :config
+  (setq zoom-window-mode-line-color "#E4FFEA"))
+
 (use-package evil
   :load-path "elpa/evil-1.2.12"
   :demand
@@ -206,11 +212,19 @@ or nil if no installed versions are found."
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
          ("C-w C-l" . evil-window-right)
+         ("C-w O"   . delete-other-windows)
+         ("C-w o"   . zoom-window-zoom)
+         ("C-w C-o" . zoom-window-zoom)
+         ("C-w C-w" . zoom-window-zoom)
          :map evil-motion-state-map
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
          ("C-w C-l" . evil-window-right)
+         ("C-w O"   . delete-other-windows)
+         ("C-w o"   . zoom-window-zoom)
+         ("C-w C-o" . zoom-window-zoom)
+         ("C-w C-w" . zoom-window-zoom)
          :map evil-visual-state-map
          ("C-r"     . isearch-backward-regexp)
          ("<tab>"   . evil-indent))
