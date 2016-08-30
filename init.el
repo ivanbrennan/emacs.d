@@ -183,10 +183,24 @@ or nil if no installed versions are found."
   :load-path "elpa/rainbow-mode-0.12"
   :commands rainbow-mode)
 
+(use-package undo-tree
+  :load-path "elpa/undo-tree-0.6.5"
+  :commands (undo-tree-undo undo-tree-redo)
+  :config
+  (setq undo-tree-auto-save-history t
+        undo-tree-history-directory-alist `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
+  (defun undo-tree-visualizer-update-linum (start end old-len)
+    (if (fboundp 'linum-update)
+        (linum-update undo-tree-visualizer-parent-buffer)))
+  (add-hook 'undo-tree-visualizer-mode-hook
+            (lambda () (add-hook 'after-change-functions #'undo-tree-visualizer-update-linum nil :local)))
+  (undo-tree-mode 1))
+
 (use-package evil
   :load-path "elpa/evil-1.2.12"
   :demand
   :bind (:map evil-normal-state-map
+         ("U"       . undo-tree-redo)
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
@@ -237,19 +251,6 @@ or nil if no installed versions are found."
   :init
   (use-package dash :load-path "elpa/dash-2.13.0")
   (use-package s    :load-path "elpa/s-1.11.0"))
-
-(use-package undo-tree
-  :load-path "elpa/undo-tree-0.6.5"
-  :commands (undo-tree-undo undo-tree-redo)
-  :config
-  (setq undo-tree-auto-save-history t
-        undo-tree-history-directory-alist `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
-  (defun undo-tree-visualizer-update-linum (start end old-len)
-    (if (fboundp 'linum-update)
-        (linum-update undo-tree-visualizer-parent-buffer)))
-  (add-hook 'undo-tree-visualizer-mode-hook
-            (lambda () (add-hook 'after-change-functions #'undo-tree-visualizer-update-linum nil :local)))
-  (undo-tree-mode 1))
 
 (use-package windsize
   :load-path "elpa/windsize-0.1"
