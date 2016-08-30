@@ -265,6 +265,13 @@ or nil if no installed versions are found."
   (use-package dash :load-path "elpa/dash-2.13.0")
   (use-package s    :load-path "elpa/s-1.11.0"))
 
+(use-package crux
+  :load-path "elpa/crux-0.3.0"
+  :commands (crux-smart-open-line
+             crux-smart-open-line-above)
+  :bind (("C-<return>" . crux-smart-open-line)
+         ("S-<return>" . crux-smart-open-line-above)))
+
 (use-package windsize
   :load-path "elpa/windsize-0.1"
   :bind (("C-S-<left>"  . windsize-left)
@@ -393,9 +400,7 @@ Disables `text-scale-mode`."
   (configure-terminal))
 
 ;; keybindings
-(bind-keys ("C-<return>" . crux-mini-smart-open-line)
-           ("S-<return>" . crux-mini-smart-open-line-above)
-           ("C-M-s" . isearch-forward)
+(bind-keys ("C-M-s" . isearch-forward)
            ("C-M-r" . isearch-backward)
            ("C-s" . isearch-forward-regexp)
            ("C-r" . isearch-backward-regexp)
@@ -422,144 +427,6 @@ Disables `text-scale-mode`."
   (if region
       (kill-region (region-beginning) (region-end))
     (backward-kill-word arg)))
-
-;;; crux-mini (lifted from crux)
-(defun crux-mini-smart-open-line-above ()
-  "Insert an empty line above the current line.
-Position the cursor at its beginning, according to the current mode."
-  (interactive)
-  (move-beginning-of-line nil)
-  (insert "\n")
-  (if electric-indent-inhibit
-      ;; We can't use `indent-according-to-mode' in languages like Python,
-      ;; as there are multiple possible indentations with different meanings.
-      (let* ((indent-end (progn (back-to-indentation) (point)))
-             (indent-start (progn (move-beginning-of-line nil) (point)))
-             (indent-chars (buffer-substring indent-start indent-end)))
-        (forward-line -1)
-        ;; This new line should be indented with the same characters as
-        ;; the current line.
-        (insert indent-chars))
-    ;; Just use the current major-mode's indent facility.
-    (progn
-      (forward-line -1)
-      (indent-according-to-mode))))
-
-(defun crux-mini-smart-open-line (arg)
-  "Insert an empty line after the current line.
-Position the cursor at its beginning, according to the current mode.
-With a prefix ARG open line above the current line."
-  (interactive "P")
-  (if arg
-      (crux-mini-smart-open-line-above)
-    (progn
-      (move-end-of-line nil)
-      (newline-and-indent))))
-
-(defun crux-mini-top-join-line ()
-  "Join the current line with the line beneath it."
-  (interactive)
-  (delete-indentation 1))
-
-(defun crux-mini-kill-whole-line (&optional arg)
-  "A simple wrapper around command `kill-whole-line' that respects indentation.
-Passes ARG to command `kill-whole-line' when provided."
-  (interactive "p")
-  (kill-whole-line arg)
-  (back-to-indentation))
-
-(defun crux-mini-kill-line-backwards ()
-  "Kill line backwards and adjust the indentation."
-  (interactive)
-  (kill-line 0)
-  (indent-according-to-mode))
-
-(defun crux-mini-move-beginning-of-line (arg)
-  "Move point back to indentation of beginning of line.
-Move point to the first non-whitespace character on this line.
-If point is already there, move to the beginning of the line.
-Effectively toggle between the first non-whitespace character and
-the beginning of the line.
-If ARG is not nil or 1, move forward ARG - 1 lines first.  If
-point reaches the beginning or end of the buffer, stop there."
-  (interactive "^p")
-  (setq arg (or arg 1))
-
-  ;; Move lines first
-  (when (/= arg 1)
-    (let ((line-move-visual nil))
-      (forward-line (1- arg))))
-
-  (let ((orig-point (point)))
-    (back-to-indentation)
-    (when (= orig-point (point))
-      (move-beginning-of-line 1))))
-
-(defun crux-mini-indent-defun ()
-  "Indent the current defun."
-  (interactive)
-  (save-excursion
-    (mark-defun)
-    (indent-region (region-beginning) (region-end))))
-
-(defun crux-mini-rename-file-and-buffer ()
-  "Rename current buffer and if the buffer is visiting a file, rename it too."
-  (interactive)
-  (let ((filename (buffer-file-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (rename-buffer (read-from-minibuffer "New name: " (buffer-name)))
-      (let* ((new-name (read-from-minibuffer "New name: " filename))
-             (containing-dir (file-name-directory new-name)))
-        (make-directory containing-dir t)
-        (cond
-         ((vc-backend filename) (vc-rename-file filename new-name))
-         (t
-          (rename-file filename new-name t)
-          (set-visited-file-name new-name t t)))))))
-
-(defalias 'crux-mini-rename-buffer-and-file #'crux-mini-rename-file-and-buffer)
-
-(defun crux-mini-delete-file-and-buffer ()
-  "Kill the current buffer and deletes the file it is visiting."
-  (interactive)
-  (let ((filename (buffer-file-name)))
-    (when filename
-      (if (vc-backend filename)
-          (vc-delete-file filename)
-        (when (y-or-n-p (format "Are you sure you want to delete %s? " filename))
-          (delete-file filename delete-by-moving-to-trash)
-          (message "Deleted file %s" filename)
-          (kill-buffer))))))
-
-(defalias 'crux-mini-delete-buffer-and-file #'crux-mini-delete-file-and-buffer)
-
-(defun crux-mini-transpose-windows (arg)
-  "Transpose the buffers shown in two windows.
-Prefix ARG determines if the current windows buffer is swapped
-with the next or previous window, and the number of
-transpositions to execute in sequence."
-  (interactive "p")
-  (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
-    (while (/= arg 0)
-      (let ((this-win (window-buffer))
-            (next-win (window-buffer (funcall selector))))
-        (set-window-buffer (selected-window) next-win)
-        (set-window-buffer (funcall selector) this-win)
-        (select-window (funcall selector)))
-      (setq arg (if (cl-plusp arg) (1- arg) (1+ arg))))))
-
-(defalias 'crux-mini-swap-windows 'crux-mini-transpose-windows)
-
-(defun crux-mini-switch-to-previous-buffer ()
-  "Switch to previously open buffer.
-Repeated invocations toggle between the two most recently open buffers."
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
-
-(defun crux-mini-find-user-init-file ()
-  "Edit the `user-init-file', in another window."
-  (interactive)
-  (find-file-other-window user-init-file))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
