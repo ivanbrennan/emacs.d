@@ -176,15 +176,18 @@ or nil if no installed versions are found."
 
 (add-package-to-load-path 'use-package)
 (add-package-to-load-path 'bind-key)
+(add-package-to-load-path 'diminish)
 
 (require 'use-package)
 
 (use-package rainbow-mode
   :load-path "elpa/rainbow-mode-0.12"
+  :diminish rainbow-mode
   :commands rainbow-mode)
 
 (use-package undo-tree
   :load-path "elpa/undo-tree-0.6.5"
+  :diminish undo-tree-mode
   :commands (undo-tree-undo undo-tree-redo)
   :config
   (setq undo-tree-auto-save-history t
@@ -293,6 +296,7 @@ or nil if no installed versions are found."
 
 (use-package page-break-lines
   :load-path "elpa/page-break-lines-0.11"
+  :diminish page-break-lines-mode
   :commands page-break-lines-mode
   :init
   (add-hook 'help-mode-hook #'page-break-lines-mode)
@@ -427,6 +431,10 @@ Disables `text-scale-mode`."
   (if region
       (kill-region (region-beginning) (region-end))
     (backward-kill-word arg)))
+
+;; diminish
+(eval-after-load "flyspell" '(diminish 'flyspell-mode))
+(eval-after-load "autorevert" '(diminish 'auto-revert-mode))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
