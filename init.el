@@ -294,7 +294,7 @@ or nil if no installed versions are found."
 (use-package page-break-lines
   :load-path "elpa/page-break-lines-0.11"
   :commands page-break-lines-mode
-  :config
+  :init
   (add-hook 'help-mode-hook #'page-break-lines-mode)
   (add-hook 'Info-mode-hook #'page-break-lines-mode))
 
