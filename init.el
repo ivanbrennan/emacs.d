@@ -156,37 +156,20 @@
 (setq package-archive-priorities '(("melpa-stable" . 2) ("gnu" . 1) ("marmalade" . 1))
       package-enable-at-startup  nil)
 
-(defun package-path (pkg)
-  "Return the path of the highest installed version of package PKG,
-or nil if no installed versions are found."
-  (let ((name (symbol-name pkg)))
-    (car (last
-          (file-expand-wildcards
-           (concat package-user-dir "/" name "*/" name ".el"))))))
+(package-initialize)
 
-(defun add-package-to-load-path (pkg)
-  (add-to-list 'load-path
-               (directory-file-name
-                (file-name-directory (package-path pkg)))))
-
-(unless (package-path 'use-package)
-  (package-initialize)
+(unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-(add-package-to-load-path 'use-package)
-(add-package-to-load-path 'bind-key)
-(add-package-to-load-path 'diminish)
 
 (require 'use-package)
 
 (use-package rainbow-mode
-  :load-path "elpa/rainbow-mode-0.12"
   :diminish rainbow-mode
   :commands rainbow-mode)
 
 (use-package undo-tree
-  :load-path "elpa/undo-tree-0.6.5"
+  :ensure t
   :diminish undo-tree-mode
   :commands (undo-tree-undo undo-tree-redo)
   :config
@@ -200,13 +183,13 @@ or nil if no installed versions are found."
   (undo-tree-mode 1))
 
 (use-package zoom-window
-  :load-path "elpa/zoom-window-0.4"
+  :ensure t
   :commands zoom-window-zoom
   :config
   (setq zoom-window-mode-line-color "#E4FFEA"))
 
 (use-package evil
-  :load-path "elpa/evil-1.2.12"
+  :ensure t
   :demand
   :bind (:map evil-normal-state-map
          ("U"       . undo-tree-redo)
@@ -239,12 +222,11 @@ or nil if no installed versions are found."
     (define-key keymap-from key nil))
   (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
   (use-package goto-chg
-    :load-path "elpa/goto-chg-1.6"
     :commands (goto-last-change goto-last-change-reverse))
   (use-package ffap
     :commands ffap-other-window)
   (use-package evil-leader
-    :load-path "elpa/evil-leader-0.4.3"
+    :ensure t
     :config
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key "x"  'execute-extended-command)
@@ -253,7 +235,7 @@ or nil if no installed versions are found."
   (evil-mode))
 
 (use-package ag
-  :load-path "elpa/ag-0.47"
+  :ensure t
   :commands (ag
              ag-files
              ag-regexp
@@ -265,18 +247,18 @@ or nil if no installed versions are found."
              ag-project-dired
              ag-project-dired-regexp)
   :config
-  (use-package dash :load-path "elpa/dash-2.13.0")
-  (use-package s    :load-path "elpa/s-1.11.0"))
+  (use-package dash)
+  (use-package s))
 
 (use-package crux
-  :load-path "elpa/crux-0.3.0"
+  :ensure t
   :commands (crux-smart-open-line
              crux-smart-open-line-above)
   :bind (("C-<return>" . crux-smart-open-line)
          ("S-<return>" . crux-smart-open-line-above)))
 
 (use-package windsize
-  :load-path "elpa/windsize-0.1"
+  :ensure t
   :bind (("C-S-<left>"  . windsize-left)
          ("C-S-<right>" . windsize-right)
          ("C-S-<up>"    . windsize-up)
@@ -290,12 +272,12 @@ or nil if no installed versions are found."
   (setq line-spacing 0.15))
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
 (use-package org-bullets
-  :load-path "elpa/org-bullets-0.2.4"
+  :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package page-break-lines
-  :load-path "elpa/page-break-lines-0.11"
+  :ensure t
   :diminish page-break-lines-mode
   :commands page-break-lines-mode
   :init
@@ -303,14 +285,7 @@ or nil if no installed versions are found."
   (add-hook 'Info-mode-hook #'page-break-lines-mode))
 
 (use-package magit
-  :load-path ("elpa/magit-2.8.0"
-              "elpa/with-editor-2.5.2"
-              "elpa/git-commit-2.8.0"
-              "elpa/magit-popup-2.8.0")
-  :config
-  (setq vc-handled-backends (delq 'Git vc-handled-backends))
-  (eval-after-load 'info
-    '(add-to-list 'Info-additional-directory-list (ivan/emacs-file "elpa/magit-2.8.0/"))))
+  :ensure t)
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
