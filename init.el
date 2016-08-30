@@ -157,6 +157,7 @@
       package-enable-at-startup  nil)
 
 (package-initialize)
+(setq package-enable-at-startup nil)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
