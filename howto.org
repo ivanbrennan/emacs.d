@@ -1,40 +1,67 @@
-* Closed
+* Misc
 ** Move point to middle/top/bottom of window
-*** M-r
+   How do I move the point to the middle/top/bottom of the window?
+   : M-r
 ** Resize windows
    How can I conveniently resize windows horizontally/vertically?
-   :: Install [[https://github.com/grammati/windsize][windsize]] and bind the following keys:
+   Install [[https://github.com/grammati/windsize][windsize]] and bind the following keys:
     #+BEGIN_SRC emacs-lisp
     (bind-keys ("C-S-<left>"  . windsize-left)
                ("C-S-<right>" . windsize-right)
                ("C-S-<up>"    . windsize-up)
                ("C-S-<down>"  . windsize-down))
     #+END_SRC
-*** windsize-up windsize-down
-** minibuffer history matching preceding chars
-*** C-r is a better solution
-** rectangular select
-*** C-SPC C-x SPC
-** case insensitive buffer-name completion
-*** read-buffer-completion-ignore-case
-** kill this buffer
-*** C-x k
-** hide scrollbars
-*** scroll-bar-mode
-** indent line/region
-*** TAB :: line or region
-*** C-M-\ :: region
-** go to beginning of search result rather than end
-*** add a function to isearch-mode-end-hook
-** why did i have to specify string literals to get the right colors, rather than changing the variables containing such strings?
-*** theme used defvar, which is resistant to re-evaluation; you'd have to restart emacs to get the variable changes to show up
-** toggle hl-line off in buffer
-*** M-s-; keybinding
-** indent space vs tab
-*** indent-tabs-mode
-** kill this/other window
-*** C-x 0
-* Misc
+** Use minibuffer history effectively
+   How can I effectively recall previous commands in the Emacs minibuffer?
+   : C-r
+** Select a rectangular select
+   How can I select a rectangular region?
+   : C-SPC C-x SPC
+** Case insensitive buffer completion
+   How can I make buffer name completion case insensitive?
+   : (setq read-buffer-completion-ignore-case  t)
+** Kill this buffer
+   How do I kill the current buffer?
+   : C-x k RET
+** Hide scrollbars
+   How do I hide the scrollbars?
+   : (scroll-bar-mode 0)
+** Indent current line/region
+   How do I indent the current line or region?
+   : TAB
+** Place cursor on beginning of match result
+   How can I place the cursor on the beginning of the match result rather than the end when performing isearch?
+    #+BEGIN_SRC emacs-lisp
+    (defun ivan/goto-match-beginning ()
+      (when (and isearch-forward isearch-other-end
+                (not isearch-mode-end-hook-quit))
+        (goto-char isearch-other-end)))
+
+    (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
+    #+END_SRC
+** Variables refusing to update
+   I was tweaking the values of some color variables in a theme I use, but reloading the theme didn't pick up the new values. What gives?
+   Variables defined with ~defvar~ are resistant to re-evaluation. Restarting Emacs will make the changes show up.
+** Toggle highlighting current line
+   How can I toggle ~hl-line-mode~ in the current buffer?
+   Write a toggle function:
+    #+BEGIN_SRC emacs-lisp
+    (defun ivan/local-toggle-hl-line ()
+      "Toggle line highlighting in current buffer"
+      (interactive)
+      (setq hl-line-mode (null hl-line-mode)))
+    #+END_SRC
+   Then bind a key to it:
+   : ("M-s-;" . ivan/local-toggle-hl-line)
+** Indent with spaces
+   How do I control whether Emacs indents with spaces or tabs?
+   : (setq indent-tabs-mode nil)
+** Kill windows
+   How can I kill the current window? What about the other window?
+   delete-window:
+   : C-x 0
+   delete-other-windows:
+   : C-x 1
 ** run tests asynchronously
 ** monospace src blocks in org-mode
 ** cycle kill ring in evil-mode
