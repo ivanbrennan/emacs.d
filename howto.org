@@ -1,7 +1,15 @@
-*  Solved
-** middle/top/bottom of window
+* Closed
+** Move point to middle/top/bottom of window
 *** M-r
-** resize windows
+** Resize windows
+   How can I conveniently resize windows horizontally/vertically?
+   :: Install [[https://github.com/grammati/windsize][windsize]] and bind the following keys:
+    #+BEGIN_SRC emacs-lisp
+    (bind-keys ("C-S-<left>"  . windsize-left)
+               ("C-S-<right>" . windsize-right)
+               ("C-S-<up>"    . windsize-up)
+               ("C-S-<down>"  . windsize-down))
+    #+END_SRC
 *** windsize-up windsize-down
 ** minibuffer history matching preceding chars
 *** C-r is a better solution
@@ -22,8 +30,17 @@
 *** theme used defvar, which is resistant to re-evaluation; you'd have to restart emacs to get the variable changes to show up
 ** toggle hl-line off in buffer
 *** M-s-; keybinding
+** indent space vs tab
+*** indent-tabs-mode
+** kill this/other window
+*** C-x 0
 * Misc
 ** run tests asynchronously
+** monospace src blocks in org-mode
+** cycle kill ring in evil-mode
+*** Normal state: C-p / C-n following a paste
+*** Insert state: ???
+** acccess system clipboard
 ** org insert subheading below
 ** org insert sibling above
 ** page-break lines in C-h m
@@ -57,8 +74,6 @@
 *** find-file-at-point
 *** hippie-expand
 ** ctags (etags?)
-** indent space vs tab
-*** indent-tabs-mode
 ** less info in Dired listings
 ** line numbers toggle
 ** partial line completion (cursor to end of line)
@@ -72,8 +87,6 @@
 ** sql beautify
 ** visit recent file
 ** what does ido c-k do?
-** kill this/other window
-*** C-x 0
 ** jump by block (like } in vim)
 ** jump back (like C-o in vim)
 ** aggressive-indent-mode
@@ -141,4 +154,3 @@
 *** ediff
 ** why are the rgb colors off from what they claim?
 ** why did I have to change from "#ffffff" to "white" to get terminal to show a white background?
-** why are comments and window separators invisible in terminal?
