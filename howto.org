@@ -63,13 +63,13 @@
    delete-other-windows:
    : C-x 1
 ** run tests asynchronously
-** monospace src blocks in org-mode
 ** cycle kill ring in evil-mode
 *** Normal state: C-p / C-n following a paste
 *** Insert state: ???
 ** acccess system clipboard
 ** org insert subheading below
 ** org insert sibling above
+** org correctly apply theme (monospace) to "#+BEGIN_SRC" lines
 ** page-break lines in C-h m
 ** byte-compile init file
 ** use-package :ensure keyword
