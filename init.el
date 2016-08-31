@@ -114,6 +114,7 @@
         show-trailing-whitespace t
         indicate-empty-lines     t))
 (add-hook 'prog-mode-hook #'ivan/code-whitespace)
+(add-hook 'org-mode-hook  #'ivan/code-whitespace)
 
 ;; sensibility
 (setq read-buffer-completion-ignore-case  t
