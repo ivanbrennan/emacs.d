@@ -853,6 +853,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mumamo-background-chunk-submode3 ((t (:background ,github-bg+3))))
    `(mumamo-background-chunk-submode4 ((t (:background ,github-bg+1))))
 ;;;;; org-mode
+   `(org-block-begin-line
+     ((t (:foreground "#B3B3B3" :family "Source Code Pro" :height 140))))
+   `(org-block-end-line
+     ((t (:foreground "#B3B3B3" :family "Source Code Pro" :height 140))))
+   `(org-block ((t (:family "Source Code Pro" :height 140))))
    `(org-agenda-date-today
      ((t (:foreground ,github-fg+1 :slant italic :weight bold))) t)
    `(org-agenda-structure
