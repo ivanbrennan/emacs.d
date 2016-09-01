@@ -280,6 +280,7 @@
 (use-package org-bullets
   :ensure t
   :config
+  (setq org-bullets-bullet-list '("◉" "○" "•"))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package page-break-lines

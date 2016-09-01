@@ -62,6 +62,13 @@
    : C-x 0
    delete-other-windows:
    : C-x 1
+** Nice org-mode bullets
+   How can I make the bullets in org-mode look nicer?
+   Use [[https://github.com/sabof/org-bullets][org-bullets]] and configure like so:
+   #+BEGIN_SRC emacs-lisp
+   (setq org-bullets-bullet-list '("◉" "○" "•"))
+   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+   #+END_SRC
 ** run tests asynchronously
 ** cycle kill ring in evil-mode
 *** Normal state: C-p / C-n following a paste
@@ -118,9 +125,6 @@
 ** jump back (like C-o in vim)
 ** aggressive-indent-mode
 ** multi-cursor
-** prettier org mode
-*** org-bullets
-*** org-beautify-theme
 ** multiple cursors
 ** semantic layer in spacemacs
 ** scroll inactive frame without changing state of status bars
