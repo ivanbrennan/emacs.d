@@ -62,6 +62,9 @@
    : C-x 0
    delete-other-windows:
    : C-x 1
+** Make Dired listings concise
+   How can I make Dired display fewer file details?
+   : dired-hide-details-mode
 ** Nice org-mode bullets
    How can I make the bullets in org-mode look nicer?
    Use [[https://github.com/sabof/org-bullets][org-bullets]] and configure like so:
@@ -70,6 +73,7 @@
    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
    #+END_SRC
 ** run tests asynchronously
+** bind M-s-h in emacs-plus
 ** cycle kill ring in evil-mode
 *** Normal state: C-p / C-n following a paste
 *** Insert state: ???
@@ -108,7 +112,6 @@
 *** find-file-at-point
 *** hippie-expand
 ** ctags (etags?)
-** less info in Dired listings
 ** line numbers toggle
 ** partial line completion (cursor to end of line)
 ** scroll offset to 1 line
