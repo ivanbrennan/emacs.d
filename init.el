@@ -399,6 +399,19 @@ Disables `text-scale-mode`."
            ("C-?" . undo-tree-redo)
            ("C-w" . ivan/kill-region-or-backward-kill-word))
 
+(defun ivan/isearch-exit ()
+  "Run isearch-exit, and if in the minibuffer, submit the search result as input."
+  (interactive)
+  (isearch-exit)
+  (if (minibuffer-window-active-p (selected-window))
+      (minibuffer-complete-and-exit)))
+(defun ivan/remap-isearch-exit ()
+  (define-key
+    overriding-terminal-local-map
+    [remap isearch-exit]
+    #'ivan/isearch-exit))
+(add-hook 'isearch-mode-hook #'ivan/remap-isearch-exit)
+
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 
 ;; etc.
