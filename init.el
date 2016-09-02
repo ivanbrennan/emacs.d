@@ -127,6 +127,7 @@
       uniquify-buffer-name-style          'forward
       save-interprogram-paste-before-kill t
       apropos-do-all                      t
+      delete-by-moving-to-trash           t
       ediff-window-setup-function         'ediff-setup-windows-plain
       sentence-end-double-space           nil)
 
