@@ -145,6 +145,9 @@
 (eval-after-load 'info
   '(add-to-list 'Info-additional-directory-list (ivan/emacs-file "info/")))
 
+;; tramp
+(setq tramp-default-method "ssh")
+
 ;; packages
 (require 'package)
 
