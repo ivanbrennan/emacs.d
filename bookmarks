@@ -2,7 +2,35 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("xref"
+(("manual-repeat"
+ (front-context-string . "\n7.10 Numeric Ar")
+ (rear-context-string . "nfo,  Up: Basic\n")
+ (position . 112870)
+ (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
+ (info-node . "Arguments")
+ (handler . Info-bookmark-jump))
+("intro elisp"
+ (front-context-string . "\nAn Introduction")
+ (rear-context-string . "ace,  Up: (dir)\n")
+ (position . 1566)
+ (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/eintr")
+ (info-node . "Top")
+ (handler . Info-bookmark-jump))
+("loading"
+ (front-context-string . "File: elisp.info")
+ (rear-context-string)
+ (position . 727442)
+ (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/elisp")
+ (info-node . "Loading")
+ (handler . Info-bookmark-jump))
+("byte compilation"
+ (front-context-string . "\n16 Byte Compila")
+ (rear-context-string . "ading,  Up: Top\n")
+ (position . 774909)
+ (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/elisp")
+ (info-node . "Byte Compilation")
+ (handler . Info-bookmark-jump))
+("xref"
  (front-context-string . "\n28.3 Find Ident")
  (rear-context-string . "Up: Maintaining\n")
  (position . 1064366)
