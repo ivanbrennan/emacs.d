@@ -41,6 +41,12 @@ M-s C-e :: yank rest of line into search string
 (Replace regexp)
 \? in newstring :: query to edit each replacement
 
+(startup)
+hold down shift when launching to use -Q
+
+(mac port)
+double two-finger tap trackpad to scale/unscale text
+
 * Unbelievable productivity boosters
 ** C-r in the minibuffer
 ** tab completion inside a word
