@@ -312,7 +312,7 @@ Disables `text-scale-mode`."
 
 (defun configure-gui ()
   (bind-keys ("M-q"   . save-buffers-kill-terminal)
-             ("M-s-a" . mark-whole-buffer)
+             ("M-å"   . mark-whole-buffer)
              ("M-o"   . find-file)
              ("M-w"   . delete-window)
              ("M-W"   . delete-frame)
@@ -322,8 +322,7 @@ Disables `text-scale-mode`."
              ("M-="   . text-scale-increase)
              ("M--"   . text-scale-decrease)
              ("M-0"   . ivan/text-scale-reset)
-             ("M-s-;" . ivan/local-toggle-hl-line)
-             ("M-s-h" . mac-hide-others)
+             ("M-…"   . ivan/local-toggle-hl-line)
              ;; turn off "displays have separate spaces" so
              ;; fullscreen won't black out other monitors.
              ("M-<return>" . toggle-frame-fullscreen)
@@ -373,7 +372,8 @@ Disables `text-scale-mode`."
 
 (defun configure-mac-modifiers ()
   (setq mac-command-modifier 'meta
-        mac-option-modifier  'super))
+        ;;        mac-option-modifier  'super))
+        ))
 
 (defun configure-mac-directory-program ()
   (if (file-exists-p "/usr/local/bin/gls")
