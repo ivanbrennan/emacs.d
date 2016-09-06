@@ -314,6 +314,7 @@ Disables `text-scale-mode`."
   (bind-keys ("M-q"   . save-buffers-kill-terminal)
              ("M-å"   . mark-whole-buffer)
              ("M-o"   . find-file)
+             ("M-c"   . kill-ring-save)
              ("M-w"   . delete-window)
              ("M-W"   . delete-frame)
              ("M-n"   . make-frame)
@@ -329,7 +330,7 @@ Disables `text-scale-mode`."
              ;; reconcile some overridden keybindings
              ("s-q"   . fill-paragraph)
              ("s-o"   . facemenu-keymap)
-             ("s-w"   . kill-ring-save)
+             ("s-c"   . capitalize-word)
              ("s-s"   . search-map)
              ("s-u"   . upcase-word)
              ("s-="   . count-words-region)))
