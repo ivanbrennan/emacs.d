@@ -150,6 +150,7 @@
 *** ⌘o :: bind to find-file; face-menu isn't so useful
 *** Maybe I /should/ use ⌘ as Meta, and substitute super bindings for the commands I'd overwrite
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
+** toggle isearch case-fold on the fly?
 * Packages
 ** Undo-tree
 ** company
