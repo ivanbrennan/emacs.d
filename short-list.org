@@ -33,6 +33,7 @@ C-x n n :: narrow-to-region
 C-x n w :: widen
 C-x e :: call-last-kbd-macro
 C-. :: flyspell-auto-correct-word
+C-x z :: repeat
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
