@@ -393,12 +393,12 @@ Disables `text-scale-mode`."
 ;; keybindings
 (bind-keys ("C-M-s" . isearch-forward)
            ("C-M-r" . isearch-backward)
-           ("C-s" . isearch-forward-regexp)
-           ("C-r" . isearch-backward-regexp)
-           ("M-/" . hippie-expand)
-           ("C-/" . undo-tree-undo)
-           ("C-?" . undo-tree-redo)
-           ("C-w" . ivan/kill-region-or-backward-kill-word))
+           ("C-s"   . isearch-forward-regexp)
+           ("C-r"   . isearch-backward-regexp)
+           ("M-/"   . hippie-expand)
+           ("C-/"   . undo-tree-undo)
+           ("C-?"   . undo-tree-redo)
+           ("C-w"   . ivan/kill-region-or-backward-kill-word))
 
 (defun ivan/isearch-exit ()
   "Run isearch-exit, and if in the minibuffer, submit the search result as input."
