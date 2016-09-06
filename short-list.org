@@ -34,6 +34,7 @@ C-x n w :: widen
 C-x e :: call-last-kbd-macro
 C-. :: flyspell-auto-correct-word
 C-x z :: repeat
+(setq highlight-nonselected-windows t)
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
