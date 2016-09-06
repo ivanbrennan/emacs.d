@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual-repeat"
- (front-context-string . "\n7.10 Numeric Ar")
- (rear-context-string . "nfo,  Up: Basic\n")
- (position . 112870)
+ (front-context-string . "\n8.6 Repeating M")
+ (rear-context-string . " Up: Minibuffer\n")
+ (position . 145372)
  (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
- (info-node . "Arguments")
+ (info-node . "Repetition")
  (handler . Info-bookmark-jump))
 ("intro elisp"
  (front-context-string . "\nAn Introduction")
