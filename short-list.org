@@ -52,3 +52,4 @@ double two-finger tap trackpad to scale/unscale text
 * Unbelievable productivity boosters
 ** C-r in the minibuffer
 ** tab completion inside a word
+** C-M-y in isearch
