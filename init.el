@@ -1,8 +1,8 @@
 ;; blank slate
-(setq initial-scratch-message nil
-      inhibit-startup-screen t
+(setq inhibit-startup-screen t
+      inhibit-startup-echo-area-message "ivan"
+      initial-scratch-message nil
       frame-title-format "emacs")
-(setq inhibit-startup-echo-area-message "ivan")
 
 ;; clean screen
 (menu-bar-mode   0)
@@ -20,9 +20,9 @@
       blink-matching-delay 0.25)
 
 ;; cursor
+(blink-cursor-mode 0)
 (setq-default cursor-type 'bar
               cursor-in-non-selected-windows nil)
-(blink-cursor-mode 0)
 
 ;; persistence
 (make-directory (concat user-emacs-directory ".cache") :mkdir_p)
@@ -73,9 +73,9 @@
 (setq split-width-threshold 130)
 
 ;; scroll
-(setq scroll-step 1
-      scroll-margin 0
-      hscroll-step 1
+(setq scroll-step    1
+      scroll-margin  0
+      hscroll-step   1
       hscroll-margin 2
       scroll-conservatively 200
       mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
@@ -113,6 +113,7 @@
   (setq indent-tabs-mode         nil
         show-trailing-whitespace t
         indicate-empty-lines     t))
+
 (add-hook 'prog-mode-hook #'ivan/code-whitespace)
 (add-hook 'org-mode-hook  #'ivan/code-whitespace)
 
@@ -225,6 +226,7 @@
   :config
   (setq-default evil-shift-width 2)
   (setq evil-move-cursor-back nil
+        evil-want-fine-undo     'no
         evil-emacs-state-cursor 'bar)
   (defun ivan/move-key (keymap-from keymap-to key)
     "Moves key binding from one keymap to another, deleting from the old location."
