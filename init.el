@@ -335,7 +335,8 @@ Disables `text-scale-mode`."
              ("ESC M-c" . capitalize-word)
              ("ESC M-s" . search-map) ; fix this
              ("ESC M-u" . upcase-word)
-             ("ESC M-=" . count-words-region)))
+             ("ESC M-=" . count-words-region))
+  (global-set-key (kbd "ESC M-s") search-map))
 
 (defun configure-terminal ()
   (require 'mouse)
