@@ -129,8 +129,6 @@
 ** jump by block (like } in vim)
 ** jump back (like C-o in vim)
 ** aggressive-indent-mode
-** multi-cursor
-** multiple cursors
 ** semantic layer in spacemacs
 ** scroll inactive frame without changing state of status bars
 ** lazy load package.el
@@ -148,6 +146,7 @@
 *** ⌘s :: i'll probably go with <Space>fs like spacemacs
 *** ⌘w :: bind to delete-window; i'll use evil-yank more than kill-ring-save
 *** ⌘o :: bind to find-file; face-menu isn't so useful
+*** ⌘h :: ???
 *** Maybe I /should/ use ⌘ as Meta, and substitute super bindings for the commands I'd overwrite
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 ** toggle isearch case-fold on the fly?
@@ -174,6 +173,9 @@
 ** Cedit
 ** magit
 ** https://github.com/Dewdrops/powerline
+** expand-region
+** multiple-cursors / multi-cursor
+
 * Evil-mode
 ** visual block with live updating like rectangle-mark-mode string-rectangle
 ** C-u in insert mode? (maybe C-x C-u from insert state)
@@ -192,3 +194,4 @@
 *** ediff
 ** why are the rgb colors off from what they claim?
 ** why did I have to change from "#ffffff" to "white" to get terminal to show a white background?
+** why does the rectangular-region persist in an empty state after a command?
