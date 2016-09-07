@@ -164,6 +164,7 @@
 *** ⌘h :: use ⌘ as meta and /don't/ use option key as super -- this, along with mac-pass-command-to-system, let's emacs-mac pass ⌘h and ⌥⌘h to os
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 ** toggle isearch case-fold on the fly?
+** get C-RET working in org mode
 * Packages
 ** Undo-tree
 ** company
