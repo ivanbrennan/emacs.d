@@ -331,7 +331,7 @@ Disables `text-scale-mode`."
              ("ESC M-q" . fill-paragraph)
              ("ESC M-o" . facemenu-keymap)
              ("ESC M-c" . capitalize-word)
-             ("ESC M-s" . search-map)
+             ("ESC M-s" . search-map) ; fix this
              ("ESC M-u" . upcase-word)
              ("ESC M-=" . count-words-region)))
 

@@ -2,6 +2,7 @@
 ** Move point to middle/top/bottom of window
    How do I move the point to the middle/top/bottom of the window?
    : M-r
+
 ** Resize windows
    How can I conveniently resize windows horizontally/vertically?
    Install [[https://github.com/grammati/windsize][windsize]] and bind the following keys:
@@ -11,24 +12,31 @@
                ("C-S-<up>"    . windsize-up)
                ("C-S-<down>"  . windsize-down))
     #+END_SRC
+
 ** Use minibuffer history effectively
    How can I effectively recall previous commands in the Emacs minibuffer?
    : C-r
+
 ** Select a rectangular select
    How can I select a rectangular region?
    : C-SPC C-x SPC
+
 ** Case insensitive buffer completion
    How can I make buffer name completion case insensitive?
    : (setq read-buffer-completion-ignore-case  t)
+
 ** Kill this buffer
    How do I kill the current buffer?
    : C-x k RET
+
 ** Hide scrollbars
    How do I hide the scrollbars?
    : (scroll-bar-mode 0)
+
 ** Indent current line/region
    How do I indent the current line or region?
    : TAB
+
 ** Place cursor on beginning of match result
    How can I place the cursor on the beginning of the match result rather than the end when performing isearch?
     #+BEGIN_SRC emacs-lisp
@@ -39,9 +47,11 @@
 
     (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
     #+END_SRC
+
 ** Variables refusing to update
    I was tweaking the values of some color variables in a theme I use, but reloading the theme didn't pick up the new values. What gives?
    Variables defined with ~defvar~ are resistant to re-evaluation. Restarting Emacs will make the changes show up.
+
 ** Toggle highlighting current line
    How can I toggle ~hl-line-mode~ in the current buffer?
    Write a toggle function:
@@ -53,18 +63,22 @@
     #+END_SRC
    Then bind a key to it:
    : ("M-s-;" . ivan/local-toggle-hl-line)
+
 ** Indent with spaces
    How do I control whether Emacs indents with spaces or tabs?
    : (setq indent-tabs-mode nil)
+
 ** Kill windows
    How can I kill the current window? What about the other window?
    delete-window:
    : C-x 0
    delete-other-windows:
    : C-x 1
+
 ** Make Dired listings concise
    How can I make Dired display fewer file details?
    : dired-hide-details-mode
+
 ** Nice org-mode bullets
    How can I make the bullets in org-mode look nicer?
    Use [[https://github.com/sabof/org-bullets][org-bullets]] and configure like so:
@@ -72,6 +86,7 @@
    (setq org-bullets-bullet-list '("◉" "○" "•"))
    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
    #+END_SRC
+
 ** run tests asynchronously
 ** set 'fullscreen' frame-parameter to 'fullscreen' or 'fullboth'
 ** bind M-s-h in emacs-plus
@@ -142,12 +157,11 @@
 ** find sensible solutions for C-a, C-e, C-y, 0, $ in evil-mode
 *** evil-numbers suggests C-c + C-c -
 ** reconcile ⌘ key
-*** ⌘q :: shouldn't be too easy, so M-s-q is fine
-*** ⌘s :: i'll probably go with <Space>fs like spacemacs
-*** ⌘w :: bind to delete-window; i'll use evil-yank more than kill-ring-save
+*** ⌘q :: should quit; don't want to start associating it with other commands as I'd likely start hitting it accidentally outside of emacs; inside emacs there's a confirmation to help avoid accidental quits
+*** ⌘s :: use <Space>fs in evil-mode, but  ⌘s otherwise
+*** ⌘w :: bind to delete-window; use  ⌘c or evil-yank for copying to kill-ring
 *** ⌘o :: bind to find-file; face-menu isn't so useful
-*** ⌘h :: ???
-*** Maybe I /should/ use ⌘ as Meta, and substitute super bindings for the commands I'd overwrite
+*** ⌘h :: use ⌘ as meta and /don't/ use option key as super -- this, along with mac-pass-command-to-system, let's emacs-mac pass ⌘h and ⌥⌘h to os
 ** bind C-w to backward-kill-word when region inactive (or maybe just when in evil insert state?)
 ** toggle isearch case-fold on the fly?
 * Packages
