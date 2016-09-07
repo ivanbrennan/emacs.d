@@ -328,12 +328,12 @@ Disables `text-scale-mode`."
              ;; fullscreen won't black out other monitors.
              ("M-<return>" . toggle-frame-fullscreen)
              ;; reconcile some overridden keybindings
-             ("œ" . fill-paragraph)       ; (⌥q)
-             ("ø" . facemenu-keymap)      ; (⌥o)
-             ("ç" . capitalize-word)      ; (⌥c)
-             ("ß" . search-map)           ; (⌥s) fix this
-             ("¨" . upcase-word)          ; (⌥u) fix this
-             ("≠" . count-words-region))) ; (⌥=)
+             ("ESC M-q" . fill-paragraph)
+             ("ESC M-o" . facemenu-keymap)
+             ("ESC M-c" . capitalize-word)
+             ("ESC M-s" . search-map)
+             ("ESC M-u" . upcase-word)
+             ("ESC M-=" . count-words-region)))
 
 (defun configure-terminal ()
   (require 'mouse)
