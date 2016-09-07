@@ -312,7 +312,7 @@ Disables `text-scale-mode`."
 
 (defun configure-gui ()
   (bind-keys ("M-q"   . save-buffers-kill-terminal)
-             ("M-å"   . mark-whole-buffer)
+             ("M-å"   . mark-whole-buffer) ; (⌥⌘A)
              ("M-o"   . find-file)
              ("M-c"   . kill-ring-save)
              ("M-w"   . delete-window)
@@ -323,26 +323,17 @@ Disables `text-scale-mode`."
              ("M-="   . text-scale-increase)
              ("M--"   . text-scale-decrease)
              ("M-0"   . ivan/text-scale-reset)
-             ("M-…"   . ivan/local-toggle-hl-line)
+             ("M-…"   . ivan/local-toggle-hl-line) ; (⌥⌘;)
              ;; turn off "displays have separate spaces" so
              ;; fullscreen won't black out other monitors.
              ("M-<return>" . toggle-frame-fullscreen)
              ;; reconcile some overridden keybindings
-             ("s-q"   . fill-paragraph)
-             ("s-o"   . facemenu-keymap)
-             ("s-c"   . capitalize-word)
-             ("s-s"   . search-map)
-             ("s-u"   . upcase-word)
-             ("s-="   . count-words-region)))
-
-;; this is slow :P
-(defun mac-hide-others ()
-  (interactive)
-  (do-applescript (concat "tell application \"System Events\" to "
-                          "set visible of every process whose visible is true "
-                          "and name is not \"Emacs\" "
-                          "and frontmost is false to "
-                          "false")))
+             ("œ" . fill-paragraph)       ; (⌥q)
+             ("ø" . facemenu-keymap)      ; (⌥o)
+             ("ç" . capitalize-word)      ; (⌥c)
+             ("ß" . search-map)           ; (⌥s) fix this
+             ("¨" . upcase-word)          ; (⌥u) fix this
+             ("≠" . count-words-region))) ; (⌥=)
 
 (defun configure-terminal ()
   (require 'mouse)
@@ -372,9 +363,7 @@ Disables `text-scale-mode`."
 (defun system-is-mac () (eq system-type 'darwin))
 
 (defun configure-mac-modifiers ()
-  (setq mac-command-modifier 'meta
-        ;;        mac-option-modifier  'super))
-        ))
+  (setq mac-command-modifier 'meta))
 
 (defun configure-mac-directory-program ()
   (if (file-exists-p "/usr/local/bin/gls")
