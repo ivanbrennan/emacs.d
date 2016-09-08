@@ -159,11 +159,11 @@
              '("marmalade" . "https://marmalade-repo.org/packages/")
              :append)
 
-(setq package-archive-priorities '(("melpa-stable" . 2) ("gnu" . 1) ("marmalade" . 1))
-      package-enable-at-startup  nil)
-
+(setq package-enable-at-startup  nil
+      package-archive-priorities '(("melpa-stable" . 2)
+                                   ("gnu"          . 1)
+                                   ("marmalade"    . 1)))
 (package-initialize)
-(setq package-enable-at-startup nil)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
