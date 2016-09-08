@@ -314,7 +314,7 @@ Disables `text-scale-mode`."
 
 (defun configure-gui ()
   (bind-keys ("M-q"   . save-buffers-kill-terminal)
-             ("M-å"   . mark-whole-buffer) ; (⌥⌘A)
+             ("M-A"   . mark-whole-buffer) ; (⌥⌘A)
              ("M-o"   . find-file)
              ("M-c"   . kill-ring-save)
              ("M-w"   . delete-window)
