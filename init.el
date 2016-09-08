@@ -26,7 +26,8 @@
 
 ;; persistence
 (make-directory (concat user-emacs-directory ".cache") :mkdir_p)
-(defun ivan/emacs-file (name) (concat user-emacs-directory name))
+(defun ivan/emacs-file (name)
+  (concat user-emacs-directory name))
 (make-directory (ivan/emacs-file ".cache/auto-save") :mkdir_p)
 
 (setq backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
