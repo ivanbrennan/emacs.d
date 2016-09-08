@@ -29,6 +29,9 @@
 (defun ivan/emacs-file (name)
   (concat user-emacs-directory name))
 (make-directory (ivan/emacs-file ".cache/auto-save") :mkdir_p)
+(setq custom-file (ivan/emacs-file "custom.el"))
+(unless (file-exists-p custom-file)
+  (write-region "" nil custom-file))
 
 (setq backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
       auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") :uniquify))
