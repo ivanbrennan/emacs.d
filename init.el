@@ -134,6 +134,7 @@
       apropos-do-all                      t
       delete-by-moving-to-trash           t
       ediff-window-setup-function         'ediff-setup-windows-plain
+      echo-keystrokes                     0.5
       sentence-end-double-space           nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
