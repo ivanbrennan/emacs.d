@@ -326,8 +326,6 @@ Disables `text-scale-mode`."
              ("M--"   . text-scale-decrease)
              ("M-0"   . ivan/text-scale-reset)
              ("M-…"   . ivan/local-toggle-hl-line) ; (⌥⌘;)
-             ;; turn off "displays have separate spaces" so
-             ;; fullscreen won't black out other monitors.
              ("M-<return>" . toggle-frame-fullscreen)
              ;; reconcile some overridden keybindings
              ("ESC M-q" . fill-paragraph)
