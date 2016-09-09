@@ -415,6 +415,15 @@ Disables `text-scale-mode`."
     #'ivan/isearch-exit))
 (add-hook 'isearch-mode-hook #'ivan/remap-isearch-exit)
 
+(defun ivan/minibuffer-setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
+
+(defun ivan/minibuffer-exit-hook ()
+  (setq gc-cons-threshold 800000))
+
+(add-hook 'minibuffer-setup-hook #'ivan/minibuffer-setup-hook)
+(add-hook 'minibuffer-exit-hook #'ivan/minibuffer-exit-hook)
+
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 
 ;; etc.
