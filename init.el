@@ -144,6 +144,14 @@
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 (add-hook 'tex-mode-hook #'(lambda () (setq ispell-parser 'tex)))
 
+(defun ivan/create-non-existent-directory ()
+  (let ((parent-directory (file-name-directory buffer-file-name)))
+    (when (and (not (file-exists-p parent-directory))
+               (y-or-n-p (format "Directory `%s' does not exist! Create it?" parent-directory)))
+      (make-directory parent-directory t))))
+
+(add-to-list 'find-file-not-found-functions 'ivan/create-non-existent-directory)
+
 ;; env
 (setenv "PAGER" "/usr/bin/env cat")
 
