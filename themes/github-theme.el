@@ -8,14 +8,9 @@
 (defvar github-default-colors-alist
   '(("ink"           . "#333333")
     ("github-fg"     . "#A71D5D")
-    ("github-bg-2"   . "#ffffff")
+    ("paper"         . "#ffffff")
     ("github-bg-1"   . "#b0cde7")
     ("github-bg-05"  . "#f8eec7")
-    ("github-bg"     . "#ffffff")
-    ("github-bg+05"  . "#ffffff")
-    ("github-bg+1"   . "#ffffff")
-    ("github-bg+2"   . "#ffffff")
-    ("github-bg+3"   . "#ffffff")
     ("github-red"    . "#183691")
     ("github-yellow" . "#A71D5D")
     ("github-green-1". "#969896")
@@ -93,13 +88,13 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
    `(cursor ((t (:background "#333333"))))
    `(escape-glyph ((t (:foreground ,github-yellow :bold t))))
-   `(fringe ((t (:foreground "#B3B3B3" :background ,github-bg+1))))
+   `(fringe ((t (:foreground "#B3B3B3" :background ,paper))))
    `(header-line ((t (:foreground "#969896" :background "#F5F5F5"))))
    `(info-node ((t (:foreground "#29D045" :slant italic :weight bold))))
    `(highlight ((t (:background "#F8F8F8"))))
    `(success ((t (:foreground ,github-green :weight bold))))
    `(warning ((t (:foreground ,ink :weight bold))))
-   `(tooltip ((t (:foreground ,github-fg :background ,github-bg+1))))
+   `(tooltip ((t (:foreground ,github-fg :background ,paper))))
 ;;;;; compilation
    `(compilation-column-face ((t (:foreground ,github-yellow))))
    `(compilation-enter-directory-face ((t (:foreground ,github-green))))
@@ -124,7 +119,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(isearch-fail ((t (:background "#FFC8C9"))))
    `(lazy-highlight ((t (:foreground ,ink :weight bold :background "#F2F9DB"))))
 
-   `(menu ((t (:foreground ,github-fg :background ,github-bg))))
+   `(menu ((t (:foreground ,github-fg :background ,paper))))
    `(minibuffer-prompt ((t (:foreground "#333333" :weight bold))))
    `(mode-line
      ((,class (:foreground "#666666"
@@ -141,7 +136,7 @@ Also bind `class' to ((class color) (min-colors 89))."
                       :box (:line-width -1 :color "#d8d8d8")))))
    `(region ((,class (:background "#E8F1F6"))
              (t :inverse-video t)))
-   `(secondary-selection ((t (:background ,github-bg+2))))
+   `(secondary-selection ((t (:background ,paper))))
    `(trailing-whitespace ((t (:background "#EDEDED"))))
    `(vertical-border ((t (:foreground "#d0d0d0"))))
 ;;;;; font lock
@@ -166,26 +161,26 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(newsticker-date-face ((t (:foreground ,github-fg))))
    `(newsticker-default-face ((t (:foreground ,github-fg))))
    `(newsticker-enclosure-face ((t (:foreground ,github-green+3))))
-   `(newsticker-extra-face ((t (:foreground ,github-bg+2 :height 0.8))))
+   `(newsticker-extra-face ((t (:foreground ,paper :height 0.8))))
    `(newsticker-feed-face ((t (:foreground ,github-fg))))
    `(newsticker-immortal-item-face ((t (:foreground ,github-green))))
    `(newsticker-new-item-face ((t (:foreground ,ink))))
    `(newsticker-obsolete-item-face ((t (:foreground ,github-red))))
-   `(newsticker-old-item-face ((t (:foreground ,github-bg+3))))
+   `(newsticker-old-item-face ((t (:foreground ,paper))))
    `(newsticker-statistics-face ((t (:foreground ,github-fg))))
    `(newsticker-treeview-face ((t (:foreground ,github-fg))))
    `(newsticker-treeview-immortal-face ((t (:foreground ,github-green))))
    `(newsticker-treeview-listwindow-face ((t (:foreground ,github-fg))))
    `(newsticker-treeview-new-face ((t (:foreground ,ink :weight bold))))
    `(newsticker-treeview-obsolete-face ((t (:foreground ,github-red))))
-   `(newsticker-treeview-old-face ((t (:foreground ,github-bg+3))))
+   `(newsticker-treeview-old-face ((t (:foreground ,paper))))
    `(newsticker-treeview-selection-face ((t (:background ,github-bg-1 :foreground ,github-yellow))))
 ;;;; Third-party
 ;;;;; ace-jump
    `(ace-jump-face-background
-     ((t (:foreground ,ink :background ,github-bg :inverse-video nil))))
+     ((t (:foreground ,ink :background ,paper :inverse-video nil))))
    `(ace-jump-face-foreground
-     ((t (:foreground ,github-green+2 :background ,github-bg :inverse-video nil))))
+     ((t (:foreground ,github-green+2 :background ,paper :inverse-video nil))))
 ;;;;; android mode
    `(android-mode-debug-face ((t (:foreground ,ink))))
    `(android-mode-error-face ((t (:foreground ,ink :weight bold))))
@@ -212,11 +207,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(agda2-highlight-datatype-face ((t (:foreground ,ink))))
    `(agda2-highlight-function-face ((t (:foreground ,ink))))
    `(agda2-highlight-module-face ((t (:foreground ,github-blue-1))))
-   `(agda2-highlight-error-face ((t (:foreground ,github-bg :background ,ink))))
-   `(agda2-highlight-unsolved-meta-face ((t (:foreground ,github-bg :background ,ink))))
-   `(agda2-highlight-unsolved-constraint-face ((t (:foreground ,github-bg :background ,ink))))
-   `(agda2-highlight-termination-problem-face ((t (:foreground ,github-bg :background ,ink))))
-   `(agda2-highlight-incomplete-pattern-face ((t (:foreground ,github-bg :background ,ink))))
+   `(agda2-highlight-error-face ((t (:foreground ,paper :background ,ink))))
+   `(agda2-highlight-unsolved-meta-face ((t (:foreground ,paper :background ,ink))))
+   `(agda2-highlight-unsolved-constraint-face ((t (:foreground ,paper :background ,ink))))
+   `(agda2-highlight-termination-problem-face ((t (:foreground ,paper :background ,ink))))
+   `(agda2-highlight-incomplete-pattern-face ((t (:foreground ,paper :background ,ink))))
    `(agda2-highlight-typechecks-face ((t (:background ,ink))))
 ;;;;; auto-complete
    `(ac-candidate-face ((t (:background "#ffffff" :foreground "#333333" :box (:line-width -1 :style released-button)))))
@@ -227,32 +222,32 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(popup-isearch-match ((t (:background "#ff00ff" :foreground "#00ffff"))))
 ;;;;; avy
    `(avy-background-face
-     ((t (:foreground ,ink :background ,github-bg :inverse-video nil))))
+     ((t (:foreground ,ink :background ,paper :inverse-video nil))))
    `(avy-lead-face-0
-     ((t (:foreground ,github-green+3 :background ,github-bg :inverse-video nil :weight bold))))
+     ((t (:foreground ,github-green+3 :background ,paper :inverse-video nil :weight bold))))
    `(avy-lead-face-1
-     ((t (:foreground ,github-yellow :background ,github-bg :inverse-video nil :weight bold))))
+     ((t (:foreground ,github-yellow :background ,paper :inverse-video nil :weight bold))))
    `(avy-lead-face-2
-     ((t (:foreground ,ink :background ,github-bg :inverse-video nil :weight bold))))
+     ((t (:foreground ,ink :background ,paper :inverse-video nil :weight bold))))
    `(avy-lead-face
-     ((t (:foreground ,github-cyan :background ,github-bg :inverse-video nil :weight bold))))
+     ((t (:foreground ,github-cyan :background ,paper :inverse-video nil :weight bold))))
 ;;;;; company-mode
-   `(company-tooltip ((t (:foreground ,github-fg :background ,github-bg+1))))
-   `(company-tooltip-annotation ((t (:foreground ,ink :background ,github-bg+1))))
+   `(company-tooltip ((t (:foreground ,github-fg :background ,paper))))
+   `(company-tooltip-annotation ((t (:foreground ,ink :background ,paper))))
    `(company-tooltip-annotation-selection ((t (:foreground ,ink :background ,github-bg-1))))
    `(company-tooltip-selection ((t (:foreground ,github-fg :background ,github-bg-1))))
    `(company-tooltip-mouse ((t (:background ,github-bg-1))))
    `(company-tooltip-common ((t (:foreground ,github-green+2))))
    `(company-tooltip-common-selection ((t (:foreground ,github-green+2))))
    `(company-scrollbar-fg ((t (:background ,github-bg-1))))
-   `(company-scrollbar-bg ((t (:background ,github-bg+2))))
+   `(company-scrollbar-bg ((t (:background ,paper))))
    `(company-preview ((t (:background ,github-green+2))))
    `(company-preview-common ((t (:foreground ,github-green+2 :background ,github-bg-1))))
 ;;;;; bm
-   `(bm-face ((t (:background ,ink :foreground ,github-bg))))
-   `(bm-fringe-face ((t (:background ,ink :foreground ,github-bg))))
-   `(bm-fringe-persistent-face ((t (:background ,github-green-1 :foreground ,github-bg))))
-   `(bm-persistent-face ((t (:background ,github-green-1 :foreground ,github-bg))))
+   `(bm-face ((t (:background ,ink :foreground ,paper))))
+   `(bm-fringe-face ((t (:background ,ink :foreground ,paper))))
+   `(bm-fringe-persistent-face ((t (:background ,github-green-1 :foreground ,paper))))
+   `(bm-persistent-face ((t (:background ,github-green-1 :foreground ,paper))))
 ;;;;; cider
    `(cider-result-overlay-face ((t (:foreground ,ink :background unspecified))))
 ;;;;; circe
@@ -263,7 +258,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(circe-originator-face ((t (:foreground ,github-fg))))
    `(circe-server-face ((t (:foreground ,github-green))))
    `(circe-topic-diff-new-face ((t (:foreground ,ink :weight bold))))
-   `(circe-prompt-face ((t (:foreground ,ink :background ,github-bg :weight bold))))
+   `(circe-prompt-face ((t (:foreground ,ink :background ,paper :weight bold))))
 ;;;;; context-coloring
    `(context-coloring-level-0-face ((t :foreground ,github-fg)))
    `(context-coloring-level-1-face ((t :foreground ,github-cyan)))
@@ -278,9 +273,9 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; coq
    `(coq-solve-tactics-face ((t (:foreground nil :inherit font-lock-constant-face))))
 ;;;;; ctable
-   `(ctbl:face-cell-select ((t (:background ,ink :foreground ,github-bg))))
-   `(ctbl:face-continue-bar ((t (:background ,github-bg-05 :foreground ,github-bg))))
-   `(ctbl:face-row-select ((t (:background ,github-cyan :foreground ,github-bg))))
+   `(ctbl:face-cell-select ((t (:background ,ink :foreground ,paper))))
+   `(ctbl:face-continue-bar ((t (:background ,github-bg-05 :foreground ,paper))))
+   `(ctbl:face-row-select ((t (:background ,github-cyan :foreground ,paper))))
 ;;;;; diff
    `(diff-added          ((t (:background "#E4FFEA"))))
    `(diff-changed        ((t (:background "#E4F1F7"))))
@@ -295,7 +290,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(diff-hl-delete ((,class (:foreground ,ink :background ,ink))))
    `(diff-hl-insert ((,class (:foreground ,ink :background ,github-green-1))))
 ;;;;; dim-autoload
-   `(dim-autoload-cookie-line ((t :foreground ,github-bg+1)))
+   `(dim-autoload-cookie-line ((t :foreground ,paper)))
 ;;;;; dired+
    `(diredp-display-msg ((t (:foreground ,ink))))
    `(diredp-compressed-file-suffix ((t (:foreground ,ink))))
@@ -356,7 +351,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(w3m-header-line-location-title ((t (:foreground ,github-yellow
                                                      :underline t :weight bold))))
    '(w3m-history-current-url ((t (:inherit match))))
-   `(w3m-lnum ((t (:foreground ,github-green+2 :background ,github-bg))))
+   `(w3m-lnum ((t (:foreground ,github-green+2 :background ,paper))))
    `(w3m-lnum-match ((t (:background ,github-bg-1
                                      :foreground ,ink
                                      :weight bold))))
@@ -378,12 +373,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(erc-nick-msg-face ((t (:inherit erc-default-face))))
    `(erc-notice-face ((t (:foreground ,github-green))))
    `(erc-pal-face ((t (:foreground ,ink :weight bold))))
-   `(erc-prompt-face ((t (:foreground ,ink :background ,github-bg :weight bold))))
+   `(erc-prompt-face ((t (:foreground ,ink :background ,paper :weight bold))))
    `(erc-timestamp-face ((t (:foreground ,github-green+4))))
    `(erc-underline-face ((t (:underline t))))
 ;;;;; ert
-   `(ert-test-result-expected ((t (:foreground ,github-green+4 :background ,github-bg))))
-   `(ert-test-result-unexpected ((t (:foreground ,github-red :background ,github-bg))))
+   `(ert-test-result-expected ((t (:foreground ,github-green+4 :background ,paper))))
+   `(ert-test-result-unexpected ((t (:foreground ,github-red :background ,paper))))
 ;;;;; eshell
    `(eshell-prompt ((t (:foreground ,github-yellow :weight bold))))
    `(eshell-ls-archive ((t (:foreground ,ink :weight bold))))
@@ -521,10 +516,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(gnus-group-news-3-empty ((t (:foreground ,ink))))
    `(gnus-group-news-4-empty ((t (:foreground ,ink))))
    `(gnus-group-news-5-empty ((t (:foreground ,ink))))
-   `(gnus-group-news-6-empty ((t (:foreground ,github-bg+2))))
-   `(gnus-group-news-low-empty ((t (:foreground ,github-bg+2))))
+   `(gnus-group-news-6-empty ((t (:foreground ,paper))))
+   `(gnus-group-news-low-empty ((t (:foreground ,paper))))
    `(gnus-signature ((t (:foreground ,github-yellow))))
-   `(gnus-x ((t (:background ,github-fg :foreground ,github-bg))))
+   `(gnus-x ((t (:background ,github-fg :foreground ,paper))))
 ;;;;; guide-key
    `(guide-key/highlight-command-face ((t (:foreground ,ink))))
    `(guide-key/key-face ((t (:foreground ,github-green))))
@@ -532,7 +527,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; helm
    `(helm-header
      ((t (:foreground ,github-green
-                      :background ,github-bg
+                      :background ,paper
                       :underline nil
                       :box nil))))
    `(helm-source-header
@@ -541,64 +536,64 @@ Also bind `class' to ((class color) (min-colors 89))."
                       :underline nil
                       :weight bold
                       :box (:line-width -1 :style released-button)))))
-   `(helm-selection ((t (:background ,github-bg+1 :underline nil))))
-   `(helm-selection-line ((t (:background ,github-bg+1))))
-   `(helm-visible-mark ((t (:foreground ,github-bg :background ,ink))))
+   `(helm-selection ((t (:background ,paper :underline nil))))
+   `(helm-selection-line ((t (:background ,paper))))
+   `(helm-visible-mark ((t (:foreground ,paper :background ,ink))))
    `(helm-candidate-number ((t (:foreground ,github-green+4 :background ,github-bg-1))))
-   `(helm-separator ((t (:foreground ,github-red :background ,github-bg))))
-   `(helm-time-zone-current ((t (:foreground ,github-green+2 :background ,github-bg))))
-   `(helm-time-zone-home ((t (:foreground ,github-red :background ,github-bg))))
-   `(helm-bookmark-addressbook ((t (:foreground ,ink :background ,github-bg))))
+   `(helm-separator ((t (:foreground ,github-red :background ,paper))))
+   `(helm-time-zone-current ((t (:foreground ,github-green+2 :background ,paper))))
+   `(helm-time-zone-home ((t (:foreground ,github-red :background ,paper))))
+   `(helm-bookmark-addressbook ((t (:foreground ,ink :background ,paper))))
    `(helm-bookmark-directory ((t (:foreground nil :background nil :inherit helm-ff-directory))))
    `(helm-bookmark-file ((t (:foreground nil :background nil :inherit helm-ff-file))))
-   `(helm-bookmark-gnus ((t (:foreground ,ink :background ,github-bg))))
-   `(helm-bookmark-info ((t (:foreground ,github-green+2 :background ,github-bg))))
-   `(helm-bookmark-man ((t (:foreground ,github-yellow :background ,github-bg))))
-   `(helm-bookmark-w3m ((t (:foreground ,ink :background ,github-bg))))
-   `(helm-buffer-not-saved ((t (:foreground ,github-red :background ,github-bg))))
-   `(helm-buffer-process ((t (:foreground ,github-cyan :background ,github-bg))))
-   `(helm-buffer-saved-out ((t (:foreground ,github-fg :background ,github-bg))))
-   `(helm-buffer-size ((t (:foreground ,ink :background ,github-bg))))
-   `(helm-ff-directory ((t (:foreground ,github-cyan :background ,github-bg :weight bold))))
-   `(helm-ff-file ((t (:foreground ,github-fg :background ,github-bg :weight normal))))
-   `(helm-ff-executable ((t (:foreground ,github-green+2 :background ,github-bg :weight normal))))
-   `(helm-ff-invalid-symlink ((t (:foreground ,github-red :background ,github-bg :weight bold))))
-   `(helm-ff-symlink ((t (:foreground ,github-yellow :background ,github-bg :weight bold))))
-   `(helm-ff-prefix ((t (:foreground ,github-bg :background ,github-yellow :weight normal))))
-   `(helm-grep-cmd-line ((t (:foreground ,github-cyan :background ,github-bg))))
-   `(helm-grep-file ((t (:foreground ,github-fg :background ,github-bg))))
-   `(helm-grep-finish ((t (:foreground ,github-green+2 :background ,github-bg))))
-   `(helm-grep-lineno ((t (:foreground ,ink :background ,github-bg))))
+   `(helm-bookmark-gnus ((t (:foreground ,ink :background ,paper))))
+   `(helm-bookmark-info ((t (:foreground ,github-green+2 :background ,paper))))
+   `(helm-bookmark-man ((t (:foreground ,github-yellow :background ,paper))))
+   `(helm-bookmark-w3m ((t (:foreground ,ink :background ,paper))))
+   `(helm-buffer-not-saved ((t (:foreground ,github-red :background ,paper))))
+   `(helm-buffer-process ((t (:foreground ,github-cyan :background ,paper))))
+   `(helm-buffer-saved-out ((t (:foreground ,github-fg :background ,paper))))
+   `(helm-buffer-size ((t (:foreground ,ink :background ,paper))))
+   `(helm-ff-directory ((t (:foreground ,github-cyan :background ,paper :weight bold))))
+   `(helm-ff-file ((t (:foreground ,github-fg :background ,paper :weight normal))))
+   `(helm-ff-executable ((t (:foreground ,github-green+2 :background ,paper :weight normal))))
+   `(helm-ff-invalid-symlink ((t (:foreground ,github-red :background ,paper :weight bold))))
+   `(helm-ff-symlink ((t (:foreground ,github-yellow :background ,paper :weight bold))))
+   `(helm-ff-prefix ((t (:foreground ,paper :background ,github-yellow :weight normal))))
+   `(helm-grep-cmd-line ((t (:foreground ,github-cyan :background ,paper))))
+   `(helm-grep-file ((t (:foreground ,github-fg :background ,paper))))
+   `(helm-grep-finish ((t (:foreground ,github-green+2 :background ,paper))))
+   `(helm-grep-lineno ((t (:foreground ,ink :background ,paper))))
    `(helm-grep-match ((t (:foreground nil :background nil :inherit helm-match))))
-   `(helm-grep-running ((t (:foreground ,github-red :background ,github-bg))))
+   `(helm-grep-running ((t (:foreground ,github-red :background ,paper))))
    `(helm-match ((t (:foreground ,ink :background ,github-bg-1 :weight bold))))
-   `(helm-moccur-buffer ((t (:foreground ,github-cyan :background ,github-bg))))
-   `(helm-mu-contacts-address-face ((t (:foreground ,ink :background ,github-bg))))
-   `(helm-mu-contacts-name-face ((t (:foreground ,github-fg :background ,github-bg))))
+   `(helm-moccur-buffer ((t (:foreground ,github-cyan :background ,paper))))
+   `(helm-mu-contacts-address-face ((t (:foreground ,ink :background ,paper))))
+   `(helm-mu-contacts-name-face ((t (:foreground ,github-fg :background ,paper))))
 ;;;;; helm-swoop
-   `(helm-swoop-target-line-face ((t (:foreground ,github-fg :background ,github-bg+1))))
-   `(helm-swoop-target-word-face ((t (:foreground ,github-yellow :background ,github-bg+2 :weight bold))))
+   `(helm-swoop-target-line-face ((t (:foreground ,github-fg :background ,paper))))
+   `(helm-swoop-target-word-face ((t (:foreground ,github-yellow :background ,paper :weight bold))))
 ;;;;; hl-line-mode
    `(hl-line-face ((,class (:background "#F8F8F8"))
                    (t :weight bold)))
    `(hl-line ((,class (:background "#F8F8F8")) ; old emacsen
               (t :weight bold)))
 ;;;;; hl-sexp
-   `(hl-sexp-face ((,class (:background ,github-bg+1))
+   `(hl-sexp-face ((,class (:background ,paper))
                    (t :weight bold)))
 ;;;;; hydra
-   `(hydra-face-red ((t (:foreground ,ink :background ,github-bg))))
-   `(hydra-face-amaranth ((t (:foreground ,ink :background ,github-bg))))
-   `(hydra-face-blue ((t (:foreground ,ink :background ,github-bg))))
-   `(hydra-face-pink ((t (:foreground ,ink :background ,github-bg))))
-   `(hydra-face-teal ((t (:foreground ,github-cyan :background ,github-bg))))
+   `(hydra-face-red ((t (:foreground ,ink :background ,paper))))
+   `(hydra-face-amaranth ((t (:foreground ,ink :background ,paper))))
+   `(hydra-face-blue ((t (:foreground ,ink :background ,paper))))
+   `(hydra-face-pink ((t (:foreground ,ink :background ,paper))))
+   `(hydra-face-teal ((t (:foreground ,github-cyan :background ,paper))))
 ;;;; ivy
-   `(ivy-confirm-face ((t (:foreground ,github-green :background ,github-bg))))
-   `(ivy-match-required-face ((t (:foreground ,github-red :background ,github-bg))))
-   `(ivy-remote ((t (:foreground ,ink :background ,github-bg))))
-   `(ivy-subdir ((t (:foreground ,github-yellow :background ,github-bg))))
+   `(ivy-confirm-face ((t (:foreground ,github-green :background ,paper))))
+   `(ivy-match-required-face ((t (:foreground ,github-red :background ,paper))))
+   `(ivy-remote ((t (:foreground ,ink :background ,paper))))
+   `(ivy-subdir ((t (:foreground ,github-yellow :background ,paper))))
    `(ivy-current-match ((t (:foreground ,github-yellow :weight bold :underline t))))
-   `(ivy-minibuffer-match-face-1 ((t (:background ,github-bg+1))))
+   `(ivy-minibuffer-match-face-1 ((t (:background ,paper))))
    `(ivy-minibuffer-match-face-2 ((t (:background ,github-green-1))))
    `(ivy-minibuffer-match-face-3 ((t (:background ,github-green))))
    `(ivy-minibuffer-match-face-4 ((t (:background ,ink))))
@@ -608,7 +603,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ido-subdir ((t (:foreground ,github-yellow))))
    `(ido-indicator ((t (:foreground ,github-yellow :background ,ink))))
 ;;;;; iedit-mode
-   `(iedit-occurrence ((t (:background ,github-bg+2 :weight bold))))
+   `(iedit-occurrence ((t (:background ,paper :weight bold))))
 ;;;;; jabber-mode
    `(jabber-roster-user-away ((t (:foreground ,github-green+2))))
    `(jabber-roster-user-online ((t (:foreground ,github-blue-1))))
@@ -646,7 +641,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; ledger-mode
    `(ledger-font-payee-uncleared-face ((t (:foreground ,ink :weight bold))))
    `(ledger-font-payee-cleared-face ((t (:foreground ,github-fg :weight normal))))
-   `(ledger-font-xact-highlight-face ((t (:background ,github-bg+1))))
+   `(ledger-font-xact-highlight-face ((t (:background ,paper))))
    `(ledger-font-pending-face ((t (:foreground ,ink weight: normal))))
    `(ledger-font-other-face ((t (:foreground ,github-fg))))
    `(ledger-font-posting-account-face ((t (:foreground ,github-blue-1))))
@@ -654,14 +649,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-posting-account-pending-face ((t (:foreground ,ink))))
    `(ledger-font-posting-amount-face ((t (:foreground ,ink))))
    `(ledger-occur-narrowed-face ((t (:foreground ,ink :invisible t))))
-   `(ledger-occur-xact-face ((t (:background ,github-bg+1))))
+   `(ledger-occur-xact-face ((t (:background ,paper))))
    `(ledger-font-comment-face ((t (:foreground ,github-green))))
    `(ledger-font-reconciler-uncleared-face ((t (:foreground ,ink :weight bold))))
    `(ledger-font-reconciler-cleared-face ((t (:foreground ,github-fg :weight normal))))
    `(ledger-font-reconciler-pending-face ((t (:foreground ,ink :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,ink :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground "#B3B3B3" :background ,github-bg))))
+   `(linum ((t (:foreground "#B3B3B3" :background ,paper))))
 ;;;;; ruler-mode
    `(ruler-mode-column-number ((t (:inherit 'ruler-mode-default :foreground ,github-fg))))
    `(ruler-mode-fill-column ((t (:inherit 'ruler-mode-default :foreground ,github-yellow))))
@@ -669,11 +664,11 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ruler-mode-comment-column ((t (:inherit 'ruler-mode-fill-column))))
    `(ruler-mode-tab-stop ((t (:inherit 'ruler-mode-fill-column))))
    `(ruler-mode-current-column ((t (:foreground ,github-yellow :box t))))
-   `(ruler-mode-default ((t (:foreground ,github-green+2 :background ,github-bg))))
+   `(ruler-mode-default ((t (:foreground ,github-green+2 :background ,paper))))
 
 ;;;;; lui
    `(lui-time-stamp-face ((t (:foreground ,github-blue-1))))
-   `(lui-hilight-face ((t (:foreground ,github-green+2 :background ,github-bg))))
+   `(lui-hilight-face ((t (:foreground ,github-green+2 :background ,paper))))
    `(lui-button-face ((t (:inherit hover-highlight))))
 ;;;;; macrostep
    `(macrostep-gensym-1
@@ -692,20 +687,20 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((t (:underline t))))
 ;;;;; magit
 ;;;;;; headings and diffs
-   `(magit-section-highlight           ((t (:background ,github-bg+05))))
+   `(magit-section-highlight           ((t (:background ,paper))))
    `(magit-section-heading             ((t (:foreground ,github-yellow :weight bold))))
    `(magit-section-heading-selection   ((t (:foreground ,ink :weight bold))))
    `(magit-diff-file-heading           ((t (:weight bold))))
-   `(magit-diff-file-heading-highlight ((t (:background ,github-bg+05  :weight bold))))
-   `(magit-diff-file-heading-selection ((t (:background ,github-bg+05
+   `(magit-diff-file-heading-highlight ((t (:background ,paper  :weight bold))))
+   `(magit-diff-file-heading-selection ((t (:background ,paper
                                                         :foreground ,ink :weight bold))))
-   `(magit-diff-hunk-heading           ((t (:background ,github-bg+1))))
-   `(magit-diff-hunk-heading-highlight ((t (:background ,github-bg+2))))
-   `(magit-diff-hunk-heading-selection ((t (:background ,github-bg+2
+   `(magit-diff-hunk-heading           ((t (:background ,paper))))
+   `(magit-diff-hunk-heading-highlight ((t (:background ,paper))))
+   `(magit-diff-hunk-heading-selection ((t (:background ,paper
                                                         :foreground ,ink))))
    `(magit-diff-lines-heading          ((t (:background ,ink
-                                                        :foreground ,github-bg+2))))
-   `(magit-diff-context-highlight      ((t (:background ,github-bg+05
+                                                        :foreground ,paper))))
+   `(magit-diff-context-highlight      ((t (:background ,paper
                                                         :foreground "grey70"))))
    `(magit-diffstat-added   ((t (:foreground ,github-green+4))))
    `(magit-diffstat-removed ((t (:foreground ,github-red))))
@@ -742,16 +737,16 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-blame-summary ((t (:background ,github-bg-1 :foreground ,ink
                                           :weight bold))))
 ;;;;;; references etc
-   `(magit-dimmed         ((t (:foreground ,github-bg+3))))
-   `(magit-hash           ((t (:foreground ,github-bg+3))))
+   `(magit-dimmed         ((t (:foreground ,paper))))
+   `(magit-hash           ((t (:foreground ,paper))))
    `(magit-tag            ((t (:foreground ,ink :weight bold))))
    `(magit-branch-remote  ((t (:foreground ,github-green  :weight bold))))
    `(magit-branch-local   ((t (:foreground ,ink   :weight bold))))
    `(magit-branch-current ((t (:foreground ,ink   :weight bold :box t))))
    `(magit-head           ((t (:foreground ,ink   :weight bold))))
-   `(magit-refname        ((t (:background ,github-bg+2 :foreground ,github-fg :weight bold))))
-   `(magit-refname-stash  ((t (:background ,github-bg+2 :foreground ,github-fg :weight bold))))
-   `(magit-refname-wip    ((t (:background ,github-bg+2 :foreground ,github-fg :weight bold))))
+   `(magit-refname        ((t (:background ,paper :foreground ,github-fg :weight bold))))
+   `(magit-refname-stash  ((t (:background ,paper :foreground ,github-fg :weight bold))))
+   `(magit-refname-wip    ((t (:background ,paper :foreground ,github-fg :weight bold))))
    `(magit-signature-good      ((t (:foreground ,github-green))))
    `(magit-signature-bad       ((t (:foreground ,github-red))))
    `(magit-signature-untrusted ((t (:foreground ,github-yellow))))
@@ -805,9 +800,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mew-face-eof-message ((t (:foreground ,github-green))))
    `(mew-face-eof-part ((t (:foreground ,github-yellow))))
 ;;;;; mic-paren
-   `(paren-face-match ((t (:foreground ,github-cyan :background ,github-bg :weight bold))))
-   `(paren-face-mismatch ((t (:foreground ,github-bg :background ,ink :weight bold))))
-   `(paren-face-no-match ((t (:foreground ,github-bg :background ,github-red :weight bold))))
+   `(paren-face-match ((t (:foreground ,github-cyan :background ,paper :weight bold))))
+   `(paren-face-mismatch ((t (:foreground ,paper :background ,ink :weight bold))))
+   `(paren-face-no-match ((t (:foreground ,paper :background ,github-red :weight bold))))
 ;;;;; mingus
    `(mingus-directory-face ((t (:foreground ,ink))))
    `(mingus-pausing-face ((t (:foreground ,ink))))
@@ -830,14 +825,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mu4e-cited-5-face ((t (:foreground ,ink  :slant italic))))
    `(mu4e-cited-6-face ((t (:foreground ,github-green-1 :slant italic))))
    `(mu4e-cited-7-face ((t (:foreground ,ink    :slant italic))))
-   `(mu4e-replied-face ((t (:foreground ,github-bg+3))))
-   `(mu4e-trashed-face ((t (:foreground ,github-bg+3 :strike-through t))))
+   `(mu4e-replied-face ((t (:foreground ,paper))))
+   `(mu4e-trashed-face ((t (:foreground ,paper :strike-through t))))
 ;;;;; mumamo
    `(mumamo-background-chunk-major ((t (:background nil))))
    `(mumamo-background-chunk-submode1 ((t (:background ,github-bg-1))))
-   `(mumamo-background-chunk-submode2 ((t (:background ,github-bg+2))))
-   `(mumamo-background-chunk-submode3 ((t (:background ,github-bg+3))))
-   `(mumamo-background-chunk-submode4 ((t (:background ,github-bg+1))))
+   `(mumamo-background-chunk-submode2 ((t (:background ,paper))))
+   `(mumamo-background-chunk-submode3 ((t (:background ,paper))))
+   `(mumamo-background-chunk-submode4 ((t (:background ,paper))))
 ;;;;; org-mode
    `(org-block-begin-line
      ((t (:foreground "#B3B3B3" :family "Source Code Pro" :height 140))))
@@ -881,18 +876,18 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-column ((t (:background ,github-bg-1))))
    `(org-column-title ((t (:background ,github-bg-1 :underline t :weight bold))))
    `(org-mode-line-clock ((t (:foreground ,github-fg :background ,github-bg-1))))
-   `(org-mode-line-clock-overrun ((t (:foreground ,github-bg :background ,ink))))
+   `(org-mode-line-clock-overrun ((t (:foreground ,paper :background ,ink))))
    `(org-ellipsis ((t (:foreground ,ink :underline t))))
    `(org-footnote ((t (:foreground ,github-cyan :underline t))))
    `(org-document-title ((t (:inherit org-level-1 :height 2.0 :underline nil :box (:line-width 5 :color "#FFFFFF")))))
    `(org-document-info ((t (:foreground ,ink))))
    `(org-habit-ready-face ((t :background ,github-green)))
-   `(org-habit-alert-face ((t :background ,ink :foreground ,github-bg)))
+   `(org-habit-alert-face ((t :background ,ink :foreground ,paper)))
    `(org-habit-clear-face ((t :background ,ink)))
    `(org-habit-overdue-face ((t :background ,ink)))
    `(org-habit-clear-future-face ((t :background ,ink)))
    `(org-habit-ready-future-face ((t :background ,github-green-1)))
-   `(org-habit-alert-future-face ((t :background ,ink :foreground ,github-bg)))
+   `(org-habit-alert-future-face ((t :background ,ink :foreground ,paper)))
    `(org-habit-overdue-future-face ((t :background ,ink)))
 ;;;;; outline
    `(outline-1 ((t (:foreground ,ink))))
@@ -917,27 +912,27 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(persp-selected-face ((t (:foreground ,ink :inherit mode-line))))
 ;;;;; powerline
    `(powerline-active1 ((t (:background ,github-bg-05 :inherit mode-line))))
-   `(powerline-active2 ((t (:background ,github-bg+2 :inherit mode-line))))
-   `(powerline-inactive1 ((t (:background ,github-bg+1 :inherit mode-line-inactive))))
-   `(powerline-inactive2 ((t (:background ,github-bg+3 :inherit mode-line-inactive))))
+   `(powerline-active2 ((t (:background ,paper :inherit mode-line))))
+   `(powerline-inactive1 ((t (:background ,paper :inherit mode-line-inactive))))
+   `(powerline-inactive2 ((t (:background ,paper :inherit mode-line-inactive))))
 ;;;;; proofgeneral
    `(proof-active-area-face ((t (:underline t))))
-   `(proof-boring-face ((t (:foreground ,github-fg :background ,github-bg+2))))
+   `(proof-boring-face ((t (:foreground ,github-fg :background ,paper))))
    `(proof-command-mouse-highlight-face ((t (:inherit proof-mouse-highlight-face))))
    `(proof-debug-message-face ((t (:inherit proof-boring-face))))
    `(proof-declaration-name-face ((t (:inherit font-lock-keyword-face :foreground nil))))
-   `(proof-eager-annotation-face ((t (:foreground ,github-bg :background ,ink))))
+   `(proof-eager-annotation-face ((t (:foreground ,paper :background ,ink))))
    `(proof-error-face ((t (:foreground ,github-fg :background ,ink))))
-   `(proof-highlight-dependency-face ((t (:foreground ,github-bg :background ,ink))))
-   `(proof-highlight-dependent-face ((t (:foreground ,github-bg :background ,ink))))
+   `(proof-highlight-dependency-face ((t (:foreground ,paper :background ,ink))))
+   `(proof-highlight-dependent-face ((t (:foreground ,paper :background ,ink))))
    `(proof-locked-face ((t (:background ,ink))))
-   `(proof-mouse-highlight-face ((t (:foreground ,github-bg :background ,ink))))
+   `(proof-mouse-highlight-face ((t (:foreground ,paper :background ,ink))))
    `(proof-queue-face ((t (:background ,ink))))
    `(proof-region-mouse-highlight-face ((t (:inherit proof-mouse-highlight-face))))
    `(proof-script-highlight-error-face ((t (:background ,ink))))
-   `(proof-tacticals-name-face ((t (:inherit font-lock-constant-face :foreground nil :background ,github-bg))))
-   `(proof-tactics-name-face ((t (:inherit font-lock-constant-face :foreground nil :background ,github-bg))))
-   `(proof-warning-face ((t (:foreground ,github-bg :background ,ink))))
+   `(proof-tacticals-name-face ((t (:inherit font-lock-constant-face :foreground nil :background ,paper))))
+   `(proof-tactics-name-face ((t (:inherit font-lock-constant-face :foreground nil :background ,paper))))
+   `(proof-warning-face ((t (:foreground ,paper :background ,ink))))
 ;;;;; racket-mode
    `(racket-keyword-argument-face ((t (:inherit font-lock-constant-face))))
    `(racket-selfeval-face ((t (:inherit font-lock-type-face))))
@@ -990,7 +985,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-heredoc     ((t (:foreground ,github-yellow :bold t))))
    `(sh-quoted-exec ((t (:foreground ,github-red))))
 ;;;;; show-paren
-   `(show-paren-mismatch ((t (:foreground ,ink :background ,github-bg+3))))
+   `(show-paren-mismatch ((t (:foreground ,ink :background ,paper))))
    `(show-paren-match ((t (:foreground "#333333" :background "#E4FFEA" :weight bold))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable GitHub for sml
@@ -1012,8 +1007,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sml/charging ((,class (:foreground ,github-green+4))))
    `(sml/discharging ((,class (:foreground ,ink))))
 ;;;;; smartparens
-   `(sp-show-pair-mismatch-face ((t (:foreground ,ink :background ,github-bg+3 :weight bold))))
-   `(sp-show-pair-match-face ((t (:background ,github-bg+3 :weight bold))))
+   `(sp-show-pair-mismatch-face ((t (:foreground ,ink :background ,paper :weight bold))))
+   `(sp-show-pair-match-face ((t (:background ,paper :weight bold))))
 ;;;;; sml-mode-line
    '(sml-modeline-end-face ((t :inherit default :width condensed)))
 ;;;;; SLIME
@@ -1044,21 +1039,21 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(speedbar-button-face ((t (:foreground ,github-green+2))))
    `(speedbar-directory-face ((t (:foreground ,github-cyan))))
    `(speedbar-file-face ((t (:foreground ,github-fg))))
-   `(speedbar-highlight-face ((t (:foreground ,github-bg :background ,github-green+2))))
+   `(speedbar-highlight-face ((t (:foreground ,paper :background ,github-green+2))))
    `(speedbar-selected-face ((t (:foreground ,github-red))))
-   `(speedbar-separator-face ((t (:foreground ,github-bg :background ,github-blue-1))))
+   `(speedbar-separator-face ((t (:foreground ,paper :background ,github-blue-1))))
    `(speedbar-tag-face ((t (:foreground ,github-yellow))))
 ;;;;; tabbar
    `(tabbar-button ((t (:foreground ,github-fg
-                                    :background ,github-bg))))
+                                    :background ,paper))))
    `(tabbar-selected ((t (:foreground ,github-fg
-                                      :background ,github-bg
+                                      :background ,paper
                                       :box (:line-width -1 :style pressed-button)))))
    `(tabbar-unselected ((t (:foreground ,github-fg
-                                        :background ,github-bg+1
+                                        :background ,paper
                                         :box (:line-width -1 :style released-button)))))
 ;;;;; term
-   `(term-color-black ((t (:foreground ,github-bg
+   `(term-color-black ((t (:foreground ,paper
                                        :background ,github-bg-1))))
    `(term-color-red ((t (:foreground ,ink
                                      :background ,ink))))
@@ -1103,21 +1098,21 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(web-mode-string-face ((t (:inherit ,font-lock-string-face))))
    `(web-mode-type-face ((t (:inherit ,font-lock-type-face))))
    `(web-mode-variable-name-face ((t (:inherit ,font-lock-variable-name-face))))
-   `(web-mode-server-background-face ((t (:background ,github-bg))))
+   `(web-mode-server-background-face ((t (:background ,paper))))
    `(web-mode-server-comment-face ((t (:inherit web-mode-comment-face))))
    `(web-mode-server-string-face ((t (:inherit web-mode-string-face))))
    `(web-mode-symbol-face ((t (:inherit font-lock-constant-face))))
    `(web-mode-warning-face ((t (:inherit font-lock-warning-face))))
    `(web-mode-whitespaces-face ((t (:background ,github-red))))
 ;;;;; whitespace-mode
-   `(whitespace-space ((t (:background ,github-bg+1 :foreground ,github-bg+1))))
-   `(whitespace-hspace ((t (:background ,github-bg+1 :foreground ,github-bg+1))))
+   `(whitespace-space ((t (:background ,paper :foreground ,paper))))
+   `(whitespace-hspace ((t (:background ,paper :foreground ,paper))))
    `(whitespace-tab ((t (:background "#EDEDED"))))
-   `(whitespace-newline ((t (:foreground ,github-bg+1))))
+   `(whitespace-newline ((t (:foreground ,paper))))
    `(whitespace-trailing ((t (:background "#EDEDED"))))
    `(whitespace-line ((t (:background "#EDEDED"))))
    `(whitespace-space-before-tab ((t (:background ,ink :foreground ,ink))))
-   `(whitespace-indentation ((t (:background ,github-bg))))
+   `(whitespace-indentation ((t (:background ,paper))))
    `(whitespace-empty ((t (:background "#EDEDED"))))
    `(whitespace-space-after-tab ((t (:background "#EDEDED" :foreground ,github-red))))
 ;;;;; wanderlust
@@ -1154,7 +1149,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(cscope-file-face ((t (:foreground ,github-yellow :weight bold))))
    `(cscope-function-face ((t (:foreground ,github-cyan :weight bold))))
    `(cscope-line-number-face ((t (:foreground ,github-red :weight bold))))
-   `(cscope-mouse-face ((t (:foreground ,github-bg :background ,github-blue+1))))
+   `(cscope-mouse-face ((t (:foreground ,paper :background ,github-blue+1))))
    `(cscope-separator-face ((t (:foreground ,github-red :weight bold
                                             :underline t :overline t))))
 ;;;;; yascroll
@@ -1167,7 +1162,7 @@ Also bind `class' to ((class color) (min-colors 89))."
   (custom-theme-set-variables
    'github
 ;;;;; ansi-color
-   `(ansi-color-names-vector [,github-bg ,github-red ,github-green ,github-yellow
+   `(ansi-color-names-vector [,paper ,github-red ,github-green ,github-yellow
                                           ,ink ,ink ,github-cyan ,github-fg])
 ;;;;; fill-column-indicator
    `(fci-rule-color ,github-bg-05)
