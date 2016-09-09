@@ -70,17 +70,17 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;; Built-in
 ;;;;; basic coloring
    '(button ((t (:underline t))))
-   `(link ((t (:foreground "#3873C3" :underline t :weight bold))))
+   `(link ((t (:foreground ,bigblue :underline t :weight bold))))
    `(link-visited ((t (:foreground ,ink :underline t :weight normal))))
    `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background "white"))))
    `(fixed-pitch ((t (:family "Source Code Pro"))))
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
-   `(cursor ((t (:background "#333333"))))
+   `(cursor ((t (:background ,ink))))
    `(escape-glyph ((t (:foreground ,marooned :bold t))))
-   `(fringe ((t (:foreground "#B3B3B3" :background ,paper))))
-   `(header-line ((t (:foreground "#969896" :background "#F5F5F5"))))
-   `(info-node ((t (:foreground "#29D045" :slant italic :weight bold))))
-   `(highlight ((t (:background "#F8F8F8"))))
+   `(fringe ((t (:foreground ,pencil2 :background ,paper))))
+   `(header-line ((t (:foreground ,pencil1 :background ,whisp2))))
+   `(info-node ((t (:foreground ,greentea :slant italic :weight bold))))
+   `(highlight ((t (:background ,whisp3))))
    `(success ((t (:foreground ,pencil1 :weight bold))))
    `(warning ((t (:foreground ,ink :weight bold))))
    `(tooltip ((t (:foreground ,marooned :background ,paper))))
@@ -102,45 +102,45 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; completions
    `(completions-annotations ((t (:foreground ,ink))))
 ;;;;; grep
-   `(match ((t (:background "#F5F5F5" :weight bold))))
+   `(match ((t (:background ,whisp2 :weight bold))))
 ;;;;; isearch
-   `(isearch ((t (:foreground ,ink :weight bold :background "#E4F1F7"))))
-   `(isearch-fail ((t (:background "#FFC8C9"))))
-   `(lazy-highlight ((t (:foreground ,ink :weight bold :background "#F2F9DB"))))
+   `(isearch ((t (:foreground ,ink :weight bold :background ,skyblue))))
+   `(isearch-fail ((t (:background ,eraser))))
+   `(lazy-highlight ((t (:foreground ,ink :weight bold :background ,limeclay))))
 
    `(menu ((t (:foreground ,marooned :background ,paper))))
-   `(minibuffer-prompt ((t (:foreground "#333333" :weight bold))))
+   `(minibuffer-prompt ((t (:foreground ,ink :weight bold))))
    `(mode-line
-     ((,class (:foreground "#666666"
-                           :background "#ECF3F7" ;; homerow background
-                           :box (:line-width -1 :color "#C2E7F3")
+     ((,class (:foreground ,slate
+                           :background ,bluegrey ;; homerow background
+                           :box (:line-width -1 :color ,aquablue)
                            ))
       (t :inverse-video t)))
    `(mode-line-buffer-id ((t (:foreground "#000000" :weight bold)))) ;; todo: not happy with black here
-   `(mode-line-highlight ((t (:foreground "#3873C3"))))
+   `(mode-line-highlight ((t (:foreground ,bigblue))))
    `(mode-line-inactive
-     ((t (:foreground "#969896"
+     ((t (:foreground ,pencil1
                       :weight light
-                      :background "#F5F5F5"
+                      :background ,whisp2
                       :box (:line-width -1 :color "#d8d8d8")))))
    `(region ((,class (:background "#E8F1F6"))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,paper))))
-   `(trailing-whitespace ((t (:background "#EDEDED"))))
+   `(trailing-whitespace ((t (:background ,whisp1))))
    `(vertical-border ((t (:foreground "#d0d0d0"))))
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,marooned :weight normal))))  ;; weight bold (built-in keywords)
    `(font-lock-comment-face ((t (:foreground ,pencil1))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,pencil1))))
-   `(font-lock-constant-face ((t (:foreground "#0085B3"))))
+   `(font-lock-constant-face ((t (:foreground ,marine))))
    `(font-lock-doc-face ((t (:foreground ,pencil1))))
    `(font-lock-function-name-face ((t (:foreground "#7265A2"))))
-   `(font-lock-keyword-face ((t (:foreground "#A71D5D" :weight normal))))
+   `(font-lock-keyword-face ((t (:foreground ,marooned :weight normal))))
    `(font-lock-negation-char-face ((t (:foreground ,marooned :weight bold))))
-   `(font-lock-preprocessor-face ((t (:foreground "#A71D5D"))))
+   `(font-lock-preprocessor-face ((t (:foreground ,marooned))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,marooned :weight bold))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,pencil1 :weight bold))))
-   `(font-lock-string-face ((t (:foreground "#183691"))))
+   `(font-lock-string-face ((t (:foreground ,navyblue))))
    `(font-lock-type-face ((t (:foreground "#0086b0"))))
    `(font-lock-variable-name-face ((t (:foreground ,ink))))
    `(font-lock-warning-face ((t (:foreground ,ink :weight bold))))
@@ -203,10 +203,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(agda2-highlight-incomplete-pattern-face ((t (:foreground ,paper :background ,ink))))
    `(agda2-highlight-typechecks-face ((t (:background ,ink))))
 ;;;;; auto-complete
-   `(ac-candidate-face ((t (:background "#ffffff" :foreground "#333333" :box (:line-width -1 :style released-button)))))
-   `(ac-selection-face ((t (:background "#A71D5D" :foreground "#ffffff" :box (:line-width -1 :style released-button)))))
+   `(ac-candidate-face ((t (:background "#ffffff" :foreground ,ink :box (:line-width -1 :style released-button)))))
+   `(ac-selection-face ((t (:background ,marooned :foreground "#ffffff" :box (:line-width -1 :style released-button)))))
    `(popup-tip-face ((t (:background "#ff0000" :foreground "#00ff00" ))))
-   `(popup-scroll-bar-foreground-face ((t (:background "#333333"))))
+   `(popup-scroll-bar-foreground-face ((t (:background ,ink))))
    `(popup-scroll-bar-background-face ((t (:background "#ffffff"))))
    `(popup-isearch-match ((t (:background "#ff00ff" :foreground "#00ffff"))))
 ;;;;; avy
@@ -266,14 +266,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ctbl:face-continue-bar ((t (:background ,sand :foreground ,paper))))
    `(ctbl:face-row-select ((t (:background ,merged :foreground ,paper))))
 ;;;;; diff
-   `(diff-added          ((t (:background "#E4FFEA"))))
-   `(diff-changed        ((t (:background "#E4F1F7"))))
-   `(diff-removed        ((t (:background "#FFEBEB"))))
-   `(diff-refine-added   ((t (:background "#83FCA7"))))
-   `(diff-refine-change  ((t (:background "#C2E7F3"))))
-   `(diff-refine-removed ((t (:background "#FFC8C9"))))
-   `(diff-header         ((t (:background "#F4F7FB" :foreground "#969896"))))
-   `(diff-file-header    ((t (:background "#F4F7FB" :foreground "#969896"))))
+   `(diff-added          ((t (:background ,melon))))
+   `(diff-changed        ((t (:background ,skyblue))))
+   `(diff-removed        ((t (:background ,palepink))))
+   `(diff-refine-added   ((t (:background ,leaf))))
+   `(diff-refine-change  ((t (:background ,aquablue))))
+   `(diff-refine-removed ((t (:background ,eraser))))
+   `(diff-header         ((t (:background ,fluff :foreground ,pencil1))))
+   `(diff-file-header    ((t (:background ,fluff :foreground ,pencil1))))
 ;;;;; diff-hl
    `(diff-hl-change ((,class (:foreground ,ink :background ,ink))))
    `(diff-hl-delete ((,class (:foreground ,ink :background ,ink))))
@@ -306,14 +306,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(diredp-symlink ((t (:foreground ,marooned))))
    `(diredp-write-priv ((t (:foreground ,ink))))
 ;;;;; ediff
-   `(ediff-current-diff-A ((t (:background "#FFEBEB"))))
-   `(ediff-current-diff-B ((t (:background "#E4FFEA"))))
-   `(ediff-even-diff-A ((t (:background "#F4F7FB"))))
-   `(ediff-even-diff-B ((t (:background "#F4F7FB"))))
-   `(ediff-fine-diff-A ((t (:background "#FFC8C9"))))
-   `(ediff-fine-diff-B ((t (:background "#83FCA7"))))
-   `(ediff-odd-diff-A ((t (:background "#F4F7FB"))))
-   `(ediff-odd-diff-B ((t (:background "#F4F7FB"))))
+   `(ediff-current-diff-A ((t (:background ,palepink))))
+   `(ediff-current-diff-B ((t (:background ,melon))))
+   `(ediff-even-diff-A ((t (:background ,fluff))))
+   `(ediff-even-diff-B ((t (:background ,fluff))))
+   `(ediff-fine-diff-A ((t (:background ,eraser))))
+   `(ediff-fine-diff-B ((t (:background ,leaf))))
+   `(ediff-odd-diff-A ((t (:background ,fluff))))
+   `(ediff-odd-diff-B ((t (:background ,fluff))))
 ;;;;; egg
    `(egg-text-base ((t (:foreground ,marooned))))
    `(egg-help-header-1 ((t (:foreground ,marooned))))
@@ -421,7 +421,7 @@ Also bind `class' to ((class color) (min-colors 89))."
       (t (:foreground ,ink :weight bold :underline t))))
    `(flyspell-incorrect
      ((((supports :underline (:style wave)))
-       (:underline (:style wave :color "#FF4421") :inherit unspecified))
+       (:underline (:style wave :color ,bloodred) :inherit unspecified))
       (t (:foreground ,ink :weight bold :underline t))))
 ;;;;; full-ack
    `(ack-separator ((t (:foreground ,marooned))))
@@ -563,9 +563,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background "#F8F8F8"))
+   `(hl-line-face ((,class (:background ,whisp3))
                    (t :weight bold)))
-   `(hl-line ((,class (:background "#F8F8F8")) ; old emacsen
+   `(hl-line ((,class (:background ,whisp3)) ; old emacsen
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,paper))
@@ -645,7 +645,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,ink :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,ink :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground "#B3B3B3" :background ,paper))))
+   `(linum ((t (:foreground ,pencil2 :background ,paper))))
 ;;;;; ruler-mode
    `(ruler-mode-column-number ((t (:inherit 'ruler-mode-default :foreground ,marooned))))
    `(ruler-mode-fill-column ((t (:inherit 'ruler-mode-default :foreground ,marooned))))
@@ -824,21 +824,21 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mumamo-background-chunk-submode4 ((t (:background ,paper))))
 ;;;;; org-mode
    `(org-block-begin-line
-     ((t (:foreground "#B3B3B3" :family "Source Code Pro" :height 140))))
+     ((t (:foreground ,pencil2 :family "Source Code Pro" :height 140))))
    `(org-block-end-line
-     ((t (:foreground "#B3B3B3" :family "Source Code Pro" :height 140))))
-   `(org-block ((t (:background "#F5F5F5" :family "Source Code Pro" :height 140))))
-   `(org-code  ((t (:background "#F5F5F5" :family "Source Code Pro" :height 140))))
+     ((t (:foreground ,pencil2 :family "Source Code Pro" :height 140))))
+   `(org-block ((t (:background ,whisp2 :family "Source Code Pro" :height 140))))
+   `(org-code  ((t (:background ,whisp2 :family "Source Code Pro" :height 140))))
    `(org-agenda-date-today
      ((t (:foreground ,ink :slant italic :weight bold))) t)
    `(org-agenda-structure
      ((t (:inherit font-lock-comment-face))))
    `(org-archived ((t (:foreground ,marooned :weight bold))))
-   `(org-checkbox ((t (:background "#93A1A1" :foreground "#333333"
+   `(org-checkbox ((t (:background "#93A1A1" :foreground ,ink
                                    :box (:line-width -3 :color "#93A1A1" :style released-button)))))
    `(org-date ((t (:foreground ,ink :underline t))))
    `(org-deadline-announce ((t (:foreground ,ink))))
-   `(org-done ((t (:bold t :weight bold :foreground "#BD3128"))))
+   `(org-done ((t (:bold t :weight bold :foreground ,closedred))))
    `(org-formula ((t (:foreground ,ink))))
    `(org-headline-done ((t (:strike-through t))))
    `(org-hide ((t (:foreground ,flatblue))))
@@ -868,7 +868,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-mode-line-clock-overrun ((t (:foreground ,paper :background ,ink))))
    `(org-ellipsis ((t (:foreground ,ink :underline t))))
    `(org-footnote ((t (:foreground ,merged :underline t))))
-   `(org-document-title ((t (:inherit org-level-1 :height 2.0 :underline nil :box (:line-width 5 :color "#FFFFFF")))))
+   `(org-document-title ((t (:inherit org-level-1 :height 2.0 :underline nil :box (:line-width 5 :color ,paper)))))
    `(org-document-info ((t (:foreground ,ink))))
    `(org-habit-ready-face ((t :background ,pencil1)))
    `(org-habit-alert-face ((t :background ,ink :foreground ,paper)))
@@ -975,7 +975,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec ((t (:foreground ,navyblue))))
 ;;;;; show-paren
    `(show-paren-mismatch ((t (:foreground ,ink :background ,paper))))
-   `(show-paren-match ((t (:foreground "#333333" :background "#E4FFEA" :weight bold))))
+   `(show-paren-match ((t (:foreground ,ink :background ,melon :weight bold))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable Elixir for sml
    `(sml/global ((,class (:foreground ,marooned :weight bold))))
@@ -1096,14 +1096,14 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; whitespace-mode
    `(whitespace-space ((t (:background ,paper :foreground ,paper))))
    `(whitespace-hspace ((t (:background ,paper :foreground ,paper))))
-   `(whitespace-tab ((t (:background "#EDEDED"))))
+   `(whitespace-tab ((t (:background ,whisp1))))
    `(whitespace-newline ((t (:foreground ,paper))))
-   `(whitespace-trailing ((t (:background "#EDEDED"))))
-   `(whitespace-line ((t (:background "#EDEDED"))))
+   `(whitespace-trailing ((t (:background ,whisp1))))
+   `(whitespace-line ((t (:background ,whisp1))))
    `(whitespace-space-before-tab ((t (:background ,ink :foreground ,ink))))
    `(whitespace-indentation ((t (:background ,paper))))
-   `(whitespace-empty ((t (:background "#EDEDED"))))
-   `(whitespace-space-after-tab ((t (:background "#EDEDED" :foreground ,navyblue))))
+   `(whitespace-empty ((t (:background ,whisp1))))
+   `(whitespace-space-after-tab ((t (:background ,whisp1 :foreground ,navyblue))))
 ;;;;; wanderlust
    `(wl-highlight-folder-few-face ((t (:foreground ,ink))))
    `(wl-highlight-folder-many-face ((t (:foreground ,ink))))
