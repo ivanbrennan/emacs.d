@@ -88,6 +88,8 @@
    #+END_SRC
 
 ** run tests asynchronously
+** manage ruby versions (rbenv)
+*** rbenv.el? exec-path-from-shell?
 ** set 'fullscreen' frame-parameter to 'fullscreen' or 'fullboth'
 ** bind M-s-h in emacs-plus
 ** cycle kill ring in evil-mode
