@@ -220,7 +220,7 @@
   :demand
   :bind (:map evil-normal-state-map
          ("U"       . undo-tree-redo)
-         ("C-r"     . isearch-backward-regexp)
+         ("C-r"     . isearch-backward)
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
          ("C-w C-k" . evil-window-up)
@@ -241,7 +241,7 @@
          ("C-w C-o" . zoom-window-zoom)
          ("C-w O"   . ivan/other-window-zoom)
          :map evil-visual-state-map
-         ("C-r"     . isearch-backward-regexp)
+         ("C-r"     . isearch-backward)
          ("<tab>"   . evil-indent))
   :init
   (setq evil-want-C-u-scroll t)
@@ -402,14 +402,10 @@ Disables `text-scale-mode`."
   (configure-terminal))
 
 ;; keybindings
-(bind-keys ("C-M-s" . isearch-forward)
-           ("C-M-r" . isearch-backward)
-           ("C-s"   . isearch-forward-regexp)
-           ("C-r"   . isearch-backward-regexp)
-           ("M-/"   . hippie-expand)
-           ("C-/"   . undo-tree-undo)
-           ("C-?"   . undo-tree-redo)
-           ("C-w"   . ivan/kill-region-or-backward-kill-word))
+(bind-keys ("M-/" . hippie-expand)
+           ("C-/" . undo-tree-undo)
+           ("C-?" . undo-tree-redo)
+           ("C-w" . ivan/kill-region-or-backward-kill-word))
 
 (defun ivan/isearch-exit ()
   "Run isearch-exit, and if in the minibuffer, submit the search result as input."
