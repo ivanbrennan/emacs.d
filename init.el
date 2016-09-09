@@ -48,7 +48,7 @@
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory :mkdir_p)
 
-(let ((theme 'github))
+(let ((theme 'elixir))
   (unless (ignore-errors (load-theme theme :no-confirm))
   (message "Unable to find theme file for ‘%s’" theme)))
 
