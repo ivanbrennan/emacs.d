@@ -186,7 +186,9 @@
 
 (use-package rainbow-mode
   :diminish rainbow-mode
-  :commands rainbow-mode)
+  :commands rainbow-mode
+  :config
+  (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
 (use-package undo-tree
   :ensure t
@@ -330,11 +332,6 @@ Disables `text-scale-mode`."
   (interactive)
   (text-scale-set 0))
 
-(defun ivan/local-toggle-hl-line ()
-  "Toggle line highlighting in current buffer"
-  (interactive)
-  (setq hl-line-mode (null hl-line-mode)))
-
 (defun configure-gui ()
   (bind-keys ("M-q"   . save-buffers-kill-terminal)
              ("M-A"   . mark-whole-buffer) ; (⌥⌘A)
@@ -348,7 +345,7 @@ Disables `text-scale-mode`."
              ("M-="   . text-scale-increase)
              ("M--"   . text-scale-decrease)
              ("M-0"   . ivan/text-scale-reset)
-             ("M-…"   . ivan/local-toggle-hl-line) ; (⌥⌘;)
+             ("M-…"   . hl-line-mode) ; (⌥⌘;)
              ("M-<return>" . toggle-frame-fullscreen)
              ;; reconcile some overridden keybindings
              ("ESC M-q" . fill-paragraph)

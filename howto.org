@@ -54,15 +54,11 @@
 
 ** Toggle highlighting current line
    How can I toggle ~hl-line-mode~ in the current buffer?
-   Write a toggle function:
-    #+BEGIN_SRC emacs-lisp
-    (defun ivan/local-toggle-hl-line ()
-      "Toggle line highlighting in current buffer"
-      (interactive)
-      (setq hl-line-mode (null hl-line-mode)))
-    #+END_SRC
-   Then bind a key to it:
-   : ("M-s-;" . ivan/local-toggle-hl-line)
+   First, avoid using ~global-hl-line-mode~, as it interferes with toggling highlighting locally.
+   Instead, selectively apply ~hl-line-mode~ using hooks.
+   : (add-hook 'prog-mode-hook #'hl-line-mode)
+   Then, bind a key to ~hl-line-mode~.
+   : (bind-key "M-…" 'hl-line-mode) ; (⌥⌘;)
 
 ** Indent with spaces
    How do I control whether Emacs indents with spaces or tabs?
