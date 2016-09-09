@@ -7,6 +7,7 @@
 
 (defvar github-default-colors-alist
   '(("navyblue"  . "#183691")  ; font-lock-string-face foreground
+    ("blooo"     . "#5E79C1")
     ("bigblue"   . "#3873C3")  ; minibuffer-prompt foreground
     ("marine"    . "#0085B3")  ; font-lock-type-face foreground
     ("flatblue"  . "#B0CDE7")
@@ -218,17 +219,17 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(avy-lead-face
      ((t (:foreground ,merged :background ,paper :inverse-video nil :weight bold))))
 ;;;;; company-mode
-   `(company-tooltip ((t (:foreground ,marooned :background ,paper))))
+   `(company-tooltip ((t (:foreground ,slate :background ,whisp3))))
    `(company-tooltip-annotation ((t (:foreground ,ink :background ,paper))))
    `(company-tooltip-annotation-selection ((t (:foreground ,ink :background ,flatblue))))
-   `(company-tooltip-selection ((t (:foreground ,marooned :background ,flatblue))))
-   `(company-tooltip-mouse ((t (:background ,flatblue))))
-   `(company-tooltip-common ((t (:foreground ,pencil1))))
+   `(company-tooltip-selection ((t (:foreground ,blooo :background ,whisp1))))
+   `(company-tooltip-mouse ((t (:background ,whisp1))))
+   `(company-tooltip-common ((t (:foreground ,pencil2))))
    `(company-tooltip-common-selection ((t (:foreground ,pencil1))))
-   `(company-scrollbar-fg ((t (:background ,flatblue))))
-   `(company-scrollbar-bg ((t (:background ,paper))))
-   `(company-preview ((t (:background ,pencil1))))
-   `(company-preview-common ((t (:foreground ,pencil1 :background ,flatblue))))
+   `(company-scrollbar-fg ((t (:background ,pencil3))))
+   `(company-scrollbar-bg ((t (:background ,whisp2))))
+   `(company-preview ((t (:inherit company-tooltip-selection))))
+   `(company-preview-common ((t (:inherit company-tooltip-common-selection))))
 ;;;;; bm
    `(bm-face ((t (:background ,ink :foreground ,paper))))
    `(bm-fringe-face ((t (:background ,ink :foreground ,paper))))
