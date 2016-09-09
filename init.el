@@ -265,6 +265,7 @@
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key "x"  'execute-extended-command)
     (evil-leader/set-key "fs" 'save-buffer)
+    (evil-leader/set-key "l"  'evil-switch-to-windows-last-buffer)
     (global-evil-leader-mode))
   (evil-mode))
 
