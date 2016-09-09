@@ -318,7 +318,10 @@
   (add-hook 'Info-mode-hook #'page-break-lines-mode))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config
+  (setq magit-revision-show-gravatars
+        '("^Author:     " . "^Commit:     ")))
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
