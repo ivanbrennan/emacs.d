@@ -347,6 +347,8 @@ Disables `text-scale-mode`."
              ("M--"   . text-scale-decrease)
              ("M-0"   . ivan/text-scale-reset)
              ("M-…"   . hl-line-mode) ; (⌥⌘;)
+             ("M-`"   . ns-next-frame)
+             ("M-~"   . ns-prev-frame)
              ("M-<return>" . toggle-frame-fullscreen)
              ;; reconcile some overridden keybindings
              ("ESC M-q" . fill-paragraph)
