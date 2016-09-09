@@ -83,6 +83,9 @@
    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
    #+END_SRC
 
+** toggle regexp in isearch
+   : M-r
+
 ** run tests asynchronously
 ** manage ruby versions (rbenv)
 *** rbenv.el? exec-path-from-shell?
