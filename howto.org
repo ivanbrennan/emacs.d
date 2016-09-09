@@ -97,6 +97,7 @@
     (add-to-list 'find-file-not-found-functions 'ivan/create-non-existent-directory)
    #+END_SRC
 
+** launch emacs client from command line with "e"
 ** run tests asynchronously
 ** manage ruby versions (rbenv)
 *** rbenv.el? exec-path-from-shell?
