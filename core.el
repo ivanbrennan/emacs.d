@@ -48,16 +48,23 @@
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory :mkdir_p)
 
-(let ((theme 'elixir))
-  (unless (ignore-errors (load-theme theme :no-confirm))
-  (message "Unable to find theme file for ‘%s’" theme)))
+(setq ivan/themes '(elixir elixir-dark))
+(setq ivan/themes-index 0)
 
-(defun ivan/toggle-light-dark ()
+(defun ivan/cycle-theme ()
   (interactive)
-  (let* ((old-theme (car custom-enabled-themes))
-         (new-theme (if (eql old-theme 'elixir) 'elixir-dark 'elixir)))
-    (disable-theme old-theme)
-    (load-theme new-theme :no-confirm)))
+  (setq ivan/themes-index (% (1+ ivan/themes-index) (length ivan/themes)))
+  (ivan/load-indexed-theme))
+
+(defun ivan/load-indexed-theme ()
+  (ivan/try-load-theme (nth ivan/themes-index ivan/themes)))
+
+(defun ivan/try-load-theme (theme)
+  (if (ignore-errors (load-theme theme :no-confirm))
+      (mapcar #'disable-theme (remove theme custom-enabled-themes))
+    (message "Unable to find theme file for ‘%s’" theme)))
+
+(ivan/load-indexed-theme)
 
 (add-hook 'help-mode-hook #'variable-pitch-mode)
 (add-hook 'Info-mode-hook #'variable-pitch-mode)
@@ -273,7 +280,7 @@
     (evil-leader/set-key "x"  'execute-extended-command)
     (evil-leader/set-key "fs" 'save-buffer)
     (evil-leader/set-key "l"  'evil-switch-to-windows-last-buffer)
-    (evil-leader/set-key "\\" 'ivan/toggle-light-dark)
+    (evil-leader/set-key "\\" 'ivan/cycle-theme)
     (global-evil-leader-mode))
   (evil-mode))
 
