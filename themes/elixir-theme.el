@@ -23,13 +23,14 @@
     ("melon"     . "#E4FFEA")
     ("limeclay"  . "#F2F9DB")
     ("sand"      . "#F8EEC7")
+    ("clay"      . "#F3E5CA")
+    ("parchment" . "#FEF9EC")
     ("bloodred"  . "#FF4421")
     ("closedred" . "#BD3128")
     ("marooned"  . "#A71D5D")
     ("merged"    . "#443A8C")
     ("eraser"    . "#FFC8C9")
     ("palepink"  . "#FFEBEB")
-    ("parchment" . "#FEF8EE")
     ("ink"       . "#333333")
     ("shale"     . "#555555")
     ("slate"     . "#666666")
@@ -824,11 +825,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mumamo-background-chunk-submode4 ((t (:background ,paper))))
 ;;;;; org-mode
    `(org-block-begin-line
-     ((t (:foreground ,pencil2 :family "Source Code Pro" :height 140))))
+     ((t (:foreground ,pencil2 :underline ,clay :height 140 :family "Source Code Pro"))))
    `(org-block-end-line
-     ((t (:foreground ,pencil2 :family "Source Code Pro" :height 140))))
-   `(org-block ((t (:background ,whisp2 :family "Source Code Pro" :height 140))))
-   `(org-code  ((t (:background ,whisp2 :family "Source Code Pro" :height 140))))
+     ((t (:foreground ,pencil2 :overline ,clay :height 140 :family "Source Code Pro"))))
+   `(org-block ((t (:background ,parchment :family "Source Code Pro" :height 140))))
+   `(org-code  ((t (:background ,parchment :family "Source Code Pro" :height 140
+                                :box (:line-width -1 :color ,clay)))))
    `(org-agenda-date-today
      ((t (:foreground ,ink :slant italic :weight bold))) t)
    `(org-agenda-structure
