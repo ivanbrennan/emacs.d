@@ -443,11 +443,15 @@ Disables `text-scale-mode`."
   (isearch-exit)
   (if (minibuffer-window-active-p (selected-window))
       (minibuffer-complete-and-exit)))
+
+(setq ivan/remapped-isearch-exit nil)
+
 (defun ivan/remap-isearch-exit ()
-  (define-key
-    overriding-terminal-local-map
-    [remap isearch-exit]
-    #'ivan/isearch-exit))
+  (unless ivan/remapped-isearch-exit
+    (setq ivan/remapped-isearch-exit t)
+    (define-key
+      overriding-terminal-local-map [remap isearch-exit] #'ivan/isearch-exit)))
+
 (add-hook 'isearch-mode-hook #'ivan/remap-isearch-exit)
 
 (defun ivan/minibuffer-setup-hook ()

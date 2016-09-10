@@ -1,6 +1,4 @@
 * Misc
-** accept and execute C-r result in minibuffer
-*** some custom C-<return> binding?
 ** mouse in terminal
 *** fixed?
 ** check if use-package is installed, and if not load package.el and install use-package
@@ -68,6 +66,25 @@
 *** rbenv.el? exec-path-from-shell?
 ** run tests asynchronously
 ** launch emacs client from command line with "e"
+** Submit minibuffer C-r search result with a single Return
+   #+BEGIN_SRC emacs-lisp
+    (defun ivan/isearch-exit ()
+      "Run isearch-exit, and if in the minibuffer, submit the search result as input."
+      (interactive)
+      (isearch-exit)
+      (if (minibuffer-window-active-p (selected-window))
+          (minibuffer-complete-and-exit)))
+
+    (setq ivan/remapped-isearch-exit nil)
+
+    (defun ivan/remap-isearch-exit ()
+      (unless ivan/remapped-isearch-exit
+        (setq ivan/remapped-isearch-exit t)
+        (define-key
+          overriding-terminal-local-map [remap isearch-exit] #'ivan/isearch-exit)))
+
+    (add-hook 'isearch-mode-hook #'ivan/remap-isearch-exit)
+   #+END_SRC
 ** Conveniently create parent directories for new file
    #+BEGIN_SRC emacs-lisp
     (defun ivan/create-non-existent-directory ()
