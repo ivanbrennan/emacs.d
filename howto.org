@@ -1,75 +1,86 @@
 * Misc
-** Move point to middle/top/bottom of window
-   How do I move the point to the middle/top/bottom of the window?
+** accept and execute C-r result in minibuffer
+*** some custom C-<return> binding?
+** mouse in terminal
+*** fixed?
+** check if use-package is installed, and if not load package.el and install use-package
+** lazy load package.el
+*** This? (use-package package :defer)
+** scroll inactive frame without changing state of status bars
+** semantic layer in spacemacs
+** aggressive-indent-mode
+** jump back (like C-o in vim)
+** jump by block (like } in vim)
+** what does ido c-k do?
+** visit recent file
+** sql beautify
+** reorg windows (split vert vs horiz)
+** whitespace faces
+** smooth scrolling with external mouse wheel
+** set bash indentation to 2 spaces
+** switch other window to its previous buffer
+** reformat text (like vim gq)
+** scroll offset to 1 line
+** partial line completion (cursor to end of line)
+** line numbers toggle
+** ctags (etags?)
+** completion (word/line/path)
+*** TAB (or M-TAB if tab-always-indent is t)
+*** find-file-at-point
+*** hippie-expand
+** colorize ansi sgr codes (e.g. when viewing log file)
+*** tty-format.el ?
+** refresh color theme
+** color past eof
+** color past 90 chars
+** backward-kill-word (C-w) in insert/minibuffer
+** add flyspell-prog-mode to prog-mode-hook
+** use framesets or winner-mode to replace vim-like tabs
+** auto-indent as you type
+** minibuffer curly-brace completion hints (ido ?)
+** minibuffer inc-search autoaccept
+** fringe color same as background
+** folding
+** open newline below, from mid-line
+** swap window positions
+** mimic prev/next line chars (like C-e/C-y in vim)
+** toggle between alt files (header/implementation/test/etc)
+** open a file/buffer in other window
+** replace in region without activating region
+** single space after sentence
+** make switch-to-buffer select other frame if it's visible there
+*** ido-mode does this. how can I do it outside of ido-mode?
+** zoom windows
+** use-package :ensure keyword
+** byte-compile init file
+** page-break lines in C-h m
+** org correctly apply theme (monospace) to "#+BEGIN_SRC" lines
+** org insert sibling above
+** org insert subheading below
+** make a nice startup buffer like spacemacs does (evil-motion-state, they're not even using initial-buffer-choice to do it; how do they do it?)
+** acccess system clipboard
+** cycle kill ring in evil-mode
+*** Normal state: C-p / C-n following a paste
+*** Insert state: ???
+** bind M-s-h in emacs-plus
+** set 'fullscreen' frame-parameter to 'fullscreen' or 'fullboth'
+** manage ruby versions (rbenv)
+*** rbenv.el? exec-path-from-shell?
+** run tests asynchronously
+** launch emacs client from command line with "e"
+** Conveniently create parent directories for new file
+   #+BEGIN_SRC emacs-lisp
+    (defun ivan/create-non-existent-directory ()
+      (let ((parent-directory (file-name-directory buffer-file-name)))
+        (when (and (not (file-exists-p parent-directory))
+                   (y-or-n-p (format "Directory ‘%s’ does not exist! Create it?" parent-directory)))
+          (make-directory parent-directory :mkdir_p))))
+
+    (add-to-list 'find-file-not-found-functions 'ivan/create-non-existent-directory)
+   #+END_SRC
+
+** Toggle regexp in isearch
    : M-r
-
-** Resize windows
-   How can I conveniently resize windows horizontally/vertically?
-   Install [[https://github.com/grammati/windsize][windsize]] and bind the following keys:
-    #+BEGIN_SRC emacs-lisp
-    (bind-keys ("C-S-<left>"  . windsize-left)
-               ("C-S-<right>" . windsize-right)
-               ("C-S-<up>"    . windsize-up)
-               ("C-S-<down>"  . windsize-down))
-    #+END_SRC
-
-** Use minibuffer history effectively
-   How can I effectively recall previous commands in the Emacs minibuffer?
-   : C-r
-
-** Select a rectangular select
-   How can I select a rectangular region?
-   : C-SPC C-x SPC
-
-** Case insensitive buffer completion
-   How can I make buffer name completion case insensitive?
-   : (setq read-buffer-completion-ignore-case  t)
-
-** Kill this buffer
-   How do I kill the current buffer?
-   : C-x k RET
-
-** Hide scrollbars
-   How do I hide the scrollbars?
-   : (scroll-bar-mode 0)
-
-** Indent current line/region
-   How do I indent the current line or region?
-   : TAB
-
-** Place cursor on beginning of match result
-   How can I place the cursor on the beginning of the match result rather than the end when performing isearch?
-    #+BEGIN_SRC emacs-lisp
-    (defun ivan/goto-match-beginning ()
-      (when (and isearch-forward isearch-other-end
-                (not isearch-mode-end-hook-quit))
-        (goto-char isearch-other-end)))
-
-    (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
-    #+END_SRC
-
-** Variables refusing to update
-   I was tweaking the values of some color variables in a theme I use, but reloading the theme didn't pick up the new values. What gives?
-   Variables defined with ~defvar~ are resistant to re-evaluation. Restarting Emacs will make the changes show up.
-
-** Toggle highlighting current line
-   How can I toggle ~hl-line-mode~ in the current buffer?
-   First, avoid using ~global-hl-line-mode~, as it interferes with toggling highlighting locally.
-   Instead, selectively apply ~hl-line-mode~ using hooks.
-   : (add-hook 'prog-mode-hook #'hl-line-mode)
-   Then, bind a key to ~hl-line-mode~.
-   : (bind-key "M-…" 'hl-line-mode) ; (⌥⌘;)
-
-** Indent with spaces
-   How do I control whether Emacs indents with spaces or tabs?
-   : (setq indent-tabs-mode nil)
-
-** Kill windows
-   How can I kill the current window? What about the other window?
-   delete-window:
-   : C-x 0
-   delete-other-windows:
-   : C-x 1
 
 ** Make Dired listings concise
    How can I make Dired display fewer file details?
@@ -83,89 +94,78 @@
    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
    #+END_SRC
 
-** toggle regexp in isearch
+** Kill windows
+   How can I kill the current window? What about the other window?
+   delete-window:
+   : C-x 0
+   delete-other-windows:
+   : C-x 1
+
+** Indent with spaces
+   How do I control whether Emacs indents with spaces or tabs?
+   : (setq indent-tabs-mode nil)
+
+** Toggle highlighting current line
+   How can I toggle ~hl-line-mode~ in the current buffer?
+   First, avoid using ~global-hl-line-mode~, as it interferes with toggling highlighting locally.
+   Instead, selectively apply ~hl-line-mode~ using hooks.
+   : (add-hook 'prog-mode-hook #'hl-line-mode)
+   Then, bind a key to ~hl-line-mode~.
+   : (bind-key "M-…" 'hl-line-mode) ; (⌥⌘;)
+
+** Variables refusing to update
+   I was tweaking the values of some color variables in a theme I use, but reloading the theme didn't pick up the new values. What gives?
+   Variables defined with ~defvar~ are resistant to re-evaluation. Restarting Emacs will make the changes show up.
+
+** Place cursor on beginning of match result
+   How can I place the cursor on the beginning of the match result rather than the end when performing isearch?
+    #+BEGIN_SRC emacs-lisp
+    (defun ivan/goto-match-beginning ()
+      (when (and isearch-forward isearch-other-end
+                (not isearch-mode-end-hook-quit))
+        (goto-char isearch-other-end)))
+
+    (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
+    #+END_SRC
+
+** Indent current line/region
+   How do I indent the current line or region?
+   : TAB
+
+** Hide scroll bars
+   How do I hide the scrollbars?
+   : (scroll-bar-mode 0)
+
+** Kill this buffer
+   How do I kill the current buffer?
+   : C-x k RET
+
+** Case insensitive buffer completion
+   How can I make buffer name completion case insensitive?
+   : (setq read-buffer-completion-ignore-case  t)
+
+** Select a rectangular select
+   How can I select a rectangular region?
+   : C-SPC C-x SPC
+
+** Use minibuffer history effectively
+   How can I effectively recall previous commands in the Emacs minibuffer?
+   : C-r
+
+** Resize windows
+   How can I conveniently resize windows horizontally/vertically?
+   Install [[https://github.com/grammati/windsize][windsize]] and bind the following keys:
+    #+BEGIN_SRC emacs-lisp
+    (bind-keys ("C-S-<left>"  . windsize-left)
+               ("C-S-<right>" . windsize-right)
+               ("C-S-<up>"    . windsize-up)
+               ("C-S-<down>"  . windsize-down))
+    #+END_SRC
+
+** Move point to middle/top/bottom of window
+   How do I move the point to the middle/top/bottom of the window?
    : M-r
 
-** auto-create parent directories when visiting a file
-   #+BEGIN_SRC emacs-lisp
-    (defun ivan/create-non-existent-directory ()
-      (let ((parent-directory (file-name-directory buffer-file-name)))
-        (when (and (not (file-exists-p parent-directory))
-                   (y-or-n-p (format "Directory `%s' does not exist! Create it?" parent-directory)))
-          (make-directory parent-directory t))))
-
-    (add-to-list 'find-file-not-found-functions 'ivan/create-non-existent-directory)
-   #+END_SRC
-
-** launch emacs client from command line with "e"
-** run tests asynchronously
-** manage ruby versions (rbenv)
-*** rbenv.el? exec-path-from-shell?
-** set 'fullscreen' frame-parameter to 'fullscreen' or 'fullboth'
-** bind M-s-h in emacs-plus
-** cycle kill ring in evil-mode
-*** Normal state: C-p / C-n following a paste
-*** Insert state: ???
-** acccess system clipboard
-** make a nice startup buffer like spacemacs does (evil-motion-state, they're not even using initial-buffer-choice to do it; how do they do it?)
-** org insert subheading below
-** org insert sibling above
-** org correctly apply theme (monospace) to "#+BEGIN_SRC" lines
-** page-break lines in C-h m
-** byte-compile init file
-** use-package :ensure keyword
-** zoom windows
-** make switch-to-buffer select other frame if it's visible there
-*** ido-mode does this. how can I do it outside of ido-mode?
-** single space after sentence
-** replace in region without activating region
-** open a file/buffer in other window
-** toggle between alt files (header/implementation/test/etc)
-** mimic prev/next line chars (like C-e/C-y in vim)
-** swap window positions
-** open newline below, from mid-line
-** folding
-** fringe color same as background
-** minibuffer inc-search autoaccept
-** minibuffer curly-brace completion hints (ido ?)
-** auto-indent as you type
-** use framesets or winner-mode to replace vim-like tabs
-** add flyspell-prog-mode to prog-mode-hook
-** backward-kill-word (C-w) in insert/minibuffer
-** color past 90 chars
-** color past eof
-** refresh color theme
-** colorize ansi sgr codes (e.g. when viewing log file)
-*** tty-format.el ?
-** completion (word/line/path)
-*** TAB (or M-TAB if tab-always-indent is t)
-*** find-file-at-point
-*** hippie-expand
-** ctags (etags?)
-** line numbers toggle
-** partial line completion (cursor to end of line)
-** scroll offset to 1 line
-** reformat text (like vim gq)
-** switch other window to its previous buffer
-** set bash indentation to 2 spaces
-** smooth scrolling with external mouse wheel
-** whitespace faces
-** reorg windows (split vert vs horiz)
-** sql beautify
-** visit recent file
-** what does ido c-k do?
-** jump by block (like } in vim)
-** jump back (like C-o in vim)
-** aggressive-indent-mode
-** semantic layer in spacemacs
-** scroll inactive frame without changing state of status bars
-** lazy load package.el
-*** This? (use-package package :defer)
-** check if use-package is installed, and if not load package.el and install use-package
-** mouse in terminal
-*** fixed?
-** accept and execute C-r result in minibuffer
-*** some custom C-<return> binding?
 * Keybindings
 ** find sensible solutions for C-a, C-e, C-y, 0, $ in evil-mode
 *** evil-numbers suggests C-c + C-c -
