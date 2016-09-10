@@ -567,7 +567,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,whisp2))
+   `(hl-line-face ((,class (:background ,whisp4))
                    (t :weight bold)))
    `(hl-line ((,class (:background ,whisp4))
               (t :weight bold)))
