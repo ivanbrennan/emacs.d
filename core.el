@@ -256,7 +256,9 @@
          ("C-w O"   . ivan/other-window-zoom)
          :map evil-visual-state-map
          ("C-r"     . isearch-backward)
-         ("<tab>"   . evil-indent))
+         ("<tab>"   . evil-indent)
+         :map evil-insert-state-map
+         ("M-v"     . yank))
   :init
   (setq evil-want-C-u-scroll t)
   :config
