@@ -828,9 +828,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mumamo-background-chunk-submode4 ((t (:background ,paper))))
 ;;;;; org-mode
    `(org-block-begin-line
-     ((t (:foreground ,pencil2 :underline ,clay :height 140 :family "Source Code Pro"))))
+     ((t (:foreground ,pencil2 :height 140 :family "Source Code Pro"))))
    `(org-block-end-line
-     ((t (:foreground ,pencil2 :overline ,clay :height 140 :family "Source Code Pro"))))
+     ((t (:foreground ,pencil2 :height 140 :family "Source Code Pro"))))
    `(org-block ((t (:background ,parchment :family "Source Code Pro" :height 140))))
    `(org-code  ((t (:background ,parchment :family "Source Code Pro" :height 140
                                 :box (:line-width -1 :color ,clay)))))
