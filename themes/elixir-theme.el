@@ -32,6 +32,7 @@
     ("eraser"    . "#FFC8C9")
     ("palepink"  . "#FFEBEB")
     ("ink"       . "#333333")
+    ("nicegrey"  . "#393E53") ;; nice background for a dark theme
     ("shale"     . "#555555")
     ("slate"     . "#666666")
     ("pencil1"   . "#969896")
