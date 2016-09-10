@@ -52,6 +52,13 @@
   (unless (ignore-errors (load-theme theme :no-confirm))
   (message "Unable to find theme file for ‘%s’" theme)))
 
+(defun ivan/toggle-light-dark ()
+  (interactive)
+  (let* ((old-theme (car custom-enabled-themes))
+         (new-theme (if (eql old-theme 'elixir) 'elixir-dark 'elixir)))
+    (disable-theme old-theme)
+    (load-theme new-theme :no-confirm)))
+
 (add-hook 'help-mode-hook #'variable-pitch-mode)
 (add-hook 'Info-mode-hook #'variable-pitch-mode)
 
@@ -266,6 +273,7 @@
     (evil-leader/set-key "x"  'execute-extended-command)
     (evil-leader/set-key "fs" 'save-buffer)
     (evil-leader/set-key "l"  'evil-switch-to-windows-last-buffer)
+    (evil-leader/set-key "\\" 'ivan/toggle-light-dark)
     (global-evil-leader-mode))
   (evil-mode))
 
