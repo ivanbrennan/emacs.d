@@ -40,7 +40,7 @@
     ("whisp1"    . "#EDEDED")
     ("whisp2"    . "#F5F5F5")
     ("whisp3"    . "#F8F8F8")
-    ("paper"     . "#FFFFFF"))
+    ("paper"     . "#F7F9FC"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
 
@@ -73,7 +73,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,bigblue :underline t :weight bold))))
    `(link-visited ((t (:foreground ,ink :underline t :weight normal))))
-   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background "white"))))
+   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,paper))))
    `(fixed-pitch ((t (:family "Source Code Pro"))))
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
    `(cursor ((t (:background ,ink))))
@@ -564,9 +564,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,whisp3))
+   `(hl-line-face ((,class (:background ,whisp2))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,whisp3)) ; old emacsen
+   `(hl-line ((,class (:background ,whisp2)) ; old emacsen
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,paper))

@@ -386,7 +386,14 @@ Disables `text-scale-mode`."
     (when alternating-scroll-up-next
       (scroll-up-line))
     (setq alternating-scroll-up-next
-          (not alternating-scroll-up-next))))
+          (not alternating-scroll-up-next)))
+
+  (defun ivan/adjust-terminal-colors ()
+    (unless (display-graphic-p (selected-frame))
+      (set-face-background 'default "white" (selected-frame))
+      (set-face-background 'hl-line "#EEEEEE" (selected-frame))))
+
+  (add-hook 'window-setup-hook 'ivan/adjust-terminal-colors))
 
 (defun system-is-mac () (eq system-type 'darwin))
 
