@@ -262,7 +262,6 @@
   :config
   (setq-default evil-shift-width 2)
   (setq evil-move-cursor-back nil
-        evil-want-fine-undo     'no
         evil-emacs-state-cursor 'bar)
   (defun ivan/move-key (keymap-from keymap-to key)
     "Moves key binding from one keymap to another, deleting from the old location."
