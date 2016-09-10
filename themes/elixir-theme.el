@@ -13,7 +13,7 @@
     ("flatblue"  . "#B0CDE7")
     ("aquablue"  . "#C2E7F3")
     ("aqua"      . "#DEFDFE")
-    ("skyblue"   . "#E4F1F7")
+    ("skyblue"   . "#E8F1F6")
     ("bluegrey"  . "#ECF3F7")
     ("fluff"     . "#F4F7FB")
     ("paleblue"  . "#F1F9FC")
@@ -37,11 +37,13 @@
     ("slate"     . "#666666")
     ("pencil1"   . "#969896")
     ("pencil2"   . "#B3B3B3")
-    ("pencil3"   . "#D8D8D8")
+    ("pencil3"   . "#D0D0D0")
+    ("pencil4"   . "#D8D8D8")
     ("whisp1"    . "#EDEDED")
     ("whisp2"    . "#F5F5F5")
     ("whisp3"    . "#F8F8F8")
-    ("paper"     . "#F7F9FC"))
+    ("whisp4"    . "#F8F9FC")
+    ("paper"     . "#FCFDFF"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
 
@@ -106,7 +108,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; grep
    `(match ((t (:background ,whisp2 :weight bold))))
 ;;;;; isearch
-   `(isearch ((t (:foreground ,ink :weight bold :background ,skyblue))))
+   `(isearch ((t (:foreground ,ink :weight bold :background ,sand))))
    `(isearch-fail ((t (:background ,eraser))))
    `(lazy-highlight ((t (:foreground ,ink :weight bold :background ,limeclay))))
 
@@ -118,32 +120,32 @@ Also bind `class' to ((class color) (min-colors 89))."
                            :box (:line-width -1 :color ,aquablue)
                            ))
       (t :inverse-video t)))
-   `(mode-line-buffer-id ((t (:foreground "#000000" :weight bold)))) ;; todo: not happy with black here
+   `(mode-line-buffer-id ((t (:foreground "black" :weight bold))))
    `(mode-line-highlight ((t (:foreground ,bigblue))))
    `(mode-line-inactive
      ((t (:foreground ,pencil1
                       :weight light
                       :background ,whisp2
-                      :box (:line-width -1 :color "#d8d8d8")))))
-   `(region ((,class (:background "#E8F1F6"))
+                      :box (:line-width -1 :color ,pencil4)))))
+   `(region ((,class (:background ,skyblue))
              (t :inverse-video t)))
    `(secondary-selection ((t (:background ,paper))))
    `(trailing-whitespace ((t (:background ,whisp1))))
-   `(vertical-border ((t (:foreground "#d0d0d0"))))
+   `(vertical-border ((t (:foreground ,pencil4))))
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,marooned :weight normal))))  ;; weight bold (built-in keywords)
    `(font-lock-comment-face ((t (:foreground ,pencil1))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,pencil1))))
    `(font-lock-constant-face ((t (:foreground ,marine))))
    `(font-lock-doc-face ((t (:foreground ,pencil1))))
-   `(font-lock-function-name-face ((t (:foreground "#7265A2"))))
+   `(font-lock-function-name-face ((t (:foreground ,merged))))
    `(font-lock-keyword-face ((t (:foreground ,marooned :weight normal))))
    `(font-lock-negation-char-face ((t (:foreground ,marooned :weight bold))))
    `(font-lock-preprocessor-face ((t (:foreground ,marooned))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,marooned :weight bold))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,pencil1 :weight bold))))
    `(font-lock-string-face ((t (:foreground ,navyblue))))
-   `(font-lock-type-face ((t (:foreground "#0086b0"))))
+   `(font-lock-type-face ((t (:foreground ,marine))))
    `(font-lock-variable-name-face ((t (:foreground ,ink))))
    `(font-lock-warning-face ((t (:foreground ,ink :weight bold))))
 
@@ -205,12 +207,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(agda2-highlight-incomplete-pattern-face ((t (:foreground ,paper :background ,ink))))
    `(agda2-highlight-typechecks-face ((t (:background ,ink))))
 ;;;;; auto-complete
-   `(ac-candidate-face ((t (:background "#ffffff" :foreground ,ink :box (:line-width -1 :style released-button)))))
-   `(ac-selection-face ((t (:background ,marooned :foreground "#ffffff" :box (:line-width -1 :style released-button)))))
-   `(popup-tip-face ((t (:background "#ff0000" :foreground "#00ff00" ))))
+   `(ac-candidate-face ((t (:background ,paper :foreground ,ink :box (:line-width -1 :style released-button)))))
+   `(ac-selection-face ((t (:background ,marooned :foreground ,paper :box (:line-width -1 :style released-button)))))
+   `(popup-tip-face ((t (:background ,bloodred :foreground ,leaf))))
    `(popup-scroll-bar-foreground-face ((t (:background ,ink))))
-   `(popup-scroll-bar-background-face ((t (:background "#ffffff"))))
-   `(popup-isearch-match ((t (:background "#ff00ff" :foreground "#00ffff"))))
+   `(popup-scroll-bar-background-face ((t (:background ,paper))))
+   `(popup-isearch-match ((t (:background ,marooned :foreground aqua))))
 ;;;;; avy
    `(avy-background-face
      ((t (:foreground ,ink :background ,paper :inverse-video nil))))
@@ -230,7 +232,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(company-tooltip-mouse ((t (:background ,whisp1))))
    `(company-tooltip-common ((t (:foreground ,pencil2))))
    `(company-tooltip-common-selection ((t (:foreground ,pencil1))))
-   `(company-scrollbar-fg ((t (:background ,pencil3))))
+   `(company-scrollbar-fg ((t (:background ,pencil4))))
    `(company-scrollbar-bg ((t (:background ,whisp2))))
    `(company-preview ((t (:inherit company-tooltip-selection))))
    `(company-preview-common ((t (:inherit company-tooltip-common-selection))))
@@ -567,7 +569,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; hl-line-mode
    `(hl-line-face ((,class (:background ,whisp2))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,whisp2)) ; old emacsen
+   `(hl-line ((,class (:background ,whisp4))
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,paper))
@@ -837,8 +839,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-agenda-structure
      ((t (:inherit font-lock-comment-face))))
    `(org-archived ((t (:foreground ,marooned :weight bold))))
-   `(org-checkbox ((t (:background "#93A1A1" :foreground ,ink
-                                   :box (:line-width -3 :color "#93A1A1" :style released-button)))))
+   `(org-checkbox ((t (:background ,pencil1 :foreground ,ink
+                                   :box (:line-width -3 :color ,pencil1 :style released-button)))))
    `(org-date ((t (:foreground ,ink :underline t))))
    `(org-deadline-announce ((t (:foreground ,ink))))
    `(org-done ((t (:bold t :weight bold :foreground ,closedred))))
