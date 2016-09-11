@@ -258,7 +258,6 @@
          :map evil-visual-state-map
          ("C-r"     . isearch-backward)
          ("<tab>"   . evil-indent)
-         ("<SPC> i" . string-rectangle)
          :map evil-insert-state-map
          ("M-v"     . yank))
   :init
@@ -437,7 +436,10 @@ Disables `text-scale-mode`."
 (bind-keys ("M-/" . hippie-expand)
            ("C-/" . undo-tree-undo)
            ("C-?" . undo-tree-redo)
-           ("C-w" . ivan/kill-region-or-backward-kill-word))
+           ("C-w" . ivan/kill-region-or-backward-kill-word)
+           ("C-S-<SPC>" . rectangle-mark-mode)
+           :map rectangle-mark-mode-map
+           ("s" . string-rectangle))
 
 (defun ivan/isearch-exit ()
   "Run isearch-exit, and if in the minibuffer, submit the search result as input."

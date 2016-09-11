@@ -235,6 +235,8 @@
 ** expand-region
 * Evil-mode
 ** visual block with live updating like rectangle-mark-mode string-rectangle
+*** should I just use rectangle-mark-mode instead?
+*** is there a package that augments this?
 ** C-u in insert mode? (maybe C-x C-u from insert state)
 *** evil-want-C-u-scroll provides something similar outside of Insert state. maybe something like that
 ** evil-args
@@ -242,6 +244,7 @@
 *** how to  retain SPC / Shift-SPC in help buffers (timeout?)
 ** keybindings
 *** use U for redo, C-r (in normal state) for isearch-backward-regexp
+** hybrid mode?
 * Questions
 ** What are the different load-paths for?
 *** /Users/ivan/.emacs.d/elpa/...
