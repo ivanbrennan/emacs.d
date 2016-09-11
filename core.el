@@ -257,6 +257,7 @@
          :map evil-visual-state-map
          ("C-r"     . isearch-backward)
          ("<tab>"   . evil-indent)
+         ("<SPC> i" . string-rectangle)
          :map evil-insert-state-map
          ("M-v"     . yank))
   :init
