@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual-repeat"
- (front-context-string . "\n12.5 Rectangles")
- (rear-context-string . "t,  Up: Killing\n")
- (position . 226734)
+ (front-context-string . "movement command")
+ (rear-context-string . "nd it using the\n")
+ (position . 234708)
  (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
- (info-node . "Rectangles")
+ (info-node . "CUA Bindings")
  (handler . Info-bookmark-jump))
 ("intro elisp"
  (front-context-string . "\nAn Introduction")
