@@ -255,6 +255,7 @@
          ("C-w o"   . zoom-window-zoom)
          ("C-w C-o" . zoom-window-zoom)
          ("C-w O"   . ivan/other-window-zoom)
+         ("ESC <SPC>" . evil-leader-mode)
          :map evil-visual-state-map
          ("C-r"     . isearch-backward)
          ("<tab>"   . evil-indent)
