@@ -173,7 +173,7 @@
    How can I make buffer name completion case insensitive?
    : (setq read-buffer-completion-ignore-case  t)
 
-** Select a rectangular select
+** Select a rectangular region
    How can I select a rectangular region?
    : C-SPC C-x SPC
 
