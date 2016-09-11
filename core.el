@@ -155,6 +155,7 @@
 
 (defalias 'list-buffers 'ibuffer)
 (minibuffer-electric-default-mode)
+(delete-selection-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 (add-hook 'tex-mode-hook #'(lambda () (setq ispell-parser 'tex)))
 
