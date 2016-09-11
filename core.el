@@ -440,7 +440,8 @@ Disables `text-scale-mode`."
            ("C-w" . ivan/kill-region-or-backward-kill-word)
            ("C-S-<SPC>" . rectangle-mark-mode)
            :map rectangle-mark-mode-map
-           ("s" . string-rectangle))
+           ("s" . string-rectangle)
+           ("o" . rectangle-exchange-point-and-mark))
 
 (defun ivan/isearch-exit ()
   "Run isearch-exit, and if in the minibuffer, submit the search result as input."
