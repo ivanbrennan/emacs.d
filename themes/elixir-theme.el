@@ -127,8 +127,9 @@ Also bind `class' to ((class color) (min-colors 89))."
                       :weight light
                       :background ,whisp2
                       :box (:line-width -1 :color ,pencil4)))))
-   `(region ((,class (:background ,skyblue))
+   `(region ((,class (:background ,aquablue))
              (t :inverse-video t)))
+   `(cua-rectangle ((t (:inherit region))))
    `(secondary-selection ((t (:background ,paper))))
    `(trailing-whitespace ((t (:background ,whisp1))))
    `(vertical-border ((t (:foreground ,pencil4))))
