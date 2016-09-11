@@ -444,15 +444,8 @@ Disables `text-scale-mode`."
   (if (minibuffer-window-active-p (selected-window))
       (minibuffer-complete-and-exit)))
 
-(setq ivan/remapped-isearch-exit nil)
-
-(defun ivan/remap-isearch-exit ()
-  (unless ivan/remapped-isearch-exit
-    (setq ivan/remapped-isearch-exit t)
-    (define-key
-      overriding-terminal-local-map [remap isearch-exit] #'ivan/isearch-exit)))
-
-(add-hook 'isearch-mode-hook #'ivan/remap-isearch-exit)
+(eval-after-load "isearch"
+  '(define-key isearch-mode-map [remap isearch-exit] #'ivan/isearch-exit))
 
 (defun ivan/minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
