@@ -1,4 +1,7 @@
 * Misc
+** code-folding
+*** hs-minor-mode ?
+** display ivan/whatever function as i/whatever
 ** mouse in terminal
 *** fixed?
 ** check if use-package is installed, and if not load package.el and install use-package
@@ -7,8 +10,6 @@
 ** scroll inactive frame without changing state of status bars
 ** semantic layer in spacemacs
 ** aggressive-indent-mode
-** jump back (like C-o in vim)
-** jump by block (like } in vim)
 ** what does ido c-k do?
 ** visit recent file
 ** sql beautify
@@ -48,7 +49,7 @@
 ** single space after sentence
 ** make switch-to-buffer select other frame if it's visible there
 *** ido-mode does this. how can I do it outside of ido-mode?
-** zoom windows
+** Zoom window
 ** use-package :ensure keyword
 ** byte-compile init file
 ** page-break lines in C-h m
@@ -66,7 +67,16 @@
 *** rbenv.el? exec-path-from-shell?
 ** run tests asynchronously
 ** launch emacs client from command line with "e"
+** Jump to previous location like C-o
+   How can I jump to the previous location like `Ctrl-o` does in Vim?
+   : C-u C-SPC
+
+** Go to next/previous paragraph
+   How can I jump to the next paragraph like } in Vim?
+   : forward-paragraph ("M-}") / backward-paragraph  ("M-{")
+
 ** Submit minibuffer C-r search result with a single Return
+   How can I make "C-r" in the minibuffer act like it does in the shell, where hitting Enter not only accepts the search result, but also executes it?
    #+BEGIN_SRC emacs-lisp
     (defun ivan/isearch-exit ()
       "Run isearch-exit, and if in the minibuffer, submit the search result as input."
@@ -86,6 +96,7 @@
     (add-hook 'isearch-mode-hook #'ivan/remap-isearch-exit)
    #+END_SRC
 ** Conveniently create parent directories for new file
+   How can I easily create non-existent parent directories for a new buffer/file?
    #+BEGIN_SRC emacs-lisp
     (defun ivan/create-non-existent-directory ()
       (let ((parent-directory (file-name-directory buffer-file-name)))
@@ -97,6 +108,7 @@
    #+END_SRC
 
 ** Toggle regexp in isearch
+   How can I toggle regexp searching within isearch?
    : M-r
 
 ** Make Dired listings concise
@@ -196,11 +208,16 @@
 ** toggle isearch case-fold on the fly?
 ** get C-RET working in org mode
 * Packages
+** which-key | guide-key
+** multiple-cursors / multi-cursor
+** magit
+** expand-region
+** smartparens
 ** Undo-tree
 ** company
 ** ag
-** which-key
-** multiple-cursors
+** visual-regexp
+** visual-regexp-steroids
 ** flycheck
 ** Winner-mode
 ** projectile
@@ -209,18 +226,13 @@
 ** rainbow-delimiters
 ** powerline (rewrite)
 ** Ivy-mode | Swiper | Counsel
-** Helm | ido-vertical-mode
+** Helm | ido-vertical-mode | flx-ido
 ** idle-highlight-mode
 ** find-file-in-project
 ** reconcile C-<return> | S-<return> with Org-mode bindings
-** smartparens
-** Smartparens or Paredit
 ** Cedit
-** magit
 ** https://github.com/Dewdrops/powerline
 ** expand-region
-** multiple-cursors / multi-cursor
-
 * Evil-mode
 ** visual block with live updating like rectangle-mark-mode string-rectangle
 ** C-u in insert mode? (maybe C-x C-u from insert state)
