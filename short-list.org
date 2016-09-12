@@ -35,6 +35,8 @@ C-x e :: call-last-kbd-macro
 C-. :: flyspell-auto-correct-word
 C-x z :: repeat
 (setq highlight-nonselected-windows t)
+C-x r w :: window-configuration-to-register
+C-x r f :: frameset-to-register
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
