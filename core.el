@@ -282,12 +282,21 @@
     :config
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key "x"  'execute-extended-command)
+    (evil-leader/set-key "N" 'ivan/toggle-narrowing)
+    (evil-leader/set-key "l"  'evil-switch-to-windows-last-buffer)
     (evil-leader/set-key "fs" 'save-buffer)
     (evil-leader/set-key "gs" 'magit-status)
-    (evil-leader/set-key "l"  'evil-switch-to-windows-last-buffer)
     (evil-leader/set-key "\\" 'ivan/cycle-theme)
     (global-evil-leader-mode))
   (evil-mode))
+
+(defun ivan/toggle-narrowing ()
+  (interactive)
+  (if (buffer-narrowed-p)
+      (widen)
+    (if (use-region-p)
+        (narrow-to-region (region-beginning) (region-end))
+      (narrow-to-defun))))
 
 (use-package company
   :bind (:map company-active-map
