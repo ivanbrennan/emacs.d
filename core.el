@@ -440,7 +440,7 @@ Disables `text-scale-mode`."
            ("C-/" . undo-tree-undo)
            ("C-?" . undo-tree-redo)
            ("C-w" . ivan/kill-region-or-backward-kill-word)
-           ("C-S-<SPC>" . rectangle-mark-mode)
+           ("S-<SPC>" . rectangle-mark-mode)
            :map rectangle-mark-mode-map
            ("s" . string-rectangle)
            ("o" . rectangle-exchange-point-and-mark))
