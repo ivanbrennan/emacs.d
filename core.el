@@ -139,6 +139,7 @@
 (setq read-buffer-completion-ignore-case  t
       require-final-newline               t
       set-mark-command-repeat-pop         t
+      scroll-preserve-screen-position     t
       tab-always-indent                   'complete
       ispell-program-name                 "/usr/local/bin/aspell"
       ediff-split-window-function         #'split-window-horizontally
