@@ -37,6 +37,7 @@ C-x z :: repeat
 (setq highlight-nonselected-windows t)
 C-x r w :: window-configuration-to-register
 C-x r f :: frameset-to-register
+C-M-l :: reposition-window
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
