@@ -115,18 +115,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(menu ((t (:foreground ,marooned :background ,paper))))
    `(minibuffer-prompt ((t (:foreground ,ink :weight bold))))
    `(mode-line
-     ((,class (:foreground ,slate
-                           :background ,bluegrey ;; homerow background
-                           :box (:line-width -1 :color ,aquablue)
-                           ))
+     ((,class (:foreground ,slate :background ,bluegrey))
       (t :inverse-video t)))
    `(mode-line-buffer-id ((t (:foreground "black" :weight bold))))
    `(mode-line-highlight ((t (:foreground ,bigblue))))
    `(mode-line-inactive
-     ((t (:foreground ,pencil1
-                      :weight light
-                      :background ,whisp2
-                      :box (:line-width -1 :color ,pencil4)))))
+     ((t (:foreground ,pencil1 :weight light :background ,whisp2))))
    `(region ((,class (:background ,aquablue))
              (t :inverse-video t)))
    `(cua-rectangle ((t (:inherit region))))
