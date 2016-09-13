@@ -285,6 +285,7 @@
     (evil-leader/set-key "x"  'execute-extended-command)
     (evil-leader/set-key "N"  'ivan/toggle-narrowing)
     (evil-leader/set-key "l"  'evil-switch-to-windows-last-buffer)
+    (evil-leader/set-key "fo" 'find-file)
     (evil-leader/set-key "fs" 'save-buffer)
     (evil-leader/set-key "gs" 'magit-status)
     (evil-leader/set-key "\\" 'ivan/cycle-theme)
