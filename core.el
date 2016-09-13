@@ -129,8 +129,8 @@
 (defun ivan/code-whitespace ()
   (hl-line-mode)
   (setq indent-tabs-mode         nil
-        show-trailing-whitespace t
-        indicate-empty-lines     t))
+        indicate-empty-lines     t
+        show-trailing-whitespace t))
 
 (add-hook 'prog-mode-hook #'ivan/code-whitespace)
 (add-hook 'org-mode-hook  #'ivan/code-whitespace)
