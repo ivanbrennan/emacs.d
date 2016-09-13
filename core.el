@@ -140,6 +140,7 @@
       require-final-newline               t
       set-mark-command-repeat-pop         t
       scroll-preserve-screen-position     t
+      hi-lock-auto-select-face            t
       tab-always-indent                   'complete
       ispell-program-name                 "/usr/local/bin/aspell"
       ediff-split-window-function         #'split-window-horizontally
