@@ -143,6 +143,7 @@
       ediff-split-window-function         #'split-window-horizontally
       ediff-window-setup-function         'ediff-setup-windows-plain
       hi-lock-auto-select-face            t
+      history-delete-duplicates           t
       ispell-program-name                 "/usr/local/bin/aspell"
       minibuffer-eldef-shorten-default    t
       read-buffer-completion-ignore-case  t
