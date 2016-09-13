@@ -289,6 +289,7 @@
     (evil-leader/set-key "fs" 'save-buffer)
     (evil-leader/set-key "gs" 'magit-status)
     (evil-leader/set-key "\\" 'ivan/cycle-theme)
+    (evil-leader/set-key "s"  search-map)
     (global-evil-leader-mode))
   (evil-mode))
 
@@ -392,7 +393,7 @@ Disables `text-scale-mode`."
              ("ESC M-c" . capitalize-word)
              ("ESC M-u" . upcase-word)
              ("ESC M-=" . count-words-region))
-  (global-set-key (kbd "ESC M-s") search-map))
+  (bind-key "ESC M-s" search-map))
 
 (defun configure-terminal ()
   (require 'mouse)
