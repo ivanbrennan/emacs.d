@@ -137,6 +137,7 @@
 
 ;; sensibility
 (setq apropos-do-all                      t
+      completion-auto-help                'lazy
       delete-by-moving-to-trash           t
       echo-keystrokes                     0.5
       ediff-split-window-function         #'split-window-horizontally
