@@ -146,6 +146,7 @@
       minibuffer-eldef-shorten-default    t
       read-buffer-completion-ignore-case  t
       require-final-newline               t
+      resize-mini-windows                 t
       save-interprogram-paste-before-kill t
       scroll-preserve-screen-position     t
       sentence-end-double-space           nil
