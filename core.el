@@ -136,22 +136,22 @@
 (add-hook 'org-mode-hook  #'ivan/code-whitespace)
 
 ;; sensibility
-(setq read-buffer-completion-ignore-case  t
-      require-final-newline               t
-      set-mark-command-repeat-pop         t
-      scroll-preserve-screen-position     t
-      hi-lock-auto-select-face            t
-      tab-always-indent                   'complete
-      ispell-program-name                 "/usr/local/bin/aspell"
-      ediff-split-window-function         #'split-window-horizontally
-      minibuffer-eldef-shorten-default    t
-      uniquify-buffer-name-style          'forward
-      save-interprogram-paste-before-kill t
-      apropos-do-all                      t
+(setq apropos-do-all                      t
       delete-by-moving-to-trash           t
-      ediff-window-setup-function         'ediff-setup-windows-plain
       echo-keystrokes                     0.5
-      sentence-end-double-space           nil)
+      ediff-split-window-function         #'split-window-horizontally
+      ediff-window-setup-function         'ediff-setup-windows-plain
+      hi-lock-auto-select-face            t
+      ispell-program-name                 "/usr/local/bin/aspell"
+      minibuffer-eldef-shorten-default    t
+      read-buffer-completion-ignore-case  t
+      require-final-newline               t
+      save-interprogram-paste-before-kill t
+      scroll-preserve-screen-position     t
+      sentence-end-double-space           nil
+      set-mark-command-repeat-pop         t
+      tab-always-indent                   'complete
+      uniquify-buffer-name-style          'forward)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
