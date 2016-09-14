@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual-repeat"
- (front-context-string . "called after `C-")
- (rear-context-string . "-yank-pop'), if\n")
- (position . 327956)
+ (front-context-string . "\n15.1.5 Special ")
+ (rear-context-string . "remental Search\n")
+ (position . 330971)
  (filename . "/usr/local/Cellar/emacs-mac/HEAD-c17d400/share/info/emacs/emacs")
- (info-node . "Isearch Yank")
+ (info-node . "Special Isearch")
  (handler . Info-bookmark-jump))
 ("intro elisp"
  (front-context-string . "\nAn Introduction")
