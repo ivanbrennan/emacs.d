@@ -291,7 +291,7 @@
     :config
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key "x"  'execute-extended-command)
-    (evil-leader/set-key "n"  'ivan/toggle-narrowing)
+    (evil-leader/set-key "N"  'ivan/toggle-narrowing)
     (evil-leader/set-key "l"  'evil-switch-to-windows-last-buffer)
     (evil-leader/set-key "fo" 'find-file)
     (evil-leader/set-key "fs" 'save-buffer)
