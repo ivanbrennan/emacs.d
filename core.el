@@ -250,6 +250,7 @@
          ("C-w o"   . zoom-window-zoom)
          ("C-w C-o" . zoom-window-zoom)
          ("C-w O"   . ivan/other-window-zoom)
+         ("S-<SPC>" . ivan/emacs-state-rectangle-mark-mode)
          :map evil-motion-state-map
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
@@ -272,6 +273,10 @@
   (setq-default evil-shift-width 2)
   (setq evil-move-cursor-back nil
         evil-emacs-state-cursor 'bar)
+  (defun ivan/emacs-state-rectangle-mark-mode ()
+    (interactive)
+    (evil-emacs-state)
+    (rectangle-mark-mode))
   (defun ivan/move-key (keymap-from keymap-to key)
     "Moves key binding from one keymap to another, deleting from the old location."
     (define-key keymap-to key (lookup-key keymap-from key))
