@@ -301,13 +301,14 @@
     (global-evil-leader-mode))
   (evil-mode))
 
-(defun ivan/toggle-narrowing ()
-  (interactive)
-  (if (buffer-narrowed-p)
-      (widen)
-    (if (use-region-p)
-        (narrow-to-region (region-beginning) (region-end))
-      (narrow-to-defun))))
+(defun ivan/toggle-narrowing (p)
+  (interactive "P")
+  (cond ((and (buffer-narrowed-p) (not p))
+         (widen))
+        ((use-region-p)
+         (narrow-to-region (region-beginning) (region-end)))
+        (t
+         (narrow-to-defun))))
 
 (use-package company
   :bind (:map company-active-map
