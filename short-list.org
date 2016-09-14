@@ -56,3 +56,4 @@ double two-finger tap trackpad to scale/unscale text
 ** C-r in the minibuffer
 ** tab completion inside a word
 ** C-M-y in isearch
+** C-w in isearch
