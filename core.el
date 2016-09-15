@@ -370,8 +370,8 @@
 (use-package magit
   :ensure t
   :config
-  (setq magit-revision-show-gravatars
-        '("^Author:     " . "^Commit:     ")))
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
+        magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")))
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
