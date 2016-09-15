@@ -67,6 +67,14 @@
 *** rbenv.el? exec-path-from-shell?
 ** run tests asynchronously
 ** launch emacs client from command line with "e"
+** Access help keys within isearch
+   Some help keys don't behave as expected within isearch. For example, if I enter isearch and type ~C-h c M-r~, Emacs says the key is bound to move-to-window-line-top-bottom, which is true outside of isearch, but not within isearch, where it is instead bound to isearch-toggle-regexp.
+   Some of the help keys are different in isearch (i.e. some will exit isearch before triggering help). To see which help keys are available, from within isearch, type ~C-h C-h~.
+
+** Leave search results highlighted after exiting isearch
+   Occasionally I want the search results to remain highlighted after I exit isearch. How can I do this?
+   From within isearch, ~M-s h r~ (highlight-regexp). To clear the highlight, run unhighlight-regexp.
+
 ** Use isearch string for query-replace
    I like to use isearch in order to test my query string/regexp/word before running a query-replace. How can I start query-replace from within isearch?
    : M-%
