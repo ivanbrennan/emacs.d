@@ -44,6 +44,12 @@
 
 (savehist-mode)
 
+(eval-after-load 'webjump
+  '(setq webjump-sites
+         (append '(("stackoverflow" . "www.stackoverflow.com")
+                   ("GitHub" . "https://github.com"))
+                 webjump-sample-sites)))
+
 ;; theme
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory :mkdir_p)
