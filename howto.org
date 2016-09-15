@@ -67,6 +67,10 @@
 *** rbenv.el? exec-path-from-shell?
 ** run tests asynchronously
 ** launch emacs client from command line with "e"
+** Use isearch string for query-replace
+   I like to use isearch in order to test my query string/regexp/word before running a query-replace. How can I start query-replace from within isearch?
+   : M-%
+
 ** Jump to previous location like C-o
    How can I jump to the previous location like `Ctrl-o` does in Vim?
    : C-u C-SPC
