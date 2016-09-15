@@ -44,12 +44,6 @@
 
 (savehist-mode)
 
-(eval-after-load 'webjump
-  '(setq webjump-sites
-         (append '(("stackoverflow" . "www.stackoverflow.com")
-                   ("GitHub" . "https://github.com"))
-                 webjump-sample-sites)))
-
 ;; theme
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory :mkdir_p)
@@ -302,6 +296,7 @@
     (evil-leader/set-key "fo" 'find-file)
     (evil-leader/set-key "fs" 'save-buffer)
     (evil-leader/set-key "gs" 'magit-status)
+    (evil-leader/set-key "wj" 'webjump)
     (evil-leader/set-key "\\" 'ivan/cycle-theme)
     (evil-leader/set-key "s"  search-map)
     (global-evil-leader-mode))
@@ -492,6 +487,12 @@ Disables `text-scale-mode`."
 (add-hook 'minibuffer-exit-hook #'ivan/minibuffer-exit-hook)
 
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
+
+(eval-after-load 'webjump
+  '(setq webjump-sites
+         (append '(("stackoverflow" . "www.stackoverflow.com")
+                   ("GitHub" . "https://github.com"))
+                 webjump-sample-sites)))
 
 ;; etc.
 (defun ivan/goto-match-beginning ()
