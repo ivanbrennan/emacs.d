@@ -259,3 +259,4 @@
 ** why are the rgb colors off from what they claim?
 ** why did I have to change from "#ffffff" to "white" to get terminal to show a white background?
 ** why does the rectangular-region persist in an empty state after a command?
+** will auto-revert be noticeably detrimental to performance?
