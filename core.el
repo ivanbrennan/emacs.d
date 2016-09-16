@@ -471,7 +471,9 @@ Disables `text-scale-mode`."
            ("S-<SPC>" . rectangle-mark-mode)
            :map rectangle-mark-mode-map
            ("s" . string-rectangle)
-           ("o" . rectangle-exchange-point-and-mark))
+           ("o" . rectangle-exchange-point-and-mark)
+           :map shell-mode-map
+           ("C-d" . comint-delchar-or-eof-or-kill-buffer))
 
 (defun ivan/isearch-exit ()
   "Run isearch-exit, and if in the minibuffer, submit the search result as input."
@@ -482,6 +484,12 @@ Disables `text-scale-mode`."
 
 (eval-after-load "isearch"
   '(define-key isearch-mode-map [remap isearch-exit] #'ivan/isearch-exit))
+
+(defun comint-delchar-or-eof-or-kill-buffer (arg)
+  (interactive "p")
+  (if (null (get-buffer-process (current-buffer)))
+      (kill-buffer)
+    (comint-delchar-or-maybe-eof arg)))
 
 (defun ivan/minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
