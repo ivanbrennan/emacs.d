@@ -96,7 +96,8 @@
       hscroll-step   1
       hscroll-margin 2
       scroll-conservatively 200
-      mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
+      mouse-wheel-scroll-amount '(0.01 ((shift) . 1))
+      isearch-allow-scroll t)
 
 (defun ivan/scroll-right ()
   (interactive)
@@ -115,6 +116,11 @@
   "A minor mode so my horizontal scroll bindings take precedence."
   :init-value t)
 (ivan/hscroll-minor-mode 1)
+
+(put 'mac-mwheel-scroll 'isearch-scroll t)
+(put 'ivan/scroll-right 'isearch-scroll t)
+(put 'ivan/scroll-left  'isearch-scroll t)
+(put 'hl-line-mode      'isearch-scroll t)
 
 ;; whitespace
 (setq whitespace-line-column 90
