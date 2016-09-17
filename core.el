@@ -412,29 +412,12 @@ Disables `text-scale-mode`."
   (bind-key "ESC M-s" search-map))
 
 (defun configure-terminal ()
-  (require 'mouse)
   (xterm-mouse-mode)
-  (defun track-mouse (e))
   (setq mouse-sel-mode t
         mouse-wheel-follow-mouse 't)
-  (defvar alternating-scroll-down-next t)
-  (defvar alternating-scroll-up-next t)
-  (bind-keys ("<mouse-4>" . alternating-scroll-down-line)
-             ("<mouse-5>" . alternating-scroll-up-line))
 
-  (defun alternating-scroll-down-line ()
-    (interactive "@")
-    (when alternating-scroll-down-next
-      (scroll-down-line))
-    (setq alternating-scroll-down-next
-          (not alternating-scroll-down-next)))
-
-  (defun alternating-scroll-up-line ()
-    (interactive "@")
-    (when alternating-scroll-up-next
-      (scroll-up-line))
-    (setq alternating-scroll-up-next
-          (not alternating-scroll-up-next)))
+  (bind-keys ("<mouse-4>" . scroll-down-line)
+             ("<mouse-5>" . scroll-up-line))
 
   (defun ivan/adjust-terminal-colors ()
     (unless (display-graphic-p (selected-frame))
