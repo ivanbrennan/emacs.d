@@ -307,8 +307,7 @@
     (evil-leader/set-key "w j"     'webjump)
     (evil-leader/set-key "\\"      'ivan/cycle-theme)
     (evil-leader/set-key "s"       search-map)
-    (global-evil-leader-mode))
-  (evil-mode))
+    (global-evil-leader-mode)))
 
 (defun ivan/toggle-narrowing (p)
   (interactive "P")
@@ -540,3 +539,5 @@ Disables `text-scale-mode`."
 
 (put 'narrow-to-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
+
+(add-hook 'after-init-hook #'evil-mode)
