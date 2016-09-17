@@ -319,6 +319,10 @@
         (t
          (narrow-to-defun))))
 
+(use-package drag-stuff
+  :init
+  (drag-stuff-global-mode t))
+
 (use-package company
   :bind (:map company-active-map
         ("C-n" . company-select-next)
