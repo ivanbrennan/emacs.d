@@ -238,8 +238,12 @@
 
 (defun ivan/other-window-zoom ()
   (interactive)
-  (other-window 1)
-  (zoom-window-zoom))
+  (if (zoom-window--enable-p)
+      (progn
+        (zoom-window-zoom)
+        (other-window -1))
+    (other-window 1)
+    (zoom-window-zoom)))
 
 (use-package evil
   :ensure t
