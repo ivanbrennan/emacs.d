@@ -245,6 +245,10 @@
     (other-window 1)
     (zoom-window-zoom)))
 
+(use-package smartparens
+  :commands (sp-forward-slurp-sexp
+             sp-forward-barf-sexp))
+
 (use-package evil
   :ensure t
   :demand
