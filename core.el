@@ -279,8 +279,6 @@
          ("<tab>"      . evil-indent)
          :map evil-insert-state-map
          ("M-v"        . yank))
-  :init
-  (setq evil-want-C-u-scroll t)
   :config
   (setq-default evil-shift-width 2)
   (setq evil-move-cursor-back nil
