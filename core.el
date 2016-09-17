@@ -352,7 +352,11 @@
          ("C-S-<up>"    . windsize-up)
          ("C-S-<down>"  . windsize-down))
   :config
-  (setq windsize-rows 1 windsize-cols 2))
+  (setq windsize-rows 1 windsize-cols 2)
+  (put 'windsize-down  'isearch-scroll t)
+  (put 'windsize-up    'isearch-scroll t)
+  (put 'windsize-left  'isearch-scroll t)
+  (put 'windsize-right 'isearch-scroll t))
 
 (defun ivan/setup-org-mode ()
   (setq org-hide-leading-stars t)
