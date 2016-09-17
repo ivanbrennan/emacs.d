@@ -257,6 +257,8 @@
          ("C-w C-o" . zoom-window-zoom)
          ("C-w O"   . ivan/other-window-zoom)
          ("S-<SPC>" . ivan/emacs-state-rectangle-mark-mode)
+         ("C-<return>" . ivan/add-whitespace-below)
+         ("S-<return>" . ivan/add-whitespace-above)
          :map evil-motion-state-map
          ("C-w C-h" . evil-window-left)
          ("C-w C-j" . evil-window-down)
@@ -480,6 +482,19 @@ Disables `text-scale-mode`."
   (if (null (get-buffer-process (current-buffer)))
       (kill-buffer)
     (comint-delchar-or-maybe-eof arg)))
+
+(defun ivan/add-whitespace-below ()
+  (interactive)
+  (save-excursion
+    (end-of-line)
+    (newline)))
+
+(defun ivan/add-whitespace-above ()
+  (interactive)
+  (save-excursion
+    (beginning-of-line)
+    (newline)
+    (forward-line -1)))
 
 (defun ivan/minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
