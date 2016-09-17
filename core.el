@@ -419,6 +419,9 @@ Disables `text-scale-mode`."
   (bind-keys ("<mouse-4>" . scroll-down-line)
              ("<mouse-5>" . scroll-up-line))
 
+  (put 'scroll-down-line 'isearch-scroll t)
+  (put 'scroll-up-line   'isearch-scroll t)
+
   (defun ivan/adjust-terminal-colors ()
     (unless (display-graphic-p (selected-frame))
       (set-face-background 'default "white" (selected-frame))
