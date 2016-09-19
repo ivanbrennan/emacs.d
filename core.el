@@ -322,7 +322,8 @@
          (narrow-to-defun))))
 
 (use-package drag-stuff
-  :init
+  :demand
+  :config
   (drag-stuff-global-mode t))
 
 (use-package company
