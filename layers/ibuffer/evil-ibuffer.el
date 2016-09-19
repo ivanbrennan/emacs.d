@@ -5,7 +5,7 @@
   (kbd "t") 'ibuffer-toggle-marks
   (kbd "u") 'ibuffer-unmark-forward
   (kbd "=") 'ibuffer-diff-with-file
-  (kbd "j") 'ibuffer-jump-to-buffer
+  (kbd "J") 'ibuffer-jump-to-buffer
   (kbd "M-g") 'ibuffer-jump-to-buffer
   (kbd "M-s a C-s") 'ibuffer-do-isearch
   (kbd "M-s a M-C-s") 'ibuffer-do-isearch-regexp
@@ -26,13 +26,14 @@
 
   (kbd "d") 'ibuffer-mark-for-delete
   (kbd "C-d") 'ibuffer-mark-for-delete-backwards
-  (kbd "k") 'ibuffer-mark-for-delete
   (kbd "x") 'ibuffer-do-kill-on-deletion-marks
 
   ;; immediate operations
   (kbd "n") 'ibuffer-forward-line
   (kbd "SPC") 'forward-line
   (kbd "p") 'ibuffer-backward-line
+  (kbd "j") 'evil-next-line
+  (kbd "k") 'evil-previous-line
   (kbd "M-}") 'ibuffer-forward-next-marked
   (kbd "M-{") 'ibuffer-backwards-next-marked
   (kbd "l") 'ibuffer-redisplay
@@ -113,7 +114,7 @@
   (kbd "W") 'ibuffer-do-view-and-eval
   (kbd "X") 'ibuffer-do-shell-command-pipe
 
-  (kbd "k") 'ibuffer-do-kill-lines
+  (kbd "h") 'ibuffer-do-kill-lines
   (kbd "w") 'ibuffer-copy-filename-as-kill
 
   (kbd "RET") 'ibuffer-visit-buffer
