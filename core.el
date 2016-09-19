@@ -232,7 +232,8 @@
 
 (use-package zoom-window
   :ensure t
-  :commands zoom-window-zoom
+  :commands (zoom-window-zoom
+             zoom-window--enable-p)
   :config
   (setq zoom-window-mode-line-color "#E4FFEA"))
 
