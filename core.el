@@ -543,4 +543,9 @@ Disables `text-scale-mode`."
 (put 'narrow-to-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
 
+(eval-after-load 'ibuffer
+  '(progn
+     (add-to-list 'load-path (ivan/emacs-file "layers/ibuffer"))
+     (require 'evil-ibuffer)))
+
 (add-hook 'after-init-hook #'evil-mode)
