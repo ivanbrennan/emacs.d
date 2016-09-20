@@ -281,6 +281,7 @@
          :map evil-insert-state-map
          ("M-v"         . yank))
   :config
+  (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
   (setq-default evil-shift-width 2)
   (setq evil-move-cursor-back nil
         evil-emacs-state-cursor 'bar)
