@@ -78,4 +78,4 @@
   (kbd "v") 'ibuffer-do-view
 )
 
-(provide 'evil-ibuffer)
+(provide 'ibuffer-config)

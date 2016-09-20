@@ -548,7 +548,7 @@ Disables `text-scale-mode`."
 
 (eval-after-load 'ibuffer
   '(progn
-     (add-to-list 'load-path (ivan/emacs-file "layers/ibuffer"))
-     (require 'evil-ibuffer)))
+     (add-to-list 'load-path (ivan/emacs-file "config"))
+     (require 'ibuffer-config)))
 
 (add-hook 'after-init-hook #'evil-mode)
