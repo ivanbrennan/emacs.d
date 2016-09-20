@@ -544,6 +544,7 @@ Disables `text-scale-mode`."
 
 (put 'narrow-to-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
 
 (eval-after-load 'ibuffer
   '(progn
