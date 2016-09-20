@@ -63,6 +63,7 @@
   (kbd "E") 'ibuffer-do-eval
   (kbd "F") 'ibuffer-do-shell-command-file
   (kbd "H") 'ibuffer-do-view-other-frame
+  (kbd "J") 'ibuffer-jump-to-buffer
   (kbd "N") 'ibuffer-do-shell-command-pipe-replace
   (kbd "M") 'ibuffer-do-toggle-modified
   (kbd "T") 'ibuffer-do-toggle-read-only
