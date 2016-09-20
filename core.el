@@ -551,4 +551,9 @@ Disables `text-scale-mode`."
      (add-to-list 'load-path (ivan/emacs-file "config"))
      (require 'ibuffer-config)))
 
+(eval-after-load 'dired
+  '(progn
+     (add-to-list 'load-path (ivan/emacs-file "config"))
+     (require 'dired-config)))
+
 (add-hook 'after-init-hook #'evil-mode)
