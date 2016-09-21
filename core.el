@@ -308,6 +308,7 @@
     (evil-leader/set-key "f j"   'dired-jump)
     (evil-leader/set-key "f o"   'find-file)
     (evil-leader/set-key "f s"   'save-buffer)
+    (evil-leader/set-key "g b"   'magit-blame)
     (evil-leader/set-key "g s"   'magit-status)
     (evil-leader/set-key "l"     'evil-switch-to-windows-last-buffer)
     (evil-leader/set-key "m e e" 'pp-eval-last-sexp)
