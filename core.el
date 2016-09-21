@@ -302,16 +302,16 @@
     :ensure t
     :config
     (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key "x"       'execute-extended-command)
-    (evil-leader/set-key "N"       'ivan/toggle-narrowing)
-    (evil-leader/set-key "l"       'evil-switch-to-windows-last-buffer)
-    (evil-leader/set-key "f o"     'find-file)
-    (evil-leader/set-key "f s"     'save-buffer)
-    (evil-leader/set-key "f j"     'dired-jump)
-    (evil-leader/set-key "g <SPC>" 'magit-status)
-    (evil-leader/set-key "w j"     'webjump)
-    (evil-leader/set-key "\\"      'ivan/cycle-theme)
-    (evil-leader/set-key "s"       search-map)
+    (evil-leader/set-key "x"   'execute-extended-command)
+    (evil-leader/set-key "N"   'ivan/toggle-narrowing)
+    (evil-leader/set-key "l"   'evil-switch-to-windows-last-buffer)
+    (evil-leader/set-key "f o" 'find-file)
+    (evil-leader/set-key "f s" 'save-buffer)
+    (evil-leader/set-key "f j" 'dired-jump)
+    (evil-leader/set-key "g s" 'magit-status)
+    (evil-leader/set-key "w j" 'webjump)
+    (evil-leader/set-key "\\"  'ivan/cycle-theme)
+    (evil-leader/set-key "s"   search-map)
     (global-evil-leader-mode)))
 
 (defun ivan/toggle-narrowing (p)
@@ -392,7 +392,11 @@
   :ensure t
   :config
   (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-        magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")))
+        magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
+  (use-package evil-magit
+    :demand
+    :init
+    (setq evil-magit-want-horizontal-movement t)))
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
