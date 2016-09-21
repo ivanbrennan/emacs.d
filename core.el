@@ -396,7 +396,19 @@
   (use-package evil-magit
     :demand
     :init
-    (setq evil-magit-want-horizontal-movement t)))
+    (setq evil-magit-use-y-for-yank nil
+          evil-magit-want-horizontal-movement t)
+    :config
+    (evil-define-key evil-magit-state magit-mode-map
+      (kbd "n")   'magit-section-forward
+      (kbd "p")   'magit-section-backward
+      (kbd "P")   'magit-push-popup
+      (kbd "C-w") 'evil-window-map
+      (kbd "y")   nil
+      (kbd "yy")  'evil-yank-line
+      (kbd "yr")  'magit-show-refs-popup
+      (kbd "ys")  'magit-copy-section-value
+      (kbd "yb")  'magit-copy-buffer-revision)))
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
