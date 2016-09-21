@@ -441,7 +441,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(git-gutter-fr:deleted ((t (:foreground ,navyblue :weight bold))))
    `(git-gutter-fr:modified ((t (:foreground ,ink :weight bold))))
 ;;;;; git-rebase
-   `(git-rebase-hash ((t (:foreground, ink))))
+   `(git-rebase-hash ((t (:foreground ,marooned))))
 ;;;;; gnus
    `(gnus-group-mail-1 ((t (:bold t :inherit gnus-group-mail-1-empty))))
    `(gnus-group-mail-1-empty ((t (:inherit gnus-group-news-1-empty))))
@@ -719,14 +719,14 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-bisect-bad  ((t (:foreground ,navyblue))))
 ;;;;;; blame
    `(magit-blame-heading ((t (:background ,flatblue :foreground ,ink))))
-   `(magit-blame-hash    ((t (:background ,flatblue :foreground ,ink))))
+   `(magit-blame-hash    ((t (:background ,flatblue :foreground ,marooned))))
    `(magit-blame-name    ((t (:background ,flatblue :foreground ,ink))))
    `(magit-blame-date    ((t (:background ,flatblue :foreground ,ink))))
    `(magit-blame-summary ((t (:background ,flatblue :foreground ,ink
                                           :weight bold))))
 ;;;;;; references etc
    `(magit-dimmed         ((t (:foreground ,pencil1))))
-   `(magit-hash           ((t (:foreground ,blooo))))
+   `(magit-hash           ((t (:foreground ,marooned))))
    `(magit-tag            ((t (:foreground ,ink :weight bold))))
    `(magit-branch-remote  ((t (:foreground ,pencil1  :weight bold))))
    `(magit-branch-local   ((t (:foreground ,ink   :weight bold))))
