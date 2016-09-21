@@ -307,6 +307,7 @@
     (evil-leader/set-key "l"       'evil-switch-to-windows-last-buffer)
     (evil-leader/set-key "f o"     'find-file)
     (evil-leader/set-key "f s"     'save-buffer)
+    (evil-leader/set-key "f j"     'dired-jump)
     (evil-leader/set-key "g <SPC>" 'magit-status)
     (evil-leader/set-key "w j"     'webjump)
     (evil-leader/set-key "\\"      'ivan/cycle-theme)
