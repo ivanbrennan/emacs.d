@@ -302,10 +302,10 @@
     :ensure t
     :config
     (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key "N"     'ivan/toggle-narrowing)
     (evil-leader/set-key ","     'evil-window-next)
-    (evil-leader/set-key "\\"    'ivan/cycle-theme)
     (evil-leader/set-key "C-b"   'list-buffers)
+    (evil-leader/set-key "N"     'ivan/toggle-narrowing)
+    (evil-leader/set-key "\\"    'ivan/cycle-theme)
     (evil-leader/set-key "f a"   'find-alternate-file)
     (evil-leader/set-key "f j"   'dired-jump)
     (evil-leader/set-key "f o"   'find-file)
