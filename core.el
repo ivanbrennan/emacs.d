@@ -305,6 +305,7 @@
     (evil-leader/set-key "N"     'ivan/toggle-narrowing)
     (evil-leader/set-key "\\"    'ivan/cycle-theme)
     (evil-leader/set-key "f j"   'dired-jump)
+    (evil-leader/set-key "f a"   'find-alternate-file)
     (evil-leader/set-key "f o"   'find-file)
     (evil-leader/set-key "f s"   'save-buffer)
     (evil-leader/set-key "g s"   'magit-status)
