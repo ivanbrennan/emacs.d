@@ -675,7 +675,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((t (:underline t))))
 ;;;;; magit
 ;;;;;; headings and diffs
-   `(magit-section-highlight           ((t (:background ,paper))))
+   `(magit-section-highlight           ((t (:background ,paper :weight bold))))
    `(magit-section-heading             ((t (:foreground ,marooned :weight bold))))
    `(magit-section-heading-selection   ((t (:foreground ,ink :weight bold))))
    `(magit-diff-file-heading           ((t (:weight bold))))
@@ -725,8 +725,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-blame-summary ((t (:background ,flatblue :foreground ,ink
                                           :weight bold))))
 ;;;;;; references etc
-   `(magit-dimmed         ((t (:foreground ,paper))))
-   `(magit-hash           ((t (:foreground ,paper))))
+   `(magit-dimmed         ((t (:foreground ,pencil1))))
+   `(magit-hash           ((t (:foreground ,blooo))))
    `(magit-tag            ((t (:foreground ,ink :weight bold))))
    `(magit-branch-remote  ((t (:foreground ,pencil1  :weight bold))))
    `(magit-branch-local   ((t (:foreground ,ink   :weight bold))))
