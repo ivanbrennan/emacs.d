@@ -181,6 +181,9 @@
 ;; env
 (setenv "PAGER" "/usr/bin/env cat")
 
+;; load-path
+(add-to-list 'load-path (ivan/emacs-file "config"))
+
 ;; documentation
 (eval-after-load 'info
   '(add-to-list 'Info-additional-directory-list (ivan/emacs-file "info/")))
@@ -570,14 +573,7 @@ Disables `text-scale-mode`."
 (put 'scroll-left 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
-(eval-after-load 'ibuffer
-  '(progn
-     (add-to-list 'load-path (ivan/emacs-file "config"))
-     (require 'ibuffer-config)))
-
-(eval-after-load 'dired
-  '(progn
-     (add-to-list 'load-path (ivan/emacs-file "config"))
-     (require 'dired-config)))
+(eval-after-load 'ibuffer '(require 'ibuffer-config))
+(eval-after-load 'dired '(require 'dired-config))
 
 (add-hook 'after-init-hook #'evil-mode)
