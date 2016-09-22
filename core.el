@@ -333,6 +333,20 @@
         (t
          (narrow-to-defun))))
 
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode)
+  :config
+  (which-key-setup-minibuffer)
+  (which-key-declare-prefixes
+    "<SPC> b"   "buffers"
+    "<SPC> f"   "files"
+    "<SPC> g"   "git"
+    "<SPC> m"   "mode"
+    "<SPC> m e" "eval"
+    "<SPC> s"   "search"))
+
 (use-package drag-stuff
   :demand
   :config
