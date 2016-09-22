@@ -337,6 +337,7 @@
   :ensure t
   :init
   (which-key-mode)
+  :diminish which-key-mode
   :config
   (which-key-declare-prefixes
     "<SPC> b"   "buffers"
