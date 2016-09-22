@@ -322,7 +322,13 @@
     (evil-leader/set-key "s"       search-map)
     (evil-leader/set-key "w j"     'webjump)
     (evil-leader/set-key "x"       'execute-extended-command)
-    (global-evil-leader-mode)))
+    (global-evil-leader-mode))
+  (use-package evil-commentary
+    :ensure t
+    :diminish evil-commentary-mode
+    :init
+    (evil-commentary-mode)
+    (evil-leader/set-key ";" 'evil-commentary)))
 
 (defun ivan/toggle-narrowing (p)
   (interactive "P")
