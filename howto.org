@@ -67,6 +67,7 @@
 *** rbenv.el? exec-path-from-shell?
 ** run tests asynchronously
 ** launch emacs client from command line with "e"
+** run emacs in a client/server style
 ** Access help keys within isearch
    Some help keys don't behave as expected within isearch. For example, if I enter isearch and type ~C-h c M-r~, Emacs says the key is bound to move-to-window-line-top-bottom, which is true outside of isearch, but not within isearch, where it is instead bound to isearch-toggle-regexp.
    Some of the help keys are different in isearch (i.e. some will exit isearch before triggering help). To see which help keys are available, from within isearch, type ~C-h C-h~.
