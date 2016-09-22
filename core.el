@@ -269,6 +269,8 @@
          ("S-<SPC>"     . ivan/emacs-state-rectangle-mark-mode)
          ("C-<return>"  . ivan/add-whitespace-below)
          ("S-<return>"  . ivan/add-whitespace-above)
+         ("M-˜"         . next-error)
+         ("M-π"         . previous-error)
          :map evil-motion-state-map
          ("C-w C-h"     . evil-window-left)
          ("C-w C-j"     . evil-window-down)
@@ -277,6 +279,8 @@
          ("C-w <SPC>"   . zoom-window-zoom)
          ("C-w C-<SPC>" . zoom-window-zoom)
          ("C-w S-<SPC>" . ivan/other-window-zoom)
+         ("M-˜"         . next-error)
+         ("M-π"         . previous-error)
          ("ESC <SPC>"   . evil-leader-mode)
          :map evil-visual-state-map
          ("C-r"         . isearch-backward)
