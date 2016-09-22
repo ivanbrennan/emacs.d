@@ -1,5 +1,7 @@
 * Misc
 ** error-list micro-state (use just n and p to jump through errors list)
+*** check out hydra
+** make sure magit rebase keys are working
 ** code-folding
 *** hs-minor-mode ?
 ** display ivan/whatever function as i/whatever
