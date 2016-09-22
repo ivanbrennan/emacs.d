@@ -338,7 +338,6 @@
   :init
   (which-key-mode)
   :config
-  (which-key-setup-minibuffer)
   (which-key-declare-prefixes
     "<SPC> b"   "buffers"
     "<SPC> f"   "files"
