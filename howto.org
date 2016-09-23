@@ -212,6 +212,8 @@
    : M-r
 
 * Keybindings
+** vim-like bindings in package list
+** TAB in info and package list to jump to next link
 ** find sensible solutions for C-a, C-e, C-y, 0, $ in evil-mode
 *** evil-numbers suggests C-c + C-c -
 ** reconcile ⌘ key
