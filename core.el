@@ -219,6 +219,11 @@
   :config
   (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
+(use-package elixir-mode
+  :ensure t
+  :config
+  (use-package alchemist))
+
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
