@@ -314,23 +314,24 @@
     :ensure t
     :config
     (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key ","       'evil-window-next)
-    (evil-leader/set-key "C-b"     'list-buffers)
-    (evil-leader/set-key "N"       'ivan/toggle-narrowing)
-    (evil-leader/set-key "\\"      'ivan/cycle-theme)
-    (evil-leader/set-key "b <SPC>" 'switch-to-buffer)
-    (evil-leader/set-key "b d"     'kill-this-buffer)
-    (evil-leader/set-key "f a"     'find-alternate-file)
-    (evil-leader/set-key "f j"     'dired-jump)
-    (evil-leader/set-key "f o"     'find-file)
-    (evil-leader/set-key "f s"     'save-buffer)
-    (evil-leader/set-key "g b"     'magit-blame)
-    (evil-leader/set-key "g s"     'magit-status)
-    (evil-leader/set-key "l"       'evil-switch-to-windows-last-buffer)
-    (evil-leader/set-key "m e e"   'pp-eval-last-sexp)
-    (evil-leader/set-key "s"       search-map)
-    (evil-leader/set-key "w j"     'webjump)
-    (evil-leader/set-key "x"       'execute-extended-command)
+    (evil-leader/set-key
+      ","       'evil-window-next
+      "C-b"     'list-buffers
+      "N"       'ivan/toggle-narrowing
+      "\\"      'ivan/cycle-theme
+      "b <SPC>" 'switch-to-buffer
+      "b d"     'kill-this-buffer
+      "f a"     'find-alternate-file
+      "f j"     'dired-jump
+      "f o"     'find-file
+      "f s"     'save-buffer
+      "g b"     'magit-blame
+      "g s"     'magit-status
+      "l"       'evil-switch-to-windows-last-buffer
+      "m e e"   'pp-eval-last-sexp
+      "s"       search-map
+      "w j"     'webjump
+      "x"       'execute-extended-command)
     (global-evil-leader-mode))
   (use-package evil-commentary
     :ensure t
