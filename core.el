@@ -365,6 +365,7 @@
 
 (use-package drag-stuff
   :demand
+  :diminish drag-stuff-mode
   :config
   (drag-stuff-global-mode t))
 
