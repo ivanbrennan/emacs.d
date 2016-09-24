@@ -84,7 +84,6 @@
 (add-hook 'prog-mode-hook #'ivan/truncate-lines)
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'help-mode-hook #'visual-line-mode)
-(add-hook 'Info-mode-hook #'visual-line-mode)
 (with-current-buffer "*Messages*" (visual-line-mode))
 
 ;; splits
