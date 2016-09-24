@@ -260,6 +260,8 @@
   :ensure t
   :demand
   :bind (:map evil-normal-state-map
+         ("'"           . evil-goto-mark)
+         ("`"           . evil-goto-mark-line)
          ("U"           . undo-tree-redo)
          ("C-r"         . isearch-backward)
          ("C-w C-h"     . evil-window-left)
