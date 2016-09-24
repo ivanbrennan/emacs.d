@@ -1,4 +1,9 @@
 * Misc
+** make undo-tree and goto-chg cooperate when saving undo history
+*** if undo-tree-auto-save-history is non-nil, saving triggers undo-tree-save-history
+*** undo-tree-save-history calls undo-list-transfer-to-tree, which empties the undo-list into a tree that's saved
+*** this leaves nothing in the undo-list for goto-last-change to work with
+*** but undo-tree-undo also calls undo-list-transfer-to-tree so why doesn't every undo break goto-last-change ?
 ** error-list micro-state (use just n and p to jump through errors list)
 *** check out hydra
 ** make sure magit rebase keys are working
