@@ -325,6 +325,7 @@
       "f j"     'dired-jump
       "f o"     'find-file
       "f s"     'save-buffer
+      "f w"     'write-file
       "g b"     'magit-blame
       "g s"     'magit-status
       "l"       'evil-switch-to-windows-last-buffer
