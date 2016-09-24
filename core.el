@@ -228,8 +228,7 @@
   :diminish undo-tree-mode
   :commands (undo-tree-undo undo-tree-redo)
   :config
-  (setq undo-tree-auto-save-history t
-        undo-tree-history-directory-alist `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
+  (setq undo-tree-history-directory-alist `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
   (defun undo-tree-visualizer-update-linum (start end old-len)
     (if (fboundp 'linum-update)
         (linum-update undo-tree-visualizer-parent-buffer)))
