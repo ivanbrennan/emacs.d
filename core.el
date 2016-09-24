@@ -331,7 +331,9 @@
       "l"       'evil-switch-to-windows-last-buffer
       "m e e"   'pp-eval-last-sexp
       "s"       search-map
+      "w c"     'evil-window-delete
       "w j"     'webjump
+      "w 0"     'evil-window-delete
       "x"       'execute-extended-command)
     (global-evil-leader-mode))
   (use-package evil-commentary
