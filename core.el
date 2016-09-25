@@ -147,6 +147,7 @@
       echo-keystrokes                     0.5
       ediff-split-window-function         #'split-window-horizontally
       ediff-window-setup-function         'ediff-setup-windows-plain
+      find-file-visit-truename            t
       hi-lock-auto-select-face            t
       history-delete-duplicates           t
       ispell-program-name                 "/usr/local/bin/aspell"
@@ -159,7 +160,8 @@
       sentence-end-double-space           nil
       set-mark-command-repeat-pop         t
       tab-always-indent                   'complete
-      uniquify-buffer-name-style          'forward)
+      uniquify-buffer-name-style          'forward
+      vc-follow-symlinks                  t)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
