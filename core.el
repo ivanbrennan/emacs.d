@@ -311,10 +311,6 @@
       (define-key keymap-to key (lookup-key keymap-from key))
       (define-key keymap-from key nil))
     (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
-    (use-package goto-chg
-      :commands (goto-last-change goto-last-change-reverse))
-    (use-package ffap
-      :commands ffap-other-window)
     (use-package evil-leader
       :ensure t
       :config
@@ -351,6 +347,12 @@
       (progn
         (evil-commentary-mode)
         (evil-leader/set-key ";" 'evil-commentary)))))
+
+(use-package goto-chg
+  :commands (goto-last-change goto-last-change-reverse))
+
+(use-package ffap
+  :commands ffap-other-window)
 
 (defun ivan/toggle-narrowing (p)
   (interactive "P")
@@ -443,6 +445,7 @@
   (variable-pitch-mode t)
   (setq line-spacing 0.15))
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
+
 (use-package org-bullets
   :ensure t
   :config
