@@ -357,6 +357,20 @@
         (t
          (narrow-to-defun))))
 
+(use-package git-link
+  :config
+  (evil-leader/set-key
+    "g l" 'git-link
+    "g L" 'ivan/open-git-link-in-browser)
+  (defun ivan/open-git-link-in-browser (remote start end)
+    (interactive (let* ((remote (if current-prefix-arg
+                                    (git-link--read-remote)
+                                  (git-link--remote)))
+                        (region (git-link--get-region)))
+                   (list remote (car region) (cadr region))))
+    (let ((git-link-open-in-browser t))
+      (git-link remote start end))))
+
 (use-package which-key
   :ensure t
   :init
