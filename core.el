@@ -320,7 +320,7 @@
     (evil-leader/set-key
       ","       'evil-window-next
       "C-b"     'list-buffers
-      "N"       'ivan/toggle-narrowing
+      "C-n"     'ivan/toggle-narrowing
       "\\"      'ivan/cycle-theme
       "a g"     'ag
       "a r"     'ag-regexp
