@@ -62,6 +62,7 @@ double two-finger tap trackpad to scale/unscale text
 * Juicy unbound keys
 ** M-L
 ** M-O
+** M-n
 ** M-RET (different from M-<return>)
 ** M-[ and M-] (good for folding)
 ** M-J
