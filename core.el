@@ -289,7 +289,7 @@
          ("C-w S-<SPC>" . ivan/other-window-zoom)
          ("M-˜"         . next-error)
          ("M-π"         . previous-error)
-         ("ESC <SPC>"   . evil-leader-mode)
+         ("M-<SPC>"     . evil-leader-mode)
          :map evil-visual-state-map
          ("C-r"         . isearch-backward)
          ("<tab>"       . evil-indent)
