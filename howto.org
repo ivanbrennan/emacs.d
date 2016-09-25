@@ -234,6 +234,9 @@
 ** get C-RET working in org mode
 * Packages
 ** git-time-machine
+** dired-details
+** peep-dired
+** ranger
 ** which-key
 ** multiple-cursors / multi-cursor
 ** magit
