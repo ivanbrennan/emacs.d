@@ -217,33 +217,34 @@
 (use-package rainbow-mode
   :diminish rainbow-mode
   :commands rainbow-mode
-  :config
-  (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
+  :config (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
 (use-package elixir-mode
   :ensure t
-  :config
-  (use-package alchemist))
+  :config (use-package alchemist))
 
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
   :commands (undo-tree-undo undo-tree-redo)
   :config
-  (setq undo-tree-history-directory-alist `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
-  (defun undo-tree-visualizer-update-linum (start end old-len)
-    (if (fboundp 'linum-update)
-        (linum-update undo-tree-visualizer-parent-buffer)))
-  (add-hook 'undo-tree-visualizer-mode-hook
-            (lambda () (add-hook 'after-change-functions #'undo-tree-visualizer-update-linum nil :local)))
-  (undo-tree-mode 1))
+  (progn
+    (setq undo-tree-history-directory-alist
+          `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
+    (defun undo-tree-visualizer-update-linum (start end old-len)
+      (if (fboundp 'linum-update)
+          (linum-update undo-tree-visualizer-parent-buffer)))
+    (add-hook 'undo-tree-visualizer-mode-hook
+              (lambda ()
+                (add-hook 'after-change-functions
+                          #'undo-tree-visualizer-update-linum nil :local)))
+    (undo-tree-mode 1)))
 
 (use-package zoom-window
   :ensure t
   :commands (zoom-window-zoom
              zoom-window--enable-p)
-  :config
-  (setq zoom-window-mode-line-color "#E4FFEA"))
+  :config (setq zoom-window-mode-line-color "#E4FFEA"))
 
 (defun ivan/other-window-zoom ()
   (interactive)
@@ -295,58 +296,61 @@
          :map evil-insert-state-map
          ("M-v"         . yank))
   :config
-  (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
-  (setq-default evil-shift-width 2)
-  (setq evil-move-cursor-back nil
-        evil-emacs-state-cursor 'bar)
-  (defun ivan/emacs-state-rectangle-mark-mode ()
-    (interactive)
-    (evil-emacs-state)
-    (rectangle-mark-mode))
-  (evil-define-key 'motion help-mode-map (kbd "<tab>") 'forward-button)
-  (defun ivan/move-key (keymap-from keymap-to key)
-    "Moves key binding from one keymap to another, deleting from the old location."
-    (define-key keymap-to key (lookup-key keymap-from key))
-    (define-key keymap-from key nil))
-  (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
-  (use-package goto-chg
-    :commands (goto-last-change goto-last-change-reverse))
-  (use-package ffap
-    :commands ffap-other-window)
-  (use-package evil-leader
-    :ensure t
-    :config
-    (evil-leader/set-leader "<SPC>")
-    (evil-leader/set-key
-      ","       'evil-window-next
-      "C-b"     'list-buffers
-      "C-n"     'ivan/toggle-narrowing
-      "\\"      'ivan/cycle-theme
-      "a g"     'ag
-      "a r"     'ag-regexp
-      "b <SPC>" 'switch-to-buffer
-      "b d"     'kill-this-buffer
-      "f a"     'find-alternate-file
-      "f j"     'dired-jump
-      "f o"     'find-file
-      "f s"     'save-buffer
-      "f w"     'write-file
-      "g b"     'magit-blame
-      "g s"     'magit-status
-      "l"       'evil-switch-to-windows-last-buffer
-      "m e e"   'pp-eval-last-sexp
-      "s"       search-map
-      "w c"     'evil-window-delete
-      "w j"     'webjump
-      "w 0"     'evil-window-delete
-      "x"       'execute-extended-command)
-    (global-evil-leader-mode))
-  (use-package evil-commentary
-    :ensure t
-    :diminish evil-commentary-mode
-    :init
-    (evil-commentary-mode)
-    (evil-leader/set-key ";" 'evil-commentary)))
+  (progn
+    (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
+    (setq-default evil-shift-width 2)
+    (setq evil-move-cursor-back nil
+          evil-emacs-state-cursor 'bar)
+    (defun ivan/emacs-state-rectangle-mark-mode ()
+      (interactive)
+      (evil-emacs-state)
+      (rectangle-mark-mode))
+    (evil-define-key 'motion help-mode-map (kbd "<tab>") 'forward-button)
+    (defun ivan/move-key (keymap-from keymap-to key)
+      "Moves key binding from one keymap to another, deleting from the old location."
+      (define-key keymap-to key (lookup-key keymap-from key))
+      (define-key keymap-from key nil))
+    (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
+    (use-package goto-chg
+      :commands (goto-last-change goto-last-change-reverse))
+    (use-package ffap
+      :commands ffap-other-window)
+    (use-package evil-leader
+      :ensure t
+      :config
+      (progn
+        (evil-leader/set-leader "<SPC>")
+        (evil-leader/set-key
+          ","       'evil-window-next
+          "C-b"     'list-buffers
+          "C-n"     'ivan/toggle-narrowing
+          "\\"      'ivan/cycle-theme
+          "a g"     'ag
+          "a r"     'ag-regexp
+          "b <SPC>" 'switch-to-buffer
+          "b d"     'kill-this-buffer
+          "f a"     'find-alternate-file
+          "f j"     'dired-jump
+          "f o"     'find-file
+          "f s"     'save-buffer
+          "f w"     'write-file
+          "g b"     'magit-blame
+          "g s"     'magit-status
+          "l"       'evil-switch-to-windows-last-buffer
+          "m e e"   'pp-eval-last-sexp
+          "s"       search-map
+          "w c"     'evil-window-delete
+          "w j"     'webjump
+          "w 0"     'evil-window-delete
+          "x"       'execute-extended-command)
+        (global-evil-leader-mode)))
+    (use-package evil-commentary
+      :ensure t
+      :diminish evil-commentary-mode
+      :init
+      (progn
+        (evil-commentary-mode)
+        (evil-leader/set-key ";" 'evil-commentary)))))
 
 (defun ivan/toggle-narrowing (p)
   (interactive "P")
@@ -359,37 +363,37 @@
 
 (use-package git-link
   :config
-  (evil-leader/set-key
-    "g l" 'git-link
-    "g L" 'ivan/open-git-link-in-browser)
-  (defun ivan/open-git-link-in-browser (remote start end)
-    (interactive (let* ((remote (if current-prefix-arg
-                                    (git-link--read-remote)
-                                  (git-link--remote)))
-                        (region (git-link--get-region)))
-                   (list remote (car region) (cadr region))))
-    (let ((git-link-open-in-browser t))
-      (git-link remote start end))))
+  (progn
+    (evil-leader/set-key
+      "g l" 'git-link
+      "g L" 'ivan/open-git-link-in-browser)
+    (defun ivan/open-git-link-in-browser (remote start end)
+      (interactive (let* ((remote (if current-prefix-arg
+                                      (git-link--read-remote)
+                                    (git-link--remote)))
+                          (region (git-link--get-region)))
+                     (list remote (car region) (cadr region))))
+      (let ((git-link-open-in-browser t))
+        (git-link remote start end)))))
 
 (use-package which-key
   :ensure t
-  :init
-  (which-key-mode)
+  :init (which-key-mode)
   :diminish which-key-mode
   :config
-  (which-key-declare-prefixes
-    "<SPC> b"   "buffers"
-    "<SPC> f"   "files"
-    "<SPC> g"   "git"
-    "<SPC> m"   "mode"
-    "<SPC> m e" "eval"
-    "<SPC> s"   "search"))
+  (progn
+    (which-key-declare-prefixes
+      "<SPC> b"   "buffers"
+      "<SPC> f"   "files"
+      "<SPC> g"   "git"
+      "<SPC> m"   "mode"
+      "<SPC> m e" "eval"
+      "<SPC> s"   "search")))
 
 (use-package drag-stuff
   :demand
   :diminish drag-stuff-mode
-  :config
-  (drag-stuff-global-mode t))
+  :config (drag-stuff-global-mode t))
 
 (use-package company
   :bind (:map company-active-map
@@ -409,8 +413,9 @@
              ag-project-dired
              ag-project-dired-regexp)
   :config
-  (use-package dash)
-  (use-package s))
+  (progn
+    (use-package dash)
+    (use-package s)))
 
 (use-package crux
   :ensure t
@@ -426,11 +431,12 @@
          ("C-S-<up>"    . windsize-up)
          ("C-S-<down>"  . windsize-down))
   :config
-  (setq windsize-rows 1 windsize-cols 2)
-  (put 'windsize-down  'isearch-scroll t)
-  (put 'windsize-up    'isearch-scroll t)
-  (put 'windsize-left  'isearch-scroll t)
-  (put 'windsize-right 'isearch-scroll t))
+  (progn
+    (setq windsize-rows 1 windsize-cols 2)
+    (put 'windsize-down  'isearch-scroll t)
+    (put 'windsize-up    'isearch-scroll t)
+    (put 'windsize-left  'isearch-scroll t)
+    (put 'windsize-right 'isearch-scroll t)))
 
 (defun ivan/setup-org-mode ()
   (setq org-hide-leading-stars t)
@@ -440,38 +446,43 @@
 (use-package org-bullets
   :ensure t
   :config
-  (setq org-bullets-bullet-list '("◉" "○" "•"))
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (progn
+    (setq org-bullets-bullet-list '("◉" "○" "•"))
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))))
 
 (use-package page-break-lines
   :ensure t
   :diminish page-break-lines-mode
   :commands page-break-lines-mode
   :init
-  (add-hook 'help-mode-hook #'page-break-lines-mode)
-  (add-hook 'Info-mode-hook #'page-break-lines-mode))
+  (progn
+    (add-hook 'help-mode-hook #'page-break-lines-mode)
+    (add-hook 'Info-mode-hook #'page-break-lines-mode)))
 
 (use-package magit
   :ensure t
   :config
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-        magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
-  (use-package evil-magit
-    :demand
-    :init
-    (setq evil-magit-use-y-for-yank nil
-          evil-magit-want-horizontal-movement t)
-    :config
-    (evil-define-key evil-magit-state magit-mode-map
-      (kbd "n")   'magit-section-forward
-      (kbd "p")   'magit-section-backward
-      (kbd "P")   'magit-push-popup
-      (kbd "C-w") 'evil-window-map
-      (kbd "y")   nil
-      (kbd "yy")  'evil-yank-line
-      (kbd "yr")  'magit-show-refs-popup
-      (kbd "ys")  'magit-copy-section-value
-      (kbd "yb")  'magit-copy-buffer-revision)))
+  (progn
+    (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
+          magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
+    (use-package evil-magit
+      :demand
+      :init
+      (progn
+        (setq evil-magit-use-y-for-yank nil
+              evil-magit-want-horizontal-movement t))
+      :config
+      (progn
+        (evil-define-key evil-magit-state magit-mode-map
+          (kbd "n")   'magit-section-forward
+          (kbd "p")   'magit-section-backward
+          (kbd "P")   'magit-push-popup
+          (kbd "C-w") 'evil-window-map
+          (kbd "y")   nil
+          (kbd "yy")  'evil-yank-line
+          (kbd "yr")  'magit-show-refs-popup
+          (kbd "ys")  'magit-copy-section-value
+          (kbd "yb")  'magit-copy-buffer-revision)))))
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
