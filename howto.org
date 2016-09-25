@@ -1,4 +1,6 @@
 * Misc
+** ag keybindings
+** how does spacemacs keep ~g~ bound to `revert-buffer` in dired?
 ** make undo-tree and goto-chg cooperate when saving undo history
 *** if undo-tree-auto-save-history is non-nil, saving triggers undo-tree-save-history
 *** undo-tree-save-history calls undo-list-transfer-to-tree, which empties the undo-list into a tree that's saved
