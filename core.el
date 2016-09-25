@@ -320,6 +320,8 @@
       "C-b"     'list-buffers
       "N"       'ivan/toggle-narrowing
       "\\"      'ivan/cycle-theme
+      "a g"     'ag
+      "a r"     'ag-regexp
       "b <SPC>" 'switch-to-buffer
       "b d"     'kill-this-buffer
       "f a"     'find-alternate-file
