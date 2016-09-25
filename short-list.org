@@ -59,3 +59,20 @@ double two-finger tap trackpad to scale/unscale text
 ** tab completion inside a word
 ** C-M-y in isearch
 ** C-w in isearch
+* Juicy unbound keys
+** M-L
+** M-O
+** M-RET (different from M-<return>)
+** M-[ and M-] (good for folding)
+** M-J
+** M-U
+** M-I
+** M-p
+** M-P
+** M-M
+** M-V
+** M-B
+** M-T
+** M-K
+** M-R
+** M-G
