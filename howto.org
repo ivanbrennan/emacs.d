@@ -233,7 +233,8 @@
 ** toggle isearch case-fold on the fly?
 ** get C-RET working in org mode
 * Packages
-** which-key | guide-key
+** git-time-machine
+** which-key
 ** multiple-cursors / multi-cursor
 ** magit
 ** expand-region
