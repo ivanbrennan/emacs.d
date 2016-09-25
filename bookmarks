@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual-repeat"
- (front-context-string . "\n18.8 File Direc")
- (rear-context-string . "ses,  Up: Files\n")
- (position . 493870)
+ (front-context-string . "\n18.9 Comparing ")
+ (rear-context-string . "ies,  Up: Files\n")
+ (position . 496594)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/emacs")
- (info-node . "Directories")
+ (info-node . "Comparing Files")
  (handler . Info-bookmark-jump))
 ("intro elisp"
  (front-context-string . "\nAn Introduction")
