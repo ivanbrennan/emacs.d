@@ -267,6 +267,8 @@
          ("`"           . evil-goto-mark-line)
          ("U"           . undo-tree-redo)
          ("C-r"         . isearch-backward)
+         ("C-e"         . evil-end-of-line)
+         ("C-S-E"       . evil-scroll-line-down)
          ("C-w C-h"     . evil-window-left)
          ("C-w C-j"     . evil-window-down)
          ("C-w C-k"     . evil-window-up)
@@ -277,9 +279,13 @@
          ("S-<SPC>"     . ivan/emacs-state-rectangle-mark-mode)
          ("C-<return>"  . ivan/add-whitespace-below)
          ("S-<return>"  . ivan/add-whitespace-above)
-         ("M-˜"         . next-error)
-         ("M-π"         . previous-error)
+         ("˜"           . next-error)
+         ("∏"           . previous-error)
+         ("C-S-+"       . evil-number/inc-at-pt)
+         ("C-S-_"       . evil-number/dec-at-pt)))
          :map evil-motion-state-map
+         ("C-e"         . evil-end-of-line)
+         ("C-S-E"       . evil-scroll-line-down)
          ("C-w C-h"     . evil-window-left)
          ("C-w C-j"     . evil-window-down)
          ("C-w C-k"     . evil-window-up)
@@ -287,14 +293,14 @@
          ("C-w <SPC>"   . zoom-window-zoom)
          ("C-w C-<SPC>" . zoom-window-zoom)
          ("C-w S-<SPC>" . ivan/other-window-zoom)
-         ("M-˜"         . next-error)
-         ("M-π"         . previous-error)
-         ("M-<SPC>"     . evil-leader-mode)
+         ("˜"           . next-error)
+         ("∏"           . previous-error)
          :map evil-visual-state-map
          ("C-r"         . isearch-backward)
          ("<tab>"       . evil-indent)
          :map evil-insert-state-map
-         ("M-v"         . yank))
+         ("M-v"         . yank)
+         ("C-S-U"       . ivan/backward-kill-line))
   :config
   (progn
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
@@ -305,40 +311,48 @@
       (interactive)
       (evil-emacs-state)
       (rectangle-mark-mode))
+    (defun ivan/backward-kill-line () (kill-line 0))
     (evil-define-key 'motion help-mode-map (kbd "<tab>") 'forward-button)
     (defun ivan/move-key (keymap-from keymap-to key)
       "Moves key binding from one keymap to another, deleting from the old location."
       (define-key keymap-to key (lookup-key keymap-from key))
       (define-key keymap-from key nil))
     (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
+    (use-package evil-numbers
+      :commands (evil-number/inc-at-pt
+                 evil-number/dec-at-pt))
     (use-package evil-leader
       :ensure t
+      :bind (:map evil-motion-state-map ("C-S-<SPC>" . evil-leader-mode))
       :config
       (progn
         (evil-leader/set-leader "<SPC>")
         (evil-leader/set-key
-          ","       'evil-window-next
-          "C-b"     'list-buffers
-          "C-n"     'ivan/toggle-narrowing
-          "\\"      'ivan/cycle-theme
-          "a g"     'ag
-          "a r"     'ag-regexp
-          "b <SPC>" 'switch-to-buffer
-          "b d"     'kill-this-buffer
-          "f a"     'find-alternate-file
-          "f j"     'dired-jump
-          "f o"     'find-file
-          "f s"     'save-buffer
-          "f w"     'write-file
-          "g b"     'magit-blame
-          "g s"     'magit-status
-          "l"       'evil-switch-to-windows-last-buffer
-          "m e e"   'pp-eval-last-sexp
-          "s"       search-map
-          "w c"     'evil-window-delete
-          "w j"     'webjump
-          "w 0"     'evil-window-delete
-          "x"       'execute-extended-command)
+          ","          'evil-window-next
+          "C-b"        'list-buffers
+          "C-n"        'ivan/toggle-narrowing
+          "\\"         'ivan/cycle-theme
+          "a g"        'ag
+          "a r"        'ag-regexp
+          "b <SPC>"    'switch-to-buffer
+          "b d"        'kill-this-buffer
+          "f a"        'find-alternate-file
+          "f j"        'dired-jump
+          "f o"        'find-file
+          "f s"        'save-buffer
+          "f w"        'write-file
+          "g b"        'magit-blame
+          "g s"        'magit-status
+          "l"          'evil-switch-to-windows-last-buffer
+          "m e e"      'pp-eval-last-sexp
+          "s"          search-map
+          "w c"        'evil-window-delete
+          "w j"        'webjump
+          "w n"        'ivan/toggle-narrowing
+          "w 0"        'evil-window-delete
+          "w <return>" 'toggle-frame-fullscreen
+          "w <SPC>"    'zoom-window-zoom
+          "x"          'execute-extended-command)
         (global-evil-leader-mode)))
     (use-package evil-commentary
       :ensure t
@@ -496,12 +510,12 @@ Disables `text-scale-mode`."
 
 (defun configure-gui ()
   (bind-keys ("M-q"   . save-buffers-kill-terminal)
-             ("M-A"   . mark-whole-buffer) ; (⌥⌘A)
+             ("M-A"   . mark-whole-buffer)
              ("M-o"   . find-file)
              ("M-c"   . kill-ring-save)
              ("M-w"   . delete-window)
              ("M-W"   . delete-frame)
-             ("M-n"   . make-frame)
+             ("M-N"   . make-frame)
              ("M-s"   . save-buffer)
              ("M-u"   . ivan/toggle-transparency)
              ("M-="   . text-scale-increase)
