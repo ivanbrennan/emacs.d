@@ -137,6 +137,10 @@
 ** Make Dired listings concise
    How can I make Dired display fewer file details?
    : dired-hide-details-mode
+    Toggle it in a dired buffer with ~(~, and if you want it on by default,
+    #+BEGIN_SRC emacs-lisp
+    (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+    #+END_SRC
 
 ** Nice org-mode bullets
    How can I make the bullets in org-mode look nicer?
