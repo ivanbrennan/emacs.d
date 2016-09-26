@@ -344,7 +344,9 @@
           "g b"        'magit-blame
           "g s"        'magit-status
           "l"          'evil-switch-to-windows-last-buffer
+          "m e b"      'eval-buffer
           "m e e"      'pp-eval-last-sexp
+          "m e r"      'eval-region
           "s"          search-map
           "w c"        'evil-window-delete
           "w j"        'webjump
