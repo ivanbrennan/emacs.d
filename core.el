@@ -632,6 +632,8 @@ Disables `text-scale-mode`."
                  webjump-sample-sites)))
 
 ;; etc.
+(add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
 (defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end
              (not isearch-mode-end-hook-quit))
