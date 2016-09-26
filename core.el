@@ -300,7 +300,11 @@
          ("<tab>"       . evil-indent)
          :map evil-insert-state-map
          ("M-v"         . yank)
-         ("C-S-U"       . ivan/backward-kill-line))
+         ("C-S-U"       . ivan/backward-kill-line)
+         :map evil-replace-state-map
+         ("M-v"         . yank)
+         ("C-e"         . evil-copy-from-below)
+         ("C-y"         . evil-copy-from-above))
   :config
   (progn
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
