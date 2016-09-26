@@ -329,6 +329,7 @@
         (evil-leader/set-leader "<SPC>")
         (evil-leader/set-key
           ","          'evil-window-next
+          ":"          'execute-extended-command
           "C-b"        'list-buffers
           "C-n"        'ivan/toggle-narrowing
           "\\"         'ivan/cycle-theme
@@ -353,8 +354,7 @@
           "w n"        'ivan/toggle-narrowing
           "w 0"        'evil-window-delete
           "w <return>" 'toggle-frame-fullscreen
-          "w <SPC>"    'zoom-window-zoom
-          "x"          'execute-extended-command)
+          "w <SPC>"    'zoom-window-zoom)
         (global-evil-leader-mode)))
     (use-package evil-commentary
       :ensure t
