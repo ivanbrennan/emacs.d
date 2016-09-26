@@ -282,7 +282,7 @@
          ("˜"           . next-error)
          ("∏"           . previous-error)
          ("C-S-+"       . evil-number/inc-at-pt)
-         ("C-S-_"       . evil-number/dec-at-pt)))
+         ("C-S-_"       . evil-number/dec-at-pt)
          :map evil-motion-state-map
          ("C-e"         . evil-end-of-line)
          ("C-S-E"       . evil-scroll-line-down)
