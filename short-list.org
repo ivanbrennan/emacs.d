@@ -54,6 +54,9 @@ hold down shift when launching to use -Q
 (mac port)
 double two-finger tap trackpad to scale/unscale text
 
+(evil)
+M-x commands can be run from evil-ex (:)
+
 * Unbelievable productivity boosters
 ** C-r in the minibuffer
 ** tab completion inside a word
