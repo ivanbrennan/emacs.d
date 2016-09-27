@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual-repeat"
- (front-context-string . "   The Buffer Me")
- (rear-context-string . "s that window.\n\n")
- (position . 541266)
+ (front-context-string . "\n20 Multiple Win")
+ (rear-context-string . "ffers,  Up: Top\n")
+ (position . 552742)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/emacs")
- (info-node . "Several Buffers")
+ (info-node . "Windows")
  (handler . Info-bookmark-jump))
 ("intro elisp"
  (front-context-string . "\nAn Introduction")
