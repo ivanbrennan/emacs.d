@@ -159,6 +159,7 @@
       scroll-preserve-screen-position     t
       sentence-end-double-space           nil
       set-mark-command-repeat-pop         t
+      split-window-keep-point             nil
       tab-always-indent                   'complete
       uniquify-buffer-name-style          'forward
       vc-follow-symlinks                  t)
@@ -273,6 +274,7 @@
          ("C-w C-j"     . evil-window-down)
          ("C-w C-k"     . evil-window-up)
          ("C-w C-l"     . evil-window-right)
+         ("C-w s"       . split-window-below)
          ("C-w <SPC>"   . zoom-window-zoom)
          ("C-w C-<SPC>" . zoom-window-zoom)
          ("C-w S-<SPC>" . ivan/other-window-zoom)
@@ -290,6 +292,7 @@
          ("C-w C-j"     . evil-window-down)
          ("C-w C-k"     . evil-window-up)
          ("C-w C-l"     . evil-window-right)
+         ("C-w s"       . split-window-below)
          ("C-w <SPC>"   . zoom-window-zoom)
          ("C-w C-<SPC>" . zoom-window-zoom)
          ("C-w S-<SPC>" . ivan/other-window-zoom)
