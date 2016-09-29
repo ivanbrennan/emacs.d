@@ -4,6 +4,9 @@
       initial-scratch-message nil
       frame-title-format "emacs")
 
+;; If your init file is byte-compiled, use the following form instead:
+;;  (eval \\='(setq inhibit-startup-echo-area-message \"YOUR-USER-NAME\"))
+
 ;; clean screen
 (menu-bar-mode   0)
 (tool-bar-mode   0)
