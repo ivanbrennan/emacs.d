@@ -1,4 +1,5 @@
 * Misc
+** use alt-w / alt-b to move by subwords like sublime vintage-mode
 ** ag keybindings
 ** how does spacemacs keep ~g~ bound to `revert-buffer` in dired?
 ** make undo-tree and goto-chg cooperate when saving undo history
