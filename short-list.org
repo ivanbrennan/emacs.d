@@ -57,6 +57,8 @@ double two-finger tap trackpad to scale/unscale text
 (evil)
 M-x commands can be run from evil-ex (:)
 
+server-start, emacs-client, server-edit
+
 * Unbelievable productivity boosters
 ** C-r in the minibuffer
 ** tab completion inside a word
