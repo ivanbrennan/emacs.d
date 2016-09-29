@@ -40,6 +40,7 @@ C-x r f :: frameset-to-register
 C-M-l :: reposition-window
 M-. :: xref-find-definitions
 M-, :: xref-pop-marker-stack
+C-M-x :: eval-defun
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
