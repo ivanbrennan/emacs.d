@@ -361,7 +361,9 @@
           "w n"        'ivan/toggle-narrowing
           "w 0"        'evil-window-delete
           "w <return>" 'toggle-frame-fullscreen
-          "w <SPC>"    'zoom-window-zoom)
+          "w <SPC>"    'zoom-window-zoom
+          "x s"        'server-start
+          "x <SPC>"    'server-edit)
         (global-evil-leader-mode)))
     (use-package evil-commentary
       :ensure t
