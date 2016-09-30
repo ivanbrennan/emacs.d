@@ -145,6 +145,7 @@
 
 ;; sensibility
 (setq apropos-do-all                      t
+      bookmark-bmenu-toggle-filenames     nil
       completion-auto-help                'lazy
       delete-by-moving-to-trash           t
       echo-keystrokes                     0.5
