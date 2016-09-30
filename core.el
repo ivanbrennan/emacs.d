@@ -286,7 +286,6 @@
       "b d"        'kill-this-buffer
       "f a"        'find-alternate-file
       "f j"        'dired-jump
-      "f o"        'find-file
       "f s"        'save-buffer
       "f w"        'write-file
       "g b"        'magit-blame
@@ -295,6 +294,7 @@
       "m e b"      'eval-buffer
       "m e e"      'pp-eval-last-sexp
       "m e r"      'eval-region
+      "o"          'find-file
       "s"          search-map
       "w c"        'evil-window-delete
       "w j"        'webjump
