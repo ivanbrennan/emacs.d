@@ -224,6 +224,10 @@
   :commands rainbow-mode
   :config (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
+(use-package linum-relative
+  :commands linum-relative-toggle
+  :config (setq linum-relative-current-symbol ""))
+
 (use-package elixir-mode
   :ensure t
   :config (use-package alchemist))

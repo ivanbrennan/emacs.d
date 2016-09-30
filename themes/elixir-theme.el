@@ -645,6 +645,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-report-clickable-face ((t (:foreground ,ink :weight normal))))
 ;;;;; linum-mode
    `(linum ((t (:foreground ,pencil2 :background ,paper))))
+;;;;; linum-relative-mode
+   `(linum-relative-current-face ((t (:background ,whisp4))))
 ;;;;; ruler-mode
    `(ruler-mode-column-number ((t (:inherit 'ruler-mode-default :foreground ,marooned))))
    `(ruler-mode-fill-column ((t (:inherit 'ruler-mode-default :foreground ,marooned))))
