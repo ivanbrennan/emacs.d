@@ -264,6 +264,56 @@
   :commands (sp-forward-slurp-sexp
              sp-forward-barf-sexp))
 
+(use-package evil-numbers
+  :commands (evil-number/inc-at-pt
+             evil-number/dec-at-pt))
+
+(use-package evil-leader
+  :ensure t
+  :bind (:map evil-motion-state-map ("C-S-<SPC>" . evil-leader-mode))
+  :config
+  (progn
+    (evil-leader/set-leader "<SPC>")
+    (evil-leader/set-key
+      ","          'evil-window-next
+      ":"          'execute-extended-command
+      "C-b"        'list-buffers
+      "C-n"        'ivan/toggle-narrowing
+      "\\"         'ivan/cycle-theme
+      "a g"        'ag
+      "a r"        'ag-regexp
+      "b <SPC>"    'switch-to-buffer
+      "b d"        'kill-this-buffer
+      "f a"        'find-alternate-file
+      "f j"        'dired-jump
+      "f o"        'find-file
+      "f s"        'save-buffer
+      "f w"        'write-file
+      "g b"        'magit-blame
+      "g s"        'magit-status
+      "l"          'evil-switch-to-windows-last-buffer
+      "m e b"      'eval-buffer
+      "m e e"      'pp-eval-last-sexp
+      "m e r"      'eval-region
+      "s"          search-map
+      "w c"        'evil-window-delete
+      "w j"        'webjump
+      "w n"        'ivan/toggle-narrowing
+      "w 0"        'evil-window-delete
+      "w <return>" 'toggle-frame-fullscreen
+      "w <SPC>"    'zoom-window-zoom
+      "x s"        'server-start
+      "x <SPC>"    'server-edit)
+    (global-evil-leader-mode)))
+
+(use-package evil-commentary
+  :ensure t
+  :diminish evil-commentary-mode
+  :init
+  (progn
+    (evil-commentary-mode)
+    (evil-leader/set-key ";" 'evil-commentary)))
+
 (use-package evil
   :ensure t
   :demand
@@ -287,8 +337,8 @@
          ("S-<return>"  . ivan/add-whitespace-above)
          ("˜"           . next-error)
          ("∏"           . previous-error)
-         ("C-S-+"       . evil-number/inc-at-pt)
-         ("C-S-_"       . evil-number/dec-at-pt)
+         ("C-S-+"       . evil-numbers/inc-at-pt)
+         ("C-S-_"       . evil-numbers/dec-at-pt)
          :map evil-motion-state-map
          ("C-e"         . evil-end-of-line)
          ("C-S-E"       . evil-scroll-line-down)
@@ -328,54 +378,7 @@
       "Moves key binding from one keymap to another, deleting from the old location."
       (define-key keymap-to key (lookup-key keymap-from key))
       (define-key keymap-from key nil))
-    (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
-    (use-package evil-numbers
-      :commands (evil-number/inc-at-pt
-                 evil-number/dec-at-pt))
-    (use-package evil-leader
-      :ensure t
-      :bind (:map evil-motion-state-map ("C-S-<SPC>" . evil-leader-mode))
-      :config
-      (progn
-        (evil-leader/set-leader "<SPC>")
-        (evil-leader/set-key
-          ","          'evil-window-next
-          ":"          'execute-extended-command
-          "C-b"        'list-buffers
-          "C-n"        'ivan/toggle-narrowing
-          "\\"         'ivan/cycle-theme
-          "a g"        'ag
-          "a r"        'ag-regexp
-          "b <SPC>"    'switch-to-buffer
-          "b d"        'kill-this-buffer
-          "f a"        'find-alternate-file
-          "f j"        'dired-jump
-          "f o"        'find-file
-          "f s"        'save-buffer
-          "f w"        'write-file
-          "g b"        'magit-blame
-          "g s"        'magit-status
-          "l"          'evil-switch-to-windows-last-buffer
-          "m e b"      'eval-buffer
-          "m e e"      'pp-eval-last-sexp
-          "m e r"      'eval-region
-          "s"          search-map
-          "w c"        'evil-window-delete
-          "w j"        'webjump
-          "w n"        'ivan/toggle-narrowing
-          "w 0"        'evil-window-delete
-          "w <return>" 'toggle-frame-fullscreen
-          "w <SPC>"    'zoom-window-zoom
-          "x s"        'server-start
-          "x <SPC>"    'server-edit)
-        (global-evil-leader-mode)))
-    (use-package evil-commentary
-      :ensure t
-      :diminish evil-commentary-mode
-      :init
-      (progn
-        (evil-commentary-mode)
-        (evil-leader/set-key ";" 'evil-commentary)))))
+    (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))))
 
 (use-package goto-chg
   :commands (goto-last-change goto-last-change-reverse))
@@ -491,30 +494,31 @@
     (add-hook 'help-mode-hook #'page-break-lines-mode)
     (add-hook 'Info-mode-hook #'page-break-lines-mode)))
 
+(use-package evil-magit
+  :demand
+  :init
+  (progn
+    (setq evil-magit-use-y-for-yank nil
+          evil-magit-want-horizontal-movement t))
+  :config
+  (progn
+    (evil-define-key evil-magit-state magit-mode-map
+      (kbd "n")   'magit-section-forward
+      (kbd "p")   'magit-section-backward
+      (kbd "P")   'magit-push-popup
+      (kbd "C-w") 'evil-window-map
+      (kbd "y")   nil
+      (kbd "yy")  'evil-yank-line
+      (kbd "yr")  'magit-show-refs-popup
+      (kbd "ys")  'magit-copy-section-value
+      (kbd "yb")  'magit-copy-buffer-revision)))
+
 (use-package magit
   :ensure t
   :config
   (progn
     (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-          magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))
-    (use-package evil-magit
-      :demand
-      :init
-      (progn
-        (setq evil-magit-use-y-for-yank nil
-              evil-magit-want-horizontal-movement t))
-      :config
-      (progn
-        (evil-define-key evil-magit-state magit-mode-map
-          (kbd "n")   'magit-section-forward
-          (kbd "p")   'magit-section-backward
-          (kbd "P")   'magit-push-popup
-          (kbd "C-w") 'evil-window-map
-          (kbd "y")   nil
-          (kbd "yy")  'evil-yank-line
-          (kbd "yr")  'magit-show-refs-popup
-          (kbd "ys")  'magit-copy-section-value
-          (kbd "yb")  'magit-copy-buffer-revision)))))
+          magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))))
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
