@@ -2,14 +2,7 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("faq"
- (front-context-string . "\n9 Key bindings\n")
- (rear-context-string . "kages,  Up: Top\n")
- (position . 125166)
- (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/efaq")
- (info-node . "Key bindings")
- (handler . Info-bookmark-jump))
-("manual-repeat"
+(("manual-repeat"
  (front-context-string . "     (`shrink-wi")
  (rear-context-string . "d so many lines\n")
  (position . 563699)
