@@ -265,8 +265,8 @@
              sp-forward-barf-sexp))
 
 (use-package evil-numbers
-  :commands (evil-number/inc-at-pt
-             evil-number/dec-at-pt))
+  :commands (evil-numbers/inc-at-pt
+             evil-numbers/dec-at-pt))
 
 (use-package evil-leader
   :ensure t
@@ -337,8 +337,8 @@
          ("S-<return>"  . ivan/add-whitespace-above)
          ("˜"           . next-error)
          ("∏"           . previous-error)
-         ("C-S-+"       . evil-numbers/inc-at-pt)
-         ("C-S-_"       . evil-numbers/dec-at-pt)
+         ("≠"           . evil-numbers/inc-at-pt)
+         ("–"           . evil-numbers/dec-at-pt)
          :map evil-motion-state-map
          ("C-e"         . evil-end-of-line)
          ("C-S-E"       . evil-scroll-line-down)
