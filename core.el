@@ -289,6 +289,7 @@
       "f s"        'save-buffer
       "f w"        'write-file
       "g b"        'magit-blame
+      "g g"        'magit-status
       "g s"        'magit-status
       "l"          'evil-switch-to-windows-last-buffer
       "m e b"      'eval-buffer
