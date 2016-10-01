@@ -300,6 +300,7 @@
       "g g"        'magit-status
       "l"          'evil-switch-to-windows-last-buffer
       "m e b"      'eval-buffer
+      "m e f"      'eval-defun
       "m e e"      'pp-eval-last-sexp
       "m e r"      'eval-region
       "o"          'find-file
