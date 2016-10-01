@@ -302,6 +302,7 @@
       "m e r"      'eval-region
       "o"          'find-file
       "s"          search-map
+      "V"          'exchange-point-and-mark
       "w c"        'evil-window-delete
       "w j"        'webjump
       "w n"        'ivan/toggle-narrowing
