@@ -308,8 +308,9 @@
       "w 0"        'evil-window-delete
       "w <return>" 'toggle-frame-fullscreen
       "w <SPC>"    'zoom-window-zoom
-      "x s"        'server-start
-      "x <SPC>"    'server-edit)
+      "X s"        'server-start
+      "X <SPC>"    'server-edit
+      "x"          'execute-extended-command)
     (global-evil-leader-mode)))
 
 (use-package evil-commentary
