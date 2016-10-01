@@ -293,9 +293,7 @@
       "f s"        'save-buffer
       "f w"        'write-file
       "g b"        'magit-blame
-      "g <SPC>"    'magit-status
       "g g"        'magit-status
-      "g s"        'magit-status
       "l"          'evil-switch-to-windows-last-buffer
       "m e b"      'eval-buffer
       "m e e"      'pp-eval-last-sexp
