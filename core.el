@@ -381,7 +381,8 @@
       (evil-emacs-state)
       (rectangle-mark-mode))
     (defun ivan/backward-kill-line () (kill-line 0))
-    (evil-define-key 'motion help-mode-map (kbd "<tab>") 'forward-button)
+    (evil-define-key 'motion help-mode-map    (kbd "<tab>") 'forward-button)
+    (evil-define-key 'motion apropos-mode-map (kbd "<tab>") 'forward-button)
     (defun ivan/move-key (keymap-from keymap-to key)
       "Moves key binding from one keymap to another, deleting from the old location."
       (define-key keymap-to key (lookup-key keymap-from key))
