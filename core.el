@@ -280,9 +280,13 @@
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
       ","          'evil-window-next
+      "9"          'rainbow-delimiters-mode
       ":"          'execute-extended-command
       "C-b"        'list-buffers
       "C-n"        'ivan/toggle-narrowing
+      "V"          'exchange-point-and-mark
+      "X <SPC>"    'server-edit
+      "X s"        'server-start
       "\\"         'ivan/cycle-theme
       "a g"        'ag
       "a r"        'ag-regexp
@@ -300,17 +304,13 @@
       "m e r"      'eval-region
       "o"          'find-file
       "s"          search-map
-      "V"          'exchange-point-and-mark
+      "w 0"        'evil-window-delete
+      "w <SPC>"    'zoom-window-zoom
+      "w <return>" 'toggle-frame-fullscreen
       "w c"        'evil-window-delete
       "w j"        'webjump
       "w n"        'ivan/toggle-narrowing
-      "w 0"        'evil-window-delete
-      "w <return>" 'toggle-frame-fullscreen
-      "w <SPC>"    'zoom-window-zoom
-      "X s"        'server-start
-      "X <SPC>"    'server-edit
-      "x"          'execute-extended-command
-      "9"          'rainbow-delimiters-mode)
+      "x"          'execute-extended-command)
     (global-evil-leader-mode)))
 
 (use-package evil-commentary
