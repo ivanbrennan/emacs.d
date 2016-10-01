@@ -608,6 +608,32 @@ Disables `text-scale-mode`."
            :map shell-mode-map
            ("C-d" . comint-delchar-or-eof-or-kill-buffer))
 
+;; esc quits
+(defun minibuffer-keyboard-quit ()
+  "Abort recursive edit.
+In Delete Selection mode, if the mark is active, just deactivate it;
+then it takes a second \\[keyboard-quit] to abort the minibuffer."
+  (interactive)
+  (if (and delete-selection-mode transient-mark-mode mark-active)
+      (setq deactivate-mark  t)
+    (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+    (abort-recursive-edit)))
+
+(eval-after-load 'evil
+  '(progn
+     (define-key evil-normal-state-map [escape] 'keyboard-quit)
+     (define-key evil-visual-state-map [escape] 'keyboard-quit)
+     (define-key evil-emacs-state-map  [escape] 'evil-exit-emacs-state)))
+
+(mapc (lambda (keymap)
+        (define-key keymap [escape] 'minibuffer-keyboard-quit))
+      (list
+       minibuffer-local-map
+       minibuffer-local-ns-map
+       minibuffer-local-completion-map
+       minibuffer-local-must-match-map
+       minibuffer-local-isearch-map))
+
 (defun ivan/isearch-exit ()
   "Run isearch-exit, and if in the minibuffer, submit the search result as input."
   (interactive)
