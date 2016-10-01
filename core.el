@@ -642,6 +642,47 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (if (minibuffer-window-active-p (selected-window))
       (minibuffer-complete-and-exit)))
 
+;; fringes
+(setq ivan/fringe-cycled nil)
+(setq ivan/fringe-sizes '(4 36 72 128))
+(setq ivan/fringe-size-index 0)
+(defun ivan/fringe-size (&optional n)
+  (nth (or n ivan/fringe-size-index) ivan/fringe-sizes))
+
+(add-to-list 'default-frame-alist `(left-fringe . ,(ivan/fringe-size)))
+(add-to-list 'default-frame-alist '(right-fringe . 1))
+
+(setq-default fringe-indicator-alist
+              (assq-delete-all 'truncation fringe-indicator-alist))
+(set-display-table-slot standard-display-table 0 ?\ )
+
+(defun ivan/forward-cycle-fringe ()
+  (interactive)
+  (ivan/cycle-fringe 1))
+
+(defun ivan/backward-cycle-fringe ()
+  (interactive)
+  (ivan/cycle-fringe (1- (length ivan/fringe-sizes))))
+
+(defun ivan/cycle-fringe (inc)
+  (let ((n (% (+ inc ivan/fringe-size-index) (length ivan/fringe-sizes))))
+    (setq-local ivan/fringe-size-index n)
+    (ivan/set-indexed-fringe-size)
+  (setq-local ivan/fringe-cycled t)))
+
+(defun ivan/toggle-fringe-cycle ()
+  (interactive)
+  (if ivan/fringe-cycled (ivan/set-indexed-fringe-size 0) (ivan/set-indexed-fringe-size))
+  (setq-local ivan/fringe-cycled (not ivan/fringe-cycled)))
+
+(defun ivan/set-indexed-fringe-size (&optional n)
+  (set-window-fringes nil (ivan/fringe-size n)))
+
+(evil-leader/set-key
+  "0"   'ivan/forward-cycle-fringe
+  "9"   'ivan/backward-cycle-fringe
+  "t f" 'ivan/toggle-fringe-cycle)
+
 (with-eval-after-load "isearch"
   (define-key isearch-mode-map [remap isearch-exit] #'ivan/isearch-exit))
 
