@@ -191,8 +191,8 @@
 (add-to-list 'load-path (ivan/emacs-file "config"))
 
 ;; documentation
-(eval-after-load 'info
-  '(add-to-list 'Info-additional-directory-list (ivan/emacs-file "info/")))
+(with-eval-after-load 'info
+  (add-to-list 'Info-additional-directory-list (ivan/emacs-file "info/")))
 
 ;; tramp
 (setq tramp-default-method "ssh")
@@ -620,11 +620,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 
-(eval-after-load 'evil
-  '(progn
-     (define-key evil-normal-state-map [escape] 'keyboard-quit)
-     (define-key evil-visual-state-map [escape] 'keyboard-quit)
-     (define-key evil-emacs-state-map  [escape] 'evil-exit-emacs-state)))
+(with-eval-after-load 'evil
+  (define-key evil-normal-state-map [escape] 'keyboard-quit)
+  (define-key evil-visual-state-map [escape] 'keyboard-quit)
+  (define-key evil-emacs-state-map  [escape] 'evil-exit-emacs-state))
 
 (mapc (lambda (keymap)
         (define-key keymap [escape] 'minibuffer-keyboard-quit))
@@ -642,8 +641,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (if (minibuffer-window-active-p (selected-window))
       (minibuffer-complete-and-exit)))
 
-(eval-after-load "isearch"
-  '(define-key isearch-mode-map [remap isearch-exit] #'ivan/isearch-exit))
+(with-eval-after-load "isearch"
+  (define-key isearch-mode-map [remap isearch-exit] #'ivan/isearch-exit))
 
 (defun comint-delchar-or-eof-or-kill-buffer (arg)
   (interactive "p")
@@ -675,11 +674,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (global-set-key [remap dabbrev-expand] 'hippie-expand)
 
-(eval-after-load 'webjump
-  '(setq webjump-sites
-         (append '(("stackoverflow" . "www.stackoverflow.com")
-                   ("GitHub" . "https://github.com"))
-                 webjump-sample-sites)))
+(with-eval-after-load 'webjump
+  (setq webjump-sites
+        (append '(("stackoverflow" . "www.stackoverflow.com")
+                  ("GitHub" . "https://github.com"))
+                webjump-sample-sites)))
 
 ;; etc.
 (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
@@ -701,14 +700,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (backward-kill-word arg)))
 
 ;; diminish
-(eval-after-load "flyspell" '(diminish 'flyspell-mode))
-(eval-after-load "autorevert" '(diminish 'auto-revert-mode))
+(with-eval-after-load 'flyspell (diminish 'flyspell-mode))
+(with-eval-after-load 'autorevert (diminish 'auto-revert-mode))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
-(eval-after-load 'ibuffer '(require 'ibuffer-config))
-(eval-after-load 'dired '(require 'dired-config))
+(with-eval-after-load 'ibuffer (require 'ibuffer-config))
+(with-eval-after-load 'dired (require 'dired-config))
 
 (add-hook 'after-init-hook #'evil-mode)
