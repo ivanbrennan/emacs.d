@@ -620,13 +620,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 
-(with-eval-after-load 'evil
-  (define-key evil-normal-state-map [escape] 'keyboard-quit)
-  (define-key evil-visual-state-map [escape] 'keyboard-quit)
-  (define-key evil-emacs-state-map  [escape] 'evil-exit-emacs-state))
+(bind-key "<escape>" 'isearch-abort isearch-mode-map)
 
 (mapc (lambda (keymap)
-        (define-key keymap [escape] 'minibuffer-keyboard-quit)
+        (define-key keymap [escape]    'minibuffer-keyboard-quit)
         (define-key keymap (kbd "C-p") 'previous-line-or-history-element)
         (define-key keymap (kbd "C-n") 'next-line-or-history-element))
       (list
