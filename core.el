@@ -310,7 +310,8 @@
       "w <SPC>"    'zoom-window-zoom
       "X s"        'server-start
       "X <SPC>"    'server-edit
-      "x"          'execute-extended-command)
+      "x"          'execute-extended-command
+      "9"          'rainbow-delimiters-mode)
     (global-evil-leader-mode)))
 
 (use-package evil-commentary
