@@ -279,8 +279,8 @@
   (progn
     (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
+      "("          'rainbow-delimiters-mode
       ","          'evil-window-next
-      "9"          'rainbow-delimiters-mode
       ":"          'eval-expression
       "C-b"        'list-buffers
       "C-n"        'ivan/toggle-narrowing
