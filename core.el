@@ -626,7 +626,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key evil-emacs-state-map  [escape] 'evil-exit-emacs-state))
 
 (mapc (lambda (keymap)
-        (define-key keymap [escape] 'minibuffer-keyboard-quit))
+        (define-key keymap [escape] 'minibuffer-keyboard-quit)
+        (define-key keymap (kbd "C-p") 'previous-line-or-history-element)
+        (define-key keymap (kbd "C-n") 'next-line-or-history-element))
       (list
        minibuffer-local-map
        minibuffer-local-ns-map
