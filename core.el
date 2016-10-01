@@ -281,7 +281,7 @@
     (evil-leader/set-key
       ","          'evil-window-next
       "9"          'rainbow-delimiters-mode
-      ":"          'execute-extended-command
+      ":"          'eval-expression
       "C-b"        'list-buffers
       "C-n"        'ivan/toggle-narrowing
       "V"          'exchange-point-and-mark
