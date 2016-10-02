@@ -426,6 +426,8 @@
       (let ((git-link-open-in-browser t))
         (git-link remote start end)))))
 
+(use-package hydra :ensure t)
+
 (use-package which-key
   :ensure t
   :init (which-key-mode)
