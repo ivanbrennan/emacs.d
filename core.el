@@ -441,8 +441,10 @@
       "view"
       ("SPC"   Info-scroll-up                 "page-down")
       ("S-SPC" Info-scroll-down               "page-up")
-      ("j"     ivan/scroll-lock-next-line     "down")
-      ("k"     ivan/scroll-lock-previous-line "up")
+      ("k"     scroll-down-line               "up")
+      ("j"     scroll-up-line                 "down")
+      ("C-k"   ivan/scroll-lock-previous-line "up-lock")
+      ("C-j"   ivan/scroll-lock-next-line     "down-lock")
       ("q"     nil "quit" :color blue)
       ("ESC"   nil "quit" :color blue))
     (evil-leader/set-key "." 'hydra-view/body)
