@@ -372,6 +372,13 @@
          ("C-y"         . evil-copy-from-above))
   :config
   (progn
+    (setq evil-emacs-state-tag    ""
+          evil-insert-state-tag   ""
+          evil-motion-state-tag   ""
+          evil-normal-state-tag   ""
+          evil-operator-state-tag ""
+          evil-replace-state-tag  ""
+          evil-visual-state-tag   "")
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (setq-default evil-shift-width 2)
     (setq evil-move-cursor-back nil
