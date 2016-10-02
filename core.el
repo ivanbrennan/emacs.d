@@ -432,7 +432,35 @@
       (let ((git-link-open-in-browser t))
         (git-link remote start end)))))
 
-(use-package hydra :ensure t)
+(use-package hydra
+  :ensure t
+  :config
+  (progn
+    (defhydra hydra-view ()
+      "view"
+      ("SPC"   Info-scroll-up                 "page-down")
+      ("S-SPC" Info-scroll-down               "page-up")
+      ("j"     ivan/scroll-lock-next-line     "down")
+      ("k"     ivan/scroll-lock-previous-line "up")
+      ("q"     nil "quit" :color blue)
+      ("ESC"   nil "quit" :color blue))
+    (evil-leader/set-key "." 'hydra-view/body)
+    (defun ivan/scroll-lock-next-line ()
+      (interactive)
+      (let ((scroll-preserve-screen-position :always))
+        (scroll-up 1)))
+    (defun ivan/scroll-lock-previous-line ()
+      (interactive)
+      (let ((scroll-preserve-screen-position :always))
+        (scroll-down 1)))
+    (defhydra hydra-focus ()
+      "focus"
+      ("="   ivan/increase-padding "increase")
+      ("-"   ivan/reduce-padding   "reduce")
+      ("0"   ivan/toggle-padding   "toggle")
+      ("q"   nil "quit" :color blue)
+      ("ESC" nil "quit" :color blue))
+    (evil-leader/set-key "0" 'hydra-focus/body)))
 
 (use-package which-key
   :ensure t
@@ -446,7 +474,9 @@
       "<SPC> g"   "git"
       "<SPC> m"   "mode"
       "<SPC> m e" "eval"
-      "<SPC> s"   "search")))
+      "<SPC> s"   "search"
+      "<SPC> 0"   "focus"
+      "<SPC> ."   "view")))
 
 (use-package drag-stuff
   :demand
@@ -657,38 +687,42 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (if (minibuffer-window-active-p (selected-window))
       (minibuffer-complete-and-exit)))
 
-;; fringes
-(setq ivan/fringe-cycled nil)
-(setq ivan/fringe-widths '(4 64 128 192 256))
-(setq ivan/fringe-width-index 0)
-(defun ivan/fringe-width (&optional n)
-  (nth (or n ivan/fringe-width-index) ivan/fringe-widths))
+;; padding
+(set-display-table-slot
+ standard-display-table 0 ?\ )
+(setq-default
+ fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist))
 
-(add-to-list 'default-frame-alist `(left-fringe . ,(ivan/fringe-width)))
+(setq ivan/padding-enabled nil)
+(setq ivan/padding-min 4)
+(setq ivan/padding-max 580)
+(setq ivan/padding-step 64)
+(setq ivan/padding-degree ivan/padding-min)
+
+(add-to-list 'default-frame-alist `(left-fringe . ,ivan/padding-min))
 (add-to-list 'default-frame-alist '(right-fringe . 1))
 
-(setq-default fringe-indicator-alist
-              (assq-delete-all 'truncation fringe-indicator-alist))
-(set-display-table-slot standard-display-table 0 ?\ )
-
-(defun ivan/cycle-fringe ()
+(defun ivan/increase-padding ()
   (interactive)
-  (setq-local ivan/fringe-width-index
-              (% (1+ ivan/fringe-width-index) (length ivan/fringe-widths)))
-  (ivan/set-indexed-fringe-width)
-  (setq-local ivan/fringe-cycled t))
+  (setq-local ivan/padding-degree
+              (min ivan/padding-max (+ ivan/padding-degree ivan/padding-step)))
+  (ivan//apply-padding-degree ivan/padding-degree)
+  (setq-local ivan/padding-enabled t))
 
-(defun ivan/toggle-fringe-cycle ()
+(defun ivan/reduce-padding ()
   (interactive)
-  (ivan/set-indexed-fringe-width (if ivan/fringe-cycled 0))
-  (setq-local ivan/fringe-cycled (not ivan/fringe-cycled)))
+  (setq-local ivan/padding-degree
+              (max ivan/padding-min (- ivan/padding-degree ivan/padding-step)))
+  (ivan//apply-padding-degree ivan/padding-degree)
+  (setq-local ivan/padding-enabled t))
 
-(defun ivan/set-indexed-fringe-width (&optional n)
-  (set-window-fringes nil (ivan/fringe-width n)))
+(defun ivan/toggle-padding ()
+  (interactive)
+  (ivan//apply-padding-degree
+   (if ivan/padding-enabled ivan/padding-min ivan/padding-degree))
+  (setq-local ivan/padding-enabled (not ivan/padding-enabled)))
 
-(evil-leader/set-key
-  ")" 'ivan/cycle-fringe
-  "0" 'ivan/toggle-fringe-cycle)
+(defun ivan//apply-padding-degree (n) (set-window-fringes nil n))
 
 (with-eval-after-load "isearch"
   (define-key isearch-mode-map [remap isearch-exit] #'ivan/isearch-exit))
