@@ -193,6 +193,8 @@
 ;; documentation
 (with-eval-after-load 'info
   (add-to-list 'Info-additional-directory-list (ivan/emacs-file "info/")))
+(with-eval-after-load 'help
+  (setq source-directory "~/Development/code/elisp/emacs-mac"))
 
 ;; tramp
 (setq tramp-default-method "ssh")
