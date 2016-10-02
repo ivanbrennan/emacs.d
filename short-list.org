@@ -83,3 +83,6 @@ server-start, emacs-client, server-edit
 ** M-K
 ** M-R
 ** M-G
+* Hydras
+** windsize (SPC w {h,j,k,l})
+** eval (SPC e)
