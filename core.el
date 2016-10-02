@@ -434,6 +434,7 @@
 
 (use-package hydra
   :ensure t
+  :bind ("M-S-<return>" . hydra-focus/body)
   :config
   (progn
     (defhydra hydra-view ()
@@ -455,12 +456,11 @@
         (scroll-down 1)))
     (defhydra hydra-focus ()
       "focus"
-      ("="   ivan/increase-padding "increase")
-      ("-"   ivan/reduce-padding   "reduce")
-      ("0"   ivan/toggle-padding   "toggle")
+      ("]"   ivan/increase-padding "increase")
+      ("["   ivan/reduce-padding   "reduce")
+      ("RET" ivan/toggle-padding   "toggle")
       ("q"   nil "quit" :color blue)
-      ("ESC" nil "quit" :color blue))
-    (evil-leader/set-key "0" 'hydra-focus/body)))
+      ("ESC" nil "quit" :color blue))))
 
 (use-package which-key
   :ensure t
@@ -475,7 +475,6 @@
       "<SPC> m"   "mode"
       "<SPC> m e" "eval"
       "<SPC> s"   "search"
-      "<SPC> 0"   "focus"
       "<SPC> ."   "view")))
 
 (use-package drag-stuff
