@@ -121,7 +121,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line-highlight ((t (:foreground ,bigblue))))
    `(mode-line-inactive
      ((t (:foreground ,pencil1 :weight light :background ,whisp2))))
-   `(region ((,class (:background ,aquablue))
+   `(region ((,class (:background ,aqua))
              (t :inverse-video t)))
    `(cua-rectangle ((t (:inherit region))))
    `(secondary-selection ((t (:background ,paper))))
