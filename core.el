@@ -292,8 +292,12 @@
       "\\"         'ivan/cycle-theme
       "a g"        'ag
       "a r"        'ag-regexp
-      "b <SPC>"    'switch-to-buffer
+      ;; "b <SPC>"    'hydra-buffers/body
+      "b b"        'switch-to-buffer
       "b d"        'kill-this-buffer
+      "b j"        'bookmark-jump
+      "b l"        'bookmark-bmenu-list
+      "b m"        'bookmark-set
       "f a"        'find-alternate-file
       "f j"        'dired-jump
       "f s"        'save-buffer
@@ -437,7 +441,7 @@
   :config
   (progn
     (which-key-declare-prefixes
-      "<SPC> b"   "buffers"
+      "<SPC> b"   "buffers/bookmarks"
       "<SPC> f"   "files"
       "<SPC> g"   "git"
       "<SPC> m"   "mode"
