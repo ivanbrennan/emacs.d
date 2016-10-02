@@ -240,6 +240,7 @@ How do I move the point to the middle/top/bottom of the window?
 ** toggle isearch case-fold on the fly?
 ** get C-RET working in org mode
 * Packages
+** lispy
 ** git-time-machine
 ** dired-details
 ** peep-dired
