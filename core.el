@@ -437,17 +437,28 @@
   :bind ("M-S-<return>" . hydra-focus/body)
   :config
   (progn
-    (defhydra hydra-view ()
-      "view"
+    (setq ivan/hydra-scroll-locked nil)
+    (defhydra hydra-scroll (:post (setq-local ivan/hydra-scroll-locked nil))
+      "scroll"
       ("SPC"   Info-scroll-up                 "page-down")
       ("S-SPC" Info-scroll-down               "page-up")
-      ("k"     scroll-down-line               "up")
-      ("j"     scroll-up-line                 "down")
+      ("k"     ivan/scroll-down-line          "up")
+      ("j"     ivan/scroll-up-line            "down")
       ("C-k"   ivan/scroll-lock-previous-line "up-lock")
       ("C-j"   ivan/scroll-lock-next-line     "down-lock")
+      ("."     ivan/toggle-hydra-scroll-lock  "toggle-lock")
       ("q"     nil "quit" :color blue)
       ("ESC"   nil "quit" :color blue))
-    (evil-leader/set-key "." 'hydra-view/body)
+    (evil-leader/set-key "." 'hydra-scroll/body)
+    (defun ivan/toggle-hydra-scroll-lock ()
+      (interactive)
+      (setq-local ivan/hydra-scroll-locked (not ivan/hydra-scroll-locked)))
+    (defun ivan/scroll-down-line ()
+      (interactive)
+      (if ivan/hydra-scroll-locked (ivan/scroll-lock-previous-line) (scroll-down-line)))
+    (defun ivan/scroll-up-line ()
+      (interactive)
+      (if ivan/hydra-scroll-locked (ivan/scroll-lock-next-line) (scroll-up-line)))
     (defun ivan/scroll-lock-next-line ()
       (interactive)
       (let ((scroll-preserve-screen-position :always))
@@ -477,7 +488,7 @@
       "<SPC> m"   "mode"
       "<SPC> m e" "eval"
       "<SPC> s"   "search"
-      "<SPC> ."   "view")))
+      "<SPC> ."   "scroll")))
 
 (use-package drag-stuff
   :demand
