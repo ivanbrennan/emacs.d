@@ -41,6 +41,7 @@ C-M-l :: reposition-window
 M-. :: xref-find-definitions
 M-, :: xref-pop-marker-stack
 C-M-x :: eval-defun
+Triple-Drag-mouse-1 :: (tap, tap, 3-finger-tap-and-drag) select whole lines
 
 (I-search)
 M-e C-f :: enter next char from buffer to search string
