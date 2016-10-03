@@ -697,7 +697,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq ivan/padding-enabled nil)
 (setq ivan/padding-min 4)
 (setq ivan/padding-max 580)
-(setq ivan/padding-step 64)
+(setq ivan/padding-step 32)
 (setq ivan/padding-degree ivan/padding-min)
 
 (add-to-list 'default-frame-alist `(left-fringe . ,ivan/padding-min))
