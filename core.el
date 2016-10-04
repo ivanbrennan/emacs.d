@@ -443,7 +443,7 @@
                             :post (setq-local ivan/hydra-cursor-lock :always)
                             :after-exit (setq hydra-lv t))
       "
-scroll: [_SPC_]:down [_S-SPC_]:up [_j_]:down-line [_k_]:up-line [_._]:lock"
+scroll: [_SPC_|_S-SPC_] page  [_j_|_k_] line  [_._] toggle-lock"
       ("SPC"   Info-scroll-up)
       ("S-SPC" Info-scroll-down)
       ("j"     ivan/scroll-next-line)
