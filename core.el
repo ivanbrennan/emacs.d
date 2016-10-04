@@ -437,18 +437,23 @@
   :bind ("M-S-<return>" . hydra-focus/body)
   :config
   (progn
-    (setq ivan/hydra-scroll-locked nil)
-    (defhydra hydra-scroll (:post (setq-local ivan/hydra-scroll-locked nil))
-      "scroll"
-      ("SPC"   Info-scroll-up                 "page-down")
-      ("S-SPC" Info-scroll-down               "page-up")
-      ("k"     ivan/scroll-previous-line      "up")
-      ("j"     ivan/scroll-next-line          "down")
-      ("C-k"   ivan/scroll-lock-previous-line "up-lock")
-      ("C-j"   ivan/scroll-lock-next-line     "down-lock")
-      ("."     ivan/toggle-hydra-scroll-lock  "toggle-lock")
-      ("q"     nil "quit" :color blue)
-      ("ESC"   nil "quit" :color blue))
+    (setq ivan/hydra-scroll-locked t)
+    (defhydra hydra-scroll (:hint nil
+                            :pre (setq hydra-lv nil)
+                            :post (progn
+                                    (setq-local ivan/hydra-scroll-locked t)
+                                    (setq hydra-lv t)))
+      "
+-- SCROLL --"
+      ("SPC"   Info-scroll-up)
+      ("S-SPC" Info-scroll-down)
+      ("k"     ivan/scroll-previous-line)
+      ("j"     ivan/scroll-next-line)
+      ("C-k"   ivan/scroll-lock-previous-line)
+      ("C-j"   ivan/scroll-lock-next-line)
+      ("."     ivan/toggle-hydra-scroll-lock)
+      ("q"     nil)
+      ("ESC"   nil))
     (evil-leader/set-key "." 'hydra-scroll/body)
     (defun ivan/toggle-hydra-scroll-lock ()
       (interactive)
