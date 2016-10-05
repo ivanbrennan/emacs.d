@@ -438,12 +438,16 @@
   :config
   (progn
     (setq ivan/hydra-cursor-lock :always)
+    (defface hydra-face-title
+      '((t (:slant italic)))
+      "Face for title string within a hydra hint"
+      :group 'hydra)
     (defhydra hydra-scroll (:hint nil
                             :pre (setq hydra-lv nil)
                             :post (setq-local ivan/hydra-cursor-lock :always)
                             :after-exit (setq hydra-lv t))
-      "
-scroll: (_SPC_/_S-SPC_) page  (_j_/_k_) line  (_._) toggle-lock"
+      (format "%s (_SPC_/_S-SPC_) page  (_j_/_k_) line  (_._) toggle-lock"
+              (propertize " scroll " 'face 'hydra-face-title))
       ("SPC"   Info-scroll-up)
       ("S-SPC" Info-scroll-down)
       ("j"     ivan/scroll-next-line)

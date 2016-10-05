@@ -577,6 +577,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hydra-face-blue     ((t (:foreground ,merged    :background ,paper :bold t))))
    `(hydra-face-pink     ((t (:foreground ,eraser    :background ,paper :bold t))))
    `(hydra-face-teal     ((t (:foreground ,teal      :background ,paper :bold t))))
+   `(hydra-face-title    ((t (:foreground ,slate     :background ,paper))))
 ;;;; ivy
    `(ivy-confirm-face ((t (:foreground ,pencil1 :background ,paper))))
    `(ivy-match-required-face ((t (:foreground ,navyblue :background ,paper))))
