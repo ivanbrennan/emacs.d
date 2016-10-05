@@ -446,7 +446,7 @@
                             :pre (setq hydra-lv nil)
                             :post (setq-local ivan/hydra-cursor-lock :always)
                             :after-exit (setq hydra-lv t))
-      (format "%s (_SPC_/_S-SPC_) page  (_j_/_k_) line  (_._) toggle-lock"
+      (format "%s (_SPC_/_S-SPC_) page  (_j_/_k_) line  (_._) %%(ivan/hydra-scroll-lock-hint)"
               (propertize " scroll " 'face 'hydra-face-title))
       ("SPC"   Info-scroll-up)
       ("S-SPC" Info-scroll-down)
@@ -456,6 +456,8 @@
       ("q"     nil nil)
       ("ESC"   nil nil))
     (evil-leader/set-key "." 'hydra-scroll/body)
+    (defun ivan/hydra-scroll-lock-hint ()
+      (if (eql :always ivan/hydra-cursor-lock) 'unlock 'lock))
     (defun ivan/toggle-hydra-cursor-lock ()
       (interactive)
       (setq-local ivan/hydra-cursor-lock
