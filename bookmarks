@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual-repeat"
- (front-context-string . "   Most minor mo")
- (rear-context-string . "scribed above.\n\n")
- (position . 704306)
+ (front-context-string . "\n24 Indentation\n")
+ (rear-context-string . "Modes,  Up: Top\n")
+ (position . 714518)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/emacs")
- (info-node . "Minor Modes")
+ (info-node . "Indentation")
  (handler . Info-bookmark-jump))
 ("intro elisp"
  (front-context-string . "\nAn Introduction")
