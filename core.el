@@ -449,9 +449,8 @@
                                     (setq-local hydra-scroll/lock :always)
                                     (setq hydra-scroll/other-window nil))
                             :after-exit (setq hydra-lv t))
-      (format "%s (_SPC_/_S-SPC_) page  (_j_/_k_) line  (_._) %s"
-              "%s(hydra-scroll/window-hint)"
-              "%(hydra-scroll/lock-hint)")
+      (format "%s (_SPC_|_S-SPC_) page  (_j_|_k_) line"
+              "%s(hydra-scroll/window-hint)")
       ("SPC"   hydra-scroll/pgdown)
       ("S-SPC" hydra-scroll/pgup)
       ("j"     hydra-scroll/next-line)
@@ -461,17 +460,15 @@
       ("q"     nil nil)
       ("ESC"   nil nil))
     (evil-leader/set-key "." 'hydra-scroll/body)
-    (defun hydra-scroll/lock-hint ()
-      (if (eql :always hydra-scroll/lock) 'unlock 'lock))
-
+    (defun hydra-scroll/locked () (eql :always hydra-scroll/lock))
+    (defun hydra-scroll/lock-hint () (if (hydra-scroll/locked) 'unlock 'lock))
     (defun hydra-scroll/window-hint ()
-      (let ((hint (if hydra-scroll/other-window " scroll-other " " scroll ")))
-        (propertize hint 'face 'hydra-face-title)))
-
+      (let ((other (if hydra-scroll/other-window "-other" ""))
+            (unlocked (if (hydra-scroll/locked) "" "-unlocked")))
+        (propertize (format " scroll%s%s " other unlocked) 'face 'hydra-face-title)))
     (defun hydra-scroll/toggle-lock ()
       (interactive)
-      (setq-local hydra-scroll/lock
-                  (if (eql :always hydra-scroll/lock) t :always)))
+      (setq-local hydra-scroll/lock (if (hydra-scroll/locked) t :always)))
     (defun hydra-scroll/toggle-other-window ()
       (interactive)
       (setq-local hydra-scroll/other-window (null hydra-scroll/other-window)))
