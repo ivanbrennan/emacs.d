@@ -499,8 +499,7 @@
   :config
   (progn
     (drag-stuff-global-mode t)
-    (defun ivan/disable-drag-stuff-mode () (drag-stuff-mode 0))
-    (add-hook 'org-mode-hook #'ivan/disable-drag-stuff-mode)))
+    (add-to-list 'drag-stuff-except-modes 'org-mode)))
 
 (use-package company
   :bind (:map company-active-map
