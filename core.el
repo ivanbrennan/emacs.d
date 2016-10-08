@@ -438,42 +438,57 @@
   :config
   (progn
     (setq hydra-scroll/lock :always)
+    (setq hydra-scroll/other-window nil)
     (defface hydra-face-title
       '((t (:slant italic)))
       "Face for title string within a hydra hint"
       :group 'hydra)
     (defhydra hydra-scroll (:hint nil
                             :pre (setq hydra-lv nil)
-                            :post (setq-local hydra-scroll/lock :always)
+                            :post (progn
+                                    (setq-local hydra-scroll/lock :always)
+                                    (setq hydra-scroll/other-window nil))
                             :after-exit (setq hydra-lv t))
-      (format "%s (_SPC_/_S-SPC_) page  (_j_/_k_) line  (_._) %%(hydra-scroll/lock-hint)"
-              (propertize " scroll " 'face 'hydra-face-title))
-      ("SPC"   hydra-scroll/pgup)
-      ("S-SPC" hydra-scroll/pgdown)
+      (format "%s (_SPC_/_S-SPC_) page  (_j_/_k_) line  (_._) %s"
+              "%s(hydra-scroll/window-hint)"
+              "%(hydra-scroll/lock-hint)")
+      ("SPC"   hydra-scroll/pgdown)
+      ("S-SPC" hydra-scroll/pgup)
       ("j"     hydra-scroll/next-line)
       ("k"     hydra-scroll/previous-line)
       ("."     hydra-scroll/toggle-lock)
+      (","     hydra-scroll/toggle-other-window)
       ("q"     nil nil)
       ("ESC"   nil nil))
     (evil-leader/set-key "." 'hydra-scroll/body)
     (defun hydra-scroll/lock-hint ()
       (if (eql :always hydra-scroll/lock) 'unlock 'lock))
+
+    (defun hydra-scroll/window-hint ()
+      (let ((hint (if hydra-scroll/other-window " scroll-other " " scroll ")))
+        (propertize hint 'face 'hydra-face-title)))
+
     (defun hydra-scroll/toggle-lock ()
       (interactive)
       (setq-local hydra-scroll/lock
                   (if (eql :always hydra-scroll/lock) t :always)))
+    (defun hydra-scroll/toggle-other-window ()
+      (interactive)
+      (setq-local hydra-scroll/other-window (null hydra-scroll/other-window)))
     (defun hydra-scroll/pgdown ()
-      Info-scroll-up)
+      (interactive)
+      (if hydra-scroll/other-window (scroll-other-window) (Info-scroll-up)))
     (defun hydra-scroll/pgup ()
-      Info-scroll-down)
+      (interactive)
+      (if hydra-scroll/other-window (scroll-other-window-down) (Info-scroll-down)))
     (defun hydra-scroll/next-line ()
       (interactive)
       (let ((scroll-preserve-screen-position hydra-scroll/lock))
-        (scroll-up-line)))
+        (if hydra-scroll/other-window (scroll-other-window 1) (scroll-up-line))))
     (defun hydra-scroll/previous-line ()
       (interactive)
       (let ((scroll-preserve-screen-position hydra-scroll/lock))
-        (scroll-down-line)))
+        (if hydra-scroll/other-window (scroll-other-window-down 1) (scroll-down-line))))
     (defhydra hydra-focus ()
       "focus"
       ("]"   ivan/increase-padding "increase")
