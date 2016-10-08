@@ -462,9 +462,9 @@
       (interactive)
       (setq-local hydra-scroll/lock
                   (if (eql :always hydra-scroll/lock) t :always)))
-    (defun hydra-scroll/pgup ()
-      Info-scroll-up)
     (defun hydra-scroll/pgdown ()
+      Info-scroll-up)
+    (defun hydra-scroll/pgup ()
       Info-scroll-down)
     (defun hydra-scroll/next-line ()
       (interactive)
