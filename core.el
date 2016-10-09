@@ -203,17 +203,15 @@
 ;; packages
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa-stable" . "http://stable.melpa.org/packages/")
-             :append)
-(add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/")
-             :append)
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/")    :append)
+(add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/")           :append)
+(add-to-list 'package-archives '("marmalade"    . "https://marmalade-repo.org/packages/") :append)
 
 (setq package-enable-at-startup  nil
-      package-archive-priorities '(("melpa-stable" . 2)
-                                   ("gnu"          . 1)
-                                   ("marmalade"    . 1)))
+      package-archive-priorities '(("melpa-stable" . 4)
+                                   ("gnu"          . 3)
+                                   ("marmalade"    . 2)
+                                   ("melpa"        . 1)))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
