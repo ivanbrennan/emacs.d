@@ -462,6 +462,7 @@
       ("C-l"    recenter-top-bottom)
       ("."      hydra-scroll/toggle-lock)
       (","      hydra-scroll/toggle-other-window)
+      ("ESC"    nil)
       ("q"      nil))
     (evil-leader/set-key "." 'hydra-scroll/body)
     (defun hydra-scroll/locked () (eql :always hydra-scroll/lock))
@@ -517,6 +518,7 @@
       ("C-w C-k" evil-window-up)
       ("C-w C-l" evil-window-right)
       (","       evil-window-next)
+      ("ESC"     nil)
       ("q"       nil))
     (bind-keys :map evil-normal-state-map
                ("C-w ."   . hydra-windsize/body)
