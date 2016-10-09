@@ -449,7 +449,7 @@
                                     (setq-local hydra-scroll/lock :always)
                                     (setq hydra-scroll/other-window nil))
                             :after-exit (setq hydra-lv t))
-      (format "%s (_SPC_|_S-SPC_) page  (_j_|_k_) line"
+      (format "%s (_SPC_/_S-SPC_) page  (_j_/_k_) line"
               "%s(hydra-scroll/window-hint)")
       ("SPC"    hydra-scroll/pgdown)
       ("S-SPC"  hydra-scroll/pgup)
