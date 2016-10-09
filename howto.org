@@ -1,4 +1,11 @@
 * Misc
+** fix broken bindings access (e.g. M-o) from evil-bound hydra
+If a hydra is bound to an evil map, it seems to lose awareness of non-evil bindings that aren't hydra heads. For example, with
+#+begin_src
+  (bind-keys ("M-o" . find-file)
+  (evil-define-key 'normal global-map (kbd "SPC .") 'hydra-scroll/body)
+#+end_src
+I'll enter hydra-scroll (~SPC .~), scroll around, decide to open a file, type ~M-o~ while still in the hydra, and be told ~M-o~ is undefined. If I explicitly exit the hydra, I then regain access to ~M-o~. What gives?
 ** Xref
 ** Project (built-in package; is it like Projectile?)
 ** use alt-w / alt-b to move by subwords like sublime vintage-mode
