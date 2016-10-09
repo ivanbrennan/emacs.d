@@ -520,6 +520,9 @@
       ("q"       nil))
     (bind-keys :map evil-normal-state-map
                ("C-w ."   . hydra-windsize/body)
+               ("C-w C-." . hydra-windsize/body)
+               :map evil-motion-state-map
+               ("C-w ."   . hydra-windsize/body)
                ("C-w C-." . hydra-windsize/body))
     (defhydra hydra-focus ()
       "focus"
