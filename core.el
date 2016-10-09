@@ -147,6 +147,7 @@
 (setq apropos-do-all                      t
       bookmark-bmenu-toggle-filenames     nil
       completion-auto-help                'lazy
+      completions-format                  'vertical
       delete-by-moving-to-trash           t
       echo-keystrokes                     0.5
       ediff-split-window-function         #'split-window-horizontally
