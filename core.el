@@ -322,6 +322,10 @@
   :init
   (progn
     ;; TODO: figure out how to map "SPC ;" to evil-commentary
+    ;; (general-define-key :states '(normal visual)
+    ;;                     :keymaps 'evil-commentary-mode-map
+    ;;                     :prefix "SPC"
+    ;;                     ";" 'evil-commentary)
     (evil-commentary-mode)))
 
 (use-package evil
