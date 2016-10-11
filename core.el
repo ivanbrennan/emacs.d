@@ -280,6 +280,7 @@
     :keys ("M-m")
     :evil-keys ("SPC")
     :evil-states (normal motion visual))
+  ;; TODO: get this working in Info-mode
   (bind-map-set-keys ivan/leader-map
     ","          'evil-window-next
     "9"          'rainbow-delimiters-mode ; TODO: install this
