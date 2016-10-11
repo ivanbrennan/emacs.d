@@ -1,4 +1,5 @@
 * Misc
+** error list hydra (e.g. M-g n/p)
 ** fix broken bindings access (e.g. M-o) from evil-bound hydra
 If a hydra is bound to an evil map, it seems to lose awareness of non-evil bindings that aren't hydra heads. For example, with
 #+begin_src
