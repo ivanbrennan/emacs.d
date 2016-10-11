@@ -61,6 +61,8 @@ M-x commands can be run from evil-ex (:)
 
 server-start, emacs-client, server-edit
 
+directory-local variables (could be useful for project settings)
+
 * Unbelievable productivity boosters
 ** C-r in the minibuffer
 ** tab completion inside a word
