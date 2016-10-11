@@ -59,6 +59,10 @@ double two-finger tap trackpad to scale/unscale text
 (evil)
 M-x commands can be run from evil-ex (:)
 
+(compilation)
+compilation-scroll-output
+next error follow minor mode
+
 server-start, emacs-client, server-edit
 
 directory-local variables (could be useful for project settings)
