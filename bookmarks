@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual-repeat"
- (front-context-string . "\n26.10 Semantic\n")
- (rear-context-string . ",  Up: Programs\n")
- (position . 881865)
+ (front-context-string . "\n51.4.2 Init Fil")
+ (rear-context-string . "  Up: Init File\n")
+ (position . 1578923)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/emacs")
- (info-node . "Semantic")
+ (info-node . "Init Examples")
  (handler . Info-bookmark-jump))
 ("intro elisp"
  (front-context-string . "\nAn Introduction")
