@@ -273,59 +273,60 @@
   :commands (evil-numbers/inc-at-pt
              evil-numbers/dec-at-pt))
 
-(use-package general
+(use-package bind-map
   :ensure t
   :config
-  (general-define-key :states '(normal motion)
-                      :prefix "SPC"
-                      ","          'evil-window-next
-                      "9"          'rainbow-delimiters-mode
-                      ":"          'eval-expression
-                      "C-b"        'list-buffers
-                      "C-n"        'ivan/toggle-narrowing
-                      "V"          'exchange-point-and-mark
-                      "X SPC"      'server-edit
-                      "X s"        'server-start
-                      "\\"         'ivan/cycle-theme
-                      "a g"        'ag
-                      "a r"        'ag-regexp
-                      ;; "b SPC"    'hydra-buffers/body
-                      "b b"        'switch-to-buffer
-                      "b d"        'kill-this-buffer
-                      "b j"        'bookmark-jump
-                      "b l"        'bookmark-bmenu-list
-                      "b m"        'bookmark-set
-                      "f a"        'find-alternate-file
-                      "f j"        'dired-jump
-                      "f s"        'save-buffer
-                      "f w"        'write-file
-                      "g b"        'magit-blame
-                      "g g"        'magit-status
-                      "l"          'evil-switch-to-windows-last-buffer
-                      "m e b"      'eval-buffer
-                      "m e f"      'eval-defun
-                      "m e e"      'pp-eval-last-sexp
-                      "m e r"      'eval-region
-                      "o"          'find-file
-                      "s"          search-map
-                      "w 0"        'evil-window-delete
-                      "w SPC"      'zoom-window-zoom
-                      "w <return>" 'toggle-frame-fullscreen
-                      "w c"        'evil-window-delete
-                      "w j"        'webjump
-                      "w n"        'ivan/toggle-narrowing
-                      "x"          'execute-extended-command))
+  (bind-map ivan/leader-map
+    :keys ("M-m")
+    :evil-keys ("SPC")
+    :evil-states (normal motion visual))
+  (bind-map-set-keys ivan/leader-map
+    ","          'evil-window-next
+    "9"          'rainbow-delimiters-mode ; TODO: install this
+    ":"          'eval-expression
+    "C-b"        'list-buffers
+    "C-n"        'ivan/toggle-narrowing
+    "V"          'exchange-point-and-mark
+    "X SPC"      'server-edit
+    "X s"        'server-start
+    "\\"         'ivan/cycle-theme
+    "a g"        'ag
+    "a r"        'ag-regexp
+    ;; "b SPC"    'hydra-buffers/body
+    "b b"        'switch-to-buffer
+    "b d"        'kill-this-buffer
+    "b j"        'bookmark-jump
+    "b l"        'bookmark-bmenu-list
+    "b m"        'bookmark-set
+    "f a"        'find-alternate-file
+    "f j"        'dired-jump
+    "f s"        'save-buffer
+    "f w"        'write-file
+    "g b"        'magit-blame
+    "g g"        'magit-status
+    "l"          'evil-switch-to-windows-last-buffer
+    "m e b"      'eval-buffer
+    "m e f"      'eval-defun
+    "m e e"      'pp-eval-last-sexp
+    "m e r"      'eval-region
+    "o"          'find-file
+    "s"          search-map
+    "w 0"        'evil-window-delete
+    "w SPC"      'zoom-window-zoom
+    "w <return>" 'toggle-frame-fullscreen
+    "w c"        'evil-window-delete
+    "w j"        'webjump
+    "w n"        'ivan/toggle-narrowing
+    "x"          'execute-extended-command)
+  )
 
 (use-package evil-commentary
   :ensure t
   :diminish evil-commentary-mode
   :init
   (progn
-    ;; TODO: figure out how to map "SPC ;" to evil-commentary
-    ;; (general-define-key :states '(normal visual)
-    ;;                     :keymaps 'evil-commentary-mode-map
-    ;;                     :prefix "SPC"
-    ;;                     ";" 'evil-commentary)
+    (bind-map-set-keys ivan/leader-map
+      ";" 'evil-commentary)
     (evil-commentary-mode)))
 
 (use-package evil
@@ -428,10 +429,9 @@
                      (list remote (car region) (cadr region))))
       (let ((git-link-open-in-browser t))
         (git-link remote start end)))
-    (general-define-key :states '(normal motion)
-                        :prefix "SPC"
-                        "g l" 'git-link
-                        "g L" 'ivan/open-git-link-in-browser)))
+    (bind-map-set-keys ivan/leader-map
+      "g l" 'git-link
+      "g L" 'ivan/open-git-link-in-browser)))
 
 (use-package hydra
   :ensure t
@@ -465,9 +465,8 @@
       (","      hydra-scroll/toggle-other-window)
       ("ESC"    nil)
       ("q"      nil))
-    (general-define-key :states '(normal motion visual)
-                        :prefix "SPC"
-                        "." 'hydra-scroll/body)
+    (bind-map-set-keys ivan/leader-map
+      "." 'hydra-scroll/body)
     (defun hydra-scroll/locked () (eql :always hydra-scroll/lock))
     (defun hydra-scroll/lock-hint () (if (hydra-scroll/locked) 'unlock 'lock))
     (defun hydra-scroll/window-hint ()
