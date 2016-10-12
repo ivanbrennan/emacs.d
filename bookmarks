@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("manual-repeat"
- (front-context-string . "committed by som")
- (rear-context-string . "s with a change\n")
- (position . 991738)
+ (front-context-string . "\n28.1.5 Register")
+ (rear-context-string . "Version Control\n")
+ (position . 1009575)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/emacs")
- (info-node . "VCS Merging")
+ (info-node . "Registering")
  (handler . Info-bookmark-jump))
 ("intro elisp"
  (front-context-string . "\nAn Introduction")
