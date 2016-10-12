@@ -109,6 +109,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(completions-annotations ((t (:foreground ,ink))))
 ;;;;; grep
    `(match ((t (:background ,whisp2 :weight bold))))
+;;;;; evil
+   `(evil-ex-substitute-replacement ((t (:foreground ,bloodred :underline t))))
+   `(evil-ex-substitute-matches ((t (:inherit 'lazy-highlight))))
 ;;;;; isearch
    `(isearch ((t (:foreground ,ink :weight bold :background ,sand))))
    `(isearch-fail ((t (:background ,eraser))))
