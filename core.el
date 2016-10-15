@@ -157,6 +157,7 @@
       history-delete-duplicates           t
       ispell-program-name                 "/usr/local/bin/aspell"
       minibuffer-eldef-shorten-default    t
+      query-replace-skip-read-only        t
       read-buffer-completion-ignore-case  t
       require-final-newline               t
       resize-mini-windows                 t
