@@ -524,8 +524,11 @@
       ("C-w C-k" evil-window-up)
       ("C-w C-l" evil-window-right)
       (","       evil-window-next)
+      ("-"       shrink-window-if-larger-than-buffer)
       ("ESC"     nil)
       ("q"       nil))
+    (bind-map-set-keys ivan/leader-map
+      "w" 'hydra-windsize/body)
     (bind-keys :map evil-normal-state-map
                ("C-w ."   . hydra-windsize/body)
                ("C-w C-." . hydra-windsize/body)
