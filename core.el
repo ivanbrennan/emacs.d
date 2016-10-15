@@ -338,7 +338,7 @@
          ("'"           . evil-goto-mark)
          ("`"           . evil-goto-mark-line)
          ("U"           . undo-tree-redo)
-         ("C-d"         . evil-window-delete)
+         ("C-d"         . kill-buffer-and-window)
          ("C-r"         . isearch-backward)
          ("C-e"         . evil-end-of-line)
          ("C-S-E"       . evil-scroll-line-down)
@@ -358,7 +358,7 @@
          ("≠"           . evil-numbers/inc-at-pt)
          ("–"           . evil-numbers/dec-at-pt)
          :map evil-motion-state-map
-         ("C-d"         . evil-window-delete)
+         ("C-d"         . kill-buffer-and-window)
          ("C-e"         . evil-end-of-line)
          ("C-S-E"       . evil-scroll-line-down)
          ("C-w C-h"     . evil-window-left)
