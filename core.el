@@ -524,7 +524,7 @@
       ("C-w C-k" evil-window-up)
       ("C-w C-l" evil-window-right)
       (","       evil-window-next)
-      ("-"       shrink-window-if-larger-than-buffer)
+      ("m"       shrink-window-if-larger-than-buffer)
       ("ESC"     nil)
       ("q"       nil))
     (bind-map-set-keys ivan/leader-map
