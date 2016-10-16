@@ -877,3 +877,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (with-eval-after-load 'dired (require 'dired-config))
 
 (add-hook 'after-init-hook #'evil-mode)
+(setq calendar-latitude 40.7)
+(setq calendar-longitude -74.0)
+(setq calendar-location-name "New York, NY")
