@@ -1,4 +1,5 @@
 * Misc
+** change magit popup hints to sort vertically
 ** ~/.emacs.d/init_bash.sh
 ** error list hydra (e.g. M-g n/p)
 ** fix broken bindings access (e.g. M-o) from evil-bound hydra
