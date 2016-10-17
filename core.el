@@ -178,10 +178,6 @@
 (delete-selection-mode)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 (add-hook 'tex-mode-hook #'(lambda () (setq ispell-parser 'tex)))
-(defun ivan/protect-comint-prompt ()
-  (define-key comint-mode-map [remap kill-region]     'comint-kill-region)
-  (define-key comint-mode-map [remap kill-whole-line] 'comint-kill-whole-line))
-(add-hook 'comint-mode-hook #'ivan/protect-comint-prompt)
 
 (defun ivan/create-non-existent-directory ()
   (let ((parent-directory (file-name-directory buffer-file-name)))
