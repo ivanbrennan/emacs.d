@@ -210,10 +210,10 @@
 (add-to-list 'package-archives '("marmalade"    . "https://marmalade-repo.org/packages/") :append)
 
 (setq package-enable-at-startup  nil
-      package-archive-priorities '(("melpa-stable" . 4)
-                                   ("gnu"          . 3)
-                                   ("marmalade"    . 2)
-                                   ("melpa"        . 1)))
+      package-archive-priorities '(("melpa-stable" . 3)
+                                   ("gnu"          . 2)
+                                   ("marmalade"    . 1)
+                                   ("melpa"        . 0)))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
