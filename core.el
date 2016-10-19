@@ -860,6 +860,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (goto-char isearch-other-end)))
 (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
 
+(add-hook 'ruby-mode-hook #'(lambda () (setq ruby-insert-encoding-magic-comment nil)))
+
 ;; more useful C-w (this should be adjusted to account for evil mode,
 ;; in particular insert-state, once I start using evil).
 (defun ivan/kill-region-or-backward-kill-word (&optional arg region)
