@@ -398,8 +398,7 @@
           evil-visual-state-tag   " ·v·")
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (setq-default evil-shift-width 2)
-    (setq evil-move-cursor-back nil
-          evil-emacs-state-cursor 'bar)
+    (setq evil-emacs-state-cursor 'bar)
     (defun ivan/emacs-state-rectangle-mark-mode ()
       (interactive)
       (evil-emacs-state)
