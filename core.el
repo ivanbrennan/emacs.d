@@ -225,6 +225,11 @@
 (use-package rainbow-mode
   :diminish rainbow-mode
   :commands rainbow-mode
+  :init
+  (progn
+    (defun ivan/colorize-theme ()
+      (if (string-match "-theme.el$" buffer-file-name) (rainbow-mode 1)))
+    (add-hook 'emacs-lisp-mode-hook #'ivan/colorize-theme))
   :config (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
 (use-package linum-relative
