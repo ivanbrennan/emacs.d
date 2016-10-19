@@ -109,6 +109,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(completions-annotations ((t (:foreground ,ink))))
 ;;;;; grep
    `(match ((t (:background ,whisp2 :weight bold))))
+;;;;; wgrep
+   `(wgrep-face ((t :background ,melon)))
 ;;;;; evil
    `(evil-ex-substitute-replacement ((t (:foreground ,bloodred :underline t))))
    `(evil-ex-substitute-matches ((t (:inherit 'lazy-highlight))))
