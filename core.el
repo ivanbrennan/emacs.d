@@ -228,8 +228,7 @@
   :init
   (progn
     (defun ivan/colorize-theme ()
-      (if (and buffer-file-name (string-match "-theme.el$" buffer-file-name))
-          (rainbow-mode 1)))
+      (if (string-match "-theme.el$" (buffer-name)) (rainbow-mode 1)))
     (add-hook 'emacs-lisp-mode-hook #'ivan/colorize-theme))
   :config (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
