@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("eintr"
- (front-context-string . "File: eintr.info")
- (rear-context-string)
- (position . 49655)
+ (front-context-string . "\n1.6 Evaluation\n")
+ (rear-context-string . "List Processing\n")
+ (position . 54152)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "Lisp Interpreter")
+ (info-node . "Evaluation")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
