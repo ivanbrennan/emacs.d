@@ -30,11 +30,4 @@
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/elisp")
  (info-node . "Library Search")
  (handler . Info-bookmark-jump))
-("manual"
- (front-context-string . "File: emacs.info")
- (rear-context-string)
- (position . 1789176)
- (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/emacs")
- (info-node . "Mac Port")
- (handler . Info-bookmark-jump))
 )
