@@ -2,12 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("intro elisp"
- (front-context-string . "\nAn Introduction")
- (rear-context-string . "ace,  Up: (dir)\n")
- (position . 1566)
+(("eintr"
+ (front-context-string . "File: eintr.info")
+ (rear-context-string)
+ (position . 49655)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "Top")
+ (info-node . "Lisp Interpreter")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
