@@ -1,4 +1,7 @@
 * Misc
+** highlight-indentation-current-column
+*** highlight-indentation
+*** indent-guide
 ** change magit popup hints to sort vertically
 ** project-wide search and replace
 *** helm-ag ?
