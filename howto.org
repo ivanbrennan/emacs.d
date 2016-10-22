@@ -1,4 +1,5 @@
 * Misc
+** don't show minor-mode lighters in the modeline, and instead provide a toggle to pop up a window indicating which minor-modes are enabled; should be easy to dismiss, like which-key
 ** highlight-indentation-current-column
 *** highlight-indentation
 *** indent-guide
