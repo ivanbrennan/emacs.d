@@ -1114,6 +1114,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(whitespace-indentation ((t (:background ,paper))))
    `(whitespace-empty ((t (:background ,whisp1))))
    `(whitespace-space-after-tab ((t (:background ,whisp1 :foreground ,navyblue))))
+;;;;; indent-guide
+   `(indent-guide-face ((t (:foreground ,pencil4))))
 ;;;;; wanderlust
    `(wl-highlight-folder-few-face ((t (:foreground ,ink))))
    `(wl-highlight-folder-many-face ((t (:foreground ,ink))))

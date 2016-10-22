@@ -328,6 +328,12 @@
     "x"          'execute-extended-command)
   )
 
+(use-package indent-guide
+  :commands indent-guide-mode
+  :init
+  (bind-map-set-keys ivan/leader-map
+    "C-t i" 'indent-guide-mode))
+
 (use-package evil-commentary
   :ensure t
   :diminish evil-commentary-mode
