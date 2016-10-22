@@ -334,6 +334,13 @@
   (bind-map-set-keys ivan/leader-map
     "C-t i" 'indent-guide-mode))
 
+(use-package manage-minor-mode
+  :commands manage-minor-mode
+  :init
+  (bind-map-set-keys ivan/leader-map "M" 'manage-minor-mode)
+  :config
+  (evil-define-key 'normal manage-minor-mode-map (kbd "q") 'quit-window))
+
 (use-package evil-commentary
   :ensure t
   :diminish evil-commentary-mode
