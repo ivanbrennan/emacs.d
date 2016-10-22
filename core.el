@@ -289,7 +289,7 @@
     :evil-states (normal motion visual)
     :override-minor-modes t)
   (bind-map-set-keys ivan/leader-map
-    ","          'evil-window-next
+    ","          'other-window
     "9"          'rainbow-delimiters-mode ; TODO: install this
     ":"          'eval-expression
     "C-b"        'list-buffers
@@ -333,6 +333,14 @@
   :init
   (bind-map-set-keys ivan/leader-map
     "C-t i" 'indent-guide-mode))
+
+(use-package golden-ratio
+  :commands
+  (golden-ratio golden-ratio-mode)
+  :init
+  (bind-map-set-keys ivan/leader-map
+    "C-g"   'golden-ratio
+    "C-t g" 'golden-ratio-mode))
 
 (use-package evil-commentary
   :ensure t
