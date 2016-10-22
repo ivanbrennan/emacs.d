@@ -334,14 +334,6 @@
   (bind-map-set-keys ivan/leader-map
     "C-t i" 'indent-guide-mode))
 
-(use-package golden-ratio
-  :commands
-  (golden-ratio golden-ratio-mode)
-  :init
-  (bind-map-set-keys ivan/leader-map
-    "C-g"   'golden-ratio
-    "C-t g" 'golden-ratio-mode))
-
 (use-package evil-commentary
   :ensure t
   :diminish evil-commentary-mode
