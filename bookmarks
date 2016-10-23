@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("eieio"
+(("spacemacs"
+ (filename . "~/Development/resources/emacs/spacemacs/init.el")
+ (front-context-string . "require 'core-sp")
+ (rear-context-string . "-paths.el\"))\n  (")
+ (position . 1057))
+("eieio"
  (front-context-string . "\nEIEIO\n*****\n\nEI")
  (rear-context-string . "art,  Up: (dir)\n")
  (position . 976)
