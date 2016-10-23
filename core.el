@@ -546,7 +546,7 @@
       ("C-w C-k" evil-window-up)
       ("C-w C-l" evil-window-right)
       (","       evil-window-next)
-      ("0"       delete-window)
+      ("0"       delete-window :color blue)
       ("m"       shrink-window-if-larger-than-buffer)
       ("ESC"     nil)
       ("q"       nil))
