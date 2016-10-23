@@ -1,8 +1,11 @@
 * Misc
+** tags (cscope, etags, gtags, ctags?)
+** highlight/unhighlight transient state
+** */# symbol navigation transient state like in Spacemacs
+** expand-region transient state like in Spacemacs
+** paste transient state
+** error transient-state on ~SPC e~
 ** don't show minor-mode lighters in the modeline, and instead provide a toggle to pop up a window indicating which minor-modes are enabled; should be easy to dismiss, like which-key
-** highlight-indentation-current-column
-*** highlight-indentation
-*** indent-guide
 ** change magit popup hints to sort vertically
 ** project-wide search and replace
 *** helm-ag ?
@@ -65,6 +68,7 @@ I'll enter hydra-scroll (~SPC .~), scroll around, decide to open a file, type ~M
 ** add flyspell-prog-mode to prog-mode-hook
 ** use framesets or winner-mode to replace vim-like tabs
 ** auto-indent as you type
+** layouts like in spacemacs?
 ** minibuffer curly-brace completion hints (ido ?)
 ** minibuffer inc-search autoaccept
 ** fringe color same as background
@@ -176,6 +180,7 @@ delete-window:
 delete-other-windows:
 : C-x 1
 
+** additional text objects like in spacemacs
 ** Indent with spaces
 How do I control whether Emacs indents with spaces or tabs?
 : (setq indent-tabs-mode nil)
@@ -242,6 +247,7 @@ How do I move the point to the middle/top/bottom of the window?
 : M-r
 
 * Keybindings
+** ag project, ag current default directory, ag arbitrary directory
 ** vim-like bindings in package list
 ** TAB in info and package list to jump to next link
 ** find sensible solutions for C-a, C-e, C-y, 0, $ in evil-mode
@@ -256,6 +262,8 @@ How do I move the point to the middle/top/bottom of the window?
 ** toggle isearch case-fold on the fly?
 ** get C-RET working in org mode
 * Packages
+** evil-indent-plus, evil-args, evil-exchange, evil-visual-star
+** eyebrowse, persp-mode, wconf
 ** lispy
 ** git-time-machine
 ** dired-details
@@ -263,6 +271,9 @@ How do I move the point to the middle/top/bottom of the window?
 ** ranger
 ** which-key
 ** multiple-cursors / multi-cursor
+** iedit
+** pcre2el
+** evil-lisp-state
 ** magit
 ** expand-region
 ** smartparens
