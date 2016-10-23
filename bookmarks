@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("eintr"
- (front-context-string . "\n3 How To Write ")
- (rear-context-string . "ation,  Up: Top\n")
- (position . 105543)
+ (front-context-string . "followed by the ")
+ (rear-context-string . "symbol `defun',\n")
+ (position . 110286)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "Writing Defuns")
+ (info-node . "defun")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
