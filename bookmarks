@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("eintr"
+(("eieio"
+ (front-context-string . "\nEIEIO\n*****\n\nEI")
+ (rear-context-string . "art,  Up: (dir)\n")
+ (position . 976)
+ (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eieio")
+ (info-node . "Top")
+ (handler . Info-bookmark-jump))
+("eintr"
  (front-context-string . "followed by the ")
  (rear-context-string . "symbol `defun',\n")
  (position . 110286)
