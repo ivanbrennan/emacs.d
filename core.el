@@ -280,6 +280,10 @@
   :commands (evil-numbers/inc-at-pt
              evil-numbers/dec-at-pt))
 
+(use-package evil-matchit
+  :ensure t
+  :init (global-evil-matchit-mode))
+
 (use-package bind-map
   :ensure t
   :config
