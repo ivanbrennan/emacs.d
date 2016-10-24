@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "followed by the ")
- (rear-context-string . "symbol `defun',\n")
- (position . 110286)
+ (front-context-string . "\n3.7.1 The `type")
+ (rear-context-string . "detail,  Up: if\n")
+ (position . 140566)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "defun")
+ (info-node . "type-of-animal in detail")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
