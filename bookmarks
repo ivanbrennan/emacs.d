@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\n3.7.1 The `type")
- (rear-context-string . "detail,  Up: if\n")
- (position . 140566)
+ (front-context-string . "\n4.6 Exercises\n=")
+ (rear-context-string . "er Walk Through\n")
+ (position . 189189)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "type-of-animal in detail")
+ (info-node . "Buffer Exercises")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
