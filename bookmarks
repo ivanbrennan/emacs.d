@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\n5.2.5 The `let'")
- (rear-context-string . ": insert-buffer\n")
- (position . 203837)
+ (front-context-string . "\n5.5 `optional' ")
+ (rear-context-string . "p: More Complex\n")
+ (position . 224219)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "Insert let")
+ (info-node . "optional Exercise")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
