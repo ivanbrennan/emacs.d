@@ -13,9 +13,6 @@
 (scroll-bar-mode 0)
 (tooltip-mode    0)
 
-;; useful indicators
-(column-number-mode)
-
 ;; parens
 (show-paren-mode)
 (electric-pair-mode)
