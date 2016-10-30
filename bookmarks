@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\n8.2.2 Lisp macr")
- (rear-context-string . "Up: kill-region\n")
- (position . 275199)
+ (front-context-string . "\n   (There is a ")
+ (rear-context-string . "ntation string.\n")
+ (position . 304903)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "Lisp macro")
+ (info-node . "defvar")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
