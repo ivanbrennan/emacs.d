@@ -547,7 +547,23 @@
         (git-link remote start end)))
     (bind-map-set-keys ivan/leader-map
       "g l" 'git-link
-      "g L" 'ivan/open-git-link-in-browser)))
+      "g L" 'ivan/open-git-link-in-browser)
+    (defun ivan/git-link-ibrennan-handy (hostname dirname filename branch commit start end)
+      (format "https://github.com/%s/blob/%s/%s#%s"
+              dirname
+              (or branch commit)
+              filename
+              (if end
+                  (format "L%s-L%s" start end)
+                (format "L%s" start))))
+    (defun ivan/git-link-commit-ibrennan-handy (hostname dirname commit)
+      (format "https://github.com/%s/commit/%s"
+              dirname
+              commit))
+    (add-to-list 'git-link-remote-alist        '("ibrennan-handy" ivan/git-link-ibrennan-handy))
+    (add-to-list 'git-link-commit-remote-alist '("ibrennan-handy" ivan/git-link-commit-ibrennan-handy))
+    )
+  )
 
 (use-package hydra
   :ensure t
