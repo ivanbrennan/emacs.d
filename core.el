@@ -13,6 +13,9 @@
 (scroll-bar-mode 0)
 (tooltip-mode    0)
 
+;; coding
+(prefer-coding-system 'utf-8)
+
 ;; parens
 (show-paren-mode)
 (electric-pair-mode)
