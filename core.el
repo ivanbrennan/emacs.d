@@ -54,7 +54,7 @@
 (setq ivan/themes '(elixir elixir-dark))
 (setq ivan/themes-index 0)
 
-(defun ivan/cycle-theme ()
+(defun ivan/rotate-theme ()
   (interactive)
   (setq ivan/themes-index (% (1+ ivan/themes-index) (length ivan/themes)))
   (ivan/load-indexed-theme))
@@ -301,7 +301,7 @@
     "V"          'exchange-point-and-mark
     "X SPC"      'server-edit
     "X s"        'server-start
-    "\\"         'ivan/cycle-theme
+    "\\"         'ivan/rotate-theme
     "a g"        'ag
     "a r"        'ag-regexp
     ;; "b SPC"    'hydra-buffers/body
