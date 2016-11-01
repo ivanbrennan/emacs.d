@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("spacemacs"
- (filename . "~/Development/resources/emacs/spacemacs/init.el")
- (front-context-string . "require 'core-sp")
- (rear-context-string . "-paths.el\"))\n  (")
- (position . 1057))
+ (filename . "~/Development/resources/emacs/spacemacs/core/core-dotspacemacs.el")
+ (front-context-string . "start.\")\n\n(defva")
+ (rear-context-string . "omatically upon\n")
+ (position . 8652))
 ("eieio"
  (front-context-string . "\nEIEIO\n*****\n\nEI")
  (rear-context-string . "art,  Up: (dir)\n")
@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\n   (There is a ")
- (rear-context-string . "ntation string.\n")
- (position . 304903)
+ (front-context-string . "\nSeeing the Curr")
+ (rear-context-string . "sk,  Up: defvar\n")
+ (position . 305247)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "defvar")
+ (info-node . "See variable current value")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
