@@ -1,8 +1,10 @@
 ;; blank slate
-(setq inhibit-startup-screen t
-      inhibit-startup-echo-area-message "ivan"
-      initial-scratch-message nil
-      frame-title-format "emacs")
+(setq
+ inhibit-startup-screen t
+ inhibit-startup-echo-area-message "ivan"
+ initial-scratch-message nil
+ frame-title-format "emacs"
+ )
 
 ;; If your init file is byte-compiled, use the following form instead:
 ;;  (eval \\='(setq inhibit-startup-echo-area-message \"YOUR-USER-NAME\"))
@@ -13,46 +15,61 @@
 (scroll-bar-mode 0)
 (tooltip-mode    0)
 
+
 ;; coding
 (prefer-coding-system 'utf-8)
+
 
 ;; parens
 (show-paren-mode)
 (electric-pair-mode)
-(setq blink-matching-paren 'jump
-      blink-matching-delay 0.25)
+
+(setq
+ blink-matching-paren 'jump
+ blink-matching-delay 0.25
+ )
 
 ;; cursor
 (blink-cursor-mode 0)
-(setq-default cursor-type 'bar
-              cursor-in-non-selected-windows nil)
+
+(setq-default
+ cursor-type 'bar
+ cursor-in-non-selected-windows nil
+ )
+
 
 ;; persistence
 (make-directory (concat user-emacs-directory ".cache") :mkdir_p)
+
 (defun ivan/emacs-file (name)
   (concat user-emacs-directory name))
+
 (make-directory (ivan/emacs-file ".cache/auto-save") :mkdir_p)
+
 (setq custom-file (ivan/emacs-file "custom.el"))
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
 
-(setq backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
-      auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") :uniquify))
-      auto-save-list-file-prefix      (ivan/emacs-file ".cache/auto-save-list/.saves-")
-      savehist-file                   (ivan/emacs-file ".cache/savehist")
-      ido-save-directory-list-file    (ivan/emacs-file ".cache/ido.last")
-      eshell-directory-name           (ivan/emacs-file ".cache/eshell/")
-      tramp-persistency-file-name     (ivan/emacs-file ".cache/tramp")
-      backup-by-copying t)
+(setq
+ auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") :uniquify))
+ auto-save-list-file-prefix      (ivan/emacs-file ".cache/auto-save-list/.saves-")
+ backup-by-copying               t
+ backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
+ eshell-directory-name           (ivan/emacs-file ".cache/eshell/")
+ ido-save-directory-list-file    (ivan/emacs-file ".cache/ido.last")
+ savehist-file                   (ivan/emacs-file ".cache/savehist")
+ tramp-persistency-file-name     (ivan/emacs-file ".cache/tramp")
+ )
 
 (savehist-mode)
+
 
 ;; theme
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory :mkdir_p)
 
-(setq ivan/themes '(elixir elixir-dark))
-(setq ivan/themes-index 0)
+(defvar ivan/themes '(elixir elixir-dark))
+(defvar ivan/themes-index 0)
 
 (defun ivan/rotate-theme ()
   (interactive)
@@ -60,7 +77,8 @@
   (ivan/load-indexed-theme))
 
 (defun ivan/load-indexed-theme ()
-  (ivan/try-load-theme (nth ivan/themes-index ivan/themes)))
+  (ivan/try-load-theme (nth ivan/themes-index
+                            ivan/themes)))
 
 (defun ivan/try-load-theme (theme)
   (if (ignore-errors (load-theme theme :no-confirm))
@@ -69,41 +87,57 @@
 
 (ivan/load-indexed-theme)
 
+
+;; variable-pitch-mode
 (add-hook 'help-mode-hook #'variable-pitch-mode)
 (add-hook 'Info-mode-hook #'variable-pitch-mode)
 
+
 ;; transparency
-(let ((transparent '(97 . 85)))
-  (set-frame-parameter (selected-frame) 'alpha transparent)
-  (add-to-list 'default-frame-alist `(alpha . ,transparent)))
+(let ((opacity '(97 . 85)))
+  (set-frame-parameter (selected-frame)
+                       'alpha
+                       opacity)
+  (add-to-list 'default-frame-alist
+               `(alpha . ,opacity)))
 
 (defun ivan/toggle-transparency ()
   (interactive)
-  (let ((new-value (if (eql (frame-parameter nil 'alpha) 100) '(97 . 85) 100)))
+  (let* ((opaque (eql (frame-parameter nil 'alpha) 100))
+         (new-value (if opaque '(97 . 85) 100)))
     (set-frame-parameter nil 'alpha new-value)))
 
+
 ;; line-wrapping
-(defun ivan/truncate-lines () (setq truncate-lines t))
+(defun ivan/truncate-lines ()
+  (setq truncate-lines t))
+
 (add-hook 'prog-mode-hook #'ivan/truncate-lines)
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'help-mode-hook #'visual-line-mode)
-(with-current-buffer "*Messages*" (visual-line-mode))
+
+(with-current-buffer "*Messages*"
+  (visual-line-mode))
+
 
 ;; splits
 (setq split-width-threshold 130)
 
 ;; scroll
-(setq scroll-step    1
-      scroll-margin  0
-      hscroll-step   1
-      hscroll-margin 2
-      scroll-conservatively 200
-      mouse-wheel-scroll-amount '(0.01 ((shift) . 1))
-      isearch-allow-scroll t)
+(setq
+ scroll-step    1
+ scroll-margin  0
+ hscroll-step   1
+ hscroll-margin 2
+ scroll-conservatively 200
+ mouse-wheel-scroll-amount '(0.01 ((shift) . 1))
+ isearch-allow-scroll t
+ )
 
 (defun ivan/scroll-right ()
   (interactive)
   (scroll-right 2))
+
 (defun ivan/scroll-left ()
   (interactive)
   (scroll-left 2))
@@ -114,9 +148,11 @@
     (define-key map [wheel-left] #'ivan/scroll-right)
     map)
   "ivan/hscroll-minor-mode keymap.")
+
 (define-minor-mode ivan/hscroll-minor-mode
   "A minor mode so my horizontal scroll bindings take precedence."
   :init-value t)
+
 (ivan/hscroll-minor-mode 1)
 
 (put 'mac-mwheel-scroll 'isearch-scroll t)
@@ -124,52 +160,62 @@
 (put 'ivan/scroll-left  'isearch-scroll t)
 (put 'hl-line-mode      'isearch-scroll t)
 
+
 ;; whitespace
-(setq whitespace-line-column 90
-      whitespace-style '(face
-                         empty
-                         trailing
-                         lines-tail
-                         indentation
-                         space-before-tab
-                         space-after-tab))
+(setq
+ whitespace-line-column 90
+ whitespace-style '(
+                    empty
+                    face
+                    indentation
+                    lines-tail
+                    space-after-tab
+                    space-before-tab
+                    trailing
+                    )
+ )
 
 (defun ivan/code-whitespace ()
   (hl-line-mode)
-  (setq indent-tabs-mode         nil
-        indicate-empty-lines     t
-        show-trailing-whitespace t))
+  (setq
+   indent-tabs-mode         nil
+   indicate-empty-lines     t
+   show-trailing-whitespace t
+   ))
 
 (add-hook 'prog-mode-hook #'ivan/code-whitespace)
 (add-hook 'org-mode-hook  #'ivan/code-whitespace)
 
+
 ;; sensibility
-(setq apropos-do-all                      t
-      bookmark-bmenu-toggle-filenames     nil
-      comint-prompt-read-only             t
-      completion-auto-help                'lazy
-      completions-format                  'vertical
-      delete-by-moving-to-trash           t
-      echo-keystrokes                     0.5
-      ediff-split-window-function         #'split-window-horizontally
-      ediff-window-setup-function         'ediff-setup-windows-plain
-      find-file-visit-truename            t
-      hi-lock-auto-select-face            t
-      history-delete-duplicates           t
-      ispell-program-name                 "/usr/local/bin/aspell"
-      minibuffer-eldef-shorten-default    t
-      query-replace-skip-read-only        t
-      read-buffer-completion-ignore-case  t
-      require-final-newline               t
-      resize-mini-windows                 t
-      save-interprogram-paste-before-kill t
-      scroll-preserve-screen-position     t
-      sentence-end-double-space           nil
-      set-mark-command-repeat-pop         t
-      split-window-keep-point             nil
-      tab-always-indent                   'complete
-      uniquify-buffer-name-style          'forward
-      vc-follow-symlinks                  t)
+(setq
+ apropos-do-all                      t
+ bookmark-bmenu-toggle-filenames     nil
+ comint-prompt-read-only             t
+ completion-auto-help                'lazy
+ completions-format                  'vertical
+ delete-by-moving-to-trash           t
+ echo-keystrokes                     0.5
+ ediff-split-window-function         #'split-window-horizontally
+ ediff-window-setup-function         'ediff-setup-windows-plain
+ find-file-visit-truename            t
+ hi-lock-auto-select-face            t
+ history-delete-duplicates           t
+ ispell-program-name                 "/usr/local/bin/aspell"
+ minibuffer-eldef-shorten-default    t
+ query-replace-skip-read-only        t
+ read-buffer-completion-ignore-case  t
+ require-final-newline               t
+ resize-mini-windows                 t
+ save-interprogram-paste-before-kill t
+ scroll-preserve-screen-position     t
+ sentence-end-double-space           nil
+ set-mark-command-repeat-pop         t
+ split-window-keep-point             nil
+ tab-always-indent                   'complete
+ uniquify-buffer-name-style          'forward
+ vc-follow-symlinks                  t
+ )
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -185,35 +231,54 @@
                (y-or-n-p (format "Directory ‘%s’ does not exist! Create it?" parent-directory)))
       (make-directory parent-directory :mkdir_p))))
 
-(add-to-list 'find-file-not-found-functions 'ivan/create-non-existent-directory)
+(add-to-list 'find-file-not-found-functions
+             'ivan/create-non-existent-directory)
+
 
 ;; env
 (setenv "PAGER" "/usr/bin/env cat")
 
+
 ;; load-path
-(add-to-list 'load-path (ivan/emacs-file "config"))
+(add-to-list 'load-path
+             (ivan/emacs-file "config"))
+
 
 ;; documentation
 (with-eval-after-load 'info
-  (add-to-list 'Info-additional-directory-list (ivan/emacs-file "info/")))
+  (add-to-list 'Info-additional-directory-list
+               (ivan/emacs-file "info/")))
+
 (with-eval-after-load 'help
   (setq source-directory "~/Development/code/elisp/emacs-mac"))
+
 
 ;; tramp
 (setq tramp-default-method "ssh")
 
+
 ;; packages
 (require 'package)
 
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/")    :append)
-(add-to-list 'package-archives '("melpa"        . "http://melpa.org/packages/")           :append)
-(add-to-list 'package-archives '("marmalade"    . "https://marmalade-repo.org/packages/") :append)
+(mapc
+ (lambda (x) (add-to-list 'package-archives x :append))
+ '(
+   ("melpa-stable" . "http://stable.melpa.org/packages/")
+   ("melpa"        . "http://melpa.org/packages/")
+   ("marmalade"    . "https://marmalade-repo.org/packages/")
+   )
+ )
 
-(setq package-enable-at-startup  nil
-      package-archive-priorities '(("melpa-stable" . 3)
-                                   ("gnu"          . 2)
-                                   ("marmalade"    . 1)
-                                   ("melpa"        . 0)))
+(setq
+ package-enable-at-startup  nil
+ package-archive-priorities '(
+                              ("melpa-stable" . 3)
+                              ("gnu"          . 2)
+                              ("marmalade"    . 1)
+                              ("melpa"        . 0)
+                              )
+ )
+
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -230,15 +295,18 @@
     (defun ivan/colorize-theme ()
       (if (string-match "-theme.el$" (buffer-name)) (rainbow-mode 1)))
     (add-hook 'emacs-lisp-mode-hook #'ivan/colorize-theme))
-  :config (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
+  :config
+  (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
 (use-package linum-relative
   :commands linum-relative-toggle
-  :config (setq linum-relative-current-symbol ""))
+  :config
+  (setq linum-relative-current-symbol ""))
 
 (use-package elixir-mode
   :ensure t
-  :config (use-package alchemist))
+  :config
+  (use-package alchemist))
 
 (use-package undo-tree
   :ensure t
@@ -261,7 +329,8 @@
   :ensure t
   :commands (zoom-window-zoom
              zoom-window--enable-p)
-  :config (setq zoom-window-mode-line-color "#E4FFEA"))
+  :config
+  (setq zoom-window-mode-line-color "#E4FFEA"))
 
 (defun ivan/other-window-zoom ()
   (interactive)
@@ -329,19 +398,24 @@
     "w c"        'evil-window-delete
     "w j"        'webjump
     "w n"        'ivan/toggle-narrowing
-    "x"          'execute-extended-command)
+    "x"          'execute-extended-command
+    )
   )
 
 (use-package indent-guide
   :commands indent-guide-mode
   :init
   (bind-map-set-keys ivan/leader-map
-    "C-t i" 'indent-guide-mode))
+    "C-t i" 'indent-guide-mode
+    )
+  )
 
 (use-package manage-minor-mode
   :commands manage-minor-mode
   :init
-  (bind-map-set-keys ivan/leader-map "M" 'manage-minor-mode)
+  (bind-map-set-keys ivan/leader-map
+    "M" 'manage-minor-mode
+    )
   :config
   (evil-define-key 'normal manage-minor-mode-map (kbd "q") 'quit-window))
 
@@ -351,74 +425,82 @@
   :init
   (progn
     (bind-map-set-keys ivan/leader-map
-      ";" 'evil-commentary)
+      ";" 'evil-commentary
+      )
     (evil-commentary-mode)))
 
 (use-package evil
   :ensure t
   :demand
-  :bind (:map evil-normal-state-map
-         ("'"           . evil-goto-mark)
-         ("`"           . evil-goto-mark-line)
-         ("U"           . undo-tree-redo)
-         ("C-d"         . kill-buffer-and-window)
-         ("C-r"         . isearch-backward)
-         ("C-e"         . evil-end-of-line)
-         ("C-S-E"       . evil-scroll-line-down)
-         ("C-w C-h"     . evil-window-left)
-         ("C-w C-j"     . evil-window-down)
-         ("C-w C-k"     . evil-window-up)
-         ("C-w C-l"     . evil-window-right)
-         ("C-w s"       . split-window-below)
-         ("C-w <SPC>"   . zoom-window-zoom)
-         ("C-w C-<SPC>" . zoom-window-zoom)
-         ("C-w S-<SPC>" . ivan/other-window-zoom)
-         ("S-<SPC>"     . ivan/emacs-state-rectangle-mark-mode)
-         ("C-<return>"  . ivan/add-whitespace-below)
-         ("S-<return>"  . ivan/add-whitespace-above)
-         ("˜"           . next-error)
-         ("∏"           . previous-error)
-         ("≠"           . evil-numbers/inc-at-pt)
-         ("–"           . evil-numbers/dec-at-pt)
-         :map evil-motion-state-map
-         ("C-d"         . kill-buffer-and-window)
-         ("C-e"         . evil-end-of-line)
-         ("C-S-E"       . evil-scroll-line-down)
-         ("C-w C-h"     . evil-window-left)
-         ("C-w C-j"     . evil-window-down)
-         ("C-w C-k"     . evil-window-up)
-         ("C-w C-l"     . evil-window-right)
-         ("C-w s"       . split-window-below)
-         ("C-w <SPC>"   . zoom-window-zoom)
-         ("C-w C-<SPC>" . zoom-window-zoom)
-         ("C-w S-<SPC>" . ivan/other-window-zoom)
-         ("˜"           . next-error)
-         ("∏"           . previous-error)
-         :map evil-visual-state-map
-         ("C-r"         . isearch-backward)
-         ("<tab>"       . evil-indent)
-         :map evil-insert-state-map
-         ("M-v"         . yank)
-         ("C-S-U"       . ivan/backward-kill-line)
-         :map evil-replace-state-map
-         ("M-v"         . yank)
-         ("C-e"         . evil-copy-from-below)
-         ("C-y"         . evil-copy-from-above))
+  :bind
+  (:map evil-normal-state-map
+        ("'"           . evil-goto-mark)
+        ("`"           . evil-goto-mark-line)
+        ("U"           . undo-tree-redo)
+        ("C-d"         . kill-buffer-and-window)
+        ("C-r"         . isearch-backward)
+        ("C-e"         . evil-end-of-line)
+        ("C-S-E"       . evil-scroll-line-down)
+        ("C-w C-h"     . evil-window-left)
+        ("C-w C-j"     . evil-window-down)
+        ("C-w C-k"     . evil-window-up)
+        ("C-w C-l"     . evil-window-right)
+        ("C-w s"       . split-window-below)
+        ("C-w <SPC>"   . zoom-window-zoom)
+        ("C-w C-<SPC>" . zoom-window-zoom)
+        ("C-w S-<SPC>" . ivan/other-window-zoom)
+        ("S-<SPC>"     . ivan/emacs-state-rectangle-mark-mode)
+        ("C-<return>"  . ivan/add-whitespace-below)
+        ("S-<return>"  . ivan/add-whitespace-above)
+        ("˜"           . next-error)
+        ("∏"           . previous-error)
+        ("≠"           . evil-numbers/inc-at-pt)
+        ("–"           . evil-numbers/dec-at-pt)
+        :map evil-motion-state-map
+        ("C-d"         . kill-buffer-and-window)
+        ("C-e"         . evil-end-of-line)
+        ("C-S-E"       . evil-scroll-line-down)
+        ("C-w C-h"     . evil-window-left)
+        ("C-w C-j"     . evil-window-down)
+        ("C-w C-k"     . evil-window-up)
+        ("C-w C-l"     . evil-window-right)
+        ("C-w s"       . split-window-below)
+        ("C-w <SPC>"   . zoom-window-zoom)
+        ("C-w C-<SPC>" . zoom-window-zoom)
+        ("C-w S-<SPC>" . ivan/other-window-zoom)
+        ("˜"           . next-error)
+        ("∏"           . previous-error)
+        :map evil-visual-state-map
+        ("C-r"         . isearch-backward)
+        ("<tab>"       . evil-indent)
+        :map evil-insert-state-map
+        ("M-v"         . yank)
+        ("C-S-U"       . ivan/backward-kill-line)
+        :map evil-replace-state-map
+        ("M-v"         . yank)
+        ("C-e"         . evil-copy-from-below)
+        ("C-y"         . evil-copy-from-above)
+        )
+  :init
+  (add-hook 'after-init-hook #'evil-mode)
   :config
   (progn
-    (setq evil-emacs-state-tag    " ·e·"
-          evil-insert-state-tag   " ·i·"
-          evil-motion-state-tag   " ·m·"
-          evil-normal-state-tag   " ·n·"
-          evil-operator-state-tag " ·o·"
-          evil-replace-state-tag  " ·r·"
-          evil-visual-state-tag   " ·v·")
-    (setq evil-emacs-state-modes
-          (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
+    (setq
+     evil-emacs-state-tag    " ·e·"
+     evil-insert-state-tag   " ·i·"
+     evil-motion-state-tag   " ·m·"
+     evil-normal-state-tag   " ·n·"
+     evil-operator-state-tag " ·o·"
+     evil-replace-state-tag  " ·r·"
+     evil-visual-state-tag   " ·v·"
+     )
+    (setq
+     evil-emacs-state-cursor 'bar
+     evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes)
+     )
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
     (setq-default evil-shift-width 2)
-    (setq evil-emacs-state-cursor 'bar)
     (defun ivan/emacs-state-rectangle-mark-mode ()
       (interactive)
       (evil-emacs-state)
@@ -437,7 +519,8 @@
     (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))))
 
 (use-package goto-chg
-  :commands (goto-last-change goto-last-change-reverse))
+  :commands (goto-last-change
+             goto-last-change-reverse))
 
 (use-package ffap
   :commands ffap-other-window)
@@ -471,8 +554,8 @@
   :bind ("M-S-<return>" . hydra-focus/body)
   :config
   (progn
-    (setq hydra-scroll/lock :always)
-    (setq hydra-scroll/other-window nil)
+    (defvar hydra-scroll/lock :always)
+    (defvar hydra-scroll/other-window nil)
     (defface hydra-face-title
       '((t (:slant italic)))
       "Face for title string within a hydra hint"
@@ -500,18 +583,23 @@
       ("q"      nil))
     (bind-map-set-keys ivan/leader-map
       "." 'hydra-scroll/body)
-    (defun hydra-scroll/locked () (eql :always hydra-scroll/lock))
-    (defun hydra-scroll/lock-hint () (if (hydra-scroll/locked) 'unlock 'lock))
+    (defun hydra-scroll/locked ()
+      (eql :always hydra-scroll/lock))
+    (defun hydra-scroll/lock-hint ()
+      (if (hydra-scroll/locked) 'unlock 'lock))
     (defun hydra-scroll/window-hint ()
       (let ((other (if hydra-scroll/other-window "-other" ""))
             (unlocked (if (hydra-scroll/locked) "" "-unlocked")))
-        (propertize (format " scroll%s%s " other unlocked) 'face 'hydra-face-title)))
+        (propertize
+         (format " scroll%s%s " other unlocked) 'face 'hydra-face-title)))
     (defun hydra-scroll/toggle-lock ()
       (interactive)
-      (setq-local hydra-scroll/lock (if (hydra-scroll/locked) t :always)))
+      (setq-local hydra-scroll/lock
+                  (if (hydra-scroll/locked) t :always)))
     (defun hydra-scroll/toggle-other-window ()
       (interactive)
-      (setq-local hydra-scroll/other-window (null hydra-scroll/other-window)))
+      (setq-local hydra-scroll/other-window
+                  (null hydra-scroll/other-window)))
     (defun hydra-scroll/pgdown ()
       (interactive)
       (if hydra-scroll/other-window (scroll-other-window) (Info-scroll-up)))
@@ -524,14 +612,16 @@
         (if hydra-scroll/other-window (scroll-other-window 1) (scroll-up-line))))
     (defun hydra-scroll/next-line-with-lock ()
       (interactive)
-      (let ((hydra-scroll/lock :always)) (hydra-scroll/next-line)))
+      (let ((hydra-scroll/lock :always))
+        (hydra-scroll/next-line)))
     (defun hydra-scroll/previous-line ()
       (interactive)
       (let ((scroll-preserve-screen-position hydra-scroll/lock))
         (if hydra-scroll/other-window (scroll-other-window-down 1) (scroll-down-line))))
     (defun hydra-scroll/previous-line-with-lock ()
       (interactive)
-      (let ((hydra-scroll/lock :always)) (hydra-scroll/previous-line)))
+      (let ((hydra-scroll/lock :always))
+        (hydra-scroll/previous-line)))
     (defhydra hydra-windsize (:hint nil
                               :pre (setq hydra-lv nil)
                               :after-exit (setq hydra-lv t))
@@ -558,13 +648,16 @@
       ("ESC"     nil)
       ("q"       nil))
     (bind-map-set-keys ivan/leader-map
-      "w" 'hydra-windsize/body)
-    (bind-keys :map evil-normal-state-map
-               ("C-w ."   . hydra-windsize/body)
-               ("C-w C-." . hydra-windsize/body)
-               :map evil-motion-state-map
-               ("C-w ."   . hydra-windsize/body)
-               ("C-w C-." . hydra-windsize/body))
+      "w" 'hydra-windsize/body
+      )
+    (bind-keys
+     :map evil-normal-state-map
+     ("C-w ."   . hydra-windsize/body)
+     ("C-w C-." . hydra-windsize/body)
+     :map evil-motion-state-map
+     ("C-w ."   . hydra-windsize/body)
+     ("C-w C-." . hydra-windsize/body)
+     )
     (defhydra hydra-focus ()
       "focus"
       ("]"   ivan/increase-padding "increase")
@@ -586,7 +679,10 @@
       "<SPC> m"   "mode"
       "<SPC> m e" "eval"
       "<SPC> s"   "search"
-      "<SPC> ."   "scroll")))
+      "<SPC> ."   "scroll"
+      )
+    )
+  )
 
 (use-package drag-stuff
   :demand
@@ -597,22 +693,28 @@
     (add-to-list 'drag-stuff-except-modes 'org-mode)))
 
 (use-package company
-  :bind (:map company-active-map
+  :bind
+  (:map company-active-map
         ("C-n" . company-select-next)
-        ("C-p" . company-select-previous)))
+        ("C-p" . company-select-previous)
+        )
+  )
 
 (use-package ag
   :ensure t
-  :commands (ag
-             ag-files
-             ag-regexp
-             ag-project
-             ag-project-files
-             ag-project-regexp
-             ag-dired
-             ag-dired-regexp
-             ag-project-dired
-             ag-project-dired-regexp)
+  :commands
+  (
+   ag
+   ag-files
+   ag-regexp
+   ag-project
+   ag-project-files
+   ag-project-regexp
+   ag-dired
+   ag-dired-regexp
+   ag-project-dired
+   ag-project-dired-regexp
+   )
   :config
   (progn
     (use-package dash)
@@ -622,15 +724,20 @@
   :ensure t
   :commands (crux-smart-open-line
              crux-smart-open-line-above)
-  :bind (("C-<return>" . crux-smart-open-line)
-         ("S-<return>" . crux-smart-open-line-above)))
+  :bind (
+         ("C-<return>" . crux-smart-open-line)
+         ("S-<return>" . crux-smart-open-line-above)
+         )
+  )
 
 (use-package windsize
   :ensure t
-  :bind (("C-S-<left>"  . windsize-left)
+  :bind (
+         ("C-S-<left>"  . windsize-left)
          ("C-S-<right>" . windsize-right)
          ("C-S-<up>"    . windsize-up)
-         ("C-S-<down>"  . windsize-down))
+         ("C-S-<down>"  . windsize-down)
+         )
   :config
   (progn
     (setq windsize-rows 1 windsize-cols 2)
@@ -640,16 +747,20 @@
     (put 'windsize-right 'isearch-scroll t)))
 
 (defun ivan/setup-org-mode ()
-  (setq org-hide-leading-stars t)
-  (variable-pitch-mode t)
-  (setq line-spacing 0.15))
+  (setq
+   org-hide-leading-stars t
+   line-spacing 0.15
+   )
+  (variable-pitch-mode t))
+
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
 
 (use-package org-bullets
   :ensure t
   :config
   (progn
-    (setq org-bullets-bullet-list '("◉" "○" "•"))
+    (setq org-bullets-bullet-list
+          '("◉" "○" "•"))
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))))
 
 (use-package page-break-lines
@@ -665,8 +776,11 @@
   :demand
   :init
   (progn
-    (setq evil-magit-use-y-for-yank nil
-          evil-magit-want-horizontal-movement t))
+    (setq
+     evil-magit-use-y-for-yank nil
+     evil-magit-want-horizontal-movement t
+     )
+    )
   :config
   (progn
     (evil-define-key evil-magit-state magit-mode-map
@@ -678,14 +792,18 @@
       (kbd "yy")  'evil-yank-line
       (kbd "yr")  'magit-show-refs-popup
       (kbd "ys")  'magit-copy-section-value
-      (kbd "yb")  'magit-copy-buffer-revision)))
+      (kbd "yb")  'magit-copy-buffer-revision)
+    ))
 
 (use-package magit
   :ensure t
   :config
   (progn
-    (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-          magit-revision-show-gravatars '("^Author:     " . "^Commit:     "))))
+    (setq
+     magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
+     magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
+     )))
+
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
@@ -695,47 +813,53 @@ Disables `text-scale-mode`."
   (text-scale-set 0))
 
 (defun configure-gui ()
-  (bind-keys ("M-q"   . save-buffers-kill-terminal)
-             ("M-A"   . mark-whole-buffer)
-             ("M-o"   . find-file)
-             ("M-c"   . kill-ring-save)
-             ("M-w"   . delete-window)
-             ("M-W"   . delete-frame)
-             ("M-N"   . make-frame)
-             ("M-s"   . save-buffer)
-             ("M-u"   . ivan/toggle-transparency)
-             ("M-="   . text-scale-increase)
-             ("M--"   . text-scale-decrease)
-             ("M-0"   . ivan/text-scale-reset)
-             ("M-…"   . hl-line-mode) ; (⌥⌘;)
-             ("M-`"   . ns-next-frame)
-             ("M-~"   . ns-prev-frame)
-             ("M-<return>" . toggle-frame-fullscreen)
-             ;; reconcile some overridden keybindings
-             ("ESC M-q" . fill-paragraph)
-             ("ESC M-o" . facemenu-keymap)
-             ("ESC M-c" . capitalize-word)
-             ("ESC M-u" . upcase-word)
-             ("ESC M-=" . count-words-region))
+  (bind-keys
+   ("M-q"   . save-buffers-kill-terminal)
+   ("M-A"   . mark-whole-buffer)
+   ("M-o"   . find-file)
+   ("M-c"   . kill-ring-save)
+   ("M-w"   . delete-window)
+   ("M-W"   . delete-frame)
+   ("M-N"   . make-frame)
+   ("M-s"   . save-buffer)
+   ("M-u"   . ivan/toggle-transparency)
+   ("M-="   . text-scale-increase)
+   ("M--"   . text-scale-decrease)
+   ("M-0"   . ivan/text-scale-reset)
+   ("M-…"   . hl-line-mode) ; (⌥⌘;)
+   ("M-`"   . ns-next-frame)
+   ("M-~"   . ns-prev-frame)
+   ("M-<return>" . toggle-frame-fullscreen)
+   ;; reconcile some overridden keybindings
+   ("ESC M-q" . fill-paragraph)
+   ("ESC M-o" . facemenu-keymap)
+   ("ESC M-c" . capitalize-word)
+   ("ESC M-u" . upcase-word)
+   ("ESC M-=" . count-words-region)
+   )
   (bind-key "ESC M-s" search-map))
 
 (defun configure-terminal ()
   (xterm-mouse-mode)
-  (setq mouse-sel-mode t
-        mouse-wheel-follow-mouse 't)
-
-  (bind-keys ("<mouse-4>" . scroll-down-line)
-             ("<mouse-5>" . scroll-up-line))
-
+  (setq
+   mouse-sel-mode t
+   mouse-wheel-follow-mouse 't
+   )
+  (bind-keys
+   ("<mouse-4>" . scroll-down-line)
+   ("<mouse-5>" . scroll-up-line)
+   )
   (put 'scroll-down-line 'isearch-scroll t)
   (put 'scroll-up-line   'isearch-scroll t)
 
   (defun ivan/adjust-terminal-colors ()
     (unless (display-graphic-p (selected-frame))
       (set-face-background 'default "white" (selected-frame))
-      (set-face-background 'hl-line "#EEEEEE" (selected-frame))))
+      (set-face-background 'hl-line "#EEEEEE" (selected-frame)))
+    )
 
-  (add-hook 'window-setup-hook 'ivan/adjust-terminal-colors))
+  (add-hook 'window-setup-hook 'ivan/adjust-terminal-colors)
+  )
 
 (defun system-is-mac () (eq system-type 'darwin))
 
@@ -746,7 +870,8 @@ Disables `text-scale-mode`."
   (if (file-exists-p "/usr/local/bin/gls")
       (setq insert-directory-program "/usr/local/bin/gls")
     (require 'ls-lisp)
-    (setq ls-lisp-use-insert-directory-program nil)))
+    (setq ls-lisp-use-insert-directory-program nil))
+  )
 
 (if (system-is-mac)
     (progn
@@ -757,17 +882,20 @@ Disables `text-scale-mode`."
     (configure-gui)
   (configure-terminal))
 
+
 ;; keybindings
-(bind-keys ("M-/" . hippie-expand)
-           ("C-/" . undo-tree-undo)
-           ("C-?" . undo-tree-redo)
-           ("C-w" . ivan/kill-region-or-backward-kill-word)
-           ("S-<SPC>" . rectangle-mark-mode)
-           :map rectangle-mark-mode-map
-           ("s" . string-rectangle)
-           ("o" . rectangle-exchange-point-and-mark)
-           :map shell-mode-map
-           ("C-d" . comint-delchar-or-eof-or-kill-buffer))
+(bind-keys
+ ("M-/" . hippie-expand)
+ ("C-/" . undo-tree-undo)
+ ("C-?" . undo-tree-redo)
+ ("C-w" . ivan/kill-region-or-backward-kill-word)
+ ("S-<SPC>" . rectangle-mark-mode)
+ :map rectangle-mark-mode-map
+ ("s" . string-rectangle)
+ ("o" . rectangle-exchange-point-and-mark)
+ :map shell-mode-map
+ ("C-d" . comint-delchar-or-eof-or-kill-buffer)
+ )
 
 ;; esc quits
 (defun minibuffer-keyboard-quit ()
@@ -791,7 +919,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
        minibuffer-local-ns-map
        minibuffer-local-completion-map
        minibuffer-local-must-match-map
-       minibuffer-local-isearch-map))
+       minibuffer-local-isearch-map
+       ))
 
 (defun ivan/isearch-exit ()
   "Run isearch-exit, and if in the minibuffer, submit the search result as input."
@@ -800,17 +929,18 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (if (minibuffer-window-active-p (selected-window))
       (minibuffer-complete-and-exit)))
 
+
 ;; padding
 (set-display-table-slot
  standard-display-table 0 ?\ )
-(setq-default
- fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist))
+(setq-default fringe-indicator-alist
+              (assq-delete-all 'truncation fringe-indicator-alist))
 
-(setq ivan/padding-enabled nil)
-(setq ivan/padding-min 4)
-(setq ivan/padding-max 580)
-(setq ivan/padding-step 32)
-(setq ivan/padding-degree ivan/padding-min)
+(defvar ivan/padding-enabled nil)
+(defvar ivan/padding-min 4)
+(defvar ivan/padding-max 580)
+(defvar ivan/padding-step 32)
+(defvar ivan/padding-degree ivan/padding-min)
 
 (add-to-list 'default-frame-alist `(left-fringe . ,ivan/padding-min))
 (add-to-list 'default-frame-alist '(right-fringe . 1))
@@ -837,6 +967,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (defun ivan//apply-padding-degree (n) (set-window-fringes nil n))
 
+
+;; etc.
 (with-eval-after-load "isearch"
   (define-key isearch-mode-map [remap isearch-exit] #'ivan/isearch-exit))
 
@@ -876,7 +1008,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                   ("GitHub" . "https://github.com"))
                 webjump-sample-sites)))
 
-;; etc.
 (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
 (defun ivan/goto-match-beginning ()
@@ -898,17 +1029,22 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (backward-kill-word arg)))
 
 ;; diminish
-(with-eval-after-load 'flyspell (diminish 'flyspell-mode))
-(with-eval-after-load 'autorevert (diminish 'auto-revert-mode))
+(with-eval-after-load 'flyspell
+  (diminish 'flyspell-mode))
+(with-eval-after-load 'autorevert
+  (diminish 'auto-revert-mode))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
-(with-eval-after-load 'ibuffer (require 'ibuffer-config))
-(with-eval-after-load 'dired (require 'dired-config))
+(with-eval-after-load 'ibuffer
+  (require 'ibuffer-config))
+(with-eval-after-load 'dired
+  (require 'dired-config))
 
-(add-hook 'after-init-hook #'evil-mode)
-(setq calendar-latitude 40.7)
-(setq calendar-longitude -74.0)
-(setq calendar-location-name "New York, NY")
+(setq
+ calendar-latitude 40.7
+ calendar-longitude -74.0
+ calendar-location-name "New York, NY"
+ )
