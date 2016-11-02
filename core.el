@@ -705,8 +705,21 @@
   :diminish drag-stuff-mode
   :config
   (progn
+    (defun ivan/bind-drag-stuff-keys ()
+      (mapc (lambda (x)
+              (define-key drag-stuff-mode-map (kbd (car x)) (cdr x)))
+            '(("M-<up>"    . nil)
+              ("M-<down>"  . nil)
+              ("M-<right>" . nil)
+              ("M-<left>"  . nil)
+              ("C-M-k"     . drag-stuff-up)
+              ("C-M-j"     . drag-stuff-down)
+              ("C-M-l"     . drag-stuff-right)
+              ("C-M-h"     . drag-stuff-left))))
+    (add-hook 'drag-stuff-mode-hook 'ivan/bind-drag-stuff-keys)
     (drag-stuff-global-mode t)
-    (add-to-list 'drag-stuff-except-modes 'org-mode)))
+    )
+  )
 
 (use-package company
   :bind
