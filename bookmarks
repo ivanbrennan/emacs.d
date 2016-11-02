@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\n8.7 Searching E")
- (rear-context-string . " & Storing Text\n")
- (position . 311806)
+ (front-context-string . "\n9 How Lists are")
+ (rear-context-string . " Text,  Up: Top\n")
+ (position . 312531)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "search Exercises")
+ (info-node . "List Implementation")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
