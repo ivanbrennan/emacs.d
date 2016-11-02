@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\nSeeing the Curr")
- (rear-context-string . "sk,  Up: defvar\n")
- (position . 305247)
+ (front-context-string . "\n8.7 Searching E")
+ (rear-context-string . " & Storing Text\n")
+ (position . 311806)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "See variable current value")
+ (info-node . "search Exercises")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
