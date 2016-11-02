@@ -548,7 +548,7 @@
     (bind-map-set-keys ivan/leader-map
       "g l" 'git-link
       "g L" 'ivan/open-git-link-in-browser)
-    (defun ivan/git-link-ibrennan-handy (hostname dirname filename branch commit start end)
+    (defun ivan/git-link-github-handy (hostname dirname filename branch commit start end)
       (format "https://github.com/%s/blob/%s/%s#%s"
               dirname
               (or branch commit)
@@ -556,12 +556,12 @@
               (if end
                   (format "L%s-L%s" start end)
                 (format "L%s" start))))
-    (defun ivan/git-link-commit-ibrennan-handy (hostname dirname commit)
+    (defun ivan/git-link-commit-github-handy (hostname dirname commit)
       (format "https://github.com/%s/commit/%s"
               dirname
               commit))
-    (add-to-list 'git-link-remote-alist        '("ibrennan-handy" ivan/git-link-ibrennan-handy))
-    (add-to-list 'git-link-commit-remote-alist '("ibrennan-handy" ivan/git-link-commit-ibrennan-handy))
+    (add-to-list 'git-link-remote-alist        '("github-handy" ivan/git-link-github-handy))
+    (add-to-list 'git-link-commit-remote-alist '("github-handy" ivan/git-link-commit-github-handy))
     )
   )
 
