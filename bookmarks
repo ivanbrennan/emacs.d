@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\n10.2 The `kill-")
- (rear-context-string . "w,  Up: Yanking\n")
- (position . 324810)
+ (front-context-string . "\nLooping with `w")
+ (rear-context-string . "ple,  Up: while\n")
+ (position . 330747)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "kill-ring-yank-pointer")
+ (info-node . "Looping with while")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
