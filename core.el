@@ -616,6 +616,7 @@
       ("<wheel-up>"    mac-mwheel-scroll)
       ("<wheel-right>" ivan/scroll-left)
       ("<wheel-left>"  ivan/scroll-right)
+      ("M-<return>"    toggle-frame-fullscreen)
       )
     (bind-map-set-keys ivan/leader-map
       "." 'hydra-scroll/body)
