@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\nLooping with `w")
- (rear-context-string . "ple,  Up: while\n")
- (position . 330747)
+ (front-context-string . "\n12.6 Exercises ")
+ (rear-context-string . ": Regexp Search\n")
+ (position . 430774)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "Looping with while")
+ (info-node . "re-search Exercises")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
