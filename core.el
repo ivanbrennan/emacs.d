@@ -287,6 +287,21 @@
 
 (require 'use-package)
 
+(use-package elisp-slime-nav
+  :diminish elisp-slime-nav-mode
+  :commands elisp-slime-nav-mode
+  :init
+  (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+    (add-hook hook 'elisp-slime-nav-mode))
+  :config
+  (progn
+    (evil-define-key 'normal emacs-lisp-mode-map
+      (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
+    (evil-define-key 'normal ielm-map
+      (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
+    )
+  )
+
 (use-package rainbow-mode
   :diminish rainbow-mode
   :commands rainbow-mode
