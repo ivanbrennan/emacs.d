@@ -577,10 +577,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hl-sexp-face ((,class (:background ,paper))
                    (t :weight bold)))
 ;;;;; hydra
-   `(hydra-face-red      ((t (:foreground ,marooned  :background ,paper :bold t))))
+   `(hydra-face-red      ((t (:foreground ,bloodred  :background ,paper :bold t))))
    `(hydra-face-amaranth ((t (:foreground ,amaranth  :background ,paper :bold t))))
    `(hydra-face-blue     ((t (:foreground ,merged    :background ,paper :bold t))))
-   `(hydra-face-pink     ((t (:foreground ,eraser    :background ,paper :bold t))))
+   `(hydra-face-pink     ((t (:foreground ,marooned  :background ,paper :bold t))))
    `(hydra-face-teal     ((t (:foreground ,teal      :background ,paper :bold t))))
    `(hydra-face-title    ((t (:foreground ,slate     :background ,paper))))
 ;;;; ivy

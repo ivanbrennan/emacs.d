@@ -592,6 +592,7 @@
       "Face for title string within a hydra hint"
       :group 'hydra)
     (defhydra hydra-scroll (:hint nil
+                            :foreign-keys run
                             :pre (setq hydra-lv nil)
                             :post (progn
                                     (setq-local hydra-scroll/lock :always)
@@ -612,11 +613,6 @@
       (","             hydra-scroll/toggle-other-window)
       ("<escape>"      nil)
       ("q"             nil)
-      ("<wheel-down>"  mac-mwheel-scroll)
-      ("<wheel-up>"    mac-mwheel-scroll)
-      ("<wheel-right>" ivan/scroll-left)
-      ("<wheel-left>"  ivan/scroll-right)
-      ("M-<return>"    toggle-frame-fullscreen)
       )
     (bind-map-set-keys ivan/leader-map
       "." 'hydra-scroll/body)
