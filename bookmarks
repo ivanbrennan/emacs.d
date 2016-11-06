@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\n12.6 Exercises ")
- (rear-context-string . ": Regexp Search\n")
- (position . 430774)
+ (front-context-string . "File: eintr.info")
+ (rear-context-string)
+ (position . 450182)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "re-search Exercises")
+ (info-node . "recursive-count-words")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
