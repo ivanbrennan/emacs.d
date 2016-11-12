@@ -15,11 +15,11 @@
  (info-node . "Top")
  (handler . Info-bookmark-jump))
 ("eintr"
- (front-context-string . "\n14 Counting Wor")
- (rear-context-string . "Words,  Up: Top\n")
- (position . 462557)
+ (front-context-string . "\n17 Debugging\n**")
+ (rear-context-string . "ation,  Up: Top\n")
+ (position . 581528)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "Words in a defun")
+ (info-node . "Debugging")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
