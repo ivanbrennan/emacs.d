@@ -296,9 +296,9 @@
   :config
   (progn
     (evil-define-key 'normal emacs-lisp-mode-map
-      (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
+      (kbd "M-.") #'elisp-slime-nav-find-elisp-thing-at-point)
     (evil-define-key 'normal ielm-map
-      (kbd "M-.") 'elisp-slime-nav-find-elisp-thing-at-point)
+      (kbd "M-.") #'elisp-slime-nav-find-elisp-thing-at-point)
     )
   )
 
@@ -377,43 +377,43 @@
     :evil-states (normal motion visual)
     :override-minor-modes t)
   (bind-map-set-keys ivan/leader-map
-    ","          'other-window
-    "9"          'rainbow-delimiters-mode ; TODO: install this
-    ":"          'eval-expression
-    "C-b"        'list-buffers
-    "C-n"        'ivan/toggle-narrowing
-    "V"          'exchange-point-and-mark
-    "X SPC"      'server-edit
-    "X s"        'server-start
-    "\\"         'ivan/rotate-theme
-    "a g"        'ag
-    "a r"        'ag-regexp
-    ;; "b SPC"    'hydra-buffers/body
-    "b b"        'switch-to-buffer
-    "b d"        'kill-this-buffer
-    "b j"        'bookmark-jump
-    "b l"        'bookmark-bmenu-list
-    "b m"        'bookmark-set
-    "f a"        'find-alternate-file
-    "f j"        'dired-jump
-    "f s"        'save-buffer
-    "f w"        'write-file
-    "g b"        'magit-blame
-    "g s"        'magit-status
-    "l"          'evil-switch-to-windows-last-buffer
-    "m e b"      'eval-buffer
-    "m e f"      'eval-defun
-    "m e e"      'pp-eval-last-sexp
-    "m e r"      'eval-region
-    "o"          'find-file
+    ","          #'other-window
+    "9"          #'rainbow-delimiters-mode ; TODO: install this
+    ":"          #'eval-expression
+    "C-b"        #'list-buffers
+    "C-n"        #'ivan/toggle-narrowing
+    "V"          #'exchange-point-and-mark
+    "X SPC"      #'server-edit
+    "X s"        #'server-start
+    "\\"         #'ivan/rotate-theme
+    "a g"        #'ag
+    "a r"        #'ag-regexp
+    ;; "b SPC"    #'hydra-buffers/body
+    "b b"        #'switch-to-buffer
+    "b d"        #'kill-this-buffer
+    "b j"        #'bookmark-jump
+    "b l"        #'bookmark-bmenu-list
+    "b m"        #'bookmark-set
+    "f a"        #'find-alternate-file
+    "f j"        #'dired-jump
+    "f s"        #'save-buffer
+    "f w"        #'write-file
+    "g b"        #'magit-blame
+    "g s"        #'magit-status
+    "l"          #'evil-switch-to-windows-last-buffer
+    "m e b"      #'eval-buffer
+    "m e f"      #'eval-defun
+    "m e e"      #'pp-eval-last-sexp
+    "m e r"      #'eval-region
+    "o"          #'find-file
     "s"          search-map
-    "w 0"        'evil-window-delete
-    "w SPC"      'zoom-window-zoom
-    "w <return>" 'toggle-frame-fullscreen
-    "w c"        'evil-window-delete
-    "w j"        'webjump
-    "w n"        'ivan/toggle-narrowing
-    "x"          'execute-extended-command
+    "w 0"        #'evil-window-delete
+    "w SPC"      #'zoom-window-zoom
+    "w <return>" #'toggle-frame-fullscreen
+    "w c"        #'evil-window-delete
+    "w j"        #'webjump
+    "w n"        #'ivan/toggle-narrowing
+    "x"          #'execute-extended-command
     )
   )
 
@@ -421,7 +421,7 @@
   :commands indent-guide-mode
   :init
   (bind-map-set-keys ivan/leader-map
-    "C-t i" 'indent-guide-mode
+    "C-t i" #'indent-guide-mode
     )
   )
 
@@ -429,10 +429,10 @@
   :commands manage-minor-mode
   :init
   (bind-map-set-keys ivan/leader-map
-    "M" 'manage-minor-mode
+    "M" #'manage-minor-mode
     )
   :config
-  (evil-define-key 'normal manage-minor-mode-map (kbd "q") 'quit-window))
+  (evil-define-key 'normal manage-minor-mode-map (kbd "q") #'quit-window))
 
 (use-package evil-commentary
   :ensure t
@@ -440,7 +440,7 @@
   :init
   (progn
     (bind-map-set-keys ivan/leader-map
-      ";" 'evil-commentary
+      ";" #'evil-commentary
       )
     (evil-commentary-mode)))
 
@@ -521,11 +521,11 @@
       (evil-emacs-state)
       (rectangle-mark-mode))
     (defun ivan/backward-kill-line () (kill-line 0))
-    (evil-define-key 'motion help-mode-map    (kbd "<tab>") 'forward-button)
-    (evil-define-key 'motion apropos-mode-map (kbd "<tab>") 'forward-button)
+    (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
+    (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
 
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
-    (define-key evil-motion-state-map [C-i] 'evil-jump-forward) ;; GUI only
+    (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
 
     (defun ivan/move-key (keymap-from keymap-to key)
       "Moves key binding from one keymap to another, deleting from the old location."
@@ -561,8 +561,8 @@
       (let ((git-link-open-in-browser t))
         (git-link remote start end)))
     (bind-map-set-keys ivan/leader-map
-      "g l" 'git-link
-      "g L" 'ivan/open-git-link-in-browser)
+      "g l" #'git-link
+      "g L" #'ivan/open-git-link-in-browser)
     (defun ivan/git-link-github-handy (hostname dirname filename branch commit start end)
       (format "https://github.com/%s/blob/%s/%s#%s"
               dirname
@@ -615,7 +615,7 @@
       ("q"             nil)
       )
     (bind-map-set-keys ivan/leader-map
-      "." 'hydra-scroll/body)
+      "." #'hydra-scroll/body)
     (defun hydra-scroll/locked ()
       (eql :always hydra-scroll/lock))
     (defun hydra-scroll/lock-hint ()
@@ -681,7 +681,7 @@
       ("<escape>" nil)
       ("q"        nil))
     (bind-map-set-keys ivan/leader-map
-      "w" 'hydra-windsize/body
+      "w" #'hydra-windsize/body
       )
     (bind-keys
      :map evil-normal-state-map
@@ -825,15 +825,15 @@
   :config
   (progn
     (evil-define-key evil-magit-state magit-mode-map
-      (kbd "n")   'magit-section-forward
-      (kbd "p")   'magit-section-backward
-      (kbd "P")   'magit-push-popup
-      (kbd "C-w") 'evil-window-map
+      (kbd "n")   #'magit-section-forward
+      (kbd "p")   #'magit-section-backward
+      (kbd "P")   #'magit-push-popup
+      (kbd "C-w") #'evil-window-map
       (kbd "y")   nil
-      (kbd "yy")  'evil-yank-line
-      (kbd "yr")  'magit-show-refs-popup
-      (kbd "ys")  'magit-copy-section-value
-      (kbd "yb")  'magit-copy-buffer-revision)
+      (kbd "yy")  #'evil-yank-line
+      (kbd "yr")  #'magit-show-refs-popup
+      (kbd "ys")  #'magit-copy-section-value
+      (kbd "yb")  #'magit-copy-buffer-revision)
     ))
 
 (use-package magit
@@ -952,9 +952,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (bind-key "<escape>" 'isearch-abort isearch-mode-map)
 
 (mapc (lambda (keymap)
-        (define-key keymap [escape]    'minibuffer-keyboard-quit)
-        (define-key keymap (kbd "C-p") 'previous-line-or-history-element)
-        (define-key keymap (kbd "C-n") 'next-line-or-history-element))
+        (define-key keymap [escape]    #'minibuffer-keyboard-quit)
+        (define-key keymap (kbd "C-p") #'previous-line-or-history-element)
+        (define-key keymap (kbd "C-n") #'next-line-or-history-element))
       (list
        minibuffer-local-map
        minibuffer-local-ns-map
@@ -1041,7 +1041,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-hook 'minibuffer-setup-hook #'ivan/minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'ivan/minibuffer-exit-hook)
 
-(global-set-key [remap dabbrev-expand] 'hippie-expand)
+(global-set-key [remap dabbrev-expand] #'hippie-expand)
 
 (with-eval-after-load 'webjump
   (setq webjump-sites
