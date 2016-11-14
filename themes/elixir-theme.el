@@ -11,7 +11,7 @@
     ("bigblue"    . "#3873C3")
     ("marine"     . "#0085B3")
     ("flatblue"   . "#B0CDE7")
-    ("bluegre"    . "#D0D8E5")
+    ("bluegre"    . "#D0DFE5")
     ("aquablue"   . "#C2E7F3")
     ("aqua"       . "#DEFDFE")
     ("skyblue"    . "#E8F1F6")
