@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("spacemacs"
+(("elisp"
+ (front-context-string . "\n5.3 Accessing E")
+ (rear-context-string . "tes,  Up: Lists\n")
+ (position . 256888)
+ (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/elisp")
+ (info-node . "List Elements")
+ (handler . Info-bookmark-jump))
+("spacemacs"
  (filename . "~/Development/resources/emacs/spacemacs/core/core-dotspacemacs.el")
  (front-context-string . "start.\")\n\n(defva")
  (rear-context-string . "omatically upon\n")
@@ -13,13 +20,6 @@
  (position . 976)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eieio")
  (info-node . "Top")
- (handler . Info-bookmark-jump))
-("eintr"
- (front-context-string . "\n17 Debugging\n**")
- (rear-context-string . "ation,  Up: Top\n")
- (position . 581528)
- (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/eintr")
- (info-node . "Debugging")
  (handler . Info-bookmark-jump))
 ("loading"
  (front-context-string . "File: elisp.info")
@@ -34,12 +34,5 @@
  (position . 774909)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/elisp")
  (info-node . "Byte Compilation")
- (handler . Info-bookmark-jump))
-("(elisp) Library Search"
- (front-context-string . "\n15.3 Library Se")
- (rear-context-string . "s,  Up: Loading\n")
- (position . 739847)
- (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.0/share/info/emacs/elisp")
- (info-node . "Library Search")
  (handler . Info-bookmark-jump))
 )
