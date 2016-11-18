@@ -120,7 +120,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(lazy-highlight ((t (:foreground ,ink :weight bold :background ,limeclay))))
 
    `(menu ((t (:foreground ,marooned :background ,paper))))
-   `(minibuffer-prompt ((t (:foreground ,ink :weight bold))))
+   `(minibuffer-prompt ((t (:foreground ,nicegrey :weight bold))))
    `(mode-line
      ((,class (:foreground ,slate :background ,bluegre))
       (t :inverse-video t)))
@@ -149,7 +149,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-string-face ((t (:foreground ,navyblue))))
    `(font-lock-type-face ((t (:foreground ,marine))))
    `(font-lock-variable-name-face ((t (:foreground ,ink))))
-   `(font-lock-warning-face ((t (:foreground ,ink :weight bold))))
+   `(font-lock-warning-face ((t (:foreground ,amaranth :weight bold))))
 
    `(c-annotation-face ((t (:inherit font-lock-constant-face))))
 ;;;;; newsticker
@@ -427,7 +427,7 @@ Also bind `class' to ((class color) (min-colors 89))."
       (t (:foreground ,ink :weight bold :underline t))))
    `(flyspell-incorrect
      ((((supports :underline (:style wave)))
-       (:underline (:style wave :color ,bloodred) :inherit unspecified))
+       (:underline (:style wave :color ,amaranth) :inherit unspecified))
       (t (:foreground ,ink :weight bold :underline t))))
 ;;;;; full-ack
    `(ack-separator ((t (:foreground ,marooned))))

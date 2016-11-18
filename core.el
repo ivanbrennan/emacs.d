@@ -501,18 +501,23 @@
   :config
   (progn
     (setq
-     evil-emacs-state-tag    " ·e·"
-     evil-insert-state-tag   " ·i·"
-     evil-motion-state-tag   " ·m·"
      evil-normal-state-tag   " ·n·"
-     evil-operator-state-tag " ·o·"
-     evil-replace-state-tag  " ·r·"
      evil-visual-state-tag   " ·v·"
+     evil-operator-state-tag " ·o·"
+     evil-motion-state-tag   " ·m·"
+     evil-insert-state-tag   " ·i·"
+     evil-replace-state-tag  " ·r·"
+     evil-emacs-state-tag    " ·e·"
      )
     (setq
-     evil-emacs-state-cursor 'bar
-     evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes)
+     evil-normal-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt      :foreground))
+     evil-visual-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt      :foreground))
+     evil-motion-state-cursor  `(box  ,(face-attribute 'header-line            :foreground))
+     evil-insert-state-cursor  `(bar  ,(face-attribute 'font-lock-warning-face :foreground))
+     evil-replace-state-cursor `(hbar ,(face-attribute 'font-lock-warning-face :foreground))
+     evil-emacs-state-cursor   `(bar  ,(face-attribute 'default                :foreground))
      )
+    (setq evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
     (setq-default evil-shift-width 2)
