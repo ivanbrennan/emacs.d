@@ -652,10 +652,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,ink :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,ink :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground ,pencil2 :background ,whisp2))))
+   `(linum ((t (:foreground ,pencil2 :background ,whisp2 :height 140 :weight normal))))
 ;;;;; linum-relative-mode
-   `(linum-relative-current-face ((t (:background ,whisp2))))
-   `(nlinum-relative-current-face ((t (:inherit 'linum-relative-current-face))))
+   `(linum-relative-current-face ((t (:inherit linum :foreground ,ink))))
+   `(nlinum-relative-current-face ((t (:inherit linum :foreground ,ink))))
 ;;;;; ruler-mode
    `(ruler-mode-column-number ((t (:inherit 'ruler-mode-default :foreground ,marooned))))
    `(ruler-mode-fill-column ((t (:inherit 'ruler-mode-default :foreground ,marooned))))
