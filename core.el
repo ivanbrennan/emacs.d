@@ -551,12 +551,12 @@
      evil-emacs-state-tag    " ·e·"
      )
     (setq
-     evil-normal-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt      :foreground))
-     evil-visual-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt      :foreground))
-     evil-motion-state-cursor  `(box  ,(face-attribute 'header-line            :foreground))
-     evil-insert-state-cursor  `(bar  ,(face-attribute 'font-lock-warning-face :foreground))
-     evil-replace-state-cursor `(hbar ,(face-attribute 'font-lock-warning-face :foreground))
-     evil-emacs-state-cursor   `(bar  ,(face-attribute 'default                :foreground))
+     evil-emacs-state-cursor   `(bar  ,(face-attribute 'default :foreground))
+     evil-motion-state-cursor  `(box  ,(face-attribute 'header-line :foreground))
+     evil-normal-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt :foreground))
+     evil-visual-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt :foreground))
+     evil-insert-state-cursor  `(bar  ,(face-attribute 'font-lock-preprocessor-face :foreground))
+     evil-replace-state-cursor `(hbar ,(face-attribute 'font-lock-preprocessor-face :foreground))
      )
     (setq evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
