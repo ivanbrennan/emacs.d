@@ -313,11 +313,6 @@
   :config
   (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
-(use-package linum-relative
-  :commands linum-relative-toggle
-  :config
-  (setq linum-relative-current-symbol ""))
-
 (use-package elixir-mode
   :ensure t
   :config
@@ -414,6 +409,52 @@
     "w j"        #'webjump
     "w n"        #'ivan/toggle-narrowing
     "x"          #'execute-extended-command
+    )
+  )
+
+(use-package nlinum-relative
+  :commands nlinum-relative-toggle
+  :init
+  (setq nlinum-relative-redisplay-delay 0.0)
+  (setq-default nlinum-relative-current-symbol "0")
+  (defvar-local ivan/line-numbers-p nil
+    "Whether line-numbers should be displayed.")
+  (defvar-local ivan/relative-line-numbers-p nil
+    "Whether relative line-numbers should be displayed.")
+  (use-package nlinum)
+  (defun ivan/toggle-line-numbers ()
+    (interactive)
+    (setq-local ivan/line-numbers-p (not ivan/line-numbers-p))
+    (ivan//update-relative-line-numbers-style)
+    (unless ivan/relative-line-numbers-p (ivan//update-line-numbers-display))
+    )
+  (defun ivan/toggle-relative-line-numbers ()
+    (interactive)
+    (setq-local ivan/relative-line-numbers-p (not ivan/relative-line-numbers-p))
+    (ivan//update-relative-line-numbers-display)
+    )
+  (defun ivan//update-relative-line-numbers-style ()
+    (setq nlinum-relative-current-symbol (if ivan/line-numbers-p "" "0"))
+    )
+  (defun ivan//update-line-numbers-display ()
+    (nlinum-mode (if ivan/line-numbers-p 1 0))
+  )
+  (defun ivan//update-relative-line-numbers-display ()
+    (if ivan/relative-line-numbers-p
+        (ivan//relative-line-numbers-on)
+      (ivan//relative-line-numbers-off))
+    )
+  (defun ivan//relative-line-numbers-on ()
+    (nlinum-mode)
+    (nlinum-relative-on)
+    )
+  (defun ivan//relative-line-numbers-off ()
+    (nlinum-relative-off)
+    (ivan//update-line-numbers-display)
+    )
+  (bind-map-set-keys ivan/leader-map
+    "n l" #'ivan/toggle-line-numbers
+    "n r" #'ivan/toggle-relative-line-numbers
     )
   )
 

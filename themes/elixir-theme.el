@@ -655,6 +655,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(linum ((t (:foreground ,pencil2 :background ,whisp2))))
 ;;;;; linum-relative-mode
    `(linum-relative-current-face ((t (:background ,whisp2))))
+   `(nlinum-relative-current-face ((t (:inherit 'linum-relative-current-face))))
 ;;;;; ruler-mode
    `(ruler-mode-column-number ((t (:inherit 'ruler-mode-default :foreground ,marooned))))
    `(ruler-mode-fill-column ((t (:inherit 'ruler-mode-default :foreground ,marooned))))
