@@ -39,19 +39,19 @@
 
 
 ;; persistence
-(make-directory (concat user-emacs-directory ".cache") :mkdir_p)
+(make-directory (concat user-emacs-directory ".cache") 'mkdir_p)
 
 (defun ivan/emacs-file (name)
   (concat user-emacs-directory name))
 
-(make-directory (ivan/emacs-file ".cache/auto-save") :mkdir_p)
+(make-directory (ivan/emacs-file ".cache/auto-save") 'mkdir_p)
 
 (setq custom-file (ivan/emacs-file "custom.el"))
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
 
 (setq
- auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") :uniquify))
+ auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") 'uniquify))
  auto-save-list-file-prefix      (ivan/emacs-file ".cache/auto-save-list/.saves-")
  backup-by-copying               t
  backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
@@ -66,7 +66,7 @@
 
 ;; theme
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
-(make-directory custom-theme-directory :mkdir_p)
+(make-directory custom-theme-directory 'mkdir_p)
 
 (defvar ivan/themes '(elixir elixir-dark))
 (defvar ivan/themes-index 0)
@@ -81,7 +81,7 @@
                             ivan/themes)))
 
 (defun ivan/try-load-theme (theme)
-  (if (ignore-errors (load-theme theme :no-confirm))
+  (if (ignore-errors (load-theme theme 'no-confirm))
       (mapcar #'disable-theme (remove theme custom-enabled-themes))
     (message "Unable to find theme file for ‘%s’" theme)))
 
@@ -229,7 +229,7 @@
   (let ((parent-directory (file-name-directory buffer-file-name)))
     (when (and (not (file-exists-p parent-directory))
                (y-or-n-p (format "Directory ‘%s’ does not exist! Create it?" parent-directory)))
-      (make-directory parent-directory :mkdir_p))))
+      (make-directory parent-directory 'mkdir_p))))
 
 (add-to-list 'find-file-not-found-functions
              'ivan/create-non-existent-directory)
@@ -261,7 +261,7 @@
 (require 'package)
 
 (mapc
- (lambda (x) (add-to-list 'package-archives x :append))
+ (lambda (x) (add-to-list 'package-archives x 'append))
  '(
    ("melpa-stable" . "http://stable.melpa.org/packages/")
    ("melpa"        . "http://melpa.org/packages/")
@@ -675,7 +675,7 @@
   :bind ("M-S-<return>" . hydra-focus/body)
   :config
   (progn
-    (defvar hydra-scroll/lock :always)
+    (defvar hydra-scroll/lock 'always)
     (defvar hydra-scroll/other-window nil)
     (defface hydra-face-title
       '((t (:slant italic)))
@@ -685,7 +685,7 @@
                             :foreign-keys run
                             :pre (setq hydra-lv nil)
                             :post (progn
-                                    (setq-local hydra-scroll/lock :always)
+                                    (setq-local hydra-scroll/lock 'always)
                                     (setq hydra-scroll/other-window nil))
                             :after-exit (setq hydra-lv t))
       (format "%s (_SPC_/_S-SPC_) page  (_j_/_k_) line"
@@ -707,7 +707,7 @@
     (bind-map-set-keys ivan/leader-map
       "." #'hydra-scroll/body)
     (defun hydra-scroll/locked ()
-      (eql :always hydra-scroll/lock))
+      (eql 'always hydra-scroll/lock))
     (defun hydra-scroll/lock-hint ()
       (if (hydra-scroll/locked) 'unlock 'lock))
     (defun hydra-scroll/window-hint ()
@@ -718,7 +718,7 @@
     (defun hydra-scroll/toggle-lock ()
       (interactive)
       (setq-local hydra-scroll/lock
-                  (if (hydra-scroll/locked) t :always)))
+                  (if (hydra-scroll/locked) t 'always)))
     (defun hydra-scroll/toggle-other-window ()
       (interactive)
       (setq-local hydra-scroll/other-window
@@ -735,7 +735,7 @@
         (if hydra-scroll/other-window (scroll-other-window 1) (scroll-up-line))))
     (defun hydra-scroll/next-line-with-lock ()
       (interactive)
-      (let ((hydra-scroll/lock :always))
+      (let ((hydra-scroll/lock 'always))
         (hydra-scroll/next-line)))
     (defun hydra-scroll/previous-line ()
       (interactive)
@@ -743,7 +743,7 @@
         (if hydra-scroll/other-window (scroll-other-window-down 1) (scroll-down-line))))
     (defun hydra-scroll/previous-line-with-lock ()
       (interactive)
-      (let ((hydra-scroll/lock :always))
+      (let ((hydra-scroll/lock 'always))
         (hydra-scroll/previous-line)))
     (defhydra hydra-windsize (:hint nil
                               :pre (setq hydra-lv nil)
