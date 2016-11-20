@@ -143,7 +143,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-function-name-face ((t (:foreground ,merged))))
    `(font-lock-keyword-face ((t (:foreground ,marooned :weight normal))))
    `(font-lock-negation-char-face ((t (:foreground ,marooned :weight bold))))
-   `(font-lock-preprocessor-face ((t (:foreground ,bloodred))))
+   `(font-lock-preprocessor-face ((t (:foreground ,amaranth))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,marooned :weight bold))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,pencil1 :weight bold))))
    `(font-lock-string-face ((t (:foreground ,navyblue))))
