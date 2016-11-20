@@ -384,6 +384,7 @@
     "a g"        #'ag
     "a r"        #'ag-regexp
     ;; "b SPC"    #'hydra-buffers/body
+    "B"          #'bury-buffer
     "b b"        #'switch-to-buffer
     "b d"        #'kill-this-buffer
     "b j"        #'bookmark-jump
