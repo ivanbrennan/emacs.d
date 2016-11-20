@@ -84,7 +84,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
    `(cursor ((t (:background ,ink))))
    `(escape-glyph ((t (:foreground ,marooned :bold t))))
-   `(fringe ((t (:foreground ,pencil2 :background ,whisp2))))
+   `(fringe ((t (:foreground ,pencil2 :background ,paper))))
    `(header-line ((t (:foreground ,pencil1 :background ,whisp2))))
    `(info-node ((t (:foreground ,greentea :slant italic :weight bold))))
    `(highlight ((t (:background ,whisp2))))
@@ -653,7 +653,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,ink :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,ink :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground ,pencil2 :background ,whisp2 :height 140 :weight normal))))
+   `(linum ((t (:foreground ,pencil2 :background ,paper :height 120 :weight light))))
 ;;;;; linum-relative-mode
    `(linum-relative-current-face ((t (:inherit linum :foreground ,ink))))
    `(nlinum-relative-current-face ((t (:inherit linum :foreground ,ink))))
