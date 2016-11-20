@@ -586,6 +586,34 @@
 (use-package ffap
   :commands ffap-other-window)
 
+(use-package origami
+  :init
+  (bind-map-set-keys ivan/leader-map "z" #'origami-mode)
+  :bind
+  (:map origami-mode-map
+        ("z o"   . origami-open-node)
+        ("z O"   . origami-open-node-recursively)
+        ("z C-o" . origami-show-node)
+        ("z c"   . origami-close-node)
+        ("z C"   . origami-close-node-recursively)
+        ("z a"   . origami-toggle-node)
+        ("z f"   . origami-forward-toggle-node)
+        ("z A"   . origami-recursively-toggle-node)
+        ("z n"   . origami-open-all-nodes)
+        ("z m"   . origami-close-all-nodes)
+        ("z i"   . origami-toggle-all-nodes)
+        ("z v"   . origami-show-only-node)
+        ("z ["   . origami-previous-fold)
+        ("z }"   . origami-next-fold)
+        ("z ]"   . origami-forward-fold)
+        ("z j"   . origami-forward-fold-same-level)
+        ("z k"   . origami-backward-fold-same-level)
+        ("z u"   . origami-undo)
+        ("z U"   . origami-redo)
+        ("z N"   . origami-reset)
+        )
+  )
+
 (defun ivan/toggle-narrowing (p)
   (interactive "P")
   (cond ((and (buffer-narrowed-p) (not p))
