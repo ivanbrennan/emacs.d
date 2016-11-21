@@ -377,6 +377,7 @@
     ":"          #'eval-expression
     "C-b"        #'list-buffers
     "C-n"        #'ivan/toggle-narrowing
+    "C-r"        #'ripgrep-regexp
     "V"          #'exchange-point-and-mark
     "X SPC"      #'server-edit
     "X s"        #'server-start
@@ -851,6 +852,12 @@
   (progn
     (use-package dash)
     (use-package s)))
+
+(use-package ripgrep
+  :ensure t
+  :commands
+  (ripgrep-regexp
+   projectile-ripgrep))
 
 (use-package crux
   :ensure t
