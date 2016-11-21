@@ -411,6 +411,7 @@
     "s"          search-map
     "w 0"        #'evil-window-delete
     "w SPC"      #'zoom-window-zoom
+    "w w"        #'ivan/other-window-zoom
     "w <return>" #'toggle-frame-fullscreen
     "w c"        #'evil-window-delete
     "w j"        #'webjump
