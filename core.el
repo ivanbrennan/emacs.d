@@ -343,7 +343,8 @@
   :commands (zoom-window-zoom
              zoom-window--enable-p)
   :config
-  (setq zoom-window-mode-line-color "#E4FFEA"))
+  (setq zoom-window-mode-line-color (face-attribute 'header-line :background))
+  )
 
 (defun ivan/other-window-zoom ()
   (interactive)
