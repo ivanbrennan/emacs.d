@@ -381,6 +381,7 @@
     "C-b"        #'list-buffers
     "C-n"        #'ivan/toggle-narrowing
     "C-r"        #'ripgrep-regexp
+    "C-u"        #'hl-line-mode
     "V"          #'exchange-point-and-mark
     "X SPC"      #'server-edit
     "X s"        #'server-start
@@ -969,7 +970,6 @@ Disables `text-scale-mode`."
    ("M-="   . text-scale-increase)
    ("M--"   . text-scale-decrease)
    ("M-0"   . ivan/text-scale-reset)
-   ("M-…"   . hl-line-mode) ; (⌥⌘;)
    ("M-`"   . ns-next-frame)
    ("M-~"   . ns-prev-frame)
    ("M-<return>" . toggle-frame-fullscreen)
