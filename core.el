@@ -355,6 +355,21 @@
     (other-window 1)
     (zoom-window-zoom)))
 
+(defun ivan/toggle-narrowing-zoom (p)
+  (interactive "P")
+  (zoom-window-zoom)
+  (ivan/toggle-narrowing p))
+
+(defun ivan/toggle-narrowing (p)
+  (interactive "P")
+  (cond
+   ((and (buffer-narrowed-p) (not p))
+    (widen))
+   ((use-region-p)
+    (narrow-to-region (region-beginning) (region-end)))
+   (t
+    (narrow-to-defun))))
+
 (use-package smartparens
   :commands (sp-forward-slurp-sexp
              sp-forward-barf-sexp))
@@ -411,11 +426,12 @@
     "o"          #'find-file
     "s"          search-map
     "w 0"        #'evil-window-delete
-    "w SPC"      #'zoom-window-zoom
+    "."          #'zoom-window-zoom
+    "C-."        #'ivan/toggle-narrowing-zoom
     "w w"        #'ivan/other-window-zoom
     "w <return>" #'toggle-frame-fullscreen
     "w c"        #'evil-window-delete
-    "w j"        #'webjump
+    "w J"        #'webjump
     "w n"        #'ivan/toggle-narrowing
     "x"          #'execute-extended-command
     )
@@ -639,15 +655,6 @@
     )
   )
 
-(defun ivan/toggle-narrowing (p)
-  (interactive "P")
-  (cond ((and (buffer-narrowed-p) (not p))
-         (widen))
-        ((use-region-p)
-         (narrow-to-region (region-beginning) (region-end)))
-        (t
-         (narrow-to-defun))))
-
 (use-package git-link
   :config
   (progn
@@ -790,6 +797,8 @@
      ("C-w ."   . hydra-windsize/body)
      ("C-w C-." . hydra-windsize/body)
      )
+
+    ;; TODO: merge zoom/narrow behavior into this hydra and give it a better keybinding
     (defhydra hydra-focus ()
       "focus"
       ("]"        ivan/increase-padding "increase")
