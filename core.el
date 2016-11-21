@@ -394,6 +394,7 @@
     "b j"        #'bookmark-jump
     "b l"        #'bookmark-bmenu-list
     "b m"        #'bookmark-set
+    "F"          #'variable-pitch-mode
     "f a"        #'find-alternate-file
     "f j"        #'dired-jump
     "f s"        #'save-buffer
