@@ -394,7 +394,7 @@
     ","          #'other-window
     "9"          #'rainbow-delimiters-mode
     ":"          #'eval-expression
-    "C-b"        #'list-buffers
+    "SPC"        #'list-buffers
     "C-n"        #'ivan/toggle-narrowing
     "C-r"        #'ripgrep-regexp
     "C-u"        #'hl-line-mode
@@ -721,7 +721,7 @@
       ("q"             nil)
       )
     (bind-map-set-keys ivan/leader-map
-      "." #'hydra-scroll/body)
+      "C-SPC" #'hydra-scroll/body)
     (defun hydra-scroll/locked ()
       (eql 'always hydra-scroll/lock))
     (defun hydra-scroll/lock-hint ()
