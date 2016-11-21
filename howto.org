@@ -1,4 +1,6 @@
 * Misc
+** paste transient state
+** display error in ag results window
 ** tags (cscope, etags, gtags, ctags?)
 ** highlight/unhighlight transient state
 ** */# symbol navigation transient state like in Spacemacs
