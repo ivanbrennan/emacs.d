@@ -1028,12 +1028,18 @@ Disables `text-scale-mode`."
 
 
 ;; keybindings
+;; Note that "function keys" (those with dedicated physical keys) are written in
+;; angle brackets, whereas "control keys" are written in caps. Control keys can
+;; be written in angle brackets as well, but it's not required.
+;; So "<tab>" represents the physical Tab key, whereas "TAB" and "<TAB>" both
+;; represent Ctrl-I. By default, the physical key translates to the same binding
+;; as its control-key equivalent, but it can be explicitly bound differently.
 (bind-keys
  ("M-/" . hippie-expand)
  ("C-/" . undo-tree-undo)
  ("C-?" . undo-tree-redo)
  ("C-w" . ivan/kill-region-or-backward-kill-word)
- ("S-<SPC>" . rectangle-mark-mode)
+ ("S-SPC" . rectangle-mark-mode)
  :map rectangle-mark-mode-map
  ("s" . string-rectangle)
  ("o" . rectangle-exchange-point-and-mark)
