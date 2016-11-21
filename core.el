@@ -376,7 +376,7 @@
     :override-minor-modes t)
   (bind-map-set-keys ivan/leader-map
     ","          #'other-window
-    "9"          #'rainbow-delimiters-mode ; TODO: install this
+    "9"          #'rainbow-delimiters-mode
     ":"          #'eval-expression
     "C-b"        #'list-buffers
     "C-n"        #'ivan/toggle-narrowing
