@@ -11,9 +11,9 @@
  (handler . Info-bookmark-jump))
 ("spacemacs"
  (filename . "~/Development/resources/emacs/spacemacs/core/core-dotspacemacs.el")
- (front-context-string . "start.\")\n\n(defva")
- (rear-context-string . "omatically upon\n")
- (position . 8652))
+ (front-context-string . "configuration-la")
+ (rear-context-string . "               (")
+ (position . 19400))
 ("eieio"
  (front-context-string . "\nEIEIO\n*****\n\nEI")
  (rear-context-string . "art,  Up: (dir)\n")
