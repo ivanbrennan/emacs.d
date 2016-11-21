@@ -778,7 +778,7 @@
       ("<escape>" nil)
       ("q"        nil))
     (bind-map-set-keys ivan/leader-map
-      "w" #'hydra-windsize/body
+      "C-w" #'hydra-windsize/body
       )
     (bind-keys
      :map evil-normal-state-map
