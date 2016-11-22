@@ -398,7 +398,6 @@
     "C-n"        #'ivan/toggle-narrowing
     "C-r"        #'ripgrep-regexp
     "C-u"        #'hl-line-mode
-    "V"          #'exchange-point-and-mark
     "X SPC"      #'server-edit
     "X s"        #'server-start
     "\\"         #'ivan/rotate-theme
