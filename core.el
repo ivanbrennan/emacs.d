@@ -374,6 +374,19 @@
   :commands (sp-forward-slurp-sexp
              sp-forward-barf-sexp))
 
+(use-package evil-smartparens
+  :diminish evil-smartparens-mode
+  :init
+  (add-hook 'smartparens-mode-hook #'evil-smartparens-mode))
+
+(use-package expand-region
+  :commands er/expand-region
+  :bind
+  (:map evil-normal-state-map
+        ("C-SPC" . er/expand-region)
+        )
+  )
+
 (use-package evil-numbers
   :commands (evil-numbers/inc-at-pt
              evil-numbers/dec-at-pt))
