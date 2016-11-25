@@ -726,7 +726,6 @@
       ("k"             hydra-scroll/previous-line)
       ("C-k"           hydra-scroll/previous-line-with-lock)
       ("<up>"          evil-previous-line)
-      ("C-l"           recenter-top-bottom)
       ("."             hydra-scroll/toggle-lock)
       (","             hydra-scroll/toggle-other-window)
       ("<escape>"      nil)
@@ -826,13 +825,13 @@
   :config
   (progn
     (which-key-declare-prefixes
-      "<SPC> b"   "buffers/bookmarks"
-      "<SPC> f"   "files"
-      "<SPC> g"   "git"
-      "<SPC> m"   "mode"
-      "<SPC> m e" "eval"
-      "<SPC> s"   "search"
-      "<SPC> ."   "scroll"
+      "SPC b"     "buffers/bookmarks"
+      "SPC f"     "files"
+      "SPC g"     "git"
+      "SPC m"     "mode"
+      "SPC m e"   "eval"
+      "SPC s"     "search"
+      "SPC C-SPC" "scroll"
       )
     )
   )
