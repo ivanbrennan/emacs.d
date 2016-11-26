@@ -731,8 +731,7 @@
       ("<escape>"      nil)
       ("q"             nil)
       )
-    (bind-map-set-keys ivan/leader-map
-      "C-SPC" #'hydra-scroll/body)
+    (bind-key "C-S-SPC" #'hydra-scroll/body)
     (defun hydra-scroll/locked ()
       (eql 'always hydra-scroll/lock))
     (defun hydra-scroll/lock-hint ()
