@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("elisp"
+(("keybindings"
+ (front-context-string . "   Here is an ex")
+ (rear-context-string . "  prefix keys.\n\n")
+ (position . 1177966)
+ (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.1/share/info/emacs/elisp")
+ (info-node . "Inheritance and Keymaps")
+ (handler . Info-bookmark-jump))
+("elisp"
  (front-context-string . "\n5.3 Accessing E")
  (rear-context-string . "tes,  Up: Lists\n")
  (position . 256888)
