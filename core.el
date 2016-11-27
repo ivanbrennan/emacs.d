@@ -600,7 +600,10 @@
     (setq evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
-    (setq-default evil-shift-width 2)
+    (setq-default
+     evil-shift-width 2
+     evil-symbol-word-search t
+     )
     (defun ivan/emacs-state-rectangle-mark-mode ()
       (interactive)
       (evil-emacs-state)
