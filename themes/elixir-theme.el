@@ -114,7 +114,6 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(wgrep-face ((t :background ,melon)))
 ;;;;; evil
    `(evil-ex-substitute-replacement ((t (:foreground ,bloodred :underline t))))
-   `(evil-ex-substitute-matches ((t (:inherit 'lazy-highlight))))
 ;;;;; isearch
    `(isearch ((t (:foreground ,ink :weight bold :background ,sand))))
    `(isearch-fail ((t (:background ,eraser))))
