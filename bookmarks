@@ -2,12 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("keybindings"
- (front-context-string . "   Here is an ex")
- (rear-context-string . "  prefix keys.\n\n")
- (position . 1177966)
+(("evil"
+ (filename . "~/Development/resources/emacs/emacs.d/elpa/evil-1.2.12/evil-vars.el")
+ (front-context-string . "(evil-define-loc")
+ (rear-context-string . "g a command.\")\n\n")
+ (position . 42655))
+("keybindings"
+ (front-context-string . "\n21.7 Active Key")
+ (rear-context-string . "s,  Up: Keymaps\n")
+ (position . 1183838)
  (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.1/share/info/emacs/elisp")
- (info-node . "Inheritance and Keymaps")
+ (info-node . "Active Keymaps")
  (handler . Info-bookmark-jump))
 ("elisp"
  (front-context-string . "\n5.3 Accessing E")
