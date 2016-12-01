@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("evil"
- (filename . "~/Development/resources/emacs/emacs.d/elpa/evil-1.2.12/evil-vars.el")
- (front-context-string . "(evil-define-loc")
- (rear-context-string . "g a command.\")\n\n")
- (position . 42655))
+ (filename . "~/Development/resources/emacs/emacs.d/elpa/evil-1.2.12/evil-common.el")
+ (front-context-string . ";;; Compatibilit")
+ (rear-context-string . "le.\")\n   nil))\n\n")
+ (position . 1626))
 ("keybindings"
  (front-context-string . "\n21.7 Active Key")
  (rear-context-string . "s,  Up: Keymaps\n")
