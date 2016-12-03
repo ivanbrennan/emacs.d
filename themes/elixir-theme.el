@@ -45,7 +45,7 @@
     ("bluegre"    . "#D4DADD")
     ("whisp1"     . "#EDEDED")
     ("whisp2"     . "#F5F5F5")
-    ("paper"      . "#F9F9F9")
+    ("paper"      . "#F7F7F7")
     ("paperwhite" . "#FCFDFE"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
@@ -577,12 +577,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hl-sexp-face ((,class (:background ,paper))
                    (t :weight bold)))
 ;;;;; hydra
-   `(hydra-face-red      ((t (:foreground ,bloodred  :background ,paper :bold t))))
-   `(hydra-face-amaranth ((t (:foreground ,amaranth  :background ,paper :bold t))))
-   `(hydra-face-blue     ((t (:foreground ,merged    :background ,paper :bold t))))
-   `(hydra-face-pink     ((t (:foreground ,marooned  :background ,paper :bold t))))
-   `(hydra-face-teal     ((t (:foreground ,teal      :background ,paper :bold t))))
-   `(hydra-face-title    ((t (:foreground ,slate     :background ,paper))))
+   `(hydra-face-red      ((t (:foreground ,bloodred  :background ,paperwhite :bold t))))
+   `(hydra-face-amaranth ((t (:foreground ,amaranth  :background ,paperwhite :bold t))))
+   `(hydra-face-blue     ((t (:foreground ,merged    :background ,paperwhite :bold t))))
+   `(hydra-face-pink     ((t (:foreground ,marooned  :background ,paperwhite :bold t))))
+   `(hydra-face-teal     ((t (:foreground ,teal      :background ,paperwhite :bold t))))
+   `(hydra-face-title    ((t (:foreground ,slate     :background ,paperwhite))))
 ;;;; ivy
    `(ivy-confirm-face ((t (:foreground ,pencil1 :background ,paper))))
    `(ivy-match-required-face ((t (:foreground ,navyblue :background ,paper))))
@@ -799,9 +799,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mew-face-eof-message ((t (:foreground ,pencil1))))
    `(mew-face-eof-part ((t (:foreground ,marooned))))
 ;;;;; mic-paren
-   `(paren-face-match ((t (:foreground ,merged :background ,paper :weight bold :underline t))))
-   `(paren-face-mismatch ((t (:foreground ,paper :background ,ink :weight bold))))
-   `(paren-face-no-match ((t (:foreground ,paper :background ,navyblue :weight bold))))
+   `(paren-face-match ((t (:inherit show-paren-match))))
+   `(paren-face-mismatch ((t (:inherit show-paren-mismatch))))
+   `(paren-face-no-match ((t (:foreground ,paper :background ,navyblue))))
 ;;;;; mingus
    `(mingus-directory-face ((t (:foreground ,ink))))
    `(mingus-pausing-face ((t (:foreground ,ink))))
@@ -986,7 +986,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec ((t (:foreground ,navyblue))))
 ;;;;; show-paren
    `(show-paren-mismatch ((t (:foreground ,ink :background ,paper))))
-   `(show-paren-match ((t (:foreground ,ink :background ,skyblue :weight bold :underline t))))
+   `(show-paren-match ((t (:foreground ,ink :background ,skyblue :underline t))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable Elixir for sml
    `(sml/global ((,class (:foreground ,marooned :weight bold))))
@@ -1007,8 +1007,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sml/charging ((,class (:foreground ,marine))))
    `(sml/discharging ((,class (:foreground ,ink))))
 ;;;;; smartparens
-   `(sp-show-pair-mismatch-face ((t (:foreground ,ink :background ,paper :weight bold))))
-   `(sp-show-pair-match-face ((t (:background ,paper :weight bold))))
+   `(sp-show-pair-mismatch-face ((t (:inherit show-paren-mismatch))))
+   `(sp-show-pair-match-face ((t (:inherit show-paren-match))))
 ;;;;; sml-mode-line
    '(sml-modeline-end-face ((t :inherit default :width condensed)))
 ;;;;; SLIME
