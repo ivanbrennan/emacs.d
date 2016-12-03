@@ -14,6 +14,7 @@
     ("aquablue"   . "#C2E7F3")
     ("aqua"       . "#DEFDFE")
     ("skyblue"    . "#E8F2FE")
+    ("visipurp"   . "#D7D4F0")
     ("bluegrey"   . "#ECF3F7")
     ("fluff"      . "#F4F7FB")
     ("paleblue"   . "#F1F9FC")
@@ -129,7 +130,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line-highlight ((t (:foreground ,bigblue))))
    `(mode-line-inactive
      ((t (:foreground ,pencil1 :weight light :background ,whisp1))))
-   `(region ((,class (:background ,aqua))
+   `(region ((,class (:background ,visipurp))
              (t :inverse-video t)))
    `(cua-rectangle ((t (:inherit region))))
    `(secondary-selection ((t (:background ,paper))))
