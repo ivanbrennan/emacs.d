@@ -13,7 +13,7 @@
     ("flatblue"   . "#B0CDE7")
     ("aquablue"   . "#C2E7F3")
     ("aqua"       . "#DEFDFE")
-    ("skyblue"    . "#E8F1F6")
+    ("skyblue"    . "#E8F2FE")
     ("bluegrey"   . "#ECF3F7")
     ("fluff"      . "#F4F7FB")
     ("paleblue"   . "#F1F9FC")
@@ -46,7 +46,7 @@
     ("whisp1"     . "#EDEDED")
     ("whisp2"     . "#F5F5F5")
     ("paper"      . "#F9F9F9")
-    ("paperwhite" . "#FCFDFF"))
+    ("paperwhite" . "#FCFDFE"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
 
@@ -79,7 +79,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,bigblue :underline t :weight bold))))
    `(link-visited ((t (:foreground ,ink :underline t :weight normal))))
-   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,paper))))
+   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,paperwhite))))
    `(fixed-pitch ((t (:family "Source Code Pro"))))
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
    `(cursor ((t (:background ,ink))))
@@ -799,7 +799,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mew-face-eof-message ((t (:foreground ,pencil1))))
    `(mew-face-eof-part ((t (:foreground ,marooned))))
 ;;;;; mic-paren
-   `(paren-face-match ((t (:foreground ,merged :background ,paper :weight bold))))
+   `(paren-face-match ((t (:foreground ,merged :background ,paper :weight bold :underline t))))
    `(paren-face-mismatch ((t (:foreground ,paper :background ,ink :weight bold))))
    `(paren-face-no-match ((t (:foreground ,paper :background ,navyblue :weight bold))))
 ;;;;; mingus
@@ -986,7 +986,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-quoted-exec ((t (:foreground ,navyblue))))
 ;;;;; show-paren
    `(show-paren-mismatch ((t (:foreground ,ink :background ,paper))))
-   `(show-paren-match ((t (:foreground ,ink :background ,melon :weight bold))))
+   `(show-paren-match ((t (:foreground ,ink :background ,skyblue :weight bold :underline t))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable Elixir for sml
    `(sml/global ((,class (:foreground ,marooned :weight bold))))
