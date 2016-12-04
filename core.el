@@ -983,6 +983,7 @@
      magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
      )))
 
+(diminish 'text-scale-mode)
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
