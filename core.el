@@ -372,13 +372,26 @@
     (narrow-to-defun))))
 
 (use-package smartparens
-  :commands (sp-forward-slurp-sexp
-             sp-forward-barf-sexp))
+  :diminish smartparens-mode
+  :init
+  (add-hook 'prog-mode-hook #'smartparens-strict-mode)
+  :config
+  (require 'smartparens-config))
 
 (use-package evil-smartparens
   :diminish evil-smartparens-mode
   :init
-  (add-hook 'smartparens-mode-hook #'evil-smartparens-mode))
+  (add-hook 'smartparens-mode-hook #'evil-smartparens-mode)
+  (sp-pair "("  ")"  :wrap "M-(")
+  (sp-pair "["  "]"  :wrap "M-[")
+  (sp-pair "{"  "}"  :wrap "M-{")
+  (sp-pair "\"" "\"" :wrap "M-\"")
+  (sp-pair "'"  "'"  :wrap "M-'")
+  (sp-pair "`"  "`"  :wrap "C-M-`")
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-)")   'sp-forward-slurp-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-(")   'sp-forward-barf-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-M-(") 'sp-backward-slurp-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-M-)") 'sp-backward-barf-sexp))
 
 (use-package expand-region
   :commands er/expand-region
