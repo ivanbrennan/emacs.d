@@ -654,7 +654,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,ink :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,ink :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground ,pencil2 :background ,paperwhite :height 120 :weight light))))
+   `(linum ((t (:foreground ,pencil2 :background ,paperwhite :height 120 :weight light :underline nil))))
 ;;;;; linum-relative-mode
    `(linum-relative-current-face ((t (:inherit linum :foreground ,ink))))
    `(nlinum-relative-current-face ((t (:inherit linum :foreground ,ink))))
