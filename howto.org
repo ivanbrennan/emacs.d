@@ -1,4 +1,6 @@
 * Misc
+** smartparens bindings
+** M-S-o for fuzzy finder
 ** paste transient state
 ** display error in ag results window
 ** tags (cscope, etags, gtags, ctags?)
