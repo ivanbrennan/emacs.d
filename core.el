@@ -417,7 +417,6 @@
     :override-minor-modes t)
   (bind-map-set-keys ivan/leader-map
     ","          #'other-window
-    "9"          #'rainbow-delimiters-mode
     ":"          #'eval-expression
     "SPC"        #'list-buffers
     "C-n"        #'ivan/toggle-narrowing
