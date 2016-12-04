@@ -702,10 +702,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-diff-lines-heading          ((t (:background ,bluegrey :foreground ,ink))))
    `(magit-diff-context                ((t (:background ,paperwhite :foreground ,pencil2))))
    `(magit-diff-context-highlight      ((t (:background ,whisp2 :foreground ,pencil2))))
-   `(magit-diff-added                  ((t (:background "#DCFBDD" :foreground "#78BB46"))))
+   `(magit-diff-added                  ((t (:background "#ECFBEC" :foreground "#78BB46"))))
    `(magit-diff-added-highlight        ((t (:background "#CCEECC" :foreground "#27831f"))))
-   `(magit-diff-removed-highlight      ((t (:background "#EECCCC" :foreground "#AA2B23"))))
-   `(magit-diff-removed                ((t (:background "#F9DCDC" :foreground "#CC7B73"))))
+   `(magit-diff-removed-highlight      ((t (:background "#F9DCDC" :foreground "#AA2B23"))))
+   `(magit-diff-removed                ((t (:background "#F9F2F2" :foreground "#CC7B73"))))
    `(magit-diffstat-added   ((t (:foreground ,marine))))
    `(magit-diffstat-removed ((t (:foreground ,navyblue))))
 ;;;;;; popup
