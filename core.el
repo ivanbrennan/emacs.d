@@ -27,6 +27,7 @@
 (setq
  blink-matching-paren 'jump
  blink-matching-delay 0.25
+ underline-minimum-offset 5
  )
 
 ;; cursor
