@@ -397,9 +397,7 @@
   :commands er/expand-region
   :bind
   (:map evil-normal-state-map
-        ("C-SPC" . er/expand-region)
-        )
-  )
+        ("C-SPC" . er/expand-region)))
 
 (use-package evil-numbers
   :commands (evil-numbers/inc-at-pt
@@ -459,9 +457,7 @@
     "w c"        #'evil-window-delete
     "w J"        #'webjump
     "w n"        #'ivan/toggle-narrowing
-    "x"          #'execute-extended-command
-    )
-  )
+    "x"          #'execute-extended-command))
 
 (use-package nlinum-relative
   :commands nlinum-relative-toggle
