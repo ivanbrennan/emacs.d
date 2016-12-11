@@ -392,10 +392,13 @@
   (sp-pair "`"  "`"  :wrap "C-M-`")
   (eval-after-load "evil"
     '(progn
-      (evil-define-key 'insert smartparens-mode-map (kbd "C-)")   'sp-forward-slurp-sexp)
-      (evil-define-key 'insert smartparens-mode-map (kbd "C-(")   'sp-forward-barf-sexp)
-      (evil-define-key 'insert smartparens-mode-map (kbd "C-M-(") 'sp-backward-slurp-sexp)
-      (evil-define-key 'insert smartparens-mode-map (kbd "C-M-)") 'sp-backward-barf-sexp))))
+       (evil-define-key 'insert smartparens-mode-map (kbd "C-)")   'sp-forward-slurp-sexp)
+       (evil-define-key 'insert smartparens-mode-map (kbd "C-(")   'sp-forward-barf-sexp)
+       (evil-define-key 'insert smartparens-mode-map (kbd "C-M-(") 'sp-backward-slurp-sexp)
+       (evil-define-key 'insert smartparens-mode-map (kbd "C-M-)") 'sp-backward-barf-sexp)
+       (evil-define-key 'normal smartparens-strict-mode-map (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
+       (evil-define-key 'normal smartparens-strict-mode-map (kbd "C-)") 'sp-forward-slurp-sexp)
+       (evil-define-key 'normal smartparens-strict-mode-map (kbd "C-(") 'sp-forward-barf-sexp))))
 
 (use-package expand-region
   :commands er/expand-region
