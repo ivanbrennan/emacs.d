@@ -427,7 +427,8 @@
     ":"          #'eval-expression
     "SPC"        #'list-buffers
     "C-n"        #'ivan/toggle-narrowing
-    "C-r"        #'ripgrep-regexp
+    ;; "C-r"        #'ripgrep-regexp
+    "C-r"        #'evil-use-register
     "C-u"        #'hl-line-mode
     "X SPC"      #'server-edit
     "X s"        #'server-start
