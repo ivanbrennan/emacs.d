@@ -447,8 +447,6 @@
     "f j"        #'dired-jump
     "f s"        #'save-buffer
     "f w"        #'write-file
-    "g b"        #'magit-blame
-    "g s"        #'magit-status
     "l"          #'evil-switch-to-windows-last-buffer
     "m e b"      #'eval-buffer
     "m e f"      #'eval-defun
@@ -456,6 +454,8 @@
     "m e r"      #'eval-region
     "o"          #'find-file
     "s"          search-map
+    "v b"        #'magit-blame
+    "v s"        #'magit-status
     "w 0"        #'evil-window-delete
     "."          #'zoom-window-zoom
     "C-."        #'ivan/toggle-narrowing-zoom
@@ -710,8 +710,8 @@
       (let ((git-link-open-in-browser t))
         (git-link remote start end)))
     (bind-map-set-keys ivan/leader-map
-      "g l" #'git-link
-      "g L" #'ivan/open-git-link-in-browser)
+      "v l" #'git-link
+      "v L" #'ivan/open-git-link-in-browser)
     (defun ivan/git-link-github-handy (hostname dirname filename branch commit start end)
       (format "https://github.com/%s/blob/%s/%s#%s"
               dirname
