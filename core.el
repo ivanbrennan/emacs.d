@@ -568,6 +568,7 @@
         ("≠"           . evil-numbers/inc-at-pt)
         ("–"           . evil-numbers/dec-at-pt)
         :map evil-motion-state-map
+        ("t"           . ivan/run-tests-or-find-char-to)
         ("C-d"         . kill-buffer-and-window)
         ("C-e"         . evil-end-of-line)
         ("C-S-E"       . evil-scroll-line-down)
@@ -629,6 +630,13 @@
     (defun ivan/treat-underscore-as-word-char () (ivan/treat-as-word-char ?_))
     (defun ivan/treat-hyphen-as-word-char     () (ivan/treat-as-word-char ?-))
     (defun ivan/treat-as-word-char (char) (modify-syntax-entry char "w"))
+
+    (defun ivan/run-tests-or-find-char-to (count char)
+      (interactive "p\nc")
+      (if (or (= char ?\n)
+              (= char ?\r))
+          (message "run tests")
+        (evil-find-char-to (or count 1) char)))
 
     (defun ivan/emacs-state-rectangle-mark-mode ()
       (interactive)
