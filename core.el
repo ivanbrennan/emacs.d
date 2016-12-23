@@ -633,8 +633,7 @@
 
     (defun ivan/run-tests-or-find-char-to (count char)
       (interactive "p\nc")
-      (if (or (= char ?\n)
-              (= char ?\r))
+      (if (= char ?\r)
           (message "run tests")
         (evil-find-char-to (or count 1) char)))
 
