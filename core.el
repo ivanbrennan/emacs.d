@@ -621,7 +621,7 @@
       (interactive "p\nc")
       (if (= char ?\r)
           (message "run tests")
-        (evil-find-char-to (or count 1) char)))
+        (evil-find-char-to count char)))
 
     (defun ivan/emacs-state-rectangle-mark-mode ()
       (interactive)
