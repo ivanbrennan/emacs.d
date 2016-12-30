@@ -307,6 +307,7 @@
   )
 
 (use-package ggtags
+  :ensure t
   :commands ggtags-mode)
 
 (use-package rainbow-mode
