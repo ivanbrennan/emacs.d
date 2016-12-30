@@ -1,4 +1,11 @@
 * Misc
+** etags
+*** generate etags file under .git/etags automatically (git hooks)
+*** have emacs automatically find it
+** gtags
+*** ignore certain languages/directories
+*** better handle partial matches
+** semantic (for smart completion)
 ** smartparens bindings
 ** M-S-o for fuzzy finder
 ** paste transient state

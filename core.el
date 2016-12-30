@@ -306,6 +306,9 @@
     )
   )
 
+(use-package ggtags
+  :commands ggtags-mode)
+
 (use-package rainbow-mode
   :diminish rainbow-mode
   :commands rainbow-mode
