@@ -887,6 +887,10 @@
         )
   )
 
+(use-package swiper
+  :ensure t
+  :commands ivy-mode)
+
 (use-package ag
   :ensure t
   :commands
