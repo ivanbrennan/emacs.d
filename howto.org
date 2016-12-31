@@ -1,6 +1,8 @@
 * Misc
 ** etags
-*** generate etags file under .git/etags automatically (git hooks)
+*** generate tags automatically
+How can I keep an up-to-date etags file located in the $GIT_DIR of each project?
+Git hooks: https://github.com/ivanbrennan/dotfiles/blob/master/git/templates/hooks/etags
 *** have emacs automatically find it
 ** gtags
 *** exclude certain languages and filepaths
