@@ -35,3 +35,15 @@ ___
     - (setq ns-use-native-fullscreen nil)
   - System Preferences > Mission Control
     - uncheck "Displays have separate spaces"
+
+## Install gtags with universal-ctags backend
+
+    cd $(brew --repo homebrew/core)
+    git remote add ivanbrennan git@github.com:ivanbrennan/homebrew-core.git
+    git checkout global-with-universal-ctags
+    brew install global --with-universal-ctags
+    git checkout master
+    cd -
+
+    export GTAGSCONF=/usr/local/share/gtags/gtags.conf
+    export GTAGSLABEL=new-ctags
