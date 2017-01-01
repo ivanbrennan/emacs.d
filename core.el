@@ -432,6 +432,7 @@
   (bind-map-set-keys ivan/leader-map
     ","          #'other-window
     ":"          #'eval-expression
+    "`"          #'variable-pitch-mode
     "SPC"        #'list-buffers
     "C-n"        #'ivan/toggle-narrowing
     ;; "C-r"        #'ripgrep-regexp
@@ -440,8 +441,6 @@
     "X SPC"      #'server-edit
     "X s"        #'server-start
     "\\"         #'ivan/rotate-theme
-    "a g"        #'ag
-    "a r"        #'ag-regexp
     ;; "b SPC"    #'hydra-buffers/body
     "B"          #'bury-buffer
     "b b"        #'switch-to-buffer
@@ -449,11 +448,12 @@
     "b j"        #'bookmark-jump
     "b l"        #'bookmark-bmenu-list
     "b m"        #'bookmark-set
-    "F"          #'variable-pitch-mode
     "f a"        #'find-alternate-file
     "f j"        #'dired-jump
     "f s"        #'save-buffer
     "f w"        #'write-file
+    "C-f"        #'ag-project
+    "F"          #'ag-project-regexp
     "g"          #'evil-goto-mark
     "l"          #'evil-switch-to-windows-last-buffer
     "m e b"      #'eval-buffer
