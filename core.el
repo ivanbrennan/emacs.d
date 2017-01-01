@@ -576,6 +576,7 @@
         :map evil-visual-state-map
         ("C-r"         . isearch-backward)
         ("<tab>"       . evil-indent)
+        ("<backspace>" . delete-active-region)
         :map evil-insert-state-map
         ("M-v"         . yank)
         ("C-S-U"       . ivan/backward-kill-line)
