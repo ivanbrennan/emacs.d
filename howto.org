@@ -14,7 +14,6 @@ Add ~--languages~ and ~--exclude~ settings to ~/.ctags
 ** M-S-o for fuzzy finder
 ** paste transient state
 ** display error in ag results window
-** tags (cscope, etags, gtags, ctags?)
 ** highlight/unhighlight transient state
 ** */# symbol navigation transient state like in Spacemacs
 ** expand-region transient state like in Spacemacs
