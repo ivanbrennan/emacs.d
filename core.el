@@ -451,6 +451,7 @@
     "f j"        #'dired-jump
     "f s"        #'save-buffer
     "f w"        #'write-file
+    "g"          #'evil-goto-mark
     "l"          #'evil-switch-to-windows-last-buffer
     "m e b"      #'eval-buffer
     "m e f"      #'eval-defun
@@ -548,8 +549,7 @@
   :demand
   :bind
   (:map evil-normal-state-map
-        ("'"           . evil-goto-mark)
-        ("`"           . evil-goto-mark-line)
+        ("'"           . evil-use-register)
         ("U"           . undo-tree-redo)
         ("C-r"         . isearch-backward)
         ("S-<SPC>"     . ivan/emacs-state-rectangle-mark-mode)
