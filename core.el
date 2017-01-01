@@ -913,7 +913,13 @@
   :config
   (progn
     (use-package dash)
-    (use-package s)))
+    (use-package s)
+    (setq ag-arguments (delete "--stats" ag-arguments))
+    (add-hook 'ag-search-finished-hook #'ivan/present-search-results)))
+
+(defun ivan/present-search-results ()
+  (select-window (get-buffer-window (compilation-find-buffer)))
+  (recenter 0))
 
 (use-package ripgrep
   :ensure t
