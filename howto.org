@@ -13,7 +13,11 @@ Add ~--languages~ and ~--exclude~ settings to ~/.ctags
 ** smartparens bindings
 ** M-S-o for fuzzy finder
 ** paste transient state
-** display error in ag results window
+** search utils
+*** ag.el
+**** hide file-local variables (top of compilation buffer)
+: #'ivan/present-search-results
+**** omit leading whitespace in results text
 ** highlight/unhighlight transient state
 ** */# symbol navigation transient state like in Spacemacs
 ** expand-region transient state like in Spacemacs
@@ -293,7 +297,6 @@ How do I move the point to the middle/top/bottom of the window?
 ** smartparens
 ** Undo-tree
 ** company
-** ag
 ** visual-regexp
 ** visual-regexp-steroids
 ** flycheck
