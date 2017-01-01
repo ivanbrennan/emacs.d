@@ -919,6 +919,7 @@
 
 (defun ivan/present-search-results ()
   (select-window (get-buffer-window (compilation-find-buffer)))
+  (compilation-next-error 1)
   (recenter 0))
 
 (use-package ripgrep
