@@ -100,7 +100,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(compilation-error-face ((t (:foreground ,ink :weight bold :underline t))))
    `(compilation-face ((t (:foreground ,marooned))))
    `(compilation-info-face ((t (:foreground ,ink))))
-   `(compilation-info ((t (:foreground ,marine :underline t))))
+   `(compilation-info ((t (:foreground ,marine))))
    `(compilation-leave-directory-face ((t (:foreground ,pencil1))))
    `(compilation-line-face ((t (:foreground ,marooned))))
    `(compilation-line-number ((t (:foreground ,marooned))))

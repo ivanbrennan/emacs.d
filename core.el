@@ -196,6 +196,7 @@
  apropos-do-all                      t
  bookmark-bmenu-toggle-filenames     nil
  comint-prompt-read-only             t
+ compilation-message-face            nil  ; don't underline compilation links
  completions-format                  'vertical
  delete-by-moving-to-trash           t
  echo-keystrokes                     0.5
