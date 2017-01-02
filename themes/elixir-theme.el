@@ -90,7 +90,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(fringe ((t (:foreground ,pencil2 :background ,paperwhite))))
    `(header-line ((t (:foreground ,pencil1 :background ,whisp2))))
    `(info-node ((t (:foreground ,greentea :slant italic :weight bold))))
-   `(highlight ((t (:background ,whisp2))))
+   `(highlight ((t (:background ,limeclay))))
    `(success ((t (:foreground ,pencil1 :weight bold))))
    `(warning ((t (:foreground ,ink :weight bold))))
    `(tooltip ((t (:foreground ,marooned :background ,paper))))
@@ -113,7 +113,7 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; completions
    `(completions-annotations ((t (:foreground ,ink))))
 ;;;;; grep
-   `(match ((t (:background ,whisp2 :weight bold))))
+   `(match ((t (:background ,limeclay :weight bold))))
 ;;;;; wgrep
    `(wgrep-face ((t :background ,melon)))
 ;;;;; evil
