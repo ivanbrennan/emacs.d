@@ -125,7 +125,7 @@
 
 ;; splits
 (setq split-width-threshold 130
-      compilation-window-height 11)
+      compilation-window-height 13)
 
 ;; scroll
 (setq
