@@ -918,11 +918,30 @@
     (setq
      ag-arguments (delete "--stats" ag-arguments)
      ag-highlight-search t)
+
+    (defun ivan/ag-normalize-leading-whitespace ()
+      (ivan/normalize-leading-whitespace ag/file-column-pattern))
+    (advice-add 'ag-filter :after #'ivan/ag-normalize-leading-whitespace)
+
     (add-hook 'ag-search-finished-hook #'ivan/present-search-results)))
 
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
   :major-modes (compilation-mode)
   :bindings ("m f" #'next-error-follow-minor-mode))
+
+(defun ivan/normalize-leading-whitespace (prefix-regexp)
+  (save-excursion
+    (forward-line 0)
+    (let ((end (point)) beg)
+      (goto-char compilation-filter-start)
+      (forward-line 0)
+      (setq beg (point))
+      (when (< (point) end)
+        (setq end (copy-marker end))
+        ;; Strip extraneous leading whitespace from matching lines
+        (while (re-search-forward prefix-regexp end 1)
+          (and (re-search-forward "[[:blank:]]*" end 1)
+               (replace-match " " t t)))))))
 
 (defun ivan/present-search-results ()
   (select-window (get-buffer-window (compilation-find-buffer)))
