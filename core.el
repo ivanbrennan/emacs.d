@@ -922,8 +922,14 @@
 
 (defun ivan/present-search-results ()
   (select-window (get-buffer-window (compilation-find-buffer)))
-  (compilation-next-error 1)
+  (ignore-errors (compilation-next-error 1))
   (recenter 0))
+
+(defun ivan/without-side-splits (orig-fun &rest args)
+  (let ((split-width-threshold nil))
+    (apply orig-fun args)))
+
+(advice-add 'compilation-start :around #'ivan/without-side-splits)
 
 (use-package ripgrep
   :ensure t
