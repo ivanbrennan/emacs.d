@@ -461,6 +461,7 @@
     "m e f"      #'eval-defun
     "m e e"      #'pp-eval-last-sexp
     "m e r"      #'eval-region
+    "m d"        #'mark-defun
     "o"          #'find-file
     "s"          search-map
     "v b"        #'magit-blame
