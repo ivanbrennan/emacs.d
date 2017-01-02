@@ -922,6 +922,9 @@
      ag-arguments (delete "--stats" ag-arguments)
      ag-highlight-search t)
 
+    (define-key ag-mode-map
+      [remap wgrep-change-to-wgrep-mode] #'ivan/init-wgrep-mode)
+
     (defun ivan/filter-ag-whitespace ()
       (ivan/filter-whitespace ag/file-column-pattern))
     (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
@@ -969,19 +972,15 @@
   (add-hook 'ag-mode-hook 'wgrep-ag-setup)
   :config
   (progn
-    (defun ivan/recompile-search-results (_orig-fun &rest _args)
+    (defun ivan/init-wgrep-mode ()
+      (interactive)
       (advice-remove 'ag-filter #'ivan/filter-ag-whitespace)
       (add-hook 'ag-search-finished-hook #'ivan/change-to-wgrep-mode)
       (recompile))
-
     (defun ivan/change-to-wgrep-mode ()
       (remove-hook 'ag-search-finished-hook #'ivan/change-to-wgrep-mode)
-      (advice-remove 'wgrep-change-to-wgrep-mode #'ivan/recompile-search-results)
-      (wgrep-change-to-wgrep-mode)
-      (advice-add 'wgrep-change-to-wgrep-mode :around #'ivan/recompile-search-results)
-      (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace))
-
-    (advice-add 'wgrep-change-to-wgrep-mode :around #'ivan/recompile-search-results)))
+      (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
+      (wgrep-change-to-wgrep-mode))))
 
 (use-package crux
   :ensure t
