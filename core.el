@@ -915,7 +915,9 @@
   (progn
     (use-package dash)
     (use-package s)
-    (setq ag-arguments (delete "--stats" ag-arguments))
+    (setq
+     ag-arguments (delete "--stats" ag-arguments)
+     ag-highlight-search t)
     (add-hook 'ag-search-finished-hook #'ivan/present-search-results)))
 
 (defun ivan/present-search-results ()
