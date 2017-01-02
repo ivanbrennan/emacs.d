@@ -920,6 +920,10 @@
      ag-highlight-search t)
     (add-hook 'ag-search-finished-hook #'ivan/present-search-results)))
 
+(bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
+  :major-modes (compilation-mode)
+  :bindings ("m f" #'next-error-follow-minor-mode))
+
 (defun ivan/present-search-results ()
   (select-window (get-buffer-window (compilation-find-buffer)))
   (ignore-errors (compilation-next-error 1))
