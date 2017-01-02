@@ -919,9 +919,9 @@
      ag-arguments (delete "--stats" ag-arguments)
      ag-highlight-search t)
 
-    (defun ivan/ag-normalize-leading-whitespace ()
-      (ivan/normalize-leading-whitespace ag/file-column-pattern))
-    (advice-add 'ag-filter :after #'ivan/ag-normalize-leading-whitespace)
+    (defun ivan/filter-ag-whitespace ()
+      (ivan/filter-whitespace ag/file-column-pattern))
+    (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
 
     (add-hook 'ag-search-finished-hook #'ivan/present-search-results)))
 
@@ -929,7 +929,7 @@
   :major-modes (compilation-mode)
   :bindings ("m f" #'next-error-follow-minor-mode))
 
-(defun ivan/normalize-leading-whitespace (prefix-regexp)
+(defun ivan/filter-whitespace (prefix-pattern)
   (save-excursion
     (forward-line 0)
     (let ((end (point)) beg)
@@ -938,8 +938,8 @@
       (setq beg (point))
       (when (< (point) end)
         (setq end (copy-marker end))
-        ;; Strip extraneous leading whitespace from matching lines
-        (while (re-search-forward prefix-regexp end 1)
+        ;; normalize whitespace between prefix-pattern and rest of line
+        (while (re-search-forward prefix-pattern end 1)
           (and (re-search-forward "[[:blank:]]*" end 1)
                (replace-match " " t t)))))))
 
