@@ -113,8 +113,10 @@
 (defun ivan/truncate-lines ()
   (setq truncate-lines t))
 
-(add-hook 'prog-mode-hook        #'ivan/truncate-lines)
-(add-hook 'compilation-mode-hook #'ivan/truncate-lines)
+(dolist (hook '(prog-mode-hook
+                compilation-mode-hook
+                occur-mode-hook))
+  (add-hook hook #'ivan/truncate-lines))
 
 (add-hook 'text-mode-hook #'visual-line-mode)
 (add-hook 'help-mode-hook #'visual-line-mode)
