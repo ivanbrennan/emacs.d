@@ -564,8 +564,8 @@
         ("S-<return>"  . ivan/add-whitespace-above)
         ("≠"           . evil-numbers/inc-at-pt)
         ("–"           . evil-numbers/dec-at-pt)
-        :map evil-motion-state-map
         ("t"           . ivan/run-tests-or-find-char-to)
+        :map evil-motion-state-map
         ("C-d"         . kill-buffer-and-window)
         ("C-e"         . evil-end-of-line)
         ("C-S-E"       . evil-scroll-line-down)
