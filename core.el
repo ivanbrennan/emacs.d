@@ -975,10 +975,10 @@
     (defun ivan/init-wgrep-mode ()
       (interactive)
       (advice-remove 'ag-filter #'ivan/filter-ag-whitespace)
-      (add-hook 'ag-search-finished-hook #'ivan/change-to-wgrep-mode)
+      (add-hook 'ag-search-finished-hook #'ivan/enable-wgrep-mode)
       (recompile))
-    (defun ivan/change-to-wgrep-mode ()
-      (remove-hook 'ag-search-finished-hook #'ivan/change-to-wgrep-mode)
+    (defun ivan/enable-wgrep-mode ()
+      (remove-hook 'ag-search-finished-hook #'ivan/enable-wgrep-mode)
       (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
       (wgrep-change-to-wgrep-mode))))
 
