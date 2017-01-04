@@ -1066,6 +1066,15 @@
      magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
      )))
 
+(use-package rbenv
+  :ensure t
+  :init
+  (setq rbenv-show-active-ruby-in-modeline nil
+        rbenv-executable (substring
+                          (shell-command-to-string "which rbenv") 0 -1))
+  (global-rbenv-mode)
+  (add-hook 'ruby-mode-hook #'rbenv-use-corresponding))
+
 (diminish 'text-scale-mode)
 
 ;; gui & terminal
