@@ -9,6 +9,11 @@ Git hooks: https://github.com/ivanbrennan/dotfiles/blob/master/git/templates/hoo
 Since gtags doesn't pass command-line options down to its ctags backend, how can I exclude certain languages, filetypes and directories from the tags it generates?
 Add ~--languages~ and ~--exclude~ settings to ~/.ctags
 *** better handle partial matches
+** ruby/rails
+*** inf-ruby
+**** get it working
+**** get completion working
+*** robe & company
 ** semantic (for smart completion)
 ** smartparens bindings
 ** M-S-o for fuzzy finder
