@@ -1080,6 +1080,11 @@
   (global-rbenv-mode)
   (add-hook 'ruby-mode-hook #'rbenv-use-corresponding))
 
+(use-package projectile-rails
+  :ensure t
+  :init
+  (projectile-rails-global-mode))
+
 (diminish 'text-scale-mode)
 
 ;; gui & terminal
