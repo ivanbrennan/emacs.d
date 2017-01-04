@@ -1066,6 +1066,11 @@
      magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
      )))
 
+(use-package flymake-ruby
+  :ensure t
+  :init
+  (add-hook 'ruby-mode-hook 'flymake-ruby-load))
+
 (use-package rbenv
   :ensure t
   :init
