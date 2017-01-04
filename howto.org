@@ -10,6 +10,7 @@ Since gtags doesn't pass command-line options down to its ctags backend, how can
 Add ~--languages~ and ~--exclude~ settings to ~/.ctags
 *** better handle partial matches
 ** ruby/rails
+*** rspec
 *** inf-ruby
 **** get it working
 **** get completion working
