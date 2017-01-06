@@ -8,7 +8,7 @@
 (defvar elixir-default-colors-alist
   '(("navyblue"   . "#183691")
     ("blooo"      . "#5E79C1")
-    ("bigblue"    . "#3873C3")
+    ("bigblue"    . "#5272C4")
     ("marine"     . "#0085B3")
     ("flatblue"   . "#B0CDE7")
     ("aquablue"   . "#C2E7F3")
@@ -592,7 +592,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ivy-match-required-face ((t (:foreground ,navyblue :background ,paperwhite))))
    `(ivy-remote ((t (:foreground ,ink :background ,paperwhite))))
    `(ivy-subdir ((t (:foreground ,bigblue :background ,paperwhite))))
-   `(ivy-current-match ((t (:foreground ,bigblue :background ,whisp2))))
+   `(ivy-current-match ((t (:foreground ,navyblue :background ,whisp1))))
    `(ivy-minibuffer-match-face-1 ((t (:background ,paperwhite))))
    `(ivy-minibuffer-match-face-2 ((t (:background ,paperwhite :weight bold))))
    `(ivy-minibuffer-match-face-3 ((t (:background ,paperwhite))))
