@@ -1092,6 +1092,9 @@
   :init
   (projectile-rails-global-mode))
 
+(use-package rspec-mode
+  :commands rspec-mode)
+
 (diminish 'text-scale-mode)
 
 ;; gui & terminal
