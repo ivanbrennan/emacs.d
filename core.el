@@ -899,6 +899,9 @@
   :ensure t
   :commands ivy-mode)
 
+(use-package ivy
+  :commands ivy-read)
+
 (use-package ag
   :ensure t
   :commands
@@ -1079,6 +1082,10 @@
                           (shell-command-to-string "which rbenv") 0 -1))
   (global-rbenv-mode)
   (add-hook 'ruby-mode-hook #'rbenv-use-corresponding))
+
+(use-package projectile
+  :config
+  (setq projectile-completion-system 'ivy))
 
 (use-package projectile-rails
   :ensure t
