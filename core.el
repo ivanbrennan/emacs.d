@@ -900,7 +900,10 @@
   :commands ivy-mode)
 
 (use-package ivy
-  :commands ivy-read)
+  :commands ivy-read
+  :bind
+  (:map ivy-minibuffer-map
+        ("<escape>" . minibuffer-keyboard-quit)))
 
 (use-package ag
   :ensure t
