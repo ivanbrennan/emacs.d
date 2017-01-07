@@ -596,7 +596,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ivy-minibuffer-match-face-1 ((t (:background ,paperwhite))))
    `(ivy-minibuffer-match-face-2 ((t (:background ,paperwhite :weight bold))))
    `(ivy-minibuffer-match-face-3 ((t (:background ,paperwhite))))
-   `(ivy-minibuffer-match-face-4 ((t (:background ,ink))))
+   `(ivy-minibuffer-match-face-4 ((t (:background ,skyblue))))
 ;;;;; ido-mode
    `(ido-first-match ((t (:foreground ,marooned :weight bold))))
    `(ido-only-match ((t (:foreground ,ink :weight bold))))
