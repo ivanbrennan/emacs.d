@@ -91,6 +91,8 @@ different bindings for <tab> (the actual Tab key) and TAB (C-i)
 ** M-K
 ** M-R
 ** M-G
+** M-S-SPC
+** S-SPC
 * Hydras
 ** windsize (SPC w {h,j,k,l})
 ** eval (SPC e)
