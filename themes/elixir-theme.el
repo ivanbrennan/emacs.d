@@ -1173,8 +1173,14 @@ Also bind `class' to ((class color) (min-colors 89))."
   (custom-theme-set-variables
    'elixir
 ;;;;; ansi-color
-   `(ansi-color-names-vector [,paper ,navyblue ,pencil1 ,marooned
-                                          ,ink ,ink ,merged ,marooned])
+   `(ansi-color-names-vector [,ink       ; black
+                              ,closedred ; red
+                              ,spruce    ; green
+                              ,clay      ; yellow
+                              ,bigblue   ; blue
+                              ,visipurp  ; magenta
+                              ,aqua      ; cyan
+                              ,pencil1]) ; gray
 ;;;;; fill-column-indicator
    `(fci-rule-color ,sand)
 ;;;;; nrepl-client
