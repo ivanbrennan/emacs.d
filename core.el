@@ -1098,6 +1098,8 @@
   (projectile-rails-global-mode))
 
 (use-package rspec-mode
+  :ensure t
+  :pin melpa
   :commands rspec-mode)
 
 (diminish 'text-scale-mode)
