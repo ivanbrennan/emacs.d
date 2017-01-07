@@ -573,6 +573,7 @@
         ("≠"           . evil-numbers/inc-at-pt)
         ("–"           . evil-numbers/dec-at-pt)
         ("t"           . ivan/run-tests-or-find-char-to)
+        ("T"           . ivan/run-test-file-or-find-char-to-backward)
         :map evil-motion-state-map
         ("C-d"         . kill-buffer-and-window)
         ("C-e"         . evil-end-of-line)
@@ -640,8 +641,14 @@
     (defun ivan/run-tests-or-find-char-to (count char)
       (interactive "p\nc")
       (if (= char ?\r)
-          (ivan/rspec-verify-dwim)
+          (ivan/rspec-dwim 'rspec-verify-single)
         (evil-find-char-to count char)))
+
+    (defun ivan/run-test-file-or-find-char-to-backward (count char)
+      (interactive "p\nc")
+      (if (= char ?\r)
+          (ivan/rspec-dwim 'rspec-verify)
+        (evil-find-char-to-backward count char)))
 
     (defun ivan/emacs-state-rectangle-mark-mode ()
       (interactive)
@@ -1111,10 +1118,10 @@
   :commands (rspec-mode
              ivan/rspec-verify-dwim)
   :config
-  (defun ivan/rspec-verify-dwim ()
+  (defun ivan/rspec-dwim (rspec-func)
     (interactive)
     (if (rspec-buffer-is-spec-p)
-        (rspec-verify-single)
+        (funcall rspec-func)
       (rspec-rerun))))
 
 (diminish 'text-scale-mode)
