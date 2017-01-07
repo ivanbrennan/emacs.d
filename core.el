@@ -640,7 +640,7 @@
     (defun ivan/run-tests-or-find-char-to (count char)
       (interactive "p\nc")
       (if (= char ?\r)
-          (message "run tests")
+          (rspec-verify-single)
         (evil-find-char-to count char)))
 
     (defun ivan/emacs-state-rectangle-mark-mode ()
