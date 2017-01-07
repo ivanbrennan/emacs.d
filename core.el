@@ -640,7 +640,7 @@
     (defun ivan/run-tests-or-find-char-to (count char)
       (interactive "p\nc")
       (if (= char ?\r)
-          (rspec-verify-single)
+          (ivan/rspec-verify-dwim)
         (evil-find-char-to count char)))
 
     (defun ivan/emacs-state-rectangle-mark-mode ()
@@ -1108,7 +1108,14 @@
 (use-package rspec-mode
   :ensure t
   :pin melpa
-  :commands rspec-mode)
+  :commands (rspec-mode
+             ivan/rspec-verify-dwim)
+  :config
+  (defun ivan/rspec-verify-dwim ()
+    (interactive)
+    (if (rspec-buffer-is-spec-p)
+        (rspec-verify-single)
+      (rspec-rerun))))
 
 (diminish 'text-scale-mode)
 
