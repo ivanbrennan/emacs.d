@@ -1253,8 +1253,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   "Run isearch-exit, and if in the minibuffer, submit the search result as input."
   (interactive)
   (isearch-exit)
-  (if (minibuffer-window-active-p (selected-window))
-      (minibuffer-complete-and-exit)))
+  (when (minibuffer-window-active-p (selected-window))
+    (let ((completion-fail-discreetly t))
+      (minibuffer-complete-and-exit))))
 
 
 ;; padding
