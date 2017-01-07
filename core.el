@@ -212,6 +212,7 @@
  echo-keystrokes                     0.5
  ediff-split-window-function         #'split-window-horizontally
  ediff-window-setup-function         'ediff-setup-windows-plain
+ enable-recursive-minibuffers        t
  find-file-visit-truename            t
  hi-lock-auto-select-face            t
  history-delete-duplicates           t
