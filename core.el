@@ -903,7 +903,9 @@
   :commands ivy-read
   :bind
   (:map ivy-minibuffer-map
-        ("<escape>" . minibuffer-keyboard-quit)))
+        ("<escape>" . minibuffer-keyboard-quit))
+  :config
+  (setq ivy-count-format ""))
 
 (use-package ag
   :ensure t
