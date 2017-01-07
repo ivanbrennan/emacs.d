@@ -125,9 +125,17 @@
   (visual-line-mode))
 
 
-;; splits
+;; splits, frames, windows
 (setq split-width-threshold 130
       compilation-window-height 13)
+
+(add-to-list 'display-buffer-alist
+             `(,(rx bos "*rspec-compilation*" eos)
+               (display-buffer-reuse-window
+                display-buffer-in-side-window)
+               (reusable-frames      . visible)
+               (inhibit-switch-frame . t)
+               (side                 . bottom)))
 
 ;; scroll
 (setq
