@@ -988,6 +988,8 @@
   :major-modes (compilation-mode)
   :bindings ("m f" #'next-error-follow-minor-mode))
 
+(evil-define-key 'motion ert-results-mode-map (kbd "C-j") #'ert-results-next-test)
+(evil-define-key 'motion ert-results-mode-map (kbd "C-k") #'ert-results-previous-test)
 (evil-define-key 'motion compilation-mode-map (kbd "C-j") #'compilation-next-error)
 (evil-define-key 'motion compilation-mode-map (kbd "C-k") #'compilation-previous-error)
 (evil-define-key 'motion compilation-mode-map (kbd "M-n") #'make-frame)
