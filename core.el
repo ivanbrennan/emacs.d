@@ -474,7 +474,7 @@
     "m d"        #'mark-defun
     "o"          #'find-file
     "s"          search-map
-    "v b"        #'magit-blame
+    "C-v"        #'magit-blame
     "v s"        #'magit-status
     "w 0"        #'evil-window-delete
     "."          #'zoom-window-zoom
