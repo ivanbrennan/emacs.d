@@ -443,7 +443,6 @@
     :override-minor-modes t)
   (bind-map-set-keys ivan/leader-map
     ","          #'other-window
-    ":"          #'eval-expression
     "`"          #'variable-pitch-mode
     "SPC"        #'list-buffers
     "C-n"        #'ivan/toggle-narrowing
@@ -575,6 +574,7 @@
         ("–"           . evil-numbers/dec-at-pt)
         ("t"           . ivan/run-tests-or-find-char-to)
         ("T"           . ivan/run-test-file-or-find-char-to-backward)
+        ("S-SPC"       . evil-ex)
         :map evil-motion-state-map
         ("C-d"         . kill-buffer-and-window)
         ("C-e"         . evil-end-of-line)
@@ -588,6 +588,7 @@
         ("C-w SPC"     . zoom-window-zoom)
         ("C-w C-SPC"   . zoom-window-zoom)
         ("C-w S-SPC"   . ivan/other-window-zoom)
+        ("M-S-SPC"     . eval-expression)
         ("˜"           . next-error)
         ("∏"           . previous-error)
         :map evil-visual-state-map
@@ -1216,7 +1217,6 @@ Disables `text-scale-mode`."
  ("C-/" . undo-tree-undo)
  ("C-?" . undo-tree-redo)
  ("C-w" . ivan/kill-region-or-backward-kill-word)
- ("S-SPC" . rectangle-mark-mode)
  :map rectangle-mark-mode-map
  ("s" . string-rectangle)
  ("o" . rectangle-exchange-point-and-mark)
