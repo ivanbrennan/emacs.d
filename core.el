@@ -1165,15 +1165,21 @@ Disables `text-scale-mode`."
   (interactive)
   (text-scale-set 0))
 
+(defun ivan/delete-window ()
+  (interactive)
+  (if (one-window-p)
+      (delete-frame)
+    (delete-window)))
+
 (defun configure-gui ()
   (bind-keys
    ("M-q"   . save-buffers-kill-terminal)
    ("M-A"   . mark-whole-buffer)
    ("M-o"   . find-file)
    ("M-c"   . kill-ring-save)
-   ("M-w"   . delete-window)
+   ("M-w"   . ivan/delete-window)
    ("M-W"   . delete-frame)
-   ("M-N"   . make-frame)
+   ("M-n"   . make-frame)
    ("M-s"   . save-buffer)
    ("M-u"   . ivan/toggle-transparency)
    ("M-="   . text-scale-increase)
