@@ -137,6 +137,14 @@
                (side                 . bottom)))
 
 (add-to-list 'display-buffer-alist
+             `(,(rx bos "*ert*" eos)
+               (display-buffer-reuse-window
+                display-buffer-in-side-window)
+               (reusable-frames      . visible)
+               (inhibit-switch-frame . t)
+               (side                 . bottom)))
+
+(add-to-list 'display-buffer-alist
              `(,(rx bos "*ag " (1+ not-newline) "*" eos)
                (display-buffer-reuse-window
                 display-buffer-in-side-window)
@@ -973,7 +981,8 @@
   :bind (:map evil-motion-state-map ("C-SPC" . magnet-toggle))
   :config
   (setq magnet-modes '(ag-mode
-                       rspec-compilation-mode)))
+                       rspec-compilation-mode
+                       ert-results-mode)))
 
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
   :major-modes (compilation-mode)
