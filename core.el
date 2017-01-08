@@ -460,7 +460,6 @@
     "\\"         #'ivan/rotate-theme
     ;; "b SPC"    #'hydra-buffers/body
     "B"          #'bury-buffer
-    "C-b"        #'switch-to-buffer
     "b j"        #'bookmark-jump
     "b l"        #'bookmark-bmenu-list
     "b m"        #'bookmark-set
@@ -479,6 +478,7 @@
     "m e r"      #'eval-region
     "m d"        #'mark-defun
     "o"          #'find-file
+    "C-o"        #'switch-to-buffer
     "s"          search-map
     "C-v"        #'magit-blame
     "v s"        #'magit-status
