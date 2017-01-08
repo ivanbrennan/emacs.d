@@ -454,11 +454,11 @@
     "\\"         #'ivan/rotate-theme
     ;; "b SPC"    #'hydra-buffers/body
     "B"          #'bury-buffer
-    "b b"        #'switch-to-buffer
-    "b d"        #'kill-this-buffer
+    "C-b"        #'switch-to-buffer
     "b j"        #'bookmark-jump
     "b l"        #'bookmark-bmenu-list
     "b m"        #'bookmark-set
+    "d d"        #'kill-this-buffer
     "f a"        #'find-alternate-file
     "f j"        #'dired-jump
     "f s"        #'save-buffer
