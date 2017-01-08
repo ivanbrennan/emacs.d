@@ -428,7 +428,7 @@
 (use-package expand-region
   :commands er/expand-region
   :bind
-  (:map evil-normal-state-map
+  (:map evil-visual-state-map
         ("C-SPC" . er/expand-region)))
 
 (use-package evil-numbers
@@ -587,6 +587,7 @@
         ("C-d"         . kill-buffer-and-window)
         ("C-e"         . evil-end-of-line)
         ("C-S-E"       . evil-scroll-line-down)
+        ("C-SPC"       . toggle-compilation-window)
         ("C-w C-h"     . evil-window-left)
         ("C-w C-j"     . evil-window-down)
         ("C-w C-k"     . evil-window-up)
