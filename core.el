@@ -922,7 +922,8 @@
   (:map ivy-minibuffer-map
         ("<escape>" . minibuffer-keyboard-quit))
   :config
-  (setq ivy-count-format ""))
+  (setq ivy-count-format ""
+        ivy-format-function 'ivy-format-function-line))
 
 (use-package ag
   :ensure t
