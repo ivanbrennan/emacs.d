@@ -1,3 +1,5 @@
+;;; magnet.el --- Magnetic buffers -*- lexical-binding: t; -*-
+
 (require 'cl-lib)
 
 (defvar magnet-modes nil
