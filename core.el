@@ -126,8 +126,7 @@
 
 
 ;; splits, frames, windows
-(setq split-width-threshold 130
-      compilation-window-height 13)
+(setq split-width-threshold 130)
 
 (add-to-list 'display-buffer-alist
              `(,(rx bos "*rspec-compilation*" eos)
@@ -136,6 +135,13 @@
                (reusable-frames      . visible)
                (inhibit-switch-frame . t)
                (side                 . bottom)))
+
+(add-to-list 'display-buffer-alist
+             `(,(rx bos "*ag " (1+ not-newline) "*" eos)
+               (display-buffer-reuse-window
+                display-buffer-in-side-window)
+               (reusable-frames . nil)
+               (side            . bottom)))
 
 ;; scroll
 (setq
@@ -950,7 +956,8 @@
     (use-package s)
     (setq
      ag-arguments (delete "--stats" ag-arguments)
-     ag-highlight-search t)
+     ag-highlight-search t
+     ag-reuse-window t)
 
     (define-key ag-mode-map
       [remap wgrep-change-to-wgrep-mode] #'ivan/init-wgrep-mode)
