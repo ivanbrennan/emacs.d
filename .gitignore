@@ -1,4 +1,5 @@
-.cache/
-elpa/
-url/
-SessionDesktop.el
+/.cache/
+/.cask/
+/elpa/
+/url/
+/SessionDesktop.el
