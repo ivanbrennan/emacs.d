@@ -587,7 +587,6 @@
         ("C-d"         . kill-buffer-and-window)
         ("C-e"         . evil-end-of-line)
         ("C-S-E"       . evil-scroll-line-down)
-        ("C-SPC"       . toggle-compilation-window)
         ("C-w C-h"     . evil-window-left)
         ("C-w C-j"     . evil-window-down)
         ("C-w C-k"     . evil-window-up)
@@ -969,38 +968,11 @@
 
     (add-hook 'ag-search-finished-hook #'ivan/present-search-results)))
 
-(require 'cl-lib)
-
-(defvar compilation-modes '(ag-mode))
-
-(defun toggle-compilation-window ()
-  (interactive)
-  (or (try-hide-compilation-window)
-      (try-show-compilation-window)))
-
-(defun try-hide-compilation-window ()
-  (let ((win (cl-some #'detect-visible-compilation-window (buffer-list))))
-    (when win
-      (delete-window win) ;; try delete-side-window
-      t)))
-
-(defun try-show-compilation-window ()
-  (let* ((buf (cl-some #'detect-hidden-compilation-buffer (buffer-list)))
-         (win (if buf (display-buffer buf))))
-    (if win (select-window win))))
-
-(defun detect-visible-compilation-window (buf)
-  (and (qualified-compilation-p buf)
-       (get-buffer-window buf)))
-
-(defun detect-hidden-compilation-buffer (buf)
-  (and (qualified-compilation-p buf)
-       (not (get-buffer-window buf 'visible))
-       buf))
-
-(defun qualified-compilation-p (buf)
-  (and (compilation-buffer-p buf)
-       (memq (buffer-local-value 'major-mode buf) compilation-modes)))
+(use-package drawer
+  :load-path "lisp/drawer/"
+  :bind (:map evil-motion-state-map ("C-SPC" . drawer/toggle))
+  :config
+  (setq drawer/modes '(ag-mode)))
 
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
   :major-modes (compilation-mode)
