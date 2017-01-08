@@ -968,11 +968,11 @@
 
     (add-hook 'ag-search-finished-hook #'ivan/present-search-results)))
 
-(use-package drawer
-  :load-path "lisp/drawer/"
-  :bind (:map evil-motion-state-map ("C-SPC" . drawer/toggle))
+(use-package magnet
+  :load-path "lisp/magnet/"
+  :bind (:map evil-motion-state-map ("C-SPC" . magnet-toggle))
   :config
-  (setq drawer/modes '(ag-mode
+  (setq magnet-modes '(ag-mode
                        rspec-compilation-mode)))
 
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
