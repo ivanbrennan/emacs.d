@@ -31,7 +31,6 @@
        buf))
 
 (defun magnet--attract? (buf)
-  (and (compilation-buffer-p buf)
-       (memq (buffer-local-value 'major-mode buf) magnet-modes)))
+  (memq (buffer-local-value 'major-mode buf) magnet-modes))
 
 (provide 'magnet)
