@@ -972,7 +972,8 @@
   :load-path "lisp/drawer/"
   :bind (:map evil-motion-state-map ("C-SPC" . drawer/toggle))
   :config
-  (setq drawer/modes '(ag-mode)))
+  (setq drawer/modes '(ag-mode
+                       rspec-compilation-mode)))
 
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
   :major-modes (compilation-mode)
@@ -1142,7 +1143,18 @@
     (interactive)
     (if (rspec-buffer-is-spec-p)
         (funcall rspec-func)
-      (rspec-rerun))))
+      (rspec-rerun)))
+
+  (defun ivan/present-rspec-results (_buffer _outcome)
+    (let ((original-window (selected-window)))
+      (select-window (get-buffer-window (compilation-find-buffer)))
+      (next-line 3)
+      (recenter-top-bottom 0)
+      (select-window original-window)))
+
+  (defun ivan/add-rspec-presenter ()
+    (add-hook 'compilation-finish-functions #'ivan/present-rspec-results))
+  (add-hook 'rspec-compilation-mode-hook #'ivan/add-rspec-presenter))
 
 (diminish 'text-scale-mode)
 
