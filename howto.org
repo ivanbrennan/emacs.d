@@ -24,6 +24,7 @@ Add ~--languages~ and ~--exclude~ settings to ~/.ctags
 **** hide file-local variables (top of compilation buffer)
 : #'ivan/present-search-results
 **** omit leading whitespace in results text
+**** navigate between results, line :cnext, :cprev
 ** highlight/unhighlight transient state
 ** */# symbol navigation transient state like in Spacemacs
 ** expand-region transient state like in Spacemacs
