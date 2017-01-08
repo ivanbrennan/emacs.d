@@ -979,6 +979,10 @@
   :major-modes (compilation-mode)
   :bindings ("m f" #'next-error-follow-minor-mode))
 
+(evil-define-key 'motion compilation-mode-map (kbd "C-j") #'compilation-next-error)
+(evil-define-key 'motion compilation-mode-map (kbd "C-k") #'compilation-previous-error)
+(evil-define-key 'motion compilation-mode-map (kbd "M-n") #'make-frame)
+
 (defun ivan/filter-whitespace (prefix-pattern)
   (save-excursion
     (forward-line 0)
