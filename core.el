@@ -1321,8 +1321,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (save-excursion
     (beginning-of-line)
-    (newline)
-    (forward-line -1)))
+    (newline)))
 
 (defun ivan/minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
