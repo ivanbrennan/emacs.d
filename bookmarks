@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("evil"
+(("(elisp) Library Headers"
+ (front-context-string . "\n     ;; Author:")
+ (rear-context-string . "-2016 Your Name\n")
+ (position . 3165427)
+ (filename . "/usr/local/Cellar/emacs-mac/emacs-25.1-z-mac-6.1/share/info/emacs/elisp")
+ (info-node . "Library Headers")
+ (handler . Info-bookmark-jump))
+("evil"
  (filename . "~/Development/resources/emacs/emacs.d/elpa/evil-1.2.12/evil-common.el")
  (front-context-string . ";;; Compatibilit")
  (rear-context-string . "le.\")\n   nil))\n\n")
