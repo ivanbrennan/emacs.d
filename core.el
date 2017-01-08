@@ -570,6 +570,8 @@
         ("S-SPC"       . ivan/emacs-state-rectangle-mark-mode)
         ("C-<return>"  . ivan/add-whitespace-below)
         ("S-<return>"  . ivan/add-whitespace-above)
+        ("<return>"    . evil-next-line-first-non-blank)
+        ("C-m"         . evil-next-line-first-non-blank)
         ("≠"           . evil-numbers/inc-at-pt)
         ("–"           . evil-numbers/dec-at-pt)
         ("t"           . ivan/run-tests-or-find-char-to)
@@ -592,6 +594,8 @@
         ("˜"           . next-error)
         ("∏"           . previous-error)
         :map evil-visual-state-map
+        ("<return>"    . evil-next-line-first-non-blank)
+        ("C-m"         . evil-next-line-first-non-blank)
         ("C-r"         . isearch-backward)
         ("<tab>"       . evil-indent)
         ("<backspace>" . delete-active-region)
