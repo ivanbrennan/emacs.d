@@ -688,8 +688,22 @@
     (defun ivan/run-tests-or-find-char-to (count char)
       (interactive "p\nc")
       (if (= char ?\r)
-          (ivan/rspec-dwim 'rspec-verify-single)
+          (ivan/run-test)
         (evil-find-char-to count char)))
+
+    (defun ivan/run-test ()
+      (cond
+       ((eq 'ruby-mode major-mode)
+        (ivan/rspec-dwim 'rspec-verify-single))
+       ((eq 'emacs-lisp-mode major-mode)
+        (ivan/ert))))
+
+    (defun ivan/ert ()
+      (let ((original-window (selected-window))
+            (original-frame (selected-frame)))
+        (ert-run-tests-interactively t)
+        (select-frame-set-input-focus original-frame 'no-record)
+        (select-window original-window 'no-record)))
 
     (defun ivan/run-test-file-or-find-char-to-backward (count char)
       (interactive "p\nc")
