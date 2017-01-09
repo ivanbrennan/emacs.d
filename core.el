@@ -1189,11 +1189,13 @@
       (rspec-rerun)))
 
   (defun ivan/present-rspec-results (_buffer _outcome)
-    (let ((original-window (selected-window)))
-      (select-window (get-buffer-window (compilation-find-buffer)))
-      (next-line 3)
-      (recenter-top-bottom 0)
-      (select-window original-window)))
+    (let ((original-window (selected-window))
+          (results-window (get-buffer-window (compilation-find-buffer) 'visible)))
+      (when results-window
+        (select-window results-window)
+        (next-line 3)
+        (recenter-top-bottom 0)
+        (select-window original-window))))
 
   (defun ivan/add-rspec-presenter ()
     (add-hook 'compilation-finish-functions #'ivan/present-rspec-results))
