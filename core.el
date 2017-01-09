@@ -619,7 +619,7 @@
         ("T"           . ivan/run-test-file-or-find-char-to-backward)
         ("S-SPC"       . evil-ex)
         :map evil-motion-state-map
-        ("C-d"         . kill-buffer-and-window)
+        ("C-d"         . ivan/kill-buffer-and-maybe-window)
         ("C-e"         . evil-end-of-line)
         ("C-S-E"       . evil-scroll-line-down)
         ("C-w C-h"     . evil-window-left)
@@ -1212,6 +1212,12 @@
 Disables `text-scale-mode`."
   (interactive)
   (text-scale-set 0))
+
+(defun ivan/kill-buffer-and-maybe-window ()
+  (interactive)
+  (if (one-window-p)
+      (kill-this-buffer)
+    (kill-buffer-and-window)))
 
 (defun ivan/delete-window ()
   (interactive)
