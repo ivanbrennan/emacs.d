@@ -1201,6 +1201,9 @@
     (add-hook 'compilation-finish-functions #'ivan/present-rspec-results))
   (add-hook 'rspec-compilation-mode-hook #'ivan/add-rspec-presenter))
 
+(use-package cask-mode
+  :mode "\\`Cask\\'")
+
 (diminish 'text-scale-mode)
 
 ;; gui & terminal
