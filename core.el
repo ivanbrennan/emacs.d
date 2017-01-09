@@ -127,6 +127,33 @@
 
 ;; splits, frames, windows
 (setq split-width-threshold 130)
+(setq
+ display-buffer-alist
+ `(
+   ;; Put search results in bottom side-window of the current frame.
+   (,(rx bos
+         "*ag " (1+ not-newline) "*"
+         eos)
+    (display-buffer-reuse-window
+     display-buffer-in-side-window)
+    (reusable-frames)
+    (side . bottom)
+    )
+   ;; Put test results in reusable window/frame if one is visible,
+   ;; otherwise put them in bottom side-window.
+   (,(rx bos
+         (or
+          "*rspec-compilation*"
+          "*ert*"
+          )
+         eos)
+    (display-buffer-reuse-window
+     display-buffer-in-side-window)
+    (reusable-frames . visible)
+    (inhibit-switch-frame . t)
+    (side . bottom)
+    )
+   ))
 
 (add-to-list 'display-buffer-alist
              `(,(rx bos "*rspec-compilation*" eos)
