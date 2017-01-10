@@ -679,8 +679,7 @@
       (let ((original-window (selected-window))
             (original-frame (selected-frame)))
         (ert-run-tests-interactively t)
-        (select-frame original-frame 'no-record)
-        (raise-frame  original-frame)
+        (select-frame-set-input-focus original-frame 'no-record)
         (select-window original-window 'no-record)))
 
     (defun ivan/run-test-file-or-find-char-to-backward (count char)
