@@ -155,29 +155,6 @@
     )
    ))
 
-(add-to-list 'display-buffer-alist
-             `(,(rx bos "*rspec-compilation*" eos)
-               (display-buffer-reuse-window
-                display-buffer-in-side-window)
-               (reusable-frames      . visible)
-               (inhibit-switch-frame . t)
-               (side                 . bottom)))
-
-(add-to-list 'display-buffer-alist
-             `(,(rx bos "*ert*" eos)
-               (display-buffer-reuse-window
-                display-buffer-in-side-window)
-               (reusable-frames      . visible)
-               (inhibit-switch-frame . t)
-               (side                 . bottom)))
-
-(add-to-list 'display-buffer-alist
-             `(,(rx bos "*ag " (1+ not-newline) "*" eos)
-               (display-buffer-reuse-window
-                display-buffer-in-side-window)
-               (reusable-frames . nil)
-               (side            . bottom)))
-
 ;; scroll
 (setq
  scroll-step    1
