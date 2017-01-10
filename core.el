@@ -1166,6 +1166,7 @@
 
 (use-package flymake-ruby
   :ensure t
+  :diminish flymake-mode
   :init
   (add-hook 'ruby-mode-hook 'flymake-ruby-load))
 
