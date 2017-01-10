@@ -9,6 +9,15 @@ Git hooks: https://github.com/ivanbrennan/dotfiles/blob/master/git/templates/hoo
 Since gtags doesn't pass command-line options down to its ctags backend, how can I exclude certain languages, filetypes and directories from the tags it generates?
 Add ~--languages~ and ~--exclude~ settings to ~/.ctags
 *** better handle partial matches
+*** activate it automatically
+*** scroll down to actual results in results window automatically
+*** bind to M-.
+**** only display results buffer when multiple results
+It's already doing that!
+**** when multiple results
+***** don't auto-jump to first result
+***** select results window
+*** toggle results buffer with C-SPC
 ** ruby/rails
 *** rspec
 *** inf-ruby
@@ -25,6 +34,7 @@ Add ~--languages~ and ~--exclude~ settings to ~/.ctags
 : #'ivan/present-search-results
 **** omit leading whitespace in results text
 **** navigate between results, line :cnext, :cprev
+**** hitting Return in the results buffer should go to result in a different window, leaving the results window as is.
 ** highlight/unhighlight transient state
 ** */# symbol navigation transient state like in Spacemacs
 ** expand-region transient state like in Spacemacs
