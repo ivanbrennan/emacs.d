@@ -435,6 +435,7 @@
 
 (use-package evil-smartparens
   :ensure t
+  :disabled t
   :diminish evil-smartparens-mode
   :init
   (add-hook 'smartparens-mode-hook #'evil-smartparens-mode)
