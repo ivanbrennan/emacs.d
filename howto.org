@@ -14,9 +14,11 @@ Add ~--languages~ and ~--exclude~ settings to ~/.ctags
 *** bind to M-.
 **** only display results buffer when multiple results
 It's already doing that!
-**** when multiple results
+**** when multiple results (and called without prefix arg)
 ***** don't auto-jump to first result
 ***** select results window
+**** when multiple results and called with prefix arg
+***** behave as if there was only one result (i.e. jump to it, don't display results window)
 *** toggle results buffer with C-SPC
 ** ruby/rails
 *** rspec
