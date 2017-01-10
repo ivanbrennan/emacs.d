@@ -341,7 +341,17 @@
 
 (use-package ggtags
   :ensure t
-  :commands ggtags-mode)
+  :commands (ggtags-mode
+             ggtags-find-tag-dwim)
+  :diminish ggtags-mode
+  :init
+  (defvar ggtags-prog-modes
+    '(ruby-mode)
+    "Programming major modes in which ggtags is activated.")
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (when (apply 'derived-mode-p ggtags-prog-modes)
+                (ggtags-mode 1)))))
 
 (use-package rainbow-mode
   :diminish rainbow-mode
@@ -696,6 +706,8 @@
     (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
     (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
 
+    (define-key evil-normal-state-map (kbd "M-.") nil)
+    (evil-define-key 'normal ggtags-mode-map (kbd "M-.") #'ggtags-find-tag-dwim)
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
     (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
 
