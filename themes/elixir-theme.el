@@ -1176,10 +1176,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ansi-color-names-vector [,ink       ; black
                               ,closedred ; red
                               ,spruce    ; green
-                              ,clay      ; yellow
+                              ,teal      ; yellow
                               ,bigblue   ; blue
                               ,visipurp  ; magenta
-                              ,aqua      ; cyan
+                              ,marine    ; cyan
                               ,pencil1]) ; gray
 ;;;;; fill-column-indicator
    `(fci-rule-color ,sand)
