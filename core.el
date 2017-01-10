@@ -132,7 +132,10 @@
  `(
    ;; Put search results in bottom side-window of the current frame.
    (,(rx bos
-         "*ag " (1+ not-newline) "*"
+         (or
+          (and "*ag " (1+ not-newline) "*")
+          "*ggtags-global*"
+          )
          eos)
     (display-buffer-reuse-window
      display-buffer-in-side-window)
@@ -342,16 +345,20 @@
 (use-package ggtags
   :ensure t
   :commands (ggtags-mode
+             ggtags-navigation-mode
              ggtags-find-tag-dwim)
   :diminish ggtags-mode
   :init
-  (defvar ggtags-prog-modes
-    '(ruby-mode)
+  (defvar ggtags-prog-modes '(ruby-mode)
     "Programming major modes in which ggtags is activated.")
   (add-hook 'prog-mode-hook
             (lambda ()
               (when (apply 'derived-mode-p ggtags-prog-modes)
-                (ggtags-mode 1)))))
+                (ggtags-mode 1))))
+  :config
+  (defun ivan/add-ggtags-presenter ()
+    (add-hook 'compilation-finish-functions #'ivan/present-search-results))
+  (add-hook 'ggtags-global-mode-hook #'ivan/add-ggtags-presenter))
 
 (use-package rainbow-mode
   :diminish rainbow-mode
@@ -1012,7 +1019,8 @@
   :config
   (setq magnet-modes '(ag-mode
                        rspec-compilation-mode
-                       ert-results-mode)))
+                       ert-results-mode
+                       ggtags-global-mode)))
 
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
   :major-modes (compilation-mode)
@@ -1039,7 +1047,7 @@
           (and (re-search-forward "[[:blank:]]*" end 1)
                (replace-match " " t t)))))))
 
-(defun ivan/present-search-results ()
+(defun ivan/present-search-results (&rest _args)
   (select-window (get-buffer-window (compilation-find-buffer)))
   (ignore-errors (compilation-next-error 1))
   (recenter 0))
