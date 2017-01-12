@@ -491,6 +491,7 @@
     "\\"         #'ivan/rotate-theme
     ;; "b SPC"    #'hydra-buffers/body
     "B"          #'bury-buffer
+    "M-b"        #'unbury-buffer
     "b j"        #'bookmark-jump
     "b l"        #'bookmark-bmenu-list
     "b m"        #'bookmark-set
