@@ -482,7 +482,7 @@
     ","          #'other-window
     "`"          #'variable-pitch-mode
     "SPC"        #'list-buffers
-    "C-SPC"      #'shell-command
+    ;; "C-SPC"      #'shell-command
     "C-n"        #'ivan/toggle-narrowing
     ;; "C-r"        #'ripgrep-regexp
     "C-r"        #'evil-use-register
@@ -511,7 +511,8 @@
     "m d"        #'mark-defun
     "o"          #'find-file
     "C-o"        #'switch-to-buffer
-    "s"          search-map
+    "s e"        search-map
+    "s h"        #'shell-command
     "C-v"        #'magit-blame
     "v s"        #'magit-status
     "w 0"        #'evil-window-delete
