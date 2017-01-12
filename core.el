@@ -482,6 +482,7 @@
     ","          #'other-window
     "`"          #'variable-pitch-mode
     "SPC"        #'list-buffers
+    "C-SPC"      #'shell-command
     "C-n"        #'ivan/toggle-narrowing
     ;; "C-r"        #'ripgrep-regexp
     "C-r"        #'evil-use-register
