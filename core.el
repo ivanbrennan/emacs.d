@@ -478,7 +478,6 @@
     :evil-states (normal motion visual)
     :override-minor-modes t)
   (bind-map-set-keys ivan/leader-map
-    "1"          #'shell-command
     ","          #'other-window
     "`"          #'variable-pitch-mode
     "SPC"        #'list-buffers
