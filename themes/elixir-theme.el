@@ -1189,6 +1189,21 @@ Also bind `class' to ((class color) (min-colors 89))."
                    ,merged ,marooned ,ink))
    ))
 
+;;; dired-rainbow
+(defface dired-executable-face
+  `((t (:foreground ,(assoc-default "closedred" elixir-colors-alist))))
+  "dired face matching executable files.")
+(let* ((dired-date-regexp
+        "\\sw\\sw\\sw....\\(?:[0-9][0-9]:[0-9][0-9]\\|.[0-9]\\{4\\}\\)")
+       (regexp
+        (concat
+         "^[^!]."
+         "-.*x.*"
+         ".*[ ]"
+         dired-date-regexp
+         "[ ]\\(.*?\\)$")))
+  (font-lock-add-keywords 'dired-mode `((,regexp 1 'dired-executable-face))))
+
 ;;; Rainbow Support
 
 (declare-function rainbow-mode 'rainbow-mode)
