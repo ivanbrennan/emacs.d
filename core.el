@@ -981,7 +981,14 @@
         ("<escape>" . minibuffer-keyboard-quit))
   :config
   (setq ivy-count-format ""
-        ivy-format-function 'ivy-format-function-line))
+        ivy-format-function 'ivy-format-function-line)
+  (setq ivy-re-builders-alist
+        '((ivy-switch-buffer . ivy--regex-plus)
+          (t . ivy--regex-fuzzy))))
+
+(use-package flx
+  :ensure t
+  :defer t)
 
 (use-package ag
   :ensure t
