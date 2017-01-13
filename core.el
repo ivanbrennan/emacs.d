@@ -500,7 +500,7 @@
     "f j"        #'dired-jump
     "f s"        #'save-buffer
     "f w"        #'write-file
-    "r"          #'ivan/ag-project
+    "r"          #'ag-project
     "R"          #'ag-project-regexp
     "g"          #'evil-goto-mark
     "l"          #'evil-switch-to-windows-last-buffer
