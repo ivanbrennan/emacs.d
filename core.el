@@ -500,8 +500,8 @@
     "f j"        #'dired-jump
     "f s"        #'save-buffer
     "f w"        #'write-file
-    "C-f"        #'ag-project
-    "F"          #'ag-project-regexp
+    "r"          #'ivan/ag-project
+    "R"          #'ag-project-regexp
     "g"          #'evil-goto-mark
     "l"          #'evil-switch-to-windows-last-buffer
     "m e b"      #'eval-buffer
@@ -984,7 +984,14 @@
         ivy-format-function 'ivy-format-function-line)
   (setq ivy-re-builders-alist
         '((ivy-switch-buffer . ivy--regex-plus)
-          (t . ivy--regex-fuzzy))))
+          (t . ivy--regex-fuzzy)))
+
+  (bind-map-set-keys ivan/leader-map
+    "C-r" #'ivan/counsel-ag-project)
+
+  (defun ivan/counsel-ag-project ()
+    (interactive)
+    (counsel-ag nil (locate-dominating-file default-directory ".git"))))
 
 (use-package flx
   :ensure t
