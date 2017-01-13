@@ -29,6 +29,7 @@ It's already doing that!
 ** semantic (for smart completion)
 ** smartparens bindings
 ** M-S-o for fuzzy finder
+*** turn on ivy-mode for 1 command?
 ** paste transient state
 ** search utils
 *** ag.el
