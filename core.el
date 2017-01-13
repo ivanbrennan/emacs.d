@@ -976,7 +976,18 @@
   :ensure t
   :commands ivy-mode)
 
+(use-package counsel
+  :ensure t
+  :commands counsel-ag
+  :config
+  (defun ivan/counsel-ag-project ()
+    (interactive)
+    (counsel-ag nil (locate-dominating-file default-directory ".git")))
+  (bind-map-set-keys ivan/leader-map
+    "C-r" #'ivan/counsel-ag-project))
+
 (use-package ivy
+  :ensure t
   :commands ivy-read
   :bind
   (:map ivy-minibuffer-map
@@ -986,14 +997,7 @@
         ivy-format-function 'ivy-format-function-line)
   (setq ivy-re-builders-alist
         '((ivy-switch-buffer . ivy--regex-plus)
-          (t . ivy--regex-fuzzy)))
-
-  (bind-map-set-keys ivan/leader-map
-    "C-r" #'ivan/counsel-ag-project)
-
-  (defun ivan/counsel-ag-project ()
-    (interactive)
-    (counsel-ag nil (locate-dominating-file default-directory ".git"))))
+          (t . ivy--regex-fuzzy))))
 
 (use-package flx
   :ensure t
