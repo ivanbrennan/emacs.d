@@ -630,7 +630,9 @@
         ("C-w S-SPC"   . ivan/other-window-zoom)
         ("M-S-SPC"     . eval-expression)
         ("˜"           . next-error)
+        ("Δ"           . next-error)
         ("∏"           . previous-error)
+        ("˚"           . previous-error)
         :map evil-visual-state-map
         ("<return>"    . evil-next-line-first-non-blank)
         ("C-m"         . evil-next-line-first-non-blank)
