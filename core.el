@@ -512,8 +512,8 @@
     "o"          #'find-file
     "C-o"        #'switch-to-buffer
     "s"          search-map
-    "C-v"        #'magit-blame
-    "v s"        #'magit-status
+    "v v"        #'magit-blame
+    "v SPC"      #'magit-status
     "w 0"        #'evil-window-delete
     "."          #'zoom-window-zoom
     "C-."        #'ivan/toggle-narrowing-zoom
