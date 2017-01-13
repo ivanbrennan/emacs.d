@@ -1403,7 +1403,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; etc.
 (with-eval-after-load "isearch"
-  (define-key isearch-mode-map [remap isearch-exit] #'ivan/isearch-exit))
+  (define-key isearch-mode-map (kbd "RET")        #'ivan/isearch-exit)
+  (define-key isearch-mode-map (kbd "<return>")   #'ivan/isearch-exit)
+  (define-key isearch-mode-map (kbd "S-<return>") #'isearch-exit))
 
 (defun comint-delchar-or-eof-or-kill-buffer (arg)
   (interactive "p")
