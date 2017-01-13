@@ -1146,6 +1146,9 @@
           '("◉" "○" "•"))
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))))
 
+(use-package graphviz-dot-mode
+  :mode "\\.gv")
+
 (use-package page-break-lines
   :ensure t
   :diminish page-break-lines-mode
