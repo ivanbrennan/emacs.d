@@ -1194,7 +1194,8 @@
   :ensure t
   :diminish flymake-mode
   :init
-  (add-hook 'ruby-mode-hook 'flymake-ruby-load))
+  ;; (add-hook 'ruby-mode-hook 'flymake-ruby-load)
+  )
 
 (use-package rbenv
   :ensure t
