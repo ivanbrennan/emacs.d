@@ -1363,6 +1363,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 
+(defun ivan/kill-completions-buffer ()
+  (let ((buffer "*Completions*"))
+           (and (get-buffer buffer)
+                (kill-buffer buffer))))
+
+(add-hook 'minibuffer-exit-hook #'ivan/kill-completions-buffer)
+
 (bind-key "<escape>" 'isearch-abort isearch-mode-map)
 
 (mapc (lambda (keymap)
