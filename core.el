@@ -351,10 +351,10 @@
   :init
   (defvar ggtags-prog-modes '(ruby-mode)
     "Programming major modes in which ggtags is activated.")
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (when (apply 'derived-mode-p ggtags-prog-modes)
-                (ggtags-mode 1))))
+  (defun ivan/maybe-enable-ggtags ()
+    (when (apply 'derived-mode-p ggtags-prog-modes)
+                (ggtags-mode 1)))
+  (add-hook 'prog-mode-hook #'ivan/maybe-enable-ggtags)
   :config
   (defun ivan/add-ggtags-presenter ()
     (add-hook 'compilation-finish-functions #'ivan/present-search-results))
