@@ -717,6 +717,7 @@
     (defun ivan/backward-kill-line () (kill-line 0))
     (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
     (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
+    (evil-define-key 'normal rspec-compilation-mode-map (kbd "<return>") #'compile-goto-error)
 
     (define-key evil-normal-state-map (kbd "M-.") nil)
     (evil-define-key 'normal ggtags-mode-map (kbd "M-.") #'ggtags-find-tag-dwim)
