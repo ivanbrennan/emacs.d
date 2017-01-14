@@ -1024,8 +1024,7 @@
     (use-package s)
     (setq
      ag-arguments (delete "--stats" ag-arguments)
-     ag-highlight-search t
-     ag-reuse-window t)
+     ag-highlight-search t)
 
     (define-key ag-mode-map
       [remap wgrep-change-to-wgrep-mode] #'ivan/init-wgrep-mode)
