@@ -1248,7 +1248,7 @@
 
   (defun ivan/present-rspec-results (buffer)
     (let ((original-window (selected-window))
-          (results-window  (get-buffer-window (buffer) 'visible)))
+          (results-window  (get-buffer-window buffer 'visible)))
       (when results-window
         (select-window results-window)
         (next-line 3)
