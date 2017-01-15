@@ -608,7 +608,6 @@
         ("S-SPC"       . ivan/emacs-state-rectangle-mark-mode)
         ("C-<return>"  . ivan/add-whitespace-below)
         ("S-<return>"  . ivan/add-whitespace-above)
-        ("<return>"    . evil-next-line-first-non-blank)
         ("C-m"         . evil-next-line-first-non-blank)
         ("≠"           . evil-numbers/inc-at-pt)
         ("–"           . evil-numbers/dec-at-pt)
@@ -733,7 +732,6 @@
     (defun ivan/backward-kill-line () (kill-line 0))
     (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
     (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
-    (evil-define-key 'normal compilation-mode-map (kbd "<return>") #'compile-goto-error)
 
     (define-key evil-normal-state-map (kbd "M-.") nil)
     (evil-define-key 'normal ggtags-mode-map (kbd "M-.") #'ggtags-find-tag-dwim)

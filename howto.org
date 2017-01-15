@@ -22,6 +22,18 @@ It's already doing that!
 *** toggle results buffer with C-SPC
 ** ruby/rails
 *** rspec
+**** let <return> run compile-goto-error even in evil mode
+Compilation buffers normally bind ~<return>~ to ~compile-goto-error~. In evil normal state, I want both ~<return>~ and ~C-m~ to run ~evil-next-line-first-non-blank~, so I've explicitly bound them,
+#+begin_src elisp
+(use-package evil
+  ;; ...
+  (:map evil-normal-state-map
+        ("<return>" . evil-next-line-first-non-blank)
+        ("C-m"      . evil-next-line-first-non-blank)
+        ;; ...
+#+end_src
+This overrides the ~compile-goto-error~ behavior in compilation buffers, which I actually don't want to do. How can I get these keys to run ~evil-next-line-first-non-blank~ normally, but ~compile-goto-error~ in compilation buffers?
+Don't bind ~<return>~ to ~evil-next-line-first-non-blank~, bind only ~C-m~. That yields the desired behavior on both keys in both circumstances.
 *** inf-ruby
 **** get it working
 **** get completion working
