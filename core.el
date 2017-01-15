@@ -684,6 +684,22 @@
     (defun ivan/treat-hyphen-as-word-char     () (ivan/treat-as-word-char ?-))
     (defun ivan/treat-as-word-char (char) (modify-syntax-entry char "w"))
 
+    (defun ivan/paste-pop-or-previous-line (count)
+      (interactive "p")
+      (if (memq last-command
+                '(evil-paste-after
+                  evil-paste-before
+                  evil-visual-paste))
+          (evil-paste-pop count)
+        (evil-previous-line-first-non-blank count)))
+
+    (defun ivan/paste-pop-or-next-line (count)
+      (interactive "p")
+      (ivan/paste-pop-or-previous-line (- count)))
+
+    (define-key evil-normal-state-map "\C-n" #'ivan/paste-pop-or-next-line)
+    (define-key evil-normal-state-map "\C-p" #'ivan/paste-pop-or-previous-line)
+
     (defun ivan/run-tests-or-find-char-to (count char)
       (interactive "p\nc")
       (if (= char ?\r)
