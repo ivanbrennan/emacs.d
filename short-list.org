@@ -76,7 +76,6 @@ different bindings for <tab> (the actual Tab key) and TAB (C-i)
 * Juicy unbound keys
 ** M-L
 ** M-O
-** M-n
 ** M-RET (different from M-<return>)
 ** M-[ and M-] (good for folding)
 ** M-J
@@ -88,6 +87,8 @@ different bindings for <tab> (the actual Tab key) and TAB (C-i)
 ** M-V
 ** M-B
 ** M-T
+** M-y
+** M-Y
 ** M-K
 ** M-R
 ** M-G
