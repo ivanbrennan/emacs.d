@@ -1087,9 +1087,10 @@
                (replace-match " " t t)))))))
 
 (defun ivan/present-search-results (&rest _args)
-  (select-window (get-buffer-window (compilation-find-buffer)))
-  (ignore-errors (compilation-next-error 1))
-  (recenter 0))
+  (ignore-errors
+    (select-window (get-buffer-window (compilation-find-buffer)))
+    (compilation-next-error 1)
+    (recenter 0)))
 
 (defun ivan/without-side-splits (orig-fun &rest args)
   (let ((split-width-threshold nil))
@@ -1243,9 +1244,13 @@
         (funcall rspec-func)
       (rspec-rerun)))
 
-  (defun ivan/present-rspec-results (_buffer _outcome)
+  (defun ivan/maybe-present-rspec-results (buffer _outcome)
+    (when (eq 'rspec-compilation-mode major-mode)
+      (ivan/present-rspec-results buffer)))
+
+  (defun ivan/present-rspec-results (buffer)
     (let ((original-window (selected-window))
-          (results-window (get-buffer-window (compilation-find-buffer) 'visible)))
+          (results-window  (get-buffer-window (buffer) 'visible)))
       (when results-window
         (select-window results-window)
         (next-line 3)
@@ -1253,7 +1258,7 @@
         (select-window original-window))))
 
   (defun ivan/add-rspec-presenter ()
-    (add-hook 'compilation-finish-functions #'ivan/present-rspec-results))
+    (add-hook 'compilation-finish-functions #'ivan/maybe-present-rspec-results))
   (add-hook 'rspec-compilation-mode-hook #'ivan/add-rspec-presenter))
 
 (use-package cask-mode
