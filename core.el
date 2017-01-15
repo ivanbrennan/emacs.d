@@ -1515,4 +1515,4 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
  )
 
 ;;; temporary, for the refactoring demo
-(add-to-list 'safe-local-eval-forms '(load-file "refactoring-demo-framework.el"))
+(add-to-list 'safe-local-eval-forms '(load-file "refactoring-demo-environment.el"))
