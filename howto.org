@@ -35,6 +35,7 @@ Compilation buffers normally bind ~<return>~ to ~compile-goto-error~. In evil no
 #+end_src
 This overrides the ~compile-goto-error~ behavior in compilation buffers, which I actually don't want to do. How can I get these keys to run ~evil-next-line-first-non-blank~ normally, but ~compile-goto-error~ in compilation buffers?
 Don't bind ~<return>~ to ~evil-next-line-first-non-blank~, bind only ~C-m~. That yields the desired behavior on both keys in both circumstances.
+**** auto-save
 *** inf-ruby
 **** get it working
 **** get completion working
