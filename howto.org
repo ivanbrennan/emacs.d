@@ -1,4 +1,6 @@
 * Misc
+** toggle results buffer with C-SPC (magnetic)
+*** temporarily maximize magnetic-window?
 ** etags
 *** generate tags automatically
 How can I keep an up-to-date etags file located in the $GIT_DIR of each project?
@@ -19,7 +21,6 @@ It's already doing that!
 ***** select results window
 **** when multiple results and called with prefix arg
 ***** behave as if there was only one result (i.e. jump to it, don't display results window)
-*** toggle results buffer with C-SPC
 ** ruby/rails
 *** rspec
 **** let <return> run compile-goto-error even in evil mode
@@ -50,6 +51,8 @@ Don't bind ~<return>~ to ~evil-next-line-first-non-blank~, bind only ~C-m~. That
 **** omit leading whitespace in results text
 **** navigate between results, line :cnext, :cprev
 **** hitting Return in the results buffer should go to result in a different window, leaving the results window as is.
+: (setq ag-reuse-window nil) ;; this is the default
+**** cycle between various results buffers
 ** highlight/unhighlight transient state
 ** */# symbol navigation transient state like in Spacemacs
 ** expand-region transient state like in Spacemacs
