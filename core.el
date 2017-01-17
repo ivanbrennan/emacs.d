@@ -1228,7 +1228,9 @@
 (use-package projectile-rails
   :ensure t
   :init
-  (projectile-rails-global-mode))
+  (projectile-rails-global-mode)
+  :config
+  (setq rake-cache-file (ivan/emacs-file ".cache/rake.cache")))
 
 (use-package rspec-mode
   :ensure t
