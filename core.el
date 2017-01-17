@@ -1264,6 +1264,10 @@
 (use-package cask-mode
   :mode "\\`Cask\\'")
 
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.yml\\'")
+
 (diminish 'text-scale-mode)
 
 ;; gui & terminal
