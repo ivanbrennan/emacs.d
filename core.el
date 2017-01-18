@@ -1174,6 +1174,9 @@
 (use-package graphviz-dot-mode
   :mode "\\.gv\\'")
 
+(use-package coffee-mode
+  :mode "\\.coffee\\'")
+
 (use-package page-break-lines
   :ensure t
   :diminish page-break-lines-mode
