@@ -1268,7 +1268,9 @@
 
 (use-package yaml-mode
   :ensure t
-  :mode "\\.yml\\'")
+  :mode "\\.yml\\'"
+  :config
+  (add-hook 'yaml-mode-hook #'ivan/truncate-lines))
 
 (diminish 'text-scale-mode)
 
