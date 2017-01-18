@@ -135,6 +135,7 @@
          (or
           (and "*ag " (1+ not-newline) "*")
           "*ggtags-global*"
+          "*rake-compilation*"
           )
          eos)
     (display-buffer-reuse-window
@@ -1057,7 +1058,8 @@
   (setq magnet-modes '(ag-mode
                        rspec-compilation-mode
                        ert-results-mode
-                       ggtags-global-mode)))
+                       ggtags-global-mode
+                       rake-compilation-mode)))
 
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
   :major-modes (compilation-mode)
