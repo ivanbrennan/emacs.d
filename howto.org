@@ -40,6 +40,8 @@ Don't bind ~<return>~ to ~evil-next-line-first-non-blank~, bind only ~C-m~. That
 **** get it working
 **** get completion working
 *** robe & company
+*** rake
+**** run rake command from any buffer within the project, not just root
 ** semantic (for smart completion)
 ** smartparens bindings
 ** M-S-o for fuzzy finder
