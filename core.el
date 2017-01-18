@@ -1184,6 +1184,7 @@
     (add-hook 'Info-mode-hook #'page-break-lines-mode)))
 
 (use-package evil-magit
+  :ensure t
   :demand
   :init
   (progn
