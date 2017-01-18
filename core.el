@@ -1155,6 +1155,13 @@
 
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
 
+(use-package spaceline-config
+  :ensure spaceline
+  :config
+  (setq powerline-default-separator 'wave)
+  (spaceline-spacemacs-theme)
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state))
+
 (use-package org-bullets
   :ensure t
   :config
