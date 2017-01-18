@@ -916,11 +916,21 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(p4-diff-ins-face ((t :inherit diff-added)))
 ;;;;; perspective
    `(persp-selected-face ((t (:foreground ,ink :inherit mode-line))))
-;;;;; powerline
-   `(powerline-active1 ((t (:background ,sand :inherit mode-line))))
-   `(powerline-active2 ((t (:background ,paper :inherit mode-line))))
+;;;;; powerline / spaceline
+   `(powerline-active1 ((t (:background ,whisp1 :inherit mode-line))))
+   `(powerline-active2 ((t (:background ,bluegre :inherit mode-line))))
    `(powerline-inactive1 ((t (:background ,paper :inherit mode-line-inactive))))
-   `(powerline-inactive2 ((t (:background ,paper :inherit mode-line-inactive))))
+   `(powerline-inactive2 ((t (:background ,whisp1 :inherit mode-line-inactive))))
+   `(spaceline-highlight-face ((t (:background ,shale :inherit mode-line))))
+   `(spaceline-evil-normal  ((t (:background ,whisp1 :foreground ,slate     :inherit mode-line))))
+   `(spaceline-evil-insert  ((t (:background ,whisp1 :foreground ,closedred :inherit mode-line))))
+   `(spaceline-evil-emacs   ((t (:background ,whisp1 :foreground ,merged    :inherit mode-line))))
+   `(spaceline-evil-replace ((t (:background ,whisp1 :foreground ,marooned  :inherit mode-line))))
+   `(spaceline-evil-visual  ((t (:background ,whisp1 :foreground ,blooo     :inherit mode-line))))
+   `(spaceline-evil-motion  ((t (:background ,whisp1 :foreground ,pencil1   :inherit mode-line))))
+   `(spaceline-unmodified ((t (:background "DarkGoldenrod2" :inherit mode-line))))
+   `(spaceline-modified ((t (:background "SkyBlue2" :inherit mode-line))))
+   `(spaceline-read-only ((t (:background "plum3" :inherit mode-line))))
 ;;;;; proofgeneral
    `(proof-active-area-face ((t (:underline t))))
    `(proof-boring-face ((t (:foreground ,marooned :background ,paper))))
