@@ -328,6 +328,154 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package evil
+  :ensure t
+  :pin melpa
+  :demand
+  :bind
+  (:map evil-normal-state-map
+        ("'"           . evil-use-register)
+        ("U"           . undo-tree-redo)
+        ("C-r"         . isearch-backward)
+        ("S-SPC"       . ivan/emacs-state-rectangle-mark-mode)
+        ("C-<return>"  . ivan/add-whitespace-below)
+        ("S-<return>"  . ivan/add-whitespace-above)
+        ("C-m"         . evil-next-line-first-non-blank)
+        ("≠"           . evil-numbers/inc-at-pt)
+        ("–"           . evil-numbers/dec-at-pt)
+        ("t"           . ivan/run-tests-or-find-char-to)
+        ("T"           . ivan/run-test-file-or-find-char-to-backward)
+        ("S-SPC"       . evil-ex)
+        :map evil-motion-state-map
+        ("C-d"         . ivan/kill-buffer-and-maybe-window)
+        ("C-e"         . evil-end-of-line)
+        ("C-S-E"       . evil-scroll-line-down)
+        ("C-w C-h"     . evil-window-left)
+        ("C-w C-j"     . evil-window-down)
+        ("C-w C-k"     . evil-window-up)
+        ("C-w C-l"     . evil-window-right)
+        ("C-w s"       . split-window-below)
+        ("C-w C-s"     . split-window-below)
+        ("C-w SPC"     . zoom-window-zoom)
+        ("C-w C-SPC"   . zoom-window-zoom)
+        ("C-w S-SPC"   . ivan/other-window-zoom)
+        ("M-S-SPC"     . eval-expression)
+        ("˜"           . next-error)
+        ("Δ"           . next-error)
+        ("∏"           . previous-error)
+        ("˚"           . previous-error)
+        :map evil-visual-state-map
+        ("<return>"    . evil-next-line-first-non-blank)
+        ("C-m"         . evil-next-line-first-non-blank)
+        ("C-r"         . isearch-backward)
+        ("<tab>"       . evil-indent)
+        ("<backspace>" . delete-active-region)
+        :map evil-insert-state-map
+        ("M-v"         . yank)
+        ("C-S-U"       . ivan/backward-kill-line)
+        :map evil-replace-state-map
+        ("M-v"         . yank)
+        ("C-e"         . evil-copy-from-below)
+        ("C-y"         . evil-copy-from-above)
+        )
+  :init
+  (add-hook 'after-init-hook #'evil-mode)
+  :config
+  (progn
+    (setq
+     evil-normal-state-tag   " ·n·"
+     evil-visual-state-tag   " ·v·"
+     evil-operator-state-tag " ·o·"
+     evil-motion-state-tag   " ·m·"
+     evil-insert-state-tag   " ·i·"
+     evil-replace-state-tag  " ·r·"
+     evil-emacs-state-tag    " ·e·"
+     )
+    (setq
+     evil-emacs-state-cursor   `(bar  ,(face-attribute 'default :foreground))
+     evil-motion-state-cursor  `(box  ,(face-attribute 'header-line :foreground))
+     evil-normal-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt :foreground))
+     evil-visual-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt :foreground))
+     evil-insert-state-cursor  `(bar  ,(face-attribute 'font-lock-negation-char-face :foreground))
+     evil-replace-state-cursor `(hbar ,(face-attribute 'font-lock-negation-char-face :foreground))
+     )
+    (setq evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
+    (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
+    (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
+    (setq-default evil-shift-width 2)
+
+    (setq-default evil-symbol-word-search t)
+    (add-hook 'prog-mode-hook #'ivan/treat-underscore-as-word-char)
+    (dolist (hook '(emacs-lisp-mode-hook
+                    clojure-mode-hook
+                    scheme-mode-hook
+                    lisp-mode-hook))
+      (add-hook hook #'ivan/treat-hyphen-as-word-char))
+    (defun ivan/treat-underscore-as-word-char () (ivan/treat-as-word-char ?_))
+    (defun ivan/treat-hyphen-as-word-char     () (ivan/treat-as-word-char ?-))
+    (defun ivan/treat-as-word-char (char) (modify-syntax-entry char "w"))
+
+    (defun ivan/paste-pop-or-previous-line (count)
+      (interactive "p")
+      (if (memq last-command
+                '(evil-paste-after
+                  evil-paste-before
+                  evil-visual-paste))
+          (evil-paste-pop count)
+        (evil-previous-line-first-non-blank count)))
+
+    (defun ivan/paste-pop-or-next-line (count)
+      (interactive "p")
+      (ivan/paste-pop-or-previous-line (- count)))
+
+    (define-key evil-normal-state-map "\C-n" #'ivan/paste-pop-or-next-line)
+    (define-key evil-normal-state-map "\C-p" #'ivan/paste-pop-or-previous-line)
+
+    (defun ivan/run-tests-or-find-char-to (count char)
+      (interactive "p\nc")
+      (if (= char ?\r)
+          (ivan/run-test)
+        (evil-find-char-to count char)))
+
+    (defun ivan/run-test ()
+      (cond
+       ((eq 'ruby-mode major-mode)
+        (ivan/rspec-dwim 'rspec-verify-single))
+       ((eq 'emacs-lisp-mode major-mode)
+        (ivan/ert))))
+
+    (defun ivan/ert ()
+      (let ((original-window (selected-window))
+            (original-frame (selected-frame)))
+        (ert-run-tests-interactively t)
+        (select-frame-set-input-focus original-frame 'no-record)
+        (select-window original-window 'no-record)))
+
+    (defun ivan/run-test-file-or-find-char-to-backward (count char)
+      (interactive "p\nc")
+      (if (= char ?\r)
+          (ivan/rspec-dwim 'rspec-verify)
+        (evil-find-char-to-backward count char)))
+
+    (defun ivan/emacs-state-rectangle-mark-mode ()
+      (interactive)
+      (evil-emacs-state)
+      (rectangle-mark-mode))
+    (defun ivan/backward-kill-line () (kill-line 0))
+    (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
+    (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
+
+    (define-key evil-normal-state-map (kbd "M-.") nil)
+    (evil-define-key 'normal ggtags-mode-map (kbd "M-.") #'ggtags-find-tag-dwim)
+    (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
+    (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
+
+    (defun ivan/move-key (keymap-from keymap-to key)
+      "Moves key binding from one keymap to another, deleting from the old location."
+      (define-key keymap-to key (lookup-key keymap-from key))
+      (define-key keymap-from key nil))
+    (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))))
+
 (use-package elisp-slime-nav
   :diminish elisp-slime-nav-mode
   :commands elisp-slime-nav-mode
@@ -597,154 +745,6 @@
       ";" #'evil-commentary
       )
     (evil-commentary-mode)))
-
-(use-package evil
-  :ensure t
-  :pin melpa
-  :demand
-  :bind
-  (:map evil-normal-state-map
-        ("'"           . evil-use-register)
-        ("U"           . undo-tree-redo)
-        ("C-r"         . isearch-backward)
-        ("S-SPC"       . ivan/emacs-state-rectangle-mark-mode)
-        ("C-<return>"  . ivan/add-whitespace-below)
-        ("S-<return>"  . ivan/add-whitespace-above)
-        ("C-m"         . evil-next-line-first-non-blank)
-        ("≠"           . evil-numbers/inc-at-pt)
-        ("–"           . evil-numbers/dec-at-pt)
-        ("t"           . ivan/run-tests-or-find-char-to)
-        ("T"           . ivan/run-test-file-or-find-char-to-backward)
-        ("S-SPC"       . evil-ex)
-        :map evil-motion-state-map
-        ("C-d"         . ivan/kill-buffer-and-maybe-window)
-        ("C-e"         . evil-end-of-line)
-        ("C-S-E"       . evil-scroll-line-down)
-        ("C-w C-h"     . evil-window-left)
-        ("C-w C-j"     . evil-window-down)
-        ("C-w C-k"     . evil-window-up)
-        ("C-w C-l"     . evil-window-right)
-        ("C-w s"       . split-window-below)
-        ("C-w C-s"     . split-window-below)
-        ("C-w SPC"     . zoom-window-zoom)
-        ("C-w C-SPC"   . zoom-window-zoom)
-        ("C-w S-SPC"   . ivan/other-window-zoom)
-        ("M-S-SPC"     . eval-expression)
-        ("˜"           . next-error)
-        ("Δ"           . next-error)
-        ("∏"           . previous-error)
-        ("˚"           . previous-error)
-        :map evil-visual-state-map
-        ("<return>"    . evil-next-line-first-non-blank)
-        ("C-m"         . evil-next-line-first-non-blank)
-        ("C-r"         . isearch-backward)
-        ("<tab>"       . evil-indent)
-        ("<backspace>" . delete-active-region)
-        :map evil-insert-state-map
-        ("M-v"         . yank)
-        ("C-S-U"       . ivan/backward-kill-line)
-        :map evil-replace-state-map
-        ("M-v"         . yank)
-        ("C-e"         . evil-copy-from-below)
-        ("C-y"         . evil-copy-from-above)
-        )
-  :init
-  (add-hook 'after-init-hook #'evil-mode)
-  :config
-  (progn
-    (setq
-     evil-normal-state-tag   " ·n·"
-     evil-visual-state-tag   " ·v·"
-     evil-operator-state-tag " ·o·"
-     evil-motion-state-tag   " ·m·"
-     evil-insert-state-tag   " ·i·"
-     evil-replace-state-tag  " ·r·"
-     evil-emacs-state-tag    " ·e·"
-     )
-    (setq
-     evil-emacs-state-cursor   `(bar  ,(face-attribute 'default :foreground))
-     evil-motion-state-cursor  `(box  ,(face-attribute 'header-line :foreground))
-     evil-normal-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt :foreground))
-     evil-visual-state-cursor  `(box  ,(face-attribute 'minibuffer-prompt :foreground))
-     evil-insert-state-cursor  `(bar  ,(face-attribute 'font-lock-negation-char-face :foreground))
-     evil-replace-state-cursor `(hbar ,(face-attribute 'font-lock-negation-char-face :foreground))
-     )
-    (setq evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
-    (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
-    (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
-    (setq-default evil-shift-width 2)
-
-    (setq-default evil-symbol-word-search t)
-    (add-hook 'prog-mode-hook #'ivan/treat-underscore-as-word-char)
-    (dolist (hook '(emacs-lisp-mode-hook
-                    clojure-mode-hook
-                    scheme-mode-hook
-                    lisp-mode-hook))
-      (add-hook hook #'ivan/treat-hyphen-as-word-char))
-    (defun ivan/treat-underscore-as-word-char () (ivan/treat-as-word-char ?_))
-    (defun ivan/treat-hyphen-as-word-char     () (ivan/treat-as-word-char ?-))
-    (defun ivan/treat-as-word-char (char) (modify-syntax-entry char "w"))
-
-    (defun ivan/paste-pop-or-previous-line (count)
-      (interactive "p")
-      (if (memq last-command
-                '(evil-paste-after
-                  evil-paste-before
-                  evil-visual-paste))
-          (evil-paste-pop count)
-        (evil-previous-line-first-non-blank count)))
-
-    (defun ivan/paste-pop-or-next-line (count)
-      (interactive "p")
-      (ivan/paste-pop-or-previous-line (- count)))
-
-    (define-key evil-normal-state-map "\C-n" #'ivan/paste-pop-or-next-line)
-    (define-key evil-normal-state-map "\C-p" #'ivan/paste-pop-or-previous-line)
-
-    (defun ivan/run-tests-or-find-char-to (count char)
-      (interactive "p\nc")
-      (if (= char ?\r)
-          (ivan/run-test)
-        (evil-find-char-to count char)))
-
-    (defun ivan/run-test ()
-      (cond
-       ((eq 'ruby-mode major-mode)
-        (ivan/rspec-dwim 'rspec-verify-single))
-       ((eq 'emacs-lisp-mode major-mode)
-        (ivan/ert))))
-
-    (defun ivan/ert ()
-      (let ((original-window (selected-window))
-            (original-frame (selected-frame)))
-        (ert-run-tests-interactively t)
-        (select-frame-set-input-focus original-frame 'no-record)
-        (select-window original-window 'no-record)))
-
-    (defun ivan/run-test-file-or-find-char-to-backward (count char)
-      (interactive "p\nc")
-      (if (= char ?\r)
-          (ivan/rspec-dwim 'rspec-verify)
-        (evil-find-char-to-backward count char)))
-
-    (defun ivan/emacs-state-rectangle-mark-mode ()
-      (interactive)
-      (evil-emacs-state)
-      (rectangle-mark-mode))
-    (defun ivan/backward-kill-line () (kill-line 0))
-    (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
-    (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
-
-    (define-key evil-normal-state-map (kbd "M-.") nil)
-    (evil-define-key 'normal ggtags-mode-map (kbd "M-.") #'ggtags-find-tag-dwim)
-    (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
-    (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
-
-    (defun ivan/move-key (keymap-from keymap-to key)
-      "Moves key binding from one keymap to another, deleting from the old location."
-      (define-key keymap-to key (lookup-key keymap-from key))
-      (define-key keymap-from key nil))
-    (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))))
 
 (use-package goto-chg
   :commands (goto-last-change
