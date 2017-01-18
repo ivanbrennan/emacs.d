@@ -600,6 +600,7 @@
 
 (use-package evil
   :ensure t
+  :pin melpa
   :demand
   :bind
   (:map evil-normal-state-map
