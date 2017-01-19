@@ -14,7 +14,7 @@
     ("aquablue"   . "#C2E7F3")
     ("aqua"       . "#DEFDFE")
     ("skyblue"    . "#E8F2FE")
-    ("visipurp"   . "#D7D4F0")
+    ("visipurp"   . "#E7E9F3")
     ("bluegrey"   . "#ECF3F7")
     ("fluff"      . "#F4F7FB")
     ("paleblue"   . "#F1F9FC")
@@ -49,7 +49,7 @@
     ("whisp1"     . "#F2F2F2")
     ("whisp2"     . "#F5F5F5")
     ("paper"      . "#F7F7F7")
-    ("paperwhite" . "#FCFDFE"))
+    ("paperwhite" . "#FAFAFA"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
 
@@ -85,7 +85,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,paperwhite))))
    `(fixed-pitch ((t (:family "Source Code Pro"))))
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
-   `(cursor ((t (:background ,ink))))
+   `(cursor ((t (:background ,nicegrey))))
    `(escape-glyph ((t (:foreground ,marooned :bold t))))
    `(fringe ((t (:foreground ,pencil2 :background ,paperwhite))))
    `(header-line ((t (:foreground ,pencil1 :background ,whisp2))))
@@ -573,9 +573,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,paper))
+   `(hl-line-face ((,class (:background ,whisp2))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,paper))
+   `(hl-line ((,class (:background ,whisp2))
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,paper))
