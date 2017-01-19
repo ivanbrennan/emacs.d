@@ -112,6 +112,8 @@
 ;; line-wrapping
 (defun ivan/truncate-lines ()
   (setq truncate-lines t))
+(defun ivan/wrap-lines ()
+  (setq truncate-lines nil))
 
 (dolist (hook '(prog-mode-hook
                 compilation-mode-hook
