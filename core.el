@@ -1247,6 +1247,7 @@
 
 (use-package projectile-rails
   :ensure t
+  :diminish projectile-rails-mode
   :init
   (projectile-rails-global-mode)
   :config
