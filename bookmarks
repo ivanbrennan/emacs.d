@@ -10,10 +10,10 @@
  (info-node . "Library Headers")
  (handler . Info-bookmark-jump))
 ("evil"
- (filename . "~/Development/resources/emacs/emacs.d/elpa/evil-1.2.12/evil-common.el")
- (front-context-string . ";;; Compatibilit")
- (rear-context-string . "le.\")\n   nil))\n\n")
- (position . 1626))
+ (filename . "~/Development/resources/emacs/emacs.d/elpa/evil-20160827.1510/evil-vars.el")
+ (front-context-string . "      (dolist (p")
+ (rear-context-string . "ith-no-warnings\n")
+ (position . 2566))
 ("keybindings"
  (front-context-string . "\n21.7 Active Key")
  (rear-context-string . "s,  Up: Keymaps\n")
