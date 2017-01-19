@@ -1279,7 +1279,8 @@
 
   (defun ivan/add-rspec-presenter ()
     (add-hook 'compilation-finish-functions #'ivan/maybe-present-rspec-results))
-  (add-hook 'rspec-compilation-mode-hook #'ivan/add-rspec-presenter))
+  (add-hook 'rspec-compilation-mode-hook #'ivan/add-rspec-presenter)
+  (add-hook 'rspec-compilation-mode-hook #'ivan/wrap-lines))
 
 (use-package cask-mode
   :mode "\\`Cask\\'")
