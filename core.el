@@ -1255,6 +1255,7 @@
 (use-package rspec-mode
   :ensure t
   :pin melpa
+  :diminish rspec-mode
   :commands (rspec-mode
              ivan/rspec-verify-dwim)
   :config
