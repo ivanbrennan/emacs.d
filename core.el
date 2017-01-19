@@ -1005,6 +1005,7 @@
 (use-package ivy
   :ensure t
   :commands ivy-read
+  :diminish 'ivy-mode
   :bind
   (:map ivy-minibuffer-map
         ("<escape>" . minibuffer-keyboard-quit))
