@@ -622,7 +622,6 @@
   :ensure t
   :config
   (bind-map ivan/leader-map
-    :keys ("M-m")
     :evil-keys ("SPC")
     :evil-states (normal motion visual)
     :override-minor-modes t)
@@ -1313,6 +1312,7 @@ Disables `text-scale-mode`."
    ("M-c"   . kill-ring-save)
    ("M-w"   . ivan/delete-window)
    ("M-W"   . delete-frame)
+   ("M-m"   . iconify-frame)
    ("M-n"   . make-frame)
    ("M-s"   . save-buffer)
    ("M-u"   . ivan/toggle-transparency)
