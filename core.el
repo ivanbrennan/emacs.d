@@ -1010,10 +1010,7 @@
         ("<escape>" . minibuffer-keyboard-quit))
   :config
   (setq ivy-count-format ""
-        ivy-format-function 'ivy-format-function-line)
-  (setq ivy-re-builders-alist
-        '((ivy-switch-buffer . ivy--regex-plus)
-          (t . ivy--regex-fuzzy))))
+        ivy-format-function 'ivy-format-function-line))
 
 (use-package flx
   :ensure t
@@ -1235,8 +1232,10 @@
   (add-hook 'ruby-mode-hook #'rbenv-use-corresponding))
 
 (use-package projectile
+  :commands projectile-find-file
   :config
-  (setq projectile-completion-system 'ivy))
+  (setq projectile-completion-system 'ivy)
+  (bind-key "M-O" 'projectile-find-file))
 
 (use-package projectile-rails
   :ensure t
