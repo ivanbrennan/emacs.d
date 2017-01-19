@@ -1216,6 +1216,11 @@
      magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
      )))
 
+(defadvice vc-mode-line (after strip-backend () activate)
+  (when (stringp vc-mode)
+    (let ((gitlogo (replace-regexp-in-string "^ Git." ":" vc-mode)))
+          (setq vc-mode gitlogo))))
+
 (use-package flymake-ruby
   :ensure t
   :diminish flymake-mode
