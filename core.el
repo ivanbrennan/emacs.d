@@ -1156,12 +1156,25 @@
 
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
 
+(use-package powerline
+  :init
+  (setq powerline-default-separator 'wave
+        powerline-display-buffer-size nil
+        powerline-display-mule-info   nil
+        powerline-gui-use-vcs-glyph   t)
+  (powerline-default-theme))
+
 (use-package spaceline-config
+  :disabled t
   :ensure spaceline
   :config
-  (setq powerline-default-separator 'wave)
   (spaceline-spacemacs-theme)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state))
+
+(defadvice vc-mode-line (after strip-backend () activate)
+  (when (stringp vc-mode)
+    (let ((gitlogo (replace-regexp-in-string "^ Git." " " vc-mode)))
+          (setq vc-mode gitlogo))))
 
 (use-package org-bullets
   :ensure t
@@ -1218,11 +1231,6 @@
      magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
      magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
      )))
-
-(defadvice vc-mode-line (after strip-backend () activate)
-  (when (stringp vc-mode)
-    (let ((gitlogo (replace-regexp-in-string "^ Git." ":" vc-mode)))
-          (setq vc-mode gitlogo))))
 
 (use-package flymake-ruby
   :ensure t
