@@ -664,6 +664,7 @@
     "s"          search-map
     "C-v"        #'magit-blame
     "v s"        #'magit-status
+    "v v"        #'vc-mode-line
     "w 0"        #'evil-window-delete
     "."          #'zoom-window-zoom
     "C-."        #'ivan/toggle-narrowing-zoom
