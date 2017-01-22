@@ -650,8 +650,8 @@
     "f j"        #'dired-jump
     "f s"        #'save-buffer
     "f w"        #'write-file
-    "r"          #'ag-project
-    "R"          #'ag-project-regexp
+    "a"          #'ag-project
+    "C-a"        #'ag-project-regexp
     "g"          #'evil-goto-mark
     "l"          #'evil-switch-to-windows-last-buffer
     "m e b"      #'eval-buffer
