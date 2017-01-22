@@ -394,12 +394,12 @@
      evil-emacs-state-tag    " ·e·"
      )
     (setq
-     evil-emacs-state-cursor   `(bar  ,(face-attribute 'default :foreground))
-     evil-motion-state-cursor  `(box  ,(face-attribute 'default :foreground))
-     evil-normal-state-cursor  `(box  ,(face-attribute 'default :foreground))
-     evil-visual-state-cursor  `(box  ,(face-attribute 'default :foreground))
-     evil-insert-state-cursor  `(bar  ,(face-attribute 'default :foreground))
-     evil-replace-state-cursor `(hbar ,(face-attribute 'default :foreground))
+     evil-emacs-state-cursor   `(bar  ,(face-attribute 'cursor :background))
+     evil-motion-state-cursor  `(box  ,(face-attribute 'cursor :background))
+     evil-normal-state-cursor  `(box  ,(face-attribute 'cursor :background))
+     evil-visual-state-cursor  `(box  ,(face-attribute 'cursor :background))
+     evil-insert-state-cursor  `(bar  ,(face-attribute 'cursor :background))
+     evil-replace-state-cursor `(hbar ,(face-attribute 'cursor :background))
      )
     (setq evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
