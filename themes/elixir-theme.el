@@ -917,10 +917,10 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; perspective
    `(persp-selected-face ((t (:foreground ,ink :inherit mode-line))))
 ;;;;; powerline / spaceline
-   `(powerline-active1        ((t (:background ,whisp1                         :inherit mode-line))))
-   `(powerline-active2        ((t (:background ,bluegre                        :inherit mode-line))))
-   `(powerline-inactive1      ((t (:background ,paper                          :inherit mode-line-inactive))))
-   `(powerline-inactive2      ((t (:background ,whisp1                         :inherit mode-line-inactive))))
+   `(powerline-active1        ((t (:background ,whisp1 :inherit mode-line))))
+   `(powerline-active2        ((t (                    :inherit mode-line))))
+   `(powerline-inactive1      ((t (:background ,paper  :inherit mode-line-inactive))))
+   `(powerline-inactive2      ((t (                    :inherit mode-line-inactive))))
    `(spaceline-highlight-face ((t (:background ,shale                          :inherit mode-line))))
    `(spaceline-evil-normal    ((t (:background ,whisp1  :foreground ,slate     :inherit mode-line))))
    `(spaceline-evil-insert    ((t (:background ,whisp1  :foreground ,closedred :inherit mode-line))))
