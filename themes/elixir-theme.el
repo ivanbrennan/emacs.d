@@ -131,7 +131,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line-buffer-id ((t (:foreground "black" :weight bold))))
    `(mode-line-highlight ((t (:foreground ,bigblue))))
    `(mode-line-inactive
-     ((t (:foreground ,pencil1 :weight light :background ,whisp0))))
+     ((t (:foreground ,pencil1 :weight light :background ,whisp1))))
    `(region ((,class (:background ,visipurp))
              (t :inverse-video t)))
    `(cua-rectangle ((t (:inherit region))))
