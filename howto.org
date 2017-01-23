@@ -344,6 +344,7 @@ How do I move the point to the middle/top/bottom of the window?
 ** req-package
 ** rainbow-delimiters
 ** powerline (rewrite)
+*** byte compile
 ** Ivy-mode | Swiper | Counsel
 ** Helm | ido-vertical-mode | flx-ido
 ** idle-highlight-mode
