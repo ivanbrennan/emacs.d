@@ -69,13 +69,17 @@
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory 'mkdir_p)
 
-(defvar ivan/themes '(elixir elixir-dark))
+(defvar ivan/themes '(elixir doom-one))
 (defvar ivan/themes-index 0)
+
+(defvar ivan/rotated-theme-hook nil
+  "Hook called after the theme has been rotated")
 
 (defun ivan/rotate-theme ()
   (interactive)
   (setq ivan/themes-index (% (1+ ivan/themes-index) (length ivan/themes)))
-  (ivan/load-indexed-theme))
+  (ivan/load-indexed-theme)
+  (run-hooks 'ivan/rotated-theme-hook))
 
 (defun ivan/load-indexed-theme ()
   (ivan/try-load-theme (nth ivan/themes-index
@@ -329,6 +333,32 @@
   (require 'use-package))
 (require 'diminish)
 (require 'bind-key)
+
+(use-package doom-themes
+  :ensure t
+  :config
+  (setq doom-enable-bold t
+        doom-enable-italic t
+        )
+
+  (defun ivan/update-doom-settings ()
+    (if (memq 'doom-one custom-enabled-themes)
+        (ivan/activate-doom-config)
+      (ivan/deactivate-doom-config)))
+
+  (defun ivan/activate-doom-config ()
+    (add-hook 'find-file-hook #'doom-buffer-mode)
+    (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
+    (unless (string-prefix-p "*" (buffer-name))
+        (doom-buffer-mode)))
+
+  (defun ivan/deactivate-doom-config ()
+    (remove-hook 'find-file-hook #'doom-buffer-mode)
+    (remove-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
+    (doom-buffer-mode 0))
+
+  (add-hook 'ivan/rotated-theme-hook #'ivan/update-doom-settings)
+  )
 
 (use-package evil
   :ensure t
@@ -1212,6 +1242,8 @@
                                (powerline-render rhs)))))))
 
   (ivan/line-theme)
+  :config
+  (add-hook 'ivan/rotated-theme-hook #'powerline-reset)
   )
 
 (defadvice vc-mode-line (after strip-backend () activate)
