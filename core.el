@@ -38,6 +38,10 @@
  cursor-in-non-selected-windows nil
  )
 
+(customize-set-variable
+ 'minibuffer-prompt-properties
+ (quote (read-only t cursor-intangible t face minibuffer-prompt)))
+
 
 ;; persistence
 (make-directory (concat user-emacs-directory ".cache") 'mkdir_p)
