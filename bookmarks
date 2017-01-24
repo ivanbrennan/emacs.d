@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("(elisp) Library Headers"
+(("doom"
+ (filename . "~/Development/resources/emacs/doom/core/core.el")
+ (front-context-string . "(setq-default\n p")
+ (rear-context-string . "y one and only.\n")
+ (position . 3566))
+("(elisp) Library Headers"
  (front-context-string . "\n     ;; Author:")
  (rear-context-string . "-2016 Your Name\n")
  (position . 3165427)
