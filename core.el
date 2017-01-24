@@ -231,6 +231,7 @@
 
 ;; sensibility
 (setq
+ ad-redefinition-action              'accept
  apropos-do-all                      t
  bookmark-bmenu-toggle-filenames     nil
  comint-prompt-read-only             t
