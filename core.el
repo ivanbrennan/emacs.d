@@ -343,9 +343,10 @@
 (use-package doom-themes
   :ensure t
   :config
-  (setq doom-enable-bold t
-        doom-enable-italic t
-        )
+  (setq
+   doom-enable-bold t
+   doom-enable-italic t
+   )
 
   (defun ivan/update-doom-settings ()
     (if (memq 'doom-one custom-enabled-themes)
@@ -440,9 +441,11 @@
     (setq evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
-    (setq-default evil-shift-width 2)
 
-    (setq-default evil-symbol-word-search t)
+    (setq-default
+     evil-shift-width 2
+     evil-symbol-word-search t
+     )
     (add-hook 'prog-mode-hook #'ivan/treat-underscore-as-word-char)
     (dolist (hook '(emacs-lisp-mode-hook
                     clojure-mode-hook
@@ -503,10 +506,10 @@
     (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
     (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
 
-    (define-key evil-normal-state-map (kbd "M-.") nil)
-    (evil-define-key 'normal ggtags-mode-map (kbd "M-.") #'ggtags-find-tag-dwim)
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
     (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
+    (define-key evil-normal-state-map (kbd "M-.") nil)
+    (evil-define-key 'normal ggtags-mode-map (kbd "M-.") #'ggtags-find-tag-dwim)
 
     (defun ivan/move-key (keymap-from keymap-to key)
       "Moves key binding from one keymap to another, deleting from the old location."
@@ -585,7 +588,9 @@
   :commands (zoom-window-zoom
              zoom-window--enable-p)
   :config
-  (setq zoom-window-mode-line-color (face-attribute 'header-line :background))
+  (setq
+   zoom-window-mode-line-color (face-attribute 'header-line :background)
+   )
   )
 
 (defun ivan/other-window-zoom ()
@@ -1049,8 +1054,10 @@
   (:map ivy-minibuffer-map
         ("<escape>" . minibuffer-keyboard-quit))
   :config
-  (setq ivy-count-format ""
-        ivy-format-function 'ivy-format-function-line))
+  (setq
+   ivy-count-format ""
+   ivy-format-function 'ivy-format-function-line
+   ))
 
 (use-package flx
   :ensure t
@@ -1194,10 +1201,12 @@
 
 (use-package powerline
   :init
-  (setq powerline-default-separator 'wave
-        powerline-display-buffer-size nil
-        powerline-display-mule-info   nil
-        powerline-gui-use-vcs-glyph   t)
+  (setq
+   powerline-default-separator 'wave
+   powerline-display-buffer-size nil
+   powerline-display-mule-info   nil
+   powerline-gui-use-vcs-glyph   t
+   )
 
   (defface ivan/active-hud1 '((t (:background "#D1D7F3")))
     "HUD face 1."
@@ -1330,9 +1339,10 @@
 (use-package rbenv
   :ensure t
   :init
-  (setq rbenv-show-active-ruby-in-modeline nil
-        rbenv-executable (substring
-                          (shell-command-to-string "which rbenv") 0 -1))
+  (setq
+   rbenv-show-active-ruby-in-modeline nil
+   rbenv-executable (substring (shell-command-to-string "which rbenv") 0 -1)
+   )
   (global-rbenv-mode)
   (add-hook 'ruby-mode-hook #'rbenv-use-corresponding))
 
