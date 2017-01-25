@@ -356,8 +356,12 @@
   (defun ivan/activate-doom-config ()
     (add-hook 'find-file-hook #'doom-buffer-mode)
     (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
-    (unless (string-match-p "^[ *]" (buffer-name))
-        (doom-buffer-mode)))
+    (mapc #'ivan/maybe-enable-doom-buffer-mode (buffer-list)))
+
+  (defun ivan/maybe-enable-doom-buffer-mode (buffer)
+    (with-current-buffer buffer
+      (unless (string-match-p "^[ *]" (buffer-name))
+        (doom-buffer-mode))))
 
   (defun ivan/deactivate-doom-config ()
     (remove-hook 'find-file-hook #'doom-buffer-mode)
