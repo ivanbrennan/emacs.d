@@ -1605,7 +1605,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (newline)))
 
 (defun ivan/minibuffer-setup-hook ()
-  (setq gc-cons-threshold most-positive-fixnum))
+  (setq gc-cons-threshold 339430400))
 
 (defun ivan/minibuffer-exit-hook ()
   (setq gc-cons-threshold 800000))
