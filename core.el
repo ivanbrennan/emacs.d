@@ -371,6 +371,13 @@
   (add-hook 'ivan/rotated-theme-hook #'ivan/update-doom-settings)
   )
 
+(use-package f
+  :ensure t
+  :commands (f-dirname f-relative))
+
+(use-package all-the-icons
+  :ensure t)
+
 (use-package evil
   :ensure t
   :pin melpa
@@ -1715,6 +1722,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (require 'ibuffer-config))
 (with-eval-after-load 'dired
   (require 'dired-config))
+
+(use-package core-modeline
+  :disabled t
+  :load-path "lisp/")
 
 (setq
  calendar-latitude 40.7
