@@ -678,7 +678,7 @@
        (define-key evil-visual-state-map (kbd "C-M-D") 'evil-multiedit-restore)
 
        ;; ...in visual mode, RET will disable all fields outside the selected region
-       (define-key evil-motion-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
+       (define-key evil-visual-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
 
        ;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
        (evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
