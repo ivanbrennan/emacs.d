@@ -594,7 +594,7 @@
              zoom-window--enable-p)
   :config
   (setq
-   zoom-window-mode-line-color (face-attribute 'header-line :background)
+   zoom-window-mode-line-color (face-background 'header-line)
    )
   )
 
