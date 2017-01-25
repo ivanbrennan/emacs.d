@@ -433,16 +433,10 @@
      evil-insert-state-tag   " ·i·"
      evil-replace-state-tag  " ·r·"
      evil-emacs-state-tag    " ·e·"
+     evil-emacs-state-cursor 'bar
+     evil-emacs-state-modes  (delq 'bookmark-bmenu-mode
+                                   evil-emacs-state-modes)
      )
-    (setq
-     evil-emacs-state-cursor   `(bar  ,(face-attribute 'cursor :background))
-     evil-motion-state-cursor  `(box  ,(face-attribute 'cursor :background))
-     evil-normal-state-cursor  `(box  ,(face-attribute 'cursor :background))
-     evil-visual-state-cursor  `(box  ,(face-attribute 'cursor :background))
-     evil-insert-state-cursor  `(bar  ,(face-attribute 'cursor :background))
-     evil-replace-state-cursor `(hbar ,(face-attribute 'cursor :background))
-     )
-    (setq evil-emacs-state-modes (delq 'bookmark-bmenu-mode evil-emacs-state-modes))
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
 
