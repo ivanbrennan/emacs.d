@@ -406,9 +406,9 @@
         ("C-w C-l"     . evil-window-right)
         ("C-w s"       . split-window-below)
         ("C-w C-s"     . split-window-below)
-        ("C-w SPC"     . zoom-window-zoom)
-        ("C-w C-SPC"   . zoom-window-zoom)
-        ("C-w S-SPC"   . ivan/other-window-zoom)
+        ("C-w SPC"     . ivan/zoom-window)
+        ("C-w C-SPC"   . ivan/zoom-window)
+        ("C-w S-SPC"   . ivan/zoom-other-window)
         ("M-S-SPC"     . eval-expression)
         ("˜"           . next-error)
         ("Δ"           . next-error)
@@ -598,18 +598,23 @@
    )
   )
 
-(defun ivan/other-window-zoom ()
+(defun ivan/zoom-window ()
+  (interactive)
+  (zoom-window-zoom)
+  (powerline-reset))
+
+(defun ivan/zoom-other-window ()
   (interactive)
   (if (zoom-window--enable-p)
       (progn
-        (zoom-window-zoom)
+        (ivan/zoom-window)
         (other-window -1))
     (other-window 1)
-    (zoom-window-zoom)))
+    (ivan/zoom-window)))
 
 (defun ivan/toggle-narrowing-zoom (p)
   (interactive "P")
-  (zoom-window-zoom)
+  (ivan/zoom-window)
   (ivan/toggle-narrowing p))
 
 (defun ivan/toggle-narrowing (p)
@@ -764,9 +769,9 @@
     "v s"        #'magit-status
     "v v"        #'vc-mode-line
     "w 0"        #'evil-window-delete
-    "."          #'zoom-window-zoom
+    "."          #'ivan/zoom-window
     "C-."        #'ivan/toggle-narrowing-zoom
-    "w w"        #'ivan/other-window-zoom
+    "w w"        #'ivan/zoom-other-window
     "w <return>" #'toggle-frame-fullscreen
     "w c"        #'evil-window-delete
     "w J"        #'webjump
