@@ -1,4 +1,13 @@
 * Misc
+** configure Doom Emacs
+*** install fontawesome
+#+begin_src
+brew update
+brew tap caskroom/fonts
+brew cask install font-fontawesome
+#+end_src
+*** install fira mono (optional?)
+*** install fira sans (optional?)
 ** toggle results buffer with C-SPC (magnetic)
 *** temporarily maximize magnetic-window?
 ** etags
