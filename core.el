@@ -1567,7 +1567,8 @@ Disables `text-scale-mode`."
  ("C-?" . undo-tree-redo)
  ("C-w" . ivan/kill-region-or-backward-kill-word)
  :map isearch-mode-map
- ("C-p" . isearch-ring-retreat)
+ ("C-p"  . isearch-ring-retreat)
+ ("<up>" . isearch-ring-retreat)
  :map rectangle-mark-mode-map
  ("s" . string-rectangle)
  ("o" . rectangle-exchange-point-and-mark)
