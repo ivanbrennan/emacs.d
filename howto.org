@@ -1,4 +1,5 @@
 * Misc
+** autoload use-package (like Doom does)
 ** configure Doom Emacs
 *** install fontawesome
 #+begin_src
