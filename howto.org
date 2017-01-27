@@ -8,6 +8,8 @@ brew cask install font-fontawesome
 #+end_src
 *** install fira mono (optional?)
 *** install fira sans (optional?)
+** prevent autoindentation (upon newline) from leaving trailing whitespace on empty lines
+*** repro: within indented text, `o' to open a new line in insert mode, insert text on that line, hit enter to open a newline, then escape out of insert mode. Rather than clearing the indentation and leaving an empty line, it leaves indentation whitespace.
 ** toggle results buffer with C-SPC (magnetic)
 *** temporarily maximize magnetic-window?
 ** etags
