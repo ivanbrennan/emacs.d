@@ -44,26 +44,33 @@
 
 
 ;; persistence
-(make-directory (concat user-emacs-directory ".cache") 'mkdir_p)
+(defconst ivan/emacs-dir
+  (expand-file-name user-emacs-directory)
+  "Location of emacs.d directory.")
 
-(defun ivan/emacs-file (name)
-  (concat user-emacs-directory name))
+(defconst ivan/cache-dir
+  (expand-file-name ".cache" ivan/emacs-dir)
+  "Storage area for persistent files.")
 
-(make-directory (ivan/emacs-file ".cache/auto-save") 'mkdir_p)
+(defsubst ivan/emacs-file (f) (expand-file-name f ivan/emacs-dir))
+(defsubst ivan/cache-file (f) (expand-file-name f ivan/cache-dir))
+
+(make-directory ivan/cache-dir 'mkdir_p)
+(make-directory (ivan/cache-file "auto-save") 'mkdir_p)
 
 (setq custom-file (ivan/emacs-file "custom.el"))
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
 
 (setq
- auto-save-file-name-transforms `((".*" ,(ivan/emacs-file ".cache/auto-save/") 'uniquify))
- auto-save-list-file-prefix      (ivan/emacs-file ".cache/auto-save-list/.saves-")
+ auto-save-file-name-transforms `((".*" ,(ivan/cache-file "auto-save/") 'uniquify))
+ auto-save-list-file-prefix      (ivan/cache-file "auto-save-list/.saves-")
  backup-by-copying               t
- backup-directory-alist         `(("." . ,(ivan/emacs-file ".cache/backups/")))
- eshell-directory-name           (ivan/emacs-file ".cache/eshell/")
- ido-save-directory-list-file    (ivan/emacs-file ".cache/ido.last")
- savehist-file                   (ivan/emacs-file ".cache/savehist")
- tramp-persistency-file-name     (ivan/emacs-file ".cache/tramp")
+ backup-directory-alist         `(("." . ,(ivan/cache-file "backups/")))
+ eshell-directory-name           (ivan/cache-file "eshell/")
+ ido-save-directory-list-file    (ivan/cache-file "ido.last")
+ savehist-file                   (ivan/cache-file "savehist")
+ tramp-persistency-file-name     (ivan/cache-file "tramp")
  )
 
 (savehist-mode)
@@ -578,7 +585,7 @@
   :config
   (progn
     (setq undo-tree-history-directory-alist
-          `(("." . ,(ivan/emacs-file ".cache/undo-tree-history/"))))
+          `(("." . ,(ivan/cache-file "undo-tree-history/"))))
     (defun undo-tree-visualizer-update-linum (start end old-len)
       (if (fboundp 'linum-update)
           (linum-update undo-tree-visualizer-parent-buffer)))
@@ -1420,7 +1427,7 @@
   :init
   (projectile-rails-global-mode)
   :config
-  (setq rake-cache-file (ivan/emacs-file ".cache/rake.cache")))
+  (setq rake-cache-file (ivan/cache-file "rake.cache")))
 
 (use-package rspec-mode
   :ensure t
