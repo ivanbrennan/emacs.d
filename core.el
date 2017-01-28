@@ -81,6 +81,10 @@
   (expand-file-name ".cache" ivan/emacs-dir)
   "Storage area for persistent files.")
 
+(defconst ivan/config-dir
+  (expand-file-name "config" ivan/emacs-dir)
+  "Directory for feature configuration files.")
+
 (defsubst ivan/emacs-file (f) (expand-file-name f ivan/emacs-dir))
 (defsubst ivan/cache-file (f) (expand-file-name f ivan/cache-dir))
 
@@ -326,8 +330,10 @@
 
 
 ;; load-path
-(add-to-list 'load-path
-             (ivan/emacs-file "config"))
+(defvar initial-load-path load-path
+  "Initial `load-path', used as a base so reloads are idempotent.")
+
+(setq load-path (append (list ivan/config-dir) initial-load-path))
 
 
 ;; documentation
