@@ -59,7 +59,34 @@
  x-stretch-cursor        t
 )
 
-;; A subtle bell: flash the mode-line
+;;; hidden mode line
+(put 'hidden-mode-line-mode 'permanent-local t)
+(put 'hidden-mode-line 'permanent-local t)
+
+(defvar hidden-mode-line-format nil
+  "Format to use when `hidden-mode-line-mode' replaces the modeline")
+
+(defvar-local hidden-mode-line nil)
+
+(define-minor-mode hidden-mode-line-mode
+  "Minor mode to hide the mode-line in the current buffer."
+  :init-value nil
+  :global nil
+  (if hidden-mode-line-mode
+      (setq hidden-mode-line mode-line-format
+            mode-line-format hidden-mode-line-format)
+    (setq mode-line-format hidden-mode-line
+          hidden-mode-line hidden-mode-line-format)))
+
+;; TODO: enable this once I've got something like doom-buffer-mode going
+(with-current-buffer "*Messages*" (hidden-mode-line-mode +1))
+(dolist (hook '(help-mode
+                compilation-mode
+                messages-buffer-mode
+                completion-list-mode))
+  (add-hook hook #'hidden-mode-line-mode))
+
+;;; A subtle bell: flash the mode-line
 ;; TODO More flexible colors
 (defvar ivan--modeline-bg nil)
 
@@ -71,6 +98,15 @@
         (run-with-timer
          0.1 nil
          (lambda () (set-face-background 'mode-line ivan--modeline-bg)))))
+
+(global-eldoc-mode -1)
+(add-hook 'emacs-lisp-mode-hook #'eldoc-mode)
+
+(setq
+ window-divider-default-places       t
+ window-divider-default-bottom-width 1
+ window-divider-default-right-width  1)
+(window-divider-mode +1)
 
 ;; persistence
 (defconst ivan/emacs-dir

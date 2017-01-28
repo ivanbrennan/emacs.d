@@ -94,6 +94,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(success ((t (:foreground ,pencil1 :weight bold))))
    `(warning ((t (:foreground ,ink :weight bold))))
    `(tooltip ((t (:foreground ,marooned :background ,paper))))
+   `(window-divider ((t :foreground ,pencil4, :background ,pencil4)))
+   `(window-divider-first-pixel ((t :inherit window-divider)))
+   `(window-divider-last-pixel  ((t :inherit window-divider)))
 ;;;;; compilation
    `(compilation-column-face ((t (:foreground ,marooned))))
    `(compilation-enter-directory-face ((t (:foreground ,pencil1))))
