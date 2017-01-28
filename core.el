@@ -42,6 +42,35 @@
  'minibuffer-prompt-properties
  (quote (read-only t cursor-intangible t face minibuffer-prompt)))
 
+(setq-default
+ bidi-display-reordering nil
+ fringe-indicator-alist  (delq (assq 'continuation fringe-indicator-alist)
+                               fringe-indicator-alist)
+ fringes-outside-margins t
+ image-animate-loop      t
+ jit-lock-stealth-nice   0.1
+ jit-lock-stealth-time   0.2
+ max-mini-window-height  0.3
+ mode-line-default-help-echo nil
+ show-help-function      nil
+ show-paren-when-point-inside-paren t
+ use-dialog-box          nil
+ visible-cursor          nil
+ x-stretch-cursor        t
+)
+
+;; A subtle bell: flash the mode-line
+;; TODO More flexible colors
+(defvar ivan--modeline-bg nil)
+
+(setq ring-bell-function
+      (lambda ()
+        (unless ivan--modeline-bg
+          (setq ivan--modeline-bg (face-background 'mode-line)))
+        (set-face-background 'mode-line "#F2F9DB")
+        (run-with-timer
+         0.1 nil
+         (lambda () (set-face-background 'mode-line ivan--modeline-bg)))))
 
 ;; persistence
 (defconst ivan/emacs-dir
