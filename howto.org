@@ -1,14 +1,4 @@
 * Misc
-** autoload use-package (like Doom does)
-** configure Doom Emacs
-*** install fontawesome
-#+begin_src
-brew update
-brew tap caskroom/fonts
-brew cask install font-fontawesome
-#+end_src
-*** install fira mono (optional?)
-*** install fira sans (optional?)
 ** prevent autoindentation (upon newline) from leaving trailing whitespace on empty lines
 *** repro: within indented text, `o' to open a new line in insert mode, insert text on that line, hit enter to open a newline, then escape out of insert mode. Rather than clearing the indentation and leaving an empty line, it leaves indentation whitespace.
 ** toggle results buffer with C-SPC (magnetic)
@@ -377,6 +367,22 @@ How do I move the point to the middle/top/bottom of the window?
 ** keybindings
 *** use U for redo, C-r (in normal state) for isearch-backward-regexp
 ** hybrid mode?
+* Doom wants
+** persistent cursor position (across emacs sessions)
+** autoload use-package
+** that awesome modeline
+*** install fontawesome
+#+begin_src
+brew update
+brew tap caskroom/fonts
+brew cask install font-fontawesome
+#+end_src
+*** do I need to do this?
+: (set-charset-priority 'unicode)
+** different background color for file-buffers
+** little cursor-line flash upon jumps
+** mode-line flash upon error
+** confirm-kill-emacs
 * Questions
 ** What are the different load-paths for?
 *** /Users/ivan/.emacs.d/elpa/...
