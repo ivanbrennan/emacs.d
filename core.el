@@ -1565,7 +1565,6 @@ Disables `text-scale-mode`."
  ("M-/" . hippie-expand)
  ("C-/" . undo-tree-undo)
  ("C-?" . undo-tree-redo)
- ("C-w" . ivan/kill-region-or-backward-kill-word)
  :map isearch-mode-map
  ("C-p"  . isearch-ring-retreat)
  ("<up>" . isearch-ring-retreat)
@@ -1575,6 +1574,8 @@ Disables `text-scale-mode`."
  :map shell-mode-map
  ("C-d" . comint-delchar-or-eof-or-kill-buffer)
  )
+
+(global-set-key (kbd "C-w") #'ivan/kill-region-or-backward-kill-word)
 
 ;; esc quits
 (defun minibuffer-keyboard-quit ()
