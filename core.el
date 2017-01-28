@@ -1617,6 +1617,22 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (let ((completion-fail-discreetly t))
       (minibuffer-complete-and-exit))))
 
+;; hack through annoying minibuffer complaints
+(defun ivan/command-error-function (data context caller)
+  "Ignore the buffer-read-only signal; pass the rest to the default handler."
+  (unless (eq 'buffer-read-only (car data))
+    (command-error-default-function data context caller)))
+
+(setq command-error-function #'ivan/command-error-function)
+
+(defun ivan/minibuffer-C-w ()
+  (interactive)
+  (let ((fn (if (use-region-p) #'kill-region #'backward-kill-word)))
+    (call-interactively fn)))
+
+(add-hook 'minibuffer-setup-hook
+          (lambda () (local-set-key (kbd "C-w") #'ivan/minibuffer-C-w)))
+
 
 ;; padding
 (set-display-table-slot
