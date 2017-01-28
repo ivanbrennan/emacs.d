@@ -158,19 +158,30 @@
 (defun ivan/rotate-theme ()
   (interactive)
   (setq ivan/themes-index (% (1+ ivan/themes-index) (length ivan/themes)))
-  (ivan/load-indexed-theme)
+  (ivan/try-load-indexed-theme)
   (run-hooks 'ivan/rotated-theme-hook))
 
-(defun ivan/load-indexed-theme ()
+(defun ivan/try-load-indexed-theme ()
   (ivan/try-load-theme (nth ivan/themes-index
                             ivan/themes)))
 
 (defun ivan/try-load-theme (theme)
-  (if (ignore-errors (load-theme theme 'no-confirm))
-      (mapcar #'disable-theme (remove theme custom-enabled-themes))
-    (message "Unable to find theme file for ‘%s’" theme)))
+  (let ((theme  (nth ivan/themes-index ivan/themes))
+        (backup (ivan/disable-themes)))
+    (unless (ignore-errors (ivan/load-theme theme))
+      (ivan/restore-themes backup))))
 
-(ivan/load-indexed-theme)
+(defun ivan/load-theme (theme)
+  (load-theme theme 'no-confirm))
+
+(defun ivan/disable-themes ()
+  (mapc #'disable-theme custom-enabled-themes))
+
+(defun ivan/restore-themes (backup)
+  (mapc #'disable-theme custom-enabled-themes)
+  (mapc #'ivan/load-theme (reverse backup)))
+
+(ivan/try-load-indexed-theme)
 
 
 ;; variable-pitch-mode
