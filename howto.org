@@ -368,6 +368,20 @@ How do I move the point to the middle/top/bottom of the window?
 *** use U for redo, C-r (in normal state) for isearch-backward-regexp
 ** hybrid mode?
 * Doom wants
+** install fonts from https://github.com/domtronn/all-the-icons.el/tree/master/fonts
+#+begin_src
+cd ~/Library/Fonts
+for font in all-the-icons \
+            file-icons    \
+            fontawesome   \
+            octicons      \
+            weathericons
+do
+  if [ ! -e $font ]; then
+    curl -O "https://raw.githubusercontent.com/domtronn/all-the-icons.el/master/fonts/${font}.ttf"
+  fi
+done
+#+end_src
 ** persistent cursor position (across emacs sessions)
 ** autoload use-package
 ** that awesome modeline
@@ -379,10 +393,14 @@ brew cask install font-fontawesome
 #+end_src
 *** do I need to do this?
 : (set-charset-priority 'unicode)
+
 ** different background color for file-buffers
 ** little cursor-line flash upon jumps
 ** mode-line flash upon error
 ** confirm-kill-emacs
+** invisible or hollow cursor in neotree
+** hide mode-line in neotree window
+** navigate neotree quickly (e.g. pop up a level, up out of an opened fold, etc.)
 * Questions
 ** What are the different load-paths for?
 *** /Users/ivan/.emacs.d/elpa/...
