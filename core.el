@@ -480,8 +480,13 @@
   (when (display-graphic-p) (require 'doom-neotree)))
 
 (use-package neotree
+  :ensure t
+  :commands (neotree-toggle)
   :init
   (setq neo-mode-line-type 'none)
+  (defun ivan/set-neotree-cursor ()
+    (setq-local evil-motion-state-cursor '(bar . 0)))
+  (add-hook 'neotree-mode-hook #'ivan/set-neotree-cursor)
   :config
   (eval-after-load "evil"
     '(evil-set-initial-state 'neotree-mode 'motion))
@@ -851,6 +856,7 @@
     "`"          #'variable-pitch-mode
     "SPC"        #'list-buffers
     "C-SPC"      #'shell-command
+    "<tab>"      #'neotree-toggle
     "C-n"        #'ivan/toggle-narrowing
     ;; "C-r"        #'ripgrep-regexp
     "C-r"        #'evil-use-register
