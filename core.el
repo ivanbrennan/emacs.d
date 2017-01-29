@@ -897,7 +897,7 @@
     "`"          #'variable-pitch-mode
     "SPC"        #'list-buffers
     "C-SPC"      #'shell-command
-    "<tab>"      #'neotree-toggle
+    "TAB"        #'neotree-toggle
     "C-n"        #'ivan/toggle-narrowing
     ;; "C-r"        #'ripgrep-regexp
     "C-r"        #'evil-use-register
