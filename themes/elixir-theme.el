@@ -129,6 +129,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-minibuffer-active
      ((((type graphic)) :inherit default :background ,paper)
       (t                :inherit default)))
+   `(doom-modeline-flash
+     ((((type graphic)) :background ,limeclay)
+      (t                :inherit mode-line)))
 ;;;;; grep
    `(match ((t (:background ,whisp1 :weight bold))))
 ;;;;; wgrep

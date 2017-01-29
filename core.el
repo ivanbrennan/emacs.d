@@ -88,16 +88,24 @@
 
 ;;; A subtle bell: flash the mode-line
 ;; TODO More flexible colors
-(defvar ivan--modeline-bg nil)
+(defvar doom--modeline-bg nil)
+(defface doom-modeline-flash '((t (:inherit mode-line :background "#54252C")))
+  "Face used for the mode-line ring-bell-function.")
 
-(setq ring-bell-function
-      (lambda ()
-        (unless ivan--modeline-bg
-          (setq ivan--modeline-bg (face-background 'mode-line)))
-        (set-face-background 'mode-line "#F2F9DB")
-        (run-with-timer
-         0.1 nil
-         (lambda () (set-face-background 'mode-line ivan--modeline-bg)))))
+(defsubst ivan/modeline-flasher ()
+  (unless doom--modeline-bg
+    (setq doom--modeline-bg (face-background 'mode-line)))
+  (let ((flash (or (ignore-errors (face-background 'doom-modeline-flash))
+                   "#F2F9DB")))
+    (set-face-background 'mode-line flash)
+    (run-with-timer
+     0.1 nil
+     (lambda ()
+       (when doom--modeline-bg
+         (set-face-background 'mode-line doom--modeline-bg)
+         (setq doom--modeline-bg nil))))))
+
+(setq ring-bell-function #'ivan/modeline-flasher)
 
 (global-eldoc-mode -1)
 (add-hook 'emacs-lisp-mode-hook  #'eldoc-mode)
