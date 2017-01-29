@@ -479,6 +479,14 @@
 
   (when (display-graphic-p) (require 'doom-neotree)))
 
+(use-package neotree
+  :init
+  (setq neo-mode-line-type 'none)
+  :config
+  (eval-after-load "evil"
+    '(evil-set-initial-state 'neotree-mode 'motion))
+ )
+
 (use-package f
   :ensure t
   :commands (f-dirname f-relative))
