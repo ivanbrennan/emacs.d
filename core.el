@@ -100,7 +100,7 @@
 
 (global-eldoc-mode -1)
 (add-hook 'emacs-lisp-mode-hook  #'eldoc-mode)
-(add-hook 'minibuffer-setup-hook #'eldoc-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 
 (setq
  window-divider-default-places       t
