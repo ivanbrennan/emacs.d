@@ -3,7 +3,6 @@
  inhibit-startup-screen t
  inhibit-startup-echo-area-message "ivan"
  initial-scratch-message nil
- frame-title-format "emacs"
  )
 
 ;; If your init file is byte-compiled, use the following form instead:
@@ -12,8 +11,10 @@
 ;; clean screen
 (menu-bar-mode   0)
 (tool-bar-mode   0)
-(scroll-bar-mode 0)
-(tooltip-mode    0)
+(when (display-graphic-p)
+  (scroll-bar-mode 0)
+  (tooltip-mode    0)
+  (setq frame-title-format "emacs · %b"))
 
 
 ;; coding
