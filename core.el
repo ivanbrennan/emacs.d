@@ -484,12 +484,7 @@
   :commands (neotree-toggle)
   :init
   (setq neo-mode-line-type 'none)
-  (defun ivan/set-neotree-cursor ()
-    (setq-local evil-motion-state-cursor
-                '((bar . 1)
-                  (lambda () (evil-set-cursor-color (face-foreground 'mode-line)))
-                  )))
-  (add-hook 'neotree-mode-hook #'ivan/set-neotree-cursor)
+  (add-hook 'neotree-mode-hook #'ivan/sidearm-motion-cursor)
   :config
   (eval-after-load "evil"
     '(evil-set-initial-state 'neotree-mode 'motion))
@@ -588,6 +583,15 @@
      )
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
+
+    (defun ivan/sidearm-normal-cursor ()
+      (setq-local evil-normal-state-cursor
+                  '((bar . 0)
+                    )))
+    (defun ivan/sidearm-motion-cursor ()
+      (setq-local evil-motion-state-cursor
+                  '((bar . 1)
+                    (lambda () (evil-set-cursor-color (face-foreground 'mode-line))))))
 
     (setq-default
      evil-shift-width 2
@@ -715,6 +719,19 @@
   (setq hl-line-sticky-flag nil
         global-hl-line-sticky-flag nil)
 )
+
+(use-package stripe-buffer
+  :commands stripe-buffer-mode
+  :init
+  (defun ivan/stripe-listify-buffer ()
+    (stripe-buffer-mode +1)
+    (setq-local face-remapping-alist
+                `((hl-line stripe-hl-line)))
+    (hl-line-mode +1)
+    (ivan/sidearm-normal-cursor)
+    )
+  (add-hook 'dired-mode-hook #'ivan/stripe-listify-buffer)
+  (add-hook 'org-mode-hook   #'turn-on-stripe-table-mode))
 
 (use-package elixir-mode
   :ensure t
