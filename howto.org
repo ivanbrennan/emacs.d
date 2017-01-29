@@ -377,7 +377,7 @@ for font in all-the-icons \
             octicons      \
             weathericons
 do
-  if [ ! -e $font ]; then
+  if [ ! -e "${font}.ttf" ]; then
     curl -O "https://raw.githubusercontent.com/domtronn/all-the-icons.el/master/fonts/${font}.ttf"
   fi
 done
