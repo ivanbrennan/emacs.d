@@ -485,7 +485,10 @@
   :init
   (setq neo-mode-line-type 'none)
   (defun ivan/set-neotree-cursor ()
-    (setq-local evil-motion-state-cursor '(bar . 0)))
+    (setq-local evil-motion-state-cursor
+                '((bar . 1)
+                  (lambda () (evil-set-cursor-color (face-foreground 'mode-line)))
+                  )))
   (add-hook 'neotree-mode-hook #'ivan/set-neotree-cursor)
   :config
   (eval-after-load "evil"
@@ -561,9 +564,15 @@
      evil-insert-state-tag   " ·i·"
      evil-replace-state-tag  " ·r·"
      evil-emacs-state-tag    " ·e·"
-     evil-emacs-state-cursor 'bar
+     )
+    (setq
+     evil-insert-state-cursor '(bar . 1)
+     evil-emacs-state-cursor  'bar
      evil-emacs-state-modes  (delq 'bookmark-bmenu-mode
                                    evil-emacs-state-modes)
+     evil-default-cursor '(t (lambda ()
+                               (evil-set-cursor-color
+                                (face-foreground 'minibuffer-prompt))))
      )
     (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
     (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
