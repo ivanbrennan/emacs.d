@@ -91,7 +91,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(fringe ((t (:foreground ,pencil2 :background ,whisp1))))
    `(header-line ((t (:foreground ,pencil1 :background ,whisp0))))
    `(info-node ((t (:foreground ,greentea :slant italic :weight bold))))
-   `(highlight ((t (:background ,bluegre))))
+   `(highlight ((t (:background ,paper))))
    `(success ((t (:foreground ,pencil1 :weight bold))))
    `(warning ((t (:foreground ,ink :weight bold))))
    `(tooltip ((t (:foreground ,marooned :background ,whisp0))))
