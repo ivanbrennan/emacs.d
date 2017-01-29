@@ -446,7 +446,8 @@
 
   (defun ivan/activate-doom-config ()
     (add-hook 'find-file-hook #'doom-buffer-mode)
-    (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
+    (when ivan/want-brighten-minibuffer
+      (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer))
     (mapc #'ivan/maybe-enable-doom-buffer-mode (buffer-list)))
 
   (defun ivan/maybe-enable-doom-buffer-mode (buffer)
@@ -460,6 +461,7 @@
     (doom-buffer-mode 0))
 
   (add-hook 'ivan/rotated-theme-hook #'ivan/update-doom-settings)
+  (add-hook 'after-init-hook #'ivan/update-doom-settings)
   )
 
 (use-package f
