@@ -126,6 +126,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-linum
      ((((type graphic)) :inherit linum :background ,paperwhite)
       (t                :inherit linum)))
+   `(doom-minibuffer-active
+     ((((type graphic)) :inherit default :background ,paper)
+      (t                :inherit default)))
 ;;;;; grep
    `(match ((t (:background ,whisp1 :weight bold))))
 ;;;;; wgrep
