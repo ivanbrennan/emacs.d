@@ -640,6 +640,7 @@
     (defun ivan/backward-kill-line () (kill-line 0))
     (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
     (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
+    (evil-define-key 'motion neotree-mode-map (kbd "u") #'neotree-hidden-file-toggle)
 
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
     (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
