@@ -78,12 +78,11 @@
     (setq mode-line-format hidden-mode-line
           hidden-mode-line hidden-mode-line-format)))
 
-;; TODO: enable this once I've got something like doom-buffer-mode going
 (with-current-buffer "*Messages*" (hidden-mode-line-mode +1))
-(dolist (hook '(help-mode
-                compilation-mode
-                messages-buffer-mode
-                completion-list-mode))
+(dolist (hook '(help-mode-hook
+                compilation-mode-hook
+                messages-buffer-mode-hook
+                completion-list-mode-hook))
   (add-hook hook #'hidden-mode-line-mode))
 
 ;;; A subtle bell: flash the mode-line
@@ -440,7 +439,8 @@
    )
 
   (defun ivan/update-doom-settings ()
-    (if (memq 'doom-one custom-enabled-themes)
+    (if (or (memq 'doom-one custom-enabled-themes)
+            (memq 'elixir   custom-enabled-themes))
         (ivan/activate-doom-config)
       (ivan/deactivate-doom-config)))
 

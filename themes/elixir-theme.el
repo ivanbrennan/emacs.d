@@ -82,18 +82,18 @@ Also bind `class' to ((class color) (min-colors 89))."
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,bigblue :underline t :weight bold))))
    `(link-visited ((t (:foreground ,ink :underline t :weight normal))))
-   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,paperwhite))))
+   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,whisp1))))
    `(fixed-pitch ((t (:family "Source Code Pro"))))
    `(variable-pitch ((t (:family "Avenir Next" :height 170))))
    `(cursor ((t (:background ,nicegrey))))
    `(escape-glyph ((t (:foreground ,marooned :bold t))))
-   `(fringe ((t (:foreground ,pencil2 :background ,paperwhite))))
-   `(header-line ((t (:foreground ,pencil1 :background ,whisp2))))
+   `(fringe ((t (:foreground ,pencil2 :background ,whisp1))))
+   `(header-line ((t (:foreground ,pencil1 :background ,whisp0))))
    `(info-node ((t (:foreground ,greentea :slant italic :weight bold))))
-   `(highlight ((t (:background ,whisp2))))
+   `(highlight ((t (:background ,bluegre))))
    `(success ((t (:foreground ,pencil1 :weight bold))))
    `(warning ((t (:foreground ,ink :weight bold))))
-   `(tooltip ((t (:foreground ,marooned :background ,paper))))
+   `(tooltip ((t (:foreground ,marooned :background ,whisp0))))
    `(window-divider ((t :foreground ,pencil4, :background ,pencil4)))
    `(window-divider-first-pixel ((t :inherit window-divider)))
    `(window-divider-last-pixel  ((t :inherit window-divider)))
@@ -103,7 +103,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(compilation-error-face ((t (:foreground ,ink :weight bold :underline t))))
    `(compilation-face ((t (:foreground ,marooned))))
    `(compilation-info-face ((t (:foreground ,ink))))
-   `(compilation-info ((t (:foreground ,marine :background ,paper))))
+   `(compilation-info ((t (:foreground ,marine :background ,whisp0))))
    `(compilation-leave-directory-face ((t (:foreground ,pencil1))))
    `(compilation-line-face ((t (:foreground ,marooned))))
    `(compilation-line-number ((t (:foreground ,pencil0))))
@@ -115,8 +115,19 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(compilation-mode-line-run ((t (:foreground ,marooned :weight bold))))
 ;;;;; completions
    `(completions-annotations ((t (:foreground ,ink))))
+
+;;;;; doom
+   `(doom-default
+     ((((type graphic)) :inherit default :background ,paperwhite)
+      (t                :inherit default)))
+   `(doom-hl-line
+     ((((type graphic)) :background ,whisp2)
+      (t                :inherit hl-line)))
+   `(doom-linum
+     ((((type graphic)) :inherit linum :background ,paperwhite)
+      (t                :inherit linum)))
 ;;;;; grep
-   `(match ((t (:background ,whisp2 :weight bold))))
+   `(match ((t (:background ,whisp1 :weight bold))))
 ;;;;; wgrep
    `(wgrep-face ((t :background ,melon)))
 ;;;;; evil
@@ -126,7 +137,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(isearch-fail ((t (:background ,eraser))))
    `(lazy-highlight ((t (:foreground ,ink :weight bold :background ,limeclay))))
 
-   `(menu ((t (:foreground ,marooned :background ,paper))))
+   `(menu ((t (:foreground ,marooned :background ,whisp0))))
    `(minibuffer-prompt ((t (:foreground ,nicegrey :weight bold))))
    `(mode-line
      ((,class (:foreground ,slate :background ,bluegre))
@@ -379,8 +390,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(erc-timestamp-face ((t (:foreground ,marine))))
    `(erc-underline-face ((t (:underline t))))
 ;;;;; ert
-   `(ert-test-result-expected ((t (:foreground ,marine :background ,paper))))
-   `(ert-test-result-unexpected ((t (:foreground ,navyblue :background ,paper))))
+   `(ert-test-result-expected ((t (:foreground ,marine :background ,whisp1))))
+   `(ert-test-result-unexpected ((t (:foreground ,closedred :background ,whisp1))))
 ;;;;; eshell
    `(eshell-prompt ((t (:foreground ,marooned :weight bold))))
    `(eshell-ls-archive ((t (:foreground ,ink :weight bold))))
@@ -576,20 +587,20 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,whisp2))
+   `(hl-line-face ((,class (:background ,paper))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,whisp2))
+   `(hl-line ((,class (:background ,paper))
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,paper))
                    (t :weight bold)))
 ;;;;; hydra
-   `(hydra-face-red      ((t (:foreground ,bloodred  :background ,paperwhite :bold t))))
-   `(hydra-face-amaranth ((t (:foreground ,amaranth  :background ,paperwhite :bold t))))
-   `(hydra-face-blue     ((t (:foreground ,merged    :background ,paperwhite :bold t))))
-   `(hydra-face-pink     ((t (:foreground ,marooned  :background ,paperwhite :bold t))))
-   `(hydra-face-teal     ((t (:foreground ,teal      :background ,paperwhite :bold t))))
-   `(hydra-face-title    ((t (:foreground ,slate     :background ,paperwhite))))
+   `(hydra-face-red      ((t (:foreground ,bloodred  :background ,whisp1 :bold t))))
+   `(hydra-face-amaranth ((t (:foreground ,amaranth  :background ,whisp1 :bold t))))
+   `(hydra-face-blue     ((t (:foreground ,merged    :background ,whisp1 :bold t))))
+   `(hydra-face-pink     ((t (:foreground ,marooned  :background ,whisp1 :bold t))))
+   `(hydra-face-teal     ((t (:foreground ,teal      :background ,whisp1 :bold t))))
+   `(hydra-face-title    ((t (:foreground ,slate     :background ,whisp1))))
 ;;;; ivy
    `(ivy-confirm-face ((t (:foreground ,pencil1 :background ,paperwhite))))
    `(ivy-match-required-face ((t (:foreground ,navyblue :background ,paperwhite))))
@@ -1004,7 +1015,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(sh-heredoc     ((t (:foreground ,marooned :bold t))))
    `(sh-quoted-exec ((t (:foreground ,navyblue))))
 ;;;;; show-paren
-   `(show-paren-mismatch ((t (:foreground ,ink :background ,paper))))
+   `(show-paren-mismatch ((t (:foreground ,ink :background ,eraser))))
    `(show-paren-match ((t (:foreground ,ink :background ,skyblue :underline t))))
 ;;;;; smart-mode-line
    ;; use (setq sml/theme nil) to enable Elixir for sml
