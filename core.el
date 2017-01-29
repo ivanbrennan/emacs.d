@@ -1474,7 +1474,7 @@
   (progn
     (setq org-bullets-bullet-list
           '("◉" "○" "•"))
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode +1)))))
+    (add-hook 'org-mode-hook #'org-bullets-mode)))
 
 (use-package graphviz-dot-mode
   :mode "\\.gv\\'")
