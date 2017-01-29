@@ -447,6 +447,10 @@
    doom-enable-italic t
    ivan/want-brighten-minibuffer nil
    )
+  (setq
+   doom-neotree-enable-variable-pitch t
+   doom-neotree-file-icons 'simple
+   )
 
   (defun ivan/update-doom-settings ()
     (if (or (memq 'doom-one custom-enabled-themes)
@@ -472,7 +476,8 @@
 
   (add-hook 'ivan/rotated-theme-hook #'ivan/update-doom-settings)
   (add-hook 'after-init-hook #'ivan/update-doom-settings)
-  )
+
+  (when (display-graphic-p) (require 'doom-neotree)))
 
 (use-package f
   :ensure t

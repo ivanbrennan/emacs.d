@@ -9,6 +9,7 @@
   '(("navyblue"   . "#183691")
     ("blooo"      . "#5E79C1")
     ("bigblue"    . "#5272C4")
+    ("booii"      . "#3B85BD")
     ("marine"     . "#0085B3")
     ("flatblue"   . "#B0CDE7")
     ("aquablue"   . "#C2E7F3")
@@ -84,7 +85,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(link-visited ((t (:foreground ,ink :underline t :weight normal))))
    `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,whisp1))))
    `(fixed-pitch ((t (:family "Source Code Pro"))))
-   `(variable-pitch ((t (:family "Avenir Next" :height 170))))
+   `(variable-pitch ((t (:family "Avenir Next" :height 140))))
    `(cursor ((t (:background ,nicegrey))))
    `(escape-glyph ((t (:foreground ,marooned :bold t))))
    `(fringe ((t (:foreground ,pencil2 :background ,whisp1))))
@@ -842,6 +843,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(nav-face-hdir ((t (:foreground ,navyblue))))
    `(nav-face-file ((t (:foreground ,marooned))))
    `(nav-face-hfile ((t (:foreground ,ink))))
+;;;;; neotree
+   `(neo-dir-link-face ((t (:foreground ,booii))))
+   `(neo-root-dir-face ((t (:foreground ,ink))))
 ;;;;; mu4e
    `(mu4e-cited-1-face ((t (:foreground ,ink    :slant italic))))
    `(mu4e-cited-2-face ((t (:foreground ,pencil1 :slant italic))))
