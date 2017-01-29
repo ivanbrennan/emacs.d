@@ -318,7 +318,6 @@
  )
 
 (defun ivan/code-whitespace ()
-  (hl-line-mode +1)
   (setq
    indent-tabs-mode         nil
    indicate-empty-lines     t
@@ -709,6 +708,13 @@
     (add-hook 'emacs-lisp-mode-hook #'ivan/colorize-theme))
   :config
   (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
+
+(use-package hl-line
+  :init (add-hook 'prog-mode-hook #'hl-line-mode)
+  :config
+  (setq hl-line-sticky-flag nil
+        global-hl-line-sticky-flag nil)
+)
 
 (use-package elixir-mode
   :ensure t
