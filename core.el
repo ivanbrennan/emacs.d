@@ -21,8 +21,8 @@
 
 
 ;; parens
-(show-paren-mode)
-(electric-pair-mode)
+(show-paren-mode    +1)
+(electric-pair-mode +1)
 
 (setq
  blink-matching-paren 'jump
@@ -107,7 +107,7 @@
 
 (setq ring-bell-function #'ivan/modeline-flasher)
 
-(global-eldoc-mode -1)
+(global-eldoc-mode 0)
 (add-hook 'emacs-lisp-mode-hook  #'eldoc-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 
@@ -151,7 +151,7 @@
  tramp-persistency-file-name     (ivan/cache-file "tramp")
  )
 
-(savehist-mode)
+(savehist-mode +1)
 
 
 ;; theme
@@ -228,7 +228,7 @@
 (add-hook 'help-mode-hook #'visual-line-mode)
 
 (with-current-buffer "*Messages*"
-  (visual-line-mode))
+  (visual-line-mode +1))
 
 
 ;; splits, frames, windows
@@ -295,7 +295,7 @@
   "A minor mode so my horizontal scroll bindings take precedence."
   :init-value t)
 
-(ivan/hscroll-minor-mode 1)
+(ivan/hscroll-minor-mode +1)
 
 (put 'mac-mwheel-scroll 'isearch-scroll t)
 (put 'ivan/scroll-right 'isearch-scroll t)
@@ -318,7 +318,7 @@
  )
 
 (defun ivan/code-whitespace ()
-  (hl-line-mode)
+  (hl-line-mode +1)
   (setq
    indent-tabs-mode         nil
    indicate-empty-lines     t
@@ -367,8 +367,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (defalias 'list-buffers 'ibuffer)
-(minibuffer-electric-default-mode)
-(delete-selection-mode)
+(minibuffer-electric-default-mode +1)
+(delete-selection-mode +1)
 (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 (add-hook 'tex-mode-hook #'(lambda () (setq ispell-parser 'tex)))
 
@@ -468,7 +468,7 @@
   (defun ivan/maybe-enable-doom-buffer-mode (buffer)
     (with-current-buffer buffer
       (unless (string-match-p "^[ *]" (buffer-name))
-        (doom-buffer-mode))))
+        (doom-buffer-mode +1))))
 
   (defun ivan/deactivate-doom-config ()
     (remove-hook 'find-file-hook #'doom-buffer-mode)
@@ -637,7 +637,7 @@
     (defun ivan/emacs-state-rectangle-mark-mode ()
       (interactive)
       (evil-emacs-state)
-      (rectangle-mark-mode))
+      (rectangle-mark-mode +1))
     (defun ivan/backward-kill-line () (kill-line 0))
     (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
     (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
@@ -680,7 +680,7 @@
     "Programming major modes in which ggtags is activated.")
   (defun ivan/maybe-enable-ggtags ()
     (when (apply 'derived-mode-p ggtags-prog-modes)
-                (ggtags-mode 1)))
+                (ggtags-mode +1)))
   (add-hook 'prog-mode-hook #'ivan/maybe-enable-ggtags)
   :config
   (defun ivan/add-ggtags-presenter ()
@@ -693,7 +693,7 @@
   :init
   (progn
     (defun ivan/colorize-theme ()
-      (if (string-match "-theme.el$" (buffer-name)) (rainbow-mode 1)))
+      (if (string-match "-theme.el$" (buffer-name)) (rainbow-mode +1)))
     (add-hook 'emacs-lisp-mode-hook #'ivan/colorize-theme))
   :config
   (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
@@ -718,7 +718,7 @@
               (lambda ()
                 (add-hook 'after-change-functions
                           #'undo-tree-visualizer-update-linum nil :local)))
-    (undo-tree-mode 1)))
+    (undo-tree-mode +1)))
 
 (use-package zoom-window
   :ensure t
@@ -853,7 +853,7 @@
 
 (use-package evil-matchit
   :ensure t
-  :init (global-evil-matchit-mode))
+  :init (global-evil-matchit-mode +1))
 
 (use-package bind-map
   :ensure t
@@ -936,7 +936,7 @@
     (setq nlinum-relative-current-symbol (if ivan/line-numbers-p "" "0"))
     )
   (defun ivan//update-line-numbers-display ()
-    (nlinum-mode (if ivan/line-numbers-p 1 0))
+    (nlinum-mode (if ivan/line-numbers-p +1 0))
   )
   (defun ivan//update-relative-line-numbers-display ()
     (if ivan/relative-line-numbers-p
@@ -944,7 +944,7 @@
       (ivan//relative-line-numbers-off))
     )
   (defun ivan//relative-line-numbers-on ()
-    (nlinum-mode)
+    (nlinum-mode +1)
     (nlinum-relative-on)
     )
   (defun ivan//relative-line-numbers-off ()
@@ -982,7 +982,7 @@
     (bind-map-set-keys ivan/leader-map
       ";" #'evil-commentary
       )
-    (evil-commentary-mode)))
+    (evil-commentary-mode +1)))
 
 (use-package goto-chg
   :commands (goto-last-change
@@ -1005,7 +1005,7 @@
         (let ((map (copy-keymap ivan/evil-fold-map)))
           (origami-mode 0)
           (bind-key "z" map evil-normal-state-map))
-      (origami-mode 1)
+      (origami-mode +1)
       (ivan/setup-origami-keybindings))
     )
   (defun ivan/setup-origami-keybindings ()
@@ -1187,7 +1187,7 @@
 
 (use-package which-key
   :ensure t
-  :init (which-key-mode)
+  :init (which-key-mode +1)
   :diminish which-key-mode
   :config
   (progn
@@ -1215,7 +1215,7 @@
             ("C-M-j" . drag-stuff-down)
             ("C-M-l" . drag-stuff-right)
             ("C-M-h" . drag-stuff-left)))
-    (drag-stuff-global-mode t)
+    (drag-stuff-global-mode +1)
     )
   )
 
@@ -1357,7 +1357,7 @@
     (defun ivan/enable-wgrep-mode ()
       (remove-hook 'ag-search-finished-hook #'ivan/enable-wgrep-mode)
       (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
-      (wgrep-change-to-wgrep-mode))))
+      (wgrep-change-to-wgrep-mode +1))))
 
 (use-package crux
   :ensure t
@@ -1390,7 +1390,7 @@
    org-hide-leading-stars t
    line-spacing 0.15
    )
-  (variable-pitch-mode t))
+  (variable-pitch-mode +1))
 
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
 
@@ -1474,7 +1474,7 @@
   (progn
     (setq org-bullets-bullet-list
           '("◉" "○" "•"))
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))))
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode +1)))))
 
 (use-package graphviz-dot-mode
   :mode "\\.gv\\'")
@@ -1538,7 +1538,7 @@
    rbenv-show-active-ruby-in-modeline nil
    rbenv-executable (substring (shell-command-to-string "which rbenv") 0 -1)
    )
-  (global-rbenv-mode)
+  (global-rbenv-mode +1)
   (add-hook 'ruby-mode-hook #'rbenv-use-corresponding))
 
 (use-package projectile
@@ -1551,7 +1551,7 @@
   :ensure t
   :diminish projectile-rails-mode
   :init
-  (projectile-rails-global-mode)
+  (projectile-rails-global-mode +1)
   :config
   (setq rake-cache-file (ivan/cache-file "rake.cache")))
 
@@ -1644,7 +1644,7 @@ Disables `text-scale-mode`."
   (bind-key "<escape> M-s" search-map))
 
 (defun configure-terminal ()
-  (xterm-mouse-mode)
+  (xterm-mouse-mode +1)
   (setq
    mouse-sel-mode t
    mouse-wheel-follow-mouse 't
