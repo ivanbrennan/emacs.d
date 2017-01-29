@@ -496,6 +496,18 @@
     '(evil-set-initial-state 'neotree-mode 'motion))
  )
 
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode +1)
+  (setq
+   beacon-color (face-background 'region)
+   beacon-blink-when-point-moves-vertically 10
+   beacon-blink-delay    0.2
+   beacon-blink-duration 0.25
+   )
+  )
+
 (use-package f
   :ensure t
   :commands (f-dirname f-relative))
