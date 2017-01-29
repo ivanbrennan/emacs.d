@@ -200,16 +200,10 @@
 
 
 ;; transparency
-(let ((opacity '(97 . 85)))
-  (set-frame-parameter (selected-frame)
-                       'alpha
-                       opacity)
-  (add-to-list 'default-frame-alist
-               `(alpha . ,opacity)))
-
 (defun ivan/toggle-transparency ()
   (interactive)
-  (let* ((opaque (eql (frame-parameter nil 'alpha) 100))
+  (let* ((alpha     (frame-parameter nil 'alpha))
+         (opaque    (or (null alpha) (eql 100 alpha)))
          (new-value (if opaque '(97 . 85) 100)))
     (set-frame-parameter nil 'alpha new-value)))
 
