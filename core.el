@@ -443,8 +443,9 @@
   :ensure t
   :config
   (setq
-   doom-enable-bold t
+   doom-enable-bold   t
    doom-enable-italic t
+   ivan/want-brighten-minibuffer nil
    )
 
   (defun ivan/update-doom-settings ()
