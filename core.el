@@ -441,6 +441,7 @@
 
 (use-package doom-themes
   :ensure t
+  :pin melpa
   :config
   (setq
    doom-enable-bold   t
