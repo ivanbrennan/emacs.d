@@ -75,7 +75,6 @@ different bindings for <tab> (the actual Tab key) and TAB (C-i)
 ** C-w in isearch
 * Juicy unbound keys
 ** M-L
-** M-O
 ** M-RET (different from M-<return>)
 ** M-[ and M-] (good for folding)
 ** M-J
