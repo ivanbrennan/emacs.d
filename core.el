@@ -90,14 +90,14 @@
 ;;; A subtle bell: flash the mode-line
 ;; TODO More flexible colors
 (defvar doom--modeline-bg nil)
-(defface doom-modeline-flash '((t (:inherit mode-line :background "#54252C")))
+(defface doom-modeline-flash '((t (:inherit mode-line :background "#3B85BD")))
   "Face used for the mode-line ring-bell-function.")
 
 (defsubst ivan/modeline-flasher ()
   (unless doom--modeline-bg
     (setq doom--modeline-bg (face-background 'mode-line)))
   (let ((flash (or (ignore-errors (face-background 'doom-modeline-flash))
-                   "#F2F9DB")))
+                   "#3B85BD")))
     (set-face-background 'mode-line flash)
     (run-with-timer
      0.1 nil
