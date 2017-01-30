@@ -9,6 +9,7 @@
   '(("navyblue"   . "#183691")
     ("blooo"      . "#5E79C1")
     ("bigblue"    . "#5272C4")
+    ("bugblue"    . "#3D5591")
     ("booii"      . "#3B85BD")
     ("marine"     . "#0085B3")
     ("flatblue"   . "#B0CDE7")
@@ -133,6 +134,30 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-modeline-flash
      ((((type graphic)) :background ,limeclay)
       (t                :inherit mode-line)))
+   `(doom-modeline-buffer-path
+     ((t (:foreground ,nicegrey :inherit mode-line :bold t))))
+   `(doom-modeline-buffer-project
+     ((t (:inherit doom-modeline-buffer-path))))
+   `(doom-modeline-buffer-modified
+     ((t (:inherit doom-modeline-buffer-path :background nil :foreground ,bugblue))))
+   `(doom-modeline-buffer-major-mode
+     ((t (:inherit mode-line :bold t))))
+   `(doom-modeline-highlight
+     ((t (:inherit mode-line))))
+   `(doom-modeline-panel
+     ((t (:inherit mode-line))))
+   `(doom-modeline-info
+     ((t (:inherit success))))
+   `(doom-modeline-warning
+     ((t (:inherit warning))))
+   `(doom-modeline-urgent
+     ((t (:inherit error))))
+   `(doom-modeline-bar
+     ((t (:inherit highlight :foreground nil))))
+   `(doom-modeline-eldoc-bar
+     ((t (:inherit shadow :foreground nil))))
+   `(doom-modeline-inactive-bar
+     ((t (:inherit mode-line-inactive))))
 ;;;;; grep
    `(match ((t (:background ,whisp1 :weight bold))))
 ;;;;; wgrep
@@ -152,7 +177,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(mode-line-buffer-id ((t (:foreground "black" :weight bold))))
    `(mode-line-highlight ((t (:foreground ,bigblue))))
    `(mode-line-inactive
-     ((t (:foreground ,pencil1 :weight light :background ,whisp1))))
+     ((t (:foreground ,pencil1 :weight light :background ,bluegre))))
    `(region ((,class (:background ,visipurp))
              (t :inverse-video t)))
    `(cua-rectangle ((t (:inherit region))))

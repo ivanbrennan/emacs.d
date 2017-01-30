@@ -1349,6 +1349,9 @@
                        ert-results-mode
                        ggtags-global-mode
                        rake-compilation-mode)))
+(use-package core-modeline
+  :load-path "lisp/"
+  )
 
 (use-package shackle
   :ensure t
@@ -1475,59 +1478,10 @@
    powerline-display-mule-info   nil
    powerline-gui-use-vcs-glyph   t
    )
-
-  (defface ivan/active-hud1 '((t (:background "#D1D7F3")))
-    "HUD face 1."
-    :group 'powerline)
-
-  (defun ivan/line-theme ()
-    "Setup a custom mode-line."
-    (interactive)
-    (setq-default mode-line-format
-                  '("%e"
-                    (:eval
-                     (let* ((active (powerline-selected-window-active))
-                            (mode-line-buffer-id (if active 'mode-line-buffer-id 'mode-line-buffer-id-inactive))
-                            (mode-line (if active 'mode-line 'mode-line-inactive))
-                            (face1 (if active 'powerline-active1 'powerline-inactive1))
-                            (face2 (if active 'powerline-active2 'powerline-inactive2))
-                            (hud-fg (if active 'ivan/active-hud1 face2))
-                            (separator-left (intern (format "powerline-%s-%s"
-                                                            (powerline-current-separator)
-                                                            (car powerline-default-separator-dir))))
-                            (separator-right (intern (format "powerline-%s-%s"
-                                                             (powerline-current-separator)
-                                                             (cdr powerline-default-separator-dir))))
-                            (lhs (append (when evil-mode
-                                           (list (powerline-raw evil-mode-line-tag face1)
-                                                 (powerline-raw " " face1)
-                                                 (funcall separator-right face1 face2)))
-                                         (list (powerline-raw "%*" face2 'l)
-                                               (powerline-buffer-id mode-line-buffer-id 'l)
-                                               (powerline-raw " " face2)
-                                               (funcall separator-left face2 face1)
-                                               (powerline-major-mode face1 'l)
-                                               (powerline-process face1)
-                                               (powerline-narrow face1 'l)
-                                               (powerline-raw " " face1)
-                                               (funcall separator-right face1 face2)
-                                               (powerline-vc face2 'r))))
-                            (rhs (list (powerline-raw global-mode-string face2 'r)
-                                       (powerline-raw "%4l" face2 'l)
-                                       (powerline-raw ":" face2 'l)
-                                       (powerline-raw "%3c" face2 'r)
-                                       (funcall separator-right face2 face1)
-                                       (powerline-raw " " face1)
-                                       (powerline-raw "%6p" face1 'r)
-                                       (powerline-hud hud-fg face2))))
-                       (concat (powerline-render lhs)
-                               (powerline-fill face2 (powerline-width rhs))
-                               (powerline-render rhs)))))))
-
-  (ivan/line-theme)
-  :config
-  (add-hook 'ivan/rotated-theme-hook #'powerline-reset)
   )
+
+(use-package core-modeline
+  :load-path "lisp/")
 
 (defadvice vc-mode-line (after strip-backend () activate)
   (when (stringp vc-mode)
@@ -1994,10 +1948,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (require 'ibuffer-config))
 (with-eval-after-load 'dired
   (require 'dired-config))
-
-(use-package core-modeline
-  :disabled t
-  :load-path "lisp/")
 
 (setq
  calendar-latitude 40.7
