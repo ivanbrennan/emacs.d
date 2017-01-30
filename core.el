@@ -486,7 +486,7 @@
 
   (defmacro doom/neotree-save (&rest body)
     `(let ((neo-p (neo-global--window-exists-p)))
-       (when neo-p (doom/neotree-close))
+       (when neo-p (neotree-hide))
        ,@body
        (when neo-p
          (save-selected-window
