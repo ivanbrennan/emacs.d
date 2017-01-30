@@ -145,7 +145,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-modeline-highlight
      ((t (:inherit mode-line))))
    `(doom-modeline-panel
-     ((t (:inherit mode-line))))
+     ((t (:background ,booii :foreground ,bluegre))))
    `(doom-modeline-info
      ((t (:inherit success))))
    `(doom-modeline-warning
@@ -153,7 +153,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-modeline-urgent
      ((t (:inherit error))))
    `(doom-modeline-bar
-     ((t (:inherit highlight :foreground nil))))
+     ((t (:background ,booii :foreground nil))))
    `(doom-modeline-eldoc-bar
      ((t (:inherit shadow :foreground nil))))
    `(doom-modeline-inactive-bar
