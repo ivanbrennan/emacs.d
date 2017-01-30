@@ -735,6 +735,7 @@
 )
 
 (use-package stripe-buffer
+  :ensure t
   :commands stripe-buffer-mode
   :init
   (defun ivan/stripe-listify-buffer ()
@@ -1617,6 +1618,10 @@
   :mode "\\.yml\\'"
   :config
   (add-hook 'yaml-mode-hook #'ivan/truncate-lines))
+
+(use-package exec-path-from-shell
+  :ensure t
+  :defer t)
 
 (diminish 'text-scale-mode)
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
