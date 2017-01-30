@@ -401,6 +401,7 @@ brew cask install font-fontawesome
 ** invisible or hollow cursor in neotree
 ** hide mode-line in neotree window
 ** navigate neotree quickly (e.g. pop up a level, up out of an opened fold, etc.)
+** wrap my head around all the core-popup stuff
 * Questions
 ** What are the different load-paths for?
 *** /Users/ivan/.emacs.d/elpa/...
