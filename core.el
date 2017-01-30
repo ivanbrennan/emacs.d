@@ -1759,7 +1759,31 @@ Disables `text-scale-mode`."
 (if IS-MAC
     (progn
       (configure-mac-modifiers)
-      (configure-mac-directory-program)))
+      (configure-mac-directory-program)
+
+      (defun doom-open-with (&optional app-name path)
+        "Send PATH to APP-NAME on OSX."
+        (interactive)
+        (let* ((path (f-full (s-replace "'" "\\'"
+                                        (or path (if (eq major-mode 'dired-mode)
+                                                     (dired-get-file-for-visit)
+                                                   (buffer-file-name))))))
+               (command (format "open %s"
+                                (if app-name
+                                    (format "-a %s '%s'" (shell-quote-argument app-name) path)
+                                  (format "'%s'" path)))))
+          (message "Running: %s" command)
+          (shell-command command)))
+
+      (defmacro def-open-with! (id &optional app dir)
+        `(defun ,(intern (format "os-%s" id)) ()
+           (interactive)
+           (doom-open-with ,app ,dir)))
+
+      (def-open-with! open-in-default-program)
+      (def-open-with! open-in-browser "Google Chrome")
+      (def-open-with! reveal "Finder" default-directory))
+  )
 
 (if (display-graphic-p)
     (configure-gui)
