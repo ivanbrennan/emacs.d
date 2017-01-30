@@ -935,6 +935,7 @@
     "f j"        #'dired-jump
     "f s"        #'save-buffer
     "f w"        #'write-file
+    "i"          #'os-switch-to-term
     "a"          #'ag-project
     "C-a"        #'ag-project-regexp
     "g"          #'evil-goto-mark
@@ -1756,33 +1757,43 @@ Disables `text-scale-mode`."
     (setq ls-lisp-use-insert-directory-program nil))
   )
 
-(if IS-MAC
-    (progn
-      (configure-mac-modifiers)
-      (configure-mac-directory-program)
+(when IS-MAC
+  (configure-mac-modifiers)
+  (configure-mac-directory-program)
 
-      (defun doom-open-with (&optional app-name path)
-        "Send PATH to APP-NAME on OSX."
-        (interactive)
-        (let* ((path (f-full (s-replace "'" "\\'"
-                                        (or path (if (eq major-mode 'dired-mode)
-                                                     (dired-get-file-for-visit)
-                                                   (buffer-file-name))))))
-               (command (format "open %s"
-                                (if app-name
-                                    (format "-a %s '%s'" (shell-quote-argument app-name) path)
-                                  (format "'%s'" path)))))
-          (message "Running: %s" command)
-          (shell-command command)))
+  (defun doom-open-with (&optional app-name path)
+    "Send PATH to APP-NAME on OSX."
+    (interactive)
+    (let* ((path (f-full (s-replace "'" "\\'"
+                                    (or path (if (eq major-mode 'dired-mode)
+                                                 (dired-get-file-for-visit)
+                                               (buffer-file-name))))))
+           (command (format "open %s"
+                            (if app-name
+                                (format "-a %s '%s'" (shell-quote-argument app-name) path)
+                              (format "'%s'" path)))))
+      (message "Running: %s" command)
+      (shell-command command)))
 
-      (defmacro def-open-with! (id &optional app dir)
-        `(defun ,(intern (format "os-%s" id)) ()
-           (interactive)
-           (doom-open-with ,app ,dir)))
+  (defmacro def-open-with! (id &optional app dir)
+    `(defun ,(intern (format "os-%s" id)) ()
+       (interactive)
+       (doom-open-with ,app ,dir)))
 
-      (def-open-with! open-in-default-program)
-      (def-open-with! open-in-browser "Google Chrome")
-      (def-open-with! reveal "Finder" default-directory))
+  (def-open-with! open-in-default-program)
+  (def-open-with! open-in-browser "Google Chrome")
+  (def-open-with! reveal "Finder" default-directory)
+
+  (defun os-switch-to-term ()
+    (interactive)
+    (when (display-graphic-p)
+      (do-applescript "tell application \"iTerm\" to activate")))
+
+  (defun os-switch-to-term-and-cd ()
+    (interactive)
+    (when (display-graphic-p)
+      (doom:send-to-tmux (format "cd %s" (shell-quote-argument default-directory))))
+    (os-switch-to-term))
   )
 
 (if (display-graphic-p)
