@@ -132,7 +132,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((((type graphic)) :inherit default :background ,paper)
       (t                :inherit default)))
    `(doom-modeline-flash
-     ((((type graphic)) :background ,limeclay)
+     ((((type graphic)) :background ,fluff)
       (t                :inherit mode-line)))
    `(doom-modeline-buffer-path
      ((t (:foreground ,nicegrey :inherit mode-line :bold t))))
