@@ -141,7 +141,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-modeline-buffer-project
      ((t (:inherit doom-modeline-buffer-path))))
    `(doom-modeline-buffer-modified
-     ((t (:inherit doom-modeline-buffer-path :background nil :foreground ,bugblue))))
+     ((t (:inherit doom-modeline-buffer-path :background nil :slant oblique))))
    `(doom-modeline-buffer-major-mode
      ((t (:inherit mode-line :bold t))))
    `(doom-modeline-highlight
