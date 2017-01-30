@@ -1713,7 +1713,12 @@ Disables `text-scale-mode`."
    ("<escape> M-u" . upcase-word)
    ("<escape> M-=" . count-words-region)
    )
-  (bind-key "<escape> M-s" search-map))
+  (bind-key "<escape> M-s" search-map)
+  (setq exec-path
+        (eval-when-compile
+          (require 'exec-path-from-shell)
+          (exec-path-from-shell-initialize)
+          exec-path)))
 
 (defun configure-terminal ()
   (xterm-mouse-mode +1)
