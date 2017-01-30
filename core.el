@@ -356,6 +356,7 @@
  tab-always-indent                   'complete
  uniquify-buffer-name-style          'forward
  vc-follow-symlinks                  t
+ x-select-request-type               '(UTF8_STRING COMPOUND_TEXT TEXT STRING)
  )
 
 (fset 'yes-or-no-p 'y-or-n-p)
