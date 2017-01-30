@@ -1736,7 +1736,7 @@ Disables `text-scale-mode`."
   (add-hook 'window-setup-hook 'ivan/adjust-terminal-colors)
   )
 
-(defun system-is-mac () (eq system-type 'darwin))
+(defconst IS-MAC (eq system-type 'darwin))
 
 (defun configure-mac-modifiers ()
   (setq mac-command-modifier 'meta))
@@ -1748,7 +1748,7 @@ Disables `text-scale-mode`."
     (setq ls-lisp-use-insert-directory-program nil))
   )
 
-(if (system-is-mac)
+(if IS-MAC
     (progn
       (configure-mac-modifiers)
       (configure-mac-directory-program)))
