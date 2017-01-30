@@ -483,7 +483,25 @@
   :config
   (eval-after-load "evil"
     '(evil-set-initial-state 'neotree-mode 'motion))
- )
+
+  (defmacro doom/neotree-save (&rest body)
+    `(let ((neo-p (neo-global--window-exists-p)))
+       (when neo-p (doom/neotree-close))
+       ,@body
+       (when neo-p
+         (save-selected-window
+           (neotree-show)))))
+
+  (defun doom*save-neotree (orig-fun &rest args)
+    "Prevents messing up the neotree buffer on window changes"
+    (doom/neotree-save (apply orig-fun args)))
+
+  (advice-add 'balance-windows              :around 'doom*save-neotree)
+  (advice-add 'evil-window-move-very-bottom :around 'doom*save-neotree)
+  (advice-add 'evil-window-move-very-top    :around 'doom*save-neotree)
+  (advice-add 'evil-window-move-far-left    :around 'doom*save-neotree)
+  (advice-add 'evil-window-move-far-right   :around 'doom*save-neotree)
+  )
 
 (use-package beacon
   :ensure t
