@@ -1483,11 +1483,6 @@
 (use-package core-modeline
   :load-path "lisp/")
 
-(defadvice vc-mode-line (after strip-backend () activate)
-  (when (stringp vc-mode)
-    (setq vc-mode
-          (replace-regexp-in-string "^ Git." " " vc-mode))))
-
 (use-package spaceline-config
   :disabled t
   :ensure spaceline

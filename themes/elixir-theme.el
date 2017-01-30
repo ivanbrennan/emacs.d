@@ -93,7 +93,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(header-line ((t (:foreground ,pencil1 :background ,whisp0))))
    `(info-node ((t (:foreground ,greentea :slant italic :weight bold))))
    `(highlight ((t (:background ,paper))))
-   `(success ((t (:foreground ,pencil1 :weight bold))))
+   `(success ((t (:foreground ,teal :weight bold))))
    `(warning ((t (:foreground ,ink :weight bold))))
    `(tooltip ((t (:foreground ,marooned :background ,whisp0))))
    `(window-divider ((t :foreground ,pencil4, :background ,pencil4)))
