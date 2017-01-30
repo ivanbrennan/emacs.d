@@ -1623,6 +1623,7 @@
   (add-hook 'yaml-mode-hook #'ivan/truncate-lines))
 
 (diminish 'text-scale-mode)
+(add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
 
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
