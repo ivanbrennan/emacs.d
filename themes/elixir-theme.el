@@ -7,9 +7,11 @@
 
 (defvar elixir-default-colors-alist
   '(("navyblue"   . "#183691")
+    ("purpcoal0"  . "#354668")
+    ("purpcoal1"  . "#425585")
+    ("bugblue"    . "#3D5591")
     ("blooo"      . "#5E79C1")
     ("bigblue"    . "#5272C4")
-    ("bugblue"    . "#3D5591")
     ("booii"      . "#3B85BD")
     ("marine"     . "#0085B3")
     ("flatblue"   . "#B0CDE7")
@@ -135,7 +137,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((((type graphic)) :background ,fluff)
       (t                :inherit mode-line)))
    `(doom-modeline-buffer-path
-     ((t (:foreground ,nicegrey :inherit mode-line :bold t))))
+     ((t (:foreground ,purpcoal0 :inherit mode-line :bold t))))
    `(doom-modeline-buffer-project
      ((t (:inherit doom-modeline-buffer-path))))
    `(doom-modeline-buffer-modified
@@ -145,7 +147,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-modeline-highlight
      ((t (:inherit mode-line))))
    `(doom-modeline-panel
-     ((t (:background ,booii :foreground ,bluegre))))
+     ((t (:background ,purpcoal0 :foreground ,bluegre))))
    `(doom-modeline-info
      ((t (:inherit success))))
    `(doom-modeline-warning
@@ -153,7 +155,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-modeline-urgent
      ((t (:inherit error))))
    `(doom-modeline-bar
-     ((t (:background ,booii :foreground nil))))
+     ((t (:background ,purpcoal0 :foreground nil))))
    `(doom-modeline-eldoc-bar
      ((t (:inherit shadow :foreground nil))))
    `(doom-modeline-inactive-bar
