@@ -756,6 +756,7 @@
   :ensure t
   :diminish undo-tree-mode
   :commands (undo-tree-undo undo-tree-redo)
+  :bind (:map undo-tree-map ("M-_" . nil))
   :config
   (progn
     (setq undo-tree-history-directory-alist
@@ -1639,6 +1640,16 @@ Disables `text-scale-mode`."
       (delete-frame)
     (delete-window)))
 
+(defun ivan/global-text-scale-increase ()
+  (interactive)
+  (set-face-attribute
+   'default nil :height (round (* (face-attribute 'default :height) 1.2))))
+
+(defun ivan/global-text-scale-decrease ()
+  (interactive)
+  (set-face-attribute
+   'default nil :height (round (/ (face-attribute 'default :height) 1.2))))
+
 (defun configure-gui ()
   (bind-keys
    ("M-q"   . save-buffers-kill-terminal)
@@ -1653,6 +1664,8 @@ Disables `text-scale-mode`."
    ("M-u"   . ivan/toggle-transparency)
    ("M-="   . text-scale-increase)
    ("M--"   . text-scale-decrease)
+   ("M-+"   . ivan/global-text-scale-increase)
+   ("M-_"   . ivan/global-text-scale-decrease)
    ("M-0"   . ivan/text-scale-reset)
    ("M-`"   . ns-next-frame)
    ("M-~"   . ns-prev-frame)
