@@ -1718,7 +1718,9 @@ Disables `text-scale-mode`."
         (eval-when-compile
           (require 'exec-path-from-shell)
           (exec-path-from-shell-initialize)
-          exec-path)))
+          exec-path))
+  (with-eval-after-load "evil"
+    (fset 'evil-visual-update-x-selection 'ignore)))
 
 (defun configure-terminal ()
   (xterm-mouse-mode +1)
