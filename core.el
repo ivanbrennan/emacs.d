@@ -972,7 +972,9 @@
     "Whether line-numbers should be displayed.")
   (defvar-local ivan/relative-line-numbers-p nil
     "Whether relative line-numbers should be displayed.")
-  (use-package nlinum)
+  (use-package nlinum
+    :init
+    (add-hook 'prog-mode-hook #'ivan/toggle-line-numbers))
   (defun ivan/toggle-line-numbers ()
     (interactive)
     (setq-local ivan/line-numbers-p (not ivan/line-numbers-p))
