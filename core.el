@@ -480,7 +480,12 @@
   :ensure t
   :config
   (setq neo-mode-line-type 'none)
-  (add-hook 'neotree-mode-hook #'evil-thin-motion-cursor)
+  (add-hook 'neotree-mode-hook
+            (lambda ()
+              (setq-local evil-motion-state-cursor
+                          '((bar . 1)
+                            (lambda ()
+                              (evil-set-cursor-color (face-foreground 'mode-line)))))))
 
   (defmacro doom/neotree-save (&rest body)
     `(let ((neo-p (neo-global--window-exists-p)))
@@ -609,18 +614,6 @@
     (defun ivan/treat-hyphen-as-word-char     () (ivan/treat-as-word-char ?-))
     (defun ivan/treat-as-word-char (char) (modify-syntax-entry char "w"))
 
-    (defun evil-thin-motion-cursor ()
-      (setq-local
-       evil-motion-state-cursor
-       '((bar . 1)
-         (lambda () (evil-set-cursor-color (face-foreground 'mode-line))))))
-
-    (defun evil-no-normal-cursor ()
-      (setq-local evil-normal-state-cursor '(bar . 0)))
-
-    (defun evil-no-motion-cursor ()
-      (setq-local evil-motion-state-cursor '(bar . 0)))
-
     (defun ivan/paste-pop-or-previous-line (count)
       (interactive "p")
       (if (memq last-command
@@ -737,10 +730,16 @@
     (setq-local face-remapping-alist '((hl-line . bold-hl-line)))
     (hl-line-mode +1))
 
-  (add-hook 'dired-mode-hook #'enable-bold-hl-line)
-  (add-hook 'dired-mode-hook #'evil-no-normal-cursor)
-  (add-hook 'ibuffer-mode-hook #'enable-bold-hl-line)
-  (add-hook 'ibuffer-mode-hook #'evil-no-motion-cursor)
+  (add-hook 'dired-mode-hook
+            (lambda ()
+              (enable-bold-hl-line)
+              (setq-local evil-normal-state-cursor '(bar . 0))))
+
+  (add-hook 'ibuffer-mode-hook
+            (lambda ()
+              (enable-bold-hl-line)
+              (setq-local evil-motion-state-cursor '(bar . 0))))
+
   (add-hook 'prog-mode-hook #'hl-line-mode)
 
   (setq hl-line-sticky-flag nil
