@@ -52,7 +52,7 @@
     ("whisp0"     . "#EDEDED")
     ("whisp1"     . "#F2F2F2")
     ("whisp2"     . "#F5F5F5")
-    ("paper"      . "#F7F7F7")
+    ("paper"      . "#F8F8F8")
     ("paperwhite" . "#FAFAFA"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
@@ -621,9 +621,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,paperwhite))
+   `(hl-line-face ((,class (:background ,paper))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,paperwhite))
+   `(hl-line ((,class (:background ,paper))
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,paper))

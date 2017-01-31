@@ -478,13 +478,9 @@
 
 (use-package neotree
   :ensure t
-  :commands (neotree-toggle)
-  :init
-  (setq neo-mode-line-type 'none)
-  (add-hook 'neotree-mode-hook #'ivan/sidearm-motion-cursor)
   :config
-  (eval-after-load "evil"
-    '(evil-set-initial-state 'neotree-mode 'motion))
+  (setq neo-mode-line-type 'none)
+  (add-hook 'neotree-mode-hook #'evil-thin-motion-cursor)
 
   (defmacro doom/neotree-save (&rest body)
     `(let ((neo-p (neo-global--window-exists-p)))
@@ -574,10 +570,9 @@
         ("C-e"         . evil-copy-from-below)
         ("C-y"         . evil-copy-from-above)
         )
-  :init
-  (add-hook 'after-init-hook #'evil-mode)
   :config
   (progn
+    (add-hook 'after-init-hook #'evil-mode)
     (setq
      evil-normal-state-tag   " ·n·"
      evil-visual-state-tag   " ·v·"
@@ -596,18 +591,10 @@
                                (evil-set-cursor-color
                                 (face-foreground 'minibuffer-prompt))))
      )
-    (add-to-list 'evil-motion-state-modes 'ibuffer-mode)
-    (add-to-list 'evil-motion-state-modes 'bookmark-bmenu-mode)
-
-    (defun ivan/sidearm-normal-cursor ()
-      (setq-local evil-normal-state-cursor
-                  '((bar . 0)
-                    )))
-    (defun ivan/sidearm-motion-cursor ()
-      (setq-local evil-motion-state-cursor
-                  '((bar . 1)
-                    (lambda () (evil-set-cursor-color (face-foreground 'mode-line))))))
-
+    (dolist (mode '(ibuffer-mode
+                    bookmark-bmenu-mode
+                    neotree-mode))
+      (add-to-list 'evil-motion-state-modes mode))
     (setq-default
      evil-shift-width 2
      evil-symbol-word-search t
@@ -621,6 +608,18 @@
     (defun ivan/treat-underscore-as-word-char () (ivan/treat-as-word-char ?_))
     (defun ivan/treat-hyphen-as-word-char     () (ivan/treat-as-word-char ?-))
     (defun ivan/treat-as-word-char (char) (modify-syntax-entry char "w"))
+
+    (defun evil-thin-motion-cursor ()
+      (setq-local
+       evil-motion-state-cursor
+       '((bar . 1)
+         (lambda () (evil-set-cursor-color (face-foreground 'mode-line))))))
+
+    (defun evil-no-normal-cursor ()
+      (setq-local evil-normal-state-cursor '(bar . 0)))
+
+    (defun evil-no-motion-cursor ()
+      (setq-local evil-motion-state-cursor '(bar . 0)))
 
     (defun ivan/paste-pop-or-previous-line (count)
       (interactive "p")
@@ -729,25 +728,24 @@
   (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
 (use-package hl-line
-  :init (add-hook 'prog-mode-hook #'hl-line-mode)
   :config
+  (defface bold-hl-line
+    '((t (:weight bold :inherit hl-line)))
+    "Bold hl-line face.")
+
+  (defun enable-bold-hl-line ()
+    (setq-local face-remapping-alist '((hl-line . bold-hl-line)))
+    (hl-line-mode +1))
+
+  (add-hook 'dired-mode-hook #'enable-bold-hl-line)
+  (add-hook 'dired-mode-hook #'evil-no-normal-cursor)
+  (add-hook 'ibuffer-mode-hook #'enable-bold-hl-line)
+  (add-hook 'ibuffer-mode-hook #'evil-no-motion-cursor)
+  (add-hook 'prog-mode-hook #'hl-line-mode)
+
   (setq hl-line-sticky-flag nil
         global-hl-line-sticky-flag nil)
 )
-
-(use-package stripe-buffer
-  :ensure t
-  :commands stripe-buffer-mode
-  :init
-  (defun ivan/stripe-listify-buffer ()
-    (stripe-buffer-mode +1)
-    (setq-local face-remapping-alist
-                `((hl-line stripe-hl-line)))
-    (hl-line-mode +1)
-    (ivan/sidearm-normal-cursor)
-    )
-  (add-hook 'dired-mode-hook #'ivan/stripe-listify-buffer)
-  (add-hook 'org-mode-hook   #'turn-on-stripe-table-mode))
 
 (use-package elixir-mode
   :ensure t
@@ -1343,7 +1341,9 @@
       (ivan/filter-whitespace ag/file-column-pattern))
     (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
 
-    (add-hook 'ag-search-finished-hook #'ivan/present-search-results)))
+    (add-hook 'ag-search-finished-hook #'ivan/present-search-results)
+    (add-hook 'ag-mode-hook #'hl-line-mode)))
+
 
 (use-package magnet
   :load-path "lisp/magnet/"
