@@ -741,6 +741,7 @@
               (setq-local evil-motion-state-cursor '(bar . 0))))
 
   (add-hook 'prog-mode-hook #'hl-line-mode)
+  (add-hook 'bookmark-bmenu-mode-hook #'hl-line-mode)
 
   (setq hl-line-sticky-flag nil
         global-hl-line-sticky-flag nil)
