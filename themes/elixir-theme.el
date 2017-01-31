@@ -1104,7 +1104,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(slime-highlight-face ((t (:inherit highlight))))
 ;;;;; stripe-buffer
    `(stripe-highlight ((t (:background ,whisp0))))
-   `(stripe-hl-line   ((t (:background ,paper))))
+   `(stripe-hl-line   ((t (:background ,paper :weight bold))))
 ;;;;; speedbar
    `(speedbar-button-face ((t (:foreground ,pencil1))))
    `(speedbar-directory-face ((t (:foreground ,merged))))
