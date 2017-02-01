@@ -600,6 +600,7 @@
                     bookmark-bmenu-mode
                     neotree-mode))
       (add-to-list 'evil-motion-state-modes mode))
+    (setq evil-ex-visual-char-range t)
     (setq-default
      evil-shift-width 2
      evil-symbol-word-search t
