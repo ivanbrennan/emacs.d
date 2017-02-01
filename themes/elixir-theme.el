@@ -101,6 +101,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(window-divider ((t :foreground ,pencil4, :background ,pencil4)))
    `(window-divider-first-pixel ((t :inherit window-divider)))
    `(window-divider-last-pixel  ((t :inherit window-divider)))
+;;;;; bookmarks
+   `(bookmark-menu-bookmark ((t :inherit default)))
 ;;;;; compilation
    `(compilation-column-face ((t (:foreground ,marooned))))
    `(compilation-enter-directory-face ((t (:foreground ,pencil1))))

@@ -741,7 +741,10 @@
               (setq-local evil-motion-state-cursor '(bar . 0))))
 
   (add-hook 'prog-mode-hook #'hl-line-mode)
-  (add-hook 'bookmark-bmenu-mode-hook #'hl-line-mode)
+  (add-hook 'bookmark-bmenu-mode-hook
+            (lambda ()
+              (enable-bold-hl-line)
+              (setq-local evil-motion-state-cursor '(bar . 0))))
 
   (setq hl-line-sticky-flag nil
         global-hl-line-sticky-flag nil)
