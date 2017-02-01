@@ -587,19 +587,35 @@
      evil-replace-state-tag  " ·r·"
      evil-emacs-state-tag    " ·e·"
      )
+    (mapc (lambda (r) (evil-set-initial-state (car r) (cdr r)))
+          '((compilation-mode       . motion)
+            (help-mode              . motion)
+            (grep-mode              . motion)
+            (ag-mode                . motion)
+            (Info-mode              . motion)
+            (bookmark-bmenu-mode    . motion)
+            (ibuffer-mode           . motion)
+            (neotree-mode           . motion)
+            (message-mode           . normal)
+            (debugger-mode          . normal)
+            (image-mode             . normal)
+            (doc-view-mode          . normal)
+            (eww-mode               . normal)
+            (tabulated-list-mode    . normal)
+            (view-mode              . normal)
+            (profile-report-mode    . emacs)
+            (comint-mode            . emacs)
+            (cider-repl-mode        . emacs)
+            (term-mode              . emacs)
+            (calendar-mode          . emacs)
+            (Man-mode               . emacs)))
     (setq
      evil-insert-state-cursor '(bar . 1)
      evil-emacs-state-cursor  'bar
-     evil-emacs-state-modes  (delq 'bookmark-bmenu-mode
-                                   evil-emacs-state-modes)
      evil-default-cursor '(t (lambda ()
                                (evil-set-cursor-color
                                 (face-foreground 'minibuffer-prompt))))
      )
-    (dolist (mode '(ibuffer-mode
-                    bookmark-bmenu-mode
-                    neotree-mode))
-      (add-to-list 'evil-motion-state-modes mode))
     (setq evil-ex-visual-char-range t)
     (setq-default
      evil-shift-width 2
