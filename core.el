@@ -1998,8 +1998,3 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
  calendar-longitude -74.0
  calendar-location-name "New York, NY"
  )
-
-;;; temporary, for the refactoring demo
-(add-to-list 'safe-local-eval-forms '(load (expand-file-name "refactoring-demo-environment")
-                                           nil
-                                           'no-message))
