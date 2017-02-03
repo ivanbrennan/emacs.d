@@ -417,6 +417,7 @@
  )
 
 (setq
+ package--init-file-ensured t   ; don't add a 'package-initialize' call to my init file
  package-enable-at-startup  nil
  package-archive-priorities '(
                               ("melpa-stable" . 3)
