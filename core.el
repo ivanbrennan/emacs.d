@@ -134,7 +134,7 @@
   "Directory for feature configuration files.")
 
 (defconst ivan/packages-dir
-  (expand-file-name "elpa" ivan/emacs-dir)
+  (expand-file-name "packages" ivan/emacs-dir)
   "Directory for packages.")
 
 (defsubst ivan/emacs-file (f) (expand-file-name f ivan/emacs-dir))

@@ -1,5 +1,6 @@
 /.cache/
 /.cask/
 /elpa/
+/packages/
 /url/
 /SessionDesktop.el
