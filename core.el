@@ -87,6 +87,8 @@
                 completion-list-mode-hook))
   (add-hook hook #'hidden-mode-line-mode))
 
+(add-hook 'compilation-mode-hook (lambda () (setq-local scroll-margin 0)))
+
 ;;; A subtle bell: flash the mode-line
 ;; TODO More flexible colors
 (defvar doom--modeline-bg nil)
