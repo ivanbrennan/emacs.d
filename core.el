@@ -702,6 +702,7 @@
     (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))))
 
 (use-package elisp-slime-nav
+  :ensure t
   :diminish elisp-slime-nav-mode
   :commands elisp-slime-nav-mode
   :init
@@ -992,6 +993,7 @@
     "x"          #'execute-extended-command))
 
 (use-package nlinum-relative
+  :ensure t
   :commands nlinum-relative-toggle
   :init
   (setq nlinum-relative-redisplay-delay 0.0)
@@ -1383,10 +1385,6 @@
                        ert-results-mode
                        ggtags-global-mode
                        rake-compilation-mode)))
-(use-package core-modeline
-  :load-path "lisp/"
-  )
-
 (use-package shackle
   :ensure t
   :config
@@ -1506,6 +1504,7 @@
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
 
 (use-package powerline
+  :ensure t
   :init
   (setq
    powerline-default-separator 'wave
