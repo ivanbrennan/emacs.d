@@ -935,6 +935,7 @@
   (bind-map-set-keys ivan/leader-map
     ","          #'other-window
     "`"          #'variable-pitch-mode
+    "="          #'align-regexp
     "SPC"        #'list-buffers
     "C-SPC"      #'shell-command
     "TAB"        #'neotree-toggle
