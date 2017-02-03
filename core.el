@@ -1448,6 +1448,7 @@
    projectile-ripgrep))
 
 (use-package wgrep-ag
+  :ensure t
   :commands wgrep-ag-setup
   :init
   (add-hook 'ag-mode-hook 'wgrep-ag-setup)
