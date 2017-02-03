@@ -3,10 +3,10 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("doom"
- (filename . "~/Development/resources/emacs/doom/.emacs.d/core/core-evil.el")
- (front-context-string . "  ;;; Evil hacks")
- (rear-context-string . "e 8 :select t)\n\n")
- (position . 2735))
+ (filename . "~/Development/resources/emacs/doom/.emacs.d/core/core.el")
+ (front-context-string . "(defvar doom-unr")
+ (rear-context-string . "er> bindings\")\n\n")
+ (position . 2135))
 ("(elisp) Library Headers"
  (front-context-string . "\n     ;; Author:")
  (rear-context-string . "-2016 Your Name\n")
