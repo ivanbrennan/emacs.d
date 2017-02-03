@@ -4,9 +4,9 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("doom"
  (filename . "~/Development/resources/emacs/doom/.emacs.d/core/core.el")
- (front-context-string . "(defvar doom-unr")
- (rear-context-string . "er> bindings\")\n\n")
- (position . 2135))
+ (front-context-string . "(setq ad-redefin")
+ (rear-context-string . "; Core settings\n")
+ (position . 3848))
 ("(elisp) Library Headers"
  (front-context-string . "\n     ;; Author:")
  (rear-context-string . "-2016 Your Name\n")
