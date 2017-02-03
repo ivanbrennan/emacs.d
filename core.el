@@ -133,6 +133,10 @@
   (expand-file-name "config" ivan/emacs-dir)
   "Directory for feature configuration files.")
 
+(defconst ivan/packages-dir
+  (expand-file-name "elpa" ivan/emacs-dir)
+  "Directory for packages.")
+
 (defsubst ivan/emacs-file (f) (expand-file-name f ivan/emacs-dir))
 (defsubst ivan/cache-file (f) (expand-file-name f ivan/cache-dir))
 
@@ -419,6 +423,7 @@
 (setq
  package--init-file-ensured t   ; don't add a 'package-initialize' call to my init file
  package-enable-at-startup  nil
+ package-user-dir           ivan/packages-dir
  package-archive-priorities '(
                               ("melpa-stable" . 3)
                               ("gnu"          . 2)
