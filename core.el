@@ -1647,6 +1647,10 @@
   :ensure t
   :defer t)
 
+(use-package sh-script
+  :mode ("/\\.?bash\\(/.*\\|rc\\|_profile\\|\\)$" . sh-mode)
+  :init (add-hook 'sh-mode-hook (lambda () (setq mode-name "shell"))))
+
 (diminish 'text-scale-mode)
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
 
