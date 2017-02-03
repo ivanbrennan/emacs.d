@@ -1643,6 +1643,8 @@
   :config
   (add-hook 'yaml-mode-hook #'ivan/truncate-lines))
 
+(use-package haml-mode :mode "\\.haml$")
+
 (use-package exec-path-from-shell
   :ensure t
   :defer t)
