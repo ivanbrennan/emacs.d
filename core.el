@@ -841,6 +841,12 @@
    (t
     (narrow-to-defun))))
 
+(defun ivan/redraw-display ()
+  (interactive)
+  (redraw-display)
+  (when (bound-and-true-p nlinum-mode)
+    (nlinum--flush)))
+
 (use-package smartparens
   :diminish smartparens-mode
   :init
@@ -946,6 +952,7 @@
     "SPC"        #'list-buffers
     "C-SPC"      #'shell-command
     "TAB"        #'neotree-toggle
+    "C-l"        #'ivan/redraw-display
     "C-n"        #'ivan/toggle-narrowing
     ;; "C-r"        #'ripgrep-regexp
     "C-r"        #'evil-use-register
