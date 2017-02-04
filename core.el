@@ -1360,7 +1360,7 @@
 
 (use-package magnet
   :ensure nil
-  :load-path "lisp/magnet/"
+  :load-path "lisp/magnet"
   :bind (:map evil-motion-state-map ("C-SPC" . magnet-toggle))
   :config
   (setq magnet-modes '(ag-mode
@@ -1492,7 +1492,7 @@
 
 (use-package core-modeline
   :ensure nil
-  :load-path "lisp/")
+  :load-path "lisp")
 
 (use-package spaceline-config
   :disabled t
