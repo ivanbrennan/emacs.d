@@ -339,6 +339,7 @@
  compilation-ask-about-save          nil
  compilation-message-face            nil  ; don't underline compilation links
  compilation-save-buffers-predicate  (lambda () (eq (window-buffer) (current-buffer)))
+ compilation-scroll-output           'first-error
  completions-format                  'vertical
  delete-by-moving-to-trash           t
  echo-keystrokes                     0.5
@@ -729,7 +730,7 @@
   (add-hook 'prog-mode-hook #'ivan/maybe-enable-ggtags)
   :config
   (defun ivan/add-ggtags-presenter ()
-    (add-hook 'compilation-finish-functions #'ivan/present-search-results))
+    (add-hook 'compilation-finish-functions #'ivan/present-compilation-results))
   (add-hook 'ggtags-global-mode-hook #'ivan/add-ggtags-presenter))
 
 (use-package rainbow-mode
@@ -1352,7 +1353,7 @@
       (ivan/filter-whitespace ag/file-column-pattern))
     (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
 
-    (add-hook 'ag-search-finished-hook #'ivan/present-search-results)
+    (add-hook 'ag-search-finished-hook #'ivan/present-compilation-results)
     (add-hook 'ag-mode-hook #'hl-line-mode)))
 
 
@@ -1413,10 +1414,9 @@
           (and (re-search-forward "[[:blank:]]*" end 1)
                (replace-match " " t t)))))))
 
-(defun ivan/present-search-results (&rest _args)
+(defun ivan/present-compilation-results (&rest _args)
   (ignore-errors
     (select-window (get-buffer-window (compilation-find-buffer)))
-    (compilation-next-error 1)
     (recenter 0)))
 
 (defun ivan/without-side-splits (orig-fun &rest args)
