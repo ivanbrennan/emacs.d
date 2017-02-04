@@ -335,6 +335,7 @@
  apropos-do-all                      t
  bookmark-bmenu-toggle-filenames     nil
  comint-prompt-read-only             t
+ compilation-always-kill             t
  compilation-ask-about-save          nil
  compilation-message-face            nil  ; don't underline compilation links
  completions-format                  'vertical
