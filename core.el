@@ -444,8 +444,9 @@
 (require 'diminish)
 (require 'bind-key)
 
+(setq use-package-always-ensure t)
+
 (use-package doom-themes
-  :ensure t
   :pin melpa
   :config
   (setq
@@ -486,7 +487,6 @@
   (when (display-graphic-p) (require 'doom-neotree)))
 
 (use-package neotree
-  :ensure t
   :config
   (setq neo-mode-line-type 'none)
   (add-hook 'neotree-mode-hook
@@ -516,7 +516,6 @@
   )
 
 (use-package beacon
-  :ensure t
   :config
   (beacon-mode +1)
   (setq
@@ -528,14 +527,12 @@
   )
 
 (use-package f
-  :ensure t
   :commands (f-dirname f-relative))
 
 (use-package all-the-icons
   :ensure t)
 
 (use-package evil
-  :ensure t
   :pin melpa
   :demand
   :bind
@@ -703,7 +700,6 @@
     (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))))
 
 (use-package elisp-slime-nav
-  :ensure t
   :diminish elisp-slime-nav-mode
   :commands elisp-slime-nav-mode
   :init
@@ -719,7 +715,6 @@
   )
 
 (use-package ggtags
-  :ensure t
   :commands (ggtags-mode
              ggtags-navigation-mode
              ggtags-find-tag-dwim)
@@ -778,12 +773,10 @@
 )
 
 (use-package elixir-mode
-  :ensure t
   :config
   (use-package alchemist))
 
 (use-package undo-tree
-  :ensure t
   :diminish undo-tree-mode
   :commands (undo-tree-undo undo-tree-redo)
   :bind (:map undo-tree-map ("M-_" . nil))
@@ -801,7 +794,6 @@
     (undo-tree-mode +1)))
 
 (use-package zoom-window
-  :ensure t
   :commands (zoom-window-zoom
              zoom-window--enable-p)
   :config
@@ -840,7 +832,6 @@
     (narrow-to-defun))))
 
 (use-package smartparens
-  :ensure t
   :diminish smartparens-mode
   :init
   (add-hook 'prog-mode-hook #'smartparens-strict-mode)
@@ -848,7 +839,6 @@
   (require 'smartparens-config))
 
 (use-package evil-smartparens
-  :ensure t
   :disabled t
   :diminish evil-smartparens-mode
   :init
@@ -870,7 +860,6 @@
        (evil-define-key 'normal smartparens-strict-mode-map (kbd "C-(") 'sp-forward-barf-sexp))))
 
 (use-package evil-multiedit
-  :ensure t
   :commands (evil-multiedit-match-all
              evil-multiedit-match-and-next
              evil-multiedit-match-and-prev
@@ -932,11 +921,9 @@
              evil-numbers/dec-at-pt))
 
 (use-package evil-matchit
-  :ensure t
   :init (global-evil-matchit-mode +1))
 
 (use-package bind-map
-  :ensure t
   :config
   (bind-map ivan/leader-map
     :evil-keys ("SPC")
@@ -994,7 +981,6 @@
     "x"          #'execute-extended-command))
 
 (use-package nlinum-relative
-  :ensure t
   :commands nlinum-relative-toggle
   :init
   (setq nlinum-relative-redisplay-delay 0.0)
@@ -1060,7 +1046,6 @@
   (evil-define-key 'normal manage-minor-mode-map (kbd "q") #'quit-window))
 
 (use-package evil-commentary
-  :ensure t
   :diminish evil-commentary-mode
   :init
   (progn
@@ -1152,7 +1137,6 @@
   )
 
 (use-package hydra
-  :ensure t
   :bind ("M-S-<return>" . hydra-focus/body)
   :config
   (progn
@@ -1271,7 +1255,6 @@
       ("<escape>" nil "quit" :color blue))))
 
 (use-package which-key
-  :ensure t
   :init (which-key-mode +1)
   :diminish which-key-mode
   :config
@@ -1313,11 +1296,9 @@
   )
 
 (use-package swiper
-  :ensure t
   :commands ivy-mode)
 
 (use-package counsel
-  :ensure t
   :commands counsel-ag
   :config
   (defun ivan/counsel-ag-project ()
@@ -1327,7 +1308,6 @@
     "C-r" #'ivan/counsel-ag-project))
 
 (use-package ivy
-  :ensure t
   :commands ivy-read
   :diminish 'ivy-mode
   :bind
@@ -1340,11 +1320,9 @@
    ))
 
 (use-package flx
-  :ensure t
   :defer t)
 
 (use-package ag
-  :ensure t
   :commands
   (
    ag
@@ -1378,6 +1356,7 @@
 
 
 (use-package magnet
+  :ensure nil
   :load-path "lisp/magnet/"
   :bind (:map evil-motion-state-map ("C-SPC" . magnet-toggle))
   :config
@@ -1387,7 +1366,6 @@
                        ggtags-global-mode
                        rake-compilation-mode)))
 (use-package shackle
-  :ensure t
   :config
   (shackle-mode +1)
   (setq
@@ -1447,13 +1425,11 @@
 (advice-add 'compilation-start :around #'ivan/without-side-splits)
 
 (use-package ripgrep
-  :ensure t
   :commands
   (ripgrep-regexp
    projectile-ripgrep))
 
 (use-package wgrep-ag
-  :ensure t
   :commands wgrep-ag-setup
   :init
   (add-hook 'ag-mode-hook 'wgrep-ag-setup)
@@ -1470,7 +1446,6 @@
       (wgrep-change-to-wgrep-mode +1))))
 
 (use-package crux
-  :ensure t
   :commands (crux-smart-open-line
              crux-smart-open-line-above)
   :bind (
@@ -1480,7 +1455,6 @@
   )
 
 (use-package windsize
-  :ensure t
   :bind (
          ("C-S-<left>"  . windsize-left)
          ("C-S-<right>" . windsize-right)
@@ -1505,7 +1479,6 @@
 (add-hook 'org-mode-hook #'ivan/setup-org-mode)
 
 (use-package powerline
-  :ensure t
   :init
   (setq
    powerline-default-separator 'wave
@@ -1516,6 +1489,7 @@
   )
 
 (use-package core-modeline
+  :ensure nil
   :load-path "lisp/")
 
 (use-package spaceline-config
@@ -1526,7 +1500,6 @@
   )
 
 (use-package org-bullets
-  :ensure t
   :config
   (progn
     (setq org-bullets-bullet-list
@@ -1540,7 +1513,6 @@
   :mode "\\.coffee\\'")
 
 (use-package page-break-lines
-  :ensure t
   :diminish page-break-lines-mode
   :commands page-break-lines-mode
   :init
@@ -1549,7 +1521,6 @@
     (add-hook 'Info-mode-hook #'page-break-lines-mode)))
 
 (use-package evil-magit
-  :ensure t
   :demand
   :init
   (progn
@@ -1573,7 +1544,6 @@
     ))
 
 (use-package magit
-  :ensure t
   :config
   (progn
     (setq
@@ -1582,14 +1552,12 @@
      )))
 
 (use-package flymake-ruby
-  :ensure t
   :diminish flymake-mode
   :init
   ;; (add-hook 'ruby-mode-hook 'flymake-ruby-load)
   )
 
 (use-package rbenv
-  :ensure t
   :init
   (setq
    rbenv-show-active-ruby-in-modeline nil
@@ -1605,7 +1573,6 @@
   (bind-key "M-O" 'projectile-find-file))
 
 (use-package projectile-rails
-  :ensure t
   :diminish projectile-rails-mode
   :init
   (projectile-rails-global-mode +1)
@@ -1613,7 +1580,6 @@
   (setq rake-cache-file (ivan/cache-file "rake.cache")))
 
 (use-package rspec-mode
-  :ensure t
   :pin melpa
   :diminish rspec-mode
   :commands (rspec-mode
@@ -1647,7 +1613,6 @@
   :mode "\\`Cask\\'")
 
 (use-package yaml-mode
-  :ensure t
   :mode "\\.yml\\'"
   :config
   (add-hook 'yaml-mode-hook #'ivan/truncate-lines))
@@ -1655,7 +1620,6 @@
 (use-package haml-mode :mode "\\.haml$")
 
 (use-package exec-path-from-shell
-  :ensure t
   :defer t)
 
 (use-package sh-script
