@@ -57,7 +57,6 @@
  show-paren-when-point-inside-paren t
  use-dialog-box          nil
  visible-cursor          nil
- x-stretch-cursor        t
 )
 
 ;;; hidden mode line
