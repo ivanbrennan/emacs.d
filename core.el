@@ -92,21 +92,20 @@
 ;;; A subtle bell: flash the mode-line
 ;; TODO More flexible colors
 (defvar doom--modeline-bg nil)
-(defface doom-modeline-flash '((t (:inherit mode-line :background "#3B85BD")))
+(defface doom-modeline-flash '((t (:inherit mode-line :background "#54252C")))
   "Face used for the mode-line ring-bell-function.")
 
 (defsubst ivan/modeline-flasher ()
   (unless doom--modeline-bg
     (setq doom--modeline-bg (face-background 'mode-line)))
-  (let ((flash (or (ignore-errors (face-background 'doom-modeline-flash))
-                   "#3B85BD")))
-    (set-face-background 'mode-line flash)
-    (run-with-timer
-     0.1 nil
-     (lambda ()
-       (when doom--modeline-bg
-         (set-face-background 'mode-line doom--modeline-bg)
-         (setq doom--modeline-bg nil))))))
+  (set-face-background 'mode-line
+                       (face-background 'doom-modeline-flash))
+  (run-with-timer
+   0.1 nil
+   (lambda ()
+     (when doom--modeline-bg
+       (set-face-background 'mode-line doom--modeline-bg)
+       (setq doom--modeline-bg nil)))))
 
 (setq ring-bell-function #'ivan/modeline-flasher)
 
@@ -466,7 +465,8 @@
     (if (or (memq 'doom-one custom-enabled-themes)
             (memq 'elixir   custom-enabled-themes))
         (ivan/activate-doom-config)
-      (ivan/deactivate-doom-config)))
+      (ivan/deactivate-doom-config))
+    (powerline-reset))
 
   (defun ivan/activate-doom-config ()
     (add-hook 'find-file-hook #'doom-buffer-mode)
