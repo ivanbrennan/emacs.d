@@ -334,6 +334,7 @@
  ad-redefinition-action              'accept
  apropos-do-all                      t
  bookmark-bmenu-toggle-filenames     nil
+ bookmark-default-file               (ivan/cache-file "bookmarks")
  comint-prompt-read-only             t
  compilation-always-kill             t
  compilation-ask-about-save          nil
