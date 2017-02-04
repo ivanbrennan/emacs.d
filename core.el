@@ -460,6 +460,11 @@
    doom-neotree-file-icons 'simple
    )
 
+  (with-eval-after-load 'face-remap
+    ;; doom-buffer-mode marks face-remapping-alist permanent-local.
+    ;; don't let that interfere with consistent text-scale-mode behavior.
+    (put 'text-scale-mode-remapping 'permanent-local t))
+
   (defun ivan/update-doom-settings ()
     (if (or (memq 'doom-one custom-enabled-themes)
             (memq 'elixir   custom-enabled-themes))
