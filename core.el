@@ -338,6 +338,7 @@
  compilation-always-kill             t
  compilation-ask-about-save          nil
  compilation-message-face            nil  ; don't underline compilation links
+ compilation-save-buffers-predicate  (lambda () (eq (window-buffer) (current-buffer)))
  completions-format                  'vertical
  delete-by-moving-to-trash           t
  echo-keystrokes                     0.5
