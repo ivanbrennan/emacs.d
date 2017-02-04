@@ -91,7 +91,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(variable-pitch ((t (:family "Avenir Next" :height 140))))
    `(cursor ((t (:background ,nicegrey))))
    `(escape-glyph ((t (:foreground ,marooned :bold t))))
-   `(fringe ((t (:foreground ,pencil2 :background ,whisp1))))
+   `(fringe ((t (:foreground ,pencil2))))
    `(header-line ((t (:foreground ,pencil1 :background ,whisp0))))
    `(info-node ((t (:foreground ,greentea :slant italic :weight bold))))
    `(highlight ((t (:background ,paper))))
