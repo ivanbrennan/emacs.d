@@ -48,7 +48,7 @@
     ("pencil2"    . "#B3B3B3")
     ("pencil3"    . "#D0D0D0")
     ("pencil4"    . "#D8D8D8")
-    ("bluegre"    . "#E7EAEA")
+    ("bluegre"    . "#E7EAE9")
     ("whisp0"     . "#EDEDED")
     ("whisp1"     . "#F2F2F2")
     ("whisp2"     . "#F5F5F5")
