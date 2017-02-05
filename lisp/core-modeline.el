@@ -212,12 +212,8 @@ directory, the file name, and its state (modified, read-only or non-existent)."
                         'face (if faces `(:inherit ,faces))))))
 
 (defun *buffer-encoding ()
-  "The encoding and eol style of the buffer."
-  (concat (let ((eol-type (coding-system-eol-type buffer-file-coding-system)))
-            (cond ((eq eol-type 0) "LF  ")
-                  ((eq eol-type 1) "CRLF  ")
-                  ((eq eol-type 2) "CR  ")))
-          (let* ((sys (coding-system-plist buffer-file-coding-system))
+  "The encoding of the buffer."
+  (concat (let* ((sys (coding-system-plist buffer-file-coding-system))
                  (sys-name (plist-get sys :name))
                  (sys-cat (plist-get sys :category)))
             (cond ((memq sys-cat '(coding-category-undecided coding-category-utf-8))
