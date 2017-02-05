@@ -1513,13 +1513,6 @@
   :ensure nil
   :load-path "lisp")
 
-(use-package spaceline-config
-  :disabled t
-  :ensure spaceline
-  :config
-  (spaceline-spacemacs-theme)
-  )
-
 (use-package org-bullets
   :config
   (progn
