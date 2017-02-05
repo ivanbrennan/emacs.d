@@ -420,7 +420,7 @@ lines are selected, or the NxM dimensions of a block selection."
                       ,(unless (eq id 'scratch)
                          '(if (and (= (length meta) 0)
                                    (not (bound-and-true-p doom-ediff-enabled)))
-                              " %I "
+                              " "
                             meta))
                       " "
                       ,(cond ((eq id 'scratch)
