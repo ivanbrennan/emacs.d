@@ -463,7 +463,11 @@
   (with-eval-after-load 'face-remap
     ;; doom-buffer-mode marks face-remapping-alist permanent-local.
     ;; don't let that interfere with consistent text-scale-mode behavior.
-    (put 'text-scale-mode-remapping 'permanent-local t))
+    (mapc (lambda (x) (put x 'permanent-local t))
+          '(text-scale-mode-remapping
+            text-scale-mode-lighter
+            text-scale-mode-amount
+            buffer-face-mode-remapping)))
 
   (defun ivan/update-doom-settings ()
     (if (or (memq 'doom-one custom-enabled-themes)
