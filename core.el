@@ -810,6 +810,14 @@
   (setq
    zoom-window-mode-line-color (face-background 'header-line)
    )
+  (defun ivan/reset-zoom (&rest _)
+    (when (zoom-window--enable-p) (zoom-window-zoom)))
+
+  (mapc (lambda (x) (advice-add x :before #'ivan/reset-zoom))
+        '(quit-window
+          evil-window-delete
+          kill-buffer-and-window
+          delete-other-windows))
   )
 
 (defun ivan/zoom-window ()
