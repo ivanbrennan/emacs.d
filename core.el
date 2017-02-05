@@ -811,7 +811,8 @@
    zoom-window-mode-line-color (face-background 'header-line)
    )
   (defun ivan/reset-zoom (&rest _)
-    (when (zoom-window--enable-p) (zoom-window-zoom)))
+    (when (zoom-window--enable-p)     (zoom-window-zoom))
+    (when (derived-mode-p 'help-mode) (text-scale-set 0)))
 
   (mapc (lambda (x) (advice-add x :before #'ivan/reset-zoom))
         '(quit-window
