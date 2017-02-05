@@ -94,7 +94,7 @@
 (defface doom-modeline-flash '((t (:inherit mode-line :background "#54252C")))
   "Face used for the mode-line ring-bell-function.")
 
-(defsubst ivan/modeline-flasher ()
+(defsubst ivan/modeline-flash ()
   (unless doom--modeline-bg
     (setq doom--modeline-bg (face-background 'mode-line)))
   (set-face-background 'mode-line
@@ -106,7 +106,7 @@
        (set-face-background 'mode-line doom--modeline-bg)
        (setq doom--modeline-bg nil)))))
 
-(setq ring-bell-function #'ivan/modeline-flasher)
+(setq ring-bell-function #'ivan/modeline-flash)
 
 (global-eldoc-mode 0)
 (add-hook 'emacs-lisp-mode-hook  #'eldoc-mode)
