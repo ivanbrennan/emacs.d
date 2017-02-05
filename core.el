@@ -1640,7 +1640,10 @@
   :mode ("/\\.?bash\\(/.*\\|rc\\|_profile\\|\\)$" . sh-mode)
   :init (add-hook 'sh-mode-hook (lambda () (setq mode-name "shell"))))
 
-(diminish 'text-scale-mode)
+(use-package face-remap
+  :diminish text-scale-mode
+  :defer t)
+
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
 
 ;; gui & terminal

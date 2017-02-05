@@ -230,10 +230,7 @@ directory, the file name, and its state (modified, read-only or non-existent)."
   (propertize
    (concat (format-mode-line mode-name)
            (if (stringp mode-line-process) mode-line-process)
-           (if doom-ml--env-version (concat " " doom-ml--env-version))
-           (and (featurep 'face-remap)
-                (/= text-scale-mode-amount 0)
-                (format " (%+d)" text-scale-mode-amount)))
+           (if doom-ml--env-version (concat " " doom-ml--env-version)))
    'face (if (active) 'doom-modeline-buffer-major-mode)))
 
 (defun *vc ()
