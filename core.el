@@ -844,7 +844,7 @@
 (defun ivan/zoom-help-window ()
   (interactive)
   (ivan/zoom-window)
-  (text-scale-set (if (zoom-window--enable-p) 2 0)))
+  (text-scale-set (if (zoom-window--enable-p) 1 0)))
 
 (defun ivan/toggle-narrowing-zoom (p)
   (interactive "P")
