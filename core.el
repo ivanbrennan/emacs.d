@@ -888,6 +888,10 @@
   (evil-define-key 'insert smartparens-mode-map (kbd "C-9") #'sp-forward-barf-sexp)
   (evil-define-key 'insert smartparens-mode-map (kbd "M-9") #'sp-backward-slurp-sexp)
   (evil-define-key 'insert smartparens-mode-map (kbd "M-0") #'sp-backward-barf-sexp)
+  (global-set-key (kbd "C-0") #'sp-forward-slurp-sexp)
+  (global-set-key (kbd "C-9") #'sp-forward-barf-sexp)
+  (global-set-key (kbd "M-9") #'sp-backward-slurp-sexp)
+  (global-set-key (kbd "M-0") #'sp-backward-slurp-sexp)
   )
 
 (use-package evil-multiedit
