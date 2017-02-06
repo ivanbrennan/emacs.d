@@ -874,27 +874,6 @@
   :config
   (require 'smartparens-config))
 
-(use-package evil-smartparens
-  :disabled t
-  :diminish evil-smartparens-mode
-  :init
-  (add-hook 'smartparens-mode-hook #'evil-smartparens-mode)
-  (sp-pair "("  ")"  :wrap "M-(")
-  (sp-pair "["  "]"  :wrap "M-[")
-  (sp-pair "{"  "}"  :wrap "M-{")
-  (sp-pair "\"" "\"" :wrap "M-\"")
-  (sp-pair "'"  "'"  :wrap "M-'")
-  (sp-pair "`"  "`"  :wrap "C-M-`")
-  (eval-after-load "evil"
-    '(progn
-       (evil-define-key 'insert smartparens-mode-map (kbd "C-)")   'sp-forward-slurp-sexp)
-       (evil-define-key 'insert smartparens-mode-map (kbd "C-(")   'sp-forward-barf-sexp)
-       (evil-define-key 'insert smartparens-mode-map (kbd "C-M-(") 'sp-backward-slurp-sexp)
-       (evil-define-key 'insert smartparens-mode-map (kbd "C-M-)") 'sp-backward-barf-sexp)
-       (evil-define-key 'normal smartparens-strict-mode-map (kbd "M-<backspace>") 'sp-backward-unwrap-sexp)
-       (evil-define-key 'normal smartparens-strict-mode-map (kbd "C-)") 'sp-forward-slurp-sexp)
-       (evil-define-key 'normal smartparens-strict-mode-map (kbd "C-(") 'sp-forward-barf-sexp))))
-
 (use-package evil-multiedit
   :commands (evil-multiedit-match-all
              evil-multiedit-match-and-next
