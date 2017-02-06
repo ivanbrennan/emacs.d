@@ -883,11 +883,11 @@
     "[" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "[")))
   (evil-define-key 'visual smartparens-mode-map
     "{" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "{")))
-  (evil-define-key 'visual smartparens-mode-map (kbd "C-9")   #'sp-unwrap-sexp)
-  (evil-define-key 'insert smartparens-mode-map (kbd "C-0")   #'sp-forward-slurp-sexp)
-  (evil-define-key 'insert smartparens-mode-map (kbd "C-9")   #'sp-forward-barf-sexp)
-  (evil-define-key 'insert smartparens-mode-map (kbd "C-M-9") #'sp-backward-slurp-sexp)
-  (evil-define-key 'insert smartparens-mode-map (kbd "C-M-0") #'sp-backward-barf-sexp)
+  (evil-define-key 'visual smartparens-mode-map (kbd "C-9") #'sp-unwrap-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-0") #'sp-forward-slurp-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-9") #'sp-forward-barf-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "M-9") #'sp-backward-slurp-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "M-0") #'sp-backward-barf-sexp)
   )
 
 (use-package evil-multiedit
@@ -1291,11 +1291,11 @@
     "sexps"
     ("q" nil)
     ("<escape>" nil)
-    ("C-l"   sp-forward-slurp-sexp  "forward-slurp")
-    ("C-h"   sp-forward-barf-sexp   "forward-barf")
-    ("C-M-h" sp-backward-slurp-sexp "backward-slurp")
-    ("C-M-l" sp-backward-barf-sexp  "backward-barf")
-    ("t"     sp-transpose-sexp      "transpose")
+    ("C-0" sp-forward-slurp-sexp  "forward-slurp")
+    ("C-9" sp-forward-barf-sexp   "forward-barf")
+    ("M-9" sp-backward-slurp-sexp "backward-slurp")
+    ("M-0" sp-backward-barf-sexp  "backward-barf")
+    ("t"   sp-transpose-sexp      "transpose")
     )
   )
 
