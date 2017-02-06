@@ -951,6 +951,7 @@
     "SPC"        #'list-buffers
     "C-SPC"      #'shell-command
     "TAB"        #'neotree-toggle
+    "q"          #'hydra-smartparens/body
     "C-l"        #'ivan/redraw-display
     "C-n"        #'ivan/toggle-narrowing
     ;; "C-r"        #'ripgrep-regexp
@@ -1268,7 +1269,19 @@
       ("["        ivan/reduce-padding   "reduce")
       ("RET"      ivan/toggle-padding   "toggle")
       ("q"        nil "quit" :color blue)
-      ("<escape>" nil "quit" :color blue))))
+      ("<escape>" nil "quit" :color blue)))
+
+  (defhydra hydra-smartparens (:foreign-keys run)
+    "sexps"
+    ("q" nil)
+    ("<escape>" nil)
+    ("C-l"   sp-forward-slurp-sexp  "forward-slurp")
+    ("C-h"   sp-forward-barf-sexp   "forward-barf")
+    ("C-M-h" sp-backward-slurp-sexp "backward-slurp")
+    ("C-M-l" sp-backward-barf-sexp  "backward-barf")
+    ("t"     sp-transpose-sexp      "transpose")
+    )
+  )
 
 (use-package which-key
   :init (which-key-mode +1)
