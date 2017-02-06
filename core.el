@@ -555,6 +555,8 @@
         ("C-<return>"  . ivan/add-whitespace-below)
         ("S-<return>"  . ivan/add-whitespace-above)
         ("C-m"         . evil-next-line-first-non-blank)
+        ("C-t"         . transpose-words)
+        ("M-t"         . transpose-sexps)
         ("≠"           . evil-numbers/inc-at-pt)
         ("–"           . evil-numbers/dec-at-pt)
         ("t"           . ivan/run-tests-or-find-char-to)
@@ -587,6 +589,8 @@
         :map evil-insert-state-map
         ("M-v"         . yank)
         ("C-S-U"       . ivan/backward-kill-line)
+        ("C-d"         . nil)
+        ("C-t"         . nil)
         :map evil-replace-state-map
         ("M-v"         . yank)
         ("C-e"         . evil-copy-from-below)
@@ -872,7 +876,19 @@
   :init
   (add-hook 'prog-mode-hook #'smartparens-strict-mode)
   :config
-  (require 'smartparens-config))
+  (require 'smartparens-config)
+  (evil-define-key 'visual smartparens-mode-map
+    "(" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "(")))
+  (evil-define-key 'visual smartparens-mode-map
+    "[" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "[")))
+  (evil-define-key 'visual smartparens-mode-map
+    "{" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "{")))
+  (evil-define-key 'visual smartparens-mode-map (kbd "C-9")   #'sp-unwrap-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-0")   #'sp-forward-slurp-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-9")   #'sp-forward-barf-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-M-9") #'sp-backward-slurp-sexp)
+  (evil-define-key 'insert smartparens-mode-map (kbd "C-M-0") #'sp-backward-barf-sexp)
+  )
 
 (use-package evil-multiedit
   :commands (evil-multiedit-match-all
