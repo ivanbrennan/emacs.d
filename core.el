@@ -812,8 +812,7 @@
     (undo-tree-mode +1)))
 
 (use-package zoom-window
-  :commands (zoom-window-zoom
-             zoom-window--enable-p)
+  :commands (zoom-window-zoom zoom-window--enable-p)
   :config
   (setq
    zoom-window-mode-line-color (face-background 'header-line)
@@ -834,7 +833,10 @@
 
 (defun ivan/zoom-window ()
   (interactive)
-  (zoom-window-zoom)
+  (let ((window-side (window-parameter nil 'window-side)))
+    (when window-side (set-window-parameter nil 'window-side nil))
+    (zoom-window-zoom)
+    (when window-side (set-window-parameter nil 'window-side window-side)))
   (powerline-reset))
 
 (defun ivan/zoom-other-window ()
