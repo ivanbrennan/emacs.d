@@ -1721,7 +1721,7 @@ Disables `text-scale-mode`."
    ("M--"   . text-scale-decrease)
    ("M-+"   . ivan/global-text-scale-increase)
    ("M-_"   . ivan/global-text-scale-decrease)
-   ("M-0"   . ivan/text-scale-reset)
+   ("M-)" . ivan/text-scale-reset)
    ("M-`"   . ns-next-frame)
    ("M-~"   . ns-prev-frame)
    ("M-<return>" . toggle-frame-fullscreen)
