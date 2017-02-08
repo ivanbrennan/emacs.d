@@ -702,7 +702,8 @@
     (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
     (evil-define-key 'motion help-mode-map    (kbd "C-o")   #'help-go-back)
     (evil-define-key 'motion help-mode-map    (kbd "C-i")   #'help-go-forward)
-    (evil-define-key 'motion help-mode-map    (kbd "M-S-<return>") #'ivan/zoom-help-window)
+    (evil-define-key 'motion help-mode-map    (kbd "M-S-<return>") #'ivan/zoom-window-large)
+    (evil-define-key 'motion apropos-mode-map (kbd "M-S-<return>") #'ivan/zoom-window-large)
     (evil-define-key 'motion neotree-mode-map (kbd "u") #'neotree-hidden-file-toggle)
 
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
@@ -818,7 +819,8 @@
    zoom-window-mode-line-color (face-background 'header-line)
    )
   (defun ivan/maybe-reset-zoom (&rest _)
-    (when (derived-mode-p 'help-mode)
+    (when (or (derived-mode-p 'help-mode)
+              (derived-mode-p 'apropos-mode))
       (text-scale-set 0)
       (when (zoom-window--enable-p)
         (zoom-window-zoom))))
@@ -844,7 +846,7 @@
     (other-window 1)
     (ivan/zoom-window)))
 
-(defun ivan/zoom-help-window ()
+(defun ivan/zoom-window-large ()
   (interactive)
   (ivan/zoom-window)
   (text-scale-set (if (zoom-window--enable-p) 1 0)))
