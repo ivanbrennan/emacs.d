@@ -58,7 +58,7 @@
  use-dialog-box          nil
  visible-cursor          nil
  resize-mini-windows     t
-)
+ confirm-kill-emacs      (lambda (_) (y-or-n-p "››› Quit?")))
 
 ;;; hidden mode line
 (put 'hidden-mode-line-mode 'permanent-local t)
