@@ -240,6 +240,7 @@
          (or
           (and "*ag " (1+ not-newline) "*")
           "*ggtags-global*"
+          "*Help*"
           "*rake-compilation*"
           )
          eos)
@@ -1418,6 +1419,7 @@
   :bind (:map evil-motion-state-map ("C-SPC" . magnet-toggle))
   :config
   (setq magnet-modes '(ag-mode
+                       help-mode
                        rspec-compilation-mode
                        ert-results-mode
                        ggtags-global-mode
