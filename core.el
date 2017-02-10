@@ -47,7 +47,7 @@
  bidi-display-reordering nil
  fringe-indicator-alist  (delq (assq 'continuation fringe-indicator-alist)
                                fringe-indicator-alist)
- fringes-outside-margins t
+ fringes-outside-margins nil
  image-animate-loop      t
  jit-lock-stealth-nice   0.1
  jit-lock-stealth-time   0.2
