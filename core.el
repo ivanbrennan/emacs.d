@@ -14,7 +14,7 @@
 (when (display-graphic-p)
   (scroll-bar-mode 0)
   (tooltip-mode    0)
-  (setq frame-title-format "emacs · %b"))
+  (setq frame-title-format "emacs : %b"))
 
 
 ;; coding
