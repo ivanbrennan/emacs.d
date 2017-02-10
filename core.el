@@ -113,6 +113,16 @@
 (add-hook 'emacs-lisp-mode-hook  #'eldoc-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 
+(defun add-todo-and-note-keywords ()
+  (font-lock-add-keywords
+   nil '(("\\<\\(TODO\\(?:(.*)\\)?:?\\)\\>"  1 'warning prepend)
+         ("\\<\\(NOTE\\(?:(.*)\\)?:?\\)\\>"  1 'success prepend))))
+
+(dolist (hook '(prog-mode-hook
+                emacs-lisp-mode-hook
+                css-mode-hook))
+  (add-hook hook #'add-todo-and-note-keywords))
+
 (setq
  window-divider-default-places       t
  window-divider-default-bottom-width 1
