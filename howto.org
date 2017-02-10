@@ -1,4 +1,5 @@
 * Misc
+** suppress eldoc-in-minibuffer when there's no modeline to show it
 ** omit in-buffer git diff when using magit (since magit provides that same context in a split window)
 ** make a variable permanent local globally?
 Putting the permanent-local flag on a symbol is a global action, so after running
