@@ -746,8 +746,12 @@
   (add-hook 'prog-mode-hook #'ivan/maybe-enable-ggtags)
   :config
   (defun ivan/add-ggtags-presenter ()
-    (add-hook 'compilation-finish-functions #'ivan/present-compilation-results))
+    (add-hook 'compilation-finish-functions #'ivan/present-search-results))
+  (add-hook 'ggtags-global-mode-hook #'ivan/compilation-start-at-first-error)
   (add-hook 'ggtags-global-mode-hook #'ivan/add-ggtags-presenter))
+
+(defun ivan/compilation-start-at-first-error ()
+  (set (make-local-variable 'compilation-scroll-output) 'first-error))
 
 (use-package rainbow-mode
   :diminish rainbow-mode
@@ -1403,8 +1407,9 @@
       (ivan/filter-whitespace ag/file-column-pattern))
     (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
 
-    (add-hook 'ag-search-finished-hook #'ivan/present-compilation-results)
-    (add-hook 'ag-mode-hook #'hl-line-mode)))
+    (add-hook 'ag-search-finished-hook #'ivan/present-search-results)
+    (add-hook 'ag-mode-hook #'hl-line-mode)
+    (add-hook 'ag-mode-hook #'ivan/compilation-start-at-first-error)))
 
 
 (use-package magnet
@@ -1464,7 +1469,7 @@
           (and (re-search-forward "[[:blank:]]*" end 1)
                (replace-match " " t t)))))))
 
-(defun ivan/present-compilation-results (&rest _args)
+(defun ivan/present-search-results (&rest _args)
   (ignore-errors
     (select-window (get-buffer-window (compilation-find-buffer)))
     (recenter 0)))
