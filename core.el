@@ -57,6 +57,7 @@
  show-paren-when-point-inside-paren t
  use-dialog-box          nil
  visible-cursor          nil
+ resize-mini-windows     t
 )
 
 ;;; hidden mode line
