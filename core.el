@@ -45,8 +45,10 @@
 
 (setq-default
  bidi-display-reordering nil
- fringe-indicator-alist  (delq (assq 'continuation fringe-indicator-alist)
-                               fringe-indicator-alist)
+ fringe-indicator-alist  (let ((alist fringe-indicator-alist))
+                           (setq alist (delq (assq 'continuation alist) alist))
+                           (setq alist (delq (assq 'empty-line   alist) alist))
+                           alist)
  fringes-outside-margins nil
  image-animate-loop      t
  jit-lock-stealth-nice   0.1
