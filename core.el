@@ -1064,7 +1064,10 @@
     "Whether relative line-numbers should be displayed.")
   (use-package nlinum
     :init
-    (add-hook 'prog-mode-hook #'ivan/toggle-line-numbers))
+    (add-hook 'prog-mode-hook #'ivan/init-line-numbers)
+    (defun ivan/init-line-numbers ()
+      (unless (string-match-p "^[ *]" (buffer-name))
+        (ivan/toggle-line-numbers))))
   (defun ivan/toggle-line-numbers ()
     (interactive)
     (setq-local ivan/line-numbers-p (not ivan/line-numbers-p))
