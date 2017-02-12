@@ -600,6 +600,8 @@
         :map evil-insert-state-map
         ("M-v"         . yank)
         ("C-S-U"       . ivan/backward-kill-line)
+        ("C-<return>"  . evil-open-below)
+        ("S-<return>"  . evil-open-above)
         ("C-d"         . nil)
         ("C-t"         . nil)
         :map evil-replace-state-map
@@ -1514,15 +1516,6 @@
       (remove-hook 'ag-search-finished-hook #'ivan/enable-wgrep-mode)
       (advice-add 'ag-filter :after #'ivan/filter-ag-whitespace)
       (wgrep-change-to-wgrep-mode +1))))
-
-(use-package crux
-  :commands (crux-smart-open-line
-             crux-smart-open-line-above)
-  :bind (
-         ("C-<return>" . crux-smart-open-line)
-         ("S-<return>" . crux-smart-open-line-above)
-         )
-  )
 
 (use-package windsize
   :bind (
