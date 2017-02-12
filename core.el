@@ -950,22 +950,19 @@
 
        ;; Match the word under cursor (i.e. make it an edit region). Consecutive presses will
        ;; incrementally add the next unmatched match.
-       (define-key evil-normal-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
+       (define-key evil-normal-state-map (kbd "M-d") 'evil-multiedit-match-symbol-and-next)
        ;; Match selected region.
        (define-key evil-visual-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
 
        ;; Same as M-d but in reverse.
-       (define-key evil-normal-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
+       (define-key evil-normal-state-map (kbd "M-D") 'evil-multiedit-match-symbol-and-prev)
        (define-key evil-visual-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
-
-       ;; OPTIONAL: If you prefer to grab symbols rather than words, use
-       ;; `evil-multiedit-match-symbol-and-next` (or prev).
 
        ;; Restore the last group of multiedit regions.
        (define-key evil-visual-state-map (kbd "C-M-D") 'evil-multiedit-restore)
 
        ;; ...in visual mode, RET will disable all fields outside the selected region
-       (define-key evil-visual-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
+       (define-key evil-multiedit-state-map (kbd "RET") 'evil-multiedit-toggle-or-restrict-region)
 
        ;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
        (evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
