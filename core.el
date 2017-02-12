@@ -425,14 +425,10 @@
 ;; packages
 (require 'package)
 
-(mapc
- (lambda (x) (add-to-list 'package-archives x 'append))
- '(
-   ("melpa-stable" . "http://stable.melpa.org/packages/")
-   ("melpa"        . "http://melpa.org/packages/")
-   ("marmalade"    . "https://marmalade-repo.org/packages/")
-   )
- )
+(setq package-archives '(("gnu"          . "https://elpa.gnu.org/packages/")
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("melpa"        . "https://melpa.org/packages/")
+                         ("marmalade"    . "https://marmalade-repo.org/packages/")))
 
 (setq
  package--init-file-ensured t   ; don't add a 'package-initialize' call to my init file
