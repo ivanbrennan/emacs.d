@@ -362,6 +362,7 @@
  enable-recursive-minibuffers        t
  eval-expression-print-length        192
  find-file-visit-truename            t
+ help-window-select                  t
  hi-lock-auto-select-face            t
  history-delete-duplicates           t
  history-length                      500
