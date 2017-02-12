@@ -1382,6 +1382,12 @@
   )
 
 (use-package company
+  :commands (company-mode
+             global-company-mode
+             company-complete
+             company-complete-common
+             company-manual-begin
+             company-grab-line)
   :init
   (defun check-expansion ()
     (save-excursion
@@ -1408,7 +1414,9 @@
   (setq
    company-backends   '(company-capf)
    company-idle-delay 2.0
-   ))
+   )
+  (global-company-mode +1)
+  )
 
 (use-package swiper
   :commands ivy-mode)
