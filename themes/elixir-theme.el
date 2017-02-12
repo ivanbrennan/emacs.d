@@ -190,7 +190,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(vertical-border ((t (:foreground ,pencil4))))
 ;;;;; font lock
    `(font-lock-builtin-face ((t (:foreground ,marooned :weight normal))))  ;; weight bold (built-in keywords)
-   `(font-lock-comment-face ((t (:foreground ,pencil0))))
+   `(font-lock-comment-face ((t (:foreground ,slate :slant italic))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,pencil0))))
    `(font-lock-constant-face ((t (:foreground ,marine))))
    `(font-lock-doc-face ((t (:foreground ,pencil0))))
@@ -431,8 +431,8 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; eshell
    `(eshell-prompt ((t (:foreground ,marooned :weight bold))))
    `(eshell-ls-archive ((t (:foreground ,ink :weight bold))))
-   `(eshell-ls-backup ((t (:inherit font-lock-comment-face))))
-   `(eshell-ls-clutter ((t (:inherit font-lock-comment-face))))
+   `(eshell-ls-backup ((t (:inherit font-lock-comment-delimiter-face))))
+   `(eshell-ls-clutter ((t (:inherit font-lock-comment-delimiter-face))))
    `(eshell-ls-directory ((t (:foreground ,marooned :weight bold))))
    `(eshell-ls-executable ((t (:foreground ,ink :weight bold))))
    `(eshell-ls-unreadable ((t (:foreground ,marooned))))
@@ -817,7 +817,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-reflog-remote       ((t (:foreground ,merged))))
    `(magit-reflog-other        ((t (:foreground ,merged))))
 ;;;;; message-mode
-   `(message-cited-text ((t (:inherit font-lock-comment-face))))
+   `(message-cited-text ((t (:inherit font-lock-comment-delimiter-face))))
    `(message-header-name ((t (:foreground ,ink))))
    `(message-header-other ((t (:foreground ,pencil1))))
    `(message-header-to ((t (:foreground ,marooned :weight bold))))
@@ -826,7 +826,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(message-header-subject ((t (:foreground ,ink :weight bold))))
    `(message-header-xheader ((t (:foreground ,pencil1))))
    `(message-mml ((t (:foreground ,marooned :weight bold))))
-   `(message-separator ((t (:inherit font-lock-comment-face))))
+   `(message-separator ((t (:inherit font-lock-comment-delimiter-face))))
 ;;;;; mew
    `(mew-face-header-subject ((t (:foreground ,ink))))
    `(mew-face-header-from ((t (:foreground ,marooned))))
@@ -902,7 +902,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-agenda-date-today
      ((t (:foreground ,ink :slant italic :weight bold))) t)
    `(org-agenda-structure
-     ((t (:inherit font-lock-comment-face))))
+     ((t (:inherit font-lock-comment-delimiter-face))))
    `(org-archived ((t (:foreground ,marooned :weight bold))))
    `(org-checkbox ((t (:background ,pencil1 :foreground ,ink
                                    :box (:line-width -3 :color ,pencil1 :style released-button)))))
@@ -925,7 +925,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-scheduled-previously ((t (:foreground ,navyblue))))
    `(org-scheduled-today ((t (:foreground ,marooned))))
    `(org-sexp-date ((t (:foreground ,marooned :underline t))))
-   `(org-special-keyword ((t (:inherit font-lock-comment-face))))
+   `(org-special-keyword ((t (:inherit font-lock-comment-delimiter-face))))
    `(org-table ((t (:foreground ,pencil1))))
    `(org-tag ((t (:bold t :weight bold))))
    `(org-time-grid ((t (:foreground ,ink))))
