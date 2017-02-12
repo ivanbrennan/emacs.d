@@ -796,6 +796,15 @@
   :config
   (add-hook 'rainbow-mode-hook (lambda () (hl-line-mode 0))))
 
+(use-package highlight-numbers
+  :commands highlight-numbers-mode
+  :init
+  (dolist (hook '(c-mode-hook
+               css-mode-hook
+               emacs-lisp-mode-hook
+               sh-mode-hook))
+    (add-hook hook #'highlight-numbers-mode)))
+
 (use-package hl-line
   :config
   (defface bold-hl-line
