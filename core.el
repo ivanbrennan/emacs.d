@@ -730,13 +730,14 @@
       (evil-emacs-state)
       (rectangle-mark-mode +1))
     (defun ivan/backward-kill-line () (kill-line 0))
-    (evil-define-key 'motion apropos-mode-map (kbd "<tab>") #'forward-button)
-    (evil-define-key 'motion help-mode-map    (kbd "<tab>") #'forward-button)
-    (evil-define-key 'motion help-mode-map    (kbd "C-o")   #'help-go-back)
-    (evil-define-key 'motion help-mode-map    (kbd "C-i")   #'help-go-forward)
-    (evil-define-key 'motion help-mode-map    (kbd "M-S-<return>") #'ivan/zoom-window-large)
-    (evil-define-key 'motion apropos-mode-map (kbd "M-S-<return>") #'ivan/zoom-window-large)
-    (evil-define-key 'motion neotree-mode-map (kbd "u") #'neotree-hidden-file-toggle)
+    (evil-define-key 'motion apropos-mode-map  (kbd "<tab>") #'forward-button)
+    (evil-define-key 'motion help-mode-map     (kbd "<tab>") #'forward-button)
+    (evil-define-key 'motion help-mode-map     (kbd "C-o")   #'help-go-back)
+    (evil-define-key 'motion help-mode-map     (kbd "C-i")   #'help-go-forward)
+    (evil-define-key 'motion help-mode-map     (kbd "M-S-<return>") #'ivan/zoom-window-large)
+    (evil-define-key 'motion apropos-mode-map  (kbd "M-S-<return>") #'ivan/zoom-window-large)
+    (evil-define-key 'motion neotree-mode-map  (kbd "u")     #'neotree-hidden-file-toggle)
+    (evil-define-key 'normal debugger-mode-map (kbd "q")     #'top-level)
 
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
     (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
