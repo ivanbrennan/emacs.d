@@ -1385,12 +1385,33 @@
   )
 
 (use-package company
+  :init
+  (defun check-expansion ()
+    (save-excursion
+      (if (looking-at "\\_>") t
+        (backward-char 1)
+        (if (looking-at "\\.") t
+          (backward-char 1)
+          (if (looking-at "->") t nil)))))
+  (defun tab-indent-or-complete ()
+    (interactive)
+    (if (minibufferp)
+        (minibuffer-complete)
+      (if (and company-mode (check-expansion))
+          (company-complete-common)
+        (indent-for-tab-command))))
+  (define-key evil-insert-state-map [tab] #'tab-indent-or-complete)
   :bind
   (:map company-active-map
-        ("C-n" . company-select-next)
-        ("C-p" . company-select-previous)
+        ("C-n"   . company-select-next)
+        ("C-p"   . company-select-previous)
+        ("<tab>" . company-complete-common-or-cycle)
         )
-  )
+  :config
+  (setq
+   company-backends   '(company-capf)
+   company-idle-delay 2.0
+   ))
 
 (use-package swiper
   :commands ivy-mode)
