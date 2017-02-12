@@ -446,7 +446,7 @@
 (setq package-archives '(("gnu"          . "https://elpa.gnu.org/packages/")
                          ("melpa-stable" . "https://stable.melpa.org/packages/")
                          ("melpa"        . "https://melpa.org/packages/")
-                         ("marmalade"    . "https://marmalade-repo.org/packages/")))
+                         ("marmalade"    . "https://ojab.ru/marmalade/")))
 
 (setq
  package--init-file-ensured t   ; don't add a 'package-initialize' call to my init file
