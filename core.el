@@ -81,6 +81,7 @@
 
 (with-current-buffer "*Messages*" (hidden-mode-line-mode +1))
 (dolist (hook '(help-mode-hook
+                apropos-mode-hook
                 ibuffer-mode-hook
                 compilation-mode-hook
                 messages-buffer-mode-hook
