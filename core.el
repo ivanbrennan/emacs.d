@@ -1439,6 +1439,7 @@
                          ggtags-global-mode
                          rake-compilation-mode)))
 (use-package shackle
+  :disabled t
   :config
   (shackle-mode +1)
   (setq
@@ -1450,9 +1451,9 @@
                    ("*Help*"          :align below :size 16  :select   t)
                    ("*Messages*"      :align below :size 15  :select   t)
                    ("*Warnings*"      :align below :size 10  :noselect t)
+                   ("*Completions*"   :align below :size 0.2 :noselect t)
                    ;; Compilation
                    (compilation-mode  :align below :size 15  :noselect t)
-                   ("*Completions*"   :align below :size 30  :noselect t)
                    ;; vcs
                    ("*vc-diff*"       :align below :size 15  :noselect t)
                    ("*vc-change-log*" :align below :size 15  :select   t)
