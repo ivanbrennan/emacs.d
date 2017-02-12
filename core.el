@@ -1024,7 +1024,7 @@
     "m d"        #'mark-defun
     "o"          #'find-file
     "C-o"        #'switch-to-buffer
-    "s"          search-map
+    "C-s"        search-map
     "C-v"        #'magit-blame
     "v s"        #'magit-status
     "v v"        #'vc-mode-line
