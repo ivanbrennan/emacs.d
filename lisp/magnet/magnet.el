@@ -2,7 +2,7 @@
 
 (require 'cl-lib)
 
-(defvar magnet-modes nil
+(defvar magnetic-modes nil
   "List of major modes that qualify a buffer for magnetic treatment.")
 
 (defun magnet-toggle ()
@@ -31,6 +31,6 @@
        buf))
 
 (defun magnet--attract? (buf)
-  (memq (buffer-local-value 'major-mode buf) magnet-modes))
+  (memq (buffer-local-value 'major-mode buf) magnetic-modes))
 
 (provide 'magnet)
