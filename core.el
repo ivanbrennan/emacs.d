@@ -822,6 +822,10 @@
                sh-mode-hook))
     (add-hook hook #'highlight-numbers-mode)))
 
+(use-package highlight-quoted
+  :init
+  (add-hook 'emacs-lisp-mode-hook #'highlight-quoted-mode))
+
 (use-package hl-line
   :config
   (defface bold-hl-line
