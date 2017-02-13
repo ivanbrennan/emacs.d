@@ -47,9 +47,8 @@
  bidi-display-reordering nil
  fringe-indicator-alist  (let ((alist fringe-indicator-alist))
                            (setq alist (delq (assq 'continuation alist) alist))
-                           (setq alist (delq (assq 'empty-line   alist) alist))
                            alist)
- fringes-outside-margins nil
+ fringes-outside-margins t
  image-animate-loop      t
  jit-lock-stealth-nice   0.1
  jit-lock-stealth-time   0.2
@@ -1091,7 +1090,8 @@
     (add-hook 'prog-mode-hook #'ivan/init-line-numbers)
     (defun ivan/init-line-numbers ()
       (unless (string-match-p "^[ *]" (buffer-name))
-        (ivan/toggle-line-numbers))))
+        (ivan/toggle-line-numbers)))
+    :config (setq nlinum-format "%d "))
   (defun ivan/toggle-line-numbers ()
     (interactive)
     (setq-local ivan/line-numbers-p (not ivan/line-numbers-p))
