@@ -1511,13 +1511,14 @@
   :load-path "lisp/magnet"
   :bind (:map evil-motion-state-map ("C-SPC" . magnet-toggle))
   :config
-  (setq magnetic-modes '(ag-mode
-                         apropos-mode
-                         help-mode
-                         rspec-compilation-mode
-                         ert-results-mode
-                         ggtags-global-mode
-                         rake-compilation-mode)))
+  (setq magnet-modes '(ag-mode
+                       apropos-mode
+                       help-mode
+                       rspec-compilation-mode
+                       ert-results-mode
+                       ggtags-global-mode
+                       rake-compilation-mode)))
+
 (use-package shackle
   :disabled t
   :config
