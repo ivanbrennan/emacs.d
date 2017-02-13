@@ -273,6 +273,7 @@
           "*Help*"
           "*Apropos*"
           "*rake-compilation*"
+          "*Pp Eval Output*"
           )
          eos)
     (display-buffer-reuse-window
@@ -1509,7 +1510,15 @@
 (use-package magnet
   :ensure nil
   :load-path "lisp/magnet"
+  :commands (magnet--attract?) ; remove this once sibling behavior is pulled into magnet.el
   :bind (:map evil-motion-state-map ("C-SPC" . magnet-toggle))
+  :init
+  ;; TODO: pull this into magnet.el and provide a way for user to specify such sibling features
+  (add-hook 'temp-buffer-show-hook
+            (lambda ()
+              (when (and (fboundp 'hidden-mode-line-mode)
+                         (magnet--attract? (current-buffer)))
+                (hidden-mode-line-mode))))
   :config
   (setq magnet-modes '(ag-mode
                        apropos-mode
@@ -1517,7 +1526,8 @@
                        rspec-compilation-mode
                        ert-results-mode
                        ggtags-global-mode
-                       rake-compilation-mode)))
+                       rake-compilation-mode)
+        magnet-names '("*Pp Eval Output*")))
 
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
   :major-modes (compilation-mode)
