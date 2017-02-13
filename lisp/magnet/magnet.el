@@ -5,6 +5,9 @@
 (defvar magnet-modes nil
   "List of major modes that qualify a buffer for magnetic treatment.")
 
+(defvar magnet-names nil
+  "List of name patterns that qualify a buffer for magnetic treatment.")
+
 (defun magnet-toggle ()
   (interactive)
   (or (magnet--close)
@@ -31,6 +34,13 @@
        buf))
 
 (defun magnet--attract? (buf)
+  (or (magnet--attract-mode? buf)
+      (magnet--attract-name? buf)))
+
+(defun magnet--attract-mode? (buf)
   (memq (buffer-local-value 'major-mode buf) magnet-modes))
+
+(defun magnet--attract-name? (buf)
+  (member (buffer-name buf) magnet-names))
 
 (provide 'magnet)
