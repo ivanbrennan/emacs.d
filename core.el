@@ -1413,8 +1413,9 @@
         )
   :config
   (setq
-   company-backends   '(company-capf)
-   company-idle-delay 2.0
+   company-backends      '(company-capf)
+   company-idle-delay    2.0
+   company-require-match 'never
    )
   (global-company-mode +1)
   )
