@@ -97,6 +97,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight ((t (:background ,paper))))
    `(success ((t (:foreground ,teal :weight bold))))
    `(warning ((t (:foreground ,ink :weight bold))))
+   `(error ((t (:foreground ,closedred :weight bold))))
    `(tooltip ((t (:foreground ,marooned :background ,whisp0))))
    `(window-divider ((t :foreground ,pencil4, :background ,pencil4)))
    `(window-divider-first-pixel ((t :inherit window-divider)))

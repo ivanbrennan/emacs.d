@@ -116,7 +116,7 @@
 (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 
 (defface font-lock-todo-face
-  '((t (:inherit warning :slant normal)))
+  '((t (:inherit error :slant normal)))
     "Face for TODO items.")
 
 (defface font-lock-note-face
