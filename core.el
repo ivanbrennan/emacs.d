@@ -826,6 +826,9 @@
   :init
   (add-hook 'emacs-lisp-mode-hook #'highlight-quoted-mode))
 
+(use-package highlight-parentheses
+  :commands highlight-parentheses-mode)
+
 (use-package hl-line
   :config
   (defface bold-hl-line
@@ -1031,6 +1034,7 @@
     ","          #'other-window
     "`"          #'variable-pitch-mode
     "="          #'align-regexp
+    "9"          #'highlight-parentheses-mode
     "SPC"        #'list-buffers
     "C-SPC"      #'shell-command
     "TAB"        #'neotree-toggle
