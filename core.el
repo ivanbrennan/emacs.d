@@ -1519,29 +1519,6 @@
                        ggtags-global-mode
                        rake-compilation-mode)))
 
-(use-package shackle
-  :disabled t
-  :config
-  (shackle-mode +1)
-  (setq
-   shackle-rules '(;; Util
-                   ("*eval*"          :align below :size 16  :noselect t)
-                   ;; Emacs
-                   ("*Apropos*"       :align below :size 0.3)
-                   ("*Backtrace*"     :align below :size 25  :noselect t)
-                   ("*Help*"          :align below :size 16  :select   t)
-                   ("*Messages*"      :align below :size 15  :select   t)
-                   ("*Warnings*"      :align below :size 10  :noselect t)
-                   ("*Completions*"   :align below :size 0.2 :noselect t)
-                   ;; Compilation
-                   (compilation-mode  :align below :size 15  :noselect t)
-                   ;; vcs
-                   ("*vc-diff*"       :align below :size 15  :noselect t)
-                   ("*vc-change-log*" :align below :size 15  :select   t)
-                   (vc-annotate-mode  :same t)
-                   ))
-  )
-
 (bind-map-for-mode-inherit ivan/compilation-leader-map ivan/leader-map
   :major-modes (compilation-mode)
   :bindings ("m f" #'next-error-follow-minor-mode))
