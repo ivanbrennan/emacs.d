@@ -116,10 +116,27 @@
 (add-hook 'emacs-lisp-mode-hook  #'eldoc-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 
+(defface font-lock-todo-face
+  '((t (:inherit warning :slant normal)))
+    "Face for TODO items.")
+
+(defface font-lock-note-face
+  '((t (:inherit success :slant normal)))
+    "Face for NOTE items.")
+
+(defface font-lock-colon-face
+  '((t (:inherit font-lock-comment-face :slant normal)))
+    "Face for colon following TODO/NOTE items.")
+
 (defun add-todo-and-note-keywords ()
-  (font-lock-add-keywords
-   nil '(("\\<\\(TODO\\(?:(.*)\\)?:?\\)\\>"  1 'warning prepend)
-         ("\\<\\(NOTE\\(?:(.*)\\)?:?\\)\\>"  1 'success prepend))))
+  (let ((todo "\\(\\<TODO\\>\\)\\(?:[ \t]*\\)\\(:?\\)")
+        (note "\\(\\<NOTE\\>\\)\\(?:[ \t]*\\)\\(:?\\)"))
+    (font-lock-add-keywords
+     nil
+     `((,todo (1 'font-lock-todo-face  prepend)
+              (2 'font-lock-colon-face prepend))
+       (,note (1 'font-lock-note-face  prepend)
+              (2 'font-lock-colon-face prepend))))))
 
 (dolist (hook '(prog-mode-hook
                 emacs-lisp-mode-hook
