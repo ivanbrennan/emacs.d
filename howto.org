@@ -1,5 +1,7 @@
 * Misc
 ** suppress eldoc-in-minibuffer when there's no modeline to show it
+** fix linum background color in fringe area for long lines
+*** doom-buffer-mode + linum height smaller than default + long line = blocks of grey at head of line; why?
 ** omit in-buffer git diff when using magit (since magit provides that same context in a split window)
 ** make a variable permanent local globally?
 Putting the permanent-local flag on a symbol is a global action, so after running
