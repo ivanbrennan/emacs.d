@@ -193,7 +193,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-comment-face ((t (:foreground ,slate :slant italic))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,pencil0))))
    `(font-lock-constant-face ((t (:foreground ,marine))))
-   `(font-lock-doc-face ((t (:foreground ,pencil0))))
+   `(font-lock-doc-face ((t (:inherit font-lock-comment-face))))
    `(font-lock-function-name-face ((t (:foreground ,merged))))
    `(font-lock-keyword-face ((t (:foreground ,marooned :weight normal))))
    `(font-lock-negation-char-face ((t (:foreground ,bubblegum :weight bold))))
