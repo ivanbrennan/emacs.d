@@ -623,8 +623,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
 ;;;;; highlight-quoted
-   `(highlight-quoted-symbol ((t (:foreground ,teal))))
-   `(highlight-quoted-quote  ((t (:foreground ,slate))))
+   `(highlight-quoted-symbol ((t (:foreground ,purpcoal0))))
+   `(highlight-quoted-quote  ((t (:foreground ,marine))))
 ;;;;; hl-line-mode
    `(hl-line-face ((,class (:background ,paper))
                    (t :weight bold)))
