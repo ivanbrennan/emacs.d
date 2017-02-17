@@ -795,6 +795,7 @@
                 (ggtags-mode +1)))
   (add-hook 'prog-mode-hook #'ivan/maybe-enable-ggtags)
   :config
+  (setq ggtags-project-duration (* 360000))
   (defun ivan/add-ggtags-presenter ()
     (add-hook 'compilation-finish-functions #'ivan/present-search-results))
   (add-hook 'ggtags-global-mode-hook #'ivan/compilation-start-at-first-error)
