@@ -1996,6 +1996,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-to-list 'default-frame-alist `(left-fringe . ,ivan/padding-min))
 (add-to-list 'default-frame-alist '(right-fringe . 1))
 
+(defun ivan/turn-off-minibuffer-fringe ()
+  (set-window-fringes (minibuffer-window) 0 0 nil))
+
+(add-hook 'emacs-startup-hook
+          #'ivan/turn-off-minibuffer-fringe)
+(add-hook 'minibuffer-setup-hook
+          #'ivan/turn-off-minibuffer-fringe)
+
 (defun ivan/config-overlay-arrow ()
   (define-fringe-bitmap 'left-bar [96 96 96 96 96 96 96 96 96 96 96 96])
   (defface left-bar-face
