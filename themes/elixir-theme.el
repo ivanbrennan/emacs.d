@@ -627,9 +627,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight-quoted-symbol ((t (:foreground ,purpcoal0))))
    `(highlight-quoted-quote  ((t (:foreground ,marine))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,paperwhite))
+   `(hl-line-face ((,class (:background ,paper))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,paperwhite))
+   `(hl-line ((,class (:background ,paper))
               (t :weight bold)))
 ;;;;; hl-sexp
    `(hl-sexp-face ((,class (:background ,paper))
