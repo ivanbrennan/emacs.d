@@ -48,12 +48,12 @@
     ("pencil2"    . "#B3B3B3")
     ("pencil3"    . "#D0D0D0")
     ("pencil4"    . "#D8D8D8")
-    ("bluegre"    . "#E7EAE9")
+    ("bluegre"    . "#EFF2F1")
     ("whisp0"     . "#EDEDED")
     ("whisp1"     . "#F2F2F2")
     ("whisp2"     . "#F5F5F5")
-    ("paper"      . "#F8F8F8")
-    ("paperwhite" . "#FAFAFA"))
+    ("paper"      . "#FAFAFA")
+    ("paperwhite" . "#FCFCFC"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
 
@@ -86,7 +86,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    '(button ((t (:underline t))))
    `(link ((t (:foreground ,bigblue :underline t :weight bold))))
    `(link-visited ((t (:foreground ,ink :underline t :weight normal))))
-   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,whisp0))))
+   `(default ((t (:family "Source Code Pro" :height 140 :foreground ,ink :background ,bluegre))))
    `(fixed-pitch ((t (:family "Source Code Pro"))))
    `(variable-pitch ((t (:family "Avenir Next" :height 140))))
    `(cursor ((t (:background ,nicegrey))))
@@ -137,7 +137,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((((type graphic)) :inherit default :background ,paper)
       (t                :inherit default)))
    `(doom-modeline-flash
-     ((((type graphic)) :background ,bluegre)
+     ((((type graphic)) :background ,visipurp)
       (t                :inherit mode-line)))
    `(doom-modeline-buffer-path
      ((t (:foreground ,purpcoal0 :inherit mode-line :bold t))))
@@ -150,7 +150,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(doom-modeline-highlight
      ((t (:inherit mode-line))))
    `(doom-modeline-panel
-     ((t (:background ,purpcoal0 :foreground ,whisp0))))
+     ((t (:background ,purpcoal0 :foreground ,bluegre))))
    `(doom-modeline-info
      ((t (:inherit success))))
    `(doom-modeline-warning
@@ -177,12 +177,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(menu ((t (:foreground ,marooned :background ,whisp0))))
    `(minibuffer-prompt ((t (:foreground ,nicegrey :weight bold))))
    `(mode-line
-     ((,class (:foreground ,slate :background ,whisp0))
+     ((,class (:foreground ,slate :background ,bluegre))
       (t :inverse-video t)))
    `(mode-line-buffer-id ((t (:foreground "black" :weight bold))))
    `(mode-line-highlight ((t (:foreground ,bigblue))))
    `(mode-line-inactive
-     ((t (:foreground ,pencil1 :weight light :background ,whisp0))))
+     ((t (:foreground ,pencil1 :weight light :background ,bluegre))))
    `(region ((,class (:background ,visipurp))
              (t :inverse-video t)))
    `(cua-rectangle ((t (:inherit region))))
@@ -635,12 +635,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(hl-sexp-face ((,class (:background ,paper))
                    (t :weight bold)))
 ;;;;; hydra
-   `(hydra-face-red      ((t (:foreground ,bloodred  :background ,whisp0 :bold t))))
-   `(hydra-face-amaranth ((t (:foreground ,amaranth  :background ,whisp0 :bold t))))
-   `(hydra-face-blue     ((t (:foreground ,merged    :background ,whisp0 :bold t))))
-   `(hydra-face-pink     ((t (:foreground ,marooned  :background ,whisp0 :bold t))))
-   `(hydra-face-teal     ((t (:foreground ,teal      :background ,whisp0 :bold t))))
-   `(hydra-face-title    ((t (:foreground ,slate     :background ,whisp0))))
+   `(hydra-face-red      ((t (:foreground ,bloodred  :background ,bluegre :bold t))))
+   `(hydra-face-amaranth ((t (:foreground ,amaranth  :background ,bluegre :bold t))))
+   `(hydra-face-blue     ((t (:foreground ,merged    :background ,bluegre :bold t))))
+   `(hydra-face-pink     ((t (:foreground ,marooned  :background ,bluegre :bold t))))
+   `(hydra-face-teal     ((t (:foreground ,teal      :background ,bluegre :bold t))))
+   `(hydra-face-title    ((t (:foreground ,slate     :background ,bluegre))))
 ;;;; ivy
    `(ivy-confirm-face ((t (:foreground ,pencil1 :background ,paperwhite))))
    `(ivy-match-required-face ((t (:foreground ,navyblue :background ,paperwhite))))
@@ -710,7 +710,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ledger-font-reconciler-pending-face ((t (:foreground ,ink :weight normal))))
    `(ledger-font-report-clickable-face ((t (:foreground ,ink :weight normal))))
 ;;;;; linum-mode
-   `(linum ((t (:foreground ,pencil2 :background ,whisp0 :height 120 :weight light :underline nil :slant normal))))
+   `(linum ((t (:foreground ,pencil2 :background ,bluegre :height 120 :weight light :underline nil :slant normal))))
 ;;;;; linum-relative-mode
    `(linum-relative-current-face ((t (:inherit linum :foreground ,ink))))
    `(nlinum-relative-current-face ((t (:inherit linum :foreground ,ink))))
