@@ -614,7 +614,8 @@
         :map evil-motion-state-map
         ("C-d"         . ivan/kill-buffer-and-maybe-window)
         ("C-e"         . evil-end-of-line)
-        ("C-S-E"       . evil-scroll-line-down)
+        ("C-j"         . evil-scroll-line-down)
+        ("C-k"         . evil-scroll-line-up)
         ("C-w C-h"     . evil-window-left)
         ("C-w C-j"     . evil-window-down)
         ("C-w C-k"     . evil-window-up)
