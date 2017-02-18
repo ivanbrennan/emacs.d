@@ -794,11 +794,6 @@
   :init
   (add-hook 'prog-mode-hook  #'ggtags-mode)
   (add-hook 'dired-mode-hook #'ggtags-mode)
-  :config
-  (defun ivan/add-ggtags-presenter ()
-    (add-hook 'compilation-finish-functions #'ivan/present-search-results))
-  (add-hook 'ggtags-global-mode-hook #'ivan/compilation-start-at-first-error)
-  (add-hook 'ggtags-global-mode-hook #'ivan/add-ggtags-presenter)
   (defun ivan/check-tags-state ()
     (interactive)
     (let ((project (and ggtags-mode (ggtags-find-project))))
@@ -807,7 +802,11 @@
                          (if (ggtags-project-dirty-p project)
                              "updating..."
                            "up-to-date"))))))
-  (bind-map-set-keys ivan/leader-map "t" #'ivan/check-tags-state))
+  :config
+  (defun ivan/add-ggtags-presenter ()
+    (add-hook 'compilation-finish-functions #'ivan/present-search-results))
+  (add-hook 'ggtags-global-mode-hook #'ivan/compilation-start-at-first-error)
+  (add-hook 'ggtags-global-mode-hook #'ivan/add-ggtags-presenter))
 
 (defun ivan/compilation-start-at-first-error ()
   (set (make-local-variable 'compilation-scroll-output) 'first-error))
@@ -1081,6 +1080,7 @@
     "o"          #'find-file
     "C-o"        #'switch-to-buffer
     "C-s"        search-map
+    "t"          #'ivan/check-tags-state
     "C-v"        #'magit-blame
     "v s"        #'magit-status
     "v v"        #'vc-mode-line
