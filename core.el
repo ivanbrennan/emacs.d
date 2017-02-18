@@ -524,6 +524,7 @@
 
   (defun ivan/activate-doom-config ()
     (add-hook 'find-file-hook #'doom-buffer-mode)
+    (add-hook 'Info-mode-hook #'doom-buffer-mode)
     (when ivan/want-brighten-minibuffer
       (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer))
     (mapc #'ivan/maybe-enable-doom-buffer-mode (buffer-list)))
