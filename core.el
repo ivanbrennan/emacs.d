@@ -792,12 +792,8 @@
              ggtags-find-tag-regexp)
   :diminish ggtags-mode
   :init
-  (defvar ggtags-prog-modes '(ruby-mode)
-    "Programming major modes in which ggtags is activated.")
-  (defun ivan/maybe-enable-ggtags ()
-    (when (apply 'derived-mode-p ggtags-prog-modes)
-      (ggtags-mode +1)))
-  (add-hook 'prog-mode-hook #'ivan/maybe-enable-ggtags)
+  (add-hook 'prog-mode-hook  #'ggtags-mode)
+  (add-hook 'dired-mode-hook #'ggtags-mode)
   :config
   (defun ivan/add-ggtags-presenter ()
     (add-hook 'compilation-finish-functions #'ivan/present-search-results))
