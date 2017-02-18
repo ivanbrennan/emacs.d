@@ -793,8 +793,9 @@
              ggtags-find-tag-regexp)
   :diminish ggtags-mode
   :init
-  (add-hook 'prog-mode-hook  #'ggtags-mode)
-  (add-hook 'dired-mode-hook #'ggtags-mode)
+  (dolist (hook '(ruby-mode-hook
+                  dired-mode-hook))
+    (add-hook hook #'ggtags-mode))
   (defun ivan/check-tags-state ()
     (interactive)
     (let ((project (and ggtags-mode (ggtags-find-project))))
