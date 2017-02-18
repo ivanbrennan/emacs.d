@@ -1072,9 +1072,9 @@
     "b m"        #'bookmark-set
     "d d"        #'kill-this-buffer
     "f a"        #'find-alternate-file
-    "f j"        #'dired-jump
     "f s"        #'save-buffer
     "f w"        #'write-file
+    "h"          #'dired-jump
     "i"          #'os-switch-to-term
     "a"          #'ag-project
     "C-a"        #'ag-project-regexp
