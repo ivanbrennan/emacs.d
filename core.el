@@ -801,7 +801,16 @@
   (defun ivan/add-ggtags-presenter ()
     (add-hook 'compilation-finish-functions #'ivan/present-search-results))
   (add-hook 'ggtags-global-mode-hook #'ivan/compilation-start-at-first-error)
-  (add-hook 'ggtags-global-mode-hook #'ivan/add-ggtags-presenter))
+  (add-hook 'ggtags-global-mode-hook #'ivan/add-ggtags-presenter)
+  (defun ivan/check-tags-state ()
+    (interactive)
+    (let ((project (and ggtags-mode (ggtags-find-project))))
+      (when project
+        (message (concat "Tags: "
+                         (if (ggtags-project-dirty-p project)
+                             "updating..."
+                           "up-to-date"))))))
+  (bind-map-set-keys ivan/leader-map "t" #'ivan/check-tags-state))
 
 (defun ivan/compilation-start-at-first-error ()
   (set (make-local-variable 'compilation-scroll-output) 'first-error))
