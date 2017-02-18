@@ -489,6 +489,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ack-file ((t (:foreground ,ink))))
    `(ack-line ((t (:foreground ,marooned))))
    `(ack-match ((t (:foreground ,ink :background ,flatblue :weight bold))))
+;;;;; ggtags
+   `(ggtags-highlight ((t (:underline nil))))
 ;;;;; git-commit
    `(git-commit-comment-action  ((,class (:foreground ,ink :weight bold))))
    `(git-commit-comment-branch  ((,class (:foreground ,marooned  :weight bold))))
