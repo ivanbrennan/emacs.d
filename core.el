@@ -386,6 +386,7 @@
  history-delete-duplicates           t
  history-length                      500
  idle-update-delay                   2
+ initial-major-mode                  'fundamental-mode
  ispell-program-name                 "/usr/local/bin/aspell"
  load-prefer-newer                   t
  minibuffer-eldef-shorten-default    t
@@ -531,8 +532,10 @@
 
   (defun ivan/maybe-enable-doom-buffer-mode (buffer)
     (with-current-buffer buffer
-      (unless (string-match-p "^[ *]" (buffer-name))
-        (doom-buffer-mode +1))))
+      (let ((name (buffer-name buffer)))
+        (unless (and (string-match-p "^[ *]" name)
+                     (not (equal "*scratch*" name)))
+          (doom-buffer-mode +1)))))
 
   (defun ivan/deactivate-doom-config ()
     (remove-hook 'find-file-hook #'doom-buffer-mode)
