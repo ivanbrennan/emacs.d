@@ -594,7 +594,6 @@
   :demand
   :bind
   (:map evil-normal-state-map
-        ("'"           . evil-use-register)
         ("U"           . undo-tree-redo)
         ("C-r"         . isearch-backward)
         ("S-SPC"       . ivan/emacs-state-rectangle-mark-mode)
@@ -1063,7 +1062,7 @@
     "i"          #'os-switch-to-term
     "a"          #'ag-project
     "C-a"        #'ag-project-regexp
-    "g"          #'evil-goto-mark
+    "'"          #'evil-use-register
     "l"          #'evil-switch-to-windows-last-buffer
     "m e b"      #'eval-buffer
     "m e f"      #'eval-defun
