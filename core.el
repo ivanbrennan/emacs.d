@@ -811,6 +811,14 @@
 (defun ivan/compilation-start-at-first-error ()
   (set (make-local-variable 'compilation-scroll-output) 'first-error))
 
+(use-package yasnippet
+  :defer t)
+
+(use-package nand2tetris
+  :mode ("\\.hdl\\'" . nand2tetris-mode)
+  :config
+  (setq nand2tetris-1 1))
+
 (use-package rainbow-mode
   :diminish rainbow-mode
   :commands rainbow-mode
