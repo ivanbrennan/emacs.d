@@ -1076,7 +1076,7 @@
     "f a"        #'find-alternate-file
     "f s"        #'save-buffer
     "f w"        #'write-file
-    "h"          #'dired-jump
+    "u"          #'ivan/directory-navigation-jump
     "i"          #'os-switch-to-term
     "a"          #'ag-project
     "C-a"        #'ag-project-regexp
@@ -1392,6 +1392,15 @@
     ("M-0" sp-backward-barf-sexp  "backward-barf")
     ("t"   sp-transpose-sexp      "transpose")
     )
+
+  (defhydra hydra-directory-navigation (:hint nil)
+    (format (propertize "directory navigation" 'face 'hydra-face-title))
+    ("h" dired-jump)
+    ("u" dired-jump))
+  (defun ivan/directory-navigation-jump ()
+    (interactive)
+    (dired-jump)
+    (hydra-directory-navigation/body))
   )
 
 (use-package which-key
