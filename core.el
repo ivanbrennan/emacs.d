@@ -788,7 +788,8 @@
 (use-package ggtags
   :commands (ggtags-mode
              ggtags-navigation-mode
-             ggtags-find-tag-dwim)
+             ggtags-find-tag-dwim
+             ggtags-find-tag-regexp)
   :diminish ggtags-mode
   :init
   (defvar ggtags-prog-modes '(ruby-mode)
