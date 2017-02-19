@@ -581,8 +581,8 @@
   (setq
    beacon-color (face-background 'region)
    beacon-blink-when-point-moves-vertically 10
-   beacon-blink-delay    0.2
-   beacon-blink-duration 0.25
+   beacon-blink-delay    0.1
+   beacon-blink-duration 0.2
    )
 
   (defun ivan/maybe-suppress-beacon (&optional count)
