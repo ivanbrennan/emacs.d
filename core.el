@@ -1134,10 +1134,11 @@
   (define-prefix-command 'ivan/dired-filter-map)
   (bind-keys
    :map ivan/dired-filter-map
-   ("n" . dired-narrow)
-   ("r" . dired-narrow-regexp)
-   ("f" . dired-narrow-fuzzy)
-   ("/" . revert-buffer)
+   ("n"   . dired-narrow)
+   ("SPC" . dired-narrow)
+   ("r"   . dired-narrow-regexp)
+   ("f"   . dired-narrow-fuzzy)
+   ("/"   . revert-buffer)
    :map dired-narrow-map
    ("<escape>" . minibuffer-keyboard-quit))
   (bind-map-for-mode-inherit ivan/dired-leader-map ivan/leader-map

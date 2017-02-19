@@ -1,7 +1,8 @@
 (bind-map-for-mode-inherit ivan/ibuffer-leader-map ivan/leader-map
   :major-modes (ibuffer-mode)
   :bindings
-  ("/" (lookup-key ibuffer-mode-map "/")))
+  ("/"     (lookup-key ibuffer-mode-map "/")
+   "/ SPC" 'ibuffer-filter-by-name))
 
 (evil-set-initial-state 'ibuffer-mode 'motion)
 
