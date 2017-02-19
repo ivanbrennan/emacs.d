@@ -1076,7 +1076,7 @@
     "f a"        #'find-alternate-file
     "f s"        #'save-buffer
     "f w"        #'write-file
-    "h"          #'hydra-directory-navigation/dired-jump
+    "h"          #'hydra-dir-navigate/dired-jump
     "i"          #'os-switch-to-term
     "a"          #'ag-project
     "C-a"        #'ag-project-regexp
@@ -1393,10 +1393,31 @@
     ("t"   sp-transpose-sexp      "transpose")
     )
 
-  (defhydra hydra-directory-navigation (:hint nil)
-    (format (propertize "directory navigation" 'face 'hydra-face-title))
-    ("h" dired-jump)
-    ("u" dired-jump))
+  (defhydra hydra-dir-navigate (:hint nil
+                                :pre (setq hydra-lv nil)
+                                :after-exit (setq hydra-lv t))
+    (format (propertize "dir-navigate" 'face 'hydra-face-title))
+    ("h"        dired-jump)
+    ("u"        dired-jump)
+    ("l"        ivan/dired-find-alternate-file)
+    ("RET"      ivan/dired-find-alternate-file)
+    ("<return>" ivan/dired-find-alternate-file)
+    ("j"        dired-next-line)
+    ("n"        dired-next-line)
+    ("k"        dired-previous-line)
+    ("p"        dired-previous-line)
+    ("H"        evil-window-top)
+    ("M"        evil-window-middle)
+    ("L"        evil-window-bottom)
+    ("("        dired-hide-details-mode)
+    ("/"        evil-search-forward)
+    ("?"        evil-search-backward)
+    )
+
+  (defun ivan/dired-find-alternate-file ()
+    (interactive)
+    (dired-find-alternate-file)
+    (unless (eq major-mode 'dired-mode) (setq hydra-deactivate t)))
   )
 
 (use-package which-key
