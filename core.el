@@ -578,14 +578,39 @@
 
 (use-package beacon
   :config
-  (beacon-mode +1)
   (setq
    beacon-color (face-background 'region)
    beacon-blink-when-point-moves-vertically 10
    beacon-blink-delay    0.2
    beacon-blink-duration 0.25
    )
-  )
+
+  (defun ivan/maybe-suppress-beacon (&optional count)
+    (setq beacon-blink-when-window-scrolls
+          (cond
+           ((null beacon-blink-when-point-moves-vertically)
+            nil)
+           ((and (number-or-marker-p count)
+                 (number-or-marker-p beacon-blink-when-point-moves-vertically))
+            (> count beacon-blink-when-point-moves-vertically))
+           (t
+            t))))
+  (defun ivan/reset-beacon-scroll (&rest _)
+    (setq beacon-blink-when-window-scrolls t))
+
+  (defun ivan/beacon-enable ()
+    (advice-add 'scroll-up   :before #'ivan/maybe-suppress-beacon)
+    (advice-add 'scroll-down :before #'ivan/maybe-suppress-beacon)
+    (advice-add 'beacon--window-scroll-function :after #'ivan/reset-beacon-scroll)
+    (beacon-mode +1))
+
+  (defun ivan/beacon-disable ()
+    (advice-remove 'scroll-up   #'ivan/maybe-suppress-beacon)
+    (advice-remove 'scroll-down #'ivan/maybe-suppress-beacon)
+    (advice-remove 'beacon--window-scroll-function #'ivan/reset-beacon-scroll)
+    (beacon-mode 0))
+
+  (ivan/beacon-enable))
 
 (use-package f
   :commands (f-dirname f-relative))
