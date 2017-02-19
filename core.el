@@ -500,7 +500,7 @@
   (setq
    doom-enable-bold   t
    doom-enable-italic t
-   ivan/want-brighten-minibuffer nil
+   ivan/want-brighten-minibuffer t
    )
   (setq
    doom-neotree-enable-variable-pitch t
