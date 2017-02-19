@@ -1,5 +1,6 @@
 * Misc
 ** suppress eldoc-in-minibuffer when there's no modeline to show it
+** suppress electric parens in evil-replace-state
 ** mode-line indicator of zoom-window
 ** fix linum background color in fringe area for long lines
 *** doom-buffer-mode + linum height smaller than default + long line = blocks of grey at head of line; why?
