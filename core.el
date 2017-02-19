@@ -860,8 +860,7 @@
 (use-package nand2tetris
   :mode ("\\.hdl\\'" . nand2tetris-mode)
   :config
-  (setq nand2tetris-1 1
-        nand2tetris-core-base-dir "~/Development/code/nand2tetris"))
+  (setq nand2tetris-1 1))
 
 (use-package rainbow-mode
   :diminish rainbow-mode
