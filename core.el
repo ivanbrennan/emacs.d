@@ -1431,6 +1431,8 @@
     ("n"        dired-next-line)
     ("k"        dired-previous-line)
     ("p"        dired-previous-line)
+    ("C-j"      evil-scroll-line-down)
+    ("C-k"      evil-scroll-line-up)
     ("H"        evil-window-top)
     ("M"        evil-window-middle)
     ("L"        evil-window-bottom)
