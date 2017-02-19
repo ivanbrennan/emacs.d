@@ -796,22 +796,6 @@
       (define-key keymap-from key nil))
     (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))))
 
-(use-package dired-narrow
-  :config
-  (define-prefix-command 'ivan/dired-filter-map)
-  (bind-keys
-   :map ivan/dired-filter-map
-   ("n" . dired-narrow)
-   ("r" . dired-narrow-regexp)
-   ("f" . dired-narrow-fuzzy)
-   ("/" . revert-buffer)
-   :map dired-narrow-map
-   ("<escape>" . minibuffer-keyboard-quit))
-  (bind-map-for-mode-inherit ivan/dired-leader-map ivan/leader-map
-    :major-modes (dired-mode)
-    :bindings
-    ("/" ivan/dired-filter-map)))
-
 (use-package elisp-slime-nav
   :diminish elisp-slime-nav-mode
   :commands elisp-slime-nav-mode
@@ -1144,6 +1128,22 @@
     "w J"        #'webjump
     "w n"        #'ivan/toggle-narrowing
     "x"          #'execute-extended-command))
+
+(use-package dired-narrow
+  :config
+  (define-prefix-command 'ivan/dired-filter-map)
+  (bind-keys
+   :map ivan/dired-filter-map
+   ("n" . dired-narrow)
+   ("r" . dired-narrow-regexp)
+   ("f" . dired-narrow-fuzzy)
+   ("/" . revert-buffer)
+   :map dired-narrow-map
+   ("<escape>" . minibuffer-keyboard-quit))
+  (bind-map-for-mode-inherit ivan/dired-leader-map ivan/leader-map
+    :major-modes (dired-mode)
+    :bindings
+    ("/" ivan/dired-filter-map)))
 
 (use-package nlinum-relative
   :commands nlinum-relative-toggle
