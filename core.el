@@ -352,17 +352,19 @@
  )
 
 (defun ivan/code-whitespace ()
-  (setq
-   indent-tabs-mode         nil
-   indicate-empty-lines     t
-   show-trailing-whitespace t
-   ))
+  (setq-default indent-tabs-mode nil)
+  (setq indicate-empty-lines     t
+        show-trailing-whitespace t))
 
 (add-hook 'prog-mode-hook #'ivan/code-whitespace)
 (add-hook 'org-mode-hook  #'ivan/code-whitespace)
 
 
 ;; sensibility
+(setq-default
+ fill-column           80
+ require-final-newline t)
+
 (setq
  ad-redefinition-action              'accept
  apropos-do-all                      t
@@ -392,7 +394,6 @@
  minibuffer-eldef-shorten-default    t
  query-replace-skip-read-only        t
  read-buffer-completion-ignore-case  t
- require-final-newline               t
  save-interprogram-paste-before-kill t
  scroll-preserve-screen-position     t
  sentence-end-double-space           nil
