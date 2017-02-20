@@ -1,5 +1,6 @@
 * Misc
 ** suppress eldoc-in-minibuffer when there's no modeline to show it
+** whitespace: tab ›, space middle-dot
 ** suppress electric parens in evil-replace-state
 ** mode-line indicator of zoom-window
 ** fix linum background color in fringe area for long lines
