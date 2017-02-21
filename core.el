@@ -824,7 +824,8 @@
     (add-hook hook #'ggtags-mode))
   (defun ivan/check-tags-state ()
     (interactive)
-    (let ((project (and ggtags-mode (ggtags-find-project))))
+    (let ((project (and (bound-and-true-p ggtags-mode)
+                        (ggtags-find-project))))
       (when project
         (message (concat "Tags: "
                          (if (ggtags-project-dirty-p project)
