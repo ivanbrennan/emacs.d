@@ -1145,7 +1145,7 @@
     "o"          #'find-file
     "C-o"        #'switch-to-buffer
     "C-s"        search-map
-    "t"          #'ivan/check-tags-state
+    "y"          #'ivan/check-tags-state
     "C-v"        #'magit-blame
     "v s"        #'magit-status
     "v v"        #'vc-mode-line
@@ -1854,7 +1854,7 @@
   (bind-map-for-mode-inherit ivan/rspec-leader-map ivan/leader-map
     :major-modes (ruby-mode)
     :bindings
-    ("y" #'rspec-toggle-spec-and-target)))
+    ("t" #'rspec-toggle-spec-and-target)))
 
 (use-package cask-mode
   :mode "\\`Cask\\'")
