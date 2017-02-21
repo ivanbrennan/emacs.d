@@ -182,11 +182,7 @@
  backup-directory-alist         `(("." . ,(ivan/cache-file "backups/")))
  eshell-directory-name           (ivan/cache-file "eshell/")
  ido-save-directory-list-file    (ivan/cache-file "ido.last")
- savehist-file                   (ivan/cache-file "savehist")
- tramp-persistency-file-name     (ivan/cache-file "tramp")
- )
-
-(savehist-mode +1)
+ tramp-persistency-file-name     (ivan/cache-file "tramp"))
 
 
 ;; theme
@@ -547,6 +543,33 @@
   (add-hook 'after-init-hook #'ivan/update-doom-settings)
 
   (when (display-graphic-p) (require 'doom-neotree)))
+
+(use-package savehist
+  :init
+  (setq
+   savehist-file (ivan/cache-file "savehist")
+   savehist-autosave-interval 60
+   savehist-additional-variables '(mark-ring
+                                   global-mark-ring
+                                   search-ring
+                                   regexp-search-ring
+                                   extended-command-history))
+  (savehist-mode   +1)
+  :config
+  (defun unpropertize-savehist ()
+    (mapc (lambda (list)
+            (when (boundp list)
+              (set list (mapcar 'substring-no-properties (eval list)))))
+          '(kill-ring minibuffer-history helm-grep-history helm-ff-history
+                      file-name-history read-expression-history extended-command-history
+                      evil-ex-history)))
+  (add-hook 'kill-emacs-hook    'unpropertize-savehist)
+  (add-hook 'savehist-save-hook 'unpropertize-savehist))
+
+(use-package saveplace
+  :init
+  (save-place-mode +1)
+  (setq save-place-file (ivan/cache-file "saveplace")))
 
 (use-package neotree
   :config
