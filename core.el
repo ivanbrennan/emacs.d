@@ -870,6 +870,7 @@
   :defer t)
 
 (use-package nand2tetris
+  :ensure nil
   :mode ("\\.hdl\\'" . nand2tetris-mode)
   :config
   (setq nand2tetris-1 1))
