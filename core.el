@@ -1821,7 +1821,12 @@
   (defun ivan/add-rspec-presenter ()
     (add-hook 'compilation-finish-functions #'ivan/maybe-present-rspec-results))
   (add-hook 'rspec-compilation-mode-hook #'ivan/add-rspec-presenter)
-  (add-hook 'rspec-compilation-mode-hook #'ivan/wrap-lines))
+  (add-hook 'rspec-compilation-mode-hook #'ivan/wrap-lines)
+
+  (bind-map-for-mode-inherit ivan/rspec-leader-map ivan/leader-map
+    :major-modes (ruby-mode)
+    :bindings
+    ("y" #'rspec-toggle-spec-and-target)))
 
 (use-package cask-mode
   :mode "\\`Cask\\'")
