@@ -491,6 +491,10 @@
 
 (setq use-package-always-ensure t)
 
+(use-package async
+  :config
+  (async-bytecomp-package-mode 1))
+
 (use-package doom-themes
   :pin melpa
   :config
