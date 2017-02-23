@@ -195,9 +195,11 @@
 (defvar ivan/rotated-theme-hook nil
   "Hook called after the theme has been rotated")
 
-(defun ivan/rotate-theme ()
-  (interactive)
-  (setq ivan/themes-index (% (1+ ivan/themes-index) (length ivan/themes)))
+(defun ivan/rotate-next-theme     () (interactive) (ivan/rotate-theme +1))
+(defun ivan/rotate-previous-theme () (interactive) (ivan/rotate-theme -1))
+
+(defun ivan/rotate-theme (step)
+  (setq ivan/themes-index (% (+ step ivan/themes-index) (length ivan/themes)))
   (ivan/try-load-indexed-theme)
   (run-hooks 'ivan/rotated-theme-hook))
 
@@ -1116,7 +1118,8 @@
     "C-u"        #'hl-line-mode
     "X SPC"      #'server-edit
     "X s"        #'server-start
-    "\\"         #'ivan/rotate-theme
+    "\\"         #'ivan/rotate-next-theme
+    "\|"         #'ivan/rotate-previous-theme
     ;; "b SPC"    #'hydra-buffers/body
     "C-b"        #'bury-buffer
     "B"          #'unbury-buffer
