@@ -202,13 +202,10 @@
   (run-hooks 'ivan/rotated-theme-hook))
 
 (defun ivan/try-load-indexed-theme ()
-  (ivan/try-load-theme (nth ivan/themes-index
-                            ivan/themes)))
-
-(defun ivan/try-load-theme (theme)
   (let ((theme  (nth ivan/themes-index ivan/themes))
         (backup (ivan/disable-themes)))
-    (unless (ignore-errors (ivan/load-theme theme))
+    (if (ignore-errors (ivan/load-theme theme))
+        (message (symbol-name theme))
       (ivan/restore-themes backup))))
 
 (defun ivan/load-theme (theme)
