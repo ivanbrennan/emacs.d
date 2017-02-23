@@ -798,6 +798,12 @@
           (ivan/rspec-dwim 'rspec-verify)
         (evil-find-char-to-backward count char)))
 
+    (defun ivan/substitute-word-on-line ()
+      (interactive)
+      (minibuffer-with-setup-hook
+          (lambda () (backward-char 2))
+        (evil-ex (format "s/%s//g" (thing-at-point 'word 'no-properties)))))
+
     (defun ivan/emacs-state-rectangle-mark-mode ()
       (interactive)
       (evil-emacs-state)
@@ -1144,6 +1150,7 @@
     "m d"        #'mark-defun
     "o"          #'find-file
     "C-o"        #'switch-to-buffer
+    "s"          #'ivan/substitute-word-on-line
     "C-s"        search-map
     "y"          #'ivan/check-tags-state
     "C-v"        #'magit-blame
