@@ -371,6 +371,7 @@
  compilation-message-face            nil  ; don't underline compilation links
  compilation-save-buffers-predicate  (lambda () (eq (window-buffer) (current-buffer)))
  completions-format                  'vertical
+ dabbrev-case-fold-search            nil
  delete-by-moving-to-trash           t
  echo-keystrokes                     0.5
  ediff-split-window-function         #'split-window-horizontally
