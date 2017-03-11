@@ -314,9 +314,9 @@
 (defvar ivan/hscroll-minor-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map [C-wheel-right] #'ivan/scroll-left)
-    (define-key map [S-wheel-right] #'ivan/scroll-left)
+    (define-key map [M-wheel-right] #'ivan/scroll-left)
     (define-key map [C-wheel-left]  #'ivan/scroll-right)
-    (define-key map [S-wheel-left]  #'ivan/scroll-right)
+    (define-key map [M-wheel-left]  #'ivan/scroll-right)
     map)
   "ivan/hscroll-minor-mode keymap.")
 
