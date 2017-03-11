@@ -762,6 +762,19 @@
     (defun ivan/treat-hyphen-as-word-char     () (ivan/treat-as-word-char ?-))
     (defun ivan/treat-as-word-char (char) (modify-syntax-entry char "w"))
 
+    (defun ivan/trim-autoinserted-whitespace ()
+      (when (memq last-command
+                  '(evil-open-above
+                    evil-open-below
+                    evil-append
+                    evil-append-line
+                    newline
+                    newline-and-indent
+                    indent-and-newline))
+        (add-hook 'post-command-hook #'evil-maybe-remove-spaces)
+        (setq evil-maybe-remove-spaces t)))
+    (add-hook 'evil-insert-state-exit-hook #'ivan/trim-autoinserted-whitespace)
+
     (defun ivan/paste-pop-or-previous-line (count)
       (interactive "p")
       (if (memq last-command
