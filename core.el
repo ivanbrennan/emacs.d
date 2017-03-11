@@ -189,7 +189,7 @@
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory 'mkdir_p)
 
-(defvar ivan/themes '(elixir doom-one))
+(defvar ivan/themes '(elixir dome arjen-grey FlatUI chalk))
 (defvar ivan/themes-index 0)
 
 (defvar ivan/rotated-theme-hook nil
@@ -518,8 +518,8 @@
             buffer-face-mode-remapping)))
 
   (defun ivan/update-doom-settings ()
-    (if (or (memq 'doom-one custom-enabled-themes)
-            (memq 'elixir   custom-enabled-themes))
+    (if (or (memq 'dome   custom-enabled-themes)
+            (memq 'elixir custom-enabled-themes))
         (ivan/activate-doom-config)
       (ivan/deactivate-doom-config))
     (powerline-reset))
