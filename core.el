@@ -564,9 +564,14 @@
     (mapc (lambda (list)
             (when (boundp list)
               (set list (mapcar 'substring-no-properties (eval list)))))
-          '(kill-ring minibuffer-history helm-grep-history helm-ff-history
-                      file-name-history read-expression-history extended-command-history
-                      evil-ex-history)))
+          '(evil-ex-history
+            extended-command-history
+            file-name-history
+            helm-ff-history
+            helm-grep-history
+            kill-ring
+            minibuffer-history
+            read-expression-history)))
   (add-hook 'kill-emacs-hook    'unpropertize-savehist)
   (add-hook 'savehist-save-hook 'unpropertize-savehist))
 
