@@ -46,8 +46,9 @@
 (setq-default
  bidi-display-reordering nil
  fringe-indicator-alist  (let ((alist fringe-indicator-alist))
-                           (setq alist (delq (assq 'continuation alist) alist))
-                           alist)
+                           (assq-delete-all
+                            'truncation (assq-delete-all
+                                         'continuation alist)))
  fringes-outside-margins t
  image-animate-loop      t
  jit-lock-stealth-nice   0.1
@@ -2156,8 +2157,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; padding
 (set-display-table-slot
  standard-display-table 0 ?\ )
-(setq-default fringe-indicator-alist
-              (assq-delete-all 'truncation fringe-indicator-alist))
 
 (defvar ivan/padding-enabled nil)
 (defvar ivan/padding-min 4)
