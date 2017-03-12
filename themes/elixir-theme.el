@@ -269,7 +269,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(popup-tip-face ((t (:background ,bloodred :foreground ,leaf))))
    `(popup-scroll-bar-foreground-face ((t (:background ,ink))))
    `(popup-scroll-bar-background-face ((t (:background ,paper))))
-   `(popup-isearch-match ((t (:background ,marooned :foreground aqua))))
+   `(popup-isearch-match ((t (:background ,marooned :foreground ,aqua))))
 ;;;;; avy
    `(avy-background-face
      ((t (:foreground ,ink :background ,paper :inverse-video nil))))
