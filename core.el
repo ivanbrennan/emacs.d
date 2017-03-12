@@ -189,42 +189,44 @@
 (setq custom-theme-directory (ivan/emacs-file "themes/"))
 (make-directory custom-theme-directory 'mkdir_p)
 
-(defvar ivan/themes '(elixir dome arjen-grey FlatUI chalk))
-(defvar ivan/themes-index 0)
+(let ((themes [elixir dome arjen-grey FlatUI chalk])
+      (index  0))
+  (defvar ivan/themes-ring `(,index ,(length themes) . ,themes))
+  (defvar ivan/current-theme (aref themes index))
+  (defvar ivan/rotated-theme-hook nil
+    "Hook called after the theme has been rotated"))
 
-(defvar ivan/rotated-theme-hook nil
-  "Hook called after the theme has been rotated")
+(defun ivan/next-theme ()
+  (interactive)
+  (ivan/try-load-theme (ring-next ivan/themes-ring ivan/current-theme)))
 
-(defun ivan/rotate-next-theme     () (interactive) (ivan/rotate-theme +1))
-(defun ivan/rotate-previous-theme () (interactive) (ivan/rotate-theme -1))
+(defun ivan/previous-theme ()
+  (interactive)
+  (ivan/try-load-theme (ring-previous ivan/themes-ring ivan/current-theme)))
 
-(defun ivan/non-neg-modulo (x modulus)
-  (let ((m (% x modulus)))
-    (if (< m 0) (+ m modulus) m))))
-
-(defun ivan/rotate-theme (step)
-  (setq ivan/themes-index (ivan/non-neg-modulo (+ step ivan/themes-index) (length ivan/themes)))
-  (ivan/try-load-indexed-theme)
-  (run-hooks 'ivan/rotated-theme-hook))
-
-(defun ivan/try-load-indexed-theme ()
-  (let ((theme  (nth ivan/themes-index ivan/themes))
-        (backup (ivan/disable-themes)))
+(defun ivan/try-load-theme (theme)
+  (let ((backup (ivan/disable-themes)))
     (if (ignore-errors (ivan/load-theme theme))
-        (message (symbol-name theme))
+        (progn
+          (ivan/register-theme theme)
+          (run-hooks 'ivan/rotated-theme-hook)
+          (message (symbol-name theme)))
       (ivan/restore-themes backup))))
-
-(defun ivan/load-theme (theme)
-  (load-theme theme 'no-confirm))
 
 (defun ivan/disable-themes ()
   (mapc #'disable-theme custom-enabled-themes))
 
+(defun ivan/load-theme (theme)
+  (load-theme theme 'no-confirm))
+
+(defun ivan/register-theme (theme)
+  (setq ivan/current-theme theme))
+
 (defun ivan/restore-themes (backup)
-  (mapc #'disable-theme custom-enabled-themes)
+  (ivan/disable-themes)
   (mapc #'ivan/load-theme (reverse backup)))
 
-(ivan/try-load-indexed-theme)
+(ivan/try-load-theme ivan/current-theme)
 
 
 ;; variable-pitch-mode
@@ -1149,8 +1151,8 @@
     "C-u"        #'hl-line-mode
     "X SPC"      #'server-edit
     "X s"        #'server-start
-    "\\"         #'ivan/rotate-next-theme
-    "\|"         #'ivan/rotate-previous-theme
+    "\\"         #'ivan/next-theme
+    "\|"         #'ivan/previous-theme
     ;; "b SPC"    #'hydra-buffers/body
     "C-b"        #'bury-buffer
     "B"          #'unbury-buffer
