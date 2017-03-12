@@ -2240,9 +2240,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
   (defun ivan/trim-whitespace-on-line (&rest _args)
     (save-excursion
-      (delete-trailing-whitespace
-       (progn (beginning-of-line) (point))
-       (progn (end-of-line)       (point)))))
+      (delete-trailing-whitespace (line-beginning-position) (line-end-position))))
   (advice-add 'ruby-toggle-block :after #'ivan/trim-whitespace-on-line)
 
   (with-eval-after-load 'smartparens-ruby
