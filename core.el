@@ -2234,17 +2234,26 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                   ("GitHub" . "https://github.com"))
                 webjump-sample-sites)))
 
-(add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+(use-package ruby-mode
+  :config
+  (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+
+  (defun ivan/trim-whitespace-on-line (&rest _args)
+    (save-excursion
+      (delete-trailing-whitespace
+       (progn (beginning-of-line) (point))
+       (progn (end-of-line)       (point)))))
+  (advice-add 'ruby-toggle-block :after #'ivan/trim-whitespace-on-line)
+
+  (add-hook 'ruby-mode-hook #'(lambda ()
+                                (setq ruby-insert-encoding-magic-comment nil
+                                      ruby-align-chained-calls t))))
 
 (defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end
              (not isearch-mode-end-hook-quit))
     (goto-char isearch-other-end)))
 (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
-
-(add-hook 'ruby-mode-hook #'(lambda ()
-                              (setq ruby-insert-encoding-magic-comment nil
-                                    ruby-align-chained-calls t)))
 
 ;; more useful C-w (this should be adjusted to account for evil mode,
 ;; in particular insert-state, once I start using evil).
