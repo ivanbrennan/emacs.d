@@ -1905,6 +1905,24 @@
 
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
 
+(defvar no-space-before-regexp "^\\|[])]")
+(defvar no-space-after-regexp  "$\\|[[(]\\|\\s'")
+
+(defun fixup-no-space? ()
+  (or (looking-at no-space-before-regexp)
+      (save-excursion (forward-char -1)
+                      (looking-at no-space-after-regexp))))
+
+(defun ivan/fixup-whitespace ()
+  "Fixup white space between objects around point.
+Leave one space or none, according to the context."
+  (interactive "*")
+  (save-excursion
+    (delete-horizontal-space)
+    (unless (fixup-no-space?)
+      (insert ?\s))))
+(advice-add 'fixup-whitespace :override #'ivan/fixup-whitespace)
+
 ;; gui & terminal
 (defun ivan/text-scale-reset ()
   "Reset the height of the default face in the current buffer to its default value.
