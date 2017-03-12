@@ -2251,6 +2251,17 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                                 (setq ruby-insert-encoding-magic-comment nil
                                       ruby-align-chained-calls t))))
 
+(use-package emr
+  :commands emr-show-refactor-menu
+  :config
+  (emr-initialize)
+  (define-key popup-menu-keymap [escape] 'keyboard-quit))
+
+(use-package ruby-refactor
+  :commands ruby-refactor-mode-launch
+  :init
+  (add-hook 'ruby-mode-hook #'ruby-refactor-mode-launch))
+
 (defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end
              (not isearch-mode-end-hook-quit))
