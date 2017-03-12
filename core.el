@@ -198,8 +198,12 @@
 (defun ivan/rotate-next-theme     () (interactive) (ivan/rotate-theme +1))
 (defun ivan/rotate-previous-theme () (interactive) (ivan/rotate-theme -1))
 
+(defun ivan/non-neg-modulo (x modulus)
+  (let ((m (% x modulus)))
+    (if (< m 0) (+ m modulus) m))))
+
 (defun ivan/rotate-theme (step)
-  (setq ivan/themes-index (% (+ step ivan/themes-index) (length ivan/themes)))
+  (setq ivan/themes-index (ivan/non-neg-modulo (+ step ivan/themes-index) (length ivan/themes)))
   (ivan/try-load-indexed-theme)
   (run-hooks 'ivan/rotated-theme-hook))
 
