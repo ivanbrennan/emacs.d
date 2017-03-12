@@ -525,21 +525,22 @@
     (powerline-reset))
 
   (defun ivan/activate-doom-config ()
-    (add-hook 'find-file-hook #'doom-buffer-mode)
-    (add-hook 'Info-mode-hook #'doom-buffer-mode)
+    (add-hook 'find-file-hook #'doom-buffer-mode-maybe)
+    (add-hook 'Info-mode-hook #'doom-buffer-mode-maybe)
     (when ivan/want-brighten-minibuffer
       (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer))
-    (mapc #'ivan/maybe-enable-doom-buffer-mode (buffer-list)))
+    (mapc #'ivan/doom-buffer-mode-maybe (buffer-list)))
 
-  (defun ivan/maybe-enable-doom-buffer-mode (buffer)
+  (defun ivan/doom-buffer-mode-maybe (buffer)
     (with-current-buffer buffer
       (let ((name (buffer-name buffer)))
         (unless (and (string-match-p "^[ *]" name)
                      (not (equal "*scratch*" name)))
-          (doom-buffer-mode +1)))))
+          (doom-buffer-mode-maybe)))))
 
   (defun ivan/deactivate-doom-config ()
-    (remove-hook 'find-file-hook #'doom-buffer-mode)
+    (remove-hook 'find-file-hook #'doom-buffer-mode-maybe)
+    (remove-hook 'Info-mode-hook #'doom-buffer-mode-maybe)
     (remove-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
     (doom-buffer-mode 0))
 
