@@ -2245,6 +2245,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
        (progn (end-of-line)       (point)))))
   (advice-add 'ruby-toggle-block :after #'ivan/trim-whitespace-on-line)
 
+  (with-eval-after-load 'smartparens-ruby
+    (advice-add 'sp-ruby-pre-pipe-handler :after #'ivan/trim-whitespace-on-line))
+
   (add-hook 'ruby-mode-hook #'(lambda ()
                                 (setq ruby-insert-encoding-magic-comment nil
                                       ruby-align-chained-calls t))))
