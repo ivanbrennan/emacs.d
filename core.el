@@ -1308,8 +1308,10 @@
     (if origami-mode
         (let ((map (copy-keymap ivan/evil-fold-map)))
           (origami-mode 0)
-          (bind-key "z" map evil-normal-state-map))
+          (bind-key "z" map evil-normal-state-map)
+          (message "evil folds"))
       (origami-mode +1)
+      (message "origami folds")
       (ivan/setup-origami-keybindings))
     )
   (defun ivan/setup-origami-keybindings ()
@@ -1338,6 +1340,39 @@
      )
     )
   )
+
+(use-package hideshow
+  :commands (hs-minor-mode hs-toggle-hiding hs-already-hidden-p)
+  :config (setq hs-isearch-open t)
+  :init
+  (defun doom*load-hs-minor-mode ()
+    (hs-minor-mode 1)
+    (advice-remove 'evil-toggle-fold 'doom-load-hs-minor-mode))
+  (advice-add 'evil-toggle-fold :before 'doom*load-hs-minor-mode)
+  ;; Prettify code folding in emacs
+  (define-fringe-bitmap 'hs-marker [128 192 224 240 224 192 128] nil nil 'center)
+  (defface hs-face '((t (:background "#ff8")))
+    "Face to hightlight the ... area of hidden regions"
+    :group 'hideshow)
+  (defface hs-fringe-face '((t (:foreground "#888")))
+    "Face used to highlight the fringe on folded regions"
+    :group 'hideshow)
+  (setq hs-set-up-overlay
+        (lambda (ov)
+          (when (eq 'code (overlay-get ov 'hs))
+            (let* ((marker-string "*")
+                   (display-string (concat " " (all-the-icons-octicon "ellipsis" :v-adjust 0) " "))
+                   (len (length display-string)))
+              (put-text-property 0 1 'display
+                                 (list 'left-fringe 'hs-marker 'hs-fringe-face)
+                                 marker-string)
+              (put-text-property 0 1 'face 'hs-face display-string)
+              (put-text-property (1- len) len 'face 'hs-face display-string)
+              (put-text-property 1 (1- len)
+                                 'face `(:inherit hs-face :family ,(all-the-icons-octicon-family) :height 1.1)
+                                 display-string)
+              (overlay-put ov 'before-string marker-string)
+              (overlay-put ov 'display display-string))))))
 
 (use-package git-link
   :config
