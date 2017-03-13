@@ -873,13 +873,14 @@
 
 (use-package ggtags
   :commands (ggtags-mode
+             ivan/ggtags-mode-maybe
              ggtags-navigation-mode
              ggtags-find-tag-dwim
              ggtags-find-tag-regexp)
   :diminish ggtags-mode
   :init
-  (dolist (hook '(ruby-mode-hook
-                  dired-mode-hook))
+  (add-hook 'prog-mode-hook #'ivan/ggtags-mode-maybe)
+  (dolist (hook '(yaml-mode-hook))
     (add-hook hook #'ggtags-mode))
   (defun ivan/check-tags-state ()
     (interactive)
@@ -891,6 +892,10 @@
                              "updating..."
                            "up-to-date"))))))
   :config
+  (defun ivan/ggtags-mode-maybe ()
+    (let ((no-ggtags-modes '(emacs-lisp-mode)))
+      (unless (memq major-mode no-ggtags-modes)
+        (ggtags-mode +1))))
   (defun ivan/add-ggtags-presenter ()
     (add-hook 'compilation-finish-functions #'ivan/present-search-results))
   (add-hook 'ggtags-global-mode-hook #'ivan/compilation-start-at-first-error)
