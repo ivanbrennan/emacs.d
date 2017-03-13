@@ -234,6 +234,8 @@
      `(flycheck-warning   ((,c (:underline (:style wave :color ,yellow)))))
      `(flycheck-info      ((,c (:underline (:style wave :color ,green)))))
      `(flyspell-incorrect ((,c (:underline (:style wave :color ,red) :inherit unspecified))))
+     ;; ggtags
+     `(ggtags-highlight ((t (:underline nil))))
      ;; jabber
      `(jabber-activity-face ((,c (:inherit bold :foreground ,red))))
      `(jabber-activity-personal-face ((,c (:inherit bold :foreground ,blue))))
