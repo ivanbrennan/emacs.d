@@ -199,11 +199,11 @@
 
 (defun ivan/next-theme ()
   (interactive)
-  (ivan/try-load-theme (ring-next ivan/themes-ring ivan/current-theme)))
+  (ivan/try-load-theme (ring-previous ivan/themes-ring ivan/current-theme)))
 
 (defun ivan/previous-theme ()
   (interactive)
-  (ivan/try-load-theme (ring-previous ivan/themes-ring ivan/current-theme)))
+  (ivan/try-load-theme (ring-next ivan/themes-ring ivan/current-theme)))
 
 (defun ivan/try-load-theme (theme)
   (let ((backup (ivan/disable-themes)))
