@@ -150,9 +150,9 @@
      `(font-lock-regexp-grouping-construct   ((,c (:foreground ,operators :bold t))))
      ;; Modeline
      `(mode-line                   ((,c (:foreground ,modeline-fg
-                                         :background ,(if doom-one-brighter-modeline bg modeline-bg)))))
+                                         :background ,modeline-bg))))
      `(mode-line-inactive          ((,c (:foreground ,modeline-fg-inactive
-                                         :background ,(if doom-one-brighter-modeline bg modeline-bg-inactive)))))
+                                         :background ,modeline-bg-inactive))))
      `(header-line                 ((,c (:inherit mode-line))))
 
      ;; Powerline/Spaceline
