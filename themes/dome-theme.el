@@ -162,6 +162,9 @@
      `(powerline-inactive1         ((,c (:inherit mode-line-inactive))))
      `(powerline-inactive2         ((,c (:inherit mode-line-inactive))))
 
+     ;; custom bitmaps
+     `(left-bar-face               ((,c (:foreground ,fg))))
+
      ;; Dired/dired-k
      `(dired-directory             ((,c (:foreground ,orange))))
      `(dired-ignored               ((,c (:foreground ,comments))))

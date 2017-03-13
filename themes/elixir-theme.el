@@ -123,6 +123,8 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; completions
    `(completions-annotations ((t (:foreground ,ink))))
 
+;;;;; custom bitmaps
+   `(left-bar-face ((t (:foreground ,ink))))
 ;;;;; doom
    `(doom-default
      ((((type graphic)) :inherit default :background ,paperwhite)
