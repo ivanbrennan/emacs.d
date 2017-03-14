@@ -1308,6 +1308,9 @@
     "Reference to evil fold keybindings.")
   (bind-map-set-keys ivan/leader-map "z" #'ivan/toggle-origami-mode)
   :config
+  (let ((fold-replacement "···"))
+    (put-text-property 0 (length fold-replacement) 'face 'hs-face fold-replacement)
+    (setq origami-fold-replacement fold-replacement))
   (defun ivan/toggle-origami-mode ()
     (interactive)
     (if origami-mode
@@ -1347,7 +1350,9 @@
   )
 
 (use-package hideshow
-  :commands (hs-minor-mode hs-toggle-hiding hs-already-hidden-p)
+  :commands (hs-minor-mode
+             hs-toggle-hiding
+             hs-already-hidden-p)
   :config (setq hs-isearch-open t)
   :init
   (defun doom*load-hs-minor-mode ()
@@ -1359,23 +1364,19 @@
   (defface hs-face '((t (:background "#ff8")))
     "Face to hightlight the ... area of hidden regions"
     :group 'hideshow)
-  (defface hs-fringe-face '((t (:foreground "#888")))
+  (defface hs-fringe-face '((t (:foreground "#B3B3B3")))
     "Face used to highlight the fringe on folded regions"
     :group 'hideshow)
   (setq hs-set-up-overlay
         (lambda (ov)
           (when (eq 'code (overlay-get ov 'hs))
             (let* ((marker-string "*")
-                   (display-string (concat " " (all-the-icons-octicon "ellipsis" :v-adjust 0) " "))
+                   (display-string "···")
                    (len (length display-string)))
               (put-text-property 0 1 'display
                                  (list 'left-fringe 'hs-marker 'hs-fringe-face)
                                  marker-string)
-              (put-text-property 0 1 'face 'hs-face display-string)
-              (put-text-property (1- len) len 'face 'hs-face display-string)
-              (put-text-property 1 (1- len)
-                                 'face `(:inherit hs-face :family ,(all-the-icons-octicon-family) :height 1.1)
-                                 display-string)
+              (put-text-property 0 len 'face 'hs-face display-string)
               (overlay-put ov 'before-string marker-string)
               (overlay-put ov 'display display-string))))))
 

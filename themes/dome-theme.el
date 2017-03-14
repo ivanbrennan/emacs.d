@@ -273,6 +273,9 @@
      `(helm-ff-dotted-directory    ((,c (:foreground ,grey-d))))
      `(helm-ff-directory           ((,c (:foreground ,orange))))
      `(helm-ff-executable          ((,c (:foreground ,white :slant italic))))
+     ;; hideshow
+     `(hs-face                     ((,c (:foreground ,grey :background ,grey-d :height 0.7))))
+     `(hs-fringe-face              ((,c (:foreground "#808080"))))
      ;; indent-guide, highlight-{quoted,numbers,indentation}-mode
      `(indent-guide-face                         ((,c (:foreground "#2F2F38"))))
      `(highlight-indentation-face                ((,c (:background "#222830"))))

@@ -627,6 +627,9 @@ Also bind `class' to ((class color) (min-colors 89))."
 ;;;;; helm-swoop
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
+;;;;; hideshow
+   `(hs-face        ((t (:foreground ,shale :background ,whisp2 :height 0.7))))
+   `(hs-fringe-face ((t (:foreground ,pencil2))))
 ;;;;; highlight-quoted
    `(highlight-quoted-symbol ((t (:foreground ,purpcoal0))))
    `(highlight-quoted-quote  ((t (:foreground ,marine))))
