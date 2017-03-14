@@ -2304,6 +2304,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   :init
   (add-hook 'ruby-mode-hook #'ruby-refactor-mode-launch))
 
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'"       . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
 (defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end
              (not isearch-mode-end-hook-quit))
