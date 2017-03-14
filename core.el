@@ -1145,7 +1145,7 @@
     "m e r"      #'eval-region
     "m d"        #'mark-defun
     "o"          #'find-file
-    "C-o"        #'switch-to-buffer
+    "L"          #'switch-to-buffer
     "s"          #'ivan/substitute-word-on-line
     "C-s"        search-map
     "y"          #'ivan/check-tags-state
