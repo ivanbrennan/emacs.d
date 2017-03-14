@@ -1308,9 +1308,7 @@
     "Reference to evil fold keybindings.")
   (bind-map-set-keys ivan/leader-map "z" #'ivan/toggle-origami-mode)
   :config
-  (let ((fold-replacement "···"))
-    (put-text-property 0 (length fold-replacement) 'face 'hs-face fold-replacement)
-    (setq origami-fold-replacement fold-replacement))
+  (setq origami-fold-replacement "···")
   (defun ivan/toggle-origami-mode ()
     (interactive)
     (if origami-mode
@@ -1359,14 +1357,13 @@
     (hs-minor-mode 1)
     (advice-remove 'evil-toggle-fold 'doom-load-hs-minor-mode))
   (advice-add 'evil-toggle-fold :before 'doom*load-hs-minor-mode)
-  ;; Prettify code folding in emacs
-  (define-fringe-bitmap 'hs-marker [128 192 224 240 224 192 128] nil nil 'center)
   (defface hs-face '((t (:background "#ff8")))
     "Face to hightlight the ... area of hidden regions"
     :group 'hideshow)
   (defface hs-fringe-face '((t (:foreground "#B3B3B3")))
     "Face used to highlight the fringe on folded regions"
     :group 'hideshow)
+  (define-fringe-bitmap 'fold-marker [128 192 224 240 224 192 128] nil nil 'center)
   (setq hs-set-up-overlay
         (lambda (ov)
           (when (eq 'code (overlay-get ov 'hs))
@@ -1374,7 +1371,7 @@
                    (display-string "···")
                    (len (length display-string)))
               (put-text-property 0 1 'display
-                                 (list 'left-fringe 'hs-marker 'hs-fringe-face)
+                                 (list 'left-fringe 'fold-marker 'hs-fringe-face)
                                  marker-string)
               (put-text-property 0 len 'face 'hs-face display-string)
               (overlay-put ov 'before-string marker-string)

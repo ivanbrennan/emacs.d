@@ -628,7 +628,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(helm-swoop-target-line-face ((t (:foreground ,marooned :background ,paper))))
    `(helm-swoop-target-word-face ((t (:foreground ,marooned :background ,paper :weight bold))))
 ;;;;; hideshow
-   `(hs-face        ((t (:foreground ,shale :background ,whisp2 :height 0.7))))
+   `(hs-face        ((t (:foreground ,shale :background ,whisp1 :height 0.7))))
    `(hs-fringe-face ((t (:foreground ,pencil2))))
 ;;;;; highlight-quoted
    `(highlight-quoted-symbol ((t (:foreground ,purpcoal0))))
@@ -959,6 +959,8 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(org-habit-ready-future-face ((t :background ,pencil1)))
    `(org-habit-alert-future-face ((t :background ,ink :foreground ,paper)))
    `(org-habit-overdue-future-face ((t :background ,ink)))
+   ;; origami
+   `(origami-fold-replacement-face ((t (:inherit hs-face))))
 ;;;;; outline
    `(outline-1 ((t (:foreground ,ink))))
    `(outline-2 ((t (:foreground ,marine))))

@@ -431,6 +431,8 @@
      `(org-checkbox-statistics-done ((,c (:inherit org-done))))
      `(org-list-bullet           ((,c (:foreground ,cyan))))  ; custom
      `(message-header-name       ((,c (:foreground ,green)))) ; custom
+     ;; origami
+     `(origami-fold-replacement-face ((,c (:inherit hs-face))))
      ;;; rpm-spec-mode
      `(rpm-spec-macro-face        ((,c (:foreground ,yellow))))
      `(rpm-spec-var-face          ((,c (:foreground ,violet))))
