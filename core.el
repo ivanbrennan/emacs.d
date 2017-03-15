@@ -1995,7 +1995,7 @@ Disables `text-scale-mode`."
           (require 'exec-path-from-shell)
           (exec-path-from-shell-initialize)
           exec-path))
-  (with-eval-after-load "evil"
+  (with-eval-after-load 'evil
     (fset 'evil-visual-update-x-selection 'ignore)))
 
 (defun configure-terminal ()
