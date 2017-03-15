@@ -359,7 +359,6 @@
         show-trailing-whitespace t))
 
 (add-hook 'prog-mode-hook #'ivan/code-whitespace)
-(add-hook 'org-mode-hook  #'ivan/code-whitespace)
 
 
 ;; sensibility
@@ -1763,15 +1762,6 @@
     (put 'windsize-left  'isearch-scroll t)
     (put 'windsize-right 'isearch-scroll t)))
 
-(defun ivan/setup-org-mode ()
-  (setq
-   org-hide-leading-stars t
-   line-spacing 0.15
-   )
-  (variable-pitch-mode +1))
-
-(add-hook 'org-mode-hook #'ivan/setup-org-mode)
-
 (use-package powerline
   :init
   (setq
@@ -1785,6 +1775,21 @@
 (use-package core-modeline
   :ensure nil
   :load-path "lisp")
+
+(use-package org
+  :bind
+  (:map org-mode-map ("C-M-<return>" . ivan/org-midline-meta-return))
+  :config
+  (defun ivan/org-midline-meta-return ()
+    (interactive)
+    (end-of-line)
+    (org-meta-return))
+  (defun ivan/setup-org-mode ()
+    (setq org-hide-leading-stars t
+          line-spacing 0.15)
+    (variable-pitch-mode +1))
+  (add-hook 'org-mode-hook #'ivan/setup-org-mode)
+  (add-hook 'org-mode-hook #'ivan/code-whitespace))
 
 (use-package org-bullets
   :config
