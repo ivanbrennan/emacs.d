@@ -2283,6 +2283,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package help-fns+ :commands describe-keymap)
+
 (defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end
              (not isearch-mode-end-hook-quit))
