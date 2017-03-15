@@ -844,6 +844,7 @@
   :diminish ggtags-mode
   :init
   (add-hook 'prog-mode-hook #'ivan/ggtags-mode-maybe)
+  (with-eval-after-load 'org (add-hook 'org-mode-hook #'ggtags-mode))
   (dolist (hook '(yaml-mode-hook))
     (add-hook hook #'ggtags-mode))
   (defun ivan/check-tags-state ()
