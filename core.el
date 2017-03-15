@@ -698,6 +698,7 @@
             (Info-mode              . motion)
             (bookmark-bmenu-mode    . motion)
             (ibuffer-mode           . motion)
+            (imenu-list-major-mode  . motion)
             (neotree-mode           . motion)
             (message-mode           . normal)
             (debugger-mode          . normal)
@@ -1501,6 +1502,14 @@
     ("t"   sp-transpose-sexp      "transpose")
     )
 
+  (defhydra hydra-imenu-list (:hint nil
+                              :pre (setq hydra-lv nil)
+                              :after-exit (setq hydra-lv t)
+                              :foreign-keys run)
+    ("q" nil)
+    ("<escape>" nil)
+    ("SPC" #'imenu-list-display-entry))
+
   (defhydra hydra-dir-navigate (:hint nil
                                 :pre (setq hydra-lv nil)
                                 :after-exit (setq hydra-lv t))
@@ -2284,6 +2293,37 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   :init (setq markdown-command "multimarkdown"))
 
 (use-package help-fns+ :commands describe-keymap)
+
+(use-package imenu-list
+  :commands (imenu-list imenu-list-minor-mode)
+  :config
+  (setq imenu-list-mode-line-format nil
+        imenu-list-position 'right
+        imenu-list-size 40)
+
+  (with-eval-after-load 'evil
+    (evil-define-key 'motion imenu-list-major-mode-map
+     [escape]      #'imenu-list-quit-window
+     (kbd "q")     #'imenu-list-quit-window
+     (kbd "RET")   #'imenu-list-goto-entry
+     (kbd "C-SPC") #'hydra-imenu-list/imenu-list-display-entry
+     [tab]         #'hs-toggle-hiding)
+
+    (add-hook 'imenu-list-major-mode-hook
+              (lambda ()
+                (setq-local evil-motion-state-cursor
+                            '((bar . 0)
+                              (lambda ()
+                                (evil-set-cursor-color (face-foreground 'mode-line-inactive))))))))
+
+    (defun ivan/imenu-list-setup ()
+      (setq line-spacing 2
+            tab-width    1)
+      (when (featurep 'hl-line)
+        (set (make-local-variable 'hl-line-sticky-flag) t)
+        (hl-line-mode +1)))
+
+    (add-hook 'imenu-list-major-mode-hook #'ivan/imenu-list-setup))
 
 (defun ivan/goto-match-beginning ()
   (when (and isearch-forward isearch-other-end

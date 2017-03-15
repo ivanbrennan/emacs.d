@@ -665,6 +665,9 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ido-indicator ((t (:foreground ,marooned :background ,ink))))
 ;;;;; iedit-mode
    `(iedit-occurrence ((t (:background ,paper :weight bold))))
+;;;;; imenu-list
+   `(imenu-list-entry-face-0 ((t (:foreground ,booii))))
+   `(imenu-list-entry-face-1 ((t (:foreground ,bugblue))))
 ;;;;; jabber-mode
    `(jabber-roster-user-away ((t (:foreground ,pencil1))))
    `(jabber-roster-user-online ((t (:foreground ,marine))))
