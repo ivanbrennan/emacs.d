@@ -2244,11 +2244,19 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   :config
   (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
-  (defun ivan/trim-whitespace-on-line (&rest _args)
+  (defun ivan/trim-whitespace-current-line (&rest _args)
+    (ivan/trim-whitespace-relative-line 0))
+  (defun ivan/trim-whitespace-next-line (&rest _args)
+    (ivan/trim-whitespace-relative-line 1))
+
+  (defun ivan/trim-whitespace-relative-line (count)
     (save-excursion
+      (next-line count)
       (delete-trailing-whitespace (line-beginning-position)
                                   (line-end-position))))
-  (advice-add 'ruby-toggle-block :after #'ivan/trim-whitespace-on-line)
+
+  (advice-add 'ruby-do-end-to-brace :after #'ivan/trim-whitespace-current-line)
+  (advice-add 'ruby-brace-to-do-end :after #'ivan/trim-whitespace-next-line)
 
   (with-eval-after-load 'smartparens-ruby
     (advice-add 'sp-ruby-pre-pipe-handler :after #'ivan/trim-whitespace-on-line))
