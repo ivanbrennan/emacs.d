@@ -1,4 +1,5 @@
 * Misc
+** ibuffer-filter-by-modified
 ** suppress eldoc-in-minibuffer when there's no modeline to show it
 ** whitespace: tab ›, space middle-dot
 ** suppress electric parens in evil-replace-state
