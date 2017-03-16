@@ -1025,6 +1025,8 @@
   (add-hook 'prog-mode-hook #'smartparens-strict-mode)
   :config
   (require 'smartparens-config)
+  (add-hook 'evil-replace-state-entry-hook 'turn-off-smartparens-mode)
+  (add-hook 'evil-replace-state-exit-hook  'turn-on-smartparens-mode)
   (evil-define-key 'visual smartparens-mode-map
     "(" (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "(")))
   (evil-define-key 'visual smartparens-mode-map
