@@ -464,6 +464,21 @@
    gnutls-trustfiles (list trustfile)))
 
 
+;; functions
+
+(defun ivan/trim-whitespace-relative-line (count)
+  (save-excursion
+    (next-line count)
+    (delete-trailing-whitespace (line-beginning-position)
+                                (line-end-position))))
+
+  (defun ivan/trim-whitespace-current-line (&rest _args)
+    (ivan/trim-whitespace-relative-line 0))
+
+  (defun ivan/trim-whitespace-next-line (&rest _args)
+    (ivan/trim-whitespace-relative-line 1))
+
+
 ;; packages
 (require 'package)
 
@@ -750,6 +765,11 @@
         (add-hook 'post-command-hook #'evil-maybe-remove-spaces)
         (setq evil-maybe-remove-spaces t)))
     (add-hook 'evil-insert-state-exit-hook #'ivan/trim-autoinserted-whitespace)
+
+    (defun ivan/maybe-trim-whitespace-current-line (&rest _args)
+      (when (evil-insert-state-p) (ivan/trim-whitespace-current-line)))
+    (advice-add 'evil-open-below :before #'ivan/maybe-trim-whitespace-current-line)
+    (advice-add 'evil-open-above :before #'ivan/maybe-trim-whitespace-current-line)
 
     (defun ivan/paste-pop-or-previous-line (count)
       (interactive "p")
@@ -2283,17 +2303,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (use-package ruby-mode
   :config
   (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-
-  (defun ivan/trim-whitespace-current-line (&rest _args)
-    (ivan/trim-whitespace-relative-line 0))
-  (defun ivan/trim-whitespace-next-line (&rest _args)
-    (ivan/trim-whitespace-relative-line 1))
-
-  (defun ivan/trim-whitespace-relative-line (count)
-    (save-excursion
-      (next-line count)
-      (delete-trailing-whitespace (line-beginning-position)
-                                  (line-end-position))))
 
   (advice-add 'ruby-do-end-to-brace :after #'ivan/trim-whitespace-current-line)
   (advice-add 'ruby-brace-to-do-end :after #'ivan/trim-whitespace-next-line)
