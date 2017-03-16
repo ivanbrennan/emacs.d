@@ -2299,7 +2299,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (advice-add 'ruby-brace-to-do-end :after #'ivan/trim-whitespace-next-line)
 
   (with-eval-after-load 'smartparens-ruby
-    (advice-add 'sp-ruby-pre-pipe-handler :after #'ivan/trim-whitespace-on-line))
+    (advice-add 'sp-ruby-pre-pipe-handler :after #'ivan/trim-whitespace-current-line))
 
   (add-hook 'ruby-mode-hook #'(lambda ()
                                 (setq ruby-insert-encoding-magic-comment nil
