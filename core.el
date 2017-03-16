@@ -1941,6 +1941,12 @@
     (evil-define-key 'normal reb-mode-map
       [escape] 'reb-quit)))
 
+(use-package rotate-text
+  :ensure nil
+  :load-path "lisp/rotate-text-20111203.2039"
+  :commands (rotate-text rotate-text-backward)
+  :config (push '("true" "false") rotate-text-words))
+
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
 
 (defvar no-space-before-regexp "^\\|[])]")
