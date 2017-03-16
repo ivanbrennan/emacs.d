@@ -1928,6 +1928,19 @@
   :diminish text-scale-mode
   :defer t)
 
+(use-package re-builder
+  :commands re-builder
+  :init
+  (defun doom|reb-cleanup ()
+    (text-scale-set 2)
+    (goto-char 2))
+  (add-hook 'reb-mode-hook 'doom|reb-cleanup)
+  :config
+  (setq reb-re-syntax 'string)
+  (with-eval-after-load 'evil
+    (evil-define-key 'normal reb-mode-map
+      [escape] 'reb-quit)))
+
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
 
 (defvar no-space-before-regexp "^\\|[])]")
