@@ -1933,7 +1933,7 @@
   :init
   (defun doom|reb-cleanup ()
     (text-scale-set 2)
-    (goto-char 2))
+    (goto-char 3))
   (add-hook 'reb-mode-hook 'doom|reb-cleanup)
   :config
   (setq reb-re-syntax 'string)
