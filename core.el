@@ -2323,6 +2323,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package vimrc-mode
+  :mode (("\\`\\.?vimrc\\'" . vimrc-mode)
+         ("\\.vim\\'"       . vimrc-mode)))
+
 (use-package help-fns+ :commands describe-keymap)
 
 (use-package imenu-list
