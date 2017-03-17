@@ -842,7 +842,23 @@
       "Moves key binding from one keymap to another, deleting from the old location."
       (define-key keymap-to key (lookup-key keymap-from key))
       (define-key keymap-from key nil))
-    (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))))
+    (ivan/move-key evil-motion-state-map evil-normal-state-map (kbd "RET")))
+
+  (defun doom--point-at-bol-non-blank()
+    (save-excursion (evil-first-non-blank) (point)))
+
+  (defun ivan/move-to-bol ()
+    "Moves cursor to the bol. If already there, move it to the first non-blank
+character on the line."
+    (interactive)
+    (evil-save-goal-column
+      (let ((bol (point-at-bol))
+            (point (point)))
+        (if (= bol point)
+            (evil-first-non-blank)
+          (evil-move-beginning-of-line)))))
+
+  (define-key evil-motion-state-map (kbd "0") #'ivan/move-to-bol))
 
 (use-package elisp-slime-nav
   :diminish elisp-slime-nav-mode
