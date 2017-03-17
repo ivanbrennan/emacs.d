@@ -26,6 +26,7 @@
     ("spruce"     . "#63A35C")
     ("greentea"   . "#29D045")
     ("leaf"       . "#83FCA7")
+    ("leafd"      . "#A5F3A6")
     ("melon"      . "#E4FFEA")
     ("limeclay"   . "#F2F9DB")
     ("sand"       . "#F8EEC7")
@@ -374,7 +375,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ediff-even-diff-A ((t (:background ,fluff))))
    `(ediff-even-diff-B ((t (:background ,fluff))))
    `(ediff-fine-diff-A ((t (:background ,eraser))))
-   `(ediff-fine-diff-B ((t (:background ,leaf))))
+   `(ediff-fine-diff-B ((t (:background ,leafd))))
    `(ediff-odd-diff-A ((t (:background ,fluff))))
    `(ediff-odd-diff-B ((t (:background ,fluff))))
 ;;;;; egg

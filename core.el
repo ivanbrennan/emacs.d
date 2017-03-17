@@ -545,23 +545,38 @@
       (ivan/deactivate-doom-config))
     (powerline-reset))
 
+  (defvar ivan/doomable-mode-hooks '(find-file-hook
+                                     Info-mode-hook
+                                     ediff-prepare-buffer-hook))
+
+  (defun ivan/doomable-buffer? ()
+    (or buffer-file-name
+        (derived-mode-p 'prog-mode)))
+
+  (defun ivan/doom-buffer-mode-maybe ()
+    "Enable `doom-buffer-mode' in the current buffer, if it isn't already and the
+buffer represents a real file."
+    (when (and (not doom-buffer-mode)
+               (ivan/doomable-buffer?))
+      (doom-buffer-mode +1)))
+
   (defun ivan/activate-doom-config ()
-    (add-hook 'find-file-hook #'doom-buffer-mode-maybe)
-    (add-hook 'Info-mode-hook #'doom-buffer-mode-maybe)
+    (dolist (hook ivan/doomable-mode-hooks)
+      (add-hook hook #'ivan/doom-buffer-mode-maybe))
     (when ivan/want-brighten-minibuffer
       (add-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer))
-    (mapc #'ivan/doom-buffer-mode-maybe (buffer-list)))
+    (mapc #'ivan/specific-buffer-doom-buffer-mode-maybe (buffer-list)))
 
-  (defun ivan/doom-buffer-mode-maybe (buffer)
+  (defun ivan/specific-buffer-doom-buffer-mode-maybe (buffer)
     (with-current-buffer buffer
       (let ((name (buffer-name buffer)))
         (unless (and (string-match-p "^[ *]" name)
                      (not (equal "*scratch*" name)))
-          (doom-buffer-mode-maybe)))))
+          (ivan/doom-buffer-mode-maybe)))))
 
   (defun ivan/deactivate-doom-config ()
-    (remove-hook 'find-file-hook #'doom-buffer-mode-maybe)
-    (remove-hook 'Info-mode-hook #'doom-buffer-mode-maybe)
+    (dolist (hook ivan/doomable-mode-hooks)
+      (remove-hook hook #'ivan/doom-buffer-mode-maybe))
     (remove-hook 'minibuffer-setup-hook #'doom-brighten-minibuffer)
     (doom-buffer-mode 0))
 
