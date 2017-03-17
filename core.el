@@ -708,6 +708,8 @@ buffer represents a real file."
         ("M-v"         . yank)
         ("C-e"         . evil-copy-from-below)
         ("C-y"         . evil-copy-from-above)
+        :map evil-ex-completion-map
+        ("C-a"         . move-beginning-of-line)
         )
   :config
   (defun evil-consume-next-char-if-replacing (&rest _args)
