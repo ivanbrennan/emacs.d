@@ -685,6 +685,8 @@ buffer represents a real file."
         ("C-w C-SPC"   . ivan/zoom-window)
         ("C-w S-SPC"   . ivan/zoom-other-window)
         ("M-S-SPC"     . eval-expression)
+        ("M-<left>"    . evil-beginning-of-line)
+        ("M-<right>"   . evil-end-of-line)
         ("˜"           . next-error)
         ("Δ"           . next-error)
         ("∏"           . previous-error)
@@ -873,7 +875,17 @@ character on the line."
             (evil-first-non-blank)
           (evil-move-beginning-of-line)))))
 
-  (define-key evil-motion-state-map (kbd "0") #'ivan/move-to-bol))
+  (defun doom/backward-kill-to-bol-and-indent ()
+    "Kill line to the first non-blank character. If invoked again
+afterwards, kill line to column 1."
+    (interactive)
+    (let ((empty-line (sp-point-in-blank-line)))
+      (evil-delete (point-at-bol) (point))
+      (if (not empty-line)
+          (indent-according-to-mode))))
+
+  (define-key evil-motion-state-map (kbd "0") #'ivan/move-to-bol)
+  (define-key evil-insert-state-map (kbd "C-u") #'doom/backward-kill-to-bol-and-indent))
 
 (use-package elisp-slime-nav
   :diminish elisp-slime-nav-mode
