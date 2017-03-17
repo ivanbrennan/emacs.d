@@ -1138,7 +1138,7 @@
     "="          #'align-regexp
     "9"          #'highlight-parentheses-mode
     "SPC"        #'list-buffers
-    "C-SPC"      #'shell-command
+    "1"          #'shell-command
     "TAB"        #'neotree-toggle
     "q"          #'hydra-smartparens/body
     "C-l"        #'ivan/redraw-display
@@ -1657,6 +1657,12 @@
    ivy-count-format ""
    ivy-format-function 'ivy-format-function-line
    ))
+
+(use-package swiper
+  :commands swiper
+  :config
+  (with-eval-after-load 'bind-map
+    (bind-map-set-keys ivan/leader-map "C-SPC" #'swiper)))
 
 (use-package flx
   :defer t)
