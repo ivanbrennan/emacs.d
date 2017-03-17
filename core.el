@@ -2204,6 +2204,28 @@ Disables `text-scale-mode`."
 
 (defconst IS-MAC (eq system-type 'darwin))
 
+(use-package google-this
+  :commands (google-this
+             google-this-search
+             google-this-word
+             google-this-symbol
+             google-this-region)
+  :bind (("M-G" . google-this)))
+
+(use-package dash-at-point
+  :when IS-MAC
+  :commands (dash-at-point
+             dash-at-point-with-docset
+             dash-at-point-run-search
+             dash-at-point-guess-docset)
+  :bind (("M-H" . dash-at-point)))
+
+(use-package zeal-at-point
+  :when (not IS-MAC)
+  :commands (zeal-at-point
+             zeal-at-point-set-docset)
+  :bind (("M-H" . dash-at-point)))
+
 (defun configure-mac-modifiers ()
   (setq mac-command-modifier 'meta))
 
