@@ -1741,7 +1741,7 @@ spaces on either side of the point if so. Resorts to
         ("S-TAB"     . company-select-previous)
         ("C-e"       . company-abort)
         ("C-w"       . nil)
-        ("C-o"       . company-show-location)
+        ("C-SPC"     . company-show-location)
         )
   :config
   (setq
