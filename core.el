@@ -1714,11 +1714,7 @@ spaces on either side of the point if so. Resorts to
 
 (use-package company
   :commands (company-mode
-             global-company-mode
-             company-complete
-             company-complete-common
-             company-manual-begin
-             company-grab-line)
+             global-company-mode)
   :init
   (defun check-expansion ()
     (save-excursion
