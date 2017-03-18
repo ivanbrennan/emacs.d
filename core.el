@@ -1733,18 +1733,48 @@ spaces on either side of the point if so. Resorts to
   (define-key evil-insert-state-map [tab] #'tab-indent-or-complete)
   :bind
   (:map company-active-map
-        ("C-n"   . company-select-next)
-        ("C-p"   . company-select-previous)
-        ("<tab>" . company-complete-common-or-cycle)
+        ("C-n"       . company-select-next)
+        ("C-p"       . company-select-previous)
+        ("<tab>"     . company-complete-common-or-cycle)
+        ("TAB"       . company-complete-common-or-cycle)
+        ("<backtab>" . company-select-previous)
+        ("S-TAB"     . company-select-previous)
+        ("C-e"       . company-abort)
+        ("C-w"       . nil)
+        ("C-o"       . company-show-location)
         )
   :config
   (setq
-   company-backends      '(company-capf)
-   company-idle-delay    2.0
+   company-backends  '(company-gtags company-capf)
+   company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
+                       company-preview-frontend)
+   company-idle-delay nil
    company-require-match 'never
+   company-global-modes '(not eshell-mode
+                              comint-mode
+                              erc-mode
+                              message-mode
+                              help-mode)
    )
-  (global-company-mode +1)
-  )
+  (with-eval-after-load 'evil
+    (defun doom/company-evil-complete-next (&optional arg)
+      "dabbrev wrapper for `evil-complete-next'"
+      (call-interactively 'company-dabbrev)
+      (if (eq company-candidates-length 1)
+          (company-complete)))
+
+    (defun doom/company-evil-complete-previous (&optional arg)
+      "dabbrev wrapper for `evil-complete-previous'"
+      (let ((company-selection-wrap-around t))
+        (call-interactively 'company-dabbrev)
+        (if (eq company-candidates-length 1)
+            (company-complete)
+          (call-interactively 'company-select-previous))))
+
+    (setq evil-complete-next-func     'doom/company-evil-complete-next
+          evil-complete-previous-func 'doom/company-evil-complete-previous))
+
+  (global-company-mode +1))
 
 (use-package swiper
   :commands ivy-mode)
