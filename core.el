@@ -878,7 +878,7 @@ character on the line."
           (evil-move-beginning-of-line)))))
 
   (defun doom/backward-kill-to-bol-and-indent ()
-    "Kill line to the first non-blank character. If invoked again
+    "Kill line to the first non-blank character. If invoked again \
 afterwards, kill line to column 1."
     (interactive)
     (let ((empty-line (sp-point-in-blank-line)))
