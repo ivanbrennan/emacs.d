@@ -1756,6 +1756,8 @@ spaces on either side of the point if so. Resorts to
                               message-mode
                               help-mode)
    )
+  (push 'company-sort-by-occurrence company-transformers)
+
   (with-eval-after-load 'evil
     (defun doom/company-evil-complete-next (&optional arg)
       "dabbrev wrapper for `evil-complete-next'"
