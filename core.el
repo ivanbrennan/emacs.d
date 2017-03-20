@@ -2062,7 +2062,7 @@ spaces on either side of the point if so. Resorts to
         projectile-cache-file (ivan/cache-file "projectile.cache")
         projectile-known-projects-file (ivan/cache-file "projectile.projects"))
 
-  (dolist (dir '(ivan/cache-dir "assets" ".cask" ".sync"))
+  (dolist (dir `(,ivan/cache-dir "assets" ".cask" ".sync"))
     (add-to-list 'projectile-globally-ignored-directories dir))
   (dolist (suf '(".elc" ".project"))
     (add-to-list 'projectile-globally-ignored-file-suffixes suf))
