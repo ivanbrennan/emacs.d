@@ -1745,6 +1745,8 @@ spaces on either side of the point if so. Resorts to
    company-backends  '(company-gtags company-capf)
    company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
                        company-preview-frontend)
+   company-auto-complete t
+   company-auto-complete-chars '(?\s ?\( ?\) ?\, ?\.)
    company-idle-delay nil
    company-dabbrev-ignore-case nil
    company-dabbrev-downcase nil
@@ -1794,7 +1796,9 @@ spaces on either side of the point if so. Resorts to
   :diminish 'ivy-mode
   :bind
   (:map ivy-minibuffer-map
-        ("<escape>" . minibuffer-keyboard-quit))
+        ("<escape>" . minibuffer-keyboard-quit)
+        ("C-u"      . backward-kill-sentence)
+        ("M-v"      . yank))
   :config
   (setq
    ivy-count-format ""
@@ -2012,6 +2016,7 @@ spaces on either side of the point if so. Resorts to
     ))
 
 (use-package magit
+  :commands (magit-status)
   :config
   (progn
     (setq
