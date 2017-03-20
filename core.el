@@ -1746,6 +1746,8 @@ spaces on either side of the point if so. Resorts to
    company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
                        company-preview-frontend)
    company-idle-delay nil
+   company-dabbrev-ignore-case nil
+   company-dabbrev-downcase nil
    company-require-match 'never
    company-global-modes '(not eshell-mode
                               comint-mode
