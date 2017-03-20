@@ -2018,6 +2018,7 @@ spaces on either side of the point if so. Resorts to
      )))
 
 (use-package gitconfig-mode :mode ("/\\.?git/?config$" "/\\.gitmodules$"))
+(use-package gitignore-mode :mode ("/\\.gitignore$" "/\\.git/info/exclude$" "/git/ignore$"))
 
 (use-package flycheck
   :commands (flycheck-mode
