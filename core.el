@@ -2017,6 +2017,27 @@ spaces on either side of the point if so. Resorts to
      magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
      )))
 
+(use-package flycheck
+  :commands (flycheck-mode
+             flycheck-buffer
+             flycheck-list-errors)
+  :init
+  (setq
+   flycheck-indication-mode 'right-fringe
+   flycheck-check-syntax-automatically '(save mode-enabled)
+   )
+  :config
+  (defun doom*flycheck-buffer ()
+    (when (bound-and-true-p flycheck-mode)
+      (flycheck-buffer)))
+  (advice-add 'evil-force-normal-state :after 'doom*flycheck-buffer)
+  (define-fringe-bitmap 'flycheck-fringe-bitmap-double-arrow
+    [0 0 0 0 0 4 12 28 60 124 252 124 60 28 12 4 0 0 0 0])
+  (when (eq window-system 'mac)
+    (use-package flycheck-pos-tip
+      :init (flycheck-pos-tip-mode +1))))
+
+
 (use-package flymake-ruby
   :diminish flymake-mode
   :init
