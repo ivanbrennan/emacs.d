@@ -2055,9 +2055,19 @@ spaces on either side of the point if so. Resorts to
 
 (use-package projectile
   :commands projectile-find-file
+  :bind ("M-O" . projectile-find-file)
   :config
-  (setq projectile-completion-system 'ivy)
-  (bind-key "M-O" 'projectile-find-file))
+  (setq projectile-completion-system 'ivy
+        projectile-enable-caching t
+        projectile-cache-file (ivan/cache-file "projectile.cache")
+        projectile-known-projects-file (ivan/cache-file "projectile.projects"))
+
+  (dolist (dir '(ivan/cache-dir "assets" ".cask" ".sync"))
+    (add-to-list 'projectile-globally-ignored-directories dir))
+  (dolist (suf '(".elc" ".project"))
+    (add-to-list 'projectile-globally-ignored-file-suffixes suf))
+
+  (projectile-global-mode +1))
 
 (use-package projectile-rails
   :diminish projectile-rails-mode
