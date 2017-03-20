@@ -2022,6 +2022,20 @@ spaces on either side of the point if so. Resorts to
 (use-package gitconfig-mode :mode ("/\\.?git/?config$" "/\\.gitmodules$"))
 (use-package gitignore-mode :mode ("/\\.gitignore$" "/\\.git/info/exclude$" "/git/ignore$"))
 
+(use-package git-messenger
+  :commands git-messenger:popup-message
+  :bind (:map git-messenger-map
+              ("<escape>" . git-messenger:popup-close)
+              ("q"        . git-messenger:popup-close))
+  :init
+  (defvar git-messenger-map (make-sparse-keymap))
+  (bind-map-set-keys ivan/leader-map
+    "v o" #'git-messenger:popup-message)
+  :config
+  (setq git-messenger:show-detail t
+        git-messenger:use-magit-popup t)
+  )
+
 (use-package flycheck
   :commands (flycheck-mode
              flycheck-buffer
