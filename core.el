@@ -2017,6 +2017,8 @@ spaces on either side of the point if so. Resorts to
      magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
      )))
 
+(use-package gitconfig-mode :mode ("/\\.?git/?config$" "/\\.gitmodules$"))
+
 (use-package flycheck
   :commands (flycheck-mode
              flycheck-buffer
