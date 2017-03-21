@@ -713,6 +713,11 @@ buffer represents a real file."
     (when (evil-replace-state-p) (delete-char 1)))
   (advice-add 'evil-copy-from-above :after #'evil-consume-next-char-if-replacing)
   (advice-add 'evil-copy-from-below :after #'evil-consume-next-char-if-replacing)
+
+  (define-prefix-command 'evil-completion-map)
+  (add-to-list 'evil-insert-state-bindings '("\C-x" . evil-completion-map))
+  (evil-update-insert-state-bindings)
+
   (progn
     (add-hook 'after-init-hook #'evil-mode)
     (setq
