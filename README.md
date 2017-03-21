@@ -47,3 +47,8 @@ ___
 
     export GTAGSCONF=/usr/local/share/gtags/gtags.conf
     export GTAGSLABEL=new-ctags
+
+## Install gnutls and certifi to facilitate TLS
+
+    brew install gnutls
+    pip install certifi
