@@ -1798,13 +1798,16 @@ spaces on either side of the point if so. Resorts to
     "C-r" #'ivan/counsel-ag-project))
 
 (use-package ivy
-  :commands ivy-read
+  :commands (ivy-read ivy-completing-read)
   :diminish 'ivy-mode
   :bind
   (:map ivy-minibuffer-map
         ("<escape>" . minibuffer-keyboard-quit)
         ("C-u"      . backward-kill-sentence)
         ("M-v"      . yank))
+  :init
+  (setq projectile-completion-system   'ivy
+        magit-completing-read-function 'ivy-completing-read)
   :config
   (setq
    ivy-count-format ""
@@ -2087,8 +2090,7 @@ spaces on either side of the point if so. Resorts to
   :commands projectile-find-file
   :bind ("M-O" . projectile-find-file)
   :config
-  (setq projectile-completion-system 'ivy
-        projectile-enable-caching t
+  (setq projectile-enable-caching t
         projectile-cache-file (ivan/cache-file "projectile.cache")
         projectile-known-projects-file (ivan/cache-file "projectile.projects"))
 
