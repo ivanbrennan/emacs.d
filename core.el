@@ -1297,7 +1297,7 @@ spaces on either side of the point if so. Resorts to
     "y"          #'ivan/check-tags-state
     "C-v"        #'magit-blame
     "v s"        #'magit-status
-    "v v"        #'magit-branch-popup
+    "b SPC"      #'magit-branch-popup
     "w k"        #'evil-window-delete
     "."          #'ivan/zoom-window
     "C-."        #'ivan/toggle-narrowing-zoom
