@@ -1775,9 +1775,6 @@ spaces on either side of the point if so. Resorts to
 
   (global-company-mode +1))
 
-(use-package swiper
-  :commands ivy-mode)
-
 (use-package counsel
   :commands counsel-ag
   :config
@@ -1789,7 +1786,7 @@ spaces on either side of the point if so. Resorts to
   (global-set-key [remap describe-function] #'counsel-describe-function))
 
 (use-package ivy
-  :commands (ivy-read ivy-completing-read)
+  :commands (ivy-mode ivy-read ivy-completing-read)
   :diminish 'ivy-mode
   :bind
   (:map ivy-minibuffer-map
@@ -1808,6 +1805,7 @@ spaces on either side of the point if so. Resorts to
 (use-package swiper
   :commands swiper
   :config
+  (autoload 'string-trim-right "subr-x")
   (with-eval-after-load 'bind-map
     (bind-map-set-keys ivan/leader-map "C-SPC" #'swiper)))
 
