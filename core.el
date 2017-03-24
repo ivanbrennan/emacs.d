@@ -714,11 +714,6 @@ buffer represents a real file."
   (advice-add 'evil-copy-from-above :after #'evil-consume-next-char-if-replacing)
   (advice-add 'evil-copy-from-below :after #'evil-consume-next-char-if-replacing)
 
-  ;; TODO: remove this once https://github.com/emacs-evil/evil/pull/785 is merged
-  (define-prefix-command 'evil-completion-map)
-  (add-to-list 'evil-insert-state-bindings '("\C-x" . evil-completion-map))
-  (evil-update-insert-state-bindings)
-
   (progn
     (add-hook 'after-init-hook #'evil-mode)
     (setq
