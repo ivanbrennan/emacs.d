@@ -709,11 +709,6 @@ buffer represents a real file."
         ("C-a"         . move-beginning-of-line)
         )
   :config
-  (defun evil-consume-next-char-if-replacing (&rest _args)
-    (when (evil-replace-state-p) (delete-char 1)))
-  (advice-add 'evil-copy-from-above :after #'evil-consume-next-char-if-replacing)
-  (advice-add 'evil-copy-from-below :after #'evil-consume-next-char-if-replacing)
-
   (progn
     (add-hook 'after-init-hook #'evil-mode)
     (setq
