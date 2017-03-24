@@ -1790,7 +1790,8 @@ spaces on either side of the point if so. Resorts to
     (interactive)
     (counsel-ag nil (locate-dominating-file default-directory ".git")))
   (bind-map-set-keys ivan/leader-map
-    "C-r" #'ivan/counsel-ag-project))
+    "C-r" #'ivan/counsel-ag-project)
+  (global-set-key [remap describe-function] #'counsel-describe-function))
 
 (use-package ivy
   :commands (ivy-read ivy-completing-read)
