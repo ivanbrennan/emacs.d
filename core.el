@@ -548,7 +548,8 @@
 
   (defun ivan/doomable-buffer? ()
     (or buffer-file-name
-        (derived-mode-p 'prog-mode)))
+        (derived-mode-p 'prog-mode)
+        (equal "*scratch*" (buffer-name))))
 
   (defun ivan/doom-buffer-mode-maybe ()
     "Enable `doom-buffer-mode' in the current buffer, if it isn't already and the
