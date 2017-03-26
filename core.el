@@ -2478,7 +2478,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
    (if ivan/padding-enabled ivan/padding-min ivan/padding-degree))
   (setq-local ivan/padding-enabled (not ivan/padding-enabled)))
 
-(defun ivan//apply-padding-degree (n) (set-window-fringes nil n))
+(defun ivan//apply-padding-degree (n)
+  (set-window-fringes nil n nil (when (<= n ivan/padding-min)
+                                  fringes-outside-margins)))
 
 
 ;; etc.
