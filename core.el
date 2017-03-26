@@ -581,7 +581,16 @@ buffer represents a real file."
   (add-hook 'ivan/rotated-theme-hook #'ivan/update-doom-settings)
   (add-hook 'after-init-hook #'ivan/update-doom-settings)
 
-  (when (display-graphic-p) (require 'doom-neotree)))
+  (when (display-graphic-p) (require 'doom-neotree))
+
+  (defun ivan/adjust-fringe-background (n)
+    (let* ((default-bg (face-background 'default))
+           (doom-bg (or (face-background 'doom-default) default-bg))
+           (bg (if (and (> n ivan/padding-min) (not doom-buffer-mode))
+                   default-bg
+                 doom-bg)))
+      (set-face-background 'fringe bg)))
+  (advice-add 'ivan//apply-padding-degree :after #'ivan/adjust-fringe-background))
 
 (use-package savehist
   :init
