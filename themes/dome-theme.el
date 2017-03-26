@@ -116,6 +116,8 @@
      `(highlight              ((,c (:background ,blue :foreground ,black))))
      `(hl-line                ((,c (:background ,bg))))
      `(cursor                 ((,c (:background ,fg))))
+     `(link                   ((,c (:foreground "#65B1EC" :underline t))))
+     `(link-visited           ((,c (:foreground ,teal :underline t))))
      `(shadow                 ((,c (:foreground ,grey))))
      `(minibuffer-prompt      ((,c (:foreground ,fg))))
      `(tooltip                ((,c (:background ,black :foreground ,fg))))
