@@ -1112,7 +1112,20 @@ afterwards, kill line to column 1."
 configuration."
     (when (and (featurep 'neotree) (neo-global--window-exists-p))
       (neotree-hide)))
-  (add-hook 'kill-emacs-hook 'doom|wg-cleanup))
+  (add-hook 'kill-emacs-hook 'doom|wg-cleanup)
+
+  (with-eval-after-load 'hydra
+    (defhydra hydra-layouts (:color blue)
+      "layouts"
+      ("c"        wg-create-workgroup "create")
+      ("n"        wg-switch-to-workgroup-right "next" :color red)
+      ("p"        wg-switch-to-workgroup-left "previous" :color red)
+      ("l"        wg-switch-to-previous-workgroup "last")
+      ("SPC"      wg-switch-to-workgroup "switch")
+      ("q"        nil "quit")
+      ("<escape>" nil "quit")))
+  (with-eval-after-load 'bind-map
+    (bind-map-set-keys ivan/leader-map "g" #'hydra-layouts/body)))
 
 (use-package smartparens
   :diminish smartparens-mode
@@ -1837,10 +1850,11 @@ spaces on either side of the point if so. Resorts to
 
 (use-package swiper
   :commands swiper
-  :config
-  (autoload 'string-trim-right "subr-x")
+  :init
   (with-eval-after-load 'bind-map
-    (bind-map-set-keys ivan/leader-map "C-SPC" #'swiper)))
+    (bind-map-set-keys ivan/leader-map "C-SPC" #'swiper))
+  :config
+  (autoload 'string-trim-right "subr-x"))
 
 (use-package flx
   :defer t)
