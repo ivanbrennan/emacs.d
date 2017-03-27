@@ -1091,6 +1091,29 @@ afterwards, kill line to column 1."
   (when (bound-and-true-p nlinum-mode)
     (nlinum--flush)))
 
+(use-package workgroups2
+  ;; TODO: investigate persp-mode as an alternative
+  :when (display-graphic-p)
+  :init
+  (make-directory (ivan/cache-file "workgroups") 'mkdir_p)
+  (setq
+   wg-session-file (ivan/cache-file "workgroups/last")
+   wg-first-wg-name "*untitled*"
+   wg-session-load-on-start nil
+   wg-mode-line-display-on nil
+   wg-mess-with-buffer-list nil
+   wg-emacs-exit-save-behavior 'save
+   wg-workgroups-mode-exit-save-behavior 'save
+   wg-log-level 0)
+  (advice-add 'wg-change-modeline :override 'ignore)
+
+  (defun doom|wg-cleanup ()
+    "Remove unsavable windows and buffers before we save the window
+configuration."
+    (when (and (featurep 'neotree) (neo-global--window-exists-p))
+      (neotree-hide)))
+  (add-hook 'kill-emacs-hook 'doom|wg-cleanup))
+
 (use-package smartparens
   :diminish smartparens-mode
   :init
