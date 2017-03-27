@@ -1123,9 +1123,7 @@ configuration."
       ("l"        wg-switch-to-previous-workgroup "last")
       ("SPC"      wg-switch-to-workgroup "switch")
       ("q"        nil "quit")
-      ("<escape>" nil "quit")))
-  (with-eval-after-load 'bind-map
-    (bind-map-set-keys ivan/leader-map "g" #'hydra-layouts/body)))
+      ("<escape>" nil "quit"))))
 
 (use-package smartparens
   :diminish smartparens-mode
@@ -1315,6 +1313,7 @@ spaces on either side of the point if so. Resorts to
     "f a"        #'find-alternate-file
     "f s"        #'save-buffer
     "f w"        #'write-file
+    "g"          #'hydra-layouts/body
     "h"          #'hydra-dir-navigate/dired-jump
     "i"          #'os-switch-to-term
     "a"          #'ag-project
