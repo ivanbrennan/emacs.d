@@ -1852,6 +1852,14 @@ spaces on either side of the point if so. Resorts to
     (evil-define-key 'normal quickrun/mode-map
       (kbd "q") #'quit-window)))
 
+(use-package repl-toggle
+  :commands (rtog/toggle-repl)
+  :preface (defvar rtog/mode-repl-alist nil)
+  :init
+  (defmacro def-repl! (mode command)
+    "Define a REPL for a mode."
+    `(push '(,mode . ,command) rtog/mode-repl-alist)))
+
 (use-package counsel
   :commands counsel-ag
   :config
