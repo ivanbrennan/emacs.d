@@ -1123,7 +1123,9 @@ configuration."
       ("l"        wg-switch-to-previous-workgroup "last")
       ("SPC"      wg-switch-to-workgroup "switch")
       ("q"        nil "quit")
-      ("<escape>" nil "quit"))))
+      ("<escape>" nil "quit")))
+  :config
+  (workgroups-mode +1))
 
 (use-package smartparens
   :diminish smartparens-mode
