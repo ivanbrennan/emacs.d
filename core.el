@@ -947,6 +947,7 @@ afterwards, kill line to column 1."
   :defer t)
 
 (use-package nand2tetris
+  :disabled t
   :ensure nil
   :mode ("\\.hdl\\'" . nand2tetris-mode)
   :config
