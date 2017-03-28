@@ -249,7 +249,8 @@
 
 (dolist (hook '(prog-mode-hook
                 compilation-mode-hook
-                occur-mode-hook))
+                occur-mode-hook
+                dired-mode-hook))
   (add-hook hook #'ivan/truncate-lines))
 
 (add-hook 'text-mode-hook #'visual-line-mode)
