@@ -4,6 +4,17 @@
   ("/"     (lookup-key ibuffer-mode-map "/")
    "/ SPC" 'ibuffer-filter-by-name))
 
+(defun ivan/visit-buffer-bury-ibuffer (&optional single)
+  (interactive)
+  (let ((orig-buffer (current-buffer))
+        (orig-mode major-mode))
+    (ibuffer-visit-buffer single)
+    (when (eq 'ibuffer-mode orig-mode)
+      (bury-buffer orig-buffer)
+      (unrecord-window-buffer nil orig-buffer))))
+
+(define-key ibuffer-mode-map [remap ibuffer-visit-buffer] #'ivan/visit-buffer-bury-ibuffer)
+
 (evil-set-initial-state 'ibuffer-mode 'motion)
 
 (evil-define-key 'motion ibuffer-mode-map
