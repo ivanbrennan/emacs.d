@@ -286,6 +286,7 @@
          (or
           "*rspec-compilation*"
           "*ert*"
+          "*quickrun*"
           )
          eos)
     (display-buffer-reuse-window
@@ -1822,6 +1823,34 @@ spaces on either side of the point if so. Resorts to
 
   (global-company-mode +1))
 
+(use-package quickrun
+  :commands (quickrun
+             quickrun-region
+             quickrun-with-arg
+             quickrun-shell
+             quickrun-compile-only
+             quickrun-replace-region)
+  :init (add-hook 'quickrun/mode-hook 'linum-mode)
+  (bind-map ivan/quickrun-normal-leader-map
+    :evil-keys ("SPC")
+    :evil-states (normal motion)
+    :bindings ("r" #'quickrun))
+  (bind-map ivan/quickrun-visual-leader-map
+    :evil-keys ("SPC")
+    :evil-states (visual)
+    :bindings ("r" #'quickrun-region
+               "R" #'quickrun-replace-region))
+  :config
+  (setq quickrun-focus-p nil)
+  (defun doom|quickrun-after-run ()
+    "Ensures window is scrolled to BOF"
+    (with-selected-window (get-buffer-window quickrun/buffer-name)
+      (goto-char (point-min))))
+  (add-hook 'quickrun-after-run-hook 'doom|quickrun-after-run)
+  (with-eval-after-load 'evil
+    (evil-define-key 'normal quickrun/mode-map
+      (kbd "q") #'quit-window)))
+
 (use-package counsel
   :commands counsel-ag
   :config
@@ -1913,6 +1942,7 @@ spaces on either side of the point if so. Resorts to
                        rspec-compilation-mode
                        ert-results-mode
                        ggtags-global-mode
+                       quickrun/mode
                        rake-compilation-mode)
         magnet-names '("*Pp Eval Output*")))
 
