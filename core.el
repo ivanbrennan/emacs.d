@@ -1,12 +1,6 @@
 ;; blank slate
-(setq
- inhibit-startup-screen t
- inhibit-startup-echo-area-message "ivan"
- initial-scratch-message nil
- )
-
-;; If your init file is byte-compiled, use the following form instead:
-;;  (eval \\='(setq inhibit-startup-echo-area-message \"YOUR-USER-NAME\"))
+(setq inhibit-startup-screen t
+      initial-scratch-message nil)
 
 ;; clean screen
 (menu-bar-mode   0)
