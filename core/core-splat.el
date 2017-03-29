@@ -21,7 +21,7 @@
   "List of widgets to display in a blank splat buffer.")
 
 (define-derived-mode splat-buffer-mode fundamental-mode
-  "v1"
+  "v0"
   "Major mode for the splat buffer.")
 
 (defvar splat-buffer--width 0)
@@ -110,7 +110,7 @@
   (mapc (lambda (line)
           (insert "\n")
           (insert (propertize (s-center splat-buffer--width line)
-                              'face 'font-lock-comment-face) " "))
+                              'face 'font-lock-string-face) " "))
         '("+++++++                                    +++++++"
           "o+++++o              +++++++o+             +++++++"
           "o++++o             ++++++++++++             +++++o"

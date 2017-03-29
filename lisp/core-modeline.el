@@ -94,7 +94,7 @@ active.")
 (add-hook 'find-file-hook 'doom-ml|env-update)
 
 (defun doom/project-root ()
-  (locate-dominating-file default-directory ".git"))
+  (or (locate-dominating-file default-directory ".git") default-directory))
 
 (defun doom-ml|env-update ()
   "Update (py|rb)env version string in `doom-ml--env-version', generated with
