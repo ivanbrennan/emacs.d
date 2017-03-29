@@ -911,16 +911,18 @@ afterwards, kill line to column 1."
 
 (use-package ggtags
   :commands (ggtags-mode
-             ivan/ggtags-mode-maybe
+             ivan/ggtags-maybe
+             ivan/dired-ggtags-maybe
              ggtags-navigation-mode
              ggtags-find-tag-dwim
              ggtags-find-tag-regexp)
   :diminish ggtags-mode
   :init
-  (add-hook 'prog-mode-hook #'ivan/ggtags-mode-maybe)
+  (add-hook 'prog-mode-hook #'ivan/ggtags-maybe)
   (with-eval-after-load 'org (add-hook 'org-mode-hook #'ggtags-mode))
   (dolist (hook '(yaml-mode-hook))
     (add-hook hook #'ggtags-mode))
+  (add-hook 'dired-mode-hook #'ivan/dired-ggtags-maybe)
   (defun ivan/check-tags-state ()
     (interactive)
     (let ((project (and (bound-and-true-p ggtags-mode)
@@ -931,7 +933,9 @@ afterwards, kill line to column 1."
                              "updating..."
                            "up-to-date"))))))
   :config
-  (defun ivan/ggtags-mode-maybe ()
+  (defun ivan/dired-ggtags-maybe ()
+    (when (locate-dominating-file default-directory ".git") (ggtags-mode +1)))
+  (defun ivan/ggtags-maybe ()
     (let ((no-ggtags-modes '(emacs-lisp-mode)))
       (unless (memq major-mode no-ggtags-modes)
         (ggtags-mode +1))))
