@@ -152,6 +152,10 @@
   (expand-file-name ".cache" ivan/emacs-dir)
   "Storage area for persistent files.")
 
+(defconst ivan/core-dir
+  (expand-file-name "core" ivan/emacs-dir)
+  "Directory for core configuration files.")
+
 (defconst ivan/config-dir
   (expand-file-name "config" ivan/emacs-dir)
   "Directory for feature configuration files.")
@@ -383,7 +387,6 @@
  history-delete-duplicates           t
  history-length                      500
  idle-update-delay                   2
- initial-major-mode                  'fundamental-mode
  ispell-program-name                 "/usr/local/bin/aspell"
  load-prefer-newer                   t
  minibuffer-eldef-shorten-default    t
@@ -426,8 +429,10 @@
 (defvar initial-load-path load-path
   "Initial `load-path', used as a base so reloads are idempotent.")
 
-(setq load-path (append (list ivan/config-dir) initial-load-path))
+(setq load-path (append (list ivan/core-dir ivan/config-dir) initial-load-path))
 
+(with-eval-after-load 'core-modeline
+  (require 'core-splat))
 
 ;; documentation
 (with-eval-after-load 'info
@@ -540,12 +545,13 @@
 
   (defvar ivan/doomable-mode-hooks '(find-file-hook
                                      Info-mode-hook
+                                     splat-buffer-mode-hook
                                      ediff-prepare-buffer-hook))
 
   (defun ivan/doomable-buffer? ()
     (or buffer-file-name
         (derived-mode-p 'prog-mode)
-        (equal "*scratch*" (buffer-name))))
+        (equal "*splat*"  (buffer-name))))
 
   (defun ivan/doom-buffer-mode-maybe ()
     "Enable `doom-buffer-mode' in the current buffer, if it isn't already and the
@@ -565,7 +571,7 @@ buffer represents a real file."
     (with-current-buffer buffer
       (let ((name (buffer-name buffer)))
         (unless (and (string-match-p "^[ *]" name)
-                     (not (equal "*scratch*" name)))
+                     (not (equal "*splat*"  name)))
           (ivan/doom-buffer-mode-maybe)))))
 
   (defun ivan/deactivate-doom-config ()
@@ -1288,6 +1294,7 @@ spaces on either side of the point if so. Resorts to
     ","          #'other-window
     "`"          #'variable-pitch-mode
     "="          #'align-regexp
+    "8"          #'switch-to-splat-buffer
     "9"          #'highlight-parentheses-mode
     "SPC"        #'list-buffers
     "1"          #'shell-command
