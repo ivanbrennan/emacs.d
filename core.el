@@ -1345,6 +1345,7 @@ spaces on either side of the point if so. Resorts to
     "y"          #'ivan/check-tags-state
     "C-v"        #'magit-blame
     "v s"        #'magit-status
+    "v SPC"      #'ivan/vc-refresh-state
     "b SPC"      #'magit-branch-popup
     "w k"        #'evil-window-delete
     "."          #'ivan/zoom-window
@@ -2117,6 +2118,10 @@ spaces on either side of the point if so. Resorts to
      magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
      magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
      )))
+
+(defun ivan/vc-refresh-state ()
+  (interactive)
+  (vc-refresh-state))
 
 (use-package gitconfig-mode :mode ("/\\.?git/?config$" "/\\.gitmodules$"))
 (use-package gitignore-mode :mode ("/\\.gitignore$" "/\\.git/info/exclude$" "/git/ignore$"))
