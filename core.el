@@ -2329,6 +2329,7 @@ Disables `text-scale-mode`."
    ("M-n" . make-frame)
    ("M-s" . save-buffer)
    ("M-u" . ivan/toggle-transparency)
+   ("M-v" . yank)
    ("M-=" . text-scale-increase)
    ("M--" . text-scale-decrease)
    ("M-0" . ivan/text-scale-reset)
