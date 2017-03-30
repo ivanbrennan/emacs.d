@@ -1104,6 +1104,7 @@ afterwards, kill line to column 1."
 (use-package workgroups2
   ;; TODO: investigate persp-mode as an alternative
   :when (display-graphic-p)
+  :commands wg-open-session
   :init
   (make-directory (ivan/cache-file "workgroups") 'mkdir_p)
   (setq
@@ -1120,8 +1121,10 @@ afterwards, kill line to column 1."
   (defun doom|wg-cleanup ()
     "Remove unsavable windows and buffers before we save the window
 configuration."
-    (when (and (featurep 'neotree) (neo-global--window-exists-p))
-      (neotree-hide)))
+    (let (splat-buffer-inhibit-refresh)
+      ;; (doom/popup-close-all)
+      (when (and (featurep 'neotree) (neo-global--window-exists-p))
+        (neotree-hide))))
   (add-hook 'kill-emacs-hook 'doom|wg-cleanup)
 
   (with-eval-after-load 'hydra
@@ -1870,6 +1873,13 @@ spaces on either side of the point if so. Resorts to
     "Define a REPL for a mode."
     `(push '(,mode . ,command) rtog/mode-repl-alist)))
 
+(use-package recentf
+  :init
+  (defun ivan/recentf ()
+    (interactive)
+    (require 'recentf)
+    (recentf-mode)))
+
 (use-package counsel
   :commands counsel-ag
   :config
@@ -1881,7 +1891,7 @@ spaces on either side of the point if so. Resorts to
   (global-set-key [remap describe-function] #'counsel-describe-function))
 
 (use-package ivy
-  :commands (ivy-mode ivy-read ivy-completing-read)
+  :commands (ivy-mode ivy-read ivy-completing-read ivy-recentf)
   :diminish 'ivy-mode
   :bind
   (:map ivy-minibuffer-map

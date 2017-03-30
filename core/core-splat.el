@@ -17,7 +17,7 @@
 (defvar splat-buffer-modeline (doom-modeline 'scratch)
   "Modeline format for splat buffer.")
 
-(defvar splat-buffer-widgets '(banner)
+(defvar splat-buffer-widgets '(banner shortmenu)
   "List of widgets to display in a blank splat buffer.")
 
 (define-derived-mode splat-buffer-mode fundamental-mode
@@ -128,6 +128,98 @@
           "o++++++               ++++++++++++o+         +++++"
           "o+++++++                 +++++++           +++++++"
           "++++++++                                   +++++++")))
+
+(defun splat-buffer-widget-shortmenu ()
+  (let ((all-the-icons-scale-factor 1.3)
+        (all-the-icons-default-adjust -0.05)
+        (start (point))
+        (sep "   ")
+        (last-session-p (and (featurep 'workgroups2)
+                             (f-exists-p wg-session-file)))
+        end)
+    (unless last-session-p
+      (setq sep "     "))
+    (insert
+     (s-center (- splat-buffer--width 5)
+               (with-temp-buffer
+                 (insert-text-button
+                  (concat (all-the-icons-octicon
+                           "mark-github"
+                           :face 'font-lock-variable-name-face)
+                          (propertize " Homepage" 'face 'font-lock-variable-name-face))
+                  'action '(lambda (_) (browse-url "https://github.com/hlissner/.emacs.d"))
+                  'follow-link t)
+
+                 (insert sep " ")
+
+                 (insert-text-button
+                  (concat (all-the-icons-octicon
+                           "file-text"
+                           :face 'font-lock-variable-name-face)
+                          (propertize " Recent files" 'face 'font-lock-variable-name-face))
+                  'action '(lambda (_) (call-interactively 'ivan/recentf))
+                  'follow-link t)
+
+                 (insert sep)
+
+                 (insert-text-button
+                  (concat (all-the-icons-octicon
+                           "tools"
+                           :face 'font-lock-variable-name-face)
+                          (propertize " Edit emacs.d" 'face 'font-lock-variable-name-face))
+                  'action '(lambda (_) (find-file (f-expand "init.el" ivan/emacs-dir)))
+                  'follow-link t)
+
+                 (when last-session-p
+                   (insert sep)
+
+                   (insert-text-button
+                    (concat (all-the-icons-octicon
+                             "history"
+                             :face 'font-lock-variable-name-face)
+                            (propertize " Reload last session" 'face 'font-lock-variable-name-face))
+                    'action '(lambda (_) (doom:workgroup-load))
+                    'follow-link t))
+
+                 (setq end (point))
+                 (buffer-string))))))
+
+(defun doom:workgroup-load (&optional bang session-name)
+  (doom|wg-cleanup)
+  (let ((session-file (if session-name
+                          (concat wg-workgroup-directory session-name)
+                        (let ((sess (concat wg-workgroup-directory (f-filename (doom/project-root)))))
+                          (if bang
+                              (when (file-exists-p sess)
+                                sess)
+                            wg-session-file)))))
+    (unless session-file
+      (user-error "No session found"))
+    (wg-open-session session-file))
+  ;; (doom/workgroup-display t)
+  )
+
+(defun doom/project-root (&optional strict-p)
+  "Get the path to the root of your project."
+  (let (projectile-require-project-root strict-p)
+    (projectile-project-root)))
+
+;; (defun doom/workgroup-display (&optional suppress-update return-p message)
+;;   (interactive)
+;;   (awhen (wg-current-session t)
+;;     (unless (eq suppress-update t)
+;;       (doom/workgroup-update-names (if (wg-workgroup-p suppress-update) suppress-update)))
+;;     (let ((output (wg-display-internal
+;;                    (lambda (workgroup index)
+;;                      (if (not workgroup) wg-nowg-string
+;;                        (wg-element-display
+;;                         workgroup
+;;                         (format " [%d] %s " (1+ index) (wg-workgroup-name workgroup))
+;;                         'wg-current-workgroup-p)))
+;;                    (wg-session-workgroup-list it))))
+;;       (if return-p
+;;           output
+;;         (message "%s%s" output (or message ""))))))
 
 (provide 'core-splat)
 ;;; core-splat.el ends here

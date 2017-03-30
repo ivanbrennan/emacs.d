@@ -206,7 +206,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,pencil0 :weight bold))))
    `(font-lock-string-face ((t (:foreground ,navyblue))))
    `(font-lock-type-face ((t (:foreground ,marine))))
-   `(font-lock-variable-name-face ((t (:foreground ,ink))))
+   `(font-lock-variable-name-face ((t (:foreground ,purpcoal0))))
    `(font-lock-warning-face ((t (:foreground ,amaranth :weight bold))))
 
    `(c-annotation-face ((t (:inherit font-lock-constant-face))))
