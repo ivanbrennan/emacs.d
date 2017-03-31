@@ -186,16 +186,7 @@
 
 (defun doom:workgroup-load (&optional bang session-name)
   (doom|wg-cleanup)
-  (let ((session-file (if session-name
-                          (concat wg-workgroup-directory session-name)
-                        (let ((sess (concat wg-workgroup-directory (f-filename (doom/project-root)))))
-                          (if bang
-                              (when (file-exists-p sess)
-                                sess)
-                            wg-session-file)))))
-    (unless session-file
-      (user-error "No session found"))
-    (wg-open-session session-file))
+  (wg-open-session wg-session-file)
   ;; (doom/workgroup-display t)
   )
 

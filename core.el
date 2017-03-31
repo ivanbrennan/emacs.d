@@ -1104,7 +1104,7 @@ afterwards, kill line to column 1."
 (use-package workgroups2
   ;; TODO: investigate persp-mode as an alternative
   :when (display-graphic-p)
-  :commands wg-open-session
+  :commands (wg-open-session workgroups-mode)
   :init
   (make-directory (ivan/cache-file "workgroups") 'mkdir_p)
   (setq
@@ -1136,9 +1136,7 @@ configuration."
       ("l"        wg-switch-to-previous-workgroup "last")
       ("SPC"      wg-switch-to-workgroup "switch")
       ("q"        nil "quit")
-      ("<escape>" nil "quit")))
-  :config
-  (workgroups-mode +1))
+      ("<escape>" nil "quit"))))
 
 (use-package smartparens
   :diminish smartparens-mode
@@ -2077,6 +2075,7 @@ spaces on either side of the point if so. Resorts to
 
 (use-package core-modeline
   :ensure nil
+  :init (workgroups-mode +1)
   :load-path "lisp")
 
 (use-package org
