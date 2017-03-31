@@ -1878,7 +1878,25 @@ spaces on either side of the point if so. Resorts to
   (defun ivan/recentf ()
     (interactive)
     (require 'recentf)
-    (recentf-mode)))
+    (recentf-mode)
+    (ivy-read "Recentf: " recentf-list
+              :action
+              (lambda (f)
+                (with-ivy-window
+                 (find-file f)))
+              :caller 'ivy-recentf))
+  :config
+  (setq
+   recentf-save-file (ivan/cache-file "recentf")
+   recentf-exclude (append recentf-exclude
+                           '("/tmp/" "/ssh:" "\\.?ido\\.last$" "\\.revive$" "/TAGS$"
+                             "emacs\\.d/private/cache/.+" "emacs\\.d/workgroups/.+$"
+                             "wg-default" "/company-statistics-cache.el$"
+                             "^/var/folders/.+$" "^/tmp/.+"))
+   recentf-max-menu-items 0
+   recentf-max-saved-items 250
+   recentf-auto-cleanup 600
+   recentf-filename-handlers '(abbreviate-file-name)))
 
 (use-package counsel
   :commands counsel-ag
