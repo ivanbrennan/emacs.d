@@ -147,7 +147,7 @@
                            "mark-github"
                            :face 'font-lock-variable-name-face)
                           (propertize " Homepage" 'face 'font-lock-variable-name-face))
-                  'action '(lambda (_) (browse-url "https://github.com/hlissner/.emacs.d"))
+                  'action '(lambda (_) (browse-url "https://github.com/ivanbrennan/emacs.d"))
                   'follow-link t)
 
                  (insert sep " ")
