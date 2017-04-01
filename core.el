@@ -2371,7 +2371,6 @@ Disables `text-scale-mode`."
    ("M-~" . ns-prev-frame)
    )
   (bind-keys
-   ("M-<return>" . toggle-frame-fullscreen)
    ;; reconcile some overridden keybindings
    ("<escape> M-q" . fill-paragraph)
    ("<escape> M-o" . facemenu-keymap)
