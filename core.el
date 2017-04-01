@@ -909,6 +909,12 @@ afterwards, kill line to column 1."
     )
   )
 
+(use-package auto-compile
+  :disabled t
+  :commands auto-compile-on-save-mode
+  :init (add-hook 'emacs-lisp-mode-hook 'auto-compile-on-save-mode)
+  :config (setq auto-compile-display-buffer nil))
+
 (use-package ggtags
   :commands (ggtags-mode
              ivan/ggtags-maybe
