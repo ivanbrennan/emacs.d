@@ -667,6 +667,7 @@ buffer represents a real file."
      evil-shift-width 2
      evil-symbol-word-search t
      )
+    (customize-set-variable 'evil-want-Y-yank-to-eol t)
     (add-hook 'prog-mode-hook #'ivan-treat-underscore-as-word-char)
     (dolist (hook '(emacs-lisp-mode-hook
                     clojure-mode-hook
