@@ -1355,6 +1355,7 @@ spaces on either side of the point if so. Resorts to
     "v SPC"      #'ivan/vc-refresh-state
     "b SPC"      #'magit-branch-popup
     "w k"        #'evil-window-delete
+    "w l"        #'evil-window-mru
     "."          #'ivan/zoom-window
     "C-."        #'ivan/toggle-narrowing-zoom
     "w w"        #'ivan/zoom-other-window
