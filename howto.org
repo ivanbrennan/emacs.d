@@ -66,7 +66,7 @@ Don't bind ~<return>~ to ~evil-next-line-first-non-blank~, bind only ~C-m~. That
 ** search utils
 *** ag.el
 **** hide file-local variables (top of compilation buffer)
-: #'ivan/present-search-results
+: #'ivan-present-search-results
 **** omit leading whitespace in results text
 **** navigate between results, line :cnext, :cprev
 **** hitting Return in the results buffer should go to result in a different window, leaving the results window as is.
@@ -106,7 +106,7 @@ I'll enter hydra-scroll (~SPC .~), scroll around, decide to open a file, type ~M
 ** make sure magit rebase keys are working
 ** code-folding
 *** hs-minor-mode ?
-** display ivan/whatever function as i/whatever
+** display ivan-whatever function as i-whatever
 ** mouse in terminal
 *** fixed?
 ** check if use-package is installed, and if not load package.el and install use-package
@@ -197,33 +197,33 @@ How can I jump to the next paragraph like } in Vim?
 ** Submit minibuffer C-r search result with a single Return
 How can I make "C-r" in the minibuffer act like it does in the shell, where hitting Enter not only accepts the search result, but also executes it?
 #+begin_src emacs-lisp
-  (defun ivan/isearch-exit ()
+  (defun ivan-isearch-exit ()
     "Run isearch-exit, and if in the minibuffer, submit the search result as input."
     (interactive)
     (isearch-exit)
     (if (minibuffer-window-active-p (selected-window))
         (minibuffer-complete-and-exit)))
 
-  (setq ivan/remapped-isearch-exit nil)
+  (setq ivan-remapped-isearch-exit nil)
 
-  (defun ivan/remap-isearch-exit ()
-    (unless ivan/remapped-isearch-exit
-      (setq ivan/remapped-isearch-exit t)
+  (defun ivan-remap-isearch-exit ()
+    (unless ivan-remapped-isearch-exit
+      (setq ivan-remapped-isearch-exit t)
       (define-key
-        overriding-terminal-local-map [remap isearch-exit] #'ivan/isearch-exit)))
+        overriding-terminal-local-map [remap isearch-exit] #'ivan-isearch-exit)))
 
-  (add-hook 'isearch-mode-hook #'ivan/remap-isearch-exit)
+  (add-hook 'isearch-mode-hook #'ivan-remap-isearch-exit)
 #+end_src
 ** Conveniently create parent directories for new file
 How can I easily create non-existent parent directories for a new buffer/file?
 #+begin_src emacs-lisp
-  (defun ivan/create-non-existent-directory ()
+  (defun ivan-create-non-existent-directory ()
     (let ((parent-directory (file-name-directory buffer-file-name)))
       (when (and (not (file-exists-p parent-directory))
                  (y-or-n-p (format "Directory ‘%s’ does not exist! Create it?" parent-directory)))
         (make-directory parent-directory :mkdir_p))))
 
-  (add-to-list 'find-file-not-found-functions 'ivan/create-non-existent-directory)
+  (add-to-list 'find-file-not-found-functions 'ivan-create-non-existent-directory)
 #+end_src
 
 ** Toggle regexp in isearch
@@ -273,12 +273,12 @@ Variables defined with ~defvar~ are resistant to re-evaluation. Restarting Emacs
 ** Place cursor on beginning of match result
 How can I place the cursor on the beginning of the match result rather than the end when performing isearch?
 #+begin_src emacs-lisp
-  (defun ivan/goto-match-beginning ()
+  (defun ivan-goto-match-beginning ()
     (when (and isearch-forward isearch-other-end
               (not isearch-mode-end-hook-quit))
       (goto-char isearch-other-end)))
 
-  (add-hook 'isearch-mode-end-hook #'ivan/goto-match-beginning)
+  (add-hook 'isearch-mode-end-hook #'ivan-goto-match-beginning)
 #+end_src
 
 ** Indent current line/region

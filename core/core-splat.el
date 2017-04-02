@@ -31,13 +31,13 @@
 ;;
 (add-hook 'emacs-startup-hook #'splat-init)
 
-(defun ivan/not-splat-buffer? () (not (splat-buffer?)))
-(add-hook 'kill-buffer-query-functions #'ivan/not-splat-buffer?)
+(defun ivan-not-splat-buffer? () (not (splat-buffer?)))
+(add-hook 'kill-buffer-query-functions #'ivan-not-splat-buffer?)
 
-(defun ivan/ensure-splat-reload-on-window-config-change ()
+(defun ivan-ensure-splat-reload-on-window-config-change ()
   (add-hook 'window-configuration-change-hook #'splat-buffer-reload)
   (splat-buffer-reload))
-(add-hook 'window-setup-hook #'ivan/ensure-splat-reload-on-window-config-change)
+(add-hook 'window-setup-hook #'ivan-ensure-splat-reload-on-window-config-change)
 
 
 ;;
@@ -157,7 +157,7 @@
                            "file-text"
                            :face 'font-lock-variable-name-face)
                           (propertize " Recent files" 'face 'font-lock-variable-name-face))
-                  'action '(lambda (_) (call-interactively 'ivan/recentf))
+                  'action '(lambda (_) (call-interactively 'ivan-recentf))
                   'follow-link t)
 
                  (insert sep)

@@ -1,10 +1,10 @@
-(bind-map-for-mode-inherit ivan/ibuffer-leader-map ivan/leader-map
+(bind-map-for-mode-inherit ivan-ibuffer-leader-map ivan-leader-map
   :major-modes (ibuffer-mode)
   :bindings
   ("/"     (lookup-key ibuffer-mode-map "/")
    "/ SPC" 'ibuffer-filter-by-name))
 
-(defun ivan/visit-buffer-bury-ibuffer (&optional single)
+(defun ivan-visit-buffer-bury-ibuffer (&optional single)
   (interactive)
   (let ((orig-buffer (current-buffer))
         (orig-mode major-mode))
@@ -13,7 +13,7 @@
       (bury-buffer orig-buffer)
       (unrecord-window-buffer nil orig-buffer))))
 
-(define-key ibuffer-mode-map [remap ibuffer-visit-buffer] #'ivan/visit-buffer-bury-ibuffer)
+(define-key ibuffer-mode-map [remap ibuffer-visit-buffer] #'ivan-visit-buffer-bury-ibuffer)
 
 (evil-set-initial-state 'ibuffer-mode 'motion)
 
