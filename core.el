@@ -144,26 +144,26 @@
 (window-divider-mode +1)
 
 ;; persistence
-(defconst ivan/cache-dir
+(defconst ivan/cache-directory
   (expand-file-name ".cache" user-emacs-directory)
   "Storage area for persistent files.")
 
-(defconst ivan/core-dir
+(defconst ivan/core-directory
   (expand-file-name "core" user-emacs-directory)
   "Directory for core configuration files.")
 
-(defconst ivan/config-dir
+(defconst ivan/config-directory
   (expand-file-name "config" user-emacs-directory)
   "Directory for feature configuration files.")
 
-(defconst ivan/packages-dir
+(defconst ivan/packages-directory
   (expand-file-name "packages" user-emacs-directory)
   "Directory for packages.")
 
 (defsubst ivan/emacs-file (f) (expand-file-name f user-emacs-directory))
-(defsubst ivan/cache-file (f) (expand-file-name f ivan/cache-dir))
+(defsubst ivan/cache-file (f) (expand-file-name f ivan/cache-directory))
 
-(make-directory ivan/cache-dir 'mkdir_p)
+(make-directory ivan/cache-directory 'mkdir_p)
 (make-directory (ivan/cache-file "auto-save") 'mkdir_p)
 
 (setq custom-file (ivan/emacs-file "custom.el"))
@@ -425,7 +425,7 @@
 (defvar initial-load-path load-path
   "Initial `load-path', used as a base so reloads are idempotent.")
 
-(setq load-path (append (list ivan/core-dir ivan/config-dir) initial-load-path))
+(setq load-path (append (list ivan/core-directory ivan/config-directory) initial-load-path))
 
 (with-eval-after-load 'core-modeline
   (require 'core-splat))
@@ -484,7 +484,7 @@
 (setq
  package--init-file-ensured t   ; don't add a 'package-initialize' call to my init file
  package-enable-at-startup  nil
- package-user-dir           ivan/packages-dir
+ package-user-dir           ivan/packages-directory
  package-archive-priorities '(
                               ("melpa-stable" . 3)
                               ("gnu"          . 2)
@@ -2220,7 +2220,7 @@ spaces on either side of the point if so. Resorts to
         projectile-cache-file (ivan/cache-file "projectile.cache")
         projectile-known-projects-file (ivan/cache-file "projectile.projects"))
 
-  (dolist (dir `(,ivan/cache-dir "assets" ".cask" ".sync"))
+  (dolist (dir `(,ivan/cache-directory "assets" ".cask" ".sync"))
     (add-to-list 'projectile-globally-ignored-directories dir))
   (dolist (suf '(".elc" ".project"))
     (add-to-list 'projectile-globally-ignored-file-suffixes suf))
