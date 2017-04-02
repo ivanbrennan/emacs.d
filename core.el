@@ -144,27 +144,23 @@
 (window-divider-mode +1)
 
 ;; persistence
-(defconst ivan/emacs-dir
-  (expand-file-name user-emacs-directory)
-  "Location of emacs.d directory.")
-
 (defconst ivan/cache-dir
-  (expand-file-name ".cache" ivan/emacs-dir)
+  (expand-file-name ".cache" user-emacs-directory)
   "Storage area for persistent files.")
 
 (defconst ivan/core-dir
-  (expand-file-name "core" ivan/emacs-dir)
+  (expand-file-name "core" user-emacs-directory)
   "Directory for core configuration files.")
 
 (defconst ivan/config-dir
-  (expand-file-name "config" ivan/emacs-dir)
+  (expand-file-name "config" user-emacs-directory)
   "Directory for feature configuration files.")
 
 (defconst ivan/packages-dir
-  (expand-file-name "packages" ivan/emacs-dir)
+  (expand-file-name "packages" user-emacs-directory)
   "Directory for packages.")
 
-(defsubst ivan/emacs-file (f) (expand-file-name f ivan/emacs-dir))
+(defsubst ivan/emacs-file (f) (expand-file-name f user-emacs-directory))
 (defsubst ivan/cache-file (f) (expand-file-name f ivan/cache-dir))
 
 (make-directory ivan/cache-dir 'mkdir_p)

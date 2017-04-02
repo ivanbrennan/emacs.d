@@ -167,7 +167,7 @@
                            "tools"
                            :face 'font-lock-variable-name-face)
                           (propertize " Edit emacs.d" 'face 'font-lock-variable-name-face))
-                  'action '(lambda (_) (find-file (f-expand "init.el" ivan/emacs-dir)))
+                  'action '(lambda (_) (find-file (f-expand "init.el" user-emacs-directory)))
                   'follow-link t)
 
                  (when last-session-p
