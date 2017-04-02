@@ -1326,9 +1326,9 @@ spaces on either side of the point if so. Resorts to
     ;; "b SPC"    #'hydra-buffers/body
     "C-b"        #'bury-buffer
     "B"          #'unbury-buffer
-    "b j"        #'bookmark-jump
-    "b l"        #'bookmark-bmenu-list
-    "b m"        #'bookmark-set
+    "b m j"      #'bookmark-jump
+    "b m l"      #'bookmark-bmenu-list
+    "b m m"      #'bookmark-set
     "d d"        #'kill-this-buffer
     "f a"        #'find-alternate-file
     "f s"        #'save-buffer
@@ -1744,7 +1744,8 @@ spaces on either side of the point if so. Resorts to
   :config
   (progn
     (which-key-declare-prefixes
-      "SPC b"     "buffers/bookmarks"
+      "SPC b"     "branches/buffers/bookmarks"
+      "SPC b m"   "bookmarks"
       "SPC f"     "files"
       "SPC g"     "git"
       "SPC m"     "mode"
