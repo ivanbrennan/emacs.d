@@ -2143,6 +2143,10 @@ spaces on either side of the point if so. Resorts to
       (kbd "yr")  #'magit-show-refs-popup
       (kbd "ys")  #'magit-copy-section-value
       (kbd "yb")  #'magit-copy-buffer-revision)
+    (bind-map-for-mode-inherit ivan/with-editor-leader-map ivan/leader-map
+      :minor-modes (with-editor-mode)
+      :bindings
+      ("w q RET" #'with-editor-finish))
     ))
 
 (use-package magit
