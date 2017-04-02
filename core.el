@@ -1210,7 +1210,6 @@ spaces on either side of the point if so. Resorts to
     "="          #'align-regexp
     "8"          #'switch-to-splat-buffer
     "9"          #'highlight-parentheses-mode
-    "SPC"        #'list-buffers
     "1"          #'shell-command
     "TAB"        #'neotree-toggle
     "q"          #'hydra-smartparens/body
@@ -1223,9 +1222,10 @@ spaces on either side of the point if so. Resorts to
     "X s"        #'server-start
     "\\"         #'ivan-next-theme
     "\|"         #'ivan-previous-theme
-    ;; "b SPC"    #'hydra-buffers/body
     "C-b"        #'bury-buffer
     "B"          #'unbury-buffer
+    ;; "b ."      #'hydra-buffers/body
+    "b i"        #'ibuffer
     "b m j"      #'bookmark-jump
     "b m l"      #'bookmark-bmenu-list
     "b m m"      #'bookmark-set
