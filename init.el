@@ -2,10 +2,23 @@
       (gc-cons-percentage 0.6)
       (file-name-handler-alist nil))
 
+  ;; blank slate
   (setq inhibit-startup-echo-area-message "ivan")
   ;; If your init file is byte-compiled, use the following form instead:
   ;;  (eval \\='(setq inhibit-startup-echo-area-message \"YOUR-USER-NAME\"))
+  (setq inhibit-startup-screen t
+        initial-scratch-message nil)
 
+  ;; clean screen
+  (menu-bar-mode   0)
+  (tool-bar-mode   0)
+  (when (display-graphic-p)
+    (scroll-bar-mode 0)
+    (tooltip-mode    0)
+    (setq frame-title-format "emacs : %b"))
+
+  (load-file (concat user-emacs-directory "core/load-paths.el"))
+  (load-file (concat user-emacs-directory "core/themes.el"))
   (load-file (concat user-emacs-directory "core.el"))
 
   (when (display-graphic-p)

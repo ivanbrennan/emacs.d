@@ -1,16 +1,3 @@
-;; blank slate
-(setq inhibit-startup-screen t
-      initial-scratch-message nil)
-
-;; clean screen
-(menu-bar-mode   0)
-(tool-bar-mode   0)
-(when (display-graphic-p)
-  (scroll-bar-mode 0)
-  (tooltip-mode    0)
-  (setq frame-title-format "emacs : %b"))
-
-
 ;; coding
 (prefer-coding-system 'utf-8)
 
@@ -142,83 +129,6 @@
  window-divider-default-bottom-width 1
  window-divider-default-right-width  1)
 (window-divider-mode +1)
-
-;; persistence
-(defconst ivan-cache-directory
-  (expand-file-name ".cache" user-emacs-directory)
-  "Storage area for persistent files.")
-
-(defconst ivan-core-directory
-  (expand-file-name "core" user-emacs-directory)
-  "Directory for core configuration files.")
-
-(defconst ivan-config-directory
-  (expand-file-name "config" user-emacs-directory)
-  "Directory for feature configuration files.")
-
-(defconst ivan-packages-directory
-  (expand-file-name "packages" user-emacs-directory)
-  "Directory for packages.")
-
-(defsubst ivan-emacs-file (f) (expand-file-name f user-emacs-directory))
-(defsubst ivan-cache-file (f) (expand-file-name f ivan-cache-directory))
-
-(make-directory ivan-cache-directory 'mkdir_p)
-(make-directory (ivan-cache-file "auto-save") 'mkdir_p)
-
-(setq custom-file (ivan-emacs-file "custom.el"))
-(unless (file-exists-p custom-file)
-  (write-region "" nil custom-file))
-
-(setq
- auto-save-file-name-transforms `((".*" ,(ivan-cache-file "auto-save/") 'uniquify))
- auto-save-list-file-prefix      (ivan-cache-file "auto-save-list/.saves-")
- backup-by-copying               t
- backup-directory-alist         `(("." . ,(ivan-cache-file "backups/")))
- eshell-directory-name           (ivan-cache-file "eshell/")
- ido-save-directory-list-file    (ivan-cache-file "ido.last")
- tramp-persistency-file-name     (ivan-cache-file "tramp"))
-
-
-;; theme
-(setq custom-theme-directory (ivan-emacs-file "themes/"))
-(make-directory custom-theme-directory 'mkdir_p)
-
-(defvar ivan-themes [elixir dome arjen-grey FlatUI chalk])
-(defvar ivan-theme-index 0)
-(defvar ivan-rotated-theme-hook nil
-  "Hook called after the theme has been rotated")
-
-(defun ivan-next-theme     () (interactive) (ivan-rotate-theme +1))
-(defun ivan-previous-theme () (interactive) (ivan-rotate-theme -1))
-
-(defun ivan-rotate-theme (inc)
-  (let* ((index (mod (+ inc ivan-theme-index) (length ivan-themes)))
-         (theme (ivan-theme-at-index index)))
-    (when (ivan-load-theme theme)
-      (setq ivan-theme-index index)
-      (run-hooks 'ivan-rotated-theme-hook)
-      (message (symbol-name theme)))))
-
-(defun ivan-theme-at-index (index)
-  (aref ivan-themes index))
-
-(defun ivan-load-theme (theme)
-  (let ((backup (ivan-disable-themes)))
-    (condition-case nil
-        (load-theme theme 'no-confirm)
-      (error
-       (ivan-restore-themes backup)
-       nil))))
-
-(defun ivan-disable-themes ()
-  (mapc #'disable-theme custom-enabled-themes))
-
-(defun ivan-restore-themes (backup)
-  (ivan-disable-themes)
-  (mapc #'ivan-load-theme (reverse backup)))
-
-(ivan-load-theme (ivan-theme-at-index ivan-theme-index))
 
 
 ;; variable-pitch-mode
@@ -420,12 +330,6 @@
 ;; env
 (setenv "PAGER" "/usr/bin/env cat")
 
-
-;; load-path
-(defvar initial-load-path load-path
-  "Initial `load-path', used as a base so reloads are idempotent.")
-
-(setq load-path (append (list ivan-core-directory ivan-config-directory) initial-load-path))
 
 (with-eval-after-load 'core-modeline
   (require 'core-splat))
@@ -2278,6 +2182,10 @@ spaces on either side of the point if so. Resorts to
   (add-hook 'yaml-mode-hook #'ivan-truncate-lines))
 
 (use-package haml-mode :mode "\\.haml$")
+
+(use-package eshell
+  :init
+  (setq eshell-directory-name (ivan-cache-file "eshell/")))
 
 (use-package exec-path-from-shell
   :defer t)
