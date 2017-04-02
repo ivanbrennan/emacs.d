@@ -12,3 +12,5 @@
     (require 'server)
     (unless (server-running-p)
       (server-start))))
+
+(setq gc-cons-threshold 100000000)
