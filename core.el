@@ -1677,15 +1677,17 @@ spaces on either side of the point if so. Resorts to
   :diminish drag-stuff-mode
   :config
   (progn
-    (mapc (lambda (x)
-            (define-key drag-stuff-mode-map
-              (kbd (car x)) (cdr x)))
-          '(("C-M-k" . drag-stuff-up)
-            ("C-M-j" . drag-stuff-down)
-            ("C-M-l" . drag-stuff-right)
-            ("C-M-h" . drag-stuff-left)))
-    (drag-stuff-global-mode +1)
-    )
+    (with-eval-after-load 'evil
+      (evil-define-key 'normal drag-stuff-mode-map
+        (kbd "C-M-k") #'drag-stuff-up
+        (kbd "C-M-j") #'drag-stuff-down
+        (kbd "C-M-l") #'drag-stuff-right
+        (kbd "C-M-h") #'drag-stuff-left)
+      (evil-define-key 'visual drag-stuff-mode-map
+        (kbd "M-k") #'drag-stuff-up
+        (kbd "M-j") #'drag-stuff-down)
+      )
+    (drag-stuff-global-mode +1))
   )
 
 (use-package company
