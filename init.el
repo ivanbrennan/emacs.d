@@ -17,8 +17,9 @@
     (tooltip-mode    0)
     (setq frame-title-format "emacs : %b"))
 
-  (load-file (concat user-emacs-directory "core/load-paths.el"))
-  (load-file (concat user-emacs-directory "core/themes.el"))
+  (load-file (concat user-emacs-directory "core/core-load-paths.el"))
+  (require 'core-persistence)
+  (require 'core-themes)
   (load-file (concat user-emacs-directory "core.el"))
 
   (when (display-graphic-p)

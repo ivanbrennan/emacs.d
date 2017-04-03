@@ -33,3 +33,5 @@
   (mapc #'ivan-load-theme (reverse backup)))
 
 (ivan-load-theme (ivan-theme-at-index ivan-theme-index))
+
+(provide 'core-themes)

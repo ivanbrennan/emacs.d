@@ -11,3 +11,5 @@
  backup-directory-alist         `(("." . ,(ivan-cache-file "backups/")))
  ido-save-directory-list-file    (ivan-cache-file "ido.last")
  tramp-persistency-file-name     (ivan-cache-file "tramp"))
+
+(provide 'core-persistence)
