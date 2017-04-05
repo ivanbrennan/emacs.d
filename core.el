@@ -1,7 +1,6 @@
 ;; coding
 (prefer-coding-system 'utf-8)
 
-
 ;; parens
 (show-paren-mode    +1)
 (electric-pair-mode +1)
