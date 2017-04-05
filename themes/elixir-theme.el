@@ -131,7 +131,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((((type graphic)) :inherit default :background ,paperwhite)
       (t                :inherit default)))
    `(doom-hl-line
-     ((((type graphic)) :background ,whisp2)
+     ((((type graphic)) :background ,paper)
       (t                :inherit hl-line)))
    `(doom-linum
      ((((type graphic)) :inherit linum :background ,paperwhite)
