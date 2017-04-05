@@ -1722,7 +1722,13 @@ spaces on either side of the point if so. Resorts to
         )
   :config
   (setq
-   company-backends  '(company-gtags company-capf)
+   company-backends '((company-dabbrev-code
+                       company-gtags
+                       company-etags
+                       company-keywords)
+                      company-capf
+                      company-files
+                      company-dabbrev)
    company-frontends '(company-pseudo-tooltip-unless-just-one-frontend
                        company-preview-frontend)
    company-auto-complete t
