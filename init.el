@@ -3,12 +3,11 @@
       (file-name-handler-alist nil)) ; to optimize startup performance.
 
   (setq inhibit-startup-echo-area-message "ivan")
-
   (setq inhibit-startup-screen t
         initial-scratch-message nil)
 
-  (menu-bar-mode   0)
-  (tool-bar-mode   0)
+  (menu-bar-mode 0)
+  (tool-bar-mode 0)
   (when (display-graphic-p)
     (scroll-bar-mode 0)
     (tooltip-mode    0)
