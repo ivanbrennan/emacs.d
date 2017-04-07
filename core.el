@@ -2068,8 +2068,8 @@ spaces on either side of the point if so. Resorts to
     (bind-map-for-mode-inherit ivan-with-editor-leader-map ivan-leader-map
       :minor-modes (with-editor-mode)
       :bindings
-      ("w q RET" #'with-editor-finish)
-      ("c q RET" #'with-editor-cancel))
+      ("w q" #'with-editor-finish)
+      ("c q" #'with-editor-cancel))
     ))
 
 (use-package magit
