@@ -30,7 +30,6 @@
                             'truncation (assq-delete-all
                                          'continuation alist)))
  fringes-outside-margins t
- image-animate-loop      t
  jit-lock-stealth-nice   0.1
  jit-lock-stealth-time   0.2
  max-mini-window-height  0.3
