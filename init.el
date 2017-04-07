@@ -2,10 +2,6 @@
       (gc-cons-percentage 0.6)       ; and disable special I/O handlers
       (file-name-handler-alist nil)) ; to optimize startup performance.
 
-  ;; To suppress the startup messages in the echo area, this setting
-  ;; needs to occupy its own setq expression in your init file.
-  ;; If your init file is byte-compiled, use the following form instead:
-  ;;  (eval \\='(setq inhibit-startup-echo-area-message \"YOUR-USER-NAME\"))
   (setq inhibit-startup-echo-area-message "ivan")
 
   (setq inhibit-startup-screen t
