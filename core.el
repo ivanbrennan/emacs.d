@@ -11,35 +11,11 @@
  underline-minimum-offset 5
  )
 
-;; cursor
-(blink-cursor-mode 0)
-
-(setq-default
- cursor-type 'bar
- cursor-in-non-selected-windows nil
- )
-
-(customize-set-variable
- 'minibuffer-prompt-properties
- (quote (read-only t cursor-intangible t face minibuffer-prompt)))
-
 (setq-default
  bidi-display-reordering nil
- fringe-indicator-alist  (let ((alist fringe-indicator-alist))
-                           (assq-delete-all
-                            'truncation (assq-delete-all
-                                         'continuation alist)))
- fringes-outside-margins t
  jit-lock-stealth-nice   0.1
  jit-lock-stealth-time   0.2
- max-mini-window-height  0.3
- mode-line-default-help-echo nil
- show-help-function      nil
- show-paren-when-point-inside-paren t
- use-dialog-box          nil
- visible-cursor          nil
- resize-mini-windows     t
- confirm-kill-emacs      (lambda (_) (y-or-n-p "››› Quit?")))
+ show-paren-when-point-inside-paren t)
 
 ;;; hidden mode line
 (put 'hidden-mode-line-mode 'permanent-local t)

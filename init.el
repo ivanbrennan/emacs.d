@@ -3,19 +3,13 @@
       (file-name-handler-alist nil)) ; to optimize startup performance.
 
   (setq inhibit-startup-echo-area-message "ivan")
-  (setq inhibit-startup-screen t
-        initial-scratch-message nil)
-
-  (menu-bar-mode 0)
-  (tool-bar-mode 0)
-  (when (display-graphic-p)
-    (scroll-bar-mode 0)
-    (tooltip-mode    0)
-    (setq frame-title-format "%b"))
 
   (load-file (concat user-emacs-directory "core/core-load-paths.el"))
+
   (require 'core-persistence)
+  (require 'core-ui)
   (require 'core-themes)
+
   (load-file (concat user-emacs-directory "core.el"))
 
   (when (display-graphic-p)
