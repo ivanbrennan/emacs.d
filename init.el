@@ -15,7 +15,7 @@
   (when (display-graphic-p)
     (scroll-bar-mode 0)
     (tooltip-mode    0)
-    (setq frame-title-format "emacs : %b"))
+    (setq frame-title-format "%b"))
 
   (load-file (concat user-emacs-directory "core/core-load-paths.el"))
   (require 'core-persistence)
