@@ -22,6 +22,5 @@
 
 (mkdir_p ivan-cache-directory)
 
-(mapc #'add-to-load-path
-      `(,ivan-core-directory
-        ,ivan-config-directory))
+(mapc #'add-to-load-path `(,ivan-core-directory
+                           ,ivan-config-directory))
