@@ -5,17 +5,23 @@
   (setq inhibit-startup-echo-area-message "ivan")
 
   (load-file (concat user-emacs-directory "core/core-load-paths.el"))
-
   (require 'core-persistence)
   (require 'core-ui)
+  (require 'core-parens)
+  (require 'core-syntax)
+  (require 'core-window)
+  (require 'core-eval)
+  (require 'core-editor)
+  (require 'core-whitespace)
   (require 'core-themes)
-
+  (require 'core-documentation)
+  (require 'core-packages)
   (load-file (concat user-emacs-directory "core.el"))
 
-  (when (display-graphic-p)
-    (require 'server)
-    (unless (server-running-p)
-      (server-start))))
+  (and (display-graphic-p)
+       (require 'server)
+       (or (server-running-p)
+           (server-start))))
 
 ;; Set a GC threshold greater than the default,
 ;; but less than the value used during startup.

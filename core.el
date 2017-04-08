@@ -1,22 +1,3 @@
-;; coding
-(prefer-coding-system 'utf-8)
-
-;; parens
-(show-paren-mode    +1)
-(electric-pair-mode +1)
-
-(setq
- blink-matching-paren 'jump
- blink-matching-delay 0.25
- underline-minimum-offset 5
- )
-
-(setq-default
- bidi-display-reordering nil
- jit-lock-stealth-nice   0.1
- jit-lock-stealth-time   0.2
- show-paren-when-point-inside-paren t)
-
 ;;; hidden mode line
 (put 'hidden-mode-line-mode 'permanent-local t)
 (put 'hidden-mode-line 'permanent-local t)
@@ -45,8 +26,6 @@
                 completion-list-mode-hook))
   (add-hook hook #'hidden-mode-line-mode))
 
-(add-hook 'compilation-mode-hook (lambda () (setq-local scroll-margin 0)))
-
 ;;; A subtle bell: flash the mode-line
 ;; TODO More flexible colors
 (defvar doom--modeline-bg nil)
@@ -67,185 +46,8 @@
 
 (setq ring-bell-function #'ivan-modeline-flash)
 
-(global-eldoc-mode 0)
-(add-hook 'emacs-lisp-mode-hook  #'eldoc-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
-
-(defface font-lock-todo-face
-  '((t (:inherit error :slant normal)))
-    "Face for TODO items.")
-
-(defface font-lock-note-face
-  '((t (:inherit success :slant normal)))
-    "Face for NOTE items.")
-
-(defface font-lock-colon-face
-  '((t (:inherit font-lock-comment-face :slant normal)))
-    "Face for colon following TODO/NOTE items.")
-
-(defun add-todo-and-note-keywords ()
-  (let ((todo "\\(\\<TODO\\>\\)\\(?:[ \t]*\\)\\(:?\\)")
-        (note "\\(\\<NOTE\\>\\)\\(?:[ \t]*\\)\\(:?\\)"))
-    (font-lock-add-keywords
-     nil
-     `((,todo (1 'font-lock-todo-face  prepend)
-              (2 'font-lock-colon-face prepend))
-       (,note (1 'font-lock-note-face  prepend)
-              (2 'font-lock-colon-face prepend))))))
-
-(dolist (hook '(prog-mode-hook
-                emacs-lisp-mode-hook
-                css-mode-hook))
-  (add-hook hook #'add-todo-and-note-keywords))
-
-(setq
- window-divider-default-places       t
- window-divider-default-bottom-width 1
- window-divider-default-right-width  1)
-(window-divider-mode +1)
-
-
-;; variable-pitch-mode
-(add-hook 'help-mode-hook #'variable-pitch-mode)
-(add-hook 'Info-mode-hook #'variable-pitch-mode)
-
-
-;; transparency
-(defun ivan-toggle-transparency ()
-  (interactive)
-  (let* ((alpha     (frame-parameter nil 'alpha))
-         (opaque    (or (null alpha) (eql 100 alpha)))
-         (new-value (if opaque '(97 . 85) 100)))
-    (set-frame-parameter nil 'alpha new-value)))
-
-
-;; line-wrapping
-(defun ivan-truncate-lines ()
-  (setq truncate-lines t))
-(defun ivan-wrap-lines ()
-  (setq truncate-lines nil))
-
-(dolist (hook '(prog-mode-hook
-                compilation-mode-hook
-                occur-mode-hook
-                dired-mode-hook))
-  (add-hook hook #'ivan-truncate-lines))
-
-(add-hook 'text-mode-hook #'visual-line-mode)
-(add-hook 'help-mode-hook #'visual-line-mode)
-
-(with-current-buffer "*Messages*"
-  (visual-line-mode +1))
-
-
-;; splits, frames, windows
-(setq split-width-threshold 130)
-(setq
- display-buffer-alist
- `(
-   ;; Put search results in bottom side-window of the current frame.
-   (,(rx bos
-         (or
-          (and "*ag " (1+ not-newline) "*")
-          "*ggtags-global*"
-          "*Help*"
-          "*Apropos*"
-          "*rake-compilation*"
-          "*Pp Eval Output*"
-          )
-         eos)
-    (display-buffer-reuse-window
-     display-buffer-in-side-window)
-    (reusable-frames)
-    (side . bottom)
-    )
-   ;; Put test results in reusable window/frame if one is visible,
-   ;; otherwise put them in bottom side-window.
-   (,(rx bos
-         (or
-          "*rspec-compilation*"
-          "*ert*"
-          "*quickrun*"
-          )
-         eos)
-    (display-buffer-reuse-window
-     display-buffer-in-side-window)
-    (reusable-frames . visible)
-    (inhibit-switch-frame . t)
-    (side . bottom)
-    )
-   ))
-
-;; scroll
-(setq
- scroll-step    1
- scroll-margin  1
- hscroll-step   1
- hscroll-margin 2
- scroll-conservatively 200
- mouse-wheel-scroll-amount '(0.01 ((shift) . 1))
- isearch-allow-scroll t
- )
-
-(defun ivan-scroll-right ()
-  (interactive)
-  (scroll-right 2))
-
-(defun ivan-scroll-left ()
-  (interactive)
-  (scroll-left 2))
-
-(defvar ivan-hscroll-minor-mode-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map [C-wheel-right] #'ivan-scroll-left)
-    (define-key map [M-wheel-right] #'ivan-scroll-left)
-    (define-key map [C-wheel-left]  #'ivan-scroll-right)
-    (define-key map [M-wheel-left]  #'ivan-scroll-right)
-    map)
-  "ivan-hscroll-minor-mode keymap.")
-
-(define-minor-mode ivan-hscroll-minor-mode
-  "A minor mode so my horizontal scroll bindings take precedence."
-  :init-value t)
-
-(ivan-hscroll-minor-mode +1)
-
-(put 'mac-mwheel-scroll 'isearch-scroll t)
-(put 'ivan-scroll-right 'isearch-scroll t)
-(put 'ivan-scroll-left  'isearch-scroll t)
-(put 'hl-line-mode      'isearch-scroll t)
-
-
-;; whitespace
-(setq
- whitespace-line-column 90
- whitespace-style '(
-                    empty
-                    face
-                    indentation
-                    lines-tail
-                    space-after-tab
-                    space-before-tab
-                    trailing
-                    )
- )
-
-(defun ivan-code-whitespace ()
-  (setq-default indent-tabs-mode nil)
-  (setq indicate-empty-lines     t
-        show-trailing-whitespace t))
-
-(add-hook 'prog-mode-hook #'ivan-code-whitespace)
-
-
 ;; sensibility
-(setq-default
- fill-column           80
- require-final-newline t)
-
 (setq
- ad-redefinition-action              'accept
- apropos-do-all                      t
  bookmark-bmenu-toggle-filenames     nil
  bookmark-default-file               (ivan-cache-file "bookmarks")
  comint-prompt-read-only             t
@@ -262,7 +64,6 @@
  enable-recursive-minibuffers        t
  eval-expression-print-length        192
  find-file-visit-truename            t
- help-window-select                  t
  hi-lock-auto-select-face            t
  history-delete-duplicates           t
  history-length                      500
@@ -308,81 +109,9 @@
 (with-eval-after-load 'core-modeline
   (require 'core-splat))
 
-;; documentation
-(with-eval-after-load 'info
-  (add-to-list 'Info-additional-directory-list
-               (ivan-emacs-file "info/")))
-
-(with-eval-after-load 'help
-  (setq source-directory "~/Development/code/elisp/emacs-mac"))
-
-
 ;; tramp
 (setq tramp-default-method "ssh")
 
-
-;; https
-(setq tls-checktrust t)
-(let ((trustfile
-       (replace-regexp-in-string
-        "\\\\" "/"
-        (replace-regexp-in-string
-         "\n" ""
-         (shell-command-to-string "python -m certifi")))))
-  (setq
-   tls-program (list (format "gnutls-cli%s --x509cafile %s -p %%p %%h"
-                             (if (eq window-system 'w32) ".exe" "") trustfile))
-   gnutls-verify-error t
-   gnutls-trustfiles (list trustfile)))
-
-
-;; functions
-
-(defun ivan-trim-whitespace-relative-line (count)
-  (save-excursion
-    (next-line count)
-    (delete-trailing-whitespace (line-beginning-position)
-                                (line-end-position))))
-
-  (defun ivan-trim-whitespace-current-line (&rest _args)
-    (ivan-trim-whitespace-relative-line 0))
-
-  (defun ivan-trim-whitespace-next-line (&rest _args)
-    (ivan-trim-whitespace-relative-line 1))
-
-
-;; packages
-(require 'package)
-
-(setq package-archives '(("gnu"          . "https://elpa.gnu.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")
-                         ("melpa"        . "https://melpa.org/packages/")
-                         ("marmalade"    . "https://ojab.ru/marmalade/")))
-
-(setq
- package--init-file-ensured t   ; don't add a 'package-initialize' call to my init file
- package-enable-at-startup  nil
- package-user-dir           ivan-packages-directory
- package-archive-priorities '(
-                              ("melpa-stable" . 3)
-                              ("gnu"          . 2)
-                              ("marmalade"    . 1)
-                              ("melpa"        . 0)
-                              )
- )
-
-(package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(eval-when-compile
-  (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
-
-(setq use-package-always-ensure t)
 
 (use-package async
   :config
@@ -2215,24 +1944,6 @@ spaces on either side of the point if so. Resorts to
   :config (push '("true" "false") rotate-text-words))
 
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
-
-(defvar no-space-before-regexp "^\\|[])]")
-(defvar no-space-after-regexp  "$\\|[[(]\\|\\s'")
-
-(defun fixup-no-space? ()
-  (or (looking-at no-space-before-regexp)
-      (save-excursion (forward-char -1)
-                      (looking-at no-space-after-regexp))))
-
-(defun ivan-fixup-whitespace ()
-  "Fixup white space between objects around point.
-Leave one space or none, according to the context."
-  (interactive "*")
-  (save-excursion
-    (delete-horizontal-space)
-    (unless (fixup-no-space?)
-      (insert ?\s))))
-(advice-add 'fixup-whitespace :override #'ivan-fixup-whitespace)
 
 ;; gui & terminal
 (defun ivan-text-scale-reset ()

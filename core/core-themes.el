@@ -34,4 +34,11 @@
 
 (ivan-load-theme (ivan-theme-at-index ivan-theme-index))
 
+(defun ivan-toggle-transparency ()
+  (interactive)
+  (let* ((alpha     (frame-parameter nil 'alpha))
+         (opaque    (or (null alpha) (eql 100 alpha)))
+         (new-value (if opaque '(97 . 85) 100)))
+    (set-frame-parameter nil 'alpha new-value)))
+
 (provide 'core-themes)
