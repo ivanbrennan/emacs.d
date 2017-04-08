@@ -12,10 +12,11 @@
   (require 'core-window)
   (require 'core-eval)
   (require 'core-editor)
+  (require 'core-scroll)
   (require 'core-whitespace)
   (require 'core-themes)
   (require 'core-documentation)
-  (require 'core-packages)
+  (require 'core-use-package)
   (load-file (concat user-emacs-directory "core.el"))
 
   (and (display-graphic-p)
