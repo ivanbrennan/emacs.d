@@ -25,9 +25,11 @@
                                    search-ring))
   (savehist-mode +1)
   :config
+  (defun unpropertize-element (e)
+    (if (stringp e) (substring-no-properties e) e))
   (defun unpropertize-list-var (v)
     (when (boundp v)
-      (set v (mapcar #'substring-no-properties (symbol-value v)))))
+      (set v (mapcar #'unpropertize-element (symbol-value v)))))
   (defun unpropertize-savehist ()
     (mapc #'unpropertize-list-var (append savehist-minibuffer-history-variables
                                           savehist-additional-variables)))
@@ -37,6 +39,7 @@
 (use-package saveplace
   :init
   (save-place-mode +1)
+  :config
   (setq save-place-file (ivan-cache-file "saveplace")))
 
 (provide 'core-persistence)
