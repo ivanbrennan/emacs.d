@@ -5,6 +5,7 @@
   (setq inhibit-startup-echo-area-message "ivan")
 
   (load-file (concat user-emacs-directory "core/core-load-paths.el"))
+  (require 'core-package)
   (require 'core-persistence)
   (require 'core-ui)
   (require 'core-parens)
@@ -16,7 +17,6 @@
   (require 'core-whitespace)
   (require 'core-themes)
   (require 'core-documentation)
-  (require 'core-use-package)
   (load-file (concat user-emacs-directory "core.el"))
 
   (and (display-graphic-p)

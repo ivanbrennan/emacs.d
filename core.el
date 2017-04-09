@@ -197,38 +197,6 @@ buffer represents a real file."
       (set-face-background 'fringe bg)))
   (advice-add 'ivan--apply-padding-degree :after #'ivan-adjust-fringe-background))
 
-(use-package savehist
-  :init
-  (setq
-   savehist-file (ivan-cache-file "savehist")
-   savehist-autosave-interval 60
-   savehist-additional-variables '(mark-ring
-                                   global-mark-ring
-                                   search-ring
-                                   regexp-search-ring
-                                   extended-command-history))
-  (savehist-mode   +1)
-  :config
-  (defun unpropertize-savehist ()
-    (mapc (lambda (list)
-            (when (boundp list)
-              (set list (mapcar 'substring-no-properties (eval list)))))
-          '(evil-ex-history
-            extended-command-history
-            file-name-history
-            helm-ff-history
-            helm-grep-history
-            kill-ring
-            minibuffer-history
-            read-expression-history)))
-  (add-hook 'kill-emacs-hook    'unpropertize-savehist)
-  (add-hook 'savehist-save-hook 'unpropertize-savehist))
-
-(use-package saveplace
-  :init
-  (save-place-mode +1)
-  (setq save-place-file (ivan-cache-file "saveplace")))
-
 (use-package neotree
   :config
   (setq neo-mode-line-type 'none)
@@ -326,6 +294,8 @@ buffer represents a real file."
   :config
   (progn
     (add-hook 'after-init-hook #'evil-mode)
+    (with-eval-after-load 'savehist
+      (add-to-list savehist-additional-variables 'evil-ex-history))
     (setq
      evil-normal-state-tag   " ·n·"
      evil-visual-state-tag   " ·v·"
