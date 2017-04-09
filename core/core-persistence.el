@@ -32,7 +32,7 @@
     (mapc #'unpropertize-list-var (append savehist-minibuffer-history-variables
                                           savehist-additional-variables)))
   (add-hook 'kill-emacs-hook    'unpropertize-savehist)
-  (add-hook 'savehist-save-hook 'unpropertize-savehist)
+  (add-hook 'savehist-save-hook 'unpropertize-savehist))
 
 (use-package saveplace
   :init
