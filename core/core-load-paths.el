@@ -14,10 +14,16 @@
   (eval-when-compile (expand-file-name "config" user-emacs-directory))
   "Directory for feature configuration files.")
 
-(defsubst ivan-emacs-file  (x) (expand-file-name x user-emacs-directory))
-(defsubst ivan-cache-file  (x) (expand-file-name x ivan-cache-directory))
-(defsubst add-to-load-path (x) (add-to-list 'load-path x))
-(defsubst mkdir_p          (x) (make-directory x 'mkdir_p))
+(define-inline ivan-emacs-file (x)
+  (inline-letevals (x)
+    (inline-quote (expand-file-name ,x user-emacs-directory))))
+
+(define-inline ivan-cache-file (x)
+  (inline-letevals (x)
+    (inline-quote (expand-file-name ,x ivan-cache-directory))))
+
+(defun add-to-load-path (x) (add-to-list 'load-path x))
+(defun mkdir_p          (x) (make-directory x 'mkdir_p))
 
 (setq custom-file (eval-when-compile (ivan-emacs-file "custom.el")))
 (unless (file-exists-p custom-file)
