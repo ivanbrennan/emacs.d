@@ -295,7 +295,7 @@ buffer represents a real file."
   (progn
     (add-hook 'after-init-hook #'evil-mode)
     (with-eval-after-load 'savehist
-      (add-to-list savehist-additional-variables 'evil-ex-history))
+      (add-to-list 'savehist-additional-variables 'evil-ex-history))
     (setq
      evil-normal-state-tag   " ·n·"
      evil-visual-state-tag   " ·v·"
