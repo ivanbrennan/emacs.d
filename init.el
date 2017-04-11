@@ -9,6 +9,7 @@
   (require 'core-package)
   (require 'core-persistence)
   (require 'core-ui)
+  (require 'core-modeline)
   (require 'core-parens)
   (require 'core-syntax)
   (require 'core-window)

@@ -1,21 +1,13 @@
-;;; core-modeline.el
+(use-package powerline
+  :init
+  (setq powerline-default-separator  'wave
+        powerline-display-buffer-size nil
+        powerline-display-mule-info   nil
+        powerline-gui-use-vcs-glyph   t))
 
-;; Adapted from the modeline in hlissner/.emacs.d
-
-;;(require 's)
-;;(require 'evil)
-;;(require 'projectile)
-;; (require 'all-the-icons)
-
-;; Optional
-;;(require 'flycheck)
-;;(require 'anzu)
-;;(require 'evil-anzu)
-;;(require 'iedit)
-;;(require 'evil-multiedit)
+(use-package all-the-icons)
 
 (require 'powerline)
-;; (require 'all-the-icons)
 
 ;; all-the-icons doesn't work in the terminal, so we "disable" it.
 (unless window-system

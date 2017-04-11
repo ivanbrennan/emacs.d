@@ -217,9 +217,6 @@ buffer represents a real file."
 (use-package f
   :commands (f-dirname f-relative))
 
-(use-package all-the-icons
-  :ensure t)
-
 (use-package evil
   :pin melpa
   :demand
@@ -718,7 +715,9 @@ configuration."
       ("l"        wg-switch-to-previous-workgroup "last")
       ("SPC"      wg-switch-to-workgroup "switch")
       ("q"        nil "quit")
-      ("<escape>" nil "quit"))))
+      ("<escape>" nil "quit")))
+
+  (workgroups-mode +1))
 
 (use-package smartparens
   :diminish smartparens-mode
@@ -1654,21 +1653,6 @@ spaces on either side of the point if so. Resorts to
     (put 'windsize-up    'isearch-scroll t)
     (put 'windsize-left  'isearch-scroll t)
     (put 'windsize-right 'isearch-scroll t)))
-
-(use-package powerline
-  :init
-  (setq
-   powerline-default-separator 'wave
-   powerline-display-buffer-size nil
-   powerline-display-mule-info   nil
-   powerline-gui-use-vcs-glyph   t
-   )
-  )
-
-(use-package core-modeline
-  :ensure nil
-  :init (workgroups-mode +1)
-  :load-path "lisp")
 
 (use-package org
   :bind
