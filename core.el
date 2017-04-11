@@ -57,31 +57,20 @@
  compilation-save-buffers-predicate  (lambda () (eq (window-buffer) (current-buffer)))
  completions-format                  'vertical
  dabbrev-case-fold-search            nil
- delete-by-moving-to-trash           t
- echo-keystrokes                     0.5
  ediff-split-window-function         #'split-window-horizontally
  ediff-window-setup-function         'ediff-setup-windows-plain
- enable-recursive-minibuffers        t
- eval-expression-print-length        192
- find-file-visit-truename            t
  hi-lock-auto-select-face            t
  history-delete-duplicates           t
  history-length                      500
- idle-update-delay                   2
  ispell-program-name                 "/usr/local/bin/aspell"
- load-prefer-newer                   t
  minibuffer-eldef-shorten-default    t
  query-replace-skip-read-only        t
  read-buffer-completion-ignore-case  t
- save-interprogram-paste-before-kill t
  scroll-preserve-screen-position     t
  sentence-end-double-space           nil
- set-mark-command-repeat-pop         t
  split-window-keep-point             nil
  tab-always-indent                   'complete
- uniquify-buffer-name-style          'forward
  vc-follow-symlinks                  t
- x-select-request-type               '(UTF8_STRING COMPOUND_TEXT TEXT STRING)
  )
 
 (fset 'yes-or-no-p 'y-or-n-p)

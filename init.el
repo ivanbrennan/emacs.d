@@ -5,6 +5,7 @@
   (setq inhibit-startup-echo-area-message "ivan")
 
   (load (concat user-emacs-directory "core/core-load-paths") nil 'nomessage)
+  (require 'core-emacs)
   (require 'core-package)
   (require 'core-persistence)
   (require 'core-ui)
