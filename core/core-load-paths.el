@@ -25,9 +25,9 @@
 (defun add-to-load-path (x) (add-to-list 'load-path x))
 (defun mkdir_p          (x) (make-directory x 'mkdir_p))
 
-(setq custom-file (eval-when-compile (ivan-emacs-file "custom.el")))
-(unless (file-exists-p custom-file)
-  (write-region "" nil custom-file))
+(let ((file (eval-when-compile (ivan-emacs-file "custom.el"))))
+  (unless (file-exists-p file) (write-region "" nil file))
+  (custom-set-variables `(custom-file ,file)))
 
 (mapc #'mkdir_p (eval-when-compile `(,ivan-cache-directory
                                      ,ivan-packages-directory)))
