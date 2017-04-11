@@ -2136,10 +2136,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
           (lambda () (local-set-key (kbd "C-w") #'ivan-minibuffer-C-w)))
 
 
-;; padding
-(set-display-table-slot
- standard-display-table 0 ?\ )
+;; no truncation arrows
+(set-display-table-slot standard-display-table 0 ?\ )
 
+;; padding
 (defvar ivan-padding-enabled nil)
 (defvar ivan-padding-min 4)
 (defvar ivan-padding-max 580)
