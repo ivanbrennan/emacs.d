@@ -66,7 +66,6 @@
  minibuffer-eldef-shorten-default    t
  query-replace-skip-read-only        t
  read-buffer-completion-ignore-case  t
- scroll-preserve-screen-position     t
  sentence-end-double-space           nil
  split-window-keep-point             nil
  tab-always-indent                   'complete

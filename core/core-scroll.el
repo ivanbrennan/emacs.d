@@ -1,11 +1,12 @@
-(setq recenter-positions        '(top middle bottom)
-      scroll-step               1
-      scroll-margin             1
-      hscroll-step              1
-      hscroll-margin            2
-      scroll-conservatively     200
-      mouse-wheel-scroll-amount '(0.01 ((shift) . 1))
-      isearch-allow-scroll      t)
+(setq hscroll-margin                  2
+      hscroll-step                    1
+      isearch-allow-scroll            t
+      mouse-wheel-scroll-amount       '(0.01 ((shift) . 1))
+      recenter-positions              '(top middle bottom)
+      scroll-conservatively           200
+      scroll-margin                   1
+      scroll-preserve-screen-position t
+      scroll-step                     1)
 
 (add-hook 'compilation-mode-hook
           (lambda () (setq-local scroll-margin 0)))
