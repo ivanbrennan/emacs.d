@@ -1690,8 +1690,19 @@ spaces on either side of the point if so. Resorts to
     (add-hook 'help-mode-hook #'page-break-lines-mode)
     (add-hook 'Info-mode-hook #'page-break-lines-mode)))
 
+(use-package magit
+  :commands (magit-status)
+  :init
+  (custom-set-variables
+   '(magit-no-message '("Turning on magit-auto-revert-mode...")))
+  :config
+  (progn
+    (setq
+     magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
+     magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
+     )))
+
 (use-package evil-magit
-  :demand
   :init
   (progn
     (setq
@@ -1717,15 +1728,6 @@ spaces on either side of the point if so. Resorts to
       ("w q" #'with-editor-finish)
       ("c q" #'with-editor-cancel))
     ))
-
-(use-package magit
-  :commands (magit-status)
-  :config
-  (progn
-    (setq
-     magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-     magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")
-     )))
 
 (defun ivan-vc-refresh-state ()
   (interactive)

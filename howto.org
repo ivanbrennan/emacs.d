@@ -1,4 +1,5 @@
 * Misc
+** why is evil-magit initialized right away upon startup?
 ** ibuffer-filter-by-modified
 ** suppress eldoc-in-minibuffer when there's no modeline to show it
 ** whitespace: tab ›, space middle-dot
