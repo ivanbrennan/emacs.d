@@ -34,3 +34,5 @@
 
 (mapc #'add-to-load-path (eval-when-compile `(,ivan-config-directory
                                               ,ivan-core-directory)))
+
+(provide 'core-load-paths)
