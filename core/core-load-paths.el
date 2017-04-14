@@ -14,6 +14,10 @@
   (eval-when-compile (expand-file-name "config" user-emacs-directory))
   "Directory for feature configuration files.")
 
+(defconst ivan-custom-file
+  (eval-when-compile (expand-file-name "custom.el" user-emacs-directory))
+  "File for storing customization information.")
+
 (define-inline ivan-emacs-file (x)
   (inline-letevals (x)
     (inline-quote (expand-file-name ,x user-emacs-directory))))
@@ -25,9 +29,9 @@
 (defun add-to-load-path (x) (add-to-list 'load-path x))
 (defun mkdir_p          (x) (make-directory x 'mkdir_p))
 
-(let ((file (eval-when-compile (ivan-emacs-file "custom.el"))))
-  (unless (file-exists-p file) (write-region "" nil file))
-  (custom-set-variables `(custom-file ,file)))
+(unless (file-exists-p ivan-custom-file)
+  (write-region "" nil ivan-custom-file))
+(custom-set-variables (eval-when-compile `(custom-file ,ivan-custom-file)))
 
 (mapc #'mkdir_p (eval-when-compile `(,ivan-cache-directory
                                      ,ivan-packages-directory)))
