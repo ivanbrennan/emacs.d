@@ -1,3 +1,12 @@
+;; UTF-8 as the default coding system (from Doom)
+;; (set-charset-priority 'unicode)        ; could this impact performance?
+;; (prefer-coding-system        'utf-8)   ; looks like it's defaulting to utf-8 anyway?
+;; (set-terminal-coding-system  'utf-8)   ; looks like it's defaulting to utf-8 anyway?
+;; (set-keyboard-coding-system  'utf-8)   ; looks like it's defaulting to utf-8 anyway?
+(set-selection-coding-system 'utf-8)
+;; (setq locale-coding-system   'utf-8)   ; looks like it's defaulting to utf-8 anyway?
+;; (setq-default buffer-file-coding-system 'utf-8) ; looks like it's defaulting to utf-8 anyway?
+
 ;;; hidden mode line
 (put 'hidden-mode-line-mode 'permanent-local t)
 (put 'hidden-mode-line 'permanent-local t)
