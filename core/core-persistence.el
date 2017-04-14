@@ -4,25 +4,27 @@
 
 (mkdir_p ivan-auto-save-directory)
 
-(setq
- auto-save-file-name-transforms `((".*" ,ivan-auto-save-directory 'uniquify))
- auto-save-list-file-prefix     (ivan-cache-file "auto-save-list/.saves-")
- backup-by-copying              t
- backup-directory-alist         `(("." . ,(ivan-cache-file "backups/")))
- ido-save-directory-list-file   (ivan-cache-file "ido.last")
- tramp-persistency-file-name    (ivan-cache-file "tramp"))
+(apply 'custom-set-variables
+       (eval-when-compile
+         `((auto-save-file-name-transforms '((".*" ,ivan-auto-save-directory 'uniquify)))
+           (auto-save-list-file-prefix     ,(ivan-cache-file "auto-save-list/.saves-"))
+           (backup-by-copying              t)
+           (backup-directory-alist         '(("." . ,(ivan-cache-file "backups/"))))
+           (ido-save-directory-list-file   ,(ivan-cache-file "ido.last"))
+           (tramp-persistency-file-name    ,(ivan-cache-file "tramp")))))
 
 (use-package savehist
   :init
-  (setq
-   savehist-file                 (ivan-cache-file "savehist")
-   savehist-autosave-interval    60
-   savehist-additional-variables '(extended-command-history
-                                   global-mark-ring
-                                   mark-ring
-                                   read-expression-history
-                                   regexp-search-ring
-                                   search-ring))
+  (apply 'custom-set-variables
+         (eval-when-compile
+           `((savehist-file                 ,(ivan-cache-file "savehist"))
+             (savehist-autosave-interval    60)
+             (savehist-additional-variables '(extended-command-history
+                                               global-mark-ring
+                                               mark-ring
+                                               read-expression-history
+                                               regexp-search-ring
+                                               search-ring)))))
   (savehist-mode +1)
   :config
   (defun unpropertize-element (e)
@@ -40,6 +42,7 @@
   :init
   (save-place-mode +1)
   :config
-  (setq save-place-file (ivan-cache-file "saveplace")))
+  (custom-set-variables
+   (eval-when-compile `(save-place-file ,(ivan-cache-file "saveplace")))))
 
 (provide 'core-persistence)
