@@ -249,6 +249,7 @@ buffer represents a real file."
         ("C-e"         . evil-end-of-line)
         ("C-j"         . evil-scroll-line-down)
         ("C-k"         . evil-scroll-line-up)
+        ("M-l"         . goto-line)
         ("C-w C-h"     . evil-window-left)
         ("C-w C-j"     . evil-window-down)
         ("C-w C-k"     . evil-window-up)
