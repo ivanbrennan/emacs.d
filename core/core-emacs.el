@@ -2,6 +2,7 @@
       echo-keystrokes                     0.5
       enable-recursive-minibuffers        t
       eval-expression-print-length        192
+      eval-expression-print-level         16
       find-file-visit-truename            t
       idle-update-delay                   2
       load-prefer-newer                   t
