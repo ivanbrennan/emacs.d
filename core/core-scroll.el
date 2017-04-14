@@ -10,8 +10,11 @@
 
 (defun ivan-recenter-top-bottom (&optional arg)
   (interactive "P")
-  (recenter-top-bottom (if (equal arg '(4)) scroll-margin arg)))
-(global-set-key (kbd "C-l") #'ivan-recenter-top-bottom)
+  (if (equal arg '(4)) ; C-u prefix arg
+      (recenter-top-bottom scroll-margin)
+    (setq this-command 'recenter-top-bottom)
+    (recenter-top-bottom arg)))
+(global-set-key [remap recenter-top-bottom] #'ivan-recenter-top-bottom)
 
 (add-hook 'compilation-mode-hook
           (lambda () (setq-local scroll-margin 0)))
