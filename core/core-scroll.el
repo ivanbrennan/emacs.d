@@ -2,11 +2,16 @@
       hscroll-step                    1
       isearch-allow-scroll            t
       mouse-wheel-scroll-amount       '(0.01 ((shift) . 1))
-      recenter-positions              '(top middle bottom)
+      recenter-positions              '(middle top bottom)
       scroll-conservatively           200
       scroll-margin                   1
       scroll-preserve-screen-position t
       scroll-step                     1)
+
+(defun ivan-recenter-top-bottom (&optional arg)
+  (interactive "P")
+  (recenter-top-bottom (if (equal arg '(4)) scroll-margin arg)))
+(global-set-key (kbd "C-l") #'ivan-recenter-top-bottom)
 
 (add-hook 'compilation-mode-hook
           (lambda () (setq-local scroll-margin 0)))
