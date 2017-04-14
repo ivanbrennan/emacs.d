@@ -930,6 +930,7 @@ spaces on either side of the point if so. Resorts to
     "m e e"      #'pp-eval-last-sexp
     "m e r"      #'eval-region
     "m d"        #'mark-defun
+    "m L"        #'lisp-interaction-mode
     "o"          #'find-file
     "L"          #'switch-to-buffer
     "s"          #'ivan-substitute-word-on-line
