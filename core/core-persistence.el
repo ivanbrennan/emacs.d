@@ -2,29 +2,55 @@
   (eval-when-compile (ivan-cache-file "auto-save"))
   "Storage area for auto-save files.")
 
+(defconst ivan-auto-save-list-file-prefix
+  (eval-when-compile (ivan-cache-file "auto-save-list/.saves-"))
+  "Prefix for generating `auto-save-list-file-name'.")
+
+(defconst ivan-backup-directory
+  (eval-when-compile (ivan-cache-file "backups/"))
+  "Storage area for backup files.")
+
+(defconst ivan-ido-persistency-file
+  (eval-when-compile (ivan-cache-file "ido.last"))
+  "File where ido state is persisted.")
+
+(defconst ivan-save-place-file
+  (eval-when-compile (ivan-cache-file "saveplace"))
+  "File where save-place-alist is persisted.")
+
+(defconst ivan-savehist-file
+  (eval-when-compile (ivan-cache-file "savehist"))
+  "File where minibuffer history is persisted.")
+
+(defconst ivan-tramp-persistency-file
+  (eval-when-compile (ivan-cache-file "tramp"))
+  "File which keeps connection history for Tramp connections.")
+
 (mkdir_p ivan-auto-save-directory)
 
-(apply #'custom-set-variables
-       (eval-when-compile
-         `((auto-save-file-name-transforms '((".*" ,ivan-auto-save-directory 'uniquify)))
-           (auto-save-list-file-prefix     ,(ivan-cache-file "auto-save-list/.saves-"))
-           (backup-by-copying              t)
-           (backup-directory-alist         '(("." . ,(ivan-cache-file "backups/"))))
-           (ido-save-directory-list-file   ,(ivan-cache-file "ido.last"))
-           (tramp-persistency-file-name    ,(ivan-cache-file "tramp")))))
+(custom-set-variables
+ `(auto-save-file-name-transforms '((".*" ,ivan-auto-save-directory 'uniquify)))
+ `(auto-save-list-file-prefix     ,ivan-auto-save-list-file-prefix)
+ '(backup-by-copying              t)
+ `(backup-directory-alist         '(("." . ,ivan-backup-directory)))
+ `(ido-save-directory-list-file   ,ivan-ido-persistency-file)
+ `(save-place-file                ,ivan-save-place-file)
+ '(savehist-additional-variables  '(extended-command-history
+                                    global-mark-ring
+                                    mark-ring
+                                    read-expression-history
+                                    regexp-search-ring
+                                    search-ring))
+ '(savehist-autosave-interval     60)
+ `(savehist-file                  ,ivan-savehist-file)
+ `(tramp-persistency-file-name    ,ivan-tramp-persistency-file))
+
+(use-package saveplace
+  :init
+  (save-place-mode +1))
 
 (use-package savehist
   :init
-  (apply #'custom-set-variables
-         (eval-when-compile
-           `((savehist-file                 ,(ivan-cache-file "savehist"))
-             (savehist-autosave-interval    60)
-             (savehist-additional-variables '(extended-command-history
-                                               global-mark-ring
-                                               mark-ring
-                                               read-expression-history
-                                               regexp-search-ring
-                                               search-ring)))))
   (savehist-mode +1)
   :config
   (defun unpropertize-element (e)
@@ -35,14 +61,7 @@
   (defun unpropertize-savehist ()
     (mapc #'unpropertize-list-var (append savehist-minibuffer-history-variables
                                           savehist-additional-variables)))
-  (add-hook 'kill-emacs-hook    'unpropertize-savehist)
-  (add-hook 'savehist-save-hook 'unpropertize-savehist))
-
-(use-package saveplace
-  :init
-  (save-place-mode +1)
-  :config
-  (custom-set-variables
-   (eval-when-compile `(save-place-file ,(ivan-cache-file "saveplace")))))
+  (add-hook 'kill-emacs-hook    #'unpropertize-savehist)
+  (add-hook 'savehist-save-hook #'unpropertize-savehist))
 
 (provide 'core-persistence)
