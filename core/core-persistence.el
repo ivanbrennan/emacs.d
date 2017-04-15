@@ -28,40 +28,44 @@
 
 (mkdir_p ivan-auto-save-directory)
 
-(custom-set-variables
- `(auto-save-file-name-transforms '((".*" ,ivan-auto-save-directory 'uniquify)))
- `(auto-save-list-file-prefix     ,ivan-auto-save-list-file-prefix)
- '(backup-by-copying              t)
- `(backup-directory-alist         '(("." . ,ivan-backup-directory)))
- `(ido-save-directory-list-file   ,ivan-ido-persistency-file)
- `(save-place-file                ,ivan-save-place-file)
- '(savehist-additional-variables  '(extended-command-history
-                                    global-mark-ring
-                                    mark-ring
-                                    read-expression-history
-                                    regexp-search-ring
-                                    search-ring))
- '(savehist-autosave-interval     60)
- `(savehist-file                  ,ivan-savehist-file)
- `(tramp-persistency-file-name    ,ivan-tramp-persistency-file))
+(setq auto-save-file-name-transforms `((".*" ,ivan-auto-save-directory 'uniquify))
+      auto-save-list-file-prefix     ivan-auto-save-list-file-prefix
+
+      backup-by-copying      t
+      backup-directory-alist `(("." . ,ivan-backup-directory))
+
+      ido-save-directory-list-file ivan-ido-persistency-file)
+
+(with-eval-after-load 'tramp-cache
+  (eval-when-compile (defvar tramp-persistency-file-name))
+  (setq tramp-persistency-file-name ivan-tramp-persistency-file))
 
 (use-package saveplace
   :init
+  (setq save-place-file ivan-save-place-file)
   (save-place-mode +1))
 
 (use-package savehist
   :init
+  (setq savehist-file ivan-savehist-file)
   (savehist-mode +1)
   :config
-  (defun unpropertize-element (e)
-    (if (stringp e) (substring-no-properties e) e))
-  (defun unpropertize-list-var (v)
-    (when (boundp v)
-      (set v (mapcar #'unpropertize-element (symbol-value v)))))
+  (setq savehist-autosave-interval    60
+        savehist-additional-variables '(extended-command-history
+                                        global-mark-ring
+                                        mark-ring
+                                        read-expression-history
+                                        regexp-search-ring
+                                        search-ring))
   (defun unpropertize-savehist ()
     (mapc #'unpropertize-list-var (append savehist-minibuffer-history-variables
                                           savehist-additional-variables)))
-  (add-hook 'kill-emacs-hook    #'unpropertize-savehist)
-  (add-hook 'savehist-save-hook #'unpropertize-savehist))
+  (defun unpropertize-list-var (v)
+    (when (boundp v)
+      (set v (mapcar #'unpropertize-element (symbol-value v)))))
+  (defun unpropertize-element (e)
+    (if (stringp e) (substring-no-properties e) e))
+  (add-hook 'savehist-save-hook #'unpropertize-savehist)
+  (add-hook 'kill-emacs-hook    #'unpropertize-savehist))
 
 (provide 'core-persistence)
