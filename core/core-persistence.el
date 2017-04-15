@@ -4,7 +4,7 @@
 
 (mkdir_p ivan-auto-save-directory)
 
-(apply 'custom-set-variables
+(apply #'custom-set-variables
        (eval-when-compile
          `((auto-save-file-name-transforms '((".*" ,ivan-auto-save-directory 'uniquify)))
            (auto-save-list-file-prefix     ,(ivan-cache-file "auto-save-list/.saves-"))
@@ -15,7 +15,7 @@
 
 (use-package savehist
   :init
-  (apply 'custom-set-variables
+  (apply #'custom-set-variables
          (eval-when-compile
            `((savehist-file                 ,(ivan-cache-file "savehist"))
              (savehist-autosave-interval    60)
