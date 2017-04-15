@@ -33,10 +33,10 @@
   (write-region "" nil ivan-custom-file))
 (setq custom-file ivan-custom-file)
 
-(mapc #'mkdir_p (eval-when-compile `(,ivan-cache-directory
-                                     ,ivan-packages-directory)))
+(mapc #'mkdir_p `(,ivan-cache-directory
+                  ,ivan-packages-directory))
 
-(mapc #'add-to-load-path (eval-when-compile `(,ivan-config-directory
-                                              ,ivan-core-directory)))
+(mapc #'add-to-load-path `(,ivan-config-directory
+                           ,ivan-core-directory))
 
 (provide 'core-load-paths)
