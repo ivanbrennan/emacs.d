@@ -31,7 +31,7 @@
 
 (unless (file-exists-p ivan-custom-file)
   (write-region "" nil ivan-custom-file))
-(custom-set-variables (eval-when-compile `(custom-file ,ivan-custom-file)))
+(customize-set-variable 'custom-file ivan-custom-file)
 
 (mapc #'mkdir_p (eval-when-compile `(,ivan-cache-directory
                                      ,ivan-packages-directory)))
