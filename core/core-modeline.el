@@ -483,7 +483,6 @@ lines are selected, or the NxM dimensions of a block selection."
 
 ;; Show eldoc in the mode-line when using `eval-expression'.
 (use-package eldoc-eval
-  :ensure t
   :config
   (setq eldoc-in-minibuffer-show-fn 'doom-eldoc-show-in-mode-line)
   (eldoc-in-minibuffer-mode +1))
