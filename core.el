@@ -1703,10 +1703,8 @@ spaces on either side of the point if so. Resorts to
 
 (use-package magit
   :commands (magit-status)
-  :init
-  (custom-set-variables
-   '(magit-no-message '("Turning on magit-auto-revert-mode...")))
   :config
+  (setq magit-no-message '("Turning on magit-auto-revert-mode..."))
   (progn
     (setq
      magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
