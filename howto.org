@@ -1,5 +1,9 @@
 * Misc
 ** why is evil-magit initialized right away upon startup?
+** use setq, custom-set-variables, or customize-set-variable?
+*** first do it the "correct" way, using custom/customize for defcustom variables
+*** benchmark that against a naive setq blanket strategy
+*** if setq is significantly faster, consider using it selectively for variables that don't leverage :set or :initialize
 ** set a custom autoload file correctly?
 ** ibuffer-filter-by-modified
 ** suppress eldoc-in-minibuffer when there's no modeline to show it
