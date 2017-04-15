@@ -41,16 +41,14 @@
   (setq tramp-persistency-file-name ivan-tramp-persistency-file))
 
 (use-package saveplace
-  :init
+  :config
   (setq save-place-file ivan-save-place-file)
   (save-place-mode +1))
 
 (use-package savehist
-  :init
-  (setq savehist-file ivan-savehist-file)
-  (savehist-mode +1)
   :config
-  (setq savehist-autosave-interval    60
+  (setq savehist-file                 ivan-savehist-file
+        savehist-autosave-interval    60
         savehist-additional-variables '(extended-command-history
                                         global-mark-ring
                                         mark-ring
@@ -66,6 +64,7 @@
   (defun unpropertize-element (e)
     (if (stringp e) (substring-no-properties e) e))
   (add-hook 'savehist-save-hook #'unpropertize-savehist)
-  (add-hook 'kill-emacs-hook    #'unpropertize-savehist))
+  (add-hook 'kill-emacs-hook    #'unpropertize-savehist)
+  (savehist-mode +1))
 
 (provide 'core-persistence)
