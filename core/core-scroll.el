@@ -42,9 +42,11 @@
 
 (ivan-hscroll-minor-mode +1)
 
-(put 'mac-mwheel-scroll 'isearch-scroll t)
-(put 'ivan-scroll-right 'isearch-scroll t)
-(put 'ivan-scroll-left  'isearch-scroll t)
-(put 'hl-line-mode      'isearch-scroll t)
+(dolist (cmd '(mac-mwheel-scroll
+               ivan-recenter-top-bottom
+               ivan-scroll-right
+               ivan-scroll-left
+               hl-line-mode))
+  (put cmd 'isearch-scroll t))
 
 (provide 'core-scroll)
