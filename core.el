@@ -1929,17 +1929,19 @@ Disables `text-scale-mode`."
 
 (defun configure-gui ()
   (bind-keys*
+   ("M-c" . kill-ring-save)
+   ("M-v" . yank))
+  (bind-keys*
+   :filter (not (minibufferp))
    ("M-q" . save-buffers-kill-terminal)
    ("M-A" . mark-whole-buffer)
    ("M-o" . find-file)
-   ("M-c" . kill-ring-save)
    ("M-w" . ivan-delete-window)
    ("M-W" . delete-frame)
    ("M-m" . iconify-frame)
    ("M-n" . make-frame)
    ("M-s" . save-buffer)
    ("M-u" . ivan-toggle-transparency)
-   ("M-v" . yank)
    ("M-=" . text-scale-increase)
    ("M--" . text-scale-decrease)
    ("M-0" . ivan-text-scale-reset)
