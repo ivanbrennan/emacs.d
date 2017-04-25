@@ -53,7 +53,7 @@
     ("whisp0"     . "#EDEDED")
     ("whisp1"     . "#F2F2F2")
     ("whisp2"     . "#F5F5F5")
-    ("paper"      . "#FAFAFA")
+    ("paper"      . "#F9F9F9")
     ("paperwhite" . "#FCFCFC"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
