@@ -889,7 +889,7 @@ spaces on either side of the point if so. Resorts to
     :evil-states (normal motion visual)
     :override-minor-modes t)
   (bind-map-set-keys ivan-leader-map
-    ","          #'other-window
+    ","          #'evil-window-mru
     "`"          #'variable-pitch-mode
     "="          #'align-regexp
     "8"          #'switch-to-splat-buffer
@@ -909,7 +909,7 @@ spaces on either side of the point if so. Resorts to
     "C-b"        #'bury-buffer
     "B"          #'unbury-buffer
     ;; "b ."      #'hydra-buffers/body
-    "b i"        #'ibuffer
+    "b l"        #'ibuffer
     "b m j"      #'bookmark-jump
     "b m l"      #'bookmark-bmenu-list
     "b m m"      #'bookmark-set
@@ -940,7 +940,6 @@ spaces on either side of the point if so. Resorts to
     "v SPC"      #'ivan-vc-refresh-state
     "b SPC"      #'magit-branch-popup
     "w k"        #'evil-window-delete
-    "w l"        #'evil-window-mru
     "."          #'ivan-zoom-window
     "C-."        #'ivan-toggle-narrowing-zoom
     "w w"        #'ivan-zoom-other-window
@@ -1733,8 +1732,8 @@ spaces on either side of the point if so. Resorts to
     (bind-map-for-mode-inherit ivan-with-editor-leader-map ivan-leader-map
       :minor-modes (with-editor-mode)
       :bindings
-      ("w q" #'with-editor-finish)
-      ("c q" #'with-editor-cancel))
+      ("w q RET" #'with-editor-finish)
+      ("c q RET" #'with-editor-cancel))
     ))
 
 (defun ivan-vc-refresh-state ()
