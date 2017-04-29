@@ -19,7 +19,6 @@
 (define-minor-mode hidden-mode-line-mode
   "Minor mode to hide the mode-line in the current buffer."
   :init-value nil
-  :global nil
   (if hidden-mode-line-mode
       (setq hidden-mode-line mode-line-format
             mode-line-format hidden-mode-line-format)
