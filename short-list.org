@@ -91,6 +91,7 @@ different bindings for <tab> (the actual Tab key) and TAB (C-i)
 ** M-K
 ** M-R
 ** M-G
+** g <return> (in evil): git?; could use g instead of SPC v as prefix
 * Hydras
 ** windsize (SPC w {h,j,k,l})
 ** eval (SPC e)
