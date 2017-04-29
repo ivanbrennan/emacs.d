@@ -476,7 +476,13 @@ afterwards, kill line to column 1."
           (indent-according-to-mode))))
 
   (define-key evil-motion-state-map (kbd "0") #'ivan-move-to-bol)
-  (define-key evil-insert-state-map (kbd "C-u") #'doom/backward-kill-to-bol-and-indent))
+  (define-key evil-insert-state-map (kbd "C-u") #'doom/backward-kill-to-bol-and-indent)
+
+  (evil-define-command ivan-window-mru ()
+    "Switch to the most recently used window in the current frame."
+    :repeat nil
+    (let ((win (get-mru-window nil 'dedicated-ok 'not-selected)))
+      (when win (select-window win)))))
 
 (use-package elisp-slime-nav
   :diminish elisp-slime-nav-mode
@@ -891,7 +897,8 @@ spaces on either side of the point if so. Resorts to
     :evil-states (normal motion visual)
     :override-minor-modes t)
   (bind-map-set-keys ivan-leader-map
-    ","          #'evil-window-mru
+    ","          #'ivan-window-mru
+    "u"          #'ivan-window-mru
     "`"          #'variable-pitch-mode
     "="          #'align-regexp
     "8"          #'switch-to-splat-buffer
