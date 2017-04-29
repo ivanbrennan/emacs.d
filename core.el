@@ -1039,9 +1039,8 @@ spaces on either side of the point if so. Resorts to
   :diminish evil-commentary-mode
   :init
   (progn
-    (bind-map-set-keys ivan-leader-map
-      ";" #'evil-commentary
-      )
+    (evil-define-key 'normal evil-commentary-mode-map "g" nil)
+    (bind-map-set-keys ivan-leader-map ";" #'evil-commentary)
     (evil-commentary-mode +1)))
 
 (use-package goto-chg
