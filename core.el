@@ -403,6 +403,8 @@ buffer represents a real file."
       (cond
        ((eq 'ruby-mode major-mode)
         (ivan-rspec-dwim 'rspec-verify-single))
+       ((eq 'rspec-compilation-mode major-mode)
+        (rspec-rerun))
        ((eq 'emacs-lisp-mode major-mode)
         (ivan-ert))))
 
