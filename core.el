@@ -482,7 +482,13 @@ afterwards, kill line to column 1."
     "Switch to the most recently used window in the current frame."
     :repeat nil
     (let ((win (get-mru-window nil 'dedicated-ok 'not-selected)))
-      (when win (select-window win)))))
+      (when win (select-window win))))
+
+  (defun ivan-guess-alternate-buffer (&rest _args)
+    (let* ((buf (other-buffer))
+           (pos (with-current-buffer buf (point))))
+      (list buf 0 pos)))
+  (advice-add 'evil-alternate-buffer :after-until #'ivan-guess-alternate-buffer))
 
 (use-package elisp-slime-nav
   :diminish elisp-slime-nav-mode
