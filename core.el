@@ -458,16 +458,17 @@ buffer represents a real file."
   (defun doom--point-at-bol-non-blank()
     (save-excursion (evil-first-non-blank) (point)))
 
-  (defun ivan-move-to-bol ()
-    "Moves cursor to the bol. If already there, move it to the first non-blank
-character on the line."
+  (evil-define-command ivan-move-to-bol ()
+    "Move cursor to the beginning of line. If already there, move to the first
+non-blank character."
+    :repeat nil
     (interactive)
     (evil-save-goal-column
-      (let ((bol (point-at-bol))
-            (point (point)))
-        (if (= bol point)
-            (evil-first-non-blank)
-          (evil-move-beginning-of-line)))))
+      (let ((at-bol (= (point-at-bol) (point))))
+        (setq this-command (if at-bol
+                               'evil-first-non-blank
+                             'evil-move-beginning-of-line)))
+      (funcall this-command)))
 
   (defun doom/backward-kill-to-bol-and-indent ()
     "Kill line to the first non-blank character. If invoked again \
