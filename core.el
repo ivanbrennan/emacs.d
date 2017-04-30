@@ -363,16 +363,19 @@ buffer represents a real file."
     (advice-add 'evil-open-below :before #'ivan-maybe-trim-whitespace-current-line)
     (advice-add 'evil-open-above :before #'ivan-maybe-trim-whitespace-current-line)
 
-    (defun ivan-paste-pop-or-previous-line (count)
+    (evil-define-command ivan-paste-pop-or-previous-line (count)
+      :repeat nil
       (interactive "p")
-      (if (memq last-command
-                '(evil-paste-after
-                  evil-paste-before
-                  evil-visual-paste))
-          (evil-paste-pop count)
-        (evil-previous-line-first-non-blank count)))
+      (let ((paste (memq last-command '(evil-paste-after
+                                        evil-paste-before
+                                        evil-visual-paste))))
+        (setq this-command (if paste
+                               'evil-paste-pop
+                             'evil-previous-line-first-non-blank)))
+      (funcall this-command count))
 
-    (defun ivan-paste-pop-or-next-line (count)
+    (evil-define-command ivan-paste-pop-or-next-line (count)
+      :repeat nil
       (interactive "p")
       (ivan-paste-pop-or-previous-line (- count)))
 
