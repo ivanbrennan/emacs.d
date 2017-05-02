@@ -497,6 +497,12 @@ afterwards, kill line to column 1."
       (list buf 0 pos)))
   (advice-add 'evil-alternate-buffer :after-until #'ivan-guess-alternate-buffer))
 
+(use-package evil-goggles
+  :config
+  (setq evil-goggles-duration     0.100
+        evil-goggles-default-face 'lazy-highlight)
+  (evil-goggles-mode))
+
 (use-package elisp-slime-nav
   :diminish elisp-slime-nav-mode
   :commands elisp-slime-nav-mode
