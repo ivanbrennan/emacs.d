@@ -1,4 +1,4 @@
-(setq inhibit-startup-screen t
+(setq inhibit-startup-screen  t
       initial-scratch-message nil)
 
 (menu-bar-mode 0)
@@ -10,14 +10,14 @@
   (setq frame-title-format "%b"))
 
 (setq-default fringes-outside-margins t
-              fringe-indicator-alist  (assq-delete-all
-                                       'truncation
-                                       (assq-delete-all
-                                        'continuation
-                                        fringe-indicator-alist)))
+              fringe-indicator-alist (assq-delete-all
+                                      'truncation
+                                      (assq-delete-all
+                                       'continuation
+                                       fringe-indicator-alist))
 
-(setq-default cursor-type 'bar
-              cursor-in-non-selected-windows nil)
+              cursor-in-non-selected-windows nil
+              cursor-type 'bar)
 
 (blink-cursor-mode 0)
 
