@@ -3,15 +3,18 @@
 
 (defface font-lock-todo-face
   '((t (:inherit error :slant normal)))
-    "Face for TODO items.")
+  "Face for TODO items."
+  :group 'font-lock-faces)
 
 (defface font-lock-note-face
   '((t (:inherit success :slant normal)))
-    "Face for NOTE items.")
+  "Face for NOTE items."
+  :group 'font-lock-faces)
 
 (defface font-lock-colon-face
   '((t (:inherit font-lock-comment-face :slant normal)))
-    "Face for colon following TODO/NOTE items.")
+  "Face for colon following TODO/NOTE items."
+  :group 'font-lock-faces)
 
 (defun add-todo-and-note-keywords ()
   (let ((todo "\\(\\<TODO\\>\\)\\(?:[ \t]*\\)\\(:?\\)")
