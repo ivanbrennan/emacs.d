@@ -1,12 +1,14 @@
 (setq hscroll-margin                  2
       hscroll-step                    1
       isearch-allow-scroll            t
-      mouse-wheel-scroll-amount       '(0.01 ((shift) . 1))
       recenter-positions              '(middle top bottom)
       scroll-conservatively           200
       scroll-margin                   1
       scroll-preserve-screen-position t
       scroll-step                     1)
+
+(customize-set-variable
+ 'mouse-wheel-scroll-amount '(0.01 ((shift) . 1)))
 
 (defun ivan-recenter-top-bottom (&optional arg)
   (interactive "P")
