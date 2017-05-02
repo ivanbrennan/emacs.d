@@ -345,6 +345,9 @@ buffer represents a real file."
     (defun ivan-treat-hyphen-as-word-char     () (ivan-treat-as-word-char ?-))
     (defun ivan-treat-as-word-char (char) (modify-syntax-entry char "w"))
 
+    (mapc 'evil-declare-ignore-repeat
+          '(describe-key-briefly))
+
     (defun ivan-trim-autoinserted-whitespace ()
       (when (memq last-command
                   '(evil-open-above
