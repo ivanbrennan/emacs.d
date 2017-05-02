@@ -190,11 +190,6 @@
   ;; (doom/workgroup-display t)
   )
 
-(defun doom/project-root (&optional strict-p)
-  "Get the path to the root of your project."
-  (let (projectile-require-project-root strict-p)
-    (projectile-project-root)))
-
 ;; (defun doom/workgroup-display (&optional suppress-update return-p message)
 ;;   (interactive)
 ;;   (awhen (wg-current-session t)
