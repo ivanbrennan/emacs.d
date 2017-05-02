@@ -5,9 +5,17 @@
         powerline-display-mule-info   nil
         powerline-gui-use-vcs-glyph   t))
 
-(use-package all-the-icons)
+(use-package evil-anzu :defer t)
 
-(require 'powerline)
+(eval-when-compile
+  (require 'powerline)
+  (require 'projectile)
+  (require 'evil-anzu)
+  (require 'iedit)
+  (require 'image-mode)
+  (require 'flycheck))
+
+(use-package all-the-icons)
 
 ;; all-the-icons doesn't work in the terminal, so we "disable" it.
 (unless window-system
@@ -32,6 +40,8 @@
 ;;
 ;; Custom faces
 ;;
+
+(defgroup doom nil "" :group 'emacs)
 
 (defface doom-modeline-buffer-path '((t (:inherit mode-line :bold t)))
   "Face used for the dirname part of the buffer path.")
@@ -85,8 +95,10 @@ active.")
 (add-hook 'focus-in-hook 'doom-ml|env-update)
 (add-hook 'find-file-hook 'doom-ml|env-update)
 
-(defun doom/project-root ()
-  (or (locate-dominating-file default-directory ".git") default-directory))
+(defun doom/project-root (&optional strict-p)
+  "Get the path to the root of your project."
+  (let (projectile-require-project-root strict-p)
+    (projectile-project-root)))
 
 (defun doom-ml|env-update ()
   "Update (py|rb)env version string in `doom-ml--env-version', generated with
@@ -367,8 +379,7 @@ lines are selected, or the NxM dimensions of a block selection."
            (pattern (car-safe (evil-delimited-arguments evil-ex-argument 2))))
        (if pattern
            (format " %s matches "
-                   (count-matches pattern (car range) (cdr range))
-                   evil-ex-argument)
+                   (count-matches pattern (car range) (cdr range)))
          " ... "))
      'face (if (active) 'doom-modeline-panel))))
 
