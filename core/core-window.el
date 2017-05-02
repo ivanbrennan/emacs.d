@@ -1,7 +1,6 @@
-(setq window-divider-default-places       t
-      window-divider-default-bottom-width 1
-      window-divider-default-right-width  1)
-
+(customize-set-variable 'window-divider-default-places t)
+(customize-set-variable 'window-divider-default-bottom-width 1)
+(customize-set-variable 'window-divider-default-right-width  1)
 (window-divider-mode +1)
 
 (setq max-mini-window-height 0.3
