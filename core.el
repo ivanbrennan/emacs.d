@@ -499,8 +499,8 @@ afterwards, kill line to column 1."
 
 (use-package evil-goggles
   :config
-  (setq evil-goggles-duration     0.100
-        evil-goggles-default-face 'lazy-highlight)
+  (setq evil-goggles-default-face 'lazy-highlight
+        evil-goggles-duration     0.100)
   (evil-goggles-mode))
 
 (use-package elisp-slime-nav
