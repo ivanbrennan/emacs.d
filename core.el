@@ -1795,6 +1795,8 @@ spaces on either side of the point if so. Resorts to
 (use-package flycheck
   :commands (flycheck-mode
              flycheck-buffer
+             flycheck-has-current-errors-p
+             flycheck-count-errors
              flycheck-list-errors)
   :init
   (setq
