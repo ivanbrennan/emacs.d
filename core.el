@@ -749,6 +749,19 @@ configuration."
 
   (workgroups-mode +1))
 
+(use-package macrostep
+  :commands macrostep-expand
+  :init
+  (with-eval-after-load 'hydra
+    (defhydra hydra-macrostep (:color red)
+      "macrostep"
+      ("e"        macrostep-expand "expand")
+      ("c"        macrostep-collapse "collapse")
+      ("n"        macrostep-next-macro "next")
+      ("p"        macrostep-prev-macro "previous")
+      ("q"        macrostep-collapse-all "quit" :color blue)
+      ("<escape>" macrostep-collapse-all "quit" :color blue))))
+
 (use-package smartparens
   :diminish smartparens-mode
   :init
@@ -952,6 +965,7 @@ spaces on either side of the point if so. Resorts to
     "m e r"      #'eval-region
     "m d"        #'mark-defun
     "m L"        #'lisp-interaction-mode
+    "m m"        #'hydra-macrostep/body
     "o"          #'find-file
     "L"          #'switch-to-buffer
     "s"          #'ivan-substitute-word-on-line
