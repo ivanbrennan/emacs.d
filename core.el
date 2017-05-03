@@ -1888,6 +1888,10 @@ spaces on either side of the point if so. Resorts to
   (add-hook 'rspec-compilation-mode-hook #'ivan-add-rspec-presenter)
   (add-hook 'rspec-compilation-mode-hook #'ivan-wrap-lines)
 
+  (with-eval-after-load evil
+    (evil-define-key 'normal rspec-compilation-mode-map
+      "g" (lookup-key evil-motion-state-map "g")))
+
   (bind-map-for-mode-inherit ivan-rspec-leader-map ivan-leader-map
     :major-modes (ruby-mode)
     :bindings
