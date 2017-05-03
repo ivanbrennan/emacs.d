@@ -1889,8 +1889,9 @@ spaces on either side of the point if so. Resorts to
   (add-hook 'rspec-compilation-mode-hook #'ivan-wrap-lines)
 
   (with-eval-after-load evil
-    (evil-define-key 'normal rspec-compilation-mode-map
-      "g" (lookup-key evil-motion-state-map "g")))
+    (let ((gmap (lookup-key evil-motion-state-map "g")))
+      (evil-define-key 'normal rspec-compilation-mode-map "g" gmap)
+      (evil-define-key 'motion rspec-compilation-mode-map "g" gmap)))
 
   (bind-map-for-mode-inherit ivan-rspec-leader-map ivan-leader-map
     :major-modes (ruby-mode)
