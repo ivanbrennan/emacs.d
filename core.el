@@ -2316,7 +2316,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   :mode (("\\`\\.?vimrc\\'" . vimrc-mode)
          ("\\.vim\\'"       . vimrc-mode)))
 
-(use-package help-fns+ :commands describe-keymap)
+(use-package help-fns+
+  :commands describe-keymap
+  :config
+  (define-key help-map "c"    'describe-key-briefly)
+  (define-key help-map "\C-c" 'describe-command))
 
 (use-package imenu-list
   :commands (imenu-list imenu-list-minor-mode)
