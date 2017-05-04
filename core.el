@@ -7,33 +7,6 @@
 ;; (setq locale-coding-system   'utf-8)   ; looks like it's defaulting to utf-8 anyway?
 ;; (setq-default buffer-file-coding-system 'utf-8) ; looks like it's defaulting to utf-8 anyway?
 
-;;; hidden mode line
-(put 'hidden-mode-line-mode 'permanent-local t)
-(put 'hidden-mode-line 'permanent-local t)
-
-(defvar hidden-mode-line-format nil
-  "Format to use when `hidden-mode-line-mode' replaces the modeline")
-
-(defvar-local hidden-mode-line nil)
-
-(define-minor-mode hidden-mode-line-mode
-  "Minor mode to hide the mode-line in the current buffer."
-  :init-value nil
-  (if hidden-mode-line-mode
-      (setq hidden-mode-line mode-line-format
-            mode-line-format hidden-mode-line-format)
-    (setq mode-line-format hidden-mode-line
-          hidden-mode-line hidden-mode-line-format)))
-
-(with-current-buffer "*Messages*" (hidden-mode-line-mode +1))
-(dolist (hook '(help-mode-hook
-                apropos-mode-hook
-                ibuffer-mode-hook
-                compilation-mode-hook
-                messages-buffer-mode-hook
-                completion-list-mode-hook))
-  (add-hook hook #'hidden-mode-line-mode))
-
 ;;; A subtle bell: flash the mode-line
 ;; TODO More flexible colors
 (defvar doom--modeline-bg nil)

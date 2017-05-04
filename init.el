@@ -19,6 +19,7 @@
   (require 'core-whitespace)
   (require 'core-themes)
   (require 'core-documentation)
+  (require 'core-hidden-mode-line)
   (require 'core (concat user-emacs-directory "core"))
 
   (and (display-graphic-p)
