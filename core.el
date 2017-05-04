@@ -1500,15 +1500,15 @@ spaces on either side of the point if so. Resorts to
 (use-package ivy
   :commands (ivy-mode ivy-read ivy-completing-read ivy-recentf)
   :diminish 'ivy-mode
-  :bind
-  (:map ivy-minibuffer-map
-        ("<escape>" . minibuffer-keyboard-quit)
-        ("C-u"      . backward-kill-sentence)
-        ("M-v"      . yank))
   :init
   (setq projectile-completion-system   'ivy
         magit-completing-read-function 'ivy-completing-read)
   :config
+  (bind-keys
+   :map ivy-minibuffer-map
+   ("<escape>" . minibuffer-keyboard-quit)
+   ("C-u"      . backward-kill-sentence)
+   ("M-v"      . yank))
   (setq
    ivy-count-format ""
    ivy-format-function 'ivy-format-function-line
