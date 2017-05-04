@@ -55,9 +55,6 @@
 (setenv "PAGER" "/usr/bin/env cat")
 
 
-(with-eval-after-load 'core-modeline
-  (require 'core-splat))
-
 ;; tramp
 (setq tramp-default-method "ssh")
 

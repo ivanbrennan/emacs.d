@@ -10,6 +10,7 @@
   (require 'core-persistence)
   (require 'core-ui)
   (require 'core-modeline)
+  (require 'core-splat)
   (require 'core-parens)
   (require 'core-syntax)
   (require 'core-window)
