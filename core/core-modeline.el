@@ -492,6 +492,26 @@ lines are selected, or the NxM dimensions of a block selection."
           (sit-for eldoc-show-in-mode-line-delay))))
     (force-mode-line-update)))
 
+;;; A subtle bell: flash the mode-line
+;; TODO More flexible colors
+(defvar doom--modeline-bg nil)
+(defface doom-modeline-flash '((t (:inherit mode-line :background "#54252C")))
+  "Face used for the mode-line ring-bell-function.")
+
+(defsubst ivan-modeline-flash ()
+  (unless doom--modeline-bg
+    (setq doom--modeline-bg (face-background 'mode-line)))
+  (set-face-background 'mode-line
+                       (face-background 'doom-modeline-flash))
+  (run-with-timer
+   0.1 nil
+   (lambda ()
+     (when doom--modeline-bg
+       (set-face-background 'mode-line doom--modeline-bg)
+       (setq doom--modeline-bg nil)))))
+
+(setq ring-bell-function #'ivan-modeline-flash)
+
 ;; Show eldoc in the mode-line when using `eval-expression'.
 (use-package eldoc-eval
   :config

@@ -7,26 +7,6 @@
 ;; (setq locale-coding-system   'utf-8)   ; looks like it's defaulting to utf-8 anyway?
 ;; (setq-default buffer-file-coding-system 'utf-8) ; looks like it's defaulting to utf-8 anyway?
 
-;;; A subtle bell: flash the mode-line
-;; TODO More flexible colors
-(defvar doom--modeline-bg nil)
-(defface doom-modeline-flash '((t (:inherit mode-line :background "#54252C")))
-  "Face used for the mode-line ring-bell-function.")
-
-(defsubst ivan-modeline-flash ()
-  (unless doom--modeline-bg
-    (setq doom--modeline-bg (face-background 'mode-line)))
-  (set-face-background 'mode-line
-                       (face-background 'doom-modeline-flash))
-  (run-with-timer
-   0.1 nil
-   (lambda ()
-     (when doom--modeline-bg
-       (set-face-background 'mode-line doom--modeline-bg)
-       (setq doom--modeline-bg nil)))))
-
-(setq ring-bell-function #'ivan-modeline-flash)
-
 ;; sensibility
 (setq
  bookmark-bmenu-toggle-filenames     nil
