@@ -193,6 +193,7 @@ buffer represents a real file."
         ("t"           . ivan-run-tests-or-find-char-to)
         ("T"           . ivan-run-test-file-or-find-char-to-backward)
         ("S-SPC"       . evil-ex)
+        ("z q"         . ivan-quit-no-confirm)
         :map evil-motion-state-map
         ("C-d"         . ivan-kill-buffer-and-maybe-window)
         ("C-e"         . evil-end-of-line)
@@ -1988,6 +1989,11 @@ Disables `text-scale-mode`."
   (interactive)
   (set-face-attribute
    'default nil :height (round (/ (face-attribute 'default :height) 1.2))))
+
+(defun ivan-quit-no-confirm ()
+  (interactive)
+  (let ((confirm-kill-emacs nil))
+    (save-buffers-kill-terminal)))
 
 (defun configure-gui ()
   (bind-keys*
