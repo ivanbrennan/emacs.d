@@ -397,15 +397,50 @@ buffer represents a real file."
     (evil-define-key 'motion neotree-mode-map  (kbd "u")     #'neotree-hidden-file-toggle)
     (evil-define-key 'normal debugger-mode-map (kbd "q")     #'top-level)
 
-    (with-eval-after-load 'hydra
-      (defhydra hydra-dired-preview (:foreign-keys run)
-        "preview"
-        ("SPC"      dired-display-file "preview")
-        ("S-SPC"    dired-display-file "preview")
-        ("q"        nil "quit" :color blue)
-        ("<escape>" nil "quit" :color blue)))
+    (defun dired-preview-file ()
+      "Preview the current file in another window."
+      (interactive)
+      (unless (window-parent)
+        (split-window nil nil 'right)
+        (set-window-parameter (next-window) 'created-for-preview t))
+      (let ((file (dired-get-file-for-visit))
+            (dired-buffer (current-buffer)))
+        (other-window 1)
+        (and (not (eq dired-buffer (current-buffer)))
+             (and (or view-mode (eq 'dired-mode major-mode))
+                  (kill-buffer)))
+        (let ((filebuffer (get-file-buffer file)))
+          (if filebuffer
+              (switch-to-buffer filebuffer)
+            (let ((inhibit-message t))
+              (view-file file)))
+          (other-window -1))))
 
-    (evil-define-key 'normal dired-mode-map (kbd "S-SPC") #'hydra-dired-preview/dired-display-file)
+    (defun dired-quit-preview ()
+      "Quit the preview buffer, and possibly its window, from dired."
+      (interactive)
+      (when (eq 'dired-mode major-mode)
+        (let ((dired-buffer (current-buffer)))
+          (other-window 1)
+          (when (and (not (eq dired-buffer (current-buffer)))
+                     (or view-mode (eq 'dired-mode major-mode)))
+            (kill-buffer)
+            (if (window-parameter (selected-window) 'created-for-preview)
+                (delete-window)
+              (other-window -1))))))
+
+    (with-eval-after-load 'hydra
+      (defhydra hydra-dired-preview (:hint nil
+                                     :foreign-keys run
+                                     :pre (setq hydra-lv nil)
+                                     :after-exit (setq hydra-lv t))
+        (format (propertize "preview" 'face 'hydra-face-title))
+        ("SPC"      dired-preview-file)
+        ("S-SPC"    dired-preview-file)
+        ("q"        dired-quit-preview :color blue)
+        ("<escape>" dired-quit-preview :color blue)))
+
+    (evil-define-key 'normal dired-mode-map (kbd "S-SPC") #'hydra-dired-preview/dired-preview-file)
 
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
     (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
