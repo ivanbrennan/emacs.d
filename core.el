@@ -416,6 +416,17 @@ buffer represents a real file."
               (view-file file)))
           (other-window -1))))
 
+    (defun dired-preview-next (&optional count)
+      "Move down lines and preview dired entry."
+      (interactive)
+      (and (dired-next-line (or count 1))
+           (dired-preview-file)))
+
+    (defun dired-preview-previous (&optional count)
+      "Move up lines and preview dired entry."
+      (interactive)
+      (dired-preview-next (- (or count 1))))
+
     (defun dired-quit-preview ()
       "Quit the preview buffer, and possibly its window, from dired."
       (interactive)
@@ -430,13 +441,23 @@ buffer represents a real file."
               (other-window -1))))))
 
     (with-eval-after-load 'hydra
-      (defhydra hydra-dired-preview (:hint nil
-                                     :foreign-keys run
-                                     :pre (setq hydra-lv nil)
-                                     :after-exit (setq hydra-lv t))
+      (defhydra hydra-dired-follow (:hint nil :foreign-keys run)
+        (format (propertize "preview (follow)" 'face 'hydra-face-title))
+        ("j"        dired-preview-next)
+        ("C-n"      dired-preview-next)
+        ("k"        dired-preview-previous)
+        ("C-p"      dired-preview-previous)
+        ("."        nil :color blue)
+        ("q"        dired-quit-preview :color blue)
+        ("<escape>" dired-quit-preview :color blue))
+      (define-key hydra-dired-follow/keymap [remap dired-next-line]     #'dired-preview-next)
+      (define-key hydra-dired-follow/keymap [remap dired-previous-line] #'dired-preview-previous)
+
+      (defhydra hydra-dired-preview (:hint nil :foreign-keys run)
         (format (propertize "preview" 'face 'hydra-face-title))
         ("SPC"      dired-preview-file)
         ("S-SPC"    dired-preview-file)
+        ("."        hydra-dired-follow/body)
         ("q"        dired-quit-preview :color blue)
         ("<escape>" dired-quit-preview :color blue)))
 
