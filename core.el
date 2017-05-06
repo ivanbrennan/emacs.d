@@ -2414,6 +2414,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (require 'ibuffer-config))
 (with-eval-after-load 'dired
   (require 'dired-config))
+(with-eval-after-load 'view
+  (setq view-inhibit-help-message t))
 
 (setq
  calendar-latitude 40.7
