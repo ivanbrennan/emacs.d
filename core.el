@@ -397,6 +397,16 @@ buffer represents a real file."
     (evil-define-key 'motion neotree-mode-map  (kbd "u")     #'neotree-hidden-file-toggle)
     (evil-define-key 'normal debugger-mode-map (kbd "q")     #'top-level)
 
+    (with-eval-after-load 'hydra
+      (defhydra hydra-dired-preview (:foreign-keys run)
+        "preview"
+        ("SPC"      dired-display-file "preview")
+        ("S-SPC"    dired-display-file "preview")
+        ("q"        nil "quit" :color blue)
+        ("<escape>" nil "quit" :color blue)))
+
+    (evil-define-key 'normal dired-mode-map (kbd "S-SPC") #'hydra-dired-preview/dired-display-file)
+
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
     (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
     (define-key evil-normal-state-map (kbd "M-.") nil)
