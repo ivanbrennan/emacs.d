@@ -398,80 +398,9 @@ buffer represents a real file."
     (evil-define-key 'motion neotree-mode-map  (kbd "u")     #'neotree-hidden-file-toggle)
     (evil-define-key 'normal debugger-mode-map (kbd "q")     #'top-level)
 
-    (defun dired-preview-file ()
-      "Preview the current file in another window."
-      (interactive)
-      (unless (window-parent)
-        (split-window nil nil 'right)
-        (set-window-parameter (next-window) 'created-for-preview t))
-      (let ((file (dired-get-file-for-visit))
-            (dired-buffer (current-buffer)))
-        (other-window 1)
-        (and (not (eq dired-buffer (current-buffer)))
-             (and (or view-mode (eq 'dired-mode major-mode))
-                  (kill-buffer)))
-        (let ((filebuffer (get-file-buffer file)))
-          (if filebuffer
-              (switch-to-buffer filebuffer)
-            (let ((inhibit-message t))
-              (view-file file)))
-          (other-window -1))))
-
-    (defun dired-preview-next (&optional count)
-      "Move down lines and preview dired entry."
-      (interactive)
-      (and (dired-next-line (or count 1))
-           (dired-preview-file)))
-
-    (defun dired-preview-previous (&optional count)
-      "Move up lines and preview dired entry."
-      (interactive)
-      (dired-preview-next (- (or count 1))))
-
-    (defun dired-quit-preview ()
-      "Quit the preview buffer, and possibly its window, from dired."
-      (interactive)
-      (when (eq 'dired-mode major-mode)
-        (let ((dired-buffer (current-buffer)))
-          (other-window 1)
-          (let ((preview-buffer (current-buffer)))
-            (when (and (not (eq dired-buffer preview-buffer))
-                       (not (buffer-modified-p preview-buffer))
-                       (or view-mode
-                           (eq 'dired-mode major-mode)))
-              (kill-buffer)
-              (if (window-parameter (selected-window) 'created-for-preview)
-                  (delete-window)
-                (other-window -1)))))))
-
-    (with-eval-after-load 'hydra
-      (defhydra hydra-dired-follow (:hint nil)
-        (format (propertize "preview (follow)" 'face 'hydra-face-title))
-        ("j"        dired-preview-next)
-        ("n"        dired-preview-next)
-        ("C-n"      dired-preview-next)
-        ("k"        dired-preview-previous)
-        ("p"        dired-preview-previous)
-        ("C-p"      dired-preview-previous)
-        ("."        nil :color blue)
-        ("q"        dired-quit-preview :color blue)
-        ("<escape>" dired-quit-preview :color blue))
-
-      (defhydra hydra-dired-preview (:hint nil)
-        (format (propertize "preview" 'face 'hydra-face-title))
-        ("SPC"      dired-preview-file)
-        ("S-SPC"    dired-preview-file)
-        ("."        hydra-dired-follow/body)
-        ("j"        dired-next-line)
-        ("n"        dired-next-line)
-        ("C-n"      dired-next-line)
-        ("k"        dired-previous-line)
-        ("p"        dired-previous-line)
-        ("C-p"      dired-previous-line)
-        ("q"        dired-quit-preview :color blue)
-        ("<escape>" dired-quit-preview :color blue)))
-
-    (evil-define-key 'normal dired-mode-map (kbd "S-SPC") #'hydra-dired-preview/dired-preview-file)
+    (require 'core-hydra-preview)
+    (evil-define-key 'normal dired-mode-map (kbd "S-SPC") #'hydra-dired-preview/dired-preview-current)
+    (evil-define-key 'normal dired-mode-map "." #'hydra-dired-preview-and-follow)
 
     (setq evil-want-C-i-jump nil) ;; don't clobber TAB in terminal
     (define-key evil-motion-state-map [C-i] #'evil-jump-forward) ;; GUI only
