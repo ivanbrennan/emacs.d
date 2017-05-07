@@ -30,7 +30,7 @@
   (dired-preview-assert-mode)
   (let ((win  (dired-preview-find-window 'or-create))
         (file (dired-get-file-for-visit)))
-    (dired-preview-clean win)
+    (dired-preview-clean win :keep-buffer (current-buffer))
     (with-selected-window win
       (dired-preview-file file))))
 
@@ -49,9 +49,11 @@
     (set-window-parameter win 'created-for-preview t)
     win))
 
-(defun dired-preview-clean (win &optional quit-preview)
-  (let ((buf (window-buffer win)))
-    (when (and (not (eq (current-buffer) buf))
+(defun dired-preview-clean (win &rest args)
+  (let ((quit-preview (plist-get args :quit-preview))
+        (keep-buffer (plist-get args :keep-buffer))
+        (buf (window-buffer win)))
+    (when (and (not (eq keep-buffer buf))
                (dired-preview-disposable? buf))
       (kill-buffer buf)
       (when (and quit-preview
@@ -78,6 +80,15 @@
   (interactive)
   (dired-preview-assert-mode)
   (let ((win (dired-preview-find-window)))
-    (dired-preview-clean win 'quit-preview)))
+    (dired-preview-clean win :keep-buffer (current-buffer)
+                             :quit-preview t)))
+
+(defun ivan-view-quit ()
+  "Quit view-mode and clean up buffer/window."
+  (interactive)
+  (dired-preview-clean (selected-window) :quit-preview t))
+
+(with-eval-after-load 'view
+  (define-key view-mode-map "q" #'ivan-view-quit))
 
 (provide 'core-hydra-preview)
