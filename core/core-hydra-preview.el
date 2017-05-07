@@ -55,10 +55,10 @@
         (buf (window-buffer win)))
     (when (and (not (eq keep-buffer buf))
                (dired-preview-disposable? buf))
-      (kill-buffer buf)
-      (when (and quit-preview
-                 (window-parameter win 'created-for-preview))
-        (delete-window win)))))
+      (kill-buffer buf))
+    (when (and quit-preview
+               (window-parameter win 'created-for-preview))
+      (delete-window win))))
 
 (defun dired-preview-disposable? (buf)
   (and (not (buffer-modified-p buf))
