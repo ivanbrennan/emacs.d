@@ -1,6 +1,8 @@
 (with-eval-after-load 'hydra
-  (defhydra hydra-preview (:hint nil)
-    (format (propertize "preview" 'face 'hydra-face-title))
+  (defhydra hydra-preview (:hint nil
+                           :pre        (setq hydra-lv nil)
+                           :after-exit (setq hydra-lv t))
+    (format "")
     ("SPC"      dired-preview-current)
     ("n"        dired-preview-next)
     ("p"        dired-preview-previous)
