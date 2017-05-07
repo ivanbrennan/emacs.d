@@ -703,13 +703,13 @@ configuration."
   (add-hook 'kill-emacs-hook 'doom|wg-cleanup)
 
   (with-eval-after-load 'hydra
-    (defhydra hydra-layouts (:color blue)
+    (defhydra hydra-layouts (:exit t)
       "layouts"
-      ("c"        wg-create-workgroup "create")
-      ("n"        wg-switch-to-workgroup-right "next" :color red)
-      ("p"        wg-switch-to-workgroup-left "previous" :color red)
+      ("n"        wg-switch-to-workgroup-right "next" :exit nil)
+      ("p"        wg-switch-to-workgroup-left "previous" :exit nil)
       ("l"        wg-switch-to-previous-workgroup "last")
-      ("SPC"      wg-switch-to-workgroup "switch")
+      ("SPC"      wg-switch-to-workgroup "select")
+      ("c"        wg-create-workgroup "create")
       ("q"        nil "quit")
       ("<escape>" nil "quit")))
 
