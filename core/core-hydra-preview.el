@@ -48,7 +48,7 @@
       (dired-preview-file file))))
 
 (defun dired-preview-assert-mode ()
-  (unless (derived-mode-p 'dired-mode)
+  (unless (eq 'dired-mode major-mode)
     (user-error "dired-preview is designed for use from dired")))
 
 (defun dired-preview-find-window (&optional or-create)
