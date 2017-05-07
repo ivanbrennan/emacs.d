@@ -1794,7 +1794,9 @@ spaces on either side of the point if so. Resorts to
    rbenv-executable (substring (shell-command-to-string "which rbenv") 0 -1)
    )
   (global-rbenv-mode +1)
-  (add-hook 'ruby-mode-hook #'rbenv-use-corresponding))
+  (defun ivan-maybe-use-rbenv ()
+    (when buffer-file-name (rbenv-use-corresponding)))
+  (add-hook 'ruby-mode-hook #'ivan-maybe-use-rbenv))
 
 (use-package projectile
   :commands projectile-find-file
