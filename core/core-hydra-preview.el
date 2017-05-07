@@ -2,7 +2,7 @@
   (defhydra hydra-preview (:hint nil
                            :pre        (setq hydra-lv nil)
                            :after-exit (setq hydra-lv t))
-    (format "")
+    (concat) ; empty doc-string
     ("SPC"      dired-preview-current)
     ("n"        dired-preview-next)
     ("p"        dired-preview-previous)
