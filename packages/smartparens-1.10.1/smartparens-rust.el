@@ -1,4 +1,4 @@
-;;; smartparens-rust.el --- Additional configuration for Haskell based modes.
+;;; smartparens-rust.el --- Additional configuration for Rust based modes.
 
 ;; Copyright (C) 2015 Wilfred Hughes
 
@@ -46,7 +46,8 @@
 
 (defun sp-in-rust-lifetime-context (&rest args)
   "Return t if point is in a Rust context where ' represents a lifetime.
-If we return nil, ' should be used for character literals."
+If we return nil, ' should be used for character literals.
+ARGS."
   (or
    (condition-case nil
        ;; If point is just after a &', it's probably a &'foo.
@@ -63,29 +64,50 @@ If we return nil, ' should be used for character literals."
             (looking-at "<"))))))
 
 (defun sp-rust-filter-angle-brackets (id action context)
-  "Return t if we should allow the ACTION in the current CONTEXT
-  for angle brackets."
+  "Non-nil if we should allow ID's ACTION in CONTEXT for angle brackets."
+  ;; See the docstring for `sp-pair' for the possible values of ID,
+  ;; ACTION and CONTEXT.
   (cond
-   ;; Disallow in format string after any character, since < is used to specify
-   ;; alignment
-   ((and (eq context 'string)
-         (looking-back (rx (seq alphanumeric "<")))) nil)
-
-   ;; Disallow when inserting in code in two situations: 1) when '<' is used for
-   ;; the comparison operators '<' and '<=', and 2) when writing a left shift
-   ;; '<<'.  In both cases, we assume the user will use a space before the
-   ;; opening bracket '<'.
-   ((and (eq context 'code)
-         (eq action 'insert)
-         (looking-back (rx (or (seq space "<")
-                               (seq space "<<"))))) nil)
-
-   ;; Otherwise, allow all actions
-   (t)))
+   ;; Inside strings, don't do anything with < or >.
+   ((eq context 'string)
+    nil)
+   ;; Don't do any smart pairing inside comments either.
+   ((eq context 'comment)
+    nil)
+   ;; Otherwise, we're in code.
+   ((eq context 'code)
+    (let ((on-fn-return-type
+           (looking-back (rx "->") nil))
+          (on-comparison
+           (looking-back (rx (or
+                              (seq space "<")
+                              (seq space ">")
+                              (seq space "<<")
+                              (seq space ">>")))
+                         nil)))
+      (cond
+       ;; Only insert a matching > if we're not looking at a
+       ;; comparison.
+       ((eq action 'insert)
+        (and (not on-comparison) (not on-fn-return-type)))
+       ;; Always allow wrapping in a pair if the region is active.
+       ((eq action 'wrap)
+        t)
+       ;; When pressing >, autoskip if we're not looking at a
+       ;; comparison.
+       ((eq action 'autoskip)
+        (and (not on-comparison) (not on-fn-return-type)))
+       ;; Allow navigation, highlighting and strictness checks if it's
+       ;; not a comparison.
+       ((eq action 'navigate)
+        (and (not on-comparison) (not on-fn-return-type))))))))
 
 (sp-with-modes '(rust-mode)
-  (sp-local-pair "'" "'" :unless '(sp-in-comment-p sp-in-string-quotes-p sp-in-rust-lifetime-context) :post-handlers'(:rem sp-escape-quotes-after-insert))
-  (sp-local-pair "<" ">" :when '(sp-rust-filter-angle-brackets)))
+  (sp-local-pair "'" "'"
+                 :unless '(sp-in-comment-p sp-in-string-quotes-p sp-in-rust-lifetime-context)
+                 :post-handlers'(:rem sp-escape-quotes-after-insert))
+  (sp-local-pair "<" ">"
+                 :when '(sp-rust-filter-angle-brackets)))
 
 ;; Rust has no sexp suffices.  This fixes slurping
 ;; (|foo).bar -> (foo.bar)
