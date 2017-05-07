@@ -508,6 +508,7 @@ afterwards, kill line to column 1."
                              "updating..."
                            "up-to-date"))))))
   :config
+  (customize-set-variable 'ggtags-highlight-tag nil)
   (defun ivan-dired-ggtags-maybe ()
     (when (locate-dominating-file default-directory ".git") (ggtags-mode +1)))
   (defun ivan-ggtags-maybe ()
