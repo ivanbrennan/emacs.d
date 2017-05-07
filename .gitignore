@@ -1,6 +1,6 @@
 /.cache/
 /.cask/
 /elpa/
-/packages/
+/packages/*.txt
 /url/
 /SessionDesktop.el

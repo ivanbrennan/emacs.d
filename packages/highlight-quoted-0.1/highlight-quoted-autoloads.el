@@ -1,0 +1,34 @@
+;;; highlight-quoted-autoloads.el --- automatically extracted autoloads
+;;
+;;; Code:
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
+
+;;;### (autoloads nil "highlight-quoted" "../../../../../../.emacs.d/packages/highlight-quoted-0.1/highlight-quoted.el"
+;;;;;;  "cb3c87d21376027b24211a605da356c4")
+;;; Generated autoloads from ../../../../../../.emacs.d/packages/highlight-quoted-0.1/highlight-quoted.el
+
+(autoload 'highlight-quoted-mode "highlight-quoted" "\
+Highlight Lisp quotes and quoted symbols.
+
+Toggle Highlight-Quoted mode on or off.
+With a prefix argument ARG, enable Highlight-Quoted mode if ARG is positive, and
+disable it otherwise.  If called from Lisp, enable the mode if ARG is omitted or
+nil, and toggle it if ARG is `toggle'.
+\\{highlight-quoted-mode-map}
+
+\(fn &optional ARG)" t nil)
+
+;;;***
+
+;;;### (autoloads nil nil ("../../../../../../.emacs.d/packages/highlight-quoted-0.1/highlight-quoted-autoloads.el"
+;;;;;;  "../../../../../../.emacs.d/packages/highlight-quoted-0.1/highlight-quoted.el")
+;;;;;;  (22770 7674 0 0))
+
+;;;***
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; no-update-autoloads: t
+;; End:
+;;; highlight-quoted-autoloads.el ends here
