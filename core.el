@@ -266,13 +266,17 @@ buffer represents a real file."
             (doc-view-mode          . normal)
             (eww-mode               . normal)
             (tabulated-list-mode    . normal)
-            (view-mode              . normal)
             (profile-report-mode    . emacs)
             (comint-mode            . emacs)
             (cider-repl-mode        . emacs)
             (term-mode              . emacs)
             (calendar-mode          . emacs)
             (Man-mode               . emacs)))
+
+    (defun ivan-adjust-view-mode-evil-state ()
+      (if view-mode (evil-motion-state) (evil-initialize-state)))
+    (add-hook 'view-mode-hook #'ivan-adjust-view-mode-evil-state)
+
     (setq
      evil-insert-state-cursor '(bar . 1)
      evil-emacs-state-cursor  'bar
