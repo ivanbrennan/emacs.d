@@ -9,12 +9,13 @@
     ("k"        dired-previous-line)
     ("p"        dired-previous-line)
     ("C-p"      dired-previous-line)
-    ("."        hydra-dired-preview-and-follow :exit t)
+    ("."        hydra-dired-follow/dired-preview-current :exit t)
     ("q"        dired-quit-preview :color blue)
     ("<escape>" dired-quit-preview :color blue))
 
   (defhydra hydra-dired-follow (:hint nil)
     (format (propertize "preview (follow)" 'face 'hydra-face-title))
+    ("SPC"      dired-preview-current)
     ("j"        dired-preview-next)
     ("n"        dired-preview-next)
     ("C-n"      dired-preview-next)
@@ -24,11 +25,6 @@
     ("."        hydra-dired-preview/body :exit t)
     ("q"        dired-quit-preview :color blue)
     ("<escape>" dired-quit-preview :color blue)))
-
-(defun hydra-dired-preview-and-follow ()
-  (interactive)
-  (dired-preview-current)
-  (hydra-dired-follow/body))
 
 (defun dired-preview-next (&optional count)
   "Move down lines and preview dired entry."
