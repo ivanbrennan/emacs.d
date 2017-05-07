@@ -10,8 +10,8 @@
     ("C-n"      dired-next-line)
     ("k"        dired-previous-line)
     ("C-p"      dired-previous-line)
-    ("q"        dired-preview-quit :color blue)
-    ("<escape>" dired-preview-quit :color blue)))
+    ("q"        dired-preview-quit :exit t)
+    ("<escape>" dired-preview-quit :exit t)))
 
 (defun dired-preview-next (&optional count)
   "Move down lines and preview dired entry."
