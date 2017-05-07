@@ -132,7 +132,7 @@ buffer represents a real file."
   (add-hook 'ivan-rotated-theme-hook #'ivan-update-doom-settings)
   (add-hook 'after-init-hook #'ivan-update-doom-settings)
 
-  (when (display-graphic-p) (require 'doom-neotree))
+  (when (display-graphic-p) (doom-themes-neotree-config))
 
   (defun ivan-adjust-fringe-background (n)
     (let* ((default-bg (face-background 'default))
@@ -400,6 +400,7 @@ buffer represents a real file."
     (evil-define-key 'motion help-mode-map     (kbd "M-S-<return>") #'ivan-zoom-window-large)
     (evil-define-key 'motion apropos-mode-map  (kbd "M-S-<return>") #'ivan-zoom-window-large)
     (evil-define-key 'motion neotree-mode-map  (kbd "u")     #'neotree-hidden-file-toggle)
+    (evil-define-key 'motion neotree-mode-map  (kbd "<escape>") #'neotree-hide)
     (evil-define-key 'normal debugger-mode-map (kbd "q")     #'top-level)
 
     (require 'core-hydra-preview)
