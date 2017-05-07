@@ -1,5 +1,5 @@
 (with-eval-after-load 'hydra
-  (defhydra hydra-dired-preview (:hint nil)
+  (defhydra hydra-preview (:hint nil)
     (format (propertize "preview" 'face 'hydra-face-title))
     ("SPC"      dired-preview-current)
     ("S-SPC"    dired-preview-current)
@@ -9,11 +9,11 @@
     ("k"        dired-previous-line)
     ("p"        dired-previous-line)
     ("C-p"      dired-previous-line)
-    ("."        hydra-dired-follow/dired-preview-current :exit t)
-    ("q"        dired-quit-preview :color blue)
-    ("<escape>" dired-quit-preview :color blue))
+    ("."        hydra-preview-follow/dired-preview-current :exit t)
+    ("q"        dired-preview-quit :color blue)
+    ("<escape>" dired-preview-quit :color blue))
 
-  (defhydra hydra-dired-follow (:hint nil)
+  (defhydra hydra-preview-follow (:hint nil)
     (format (propertize "preview (follow)" 'face 'hydra-face-title))
     ("SPC"      dired-preview-current)
     ("j"        dired-preview-next)
@@ -22,9 +22,9 @@
     ("k"        dired-preview-previous)
     ("p"        dired-preview-previous)
     ("C-p"      dired-preview-previous)
-    ("."        hydra-dired-preview/body :exit t)
-    ("q"        dired-quit-preview :color blue)
-    ("<escape>" dired-quit-preview :color blue)))
+    ("."        hydra-preview/body :exit t)
+    ("q"        dired-preview-quit :color blue)
+    ("<escape>" dired-preview-quit :color blue)))
 
 (defun dired-preview-next (&optional count)
   "Move down lines and preview dired entry."
@@ -47,34 +47,20 @@
     (with-selected-window win
       (dired-preview-file file))))
 
-(defun dired-preview-file (file)
-  (let ((buf (get-file-buffer file)))
-    (if buf
-        (switch-to-buffer buf)
-      (let ((inhibit-message t))
-        (view-file file)))))
-
-(defun dired-quit-preview ()
-  "Quit the preview buffer, and possibly its window, from dired."
-  (interactive)
-  (dired-preview-assert-mode)
-  (let ((win (dired-preview-find-window)))
-    (dired-preview-clean win 'quit-preview)))
+(defun dired-preview-assert-mode ()
+  (unless (derived-mode-p 'dired-mode)
+    (user-error "dired-preview is designed for use from dired")))
 
 (defun dired-preview-find-window (&optional or-create)
   (if (window-parent)
       (next-window)
-    (when or-create
-      (dired-preview-create-window))))
+    (when or-create (dired-preview-create-window))))
 
 (defun dired-preview-create-window ()
   (let ((win (split-window-sensibly)))
     (unless win (error "Failed to create preview window"))
     (set-window-parameter win 'created-for-preview t)
     win))
-
-(defun dired-preview-created-window? (win)
-  (window-parameter win 'created-for-preview))
 
 (defun dired-preview-clean (win &optional quit-preview)
   (let ((buf (window-buffer win)))
@@ -88,11 +74,23 @@
 (defun dired-preview-disposable? (buf)
   (and (not (buffer-modified-p buf))
        (or (buffer-local-value 'view-mode buf)
-           (eq 'dired-mode
-               (buffer-local-value 'major-mode buf)))))
+           (eq 'dired-mode (buffer-local-value 'major-mode buf)))))
 
-(defun dired-preview-assert-mode ()
-  (unless (derived-mode-p 'dired-mode)
-    (user-error "Preview is designed for use from dired")))
+(defun dired-preview-created-window? (win)
+  (window-parameter win 'created-for-preview))
+
+(defun dired-preview-file (file)
+  (let ((buf (get-file-buffer file)))
+    (if buf
+        (switch-to-buffer buf)
+      (let ((inhibit-message t))
+        (view-file file)))))
+
+(defun dired-preview-quit ()
+  "Quit the preview buffer, and possibly its window, from dired."
+  (interactive)
+  (dired-preview-assert-mode)
+  (let ((win (dired-preview-find-window)))
+    (dired-preview-clean win 'quit-preview)))
 
 (provide 'core-hydra-preview)
