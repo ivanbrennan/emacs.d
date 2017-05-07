@@ -449,6 +449,8 @@ afterwards, kill line to column 1."
     (let ((win (get-mru-window nil 'dedicated-ok 'not-selected)))
       (when win (select-window win))))
 
+  (define-key evil-motion-state-map [remap evil-window-mru] #'ivan-window-mru)
+
   (defun ivan-guess-alternate-buffer (&rest _args)
     (let* ((buf (other-buffer))
            (pos (with-current-buffer buf (point))))
