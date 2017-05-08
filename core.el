@@ -197,8 +197,8 @@ buffer represents a real file."
         :map evil-motion-state-map
         ("C-d"         . ivan-kill-buffer-and-maybe-window)
         ("C-e"         . evil-end-of-line)
-        ("C-j"         . evil-scroll-line-down)
-        ("C-k"         . evil-scroll-line-up)
+        ("M-j"         . evil-scroll-line-down)
+        ("M-k"         . evil-scroll-line-up)
         ("M-l"         . goto-line)
         ("C-w C-h"     . evil-window-left)
         ("C-w C-j"     . evil-window-down)
@@ -1330,8 +1330,8 @@ spaces on either side of the point if so. Resorts to
     ("n"        dired-next-line)
     ("k"        dired-previous-line)
     ("p"        dired-previous-line)
-    ("C-j"      evil-scroll-line-down)
-    ("C-k"      evil-scroll-line-up)
+    ("M-j"      evil-scroll-line-down)
+    ("M-k"      evil-scroll-line-up)
     ("H"        evil-window-top)
     ("M"        evil-window-middle)
     ("L"        evil-window-bottom)
@@ -1369,13 +1369,13 @@ spaces on either side of the point if so. Resorts to
   (progn
     (with-eval-after-load 'evil
       (evil-define-key 'normal drag-stuff-mode-map
-        (kbd "C-M-k") #'drag-stuff-up
-        (kbd "C-M-j") #'drag-stuff-down
+        (kbd "C-k") #'drag-stuff-up
+        (kbd "C-j") #'drag-stuff-down
         (kbd "C-M-l") #'drag-stuff-right
         (kbd "C-M-h") #'drag-stuff-left)
       (evil-define-key 'visual drag-stuff-mode-map
-        (kbd "M-k") #'drag-stuff-up
-        (kbd "M-j") #'drag-stuff-down)
+        (kbd "C-k") #'drag-stuff-up
+        (kbd "C-j") #'drag-stuff-down)
       )
     (drag-stuff-global-mode +1))
   )
