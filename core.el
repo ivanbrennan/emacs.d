@@ -722,7 +722,8 @@ configuration."
       "
  %s(ivan-layout-label) %s(ivan-layout-name)
  _n_: next       _l_: last       _c_: create     _m_: rename
- _p_: previous   _s_: select     _k_: kill       _q_: quit"
+ _p_: previous   _s_: select     _k_: kill       _q_: quit
+      "
       ("n"        wg-switch-to-workgroup-right :exit nil)
       ("p"        wg-switch-to-workgroup-left :exit nil)
       ("l"        wg-switch-to-previous-workgroup)
