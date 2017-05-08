@@ -718,21 +718,19 @@ configuration."
     (defun ivan-layout-label ()
       (propertize "Layout:" 'face 'hydra-face-title))
 
-    (defhydra hydra-layouts (:exit t
-                             :hint nil
-                             :pre        (setq hydra-lv nil)
-                             :after-exit (setq hydra-lv t))
+    (defhydra hydra-layouts (:exit t :hint nil)
       "
  %s(ivan-layout-label) %s(ivan-layout-name)
-———————————————————————————————————————
- _n_: next       _l_: last       _c_: create
- _p_: previous   _s_: select     _q_: quit"
+ _n_: next       _l_: last       _c_: create     _m_: rename
+ _p_: previous   _s_: select     _k_: kill       _q_: quit"
       ("n"        wg-switch-to-workgroup-right :exit nil)
       ("p"        wg-switch-to-workgroup-left :exit nil)
       ("l"        wg-switch-to-previous-workgroup)
       ("s"        wg-switch-to-workgroup)
       ("SPC"      wg-switch-to-workgroup)
       ("c"        wg-create-workgroup)
+      ("m"        wg-rename-workgroup)
+      ("k"        wg-kill-workgroup)
       ("q"        nil)
       ("<escape>" nil)))
 )
