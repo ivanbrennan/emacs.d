@@ -197,8 +197,8 @@ buffer represents a real file."
         :map evil-motion-state-map
         ("C-d"         . ivan-kill-buffer-and-maybe-window)
         ("C-e"         . evil-end-of-line)
-        ("M-j"         . evil-scroll-line-down)
-        ("M-k"         . evil-scroll-line-up)
+        ("C-j"         . evil-scroll-line-down)
+        ("C-k"         . evil-scroll-line-up)
         ("M-l"         . goto-line)
         ("C-w C-h"     . evil-window-left)
         ("C-w C-j"     . evil-window-down)
@@ -212,6 +212,8 @@ buffer represents a real file."
         ("M-S-SPC"     . eval-expression)
         ("M-<left>"    . evil-beginning-of-line)
         ("M-<right>"   . evil-end-of-line)
+        ("S-<left>"    . left-word)
+        ("S-<right>"   . right-word)
         ("˜"           . next-error)
         ("Δ"           . next-error)
         ("∏"           . previous-error)
@@ -1372,13 +1374,13 @@ spaces on either side of the point if so. Resorts to
   (progn
     (with-eval-after-load 'evil
       (evil-define-key 'normal drag-stuff-mode-map
-        (kbd "C-k") #'drag-stuff-up
-        (kbd "C-j") #'drag-stuff-down
-        (kbd "C-M-l") #'drag-stuff-right
-        (kbd "C-M-h") #'drag-stuff-left)
+        (kbd "C-<up>") #'drag-stuff-up
+        (kbd "C-<down>") #'drag-stuff-down
+        (kbd "C-<right>") #'drag-stuff-right
+        (kbd "C-<left>") #'drag-stuff-left)
       (evil-define-key 'visual drag-stuff-mode-map
-        (kbd "C-k") #'drag-stuff-up
-        (kbd "C-j") #'drag-stuff-down)
+        (kbd "C-<up>") #'drag-stuff-up
+        (kbd "C-<down>") #'drag-stuff-down)
       )
     (drag-stuff-global-mode +1))
   )
@@ -2025,6 +2027,10 @@ Disables `text-scale-mode`."
 
   (add-hook 'window-setup-hook 'ivan-adjust-terminal-colors)
   )
+
+(bind-keys
+ ("S-<left>"  . left-word)
+ ("S-<right>" . right-word))
 
 (defconst IS-MAC (eq system-type 'darwin))
 
