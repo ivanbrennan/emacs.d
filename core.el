@@ -719,20 +719,22 @@ configuration."
       (propertize "Layout:" 'face 'hydra-face-title))
 
     (defhydra hydra-layouts (:exit t
+                             :hint nil
                              :pre        (setq hydra-lv nil)
                              :after-exit (setq hydra-lv t))
       "
  %s(ivan-layout-label) %s(ivan-layout-name)
- [_n_] next       [_l_] last       [_c_] create
- [_p_] previous   [_s_] select     [_q_] quit"
-      ("n"        wg-switch-to-workgroup-right nil :exit nil)
-      ("p"        wg-switch-to-workgroup-left nil :exit nil)
-      ("l"        wg-switch-to-previous-workgroup nil)
-      ("s"        wg-switch-to-workgroup nil)
-      ("SPC"      wg-switch-to-workgroup nil)
-      ("c"        wg-create-workgroup nil)
-      ("q"        nil nil)
-      ("<escape>" nil nil)))
+———————————————————————————————————————
+ _n_: next       _l_: last       _c_: create
+ _p_: previous   _s_: select     _q_: quit"
+      ("n"        wg-switch-to-workgroup-right :exit nil)
+      ("p"        wg-switch-to-workgroup-left :exit nil)
+      ("l"        wg-switch-to-previous-workgroup)
+      ("s"        wg-switch-to-workgroup)
+      ("SPC"      wg-switch-to-workgroup)
+      ("c"        wg-create-workgroup)
+      ("q"        nil)
+      ("<escape>" nil)))
 )
 
 (use-package macrostep
