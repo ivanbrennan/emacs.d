@@ -718,7 +718,9 @@ configuration."
     (defun ivan-layout-label ()
       (propertize "Layout:" 'face 'hydra-face-title))
 
-    (defhydra hydra-layouts (:exit t :hint nil)
+    (defhydra hydra-layouts (:exit t
+                             :hint nil
+                             :idle 0.5)
       "
  %s(ivan-layout-label) %s(ivan-layout-name)
  _n_: next       _l_: last       _c_: create     _m_: rename
