@@ -704,18 +704,36 @@ configuration."
         (neotree-hide))))
   (add-hook 'kill-emacs-hook 'doom|wg-cleanup)
 
-  (with-eval-after-load 'hydra
-    (defhydra hydra-layouts (:exit t)
-      "layouts"
-      ("n"        wg-switch-to-workgroup-right "next" :exit nil)
-      ("p"        wg-switch-to-workgroup-left "previous" :exit nil)
-      ("l"        wg-switch-to-previous-workgroup "last")
-      ("SPC"      wg-switch-to-workgroup "select")
-      ("c"        wg-create-workgroup "create")
-      ("q"        nil "quit")
-      ("<escape>" nil "quit")))
+  (workgroups-mode +1)
+  :config
+  (defun ivan-current-workgroup-name ()
+    (let ((wg (ignore-errors (wg-current-workgroup))))
+      (when (wg-current-workgroup-p wg)
+        (wg-workgroup-name wg))))
 
-  (workgroups-mode +1))
+  (with-eval-after-load 'hydra
+    (defun ivan-layout-name ()
+      (let ((name (ivan-current-workgroup-name)))
+        (propertize (or name "") 'face 'font-lock-variable-name-face)))
+    (defun ivan-layout-label ()
+      (propertize "Layout:" 'face 'hydra-face-title))
+
+    (defhydra hydra-layouts (:exit t
+                             :pre        (setq hydra-lv nil)
+                             :after-exit (setq hydra-lv t))
+      "
+ %s(ivan-layout-label) %s(ivan-layout-name)
+ [_n_] next       [_l_] last       [_c_] create
+ [_p_] previous   [_s_] select     [_q_] quit"
+      ("n"        wg-switch-to-workgroup-right nil :exit nil)
+      ("p"        wg-switch-to-workgroup-left nil :exit nil)
+      ("l"        wg-switch-to-previous-workgroup nil)
+      ("s"        wg-switch-to-workgroup nil)
+      ("SPC"      wg-switch-to-workgroup nil)
+      ("c"        wg-create-workgroup nil)
+      ("q"        nil nil)
+      ("<escape>" nil nil)))
+)
 
 (use-package macrostep
   :commands macrostep-expand
