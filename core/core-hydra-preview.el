@@ -11,7 +11,7 @@
     ("k"        dired-previous-line)
     ("C-p"      dired-previous-line)
     ("q"        dired-preview-quit :exit t)
-    ("<escape>" nil :exit t)))
+    ("<escape>" dired-preview-quit :exit t)))
 
 (defun dired-preview-next (&optional count)
   "Move down lines and preview dired entry."
