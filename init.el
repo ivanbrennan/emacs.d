@@ -32,4 +32,5 @@
 ;; but less than the value used during startup.
 ;; The aim is to strike a balance between the
 ;; frequency and duration of GC interruptions.
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold 16777216
+      gc-cons-percentage 0.1)
