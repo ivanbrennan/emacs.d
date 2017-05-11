@@ -1,4 +1,4 @@
-(let ((gc-cons-threshold 339430400)  ; Temporarily raise GC thresholds
+(let ((gc-cons-threshold 402653184)  ; Temporarily raise GC thresholds
       (gc-cons-percentage 0.6)       ; and disable special I/O handlers
       (file-name-handler-alist nil)) ; to optimize startup performance.
 
