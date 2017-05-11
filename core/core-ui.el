@@ -21,10 +21,9 @@
 
 (blink-cursor-mode 0)
 
-(setq minibuffer-prompt-properties
-      '(read-only         t
-        cursor-intangible t
-        face              minibuffer-prompt))
+(customize-set-variable
+ 'minibuffer-prompt-properties
+ '(read-only t cursor-intangible t face minibuffer-prompt))
 
 (setq confirm-kill-emacs          (lambda (_) (y-or-n-p "››› Quit?"))
       mode-line-default-help-echo nil
