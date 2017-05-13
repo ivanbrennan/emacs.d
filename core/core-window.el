@@ -7,7 +7,8 @@
       resize-mini-windows    t)
 
 ;; splits, frames, windows
-(setq split-width-threshold 130)
+(setq split-width-threshold 130
+      window-combination-resize t)
 
 (defvar ivan-bottom-buffer-patterns
   '((and "*ag " (1+ not-newline) "*")
