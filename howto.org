@@ -1,4 +1,10 @@
 * Misc
+** compilation-display-error in transient preview window
+*** next-error-no-select
+*** with-current-buffer buffer-showing-source-code, unless already existed, view-mode and set buffer-local variable and window-parameter indicating transient nature
+*** upon next call to next-error, kill the buffer first, unless it already existed
+** sensible stack behavior from quit-window in bottom side-window
+*** use display-buffer-record-window to update the quit-restore window parameter
 ** why is evil-magit initialized right away upon startup?
 ** use setq, custom-set-variables, or customize-set-variable?
 *** setq is significantly faster than customize-set-variable, and astronomically faster than custom-set-variables
