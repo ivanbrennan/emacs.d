@@ -529,30 +529,38 @@ afterwards, kill line to column 1."
 (defun ivan-compilation-start-at-first-error ()
   (set (make-local-variable 'compilation-scroll-output) 'first-error))
 
-(defvar pop-target-window)
-(make-variable-buffer-local 'pop-target-window)
+(defvar next-error-target-window)
+(make-variable-buffer-local 'next-error-target-window)
 
 (advice-add 'compilation-goto-locus :around #'ivan-around-compilation-goto-locus)
 
 (defun ivan-around-compilation-goto-locus (orig-func &rest args)
   (advice-add 'pop-to-buffer :override #'ivan-pop-to-buffer)
-  (apply orig-func args))
+  (apply orig-func args)
+  (advice-remove 'pop-to-buffer #'ivan-pop-to-buffer))
 
 (defun ivan-pop-to-buffer (buffer &optional action norecord)
   (advice-remove 'pop-to-buffer #'ivan-pop-to-buffer)
-  (let ((from-buffer (current-buffer))
-        (reused-window (display-buffer-reuse-window buffer nil)))
-    (if reused-window
-        (select-window reused-window norecord)
-      (cond ((and (bound-and-true-p pop-target-window)
-                  (window-live-p pop-target-window))
-             (window--display-buffer buffer pop-target-window 'reuse)
-             (select-window pop-target-window norecord))
-            (t
-             (pop-to-buffer buffer action norecord)
-             (let ((target-window (get-buffer-window buffer)))
-               (with-current-buffer from-buffer
-                 (setq-local pop-target-window target-window))))))))
+  (let ((win (ivan-display-buffer-in-existing-window buffer
+                                                     'next-error-target-window)))
+    (if win
+        (select-window win norecord)
+      (pop-to-buffer buffer action norecord)
+      (with-current-buffer next-error-last-buffer
+        (setq-local next-error-target-window (selected-window))))))
+
+(defun ivan-display-buffer-in-existing-window (buffer window-var)
+  (or (display-buffer-reuse-window buffer nil)
+      (ivan-display-buffer-try-window buffer window-var)))
+
+(defun ivan-display-buffer-try-window (buffer window-var)
+  (when (and (boundp window-var) (window-live-p (symbol-value window-var)))
+    (window--display-buffer buffer (symbol-value window-var) 'reuse)))
+
+(defun ivan-after-pop-to-buffer (&rest _args)
+  (when (eq this-command 'compile-goto-error)
+    (with-current-buffer next-error-last-buffer
+      (setq-local next-error-target-window (selected-window)))))
 
 (use-package yasnippet
   :defer t)
