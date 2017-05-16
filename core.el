@@ -541,13 +541,17 @@ afterwards, kill line to column 1."
 
 (defun ivan-pop-to-buffer (buffer &optional action norecord)
   (advice-remove 'pop-to-buffer #'ivan-pop-to-buffer)
-  (let ((win (ivan-display-buffer-in-existing-window buffer
-                                                     'next-error-target-window)))
-    (if win
-        (select-window win norecord)
+  (let ((old-frame (selected-frame))
+        (window (ivan-display-buffer-in-existing-window
+                 buffer 'next-error-target-window)))
+    (if window
+        (select-window window norecord)
       (pop-to-buffer buffer action norecord)
       (with-current-buffer next-error-last-buffer
-        (setq-local next-error-target-window (selected-window))))))
+        (setq-local next-error-target-window (selected-window))))
+    (unless (eq old-frame (window-frame window))
+      (select-frame-set-input-focus (window-frame window) norecord)))
+  buffer)
 
 (defun ivan-display-buffer-in-existing-window (buffer window-var)
   (or (display-buffer-reuse-window buffer nil)
@@ -556,11 +560,6 @@ afterwards, kill line to column 1."
 (defun ivan-display-buffer-try-window (buffer window-var)
   (when (and (boundp window-var) (window-live-p (symbol-value window-var)))
     (window--display-buffer buffer (symbol-value window-var) 'reuse)))
-
-(defun ivan-after-pop-to-buffer (&rest _args)
-  (when (eq this-command 'compile-goto-error)
-    (with-current-buffer next-error-last-buffer
-      (setq-local next-error-target-window (selected-window)))))
 
 (use-package yasnippet
   :defer t)
