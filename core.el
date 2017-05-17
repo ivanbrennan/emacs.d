@@ -954,67 +954,67 @@ spaces on either side of the point if so. Resorts to
     :evil-states (normal motion visual)
     :override-minor-modes t)
   (bind-map-set-keys ivan-leader-map
-    ","          #'ivan-window-mru
-    "u"          #'ivan-window-mru
-    "`"          #'variable-pitch-mode
-    "="          #'align-regexp
-    "8"          #'switch-to-splat-buffer
-    "9"          #'highlight-parentheses-mode
-    "1"          #'shell-command
-    "TAB"        #'neotree-toggle
-    "<return>"   #'toggle-frame-fullscreen
-    "q"          #'hydra-smartparens/body
-    "C-l"        #'ivan-redraw-display
-    "C-n"        #'ivan-toggle-narrowing
-    ;; "C-r"        #'ripgrep-regexp
-    "C-r"        #'evil-use-register
-    "C-u"        #'hl-line-mode
-    "X SPC"      #'server-edit
-    "X s"        #'server-start
-    "\\"         #'ivan-next-theme
-    "\|"         #'ivan-previous-theme
-    "C-b"        #'bury-buffer
-    "B"          #'unbury-buffer
-    ;; "b ."      #'hydra-buffers/body
-    "b b"        #'ibuffer
-    "b m j"      #'bookmark-jump
-    "b m l"      #'bookmark-bmenu-list
-    "b m m"      #'bookmark-set
-    "d d"        #'kill-this-buffer
-    "f a"        #'find-alternate-file
-    "f s"        #'save-buffer
-    "f w"        #'write-file
-    "g"          #'hydra-layouts/body
-    "h"          #'hydra-dir-navigate/dired-jump
-    "i"          #'os-switch-to-term
-    "a"          #'ag-project
-    "C-a"        #'ag-project-regexp
-    "'"          #'evil-use-register
-    "l"          #'evil-switch-to-windows-last-buffer
-    "m e b"      #'eval-buffer
-    "m e f"      #'eval-defun
-    "m e e"      #'pp-eval-last-sexp
-    "m e r"      #'eval-region
-    "m d"        #'mark-defun
-    "m L"        #'lisp-interaction-mode
-    "m m"        #'hydra-macrostep/body
-    "o"          #'find-file
-    "L"          #'switch-to-buffer
-    "s"          #'ivan-substitute-word-on-line
-    "C-s"        search-map
-    "y"          #'ivan-check-tags-state
-    "C-v"        #'magit-blame
-    "v s"        #'magit-status
-    "v SPC"      #'ivan-vc-refresh-state
-    "b SPC"      #'magit-branch-popup
-    "w k"        #'evil-window-delete
-    "."          #'ivan-zoom-window
-    "C-."        #'ivan-toggle-narrowing-zoom
-    "w w"        #'ivan-zoom-other-window
-    "w c"        #'evil-window-delete
-    "w J"        #'webjump
-    "w n"        #'ivan-toggle-narrowing
-    "x"          #'execute-extended-command))
+    ","        #'ivan-window-mru
+    "u"        #'ivan-window-mru
+    "`"        #'variable-pitch-mode
+    "="        #'align-regexp
+    "8"        #'switch-to-splat-buffer
+    "9"        #'highlight-parentheses-mode
+    "1"        #'shell-command
+    "TAB"      #'neotree-toggle
+    "<return>" #'toggle-frame-fullscreen
+    "q"        #'hydra-smartparens/body
+    "C-l"      #'ivan-redraw-display
+    "C-n"      #'ivan-toggle-narrowing
+    ;; "C-r"      #'ripgrep-regexp
+    "C-r"      #'evil-use-register
+    "C-u"      #'hl-line-mode
+    "X SPC"    #'server-edit
+    "X s"      #'server-start
+    "\\"       #'ivan-next-theme
+    "\|"       #'ivan-previous-theme
+    "C-b"      #'bury-buffer
+    "B"        #'unbury-buffer
+    ;; "b ."    #'hydra-buffers/body
+    "b b"      #'ibuffer
+    "b m j"    #'bookmark-jump
+    "b m l"    #'bookmark-bmenu-list
+    "b m m"    #'bookmark-set
+    "d d"      #'kill-this-buffer
+    "f a"      #'find-alternate-file
+    "f s"      #'save-buffer
+    "f w"      #'write-file
+    "g"        #'hydra-layouts/body
+    "h"        #'hydra-dir-navigate/dired-jump
+    "i"        #'os-switch-to-term
+    "a"        #'ag-project
+    "C-a"      #'ag-project-regexp
+    "'"        #'evil-use-register
+    "l"        #'evil-switch-to-windows-last-buffer
+    "m e b"    #'eval-buffer
+    "m e f"    #'eval-defun
+    "m e e"    #'pp-eval-last-sexp
+    "m e r"    #'eval-region
+    "m d"      #'mark-defun
+    "m L"      #'lisp-interaction-mode
+    "m m"      #'hydra-macrostep/body
+    "o"        #'find-file
+    "L"        #'switch-to-buffer
+    "s"        #'ivan-substitute-word-on-line
+    "C-s"      search-map
+    "y"        #'ivan-check-tags-state
+    "C-v"      #'magit-blame
+    "v s"      #'magit-status
+    "v SPC"    #'ivan-vc-refresh-state
+    "b SPC"    #'magit-branch-popup
+    "w k"      #'evil-window-delete
+    "."        #'ivan-zoom-window
+    "C-."      #'ivan-toggle-narrowing-zoom
+    "w w"      #'ivan-zoom-other-window
+    "w c"      #'evil-window-delete
+    "w J"      #'webjump
+    "w n"      #'ivan-toggle-narrowing
+    "x"        #'execute-extended-command))
 
 (use-package dired-narrow
   :config
