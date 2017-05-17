@@ -307,7 +307,7 @@ replacements.
 
 ;;;### (autoloads nil nil ("../../../../../../.emacs.d/packages/counsel-0.9.1/counsel-autoloads.el"
 ;;;;;;  "../../../../../../.emacs.d/packages/counsel-0.9.1/counsel.el")
-;;;;;;  (22770 7720 0 0))
+;;;;;;  (22812 49802 0 0))
 
 ;;;***
 

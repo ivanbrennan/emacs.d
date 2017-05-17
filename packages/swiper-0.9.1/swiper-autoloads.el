@@ -22,7 +22,7 @@ When non-nil, INITIAL-INPUT is the initial search pattern.
 
 ;;;### (autoloads nil nil ("../../../../../../.emacs.d/packages/swiper-0.9.1/swiper-autoloads.el"
 ;;;;;;  "../../../../../../.emacs.d/packages/swiper-0.9.1/swiper.el")
-;;;;;;  (22770 7720 0 0))
+;;;;;;  (22812 49801 0 0))
 
 ;;;***
 

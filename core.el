@@ -1562,16 +1562,6 @@ spaces on either side of the point if so. Resorts to
    recentf-auto-cleanup 600
    recentf-filename-handlers '(abbreviate-file-name)))
 
-(use-package counsel
-  :commands counsel-ag
-  :config
-  (defun ivan-counsel-ag-project ()
-    (interactive)
-    (counsel-ag nil (locate-dominating-file default-directory ".git")))
-  (bind-map-set-keys ivan-leader-map
-    "C-r" #'ivan-counsel-ag-project)
-  (global-set-key [remap describe-function] #'counsel-describe-function))
-
 (use-package ivy
   :commands (ivy-mode ivy-read ivy-completing-read ivy-recentf)
   :diminish 'ivy-mode
@@ -1589,6 +1579,8 @@ spaces on either side of the point if so. Resorts to
    ivy-format-function 'ivy-format-function-line
    ))
 
+(use-package ivy-hydra :commands 'hydra-ivy/body)
+
 (use-package swiper
   :commands swiper
   :init
@@ -1596,6 +1588,16 @@ spaces on either side of the point if so. Resorts to
     (bind-map-set-keys ivan-leader-map "C-SPC" #'swiper))
   :config
   (autoload 'string-trim-right "subr-x"))
+
+(use-package counsel
+  :commands counsel-ag
+  :config
+  (defun ivan-counsel-ag-project ()
+    (interactive)
+    (counsel-ag nil (locate-dominating-file default-directory ".git")))
+  (bind-map-set-keys ivan-leader-map
+    "C-r" #'ivan-counsel-ag-project)
+  (global-set-key [remap describe-function] #'counsel-describe-function))
 
 (use-package flx
   :defer t)

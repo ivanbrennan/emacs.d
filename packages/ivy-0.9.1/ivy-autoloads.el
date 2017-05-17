@@ -120,8 +120,8 @@ Switch to another buffer in another window.
 ;;;;;;  "../../../../../../.emacs.d/packages/ivy-0.9.1/ivy-autoloads.el"
 ;;;;;;  "../../../../../../.emacs.d/packages/ivy-0.9.1/ivy-overlay.el"
 ;;;;;;  "../../../../../../.emacs.d/packages/ivy-0.9.1/ivy-pkg.el"
-;;;;;;  "../../../../../../.emacs.d/packages/ivy-0.9.1/ivy.el") (22770
-;;;;;;  7719 0 0))
+;;;;;;  "../../../../../../.emacs.d/packages/ivy-0.9.1/ivy.el") (22812
+;;;;;;  49801 0 0))
 
 ;;;***
 
