@@ -1,7 +1,7 @@
 (with-eval-after-load 'hydra
-  (defhydra hydra-preview (:hint nil
-                           :pre        (setq hydra-lv nil)
-                           :after-exit (setq hydra-lv t))
+  (defhydra hydra-dired-preview (:hint nil
+                                 :pre        (setq hydra-lv nil)
+                                 :after-exit (setq hydra-lv t))
     (concat) ; empty doc-string
     ("SPC"      dired-preview-current)
     ("n"        dired-preview-next)
@@ -89,4 +89,4 @@
 (with-eval-after-load 'view
   (define-key view-mode-map "q" #'ivan-view-quit))
 
-(provide 'core-hydra-preview)
+(provide 'core-hydra-dired-preview)
