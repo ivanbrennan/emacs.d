@@ -962,6 +962,7 @@ spaces on either side of the point if so. Resorts to
     "9"          #'highlight-parentheses-mode
     "1"          #'shell-command
     "TAB"        #'neotree-toggle
+    "<return>"   #'toggle-frame-fullscreen
     "q"          #'hydra-smartparens/body
     "C-l"        #'ivan-redraw-display
     "C-n"        #'ivan-toggle-narrowing
@@ -1010,7 +1011,6 @@ spaces on either side of the point if so. Resorts to
     "."          #'ivan-zoom-window
     "C-."        #'ivan-toggle-narrowing-zoom
     "w w"        #'ivan-zoom-other-window
-    "w <return>" #'toggle-frame-fullscreen
     "w c"        #'evil-window-delete
     "w J"        #'webjump
     "w n"        #'ivan-toggle-narrowing
