@@ -534,10 +534,18 @@ afterwards, kill line to column 1."
 
 (advice-add 'compilation-goto-locus :around #'ivan-around-compilation-goto-locus)
 
-(defun ivan-around-compilation-goto-locus (orig-func &rest args)
+(defun ivan-around-compilation-goto-locus (orig-fun &rest args)
+  (advice-add 'display-buffer :around #'ivan-handle-next-error-display)
   (advice-add 'pop-to-buffer :override #'ivan-pop-to-buffer)
-  (apply orig-func args)
+  (apply orig-fun args)
+  (advice-remove 'display-buffer #'ivan-handle-next-error-display)
   (advice-remove 'pop-to-buffer #'ivan-pop-to-buffer))
+
+(defun ivan-handle-next-error-display (orig-fun &rest args)
+  (advice-remove 'display-buffer #'ivan-handle-next-error-display)
+  (if (eq 'next-error this-command)
+      (get-buffer-window (car args) 0)
+    (apply orig-fun args)))
 
 (defun ivan-pop-to-buffer (buffer &optional action norecord)
   (advice-remove 'pop-to-buffer #'ivan-pop-to-buffer)
