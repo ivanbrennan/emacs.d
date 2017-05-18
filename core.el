@@ -543,7 +543,7 @@ afterwards, kill line to column 1."
 
 (defun ivan-handle-next-error-display (orig-fun &rest args)
   (advice-remove 'display-buffer #'ivan-handle-next-error-display)
-  (if (eq 'next-error this-command)
+  (if (memq this-command '(next-error previous-error))
       (get-buffer-window (car args) 0)
     (apply orig-fun args)))
 
