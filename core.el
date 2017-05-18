@@ -1861,7 +1861,9 @@ spaces on either side of the point if so. Resorts to
    )
   (global-rbenv-mode +1)
   (defun ivan-maybe-use-rbenv ()
-    (when buffer-file-name (rbenv-use-corresponding)))
+    (when buffer-file-name
+      (let ((inhibit-message t))
+        (rbenv-use-corresponding))))
   (add-hook 'ruby-mode-hook #'ivan-maybe-use-rbenv))
 
 (use-package projectile
