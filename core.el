@@ -967,7 +967,6 @@ spaces on either side of the point if so. Resorts to
     "C-l"      #'ivan-redraw-display
     "C-n"      #'ivan-toggle-narrowing
     ;; "C-r"      #'ripgrep-regexp
-    "C-r"      #'evil-use-register
     "C-u"      #'hl-line-mode
     "X SPC"    #'server-edit
     "X s"      #'server-start
@@ -1591,13 +1590,12 @@ spaces on either side of the point if so. Resorts to
 
 (use-package counsel
   :commands counsel-ag
-  :config
+  :init
   (defun ivan-counsel-ag-project ()
     (interactive)
-    (counsel-ag nil (locate-dominating-file default-directory ".git")))
+    (counsel-ag (ag/dwim-at-point) (locate-dominating-file default-directory ".git")))
   (bind-map-set-keys ivan-leader-map
-    "C-r" #'ivan-counsel-ag-project)
-  (global-set-key [remap describe-function] #'counsel-describe-function))
+    "C-r" #'ivan-counsel-ag-project))
 
 (use-package flx
   :defer t)
@@ -1615,6 +1613,7 @@ spaces on either side of the point if so. Resorts to
    ag-dired-regexp
    ag-project-dired
    ag-project-dired-regexp
+   ag/dwim-at-point
    )
   :config
   (progn
