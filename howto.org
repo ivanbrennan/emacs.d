@@ -1,4 +1,5 @@
 * Misc
+** stop clobbering alternate buffer info when switching workgroups
 ** compilation-display-error in transient preview window
 *** next-error-no-select
 *** with-current-buffer buffer-showing-source-code, unless already existed, view-mode and set buffer-local variable and window-parameter indicating transient nature
