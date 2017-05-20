@@ -1593,7 +1593,7 @@ spaces on either side of the point if so. Resorts to
   :init
   (defun ivan-counsel-ag-project ()
     (interactive)
-    (counsel-ag (ag/dwim-at-point) (locate-dominating-file default-directory ".git")))
+    (counsel-ag (ag/dwim-at-point) (projectile-project-root)))
   (bind-map-set-keys ivan-leader-map
     "C-r" #'ivan-counsel-ag-project))
 
@@ -1867,7 +1867,8 @@ spaces on either side of the point if so. Resorts to
   (add-hook 'ruby-mode-hook #'ivan-maybe-use-rbenv))
 
 (use-package projectile
-  :commands projectile-find-file
+  :commands (projectile-find-file
+             projectile-project-root)
   :bind ("M-O" . projectile-find-file)
   :config
   (setq projectile-enable-caching t
