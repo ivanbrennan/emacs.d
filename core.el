@@ -997,7 +997,6 @@ spaces on either side of the point if so. Resorts to
     "m d"      #'mark-defun
     "m L"      #'lisp-interaction-mode
     "m m"      #'hydra-macrostep/body
-    "o"        #'find-file
     "L"        #'switch-to-buffer
     "s"        #'ivan-substitute-word-on-line
     "C-s"      search-map
@@ -1868,8 +1867,13 @@ spaces on either side of the point if so. Resorts to
 
 (use-package projectile
   :commands (projectile-find-file
-             projectile-project-root)
+             projectile-project-root
+             ivan-find-file-from-project-root)
   :bind ("M-O" . projectile-find-file)
+  :init
+  (bind-map-for-mode-inherit ivan-projectile-leader-map ivan-leader-map
+    :minor-modes (projectile-mode)
+    :bindings ("o" #'ivan-find-file-from-project-root))
   :config
   (setq projectile-enable-caching t
         projectile-cache-file (ivan-cache-file "projectile.cache")
@@ -1879,6 +1883,12 @@ spaces on either side of the point if so. Resorts to
     (add-to-list 'projectile-globally-ignored-directories dir))
   (dolist (suf '(".elc" ".project"))
     (add-to-list 'projectile-globally-ignored-file-suffixes suf))
+
+  (defun ivan-find-file-from-project-root ()
+    (interactive)
+    (let* ((projectile-require-project-root nil)
+           (default-directory (projectile-project-root)))
+      (call-interactively #'find-file)))
 
   (projectile-global-mode +1))
 
