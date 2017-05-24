@@ -1943,7 +1943,8 @@ spaces on either side of the point if so. Resorts to
 
 (use-package sh-script
   :mode ("/\\.?bash\\(/.*\\|rc\\|_profile\\|\\)$" . sh-mode)
-  :init (add-hook 'sh-mode-hook (lambda () (setq mode-name "shell"))))
+  :init (add-hook 'sh-mode-hook (lambda () (setq mode-name "shell")))
+  :config (setq sh-basic-offset 2))
 
 (use-package face-remap
   :diminish text-scale-mode
