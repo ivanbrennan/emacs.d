@@ -292,15 +292,6 @@ buffer represents a real file."
      evil-symbol-word-search t
      )
     (customize-set-variable 'evil-want-Y-yank-to-eol t)
-    (add-hook 'prog-mode-hook #'ivan-treat-underscore-as-word-char)
-    (dolist (hook '(emacs-lisp-mode-hook
-                    clojure-mode-hook
-                    scheme-mode-hook
-                    lisp-mode-hook))
-      (add-hook hook #'ivan-treat-hyphen-as-word-char))
-    (defun ivan-treat-underscore-as-word-char () (ivan-treat-as-word-char ?_))
-    (defun ivan-treat-hyphen-as-word-char     () (ivan-treat-as-word-char ?-))
-    (defun ivan-treat-as-word-char (char) (modify-syntax-entry char "w"))
 
     (mapc 'evil-declare-ignore-repeat
           '(describe-key-briefly))
@@ -2317,8 +2308,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (use-package ruby-mode
   :config
-  (add-hook 'ruby-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
-
   (advice-add 'ruby-do-end-to-brace :after #'ivan-trim-whitespace-current-line)
   (advice-add 'ruby-brace-to-do-end :after #'ivan-trim-whitespace-next-line)
 
@@ -2387,6 +2376,18 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
         (hl-line-mode +1)))
 
     (add-hook 'imenu-list-major-mode-hook #'ivan-imenu-list-setup))
+
+(add-hook 'change-major-mode-hook #'ivan-treat-underscore-as-word-char)
+
+(dolist (hook '(emacs-lisp-mode-hook
+                clojure-mode-hook
+                scheme-mode-hook
+                lisp-mode-hook))
+  (add-hook hook #'ivan-treat-hyphen-as-word-char))
+
+(defun ivan-treat-underscore-as-word-char () (ivan-treat-as-word-char ?_))
+(defun ivan-treat-hyphen-as-word-char     () (ivan-treat-as-word-char ?-))
+(defun ivan-treat-as-word-char (char) (modify-syntax-entry char "w"))
 
 (defun ivan-goto-match-beginning ()
   (when (and isearch-forward isearch-other-end
