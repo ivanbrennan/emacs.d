@@ -2308,6 +2308,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (use-package ruby-mode
   :config
+  (add-hook 'ruby-mode-hook #'ivan-treat-underscore-as-word-char)
   (advice-add 'ruby-do-end-to-brace :after #'ivan-trim-whitespace-current-line)
   (advice-add 'ruby-brace-to-do-end :after #'ivan-trim-whitespace-next-line)
 
