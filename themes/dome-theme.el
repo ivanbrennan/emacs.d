@@ -113,7 +113,7 @@
      `(default                ((,c (:background ,bg-d :foreground ,fg))))
      `(fringe                 ((,c (:inherit default :foreground ,comments))))
      `(region                 ((,c (:background ,region))))
-     `(highlight              ((,c (:background ,region :foreground ,black))))
+     `(highlight              ((,c (:background ,region))))
      `(hl-line                ((,c (:background ,bg))))
      `(cursor                 ((,c (:background ,fg))))
      `(link                   ((,c (:foreground "#65B1EC" :underline t))))
