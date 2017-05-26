@@ -1550,7 +1550,9 @@ spaces on either side of the point if so. Resorts to
    :map ivy-minibuffer-map
    ("<escape>" . minibuffer-keyboard-quit)
    ("C-u"      . backward-kill-sentence)
-   ("M-v"      . yank))
+   ("M-v"      . yank)
+   ("C-n"      . ivy-next-line-or-history)
+   ("C-p"      . ivy-previous-line-or-history))
   (setq
    ivy-count-format ""
    ivy-format-function 'ivy-format-function-line
@@ -1571,7 +1573,7 @@ spaces on either side of the point if so. Resorts to
   :init
   (defun ivan-counsel-ag-project ()
     (interactive)
-    (counsel-ag (ag/dwim-at-point) (projectile-project-root)))
+    (counsel-ag nil (projectile-project-root)))
   (bind-map-set-keys ivan-leader-map
     "C-r" #'ivan-counsel-ag-project))
 
