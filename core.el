@@ -1613,7 +1613,15 @@ spaces on either side of the point if so. Resorts to
 
     (add-hook 'ag-search-finished-hook #'ivan-present-search-results)
     (add-hook 'ag-mode-hook #'hl-line-mode)
-    (add-hook 'ag-mode-hook #'ivan-compilation-start-at-first-error)))
+    (add-hook 'ag-mode-hook #'ivan-compilation-start-at-first-error))
+
+  (defun ivan-ag-files-regexp (string file-type directory)
+    "Search using ag in a given DIRECTORY for a given regexp,
+limited to files that match FILE-TYPE."
+    (interactive (list (ag/read-from-minibuffer "Search string")
+                       (ag/read-file-type)
+                       (read-directory-name "Directory: ")))
+    (apply #'ag/search string directory :regexp t file-type))))
 
 
 (use-package magnet
