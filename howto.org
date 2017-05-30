@@ -1,4 +1,5 @@
 * Misc
+** make ~S-<return>~ auto indent like ~<return>~ does in sh-mode
 ** stop clobbering alternate buffer info when switching workgroups
 ** compilation-display-error in transient preview window
 *** next-error-no-select
