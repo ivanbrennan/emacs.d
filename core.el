@@ -1552,7 +1552,8 @@ spaces on either side of the point if so. Resorts to
    ("C-u"      . backward-kill-sentence)
    ("M-v"      . yank)
    ("C-n"      . ivy-next-line-or-history)
-   ("C-p"      . ivy-previous-line-or-history))
+   ("C-p"      . ivy-previous-line-or-history)
+   ("C-."      . ivy-next-history-element))
   (setq
    ivy-count-format ""
    ivy-format-function 'ivy-format-function-line
