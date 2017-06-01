@@ -1621,7 +1621,7 @@ limited to files that match FILE-TYPE."
     (interactive (list (ag/read-from-minibuffer "Search string")
                        (ag/read-file-type)
                        (read-directory-name "Directory: ")))
-    (apply #'ag/search string directory :regexp t file-type))))
+    (apply #'ag/search string directory :regexp t file-type)))
 
 
 (use-package magnet
