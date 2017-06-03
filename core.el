@@ -1346,6 +1346,7 @@ spaces on either side of the point if so. Resorts to
     ("h"        dired-jump)
     ("u"        dired-jump)
     ("l"        ivan-dired-find-alternate-file)
+    ("m"        ivan-dired-find-alternate-file)
     ("RET"      ivan-dired-find-alternate-file)
     ("<return>" ivan-dired-find-alternate-file)
     ("j"        dired-next-line)
