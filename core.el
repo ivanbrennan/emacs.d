@@ -381,6 +381,12 @@ buffer represents a real file."
           (lambda () (backward-char 2))
         (evil-ex (format "s/%s//g" (thing-at-point 'word 'no-properties)))))
 
+    (defun ivan-substitute-word-in-buffer ()
+      (interactive)
+      (minibuffer-with-setup-hook
+          (lambda () (backward-char 2))
+        (evil-ex (format "%%s/%s//g" (thing-at-point 'word 'no-properties)))))
+
     (defun ivan-emacs-state-rectangle-mark-mode ()
       (interactive)
       (evil-emacs-state)
@@ -978,6 +984,7 @@ spaces on either side of the point if so. Resorts to
     "o"        #'find-file
     "L"        #'switch-to-buffer
     "s"        #'ivan-substitute-word-on-line
+    "S"        #'ivan-substitute-word-in-buffer
     "C-s"      search-map
     "y"        #'ivan-check-tags-state
     "C-v"      #'magit-blame
