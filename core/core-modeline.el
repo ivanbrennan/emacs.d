@@ -5,7 +5,12 @@
         powerline-display-mule-info   nil
         powerline-gui-use-vcs-glyph   t))
 
-(use-package evil-anzu :defer t)
+(use-package evil-anzu
+  :defer t
+  :config
+  (setq anzu-cons-mode-line-p nil
+        anzu-minimum-input-length 1
+        anzu-search-threshold 250))
 
 (eval-when-compile
   (require 'powerline)
