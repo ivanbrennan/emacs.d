@@ -1,4 +1,6 @@
 * Misc
+** Use karabiner to map C-i to F6 and make different bindings for Tab and C-i (in vim)
+*** https://youtu.be/YnLL9kUrWk0
 ** make ~S-<return>~ auto indent like ~<return>~ does in sh-mode
 ** stop clobbering alternate buffer info when switching workgroups
 ** compilation-display-error in transient preview window
