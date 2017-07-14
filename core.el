@@ -988,7 +988,6 @@ spaces on either side of the point if so. Resorts to
     "C-s"      search-map
     "y"        #'ivan-check-tags-state
     "C-v"      #'magit-blame
-    "v s"      #'magit-status
     "v SPC"    #'ivan-vc-refresh-state
     "b SPC"    #'magit-branch-popup
     "w k"      #'evil-window-delete
@@ -1783,6 +1782,7 @@ limited to files that match FILE-TYPE."
     )
   :config
   (progn
+    (bind-key "g s" 'magit-status evil-normal-state-map)
     (evil-define-key evil-magit-state magit-mode-map
       (kbd "n")   #'magit-section-forward
       (kbd "p")   #'magit-section-backward
