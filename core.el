@@ -939,7 +939,6 @@ spaces on either side of the point if so. Resorts to
     :override-minor-modes t)
   (bind-map-set-keys ivan-leader-map
     ","        #'ivan-window-mru
-    "u"        #'ivan-window-mru
     "`"        #'variable-pitch-mode
     "="        #'align-regexp
     "8"        #'switch-to-splat-buffer
@@ -968,7 +967,7 @@ spaces on either side of the point if so. Resorts to
     "f s"      #'save-buffer
     "f w"      #'write-file
     "g"        #'hydra-layouts/body
-    "h"        #'hydra-dir-navigate/dired-jump
+    "u"        #'hydra-dir-navigate/dired-jump
     "i"        #'os-switch-to-term
     "a"        #'ag-project
     "C-a"      #'ag-project-regexp
@@ -1349,7 +1348,6 @@ spaces on either side of the point if so. Resorts to
                                 :pre (setq hydra-lv nil)
                                 :after-exit (setq hydra-lv t))
     (format (propertize "dir-navigate" 'face 'hydra-face-title))
-    ("h"        dired-jump)
     ("u"        dired-jump)
     ("l"        ivan-dired-find-alternate-file)
     ("m"        ivan-dired-find-alternate-file)
