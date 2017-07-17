@@ -1981,6 +1981,9 @@ limited to files that match FILE-TYPE."
   :commands (rotate-text rotate-text-backward)
   :config (push '("true" "false") rotate-text-words))
 
+(use-package restclient
+  :mode ("\\.\\(http\\|rest\\)$" . restclient-mode))
+
 (add-hook 'emacs-lisp-mode-hook (lambda() (setq mode-name "Elisp")))
 
 ;; gui & terminal
