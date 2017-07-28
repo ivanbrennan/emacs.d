@@ -2174,7 +2174,8 @@ Disables `text-scale-mode`."
  ("C-/" . undo-tree-undo)
  ("C-?" . undo-tree-redo)
  :map isearch-mode-map
- ("C-p"  . isearch-ring-retreat)
+ ("C-n"  . isearch-repeat-forward)
+ ("C-p"  . isearch-repeat-backward)
  ("<up>" . isearch-ring-retreat)
  :map rectangle-mark-mode-map
  ("s" . string-rectangle)
