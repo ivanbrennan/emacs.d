@@ -100,6 +100,7 @@
   (defun ivan-doomable-buffer? ()
     (or buffer-file-name
         (derived-mode-p 'prog-mode)
+        (derived-mode-p 'Info-mode)
         (equal "*splat*"  (buffer-name))))
 
   (defun ivan-doom-buffer-mode-maybe ()
