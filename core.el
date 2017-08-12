@@ -1761,6 +1761,12 @@ limited to files that match FILE-TYPE."
     (add-hook 'help-mode-hook #'page-break-lines-mode)
     (add-hook 'Info-mode-hook #'page-break-lines-mode)))
 
+(use-package tex-site
+  :defines (latex-help-cmd-alist latext-help-file)
+  :mode ("\\.text\\'" . TeX-latex-mode)
+  :defer t
+  :ensure auctex)
+
 (use-package magit
   :commands (magit-status)
   :config
