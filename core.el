@@ -2083,8 +2083,13 @@ Disables `text-scale-mode`."
       (set-face-background 'default "white" (selected-frame))
       (set-face-background 'hl-line "#EEEEEE" (selected-frame)))
     )
-
   (add-hook 'window-setup-hook 'ivan-adjust-terminal-colors)
+
+  (defun my-change-window-divider ()
+    (let ((display-table (or buffer-display-table standard-display-table)))
+      (set-display-table-slot display-table 5 ?│)
+      (set-window-display-table (selected-window) display-table)))
+  (add-hook 'window-configuration-change-hook 'my-change-window-divider)
   )
 
 (bind-keys
