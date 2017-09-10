@@ -52,9 +52,9 @@
     ("bluegre"    . "#EFF2F1")
     ("whisp0"     . "#EDEDED")
     ("whisp1"     . "#F2F2F2")
-    ("whisp2"     . "#F5F5F5")
-    ("paper"      . "#F9F9F9")
-    ("paperwhite" . "#FCFCFC"))
+    ("whisp2"     . "#F5F5F6")
+    ("paper"      . "#F7F8F8")
+    ("paperwhite" . "#F9F9FA"))
   "List of Elixir colors.
 Each element has the form (NAME . HEX).")
 
@@ -131,7 +131,7 @@ Also bind `class' to ((class color) (min-colors 89))."
      ((((type graphic)) :inherit default :background ,paperwhite)
       (t                :inherit default)))
    `(doom-hl-line
-     ((((type graphic)) :background ,paper)
+     ((((type graphic)) :background ,whisp2)
       (t                :inherit hl-line)))
    `(doom-linum
      ((((type graphic)) :inherit linum :background ,paperwhite)
@@ -635,12 +635,12 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(highlight-quoted-symbol ((t (:foreground ,purpcoal0))))
    `(highlight-quoted-quote  ((t (:foreground ,marine))))
 ;;;;; hl-line-mode
-   `(hl-line-face ((,class (:background ,paper))
+   `(hl-line-face ((,class (:background ,whisp2))
                    (t :weight bold)))
-   `(hl-line ((,class (:background ,paper))
+   `(hl-line ((,class (:background ,whisp2))
               (t :weight bold)))
 ;;;;; hl-sexp
-   `(hl-sexp-face ((,class (:background ,paper))
+   `(hl-sexp-face ((,class (:background ,whisp2))
                    (t :weight bold)))
 ;;;;; hydra
    `(hydra-face-red      ((t (:foreground ,bloodred  :background ,bluegre :bold t))))
