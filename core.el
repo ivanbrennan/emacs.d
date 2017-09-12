@@ -2464,4 +2464,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
  calendar-location-name "New York, NY"
  )
 
+;; Mitigate Bug#28350 (security) in Emacs 25.2 and earlier.
+  (eval-after-load "enriched"
+    '(defun enriched-decode-display-prop (start end &optional param)
+       (list start end)))
+
 (provide 'core)
