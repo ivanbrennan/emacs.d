@@ -1868,6 +1868,9 @@ limited to files that match FILE-TYPE."
         (rbenv-use-corresponding))))
   (add-hook 'ruby-mode-hook #'ivan-maybe-use-rbenv))
 
+(use-package haskell-mode
+  :defer t)
+
 (use-package projectile
   :commands (projectile-find-file
              projectile-project-root
