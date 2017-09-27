@@ -959,7 +959,7 @@ spaces on either side of the point if so. Resorts to
     "C-b"      #'bury-buffer
     "B"        #'unbury-buffer
     ;; "b ."    #'hydra-buffers/body
-    "b b"      #'ibuffer
+    "b i"      #'ibuffer
     "b m j"    #'bookmark-jump
     "b m l"    #'bookmark-bmenu-list
     "b m m"    #'bookmark-set
