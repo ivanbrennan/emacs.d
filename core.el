@@ -144,6 +144,9 @@ buffer represents a real file."
       (set-face-background 'fringe bg)))
   (advice-add 'ivan--apply-padding-degree :after #'ivan-adjust-fringe-background))
 
+(use-package nix-mode
+  :defer t)
+
 (use-package neotree
   :config
   (setq neo-mode-line-type 'none)
