@@ -1856,6 +1856,7 @@ limited to files that match FILE-TYPE."
   )
 
 (use-package rbenv
+  :disabled t
   :init
   (setq
    rbenv-show-active-ruby-in-modeline nil
