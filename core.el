@@ -1854,19 +1854,6 @@ limited to files that match FILE-TYPE."
   ;; (add-hook 'ruby-mode-hook 'flymake-ruby-load)
   )
 
-(use-package rbenv
-  :init
-  (setq
-   rbenv-show-active-ruby-in-modeline nil
-   rbenv-executable (substring (shell-command-to-string "which rbenv") 0 -1)
-   )
-  (global-rbenv-mode +1)
-  (defun ivan-maybe-use-rbenv ()
-    (when buffer-file-name
-      (let ((inhibit-message t))
-        (rbenv-use-corresponding))))
-  (add-hook 'ruby-mode-hook #'ivan-maybe-use-rbenv))
-
 (use-package haskell-mode
   :defer t)
 

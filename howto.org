@@ -184,8 +184,6 @@ I'll enter hydra-scroll (~SPC .~), scroll around, decide to open a file, type ~M
 *** Insert state: ???
 ** bind M-s-h in emacs-plus
 ** set 'fullscreen' frame-parameter to 'fullscreen' or 'fullboth'
-** manage ruby versions (rbenv)
-*** rbenv.el? exec-path-from-shell?
 ** run tests asynchronously
 ** launch emacs client from command line with "e"
 ** run emacs in a client/server style
