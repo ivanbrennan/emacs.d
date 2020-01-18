@@ -23,7 +23,6 @@
  hi-lock-auto-select-face            t
  history-delete-duplicates           t
  history-length                      500
- ispell-program-name                 "/usr/local/bin/aspell"
  minibuffer-eldef-shorten-default    t
  query-replace-skip-read-only        t
  read-buffer-completion-ignore-case  t
